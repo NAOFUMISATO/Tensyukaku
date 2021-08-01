@@ -148,15 +148,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LowAttack.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MiddleAttack.cpp" />
+    <ClCompile Include="MiddleAttackCollision.cpp" />
+    <ClCompile Include="ModeBase.cpp" />
+    <ClCompile Include="ModeGame.cpp" />
     <ClCompile Include="ModeServer.cpp" />
+    <ClCompile Include="ModeTitle.cpp" />
+    <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="ObjectServer.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerIdle.cpp" />
+    <ClCompile Include="PlayerMove.cpp" />
     <ClCompile Include="ResourceServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="MiddleAttackCollision.h" />
+    <ClInclude Include="ModeBase.h" />
+    <ClInclude Include="ModeGame.h" />
     <ClInclude Include="ModeServer.h" />
+    <ClInclude Include="ModeTitle.h" />
+    <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectServer.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceServer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
