@@ -49,6 +49,12 @@
     <Filter Include="ソース ファイル\Server">
       <UniqueIdentifier>{48c37d5a-b85b-4eeb-8f63-19768a679f3e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Enemy\Bushi">
+      <UniqueIdentifier>{21ac1a30-ed2e-44d1-94e0-5a6d51b02345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Enemy\Bushi">
+      <UniqueIdentifier>{822421f4-09e9-45e7-b188-5a5e90e6ab42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -102,6 +108,18 @@
     <ClCompile Include="ObjectServer.cpp">
       <Filter>ソース ファイル\Server</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyBase.cpp">
+      <Filter>ソース ファイル\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bushi.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
+    <ClCompile Include="BushiComing.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
+    <ClCompile Include="BushiPatrol.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -142,6 +160,12 @@
     </ClInclude>
     <ClInclude Include="ResourceServer.h">
       <Filter>ヘッダー ファイル\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBase.h">
+      <Filter>ヘッダー ファイル\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bushi.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
