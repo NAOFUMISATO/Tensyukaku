@@ -25,8 +25,8 @@ namespace Tsk {
 		void	Move(Game& g);		//移動時の処理
 		void	MidAttack(Game& g);	//中段攻撃時の処理
 		void	LowAttack(Game& g);	//下段攻撃時の処理
-		void	LoadActionGraph();		//プレイヤーの画像読み込み関数
-		void	LoadActionSE();			//プレイヤーの効果音読み込み関数
+		void	LoadActionGraph();	//プレイヤーの画像読み込み関数
+		void	LoadActionSE();		//プレイヤーの効果音読み込み関数
 
 		/*---------メンバ変数----------*/
 		PLAYERACTION	_Action;		//状態遷移変数
@@ -87,34 +87,32 @@ namespace PInfo {
 	/*----------画像読み込み&描画関係----------*/
 	constexpr auto GraphWidth = 720;			//1枚当たりの画像サイズ（横）
 	constexpr auto GraphHeight = 420;			//1枚当たりの画像サイズ（縦）
+	constexpr auto GraphScale = 1.0;				//拡大率
+	constexpr auto GraphAngle = 0;					//角度
+
 	//待機
 	constexpr auto Idle_GraphName = "res/S_Stand.png";	//画像ファイル名
 	constexpr auto Idle_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Idle_WidthCount = 1;			//横の画像枚数
 	constexpr auto Idle_HeightCount = 1;		//縦の画像枚数
-	constexpr auto Idle_Scale = 1.0;			//拡大率
-	constexpr auto Idle_Angle = 0;				//角度
+
 	//移動
-	constexpr auto Move_GraphName = "res/S_Walk.png";	//画像ファイル名
-	constexpr auto Move_AnimeMax = 13;			//全ての画像枚数
-	constexpr auto Move_WidthCount = 5;			//横の画像枚数
-	constexpr auto Move_HeightCount = 3;		//縦の画像枚数	
-	constexpr auto Move_Scale = 1.0;			//拡大率
-	constexpr auto Move_Angle = 0;				//角度
+	constexpr auto Move_GraphName = "res/S_Stand.png";	//画像ファイル名
+	constexpr auto Move_AnimeMax = 1;			//全ての画像枚数
+	constexpr auto Move_WidthCount = 1;			//横の画像枚数
+	constexpr auto Move_HeightCount = 1;		//縦の画像枚数	
+
 	//中段攻撃
 	constexpr auto MiddleAttack_GraphName = "res/S_MidAttack.png";	//画像ファイル名
 	constexpr auto MiddleAttack_AnimeMax = 8;	//全ての画像枚数
 	constexpr auto MiddleAttack_WidthCount = 8;	//横の画像枚数
 	constexpr auto MiddleAttack_HeightCount = 1;//縦の画像枚数
-	constexpr auto MiddleAttack_Scale = 1.0;	//拡大率
-	constexpr auto MiddleAttack_Angle = 0;		//角度
+
 	//下段攻撃
 	constexpr auto LowdleAttack_GraphName = "res/S_LowAttack.png";	//画像ファイル名
 	constexpr auto LowAttack_AnimeMax = 10;		//全ての画像枚数
 	constexpr auto LowAttack_WidthCount = 5;	//横の画像枚数
 	constexpr auto LowAttack_HeightCount = 2;	//縦の画像枚数
-	constexpr auto LowAttack_Scale = 1.0;		//拡大率
-	constexpr auto LowAttack_Angle = 0;			//角度
 
 	/*----------SE関係----------*/
 	constexpr auto Walk_SE = "se/walk.wav";				//移動

@@ -13,22 +13,23 @@ namespace Tsk {
 		void	Process(Game& g);
 		void	Draw(Game& g);
 	private:
-		void	Patrol(Game& g);
-		void	Coming(Game& g);
-		void	Attack(Game& g);
+		void	Patrol(Game& g);	//巡回状態時の処理
+		//void	Coming(Game& g);	//追跡状態時の処理
+		//void	Attack(Game& g);	//攻撃状態時の処理
+		void	LoadActionGraph();	//プレイヤーの画像読み込み関数
 
 		/*----------メンバ変数----------*/
 		int		_Action_Cnt;	//アクション経過時間記録変数
 
-		//待機状態描画用変数
-		int		_Idle_GrHandle;
-		std::vector<int>	_Idle_GrAll;
-		int		_Idle_AnimeNo;
+		//巡回状態描画用変数
+		int		_Patrol_GrHandle;
+		std::vector<int>	_Patrol_GrAll;
+		int		_Patrol_AnimeNo;
 
 		//移動状態描画用変数
-		int		_Move_GrHandle;
-		std::vector<int>	_Move_GrAll;
-		int		_Move_AnimeNo;
+		int		_Coming_GrHandle;
+		std::vector<int>	_Coming_GrAll;
+		int		_Coming_AnimeNo;
 
 		//攻撃状態描画用変数
 		int		_Attack_GrHandle;
@@ -56,36 +57,36 @@ namespace BInfo {
 
 	/*----------アニメーション関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto AnimeSpeed_Idle = 8;			//待機状態
+	constexpr auto AnimeSpeed_Patrol = 8;		//巡回状態
 	constexpr auto AnimeSpeed_Move = 5;			//移動状態
 	constexpr auto AnimeSpeed_Attack = 5;		//攻撃
 
 	//各モーションのフレーム数
-	constexpr auto Attack_Frame = 40;		//攻撃
+	constexpr auto Patrol_Frame1 = 300;			//巡回時の振り向きフレーム1
+	constexpr auto Patrol_Frame2 = 480;			//巡回時の振り向きフレーム2
+	constexpr auto Attack_Frame = 40;			//攻撃
 
 
 	/*----------画像読み込み&描画関係----------*/
 	constexpr auto GraphWidth = 540;			//1枚当たりの画像サイズ（横）
 	constexpr auto GraphHeight = 420;			//1枚当たりの画像サイズ（縦）
+	constexpr auto GraphScale = 1.0;			//拡大率
+	constexpr auto GraphAngle = 0;				//角度
+
 	//待機
-	constexpr auto Idle_GraphName = "res/B_Stand.png";	//画像ファイル名
-	constexpr auto Idle_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto Idle_WidthCount = 1;			//横の画像枚数
-	constexpr auto Idle_HeightCount = 1;		//縦の画像枚数
-	constexpr auto Idle_Scale = 1.0;			//拡大率
-	constexpr auto Idle_Angle = 0;				//角度
+	constexpr auto Patrol_GraphName = "res/B_Stand.png";	//画像ファイル名
+	constexpr auto Patrol_AnimeMax = 1;			//全ての画像枚数
+	constexpr auto Patrol_WidthCount = 1;		//横の画像枚数
+	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
 	//移動
-	constexpr auto Move_GraphName = "res/B_Walk.png";	//画像ファイル名
-	constexpr auto Move_AnimeMax = 13;			//全ての画像枚数
-	constexpr auto Move_WidthCount = 5;			//横の画像枚数
-	constexpr auto Move_HeightCount = 3;		//縦の画像枚数	
-	constexpr auto Move_Scale = 1.0;			//拡大率
-	constexpr auto Move_Angle = 0;				//角度
+	constexpr auto Coming_GraphName = "res/B_Stand.png";	//画像ファイル名
+	constexpr auto Coming_AnimeMax = 1;			//全ての画像枚数
+	constexpr auto Coming_WidthCount = 1;		//横の画像枚数
+	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
 	constexpr auto Attack_GraphName = "res/B_MidAttack.png";	//画像ファイル名
 	constexpr auto Attack_AnimeMax = 8;			//全ての画像枚数
 	constexpr auto Attack_WidthCount = 8;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
-	constexpr auto Attack_Scale = 1.0;			//拡大率
-	constexpr auto Attack_Angle = 0;			//角度
+	
 }

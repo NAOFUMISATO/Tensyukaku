@@ -22,9 +22,6 @@
     <Filter Include="ヘッダー ファイル\Object\Player">
       <UniqueIdentifier>{75d0d2a9-3613-4e7a-ae94-48310a858a5d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Object\Enemy">
-      <UniqueIdentifier>{f3506fc6-9b66-435e-ae95-598226381cc2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Object\Player">
       <UniqueIdentifier>{712b660a-471b-452b-8849-805fed6a4eba}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,9 @@
     </Filter>
     <Filter Include="ソース ファイル\Object\Enemy\Bushi">
       <UniqueIdentifier>{21ac1a30-ed2e-44d1-94e0-5a6d51b02345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Enemy">
+      <UniqueIdentifier>{f3506fc6-9b66-435e-ae95-598226381cc2}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Object\Enemy\Bushi">
       <UniqueIdentifier>{822421f4-09e9-45e7-b188-5a5e90e6ab42}</UniqueIdentifier>

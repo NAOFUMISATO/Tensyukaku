@@ -79,9 +79,9 @@ void Player::Process(Game& g)
 }
 void Player::Draw(Game& g) {
 	// カメラから見た座標に変更（ワールド座標→ビュー座標）
-	int x, y;
-	x = _x + _gx/* - g.GetChips().GetScrX()*/;
-	y = _y + _gy/*- g.GetChips().GetScrY()*/;
+
+	auto x = _x + _gx/* - g.GetChips().GetScrX()*/;
+	auto y = _y + _gy/*- g.GetChips().GetScrY()*/;
 
 	//プレイヤーの状態によるアニメーション遷移
 	switch (_Action) {
@@ -89,30 +89,30 @@ void Player::Draw(Game& g) {
 	case PLAYERACTION::IDLE:
 		_Idle_AnimeNo = (_Cnt / AnimeSpeed_Idle) % Idle_AnimeMax;
 		_Idle_GrHandle = _Idle_GrAll[_Idle_AnimeNo];
-		DrawRotaGraph(x, y, Idle_Scale, Idle_Angle, _Idle_GrHandle, true, _isFlip);
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Idle_GrHandle, true, _isFlip);
 		break;
 		//移動状態
 	case PLAYERACTION::MOVE:
 		_Move_AnimeNo = (_Cnt / AnimeSpeed_Move) % Move_AnimeMax;
 		_Move_GrHandle = _Move_GrAll[_Move_AnimeNo];
 		if (g.GetKey() & PAD_INPUT_LEFT) {
-			DrawRotaGraph(x, y, Move_Scale, Move_Angle, _Move_GrHandle, true, _isFlip);
+			DrawRotaGraph(x, y, GraphScale, GraphAngle, _Move_GrHandle, true, _isFlip);
 		}
 		else if (g.GetKey() & PAD_INPUT_RIGHT) {
-			DrawRotaGraph(x, y, Move_Scale, Move_Angle, _Move_GrHandle, true, _isFlip);
+			DrawRotaGraph(x, y, GraphScale, GraphAngle, _Move_GrHandle, true, _isFlip);
 		}
 		break;
 		//中段攻撃状態
 	case PLAYERACTION::MIDDLEATTACK:
 		_MiddleAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_MiddleAttack) % MiddleAttack_AnimeMax;
 		_MiddleAttack_GrHandle = _MiddleAttack_GrAll[_MiddleAttack_AnimeNo];
-		DrawRotaGraph(x, y, MiddleAttack_Scale, MiddleAttack_Angle, _MiddleAttack_GrHandle, true, _isFlip);
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _MiddleAttack_GrHandle, true, _isFlip);
 		break;
 		//下段攻撃状態
 	case PLAYERACTION::LOWATTACK:
 		_LowAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_LowAttack) % LowAttack_AnimeMax;
 		_LowAttack_GrHandle = _LowAttack_GrAll[_LowAttack_AnimeNo];
-		DrawRotaGraph(x, y, LowAttack_Scale, LowAttack_Angle, _LowAttack_GrHandle, true, _isFlip);
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _LowAttack_GrHandle, true, _isFlip);
 		break;
 	}
 	// 主人公位置からカメラ座標決定

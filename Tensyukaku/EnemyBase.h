@@ -20,8 +20,8 @@ namespace Tsk {
 
 		virtual	void	Init();
 		virtual	void	Process(Game& g);
-		virtual	void	Damage(Game& g);
-		virtual	void	Draw(Game& g);
+		/*virtual	void	Damage(Game& g);
+		virtual	void	Draw(Game& g);*/
 
 	protected:
 		int		_Life;
