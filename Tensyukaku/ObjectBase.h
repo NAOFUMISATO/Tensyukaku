@@ -33,6 +33,7 @@ namespace Tsk {
 		int		_x, _y;		// 座標（基準位置）
 		int		_gx, _gy;	// 基準位置から描画時の差分
 		int		_w, _h;		// 大きさ
+		int		_Life;		// 体力
 		int		_Spd;		// 移動速度
 		int		_g;			// 重力加速値
 		int		_stand;		// 床フラグ。着地していたら1

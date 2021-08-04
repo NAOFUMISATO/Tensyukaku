@@ -72,6 +72,7 @@ namespace PInfo {
 	constexpr auto CollisionHeight = 250;		//当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
+	constexpr auto LifeMax = 3;					//体力
 	constexpr auto Speed = 10;					//移動速度
 
 	/*----------アニメーション関係----------*/
@@ -97,9 +98,9 @@ namespace PInfo {
 	constexpr auto Idle_HeightCount = 1;		//縦の画像枚数
 
 	//移動
-	constexpr auto Move_GraphName = "res/S_Stand.png";	//画像ファイル名
-	constexpr auto Move_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto Move_WidthCount = 1;			//横の画像枚数
+	constexpr auto Move_GraphName = "res/S_Walk.png";	//画像ファイル名
+	constexpr auto Move_AnimeMax = 6;			//全ての画像枚数
+	constexpr auto Move_WidthCount = 6;			//横の画像枚数
 	constexpr auto Move_HeightCount = 1;		//縦の画像枚数	
 
 	//中段攻撃
@@ -110,9 +111,9 @@ namespace PInfo {
 
 	//下段攻撃
 	constexpr auto LowdleAttack_GraphName = "res/S_LowAttack.png";	//画像ファイル名
-	constexpr auto LowAttack_AnimeMax = 10;		//全ての画像枚数
-	constexpr auto LowAttack_WidthCount = 5;	//横の画像枚数
-	constexpr auto LowAttack_HeightCount = 2;	//縦の画像枚数
+	constexpr auto LowAttack_AnimeMax = 8;		//全ての画像枚数
+	constexpr auto LowAttack_WidthCount = 8;	//横の画像枚数
+	constexpr auto LowAttack_HeightCount = 1;	//縦の画像枚数
 
 	/*----------SE関係----------*/
 	constexpr auto Walk_SE = "se/walk.wav";				//移動

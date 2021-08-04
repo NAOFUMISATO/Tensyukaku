@@ -120,6 +120,9 @@
     <ClCompile Include="BushiPatrol.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
+    <ClCompile Include="LowAttackCollision.cpp">
+      <Filter>ソース ファイル\Object\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="Bushi.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
+    </ClInclude>
+    <ClInclude Include="LowAttackCollision.h">
+      <Filter>ヘッダー ファイル\Object\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

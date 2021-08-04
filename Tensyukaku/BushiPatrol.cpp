@@ -5,13 +5,12 @@
 using namespace Tsk;
 using namespace BInfo;
 void Bushi::Patrol(Game& g) {
-	_Action_Cnt=_Cnt;
 	if (_Cnt - _Action_Cnt == Patrol_Frame1) {
-		_isFlip = false;
+		_isFlip = true;
 	}
 	if (_Cnt - _Action_Cnt == Patrol_Frame2) {
-		_isFlip = true;
-		_Action_Cnt=_Cnt;
+		_isFlip = false;
+		 _Action_Cnt= _Cnt;
 	}
 	
 }

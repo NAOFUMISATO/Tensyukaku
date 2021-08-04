@@ -3,6 +3,7 @@
 #include "ModeGame.h"
 #include "Game.h"
 #include "Player.h"
+#include "Bushi.h"
 
 using namespace Tsk;
 bool ModeGame::Initialize(Game& g) {
@@ -10,6 +11,7 @@ bool ModeGame::Initialize(Game& g) {
 
 	// プレイヤーを生成し、オブジェクトサーバに登録する
 	g.GetOS()->Add(new Player);
+	g.GetOS()->Add(new Bushi);
 
 	// オブジェクト処理を行う
 	_stopObjProcess = false;

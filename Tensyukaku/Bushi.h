@@ -9,9 +9,10 @@ namespace Tsk {
 		~Bushi();
 		virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::BUSHI; }
 
-		void	Init();
-		void	Process(Game& g);
-		void	Draw(Game& g);
+		void	Init()override;
+		void	Process(Game& g)override;
+		void	Draw(Game& g)override;
+		void	Damage(Game& g)override;
 	private:
 		void	Patrol(Game& g);	//巡回状態時の処理
 		//void	Coming(Game& g);	//追跡状態時の処理
@@ -46,15 +47,16 @@ namespace BInfo {
 	constexpr auto PositionX = 1800;			//横軸初期位置（足下が基準）
 	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
-	constexpr auto GraphPointY = -170;			//Y位置から描画点までの差分
+	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -30;			//描画点から当たり判定左上座標までの差分
 	constexpr auto PositionHitY = -80;			//描画点から当たり判定左上座標までの差分
 	constexpr auto CollisionWidth = 60;			//当たり判定横幅
 	constexpr auto CollisionHeight = 250;		//当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
+	constexpr auto LifeMax = 1;					//体力
 	constexpr auto Speed = 2;					//移動速度
-
+	
 	/*----------アニメーション関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto AnimeSpeed_Patrol = 8;		//巡回状態
@@ -62,8 +64,8 @@ namespace BInfo {
 	constexpr auto AnimeSpeed_Attack = 5;		//攻撃
 
 	//各モーションのフレーム数
-	constexpr auto Patrol_Frame1 = 300;			//巡回時の振り向きフレーム1
-	constexpr auto Patrol_Frame2 = 480;			//巡回時の振り向きフレーム2
+	constexpr auto Patrol_Frame1 = 600;			//巡回時の振り向きフレーム1
+	constexpr auto Patrol_Frame2 = 840;			//巡回時の振り向きフレーム2
 	constexpr auto Attack_Frame = 40;			//攻撃
 
 

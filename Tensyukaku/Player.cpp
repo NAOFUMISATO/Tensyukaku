@@ -48,8 +48,9 @@ void Player::Init()
 	_hit_y = PositionHitY;
 	_hit_w = CollisionWidth;
 	_hit_h = CollisionHeight;
-	_Spd = Speed;
 	_Action = PLAYERACTION::IDLE;
+	_Life = LifeMax;
+	_Spd = Speed;
 	_isFlip = false;
 }
 

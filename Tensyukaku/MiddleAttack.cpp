@@ -17,7 +17,7 @@ void Player::MidAttack(Game& g) {
 		// 中段攻撃判定オブジェクトの開始位置をプレイヤー位置から算出
 		MAC->SetPosition(_x - _hit_x, _y - _hit_h);
 		// オブジェクトサーバ-に中段攻撃判定オブジェクトを追加
-		g.GetOS()->Add(MAC);		
+		g.GetOS()->Add(MAC);
 	}
 	if (_Cnt - _Action_Cnt == MiddleAttack_Frame) {
 		MAC->Damage(g);

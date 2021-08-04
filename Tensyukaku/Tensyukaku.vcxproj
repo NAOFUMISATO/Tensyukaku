@@ -154,6 +154,7 @@
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="LowAttack.cpp" />
+    <ClCompile Include="LowAttackCollision.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapChip.cpp" />
     <ClCompile Include="MiddleAttack.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HitBox.h" />
+    <ClInclude Include="LowAttackCollision.h" />
     <ClInclude Include="MapChip.h" />
     <ClInclude Include="MiddleAttackCollision.h" />
     <ClInclude Include="ModeBase.h" />

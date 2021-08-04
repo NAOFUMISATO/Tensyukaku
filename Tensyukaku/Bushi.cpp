@@ -1,5 +1,6 @@
 #include <DxLib.h>
 #include <vector>
+#include <sstream>
 #include "EnemyBase.h"
 #include "Bushi.h"
 #include "Game.h"
@@ -31,18 +32,20 @@ void Bushi::Init() {
 	_y = PositionY;
 	_gx = GraphPointX;
 	_gy = GraphPointY;
-	_Spd = Speed;
 	_hit_x = PositionHitX;
 	_hit_y = PositionHitY;
 	_hit_w = CollisionWidth;
 	_hit_h = CollisionHeight;
 	ENEMYSTATE::PATROL;
-	_isFlip = true;
+	_Life = LifeMax;
+	_Spd = Speed;
+	_isFlip = false;
 }
 void Bushi::Process(Game& g) {
 	EnemyBase::Process(g);
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
+		Patrol(g);
 		break;
 	case ENEMYSTATE::COMING:
 		break;
@@ -53,12 +56,26 @@ void Bushi::Process(Game& g) {
 	case ENEMYSTATE::DEAD:
 		break;
 	}
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
+		{
+			// 敵とその攻撃の当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				// 敵と弾それぞれのダメージ処理
+				Damage(g);				// this はこのオブジェクト（敵）
+				(*ite)->Damage(g);		// (*ite) は弾オブジェクト
+			}
+		}
+	}
 }
 void Bushi::Draw(Game& g) {
 	auto x = _x + _gx;
 	auto y = _y + _gy;
 
-	//プレイヤーの状態によるアニメーション遷移
+	//武士の状態によるアニメーション遷移
 	switch (_State) {
 		//巡回状態
 	case ENEMYSTATE::PATROL:
@@ -84,8 +101,23 @@ void Bushi::Draw(Game& g) {
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Attack_GrHandle, true, _isFlip);
 		break;
 	}
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
+	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(255, 0, 0), FALSE);	// 半透明の赤で当たり判定描画
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
+	std::stringstream ss;
+	ss << "_Cnt=" << _Cnt << "\n";
+	ss << "_ActionCnt=" << _Action_Cnt << "\n";
+	
+	DrawString(x - 100, y + 100, ss.str().c_str(), GetColor(255, 50, 255));
 }
-//プレイヤーの画像読み込み関数
+void Bushi::Damage(Game& g) {
+	--_Life;
+	
+	if (_Life < 0) {
+		g.GetOS()->Del(this);
+	}
+}
+//武士の画像読み込み関数
 void Bushi::LoadActionGraph() {
 	_Patrol_GrAll.resize(Patrol_AnimeMax);
 	ResourceServer::LoadDivGraph(Patrol_GraphName, Patrol_AnimeMax, Patrol_WidthCount, Patrol_HeightCount, GraphWidth, GraphHeight, _Patrol_GrAll.data());

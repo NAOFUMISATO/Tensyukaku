@@ -29,7 +29,7 @@ void ObjectBase::Process(Game& g)
 	{
 		_hit_noCnt--;
 	}
-
+	++_Cnt;
 	//// 重力処理を行う
 	//_g += 1;			// キャラの、重力による加速値を大きくする
 	//_y += _g;			// 重力による加速値の分だけ移動する
@@ -45,7 +45,7 @@ void ObjectBase::Process(Game& g)
 	//	}
 	//	_g = 0;		// 重力加速値をリセット
 	//}
-	++_Cnt;
+	
 }
 
 void ObjectBase::Draw(Game& g) {
