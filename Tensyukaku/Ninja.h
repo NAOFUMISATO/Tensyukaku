@@ -3,11 +3,11 @@
 #include <vector>
 // 武士クラス
 namespace Tsk {
-	class Bushi : public EnemyBase {
+	class Ninja : public EnemyBase {
 	public:
-		Bushi();
-		~Bushi();
-		virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::BUSHI; }
+		Ninja();
+		~Ninja();
+		virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::NINJA; }
 
 		void	Init()override;
 		void	Process(Game& g)override;
@@ -44,7 +44,7 @@ namespace Tsk {
 		int		_Attack_SEHandle;
 	};
 }
-namespace BInfo {
+namespace NInfo {
 	/*----------武士の各座標関係----------*/
 	constexpr auto PositionX = 1800;			//横軸初期位置（足下が基準）
 	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
@@ -58,7 +58,7 @@ namespace BInfo {
 	/*----------パラメーター関係----------*/
 	constexpr auto LifeMax = 1;					//体力
 	constexpr auto Speed = 2;					//移動速度
-	
+
 	/*----------アニメーション関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto AnimeSpeed_Patrol = 8;		//巡回状態
@@ -77,19 +77,19 @@ namespace BInfo {
 	constexpr auto GraphAngle = 0;				//角度
 
 	//待機
-	constexpr auto Patrol_GraphName = "res/B_Stand.png";	//画像ファイル名
+	constexpr auto Patrol_GraphName = "res/N_Stand.png";	//画像ファイル名
 	constexpr auto Patrol_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Patrol_WidthCount = 1;		//横の画像枚数
 	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
 	//移動
-	constexpr auto Coming_GraphName = "res/B_Attack.png";	//画像ファイル名
+	constexpr auto Coming_GraphName = "res/N_Stand.png";	//画像ファイル名
 	constexpr auto Coming_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Coming_WidthCount = 1;		//横の画像枚数
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
-	constexpr auto Attack_GraphName = "res/B_Attack.png";	//画像ファイル名
+	constexpr auto Attack_GraphName = "res/N_Attack.png";	//画像ファイル名
 	constexpr auto Attack_AnimeMax = 8;			//全ての画像枚数
 	constexpr auto Attack_WidthCount = 8;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
-	
+
 }

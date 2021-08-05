@@ -5,7 +5,7 @@
 #include "ResourceServer.h"
 #include "Bushi.h"
 namespace {
-	constexpr auto Width = 500;
+	constexpr auto Width = 800;
 	constexpr auto Height = 100;
 }
 using namespace BInfo;
@@ -28,9 +28,8 @@ void BushiPatrolCollision::Init() {
 
 void BushiPatrolCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if(_Cnt-_Action_Cnt== Patrol_Frame1|| _Cnt - _Action_Cnt == Patrol_Frame2)
-	{
-		g.GetOS()->Del(this); 
+	if (_Cnt - _Action_Cnt == Patrol_Frame || _Cnt - _Action_Cnt == Patrol_Frame+Patrol_Frame) {
+		g.GetOS()->Del(this);
 	}
 }
 void BushiPatrolCollision::Draw(Game& g) {

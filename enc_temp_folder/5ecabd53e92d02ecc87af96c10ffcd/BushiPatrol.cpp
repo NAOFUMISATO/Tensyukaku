@@ -54,7 +54,7 @@ void Bushi::Patrol(Game& g) {
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
-				if (IsHitOC(*BPC) == true)
+				if (IsHitCC(*BPC) == true)
 				{
 					BPC->Damage(g);
 					ENEMYSTATE::COMING;

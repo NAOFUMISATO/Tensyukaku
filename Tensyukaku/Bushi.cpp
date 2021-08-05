@@ -16,7 +16,8 @@ Bushi::Bushi() :
 	_Attack_GrHandle(-1),
 	_Attack_AnimeNo(0),
 	_Walk_SEHandle(-1),
-	_Attack_SEHandle(-1)
+	_Attack_SEHandle(-1),
+	_Patrol_Flag(false)
 {
 	Init();
 	LoadActionGraph();
@@ -47,7 +48,7 @@ void Bushi::Process(Game& g) {
 		Patrol(g);
 		break;
 	case ENEMYSTATE::COMING:
-		break;
+		
 	case ENEMYSTATE::ATTACK:
 		break;
 	case ENEMYSTATE::DAMAGE:
@@ -61,9 +62,9 @@ void Bushi::Process(Game& g) {
 		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
 		{ 
 			// 敵とその攻撃の当たり判定を行う
-		if (IsHit(*(*ite)) == true)
+		if (IsHitCO(*(*ite)) == true)
 			{
-				// 敵と弾それぞれのダメージ処理
+				// 敵と攻撃それぞれのダメージ処理
 				Damage(g);				// this はこのオブジェクト（敵）
 				(*ite)->Damage(g);		// (*ite) は攻撃オブジェクト
 			}

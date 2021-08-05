@@ -62,7 +62,7 @@ namespace Tsk {
 namespace PInfo {
 
 	/*----------プレイヤーの各座標関係----------*/
-	constexpr auto PositionX = 960;				//横軸初期位置（足下が基準）
+	constexpr auto PositionX =500;				//横軸初期位置（足下が基準）
 	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -190;			//Y位置から描画点までの差分

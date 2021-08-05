@@ -164,6 +164,7 @@
     <ClCompile Include="ModeGame.cpp" />
     <ClCompile Include="ModeServer.cpp" />
     <ClCompile Include="ModeTitle.cpp" />
+    <ClCompile Include="Ninja.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="ObjectServer.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="ModeGame.h" />
     <ClInclude Include="ModeServer.h" />
     <ClInclude Include="ModeTitle.h" />
+    <ClInclude Include="Ninja.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectServer.h" />
     <ClInclude Include="Player.h" />

@@ -55,6 +55,12 @@
     <Filter Include="ヘッダー ファイル\Object\Enemy\Bushi">
       <UniqueIdentifier>{822421f4-09e9-45e7-b188-5a5e90e6ab42}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Enemy\Ninja">
+      <UniqueIdentifier>{f9af4ac1-30a4-4f21-8ddb-18e618d4cdef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Enemy\Ninja">
+      <UniqueIdentifier>{9fb4920b-6f2c-4203-9736-a6e920e48f2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -126,6 +132,9 @@
     <ClCompile Include="BushiPatrolCollision.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
+    <ClCompile Include="Ninja.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -178,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="BushiPatrolCollision.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
+    </ClInclude>
+    <ClInclude Include="Ninja.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

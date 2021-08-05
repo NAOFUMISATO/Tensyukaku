@@ -18,7 +18,9 @@ namespace Tsk {
 		virtual	void	Init();
 		virtual	void	Process(Game& g);
 		virtual	void	Draw(Game& g);
-		virtual	bool	IsHit(ObjectBase& o);
+		virtual	bool	IsHitCO(ObjectBase& o);
+		virtual	bool	IsHitOC(ObjectBase& o);
+		virtual bool	IsHitCC(ObjectBase& o);
 		virtual	void	Damage(Game& g) {};
 
 		void	SetPosition(int x, int y) { _x = x; _y = y; }
