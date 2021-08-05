@@ -1,6 +1,7 @@
 #include <DxLib.h>
 #include "Player.h"
 #include "Game.h"
+#include "MiddleAttackCollision.h"
 using namespace Tsk;
 void Player::Idle(Game& g) {
 	if (g.GetKey() & PAD_INPUT_LEFT || g.GetKey() & PAD_INPUT_RIGHT) {

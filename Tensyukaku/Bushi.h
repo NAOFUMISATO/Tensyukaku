@@ -20,7 +20,6 @@ namespace Tsk {
 		void	LoadActionGraph();	//プレイヤーの画像読み込み関数
 
 		/*----------メンバ変数----------*/
-		int		_Action_Cnt;	//アクション経過時間記録変数
 
 		//巡回状態描画用変数
 		int		_Patrol_GrHandle;
@@ -49,9 +48,9 @@ namespace BInfo {
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -30;			//描画点から当たり判定左上座標までの差分
-	constexpr auto PositionHitY = -80;			//描画点から当たり判定左上座標までの差分
+	constexpr auto PositionHitY = -90;			//描画点から当たり判定左上座標までの差分
 	constexpr auto CollisionWidth = 60;			//当たり判定横幅
-	constexpr auto CollisionHeight = 250;		//当たり判定縦幅
+	constexpr auto CollisionHeight = 300;		//当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
 	constexpr auto LifeMax = 1;					//体力
@@ -64,9 +63,10 @@ namespace BInfo {
 	constexpr auto AnimeSpeed_Attack = 5;		//攻撃
 
 	//各モーションのフレーム数
-	constexpr auto Patrol_Frame1 = 600;			//巡回時の振り向きフレーム1
-	constexpr auto Patrol_Frame2 = 840;			//巡回時の振り向きフレーム2
+	constexpr auto Patrol_Frame1 = 240;			//巡回時の振り向きフレーム1
+	constexpr auto Patrol_Frame2 = 360;			//巡回時の振り向きフレーム2
 	constexpr auto Attack_Frame = 40;			//攻撃
+
 
 
 	/*----------画像読み込み&描画関係----------*/

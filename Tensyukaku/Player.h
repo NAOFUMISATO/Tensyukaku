@@ -1,6 +1,7 @@
 #pragma once
 #include	"ObjectBase.h"
 #include	<vector>
+#include	"MiddleAttackCollision.h"
 namespace Tsk {
 	// プレイヤークラス
 	class Game;
@@ -13,7 +14,6 @@ namespace Tsk {
 		void	Init()override;
 		void	Process(Game& g)override;
 		void	Draw(Game& g)override;
-
 
 	private:
 		//プレイヤーのアクション列挙
@@ -30,7 +30,7 @@ namespace Tsk {
 
 		/*---------メンバ変数----------*/
 		PLAYERACTION	_Action;		//状態遷移変数
-		int		_Action_Cnt;	//アクション経過時間記録変数
+		
 
 		//待機状態描画用変数
 		int		_Idle_GrHandle;
@@ -73,23 +73,27 @@ namespace PInfo {
 
 	/*----------パラメーター関係----------*/
 	constexpr auto LifeMax = 3;					//体力
-	constexpr auto Speed = 10;					//移動速度
+	constexpr auto Speed = 2;					//移動速度
 
-	/*----------アニメーション関係----------*/
+	/*----------アニメーション&当たり判定関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto AnimeSpeed_Idle = 8;			//待機状態
-	constexpr auto AnimeSpeed_Move = 5;			//移動状態
+	constexpr auto AnimeSpeed_Move = 20;		//移動状態
 	constexpr auto AnimeSpeed_MiddleAttack = 5;	//中段攻撃
-	constexpr auto AnimeSpeed_LowAttack = 4;	//下段攻撃
+	constexpr auto AnimeSpeed_LowAttack = 5;	//下段攻撃
 	//各モーションのフレーム数
-	constexpr auto MiddleAttack_Frame = 40;		//中段攻撃
-	constexpr auto LowAttack_Frame = 40;		//下段攻撃
+	constexpr auto MiddleAttack_Frame = 40;		//中段攻撃全フレーム
+	constexpr auto LowAttack_Frame = 40;		//下段攻撃全フレーム
+	constexpr auto MABegin_Frame = 15;			//中段攻撃判定発生フレーム
+	constexpr auto LABegin_Frame = 15;			//下段攻撃判定発生フレーム
+	constexpr auto MAEnd_Frame= 20;				//中段攻撃判定終了フレーム(発生してからのフレーム数）
+	constexpr auto LAEnd_Frame= 20;				//中段攻撃判定終了フレーム(発生してからのフレーム数)
 
 	/*----------画像読み込み&描画関係----------*/
 	constexpr auto GraphWidth = 720;			//1枚当たりの画像サイズ（横）
 	constexpr auto GraphHeight = 420;			//1枚当たりの画像サイズ（縦）
-	constexpr auto GraphScale = 1.0;				//拡大率
-	constexpr auto GraphAngle = 0;					//角度
+	constexpr auto GraphScale = 1.0;			//拡大率
+	constexpr auto GraphAngle = 0;				//角度
 
 	//待機
 	constexpr auto Idle_GraphName = "res/S_Stand.png";	//画像ファイル名

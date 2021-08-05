@@ -24,7 +24,9 @@ Player::Player() :
 	_LowAttack_AnimeNo(0),
 	_Walk_SEHandle(-1),
 	_MiddleAttack_SEHandle(-1),
-	_LowAttack_SEHandle(-1)
+	_LowAttack_SEHandle(-1),
+	_Action(PLAYERACTION::IDLE)
+
 {
 	Init();
 	LoadActionGraph();
@@ -48,7 +50,6 @@ void Player::Init()
 	_hit_y = PositionHitY;
 	_hit_w = CollisionWidth;
 	_hit_h = CollisionHeight;
-	_Action = PLAYERACTION::IDLE;
 	_Life = LifeMax;
 	_Spd = Speed;
 	_isFlip = false;

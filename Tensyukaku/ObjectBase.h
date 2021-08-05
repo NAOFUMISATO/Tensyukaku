@@ -10,7 +10,8 @@ namespace Tsk {
 		~ObjectBase();
 		//オブジェクトの種類列挙
 		enum class OBJECTTYPE {
-			PLAYER, ENEMY, MIDDLEATTACK, LOWATTACK
+			PLAYER, ENEMY, MIDDLEATTACK, LOWATTACK,
+			BUSHIPATROL,BUSHIATTACK
 		};
 		virtual OBJECTTYPE	GetObjType() = 0;
 
@@ -45,7 +46,7 @@ namespace Tsk {
 		int		_hit_main;	// 攻撃側の場合に当たり判定するなら1
 		int		_hit_sub;	// ダメージ側の場合に当たり判定するなら1
 		int		_Cnt;		// 動作カウンタ
-
+		int		_Action_Cnt;	//アクション経過時間記録変数
 
 	};
 }

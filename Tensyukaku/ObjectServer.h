@@ -17,7 +17,7 @@ namespace Tsk {
 		void	Process(Game& g);
 		void	Draw(Game& g);
 
-		std::vector<ObjectBase*>* List() { return &_vObject; }
+		std::vector<ObjectBase*> *List() { return &_vObject; }
 
 	private:
 		void	AddListObjects();

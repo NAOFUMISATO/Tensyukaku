@@ -9,7 +9,6 @@
 using namespace Tsk;
 using namespace BInfo;
 Bushi::Bushi() :
-	_Action_Cnt(0),
 	_Patrol_GrHandle(-1),
 	_Patrol_AnimeNo(0),
 	_Coming_GrHandle(-1),
@@ -60,13 +59,13 @@ void Bushi::Process(Game& g) {
 	{
 		// iteはプレイヤーの攻撃オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
-		{
+		{ 
 			// 敵とその攻撃の当たり判定を行う
-			if (IsHit(*(*ite)) == true)
+		if (IsHit(*(*ite)) == true)
 			{
 				// 敵と弾それぞれのダメージ処理
 				Damage(g);				// this はこのオブジェクト（敵）
-				(*ite)->Damage(g);		// (*ite) は弾オブジェクト
+				(*ite)->Damage(g);		// (*ite) は攻撃オブジェクト
 			}
 		}
 	}
@@ -113,7 +112,7 @@ void Bushi::Draw(Game& g) {
 void Bushi::Damage(Game& g) {
 	--_Life;
 	
-	if (_Life < 0) {
+	if (_Life == 0) {
 		g.GetOS()->Del(this);
 	}
 }
