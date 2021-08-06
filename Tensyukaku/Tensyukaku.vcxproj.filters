@@ -135,6 +135,18 @@
     <ClCompile Include="Ninja.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
+    <ClCompile Include="BushiComingCollision.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
+    <ClCompile Include="BushiAttack.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
+    <ClCompile Include="BushiAttackCollision.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
+    <ClCompile Include="BushiAttackCancel.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -190,6 +202,15 @@
     </ClInclude>
     <ClInclude Include="Ninja.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="BushiComingCollision.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
+    </ClInclude>
+    <ClInclude Include="BushiAttackCollision.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
+    </ClInclude>
+    <ClInclude Include="BushiAttackCancel.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

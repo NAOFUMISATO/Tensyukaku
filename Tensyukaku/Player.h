@@ -73,7 +73,7 @@ namespace PInfo {
 
 	/*----------パラメーター関係----------*/
 	constexpr auto LifeMax = 3;					//体力
-	constexpr auto Speed = 2;					//移動速度
+	constexpr auto Speed = 4;					//移動速度
 
 	/*----------アニメーション&当たり判定関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）

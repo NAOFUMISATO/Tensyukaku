@@ -4,11 +4,11 @@
 // •m‚Ìõ“G”ÍˆÍ“–‚½‚è”»’èƒNƒ‰ƒX
 namespace Tsk {
 	class Game;
-	class BushiPatrolCollision : public ObjectBase {
+	class BushiComingCollision : public ObjectBase {
 	public:
-		BushiPatrolCollision();
-		~BushiPatrolCollision();
-		virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::BUSHIPATROL; }
+		BushiComingCollision();
+		~BushiComingCollision();
+		virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::BUSHICOMING; }
 
 		void	Init()override;
 		void	Process(Game& g)override;

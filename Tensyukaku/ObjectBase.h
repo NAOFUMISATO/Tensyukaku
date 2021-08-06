@@ -11,16 +11,14 @@ namespace Tsk {
 		//オブジェクトの種類列挙
 		enum class OBJECTTYPE {
 			PLAYER, ENEMY, MIDDLEATTACK, LOWATTACK,
-			BUSHIPATROL,BUSHIATTACK
+			BUSHIPATROL, BUSHICOMING, BUSHIATTACK,BUSHIATTACKCANCEL
 		};
 		virtual OBJECTTYPE	GetObjType() = 0;
 
 		virtual	void	Init();
 		virtual	void	Process(Game& g);
 		virtual	void	Draw(Game& g);
-		virtual	bool	IsHitCO(ObjectBase& o);
-		virtual	bool	IsHitOC(ObjectBase& o);
-		virtual bool	IsHitOO(ObjectBase& o);
+		virtual	bool	IsHit(ObjectBase& o);
 		virtual	void	Damage(Game& g) {};
 
 		void	SetPosition(int x, int y) { _x = x; _y = y; }

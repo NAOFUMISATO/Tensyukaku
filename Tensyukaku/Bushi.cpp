@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
+#include "BushiPatrolCollision.h"
 using namespace Tsk;
 using namespace BInfo;
 Bushi::Bushi() :
@@ -51,6 +52,7 @@ void Bushi::Process(Game& g) {
 		Coming(g);
 		break;
 	case ENEMYSTATE::ATTACK:
+		Attack(g);
 		break;
 	case ENEMYSTATE::DAMAGE:
 		break;
@@ -63,7 +65,7 @@ void Bushi::Process(Game& g) {
 		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
 		{ 
 			// 敵とその攻撃の当たり判定を行う
-		if (IsHitCO(*(*ite)) == true)
+		if (IsHit(*(*ite)) == true)
 			{
 				// 敵と攻撃それぞれのダメージ処理
 				Damage(g);				// this はこのオブジェクト（敵）
@@ -75,7 +77,6 @@ void Bushi::Process(Game& g) {
 void Bushi::Draw(Game& g) {
 	auto x = _x + _gx;
 	auto y = _y + _gy;
-
 	//武士の状態によるアニメーション遷移
 	switch (_State) {
 		//巡回状態

@@ -149,7 +149,11 @@
   <ItemGroup>
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Bushi.cpp" />
+    <ClCompile Include="BushiAttack.cpp" />
+    <ClCompile Include="BushiAttackCancel.cpp" />
+    <ClCompile Include="BushiAttackCollision.cpp" />
     <ClCompile Include="BushiComing.cpp" />
+    <ClCompile Include="BushiComingCollision.cpp" />
     <ClCompile Include="BushiPatrol.cpp" />
     <ClCompile Include="BushiPatrolCollision.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
@@ -175,6 +179,9 @@
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bushi.h" />
+    <ClInclude Include="BushiAttackCancel.h" />
+    <ClInclude Include="BushiAttackCollision.h" />
+    <ClInclude Include="BushiComingCollision.h" />
     <ClInclude Include="BushiPatrolCollision.h" />
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="Game.h" />
