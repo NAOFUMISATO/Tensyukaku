@@ -48,7 +48,8 @@ void Bushi::Process(Game& g) {
 		Patrol(g);
 		break;
 	case ENEMYSTATE::COMING:
-		
+		Coming(g);
+		break;
 	case ENEMYSTATE::ATTACK:
 		break;
 	case ENEMYSTATE::DAMAGE:

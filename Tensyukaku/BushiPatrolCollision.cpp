@@ -29,7 +29,6 @@ void BushiPatrolCollision::Init() {
 void BushiPatrolCollision::Process(Game& g) {
 	ObjectBase::Process(g);
 	if (_Cnt - _Action_Cnt == Patrol_Frame || _Cnt - _Action_Cnt == Patrol_Frame+Patrol_Frame) {
-		g.GetOS()->Del(this);
 	}
 }
 void BushiPatrolCollision::Draw(Game& g) {
@@ -40,6 +39,5 @@ void BushiPatrolCollision::Draw(Game& g) {
 #endif
 }
 void BushiPatrolCollision::Damage(Game& g) {
-	g.GetOS()->Del(this);
 }
 

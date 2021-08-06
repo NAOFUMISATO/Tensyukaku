@@ -16,7 +16,7 @@ namespace Tsk {
 		ENEMYSTATE	GetComing(Game& g) { return ENEMYSTATE::COMING; }
 	private:
 		void	Patrol(Game& g);	//巡回状態時の処理
-		//void	Coming(Game& g);	//追跡状態時の処理
+		void	Coming(Game& g);	//追跡状態時の処理
 		//void	Attack(Game& g);	//攻撃状態時の処理
 		void	LoadActionGraph();	//プレイヤーの画像読み込み関数
 
@@ -46,7 +46,7 @@ namespace Tsk {
 }
 namespace BInfo {
 	/*----------武士の各座標関係----------*/
-	constexpr auto PositionX = 1800;			//横軸初期位置（足下が基準）
+	constexpr auto PositionX = 1200;			//横軸初期位置（足下が基準）
 	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
@@ -83,8 +83,8 @@ namespace BInfo {
 	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
 	//移動
 	constexpr auto Coming_GraphName = "res/B_Attack.png";	//画像ファイル名
-	constexpr auto Coming_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto Coming_WidthCount = 1;		//横の画像枚数
+	constexpr auto Coming_AnimeMax = 3;			//全ての画像枚数
+	constexpr auto Coming_WidthCount = 3;		//横の画像枚数
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
 	constexpr auto Attack_GraphName = "res/B_Attack.png";	//画像ファイル名
