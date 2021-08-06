@@ -13,7 +13,7 @@ namespace Tsk {
 		void	Process(Game& g)override;
 		void	Draw(Game& g)override;
 		void	Damage(Game& g)override;
-		ENEMYSTATE	GetComing(Game& g) { return ENEMYSTATE::COMING; }
+	
 	private:
 		void	Patrol(Game& g);	//„‰ñó‘Ô‚Ìˆ—
 		void	Coming(Game& g);	//’ÇÕó‘Ô‚Ìˆ—

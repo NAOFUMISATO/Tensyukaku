@@ -6,7 +6,6 @@
 #include "Game.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
-#include "BushiPatrolCollision.h"
 using namespace Tsk;
 using namespace BInfo;
 Bushi::Bushi() :
@@ -89,12 +88,7 @@ void Bushi::Draw(Game& g) {
 	case ENEMYSTATE::COMING:
 		_Coming_AnimeNo = (_Cnt / AnimeSpeed_Move) % Coming_AnimeMax;
 		_Coming_GrHandle = _Coming_GrAll[_Coming_AnimeNo];
-		if (g.GetKey() & PAD_INPUT_LEFT) {
-			DrawRotaGraph(x, y, GraphScale, GraphAngle, _Coming_GrHandle, true, _isFlip);
-		}
-		else if (g.GetKey() & PAD_INPUT_RIGHT) {
-			DrawRotaGraph(x, y, GraphScale, GraphAngle, _Coming_GrHandle, true, _isFlip);
-		}
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Coming_GrHandle, true, _isFlip);
 		break;
 		//çUåÇèÛë‘
 	case ENEMYSTATE::ATTACK:

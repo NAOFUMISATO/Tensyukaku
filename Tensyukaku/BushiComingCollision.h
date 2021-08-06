@@ -1,7 +1,7 @@
 #pragma once
 #include	"ObjectBase.h"
 
-// •m‚Ìõ“G”ÍˆÍ“–‚½‚è”»’èƒNƒ‰ƒX
+// •m‚ÌUŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èƒNƒ‰ƒX
 namespace Tsk {
 	class Game;
 	class BushiComingCollision : public ObjectBase {
@@ -12,7 +12,5 @@ namespace Tsk {
 
 		void	Init()override;
 		void	Process(Game& g)override;
-		void	Draw(Game& g)override;
-
 	};
 }

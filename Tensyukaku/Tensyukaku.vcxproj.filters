@@ -144,9 +144,6 @@
     <ClCompile Include="BushiAttackCollision.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
-    <ClCompile Include="BushiAttackCancel.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -207,9 +204,6 @@
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
     <ClInclude Include="BushiAttackCollision.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
-    </ClInclude>
-    <ClInclude Include="BushiAttackCancel.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
   </ItemGroup>

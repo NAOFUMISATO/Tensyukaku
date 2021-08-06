@@ -27,11 +27,4 @@ void BushiComingCollision::Init() {
 void BushiComingCollision::Process(Game& g) {
 	ObjectBase::Process(g);
 }
-void BushiComingCollision::Draw(Game& g) {
-#ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// ”¼“§–¾•`‰æw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_w, _y + _hit_h, GetColor(255, 0, 0), FALSE);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æw’è
-#endif
-}
 

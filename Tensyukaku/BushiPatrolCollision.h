@@ -12,7 +12,5 @@ namespace Tsk {
 
 		void	Init()override;
 		void	Process(Game& g)override;
-		void	Draw(Game& g)override;
-
 	};
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include	"ObjectBase.h"
 
-// プレイヤーの中段攻撃当たり判定クラス
+// 武士の攻撃当たり判定クラス
 namespace Tsk {
 	class Game;
 	class BushiAttackCollision : public ObjectBase {
