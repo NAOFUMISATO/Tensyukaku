@@ -1,7 +1,6 @@
 #pragma once
 #include	"ObjectBase.h"
 #include	<vector>
-#include	"MiddleAttackCollision.h"
 namespace Tsk {
 	// プレイヤークラス
 	class Game;
@@ -70,6 +69,12 @@ namespace PInfo {
 	constexpr auto PositionHitY = -60;			//描画点から当たり判定左上座標までの差分
 	constexpr auto CollisionWidth = 60;			//当たり判定横幅
 	constexpr auto CollisionHeight = 250;		//当たり判定縦幅
+
+	/*----------各モーションの当たり判定関係----------*/
+	constexpr auto MiddleAttackWidth = 150;		//中段攻撃当たり判定横幅
+	constexpr auto MiddleAttackHeight = 100;	//中段攻撃当たり判定縦幅
+	constexpr auto LowAttackWidth = 150;		//下段攻撃範囲当たり判定横幅
+	constexpr auto LowAttackHeight = 100;		//下段攻撃範囲当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
 	constexpr auto LifeMax = 3;					//体力

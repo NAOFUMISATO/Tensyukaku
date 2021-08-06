@@ -5,7 +5,7 @@
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Player.h"
-#include "MiddleAttackCollision.h"
+#include "PLayerMotionCollision.h"
 #include "Game.h"
 #include "ObjectBase.h"
 #include "ModeGame.h"

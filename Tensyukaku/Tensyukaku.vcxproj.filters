@@ -69,23 +69,8 @@
     <ClCompile Include="Game.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="LowAttack.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="MiddleAttack.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="MiddleAttackCollision.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectBase.cpp">
       <Filter>ソース ファイル\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerIdle.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerMove.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>ソース ファイル\Object\Player</Filter>
@@ -120,29 +105,26 @@
     <ClCompile Include="Bushi.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
-    <ClCompile Include="BushiComing.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
-    </ClCompile>
-    <ClCompile Include="BushiPatrol.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
-    </ClCompile>
-    <ClCompile Include="LowAttackCollision.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="BushiPatrolCollision.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
-    </ClCompile>
     <ClCompile Include="Ninja.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="BushiComingCollision.cpp">
+    <ClCompile Include="BushiMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
-    <ClCompile Include="BushiAttack.cpp">
+    <ClCompile Include="BushiMotionCollision.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
-    <ClCompile Include="BushiAttackCollision.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    <ClCompile Include="NinjaMotion.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMotion.cpp">
+      <Filter>ソース ファイル\Object\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +135,6 @@
       <Filter>ヘッダー ファイル\Object</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>ヘッダー ファイル\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="MiddleAttackCollision.h">
       <Filter>ヘッダー ファイル\Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="HitBox.h">
@@ -191,20 +170,17 @@
     <ClInclude Include="Bushi.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
-    <ClInclude Include="LowAttackCollision.h">
-      <Filter>ヘッダー ファイル\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="BushiPatrolCollision.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
-    </ClInclude>
     <ClInclude Include="Ninja.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
-    <ClInclude Include="BushiComingCollision.h">
+    <ClInclude Include="BushiMotionCollision.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
-    <ClInclude Include="BushiAttackCollision.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
+    <ClInclude Include="NinjaMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

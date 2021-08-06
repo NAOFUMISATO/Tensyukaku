@@ -16,8 +16,7 @@ Bushi::Bushi() :
 	_Attack_GrHandle(-1),
 	_Attack_AnimeNo(0),
 	_Walk_SEHandle(-1),
-	_Attack_SEHandle(-1),
-	_Patrol_Flag(false)
+	_Attack_SEHandle(-1)
 {
 	Init();
 	LoadActionGraph();
@@ -36,7 +35,7 @@ void Bushi::Init() {
 	_hit_y = PositionHitY;
 	_hit_w = CollisionWidth;
 	_hit_h = CollisionHeight;
-	ENEMYSTATE::PATROL;
+	_State=Bushi::ENEMYSTATE::PATROL;
 	_Life = LifeMax;
 	_Spd = Speed;
 	_isFlip = false;

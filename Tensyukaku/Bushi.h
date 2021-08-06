@@ -37,8 +37,6 @@ namespace Tsk {
 		std::vector<int>	_Attack_GrAll;
 		int		_Attack_AnimeNo;
 
-		//各モーションフラグ管理変数
-		bool	_Patrol_Flag;
 		//SEハンドル
 		int		_Walk_SEHandle;
 		int		_Attack_SEHandle;
@@ -46,7 +44,7 @@ namespace Tsk {
 }
 namespace BInfo {
 	/*----------武士の各座標関係----------*/
-	constexpr auto PositionX = 1700;			//横軸初期位置（足下が基準）
+	constexpr auto PositionX = 1500;			//横軸初期位置（足下が基準）
 	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
@@ -54,6 +52,14 @@ namespace BInfo {
 	constexpr auto PositionHitY = -90;			//描画点から当たり判定左上座標までの差分
 	constexpr auto CollisionWidth = 60;			//当たり判定横幅
 	constexpr auto CollisionHeight = 300;		//当たり判定縦幅
+
+	/*----------各モーションの当たり判定関係----------*/
+	constexpr auto PatrolWidth = 500;			//索敵範囲当たり判定横幅
+	constexpr auto PatrolHeight = 100;			//索敵範囲当たり判定縦幅
+	constexpr auto ComingWidth = 200;			//攻撃発生範囲当たり判定横幅
+	constexpr auto ComingHeight = 100;			//攻撃発生範囲当たり判定縦幅
+	constexpr auto AttackWidth = 150;			//攻撃当たり判定横幅
+	constexpr auto AttackHeight = 100;			//攻撃当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
 	constexpr auto LifeMax = 1;					//体力
