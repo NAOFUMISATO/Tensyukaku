@@ -11,6 +11,7 @@
 #include "ModeGame.h"
 #include <vector>
 #include <sstream>
+
 using namespace Tsk;
 using namespace PInfo;
 Player::Player() :
@@ -22,10 +23,21 @@ Player::Player() :
 	_MiddleAttack_AnimeNo(0),
 	_LowAttack_GrHandle(-1),
 	_LowAttack_AnimeNo(0),
+	_Kick_GrHandle(-1),
+	_Kick_AnimeNo(0),
+	_Iai_GrHandle(-1),
+	_Iai_AnimeNo(0),
+	_Sway_GrHandle(-1),
+	_Sway_AnimeNo(0),
+	_Damage_GrHandle(-1),
+	_Damage_AnimeNo(0),
+	_Dead_GrHandle(-1),
+	_Dead_AnimeNo(0),
 	_Walk_SEHandle(-1),
 	_MiddleAttack_SEHandle(-1),
 	_LowAttack_SEHandle(-1),
-	_Action(PLAYERACTION::IDLE)
+	_State(PLAYERSTATE::IDLE),
+	_Star_Flag(false)
 
 {
 	Init();
@@ -59,25 +71,50 @@ void Player::Init()
 void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
+
+	//無敵状態時の処理
+	if (_Star_Flag==true) {
+		if (_Cnt - _Star_Cnt == Star_Frame) {
+			_Star_Flag = false;
+		}
+	}
+
 	/*---状態毎の処理---*/
-	switch (_Action) {
+	switch (_State) {
 		//待機状態
-	case PLAYERACTION::IDLE:
+	case PLAYERSTATE::IDLE:
 		Idle(g);
 		break;
 		//移動状態
-	case PLAYERACTION::MOVE:
+	case PLAYERSTATE::MOVE:
 		Move(g);
 		break;
 		//中段攻撃状態
-	case PLAYERACTION::MIDDLEATTACK:
+	case PLAYERSTATE::MIDDLEATTACK:
 		MidAttack(g);
 		break;
 		//下段攻撃状態
-	case PLAYERACTION::LOWATTACK:
+	case PLAYERSTATE::LOWATTACK:
 		LowAttack(g);
 		break;
+		//蹴り状態
+	case PLAYERSTATE::KICK:
+		Kick(g);
+		break;
+		//居合状態
+	case PLAYERSTATE::IAI:
+		Iai(g);
+		break;
+		//被ダメ状態
+	case PLAYERSTATE::DAMAGE:
+		Damage(g);
+		break;
+		//死亡状態
+	case PLAYERSTATE::DEAD:
+		Dead(g);
+		break;
 	}
+	
 }
 void Player::Draw(Game& g) {
 	// カメラから見た座標に変更（ワールド座標→ビュー座標）
@@ -85,36 +122,54 @@ void Player::Draw(Game& g) {
 	auto x = _x + _gx/* - g.GetChips().GetScrX()*/;
 	auto y = _y + _gy/*- g.GetChips().GetScrY()*/;
 
+	/*---無敵状態の処理---*/
+	if (_Star_Flag == true && (_Cnt / AnimeSpeed_Star % 2) == 0) {
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
+	}
+
 	//プレイヤーの状態によるアニメーション遷移
-	switch (_Action) {
+	switch (_State) {
 		//待機状態
-	case PLAYERACTION::IDLE:
+	case PLAYERSTATE::IDLE:
 		_Idle_AnimeNo = (_Cnt / AnimeSpeed_Idle) % Idle_AnimeMax;
 		_Idle_GrHandle = _Idle_GrAll[_Idle_AnimeNo];
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Idle_GrHandle, true, _isFlip);
 		break;
 		//移動状態
-	case PLAYERACTION::MOVE:
+	case PLAYERSTATE::MOVE:
 		_Move_AnimeNo = (_Cnt / AnimeSpeed_Move) % Move_AnimeMax;
 		_Move_GrHandle = _Move_GrAll[_Move_AnimeNo];
-		if (g.GetKey() & PAD_INPUT_LEFT) {
-			DrawRotaGraph(x, y, GraphScale, GraphAngle, _Move_GrHandle, true, _isFlip);
-		}
-		else if (g.GetKey() & PAD_INPUT_RIGHT) {
-			DrawRotaGraph(x, y, GraphScale, GraphAngle, _Move_GrHandle, true, _isFlip);
-		}
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Move_GrHandle, true, _isFlip);
 		break;
 		//中段攻撃状態
-	case PLAYERACTION::MIDDLEATTACK:
+	case PLAYERSTATE::MIDDLEATTACK:
 		_MiddleAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_MiddleAttack) % MiddleAttack_AnimeMax;
 		_MiddleAttack_GrHandle = _MiddleAttack_GrAll[_MiddleAttack_AnimeNo];
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _MiddleAttack_GrHandle, true, _isFlip);
 		break;
 		//下段攻撃状態
-	case PLAYERACTION::LOWATTACK:
+	case PLAYERSTATE::LOWATTACK:
 		_LowAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_LowAttack) % LowAttack_AnimeMax;
 		_LowAttack_GrHandle = _LowAttack_GrAll[_LowAttack_AnimeNo];
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _LowAttack_GrHandle, true, _isFlip);
+		break;
+		//蹴り状態
+	case PLAYERSTATE::KICK:
+		_Kick_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Kick) % Kick_AnimeMax;
+		_Kick_GrHandle = _Kick_GrAll[_Kick_AnimeNo];
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Kick_GrHandle, true, _isFlip);
+		break;
+		//居合状態
+	case PLAYERSTATE::IAI:
+		break;
+		//被ダメ状態
+	case PLAYERSTATE::DAMAGE:
+		_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
+		_Damage_GrHandle = _Damage_GrAll[_Damage_AnimeNo];
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Damage_GrHandle, true, _isFlip);
+		break;
+		//死亡状態
+	case PLAYERSTATE::DEAD:
 		break;
 	}
 	// 主人公位置からカメラ座標決定
@@ -126,10 +181,17 @@ void Player::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 	std::stringstream ss;
 	ss << "_Cnt=" << _Cnt << "\n";
-	ss << "MidNo=" << _MiddleAttack_AnimeNo << "\n";
-	ss << "LowNo=" << _LowAttack_AnimeNo << "\n";
-	DrawString(x - 100, y + 100, ss.str().c_str(), GetColor(255, 50, 255));
+	ss << "PlayerLife=" << _Life << "\n";
+	ss << "PlayerActionCnt=" << _Action_Cnt << "\n";
+	DrawString(10, 10, ss.str().c_str(), GetColor(255, 50, 255));
 #endif
+}
+
+void Player::Delete(Game& g) {
+	if (_Life == 0) {
+		g.GetOS()->Del(this);
+	}
+
 }
 //プレイヤーの画像読み込み関数
 void Player::LoadActionGraph() {
@@ -140,7 +202,17 @@ void Player::LoadActionGraph() {
 	_MiddleAttack_GrAll.resize(MiddleAttack_AnimeMax);
 	ResourceServer::LoadDivGraph(MiddleAttack_GraphName, MiddleAttack_AnimeMax, MiddleAttack_WidthCount, MiddleAttack_HeightCount, GraphWidth, GraphHeight, _MiddleAttack_GrAll.data());
 	_LowAttack_GrAll.resize(LowAttack_AnimeMax);
-	ResourceServer::LoadDivGraph(LowdleAttack_GraphName, LowAttack_AnimeMax, LowAttack_WidthCount, LowAttack_HeightCount, GraphWidth, GraphHeight, _LowAttack_GrAll.data());
+	ResourceServer::LoadDivGraph(LowdAttack_GraphName, LowAttack_AnimeMax, LowAttack_WidthCount, LowAttack_HeightCount, GraphWidth, GraphHeight, _LowAttack_GrAll.data());
+	_Kick_GrAll.resize(Kick_AnimeMax);
+	ResourceServer::LoadDivGraph(Kick_GraphName, Kick_AnimeMax, Kick_WidthCount, Kick_HeightCount, GraphWidth, GraphHeight, _Kick_GrAll.data());
+	_Iai_GrAll.resize(Iai_AnimeMax);
+	ResourceServer::LoadDivGraph(Iai_GraphName, Iai_AnimeMax, Iai_WidthCount, Iai_HeightCount, GraphWidth, GraphHeight, _Iai_GrAll.data());
+	_Sway_GrAll.resize(Sway_AnimeMax);
+	ResourceServer::LoadDivGraph(Sway_GraphName, Sway_AnimeMax, Sway_WidthCount, Sway_HeightCount, GraphWidth, GraphHeight, _Sway_GrAll.data());
+	_Damage_GrAll.resize(Damage_AnimeMax);
+	ResourceServer::LoadDivGraph(Damage_GraphName, Damage_AnimeMax, Damage_WidthCount, Damage_HeightCount, GraphWidth, GraphHeight, _Damage_GrAll.data());
+	_Dead_GrAll.resize(Dead_AnimeMax);
+	ResourceServer::LoadDivGraph(Dead_GraphName, Dead_AnimeMax, Dead_WidthCount, Dead_HeightCount, GraphWidth, GraphHeight, _Dead_GrAll.data());
 }
 
 //プレイヤーの効果音読み込み関数

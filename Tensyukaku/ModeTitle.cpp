@@ -10,7 +10,7 @@ bool ModeTitle::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 
 	// タイトル画像のロード
-	_cgTitle = ResourceServer::LoadGraph("res/title.png");
+	_cgTitle = ResourceServer::LoadGraph("res/Mode/title.png");
 
 	return true;
 }

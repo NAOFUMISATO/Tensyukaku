@@ -84,19 +84,18 @@ namespace BInfo {
 	constexpr auto GraphAngle = 0;				//角度
 
 	//待機
-	constexpr auto Patrol_GraphName = "res/B_Stand.png";	//画像ファイル名
+	constexpr auto Patrol_GraphName = "res/Bushi/B_Stand.png";	//画像ファイル名
 	constexpr auto Patrol_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Patrol_WidthCount = 1;		//横の画像枚数
 	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
 	//移動
-	constexpr auto Coming_GraphName = "res/B_Stand.png";	//画像ファイル名
+	constexpr auto Coming_GraphName = "res/Bushi/B_Stand.png";	//画像ファイル名
 	constexpr auto Coming_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Coming_WidthCount = 1;		//横の画像枚数
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
-	constexpr auto Attack_GraphName = "res/B_Attack.png";	//画像ファイル名
+	constexpr auto Attack_GraphName = "res/Bushi/B_Attack.png";	//画像ファイル名
 	constexpr auto Attack_AnimeMax = 3;			//全ての画像枚数
 	constexpr auto Attack_WidthCount = 3;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
-	
 }

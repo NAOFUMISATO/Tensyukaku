@@ -83,7 +83,7 @@ void BushiAttackCollision::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æŽw’è
 #endif
 }
-void BushiAttackCollision::Damage(Game& g) {
+void BushiAttackCollision::Delete(Game& g) {
 	g.GetOS()->Del(this);
 }
 

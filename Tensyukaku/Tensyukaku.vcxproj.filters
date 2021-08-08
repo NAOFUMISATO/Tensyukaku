@@ -69,9 +69,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectBase.cpp">
-      <Filter>ソース ファイル\Object</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>ソース ファイル\Object\Player</Filter>
     </ClCompile>
@@ -120,10 +117,13 @@
     <ClCompile Include="NinjaMotionCollision.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMotionCollision.cpp">
+    <ClCompile Include="PlayerMotion.cpp">
       <Filter>ソース ファイル\Object\Player</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMotion.cpp">
+    <ClCompile Include="ObjectBase.cpp">
+      <Filter>ソース ファイル\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMotionCollision.cpp">
       <Filter>ソース ファイル\Object\Player</Filter>
     </ClCompile>
   </ItemGroup>

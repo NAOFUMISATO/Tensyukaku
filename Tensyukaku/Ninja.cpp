@@ -68,7 +68,7 @@ void Ninja::Process(Game& g) {
 			{
 				// 敵と攻撃それぞれのダメージ処理
 				Damage(g);				// this はこのオブジェクト（敵）
-				(*ite)->Damage(g);		// (*ite) は攻撃オブジェクト
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 			}
 		}
 	}
@@ -101,10 +101,10 @@ void Ninja::Draw(Game& g) {
 	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(255, 0, 0), FALSE);	// 半透明の赤で当たり判定描画
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 	std::stringstream ss;
-	ss << "_Cnt=" << _Cnt << "\n";
-	ss << "_ActionCnt=" << _Action_Cnt << "\n";
+	ss << "NinjaLife="<<_Life<< "\n";
+	ss << "NinjaActionCnt=" << _Action_Cnt << "\n";
 
-	DrawString(x -100, y + 100, ss.str().c_str(), GetColor(255, 50, 255));
+	DrawString( 10, 200, ss.str().c_str(), GetColor(255, 50, 255));
 }
 void Ninja::Damage(Game& g) {
 	--_Life;

@@ -74,6 +74,6 @@ void NinjaAttackCollision::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æŽw’è
 #endif
 }
-void NinjaAttackCollision::Damage(Game& g) {
+void NinjaAttackCollision::Delete(Game& g) {
 	g.GetOS()->Del(this);
 }
