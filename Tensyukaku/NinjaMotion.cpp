@@ -32,7 +32,7 @@ void Ninja::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(NPC) == true)
 				{
-					_State = Ninja::ENEMYSTATE::COMING;
+					_State = ENEMYSTATE::COMING;
 				}
 			}
 		}
@@ -57,8 +57,25 @@ void Ninja::Patrol(Game& g) {
 				if ((*ite)->IsHit(NPC) == true)
 				{
 
-					_State = Ninja::ENEMYSTATE::COMING;
+					_State = ENEMYSTATE::COMING;
 				}
+			}
+		}
+	}
+	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの下段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+		{
+
+			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
 			}
 		}
 	}
@@ -113,6 +130,23 @@ void Ninja::Coming(Game& g) {
 			}
 		}
 	}
+	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの下段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+		{
+
+			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
 }
 
 void Ninja::Attack(Game& g) {
@@ -135,6 +169,30 @@ void Ninja::Attack(Game& g) {
 	if (_Cnt - _Action_Cnt == Attack_Frame)
 	{
 		_State = Ninja::ENEMYSTATE::PATROL;
+	}
+	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの下段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+		{
+
+			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
+}
+
+void Ninja::Dead(Game& g) {
+	if (_Cnt - _Action_Cnt == Dead_Frame)
+	{
+		Delete(g);
 	}
 }
 

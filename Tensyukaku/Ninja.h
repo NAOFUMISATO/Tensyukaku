@@ -12,13 +12,14 @@ namespace Tsk {
 		void	Init()override;
 		void	Process(Game& g)override;
 		void	Draw(Game& g)override;
-		void	Damage(Game& g)override;
+		void	Delete(Game& g)override;
 
 	private:
 		void	Patrol(Game& g);	//巡回状態時の処理
 		void	Coming(Game& g);	//追跡状態時の処理
 		void	Attack(Game& g);	//攻撃状態時の処理
-		void	LoadActionGraph();	//プレイヤーの画像読み込み関数
+		void	Dead(Game& g);		//死亡状態時の処理
+		void	LoadActionGraph();	//武士の画像読み込み関数
 
 		/*----------メンバ変数----------*/
 
@@ -36,6 +37,11 @@ namespace Tsk {
 		int		_Attack_GrHandle;
 		std::vector<int>	_Attack_GrAll;
 		int		_Attack_AnimeNo;
+
+		//死亡状態描画用変数
+		int		_Dead_GrHandle;
+		std::vector<int>	_Dead_GrAll;
+		int		_Dead_AnimeNo;
 
 		//SEハンドル
 		int		_Walk_SEHandle;
@@ -65,38 +71,43 @@ namespace NInfo {
 	constexpr auto LifeMax = 1;					//体力
 	constexpr auto Speed = 3;					//移動速度
 
-	/*----------アニメーション関係----------*/
+	/*----------アニメーション&当たり判定関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto AnimeSpeed_Patrol = 240;		//巡回状態
-	constexpr auto AnimeSpeed_Move = 5;			//移動状態
+	constexpr auto AnimeSpeed_Patrol = 5;		//巡回状態
+	constexpr auto AnimeSpeed_Move = 20;		//移動状態
 	constexpr auto AnimeSpeed_Attack = 20;		//攻撃
-
+	constexpr auto AnimeSpeed_Dead = 5;			//死亡
 	//各モーションのフレーム数
-	constexpr auto Patrol_Frame = 240;			//巡回フレーム
+	constexpr auto Patrol_Frame = 120;			//巡回全フレーム
 	constexpr auto Attack_Frame = 60;			//攻撃全フレーム
+	constexpr auto Dead_Frame = 60;				//死亡全フレーム
 	constexpr auto ABegin_Frame = 20;			//攻撃発生フレーム
 	constexpr auto AEnd_Frame = 20;				//攻撃終了フレーム
 
 	/*----------画像読み込み&描画関係----------*/
-	constexpr auto GraphWidth = 540;			//1枚当たりの画像サイズ（横）
+	constexpr auto GraphWidth = 420;			//1枚当たりの画像サイズ（横）
 	constexpr auto GraphHeight = 420;			//1枚当たりの画像サイズ（縦）
 	constexpr auto GraphScale = 1.0;			//拡大率
 	constexpr auto GraphAngle = 0;				//角度
 
 	//待機
-	constexpr auto Patrol_GraphName = "res/Bushi/B_Stand.png";	//画像ファイル名
+	constexpr auto Patrol_GraphName = "res/Ninja/N_Stand.png";	//画像ファイル名
 	constexpr auto Patrol_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Patrol_WidthCount = 1;		//横の画像枚数
 	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
 	//移動
-	constexpr auto Coming_GraphName = "res/Bushi/B_Stand.png";	//画像ファイル名
-	constexpr auto Coming_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto Coming_WidthCount = 1;		//横の画像枚数
+	constexpr auto Coming_GraphName = "res/Ninja/N_Walk.png";	//画像ファイル名
+	constexpr auto Coming_AnimeMax = 3;			//全ての画像枚数
+	constexpr auto Coming_WidthCount = 3;		//横の画像枚数
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
 	constexpr auto Attack_GraphName = "res/Bushi/B_Attack.png";	//画像ファイル名
 	constexpr auto Attack_AnimeMax = 3;			//全ての画像枚数
 	constexpr auto Attack_WidthCount = 3;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
-
+	//死亡
+	constexpr auto Dead_GraphName = "res/Ninja/N_Dead.png";		//画像ファイル名
+	constexpr auto Dead_AnimeMax = 1;			//全ての画像枚数
+	constexpr auto Dead_WidthCount = 1;			//横の画像枚数
+	constexpr auto Dead_HeightCount = 1;		//縦の画像枚数
 }

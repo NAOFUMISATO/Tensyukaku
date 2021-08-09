@@ -12,13 +12,15 @@ namespace Tsk {
 		void	Init()override;
 		void	Process(Game& g)override;
 		void	Draw(Game& g)override;
-		void	Damage(Game& g)override;
+		void	Delete(Game& g)override;
 	
 	private:
 		void	Patrol(Game& g);	//巡回状態時の処理
 		void	Coming(Game& g);	//追跡状態時の処理
 		void	Attack(Game& g);	//攻撃状態時の処理
-		void	LoadActionGraph();	//プレイヤーの画像読み込み関数
+		void	Damage(Game& g);	//被ダメ状態時の処理
+		void	Dead(Game& g);		//死亡状態時の処理
+		void	LoadActionGraph();	//武士の画像読み込み関数
 
 		/*----------メンバ変数----------*/
 
@@ -36,6 +38,16 @@ namespace Tsk {
 		int		_Attack_GrHandle;
 		std::vector<int>	_Attack_GrAll;
 		int		_Attack_AnimeNo;
+
+		//被ダメ状態描画用変数
+		int		_Damage_GrHandle;
+		std::vector<int>	_Damage_GrAll;
+		int		_Damage_AnimeNo;
+
+		//死亡状態描画用変数
+		int		_Dead_GrHandle;
+		std::vector<int>	_Dead_GrAll;
+		int		_Dead_AnimeNo;
 
 		//SEハンドル
 		int		_Walk_SEHandle;
@@ -62,20 +74,24 @@ namespace BInfo {
 	constexpr auto AttackHeight = 100;			//攻撃当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
-	constexpr auto LifeMax = 1;					//体力
+	constexpr auto LifeMax = 3;					//体力
 	constexpr auto Speed = 1;					//移動速度
 	
-	/*----------アニメーション関係----------*/
+	/*----------アニメーション&当たり判定関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto AnimeSpeed_Patrol = 240;		//巡回状態
+	constexpr auto AnimeSpeed_Patrol = 5;		//巡回状態
 	constexpr auto AnimeSpeed_Move = 5;			//移動状態
 	constexpr auto AnimeSpeed_Attack = 20;		//攻撃
+	constexpr auto AnimeSpeed_Damage = 20;		//被ダメ
+	constexpr auto AnimeSpeed_Dead = 20;		//死亡
 
 	//各モーションのフレーム数
-	constexpr auto Patrol_Frame = 240;			//巡回フレーム
+	constexpr auto Patrol_Frame = 180;			//巡回全フレーム
 	constexpr auto Attack_Frame = 60;			//攻撃全フレーム
-	constexpr auto ABegin_Frame = 20;			//攻撃発生フレーム
-	constexpr auto AEnd_Frame = 20;				//攻撃終了フレーム
+	constexpr auto Damage_Frame = 60;			//被ダメ全フレーム
+	constexpr auto Dead_Frame = 60;				//死亡全フレーム
+	constexpr auto ABegin_Frame = 20;			//攻撃判定発生フレーム
+	constexpr auto AEnd_Frame = 20;				//攻撃判定終了フレーム
 
 	/*----------画像読み込み&描画関係----------*/
 	constexpr auto GraphWidth = 540;			//1枚当たりの画像サイズ（横）
@@ -98,4 +114,14 @@ namespace BInfo {
 	constexpr auto Attack_AnimeMax = 3;			//全ての画像枚数
 	constexpr auto Attack_WidthCount = 3;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
+	//被ダメ
+	constexpr auto Damage_GraphName = "res/Bushi/B_Damage.png";	//画像ファイル名
+	constexpr auto Damage_AnimeMax = 1;			//全ての画像枚数
+	constexpr auto Damage_WidthCount = 1;		//横の画像枚数
+	constexpr auto Damage_HeightCount = 1;		//縦の画像枚数
+	//死亡
+	constexpr auto Dead_GraphName = "res/Bushi/B_Dead.png";		//画像ファイル名
+	constexpr auto Dead_AnimeMax = 1;			//全ての画像枚数
+	constexpr auto Dead_WidthCount = 1;			//横の画像枚数
+	constexpr auto Dead_HeightCount = 1;		//縦の画像枚数
 }

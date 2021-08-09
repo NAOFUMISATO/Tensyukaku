@@ -36,6 +36,7 @@ Player::Player() :
 	_Walk_SEHandle(-1),
 	_MiddleAttack_SEHandle(-1),
 	_LowAttack_SEHandle(-1),
+	_Kick_SEHandle(-1),
 	_State(PLAYERSTATE::IDLE),
 	_Star_Flag(false)
 
@@ -72,14 +73,15 @@ void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
 
-	//無敵状態時の処理
-	if (_Star_Flag==true) {
+	
+
+	/*---状態毎の処理---*/
+		//無敵状態
+	if (_Star_Flag == true) {
 		if (_Cnt - _Star_Cnt == Star_Frame) {
 			_Star_Flag = false;
 		}
 	}
-
-	/*---状態毎の処理---*/
 	switch (_State) {
 		//待機状態
 	case PLAYERSTATE::IDLE:
@@ -105,6 +107,10 @@ void Player::Process(Game& g)
 	case PLAYERSTATE::IAI:
 		Iai(g);
 		break;
+		//スウェイ状態
+	case PLAYERSTATE::SWAY:
+		Sway(g);
+		break;
 		//被ダメ状態
 	case PLAYERSTATE::DAMAGE:
 		Damage(g);
@@ -122,12 +128,11 @@ void Player::Draw(Game& g) {
 	auto x = _x + _gx/* - g.GetChips().GetScrX()*/;
 	auto y = _y + _gy/*- g.GetChips().GetScrY()*/;
 
-	/*---無敵状態の処理---*/
+	//プレイヤーの状態によるアニメーション遷移
+		//無敵状態
 	if (_Star_Flag == true && (_Cnt / AnimeSpeed_Star % 2) == 0) {
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
 	}
-
-	//プレイヤーの状態によるアニメーション遷移
 	switch (_State) {
 		//待機状態
 	case PLAYERSTATE::IDLE:
@@ -162,6 +167,9 @@ void Player::Draw(Game& g) {
 		//居合状態
 	case PLAYERSTATE::IAI:
 		break;
+		//スウェイ状態
+	case PLAYERSTATE::SWAY:
+		break;
 		//被ダメ状態
 	case PLAYERSTATE::DAMAGE:
 		_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
@@ -170,6 +178,9 @@ void Player::Draw(Game& g) {
 		break;
 		//死亡状態
 	case PLAYERSTATE::DEAD:
+		_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
+		_Dead_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Dead_GrHandle, true, _isFlip);
 		break;
 	}
 	// 主人公位置からカメラ座標決定
@@ -188,10 +199,7 @@ void Player::Draw(Game& g) {
 }
 
 void Player::Delete(Game& g) {
-	if (_Life == 0) {
 		g.GetOS()->Del(this);
-	}
-
 }
 //プレイヤーの画像読み込み関数
 void Player::LoadActionGraph() {
@@ -220,4 +228,5 @@ void Player::LoadActionSE() {
 	_Walk_SEHandle = ResourceServer::LoadSoundMem(Walk_SE);
 	_MiddleAttack_SEHandle = ResourceServer::LoadSoundMem(MiddleAttack_SE);
 	_LowAttack_SEHandle = ResourceServer::LoadSoundMem(LowAttack_SE);
+	_Kick_SEHandle= ResourceServer::LoadSoundMem(Kick_SE);
 }

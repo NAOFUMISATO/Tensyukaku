@@ -6,9 +6,6 @@ using namespace Tsk;
 using namespace PInfo;
 /*----------待機----------*/
 void Player::Idle(Game& g) {
-	if (g.GetKey() & PAD_INPUT_LEFT || g.GetKey() & PAD_INPUT_RIGHT) {
-		_State = PLAYERSTATE::MOVE;
-	}
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
 		_Action_Cnt = _Cnt;
@@ -22,6 +19,10 @@ void Player::Idle(Game& g) {
 	if (g.GetTrg() & PAD_INPUT_6) {
 		_State = PLAYERSTATE::KICK;
 		_Action_Cnt = _Cnt;
+		PlaySoundMem(_Kick_SEHandle, DX_PLAYTYPE_BACK, true);
+	}
+	if (g.GetKey() & PAD_INPUT_LEFT || g.GetKey() & PAD_INPUT_RIGHT) {
+		_State = PLAYERSTATE::MOVE;
 	}
 	//敵の攻撃の当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -56,6 +57,7 @@ void Player::Move(Game& g) {
 	else if (g.GetTrg() & PAD_INPUT_6) {
 		_State = PLAYERSTATE::KICK;
 		_Action_Cnt = _Cnt;
+		PlaySoundMem(_Kick_SEHandle, DX_PLAYTYPE_BACK, true);
 	}
 	else if (g.GetKey() & PAD_INPUT_LEFT)
 	{
@@ -215,16 +217,22 @@ void Player::Kick(Game& g) {
 
 /*----------居合----------*/
 void Player::Iai(Game& g) {
+	if (_Cnt - _Action_Cnt == Iai_Frame) {
 
+	}
+}
+/*----------スウェイ----------*/
+void Player::Sway(Game& g){
 }
 
 /*----------被ダメ----------*/
-void Player::Damage(Game& g) {
+void Player::Damage(Game & g) {
 	if (_Cnt - _Action_Cnt == Damage_Frame) {
 		_Star_Cnt = _Cnt;
 		_Star_Flag = true;
 		if (_Life == 0) {
-			PLAYERSTATE::DEAD;
+			_Action_Cnt = _Cnt;
+			_State=PLAYERSTATE::DEAD;
 		}
 		else {
 			_State = PLAYERSTATE::IDLE;
@@ -234,5 +242,7 @@ void Player::Damage(Game& g) {
 
 /*----------死亡----------*/
 void Player::Dead(Game& g) {
-
+	if (_Cnt - _Action_Cnt == Dead_Frame) {
+		Delete(g);
+	}
 }

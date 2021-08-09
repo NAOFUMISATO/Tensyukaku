@@ -6,6 +6,7 @@
 #include "ObjectBase.h"
 using namespace Tsk;
 using namespace BInfo;
+/*----------巡回----------*/
 void Bushi::Patrol(Game& g) {
 	if (_Cnt - _Action_Cnt == Patrol_Frame) {
 		_isFlip = true;
@@ -32,7 +33,7 @@ void Bushi::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(BPC) == true)
 				{
-					_State = Bushi::ENEMYSTATE::COMING;
+					_State = ENEMYSTATE::COMING;
 				}
 			}
 		}
@@ -56,14 +57,49 @@ void Bushi::Patrol(Game& g) {
 				if ((*ite)->IsHit(BPC) == true)
 				{
 
-					_State = Bushi::ENEMYSTATE::COMING;
+					_State = ENEMYSTATE::COMING;
 				}
 			}
 		}
 
 	}
+	//敵とプレイヤーの中段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの中段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
+		{
+
+			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life -= 3;
+				_Action_Cnt = _Cnt;
+				_State =ENEMYSTATE::DAMAGE;
+			}
+		}
+	}
+	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの下段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+		{
+
+			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State =ENEMYSTATE::DAMAGE;
+			}
+		}
+	}
 
 }
+/*----------追跡----------*/
 void Bushi::Coming(Game& g) {
 	if (_isFlip == false) {
 		_x -= _Spd;
@@ -85,7 +121,7 @@ void Bushi::Coming(Game& g) {
 				if ((*ite)->IsHit(BCC) == true)
 				{
 					_Action_Cnt = _Cnt;
-					_State = Bushi::ENEMYSTATE::ATTACK;
+					_State =ENEMYSTATE::ATTACK;
 				}
 			}
 		}
@@ -110,12 +146,47 @@ void Bushi::Coming(Game& g) {
 				if ((*ite)->IsHit(BCC) == true)
 				{
 					_Action_Cnt = _Cnt;
-					_State = Bushi::ENEMYSTATE::ATTACK;
+					_State =ENEMYSTATE::ATTACK;
 				}
 			}
 		}
 	}
+	//敵とプレイヤーの中段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの中段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
+		{
+
+			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life -= 3;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DAMAGE;
+			}
+		}
+	}
+	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの下段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+		{
+
+			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DAMAGE;
+			}
+		}
+	}
 }
+/*----------攻撃----------*/
 void Bushi::Attack(Game& g) {
 	if (_Cnt - _Action_Cnt == ABegin_Frame) {
 		//武士の攻撃判定オブジェクトの生成
@@ -135,6 +206,59 @@ void Bushi::Attack(Game& g) {
 	}
 	if (_Cnt - _Action_Cnt == Attack_Frame)
 	{
-		_State = Bushi::ENEMYSTATE::PATROL;
+		_State =ENEMYSTATE::PATROL;
+	}
+	//敵とプレイヤーの中段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの中段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
+		{
+
+			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life -= 3;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DAMAGE;
+			}
+		}
+	}
+	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの下段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+		{
+
+			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DAMAGE;
+			}
+		}
+	}
+}
+/*----------被ダメ----------*/
+void Bushi::Damage(Game& g) {
+	if (_Cnt - _Action_Cnt == Damage_Frame) {
+		if (_Life <= 0) {
+			_Action_Cnt = _Cnt;
+			_State = ENEMYSTATE::DEAD;
+		}
+		else {
+			_Action_Cnt = _Cnt;
+			_State = ENEMYSTATE::PATROL;
+		}
+	}
+}
+/*----------死亡----------*/
+void Bushi::Dead(Game& g) {
+	if (_Cnt - _Action_Cnt == Dead_Frame) {
+		Delete(g);
 	}
 }

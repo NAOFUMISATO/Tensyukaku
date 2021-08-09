@@ -16,7 +16,7 @@ namespace Tsk {
 		void	Delete(Game& g)override;
 	private:
 		//プレイヤーの状態列挙
-		enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, DAMAGE, DEAD};
+		enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD};
 		
 		void	Idle(Game& g);		//待機状態時の処理
 		void	Move(Game& g);		//移動時の処理
@@ -24,6 +24,7 @@ namespace Tsk {
 		void	LowAttack(Game& g);	//下段攻撃時の処理
 		void	Kick(Game& g);		//蹴り時の処理
 		void	Iai(Game& g);		//居合時処理
+		void	Sway(Game& g);		//スウェイ時の処理
 		void	Damage(Game& g);	//被ダメ時の処理
 		void	Dead(Game& g);		//死亡時の処理
 		void	LoadActionGraph();	//プレイヤーの画像読み込み関数
@@ -85,6 +86,7 @@ namespace Tsk {
 		int		_Walk_SEHandle;
 		int		_MiddleAttack_SEHandle;
 		int		_LowAttack_SEHandle;
+		int		_Kick_SEHandle;
 	};
 }
 
@@ -94,11 +96,11 @@ namespace PInfo {
 	constexpr auto PositionX =500;				//横軸初期位置（足下が基準）
 	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
-	constexpr auto GraphPointY = -190;			//Y位置から描画点までの差分
+	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -30;			//描画点から当たり判定左上座標までの差分
-	constexpr auto PositionHitY = -60;			//描画点から当たり判定左上座標までの差分
+	constexpr auto PositionHitY = -90;			//描画点から当たり判定左上座標までの差分
 	constexpr auto CollisionWidth = 60;			//プレイヤーの当たり判定横幅
-	constexpr auto CollisionHeight = 250;		//プレイヤーの当たり判定縦幅
+	constexpr auto CollisionHeight = 300;		//プレイヤーの当たり判定縦幅
 
 	/*----------各モーションの当たり判定関係----------*/
 	constexpr auto MiddleAttackWidth = 150;		//中段攻撃当たり判定横幅
@@ -111,7 +113,7 @@ namespace PInfo {
 	constexpr auto IaikHeight = 100;			//居合当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
-	constexpr auto LifeMax = 3;					//体力
+	constexpr auto LifeMax = 100;				//体力
 	constexpr auto Speed = 4;					//移動速度
 
 	/*----------アニメーション&当たり判定関係----------*/
@@ -120,7 +122,7 @@ namespace PInfo {
 	constexpr auto AnimeSpeed_Move = 20;		//移動状態
 	constexpr auto AnimeSpeed_MiddleAttack = 5;	//中段攻撃
 	constexpr auto AnimeSpeed_LowAttack = 5;	//下段攻撃
-	constexpr auto AnimeSpeed_Kick = 5;			//蹴り
+	constexpr auto AnimeSpeed_Kick = 8;			//蹴り
 	constexpr auto AnimeSpeed_Sway = 5;			//スウェイ
 	constexpr auto AnimeSpeed_Damage = 5;		//被ダメ
 	constexpr auto AnimeSpeed_Dead = 5;			//死亡
@@ -128,14 +130,17 @@ namespace PInfo {
 	//各モーションのフレーム数
 	constexpr auto MiddleAttack_Frame = 40;		//中段攻撃全フレーム
 	constexpr auto LowAttack_Frame = 40;		//下段攻撃全フレーム
-	constexpr auto Kick_Frame = 40;				//蹴り全フレーム
+	constexpr auto Kick_Frame = 48;				//蹴り全フレーム
+	constexpr auto Iai_Frame = 40;				//居合フレーム
+	constexpr auto Sway_Frame = 40;				//スウェイフレーム
 	constexpr auto Damage_Frame = 40;			//被ダメ全フレーム
+	constexpr auto Dead_Frame = 180;			//死亡全フレーム
 	constexpr auto MABegin_Frame = 15;			//中段攻撃判定発生フレーム
 	constexpr auto MAEnd_Frame= 20;				//中段攻撃判定終了フレーム(発生してからのフレーム数）
 	constexpr auto LABegin_Frame = 15;			//下段攻撃判定発生フレーム
 	constexpr auto LAEnd_Frame= 20;				//下段攻撃判定終了フレーム(発生してからのフレーム数)
-	constexpr auto KIBegin_Frame = 15;			//蹴り判定発生フレーム
-	constexpr auto KIEnd_Frame = 20;			//蹴り判定終了フレーム(発生してからのフレーム数)
+	constexpr auto KIBegin_Frame = 24;			//蹴り判定発生フレーム
+	constexpr auto KIEnd_Frame = 16;			//蹴り判定終了フレーム(発生してからのフレーム数)
 	constexpr auto IABegin_Frame = 15;			//居合判定発生フレーム
 	constexpr auto IAEnd_Frame = 20;			//居合判定終了フレーム(発生してからのフレーム数)
 	constexpr auto Star_Frame = 180;			//被ダメ時の無敵フレーム
@@ -167,8 +172,8 @@ namespace PInfo {
 	constexpr auto LowAttack_HeightCount = 1;	//縦の画像枚数
 	//蹴り
 	constexpr auto Kick_GraphName = "res/Samurai/S_Kick.png";		//画像ファイル名
-	constexpr auto Kick_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto Kick_WidthCount = 1;			//横の画像枚数
+	constexpr auto Kick_AnimeMax = 6;			//全ての画像枚数
+	constexpr auto Kick_WidthCount = 6;			//横の画像枚数
 	constexpr auto Kick_HeightCount = 1;		//縦の画像枚数
 	//居合
 	constexpr auto Iai_GraphName = "res/Samurai/S_Iai.png";			//画像ファイル名
@@ -177,7 +182,7 @@ namespace PInfo {
 	constexpr auto Iai_HeightCount = 1;			//縦の画像枚数
 	//スウェイ
 	constexpr auto Sway_GraphName = "res/Samurai/S_Iai.png";			//画像ファイル名
-	constexpr auto Sway_AnimeMax = 1;		//全ての画像枚数
+	constexpr auto Sway_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Sway_WidthCount = 1;			//横の画像枚数
 	constexpr auto Sway_HeightCount = 1;		//縦の画像枚数
 	//被ダメ
@@ -190,8 +195,10 @@ namespace PInfo {
 	constexpr auto Dead_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Dead_WidthCount = 1;			//横の画像枚数
 	constexpr auto Dead_HeightCount = 1;		//縦の画像枚数
+	
 	/*----------SE関係----------*/
 	constexpr auto Walk_SE = "se/walk.wav";				//移動
-	constexpr auto MiddleAttack_SE = "se/slash1.wav";	//中段攻撃
+	constexpr auto MiddleAttack_SE = "se/slash3.wav";	//中段攻撃
 	constexpr auto LowAttack_SE = "se/slash2.wav";		//下段攻撃
+	constexpr auto Kick_SE = "se/Kick.wav";				//蹴り
 }

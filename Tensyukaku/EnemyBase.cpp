@@ -18,7 +18,3 @@ void EnemyBase::Process(Game& g) {
 	ObjectBase::Process(g);
 	
 }
-void EnemyBase::Damage(Game& g) {
-	--_Life;
-
-}

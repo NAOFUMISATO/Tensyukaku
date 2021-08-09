@@ -16,6 +16,8 @@ Ninja::Ninja() :
 	_Coming_AnimeNo(0),
 	_Attack_GrHandle(-1),
 	_Attack_AnimeNo(0),
+	_Dead_GrHandle(-1),
+	_Dead_AnimeNo(0),
 	_Walk_SEHandle(-1),
 	_Attack_SEHandle(-1)
 {
@@ -36,7 +38,7 @@ void Ninja::Init() {
 	_hit_y = PositionHitY;
 	_hit_w = CollisionWidth;
 	_hit_h = CollisionHeight;
-	_State=Ninja::ENEMYSTATE::PATROL;
+	_State= ENEMYSTATE::PATROL;
 	_Life = LifeMax;
 	_Spd = Speed;
 	_isFlip = false;
@@ -53,24 +55,9 @@ void Ninja::Process(Game& g) {
 	case ENEMYSTATE::ATTACK:
 		Attack(g);
 		break;
-	case ENEMYSTATE::DAMAGE:
-		break;
 	case ENEMYSTATE::DEAD:
+		Dead(g);
 		break;
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
-		{
-			// 敵とその攻撃の当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				// 敵と攻撃それぞれのダメージ処理
-				Damage(g);				// this はこのオブジェクト（敵）
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-			}
-		}
 	}
 }
 void Ninja::Draw(Game& g) {
@@ -96,6 +83,12 @@ void Ninja::Draw(Game& g) {
 		_Attack_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Attack_GrHandle, true, _isFlip);
 		break;
+		//死亡状態
+	case ENEMYSTATE::DEAD:
+		_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
+		_Dead_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Dead_GrHandle, true, _isFlip);
+		break;
 	}
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
 	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(255, 0, 0), FALSE);	// 半透明の赤で当たり判定描画
@@ -106,13 +99,9 @@ void Ninja::Draw(Game& g) {
 
 	DrawString( 10, 200, ss.str().c_str(), GetColor(255, 50, 255));
 }
-void Ninja::Damage(Game& g) {
-	--_Life;
-
-	if (_Life == 0) {
+void Ninja::Delete(Game& g) {
 		g.GetOS()->Del(this);
 	}
-}
 //武士の画像読み込み関数
 void Ninja::LoadActionGraph() {
 	_Patrol_GrAll.resize(Patrol_AnimeMax);
@@ -121,4 +110,6 @@ void Ninja::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(Coming_GraphName, Coming_AnimeMax, Coming_WidthCount, Coming_HeightCount, GraphWidth, GraphHeight, _Coming_GrAll.data());
 	_Attack_GrAll.resize(Attack_AnimeMax);
 	ResourceServer::LoadDivGraph(Attack_GraphName, Attack_AnimeMax, Attack_WidthCount, Attack_HeightCount, GraphWidth, GraphHeight, _Attack_GrAll.data());
+	_Dead_GrAll.resize(Dead_AnimeMax);
+	ResourceServer::LoadDivGraph(Dead_GraphName, Dead_AnimeMax, Dead_WidthCount, Dead_HeightCount, GraphWidth, GraphHeight, _Dead_GrAll.data());
 }

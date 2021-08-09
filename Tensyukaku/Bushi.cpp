@@ -15,6 +15,10 @@ Bushi::Bushi() :
 	_Coming_AnimeNo(0),
 	_Attack_GrHandle(-1),
 	_Attack_AnimeNo(0),
+	_Damage_GrHandle(-1),
+	_Damage_AnimeNo(0),
+	_Dead_GrHandle(-1),
+	_Dead_AnimeNo(0),
 	_Walk_SEHandle(-1),
 	_Attack_SEHandle(-1)
 {
@@ -53,23 +57,11 @@ void Bushi::Process(Game& g) {
 		Attack(g);
 		break;
 	case ENEMYSTATE::DAMAGE:
+		Damage(g);
 		break;
 	case ENEMYSTATE::DEAD:
+		Dead(g);
 		break;
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
-		{ 
-			// 敵とその攻撃の当たり判定を行う
-		if (IsHit(*(*ite)) == true)
-			{
-				// 敵と攻撃それぞれのダメージ処理
-				Damage(g);				// this はこのオブジェクト（敵）
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-			}
-		}
 	}
 }
 void Bushi::Draw(Game& g) {
@@ -95,6 +87,18 @@ void Bushi::Draw(Game& g) {
 		_Attack_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Attack_GrHandle, true, _isFlip);
 		break;
+		//被ダメ状態
+	case ENEMYSTATE::DAMAGE:
+		_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
+		_Damage_GrHandle = _Damage_GrAll[_Damage_AnimeNo];
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Damage_GrHandle, true, _isFlip);
+		break;
+		//死亡状態
+	case ENEMYSTATE::DEAD:
+		_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
+		_Dead_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Dead_GrHandle, true, _isFlip);
+		break;
 	}
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
 	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(255, 0, 0), FALSE);	// 半透明の赤で当たり判定描画
@@ -105,12 +109,8 @@ void Bushi::Draw(Game& g) {
 
 	DrawString(10, 100, ss.str().c_str(), GetColor(255, 50, 255));
 }
-void Bushi::Damage(Game& g) {
-	--_Life;
-	
-	if (_Life == 0) {
+void Bushi::Delete(Game& g) {
 		g.GetOS()->Del(this);
-	}
 }
 //武士の画像読み込み関数
 void Bushi::LoadActionGraph() {
@@ -120,4 +120,8 @@ void Bushi::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(Coming_GraphName, Coming_AnimeMax, Coming_WidthCount, Coming_HeightCount, GraphWidth, GraphHeight, _Coming_GrAll.data());
 	_Attack_GrAll.resize(Attack_AnimeMax);
 	ResourceServer::LoadDivGraph(Attack_GraphName, Attack_AnimeMax, Attack_WidthCount, Attack_HeightCount, GraphWidth, GraphHeight, _Attack_GrAll.data());
+	_Damage_GrAll.resize(Attack_AnimeMax);
+	ResourceServer::LoadDivGraph(Damage_GraphName, Damage_AnimeMax, Damage_WidthCount, Damage_HeightCount, GraphWidth, GraphHeight, _Damage_GrAll.data());
+	_Dead_GrAll.resize(Attack_AnimeMax);
+	ResourceServer::LoadDivGraph(Dead_GraphName, Dead_AnimeMax, Dead_WidthCount, Dead_HeightCount, GraphWidth, GraphHeight, _Dead_GrAll.data());
 }
