@@ -113,13 +113,13 @@ namespace PInfo {
 	constexpr auto IaikHeight = 100;			//居合当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
-	constexpr auto LifeMax = 100;				//体力
+	constexpr auto LifeMax = 3;					//体力
 	constexpr auto Speed = 4;					//移動速度
 
 	/*----------アニメーション&当たり判定関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto AnimeSpeed_Idle = 8;			//待機状態
-	constexpr auto AnimeSpeed_Move = 20;		//移動状態
+	constexpr auto AnimeSpeed_Move = 10;		//移動状態
 	constexpr auto AnimeSpeed_MiddleAttack = 5;	//中段攻撃
 	constexpr auto AnimeSpeed_LowAttack = 5;	//下段攻撃
 	constexpr auto AnimeSpeed_Kick = 8;			//蹴り

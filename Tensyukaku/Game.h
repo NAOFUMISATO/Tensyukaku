@@ -31,7 +31,7 @@ namespace Tsk {
 		BackGround	GetBg() { return _bg; }
 		ModeServer* GetMS() { return _serverMode; }
 		ObjectServer* GetOS() { return &_objServer; }
-		/*MapChips GetChips() { return _mapChips; }*/
+	/*	MapChips GetChips() { return _mapChips; }*/
 		//セッター関数
 		void	SetcvX(int cvX) { cvX = _cvX; }
 		void	SetcvY(int cvY) { cvY = _cvY; }

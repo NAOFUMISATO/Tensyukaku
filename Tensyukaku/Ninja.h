@@ -102,8 +102,8 @@ namespace NInfo {
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
 	constexpr auto Attack_GraphName = "res/Bushi/B_Attack.png";	//画像ファイル名
-	constexpr auto Attack_AnimeMax = 3;			//全ての画像枚数
-	constexpr auto Attack_WidthCount = 3;		//横の画像枚数
+	constexpr auto Attack_AnimeMax = 4;			//全ての画像枚数
+	constexpr auto Attack_WidthCount = 4;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
 	//死亡
 	constexpr auto Dead_GraphName = "res/Ninja/N_Dead.png";		//画像ファイル名

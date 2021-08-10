@@ -2,17 +2,25 @@
 //** マップチップ
 //*/
 //
+//#define	_CRT_SECURE_NO_WARNINGS
+//
 //#include "DxLib.h"
 //#include "MapChip.h"
 //#include "ResourceServer.h"
 //#include "Game.h"
 //#include "ObjectBase.h"
+//
+//#include "picojson/picojson.h"
 //using namespace Tsk;
 //
-//MapChips::MapChips()
+//MapChips::MapChips(std::string filePath, std::string tiledFileName)
 //{
+//	// jsonデータからマップデータをロードする
+//	TiledJsonLoad(filePath, tiledFileName + ".json");
+//
 //	// チップ画像をロード
-//	ResourceServer::LoadDivGraph("res/platformer_simpleA_sheet.png", CHIPCOUNT, CHIPCOUNT_W, CHIPCOUNT_H, CHIPSIZE_W, CHIPSIZE_H, _cgChip);
+//	_cgChip = new int[CHIPCOUNT];		// マップチップ画像
+//	ResourceServer::LoadDivGraph((filePath + _strChipFile).c_str(), CHIPCOUNT, CHIPCOUNT_W, CHIPCOUNT_H, CHIPSIZE_W, CHIPSIZE_H, _cgChip);
 //
 //	// スクロール値
 //	_scrX = 0;
@@ -22,6 +30,114 @@
 //
 //MapChips::~MapChips()
 //{
+//	// 確保したメモリを解放する
+//	delete[]	_cgChip;
+//	delete[]	_mapData;
+//}
+//
+//// 文字列のファイルをロードする
+//std::string MapChips::StringFileLoad(std::string strFileName)
+//{
+//	// ファイルを開く
+//	FILE* fp;
+//	fp = fopen(strFileName.c_str(), "rb");
+//	if (fp == NULL)
+//	{
+//		// ファイルが開けなかった（ファイル名が違うなど）
+//		return "";
+//	}
+//	// ファイルのサイズを取得
+//	fseek(fp, 0, SEEK_END); int size = ftell(fp); fseek(fp, 0, SEEK_SET);
+//	// メモリを確保する
+//	char* p;
+//	p = new char[size + 1];
+//	// メモリにデータを読み込む
+//	fread(p, 1, size, fp);
+//	// ファイルを閉じる
+//	fclose(fp);
+//	p[size] = '\0';
+//
+//	// 読み込んだデータをstringにする
+//	std::string s = (char*)p;
+//
+//	// メモリを解放する
+//	delete[] p;
+//
+//	// stringを返す
+//	return s;
+//}
+//
+//// Tiled-jsonデータロード
+//int		MapChips::TiledJsonLoad(std::string filePath, std::string strFileName)
+//{
+//	// ファイルを開いてstringを取得する
+//	std::string strJson = StringFileLoad(filePath + strFileName);
+//	if (strJson == "")
+//	{
+//		// ファイルが開けなかった
+//		return 0;
+//	}
+//
+//	// 読み込んだstringをjsonオブジェクト化する
+//	picojson::value json;
+//	picojson::parse(json, strJson);
+//	picojson::object jsRoot = json.get<picojson::object>();
+//
+//	// パラメータをjsonから取得
+//	MAPSIZE_W = (int)jsRoot["width"].get<double>();
+//	MAPSIZE_H = (int)jsRoot["height"].get<double>();
+//
+//	// タイルセット取得(1つのみ対応)
+//	picojson::array aTileSets = jsRoot["tilesets"].get<picojson::array>();
+//	picojson::object jsTile = aTileSets[0].get<picojson::object>();
+//	CHIPCOUNT = (int)jsTile["tilecount"].get<double>();
+//	CHIPCOUNT_W = (int)jsTile["columns"].get<double>();
+//	CHIPCOUNT_H = (CHIPCOUNT / CHIPCOUNT_W);		// 計算で出す
+//	CHIPSIZE_W = (int)jsRoot["tilewidth"].get<double>();
+//	CHIPSIZE_H = (int)jsRoot["tileheight"].get<double>();
+//	_strChipFile = jsTile["image"].get<std::string>();
+//
+//	// レイヤー情報の取得
+//	picojson::array aLayers = jsRoot["layers"].get<picojson::array>();
+//	// マップの"tilelayer"レイヤー数を数える
+//	int layer;
+//	layer = 0;
+//	for (int i = 0; i < aLayers.size(); i++)
+//	{
+//		picojson::object jsLayer = aLayers[i].get<picojson::object>();		// レイヤーオブジェクト
+//		// レイヤー種類が「tilelayer」のものをカウントする
+//		if (jsLayer["type"].get<std::string>() == "tilelayer")
+//		{
+//			layer++;
+//		}
+//	}
+//	MAPSIZE_LAYER = layer;
+//
+//	// レイヤー内データの取得
+//	_mapData = new int[(int)(MAPSIZE_LAYER * MAPSIZE_W * MAPSIZE_H)];
+//	layer = 0;
+//	for (int i = 0; i < aLayers.size(); i++)
+//	{
+//		picojson::object jsLayer = aLayers[i].get<picojson::object>();		// レイヤーオブジェクト
+//		// レイヤー種類が「tilelayer」のものをカウントする
+//		if (jsLayer["type"].get<std::string>() == "tilelayer")
+//		{
+//			picojson::array aData = jsLayer["data"].get<picojson::array>();			// マップ配列
+//			for (int y = 0; y < MAPSIZE_H; y++)
+//			{
+//				for (int x = 0; x < MAPSIZE_W; x++)
+//				{
+//					int layerstart = MAPSIZE_W * MAPSIZE_H * layer;
+//					int index = y * MAPSIZE_W + x;
+//					_mapData[layerstart + index] = (int)aData[index].get<double>();
+//
+//				}
+//			}
+//			layer++;
+//		}
+//	}
+//
+//	return 1;
 //}
 //
 //void	MapChips::Process(Game& g)
@@ -130,11 +246,10 @@
 //
 //	// キャラ矩形を作成する
 //	int l, t, r, b;		// 左上(left,top) - 右下(right,bottom)
-//	auto HB = o.GetHB();
-//	l = HB._x + HB._hit_x;
-//	t = HB._y + HB._hit_y;
-//	r = HB._x + HB._hit_x + HB._hit_w - 1;
-//	b = HB._y + HB._hit_y + HB._hit_h - 1;
+//	l = o._x + o._hit_x;
+//	t = o._y + o._hit_y;
+//	r = o._x + o._hit_x + o._hit_w - 1;
+//	b = o._y + o._hit_y + o._hit_h - 1;
 //
 //	// キャラの左上座標～右下座標にあたるマップチップと、当たり判定を行う
 //	for (y = t / CHIPSIZE_H; y <= b / CHIPSIZE_H; y++)
@@ -149,19 +264,19 @@
 //				// X,Yの移動方向を見て、その反対方向に補正する
 //				if (mx < 0)
 //				{	// 左に動いていたので、右に補正
-//					o.SetX(x * CHIPSIZE_W + CHIPSIZE_W - (HB._hit_x));
+//					o._x = x * CHIPSIZE_W + CHIPSIZE_W - (o._hit_x);
 //				}
 //				if (mx > 0)
 //				{	// 右に動いていたので、左に補正
-//					o.SetX(x * CHIPSIZE_W - (HB._hit_x + HB._hit_w));
+//					o._x = x * CHIPSIZE_W - (o._hit_x + o._hit_w);
 //				}
 //				if (my > 0)
 //				{	// 下に動いていたので、上に補正
-//					o.SetY(y * CHIPSIZE_H - (HB._hit_y + HB._hit_h));
+//					o._y = y * CHIPSIZE_H - (o._hit_y + o._hit_h);
 //				}
 //				if (my < 0)
 //				{	// 上に動いていたので、下に補正
-//					o.SetY(y * CHIPSIZE_H + CHIPSIZE_H - (HB._hit_y));
+//					o._y = y * CHIPSIZE_H + CHIPSIZE_H - (o._hit_y);
 //				}
 //				// 当たったので戻る
 //				return 1;

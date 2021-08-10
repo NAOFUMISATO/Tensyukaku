@@ -229,8 +229,10 @@ void Player::Sway(Game& g){
 void Player::Damage(Game & g) {
 	if (_Cnt - _Action_Cnt == Damage_Frame) {
 		_Star_Cnt = _Cnt;
-		_Star_Flag = true;
-		if (_Life == 0) {
+		if (_Life > 0) {
+			_Star_Flag = true;
+		}
+		if (_Life <= 0) {
 			_Action_Cnt = _Cnt;
 			_State=PLAYERSTATE::DEAD;
 		}
