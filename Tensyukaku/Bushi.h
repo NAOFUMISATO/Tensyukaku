@@ -2,62 +2,63 @@
 #include "EnemyBase.h"
 #include <vector>
 // 武士クラス
-namespace Tsk {
-	class Bushi : public EnemyBase {
-	public:
-		Bushi();
-		~Bushi();
-		virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::BUSHI; }
 
-		void	Init()override;
-		void	Process(Game& g)override;
-		void	Draw(Game& g)override;
-		void	Delete(Game& g)override;
-	
-	private:
-		void	Patrol(Game& g);	//巡回状態時の処理
-		void	Coming(Game& g);	//追跡状態時の処理
-		void	Attack(Game& g);	//攻撃状態時の処理
-		void	Damage(Game& g);	//被ダメ状態時の処理
-		void	Dead(Game& g);		//死亡状態時の処理
-		void	LoadActionGraph();	//武士の画像読み込み関数
+class Bushi : public EnemyBase {
+public:
+	Bushi();
+	~Bushi();
+	virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::BUSHI; }
 
-		/*----------メンバ変数----------*/
+	void	Init()override;
+	void	Process(Game& g)override;
+	void	Draw(Game& g)override;
+	void	Delete(Game& g)override;
 
-		//巡回状態描画用変数
-		int		_Patrol_GrHandle;
-		std::vector<int>	_Patrol_GrAll;
-		int		_Patrol_AnimeNo;
+private:
+	void	Patrol(Game& g);	//巡回状態時の処理
+	void	Coming(Game& g);	//追跡状態時の処理
+	void	Attack(Game& g);	//攻撃状態時の処理
+	void	Damage(Game& g);	//被ダメ状態時の処理
+	void	Dead(Game& g);		//死亡状態時の処理
+	void	LoadActionGraph();	//武士の画像読み込み関数
 
-		//移動状態描画用変数
-		int		_Coming_GrHandle;
-		std::vector<int>	_Coming_GrAll;
-		int		_Coming_AnimeNo;
 
-		//攻撃状態描画用変数
-		int		_Attack_GrHandle;
-		std::vector<int>	_Attack_GrAll;
-		int		_Attack_AnimeNo;
+	/*----------メンバ変数----------*/
 
-		//被ダメ状態描画用変数
-		int		_Damage_GrHandle;
-		std::vector<int>	_Damage_GrAll;
-		int		_Damage_AnimeNo;
+	//巡回状態描画用変数
+	int		_Patrol_GrHandle;
+	std::vector<int>	_Patrol_GrAll;
+	int		_Patrol_AnimeNo;
 
-		//死亡状態描画用変数
-		int		_Dead_GrHandle;
-		std::vector<int>	_Dead_GrAll;
-		int		_Dead_AnimeNo;
+	//移動状態描画用変数
+	int		_Coming_GrHandle;
+	std::vector<int>	_Coming_GrAll;
+	int		_Coming_AnimeNo;
 
-		//SEハンドル
-		int		_Walk_SEHandle;
-		int		_Attack_SEHandle;
-	};
-}
+	//攻撃状態描画用変数
+	int		_Attack_GrHandle;
+	std::vector<int>	_Attack_GrAll;
+	int		_Attack_AnimeNo;
+
+	//被ダメ状態描画用変数
+	int		_Damage_GrHandle;
+	std::vector<int>	_Damage_GrAll;
+	int		_Damage_AnimeNo;
+
+	//死亡状態描画用変数
+	int		_Dead_GrHandle;
+	std::vector<int>	_Dead_GrAll;
+	int		_Dead_AnimeNo;
+
+	//SEハンドル
+	int		_Walk_SEHandle;
+	int		_Attack_SEHandle;
+};
+
 namespace BInfo {
 	/*----------武士の各座標関係----------*/
 	constexpr auto PositionX = 1500;			//横軸初期位置（足下が基準）
-	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
+	constexpr auto PositionY = 1000;			//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -30;			//描画点から当たり判定左上座標までの差分
@@ -82,8 +83,8 @@ namespace BInfo {
 	constexpr auto AnimeSpeed_Patrol = 5;		//巡回状態
 	constexpr auto AnimeSpeed_Move = 5;			//移動状態
 	constexpr auto AnimeSpeed_Attack = 20;		//攻撃
-	constexpr auto AnimeSpeed_Damage = 20;		//被ダメ
-	constexpr auto AnimeSpeed_Dead = 20;		//死亡
+	constexpr auto AnimeSpeed_Damage = 60;		//被ダメ
+	constexpr auto AnimeSpeed_Dead = 60;		//死亡
 
 	//各モーションのフレーム数
 	constexpr auto Patrol_Frame = 180;			//巡回全フレーム

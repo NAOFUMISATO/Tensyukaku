@@ -7,7 +7,7 @@
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 
-using namespace Tsk;
+
 using namespace NInfo;
 Ninja::Ninja() :
 	_Patrol_GrHandle(-1),
@@ -25,7 +25,8 @@ Ninja::Ninja() :
 	LoadActionGraph();
 };
 
-Ninja::~Ninja() {};
+Ninja::~Ninja() {
+};
 
 void Ninja::Init() {
 	_w = GraphWidth;

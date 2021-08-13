@@ -1,8 +1,10 @@
 
-#include "DxLib.h"
+#include <DxLib.h>
 #include "Game.h"
 #include "ModeTitle.h"
-using namespace Tsk;
+#include "MapChip.h"
+
+
 // アプリの初期化
 // 起動時に1回だけ実行される
 Game::Game()
@@ -15,6 +17,8 @@ Game::Game()
 	// タイトルモードを生成し、モードサーバに登録する
 	ModeTitle* modeTitle = new ModeTitle();
 	_serverMode->Add(modeTitle, 0, "Title");
+	//マップチップ指定
+	_mapChip = new MapChip("res/Map/", "Tensyukaku");
 }
 
 // アプリの解放
@@ -22,6 +26,7 @@ Game::Game()
 Game::~Game()
 {
 	delete _serverMode;
+	delete _mapChip;
 }
 
 
@@ -45,7 +50,7 @@ void Game::Process()
 	_serverMode->Process();
 	_serverMode->ProcessFinish();
 
-	/*_mapChips.Process(*this);*/
+	
 
 	_gCnt++;
 }

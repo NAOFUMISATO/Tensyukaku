@@ -5,7 +5,7 @@
 #include "DxLib.h"
 #include "ObjectServer.h"
 #include "Game.h"
-using namespace Tsk;
+
 ObjectServer::ObjectServer()
 {
 	_vObject.clear();

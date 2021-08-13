@@ -4,7 +4,7 @@
 #include "Game.h"
 #include "BushiMotionCollision.h"
 #include "ObjectBase.h"
-using namespace Tsk;
+
 using namespace BInfo;
 /*----------èÑâÒ----------*/
 void Bushi::Patrol(Game& g) {

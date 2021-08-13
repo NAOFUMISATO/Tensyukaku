@@ -61,6 +61,12 @@
     <Filter Include="ヘッダー ファイル\Object\Enemy\Ninja">
       <UniqueIdentifier>{9fb4920b-6f2c-4203-9736-a6e920e48f2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Object\UI">
+      <UniqueIdentifier>{6c948099-e96c-427d-bb4d-cc611cdf1e35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\UI">
+      <UniqueIdentifier>{60eadb5e-53fb-4586-b85a-313424b70244}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -96,9 +102,6 @@
     <ClCompile Include="ObjectServer.cpp">
       <Filter>ソース ファイル\Server</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyBase.cpp">
-      <Filter>ソース ファイル\Object\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Bushi.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
@@ -125,6 +128,15 @@
     </ClCompile>
     <ClCompile Include="PlayerMotionCollision.cpp">
       <Filter>ソース ファイル\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHp.cpp">
+      <Filter>ソース ファイル\Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="IaiGauge.cpp">
+      <Filter>ソース ファイル\Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBase.cpp">
+      <Filter>ソース ファイル\Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +193,12 @@
     </ClInclude>
     <ClInclude Include="PlayerMotionCollision.h">
       <Filter>ヘッダー ファイル\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHp.h">
+      <Filter>ヘッダー ファイル\Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="IaiGauge.h">
+      <Filter>ヘッダー ファイル\Object\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

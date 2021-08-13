@@ -1,31 +1,30 @@
 #pragma once
 #include "ObjectBase.h"
 //“GƒNƒ‰ƒX
-namespace Tsk {
-	class EnemyBase : public ObjectBase {
-	protected:
-		//“G‚Ìó‘Ô—ñ‹“
-		enum class ENEMYSTATE { PATROL, COMING, ATTACK, DAMAGE, DEAD };
-	public:
-		EnemyBase();
-		~EnemyBase();
 
-		virtual OBJECTTYPE GetObjType() { return OBJECTTYPE::ENEMY; }
+class EnemyBase : public ObjectBase {
+protected:
+	//“G‚Ìó‘Ô—ñ‹“
+	enum class ENEMYSTATE { PATROL, COMING, ATTACK, DAMAGE, DEAD };
+public:
+	EnemyBase();
+	~EnemyBase();
 
-		//“G‚Ìí—Ş—ñ‹“
-		enum class ENEMYTYPE {
-			BUSHI, NINJA, SHIELD
-		};
-		virtual ENEMYTYPE GetEneType() = 0;
+	virtual OBJECTTYPE GetObjType() { return OBJECTTYPE::ENEMY; }
 
-		virtual	void	Init();
-		virtual	void	Process(Game& g);
-		virtual	void	Delete(Game& g) {};
-		/*virtual	void	Draw(Game& g);*/
-
-	protected:
-		ENEMYTYPE _Type;
-		ENEMYSTATE _State;
+	//“G‚Ìí—Ş—ñ‹“
+	enum class ENEMYTYPE {
+		BUSHI, NINJA, SHIELD
 	};
+	virtual ENEMYTYPE GetEneType() = 0;
 
-}
+	virtual	void	Init();
+	virtual	void	Process(Game& g);
+	virtual	void	Delete(Game& g) {};
+	/*virtual	void	Draw(Game& g);*/
+
+protected:
+	ENEMYTYPE _Type;
+	ENEMYSTATE _State;
+};
+

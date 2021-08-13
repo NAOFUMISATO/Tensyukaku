@@ -5,7 +5,7 @@
 #include "ResourceServer.h"
 #include "Bushi.h"
 
-using namespace Tsk;
+
 using namespace BInfo;
 /*
 •m‚ÌŠeƒ‚[ƒVƒ‡ƒ“‚Ì“–‚½‚è”»’èÀ‘Ì

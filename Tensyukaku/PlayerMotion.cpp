@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "Game.h"
 #include "PlayerMotionCollision.h"
-using namespace Tsk;
+
 using namespace PInfo;
 /*----------待機----------*/
 void Player::Idle(Game& g) {
@@ -62,14 +62,14 @@ void Player::Move(Game& g) {
 	else if (g.GetKey() & PAD_INPUT_LEFT)
 	{
 		_x -= _Spd;
-		/*g.GetChips().IsHit(*this, -1, 0);*/
+		g.GetChip()->IsHit(*this, -1, 0);
 		_isFlip = false;
 
 	}
 	else if (g.GetKey() & PAD_INPUT_RIGHT)
 	{
 		_x += _Spd;
-		/*g.GetChips().IsHit(*this, 1, 0);*/
+		g.GetChip()->IsHit(*this, 1, 0);
 		_isFlip = true;
 
 	}
@@ -216,17 +216,17 @@ void Player::Kick(Game& g) {
 }
 
 /*----------居合----------*/
-void Player::Iai(Game& g) {
-	if (_Cnt - _Action_Cnt == Iai_Frame) {
-
-	}
-}
-/*----------スウェイ----------*/
-void Player::Sway(Game& g){
-}
+//void Player::Iai(Game& g) {
+//	if (_Cnt - _Action_Cnt == Iai_Frame) {
+//
+//	}
+//}
+///*----------スウェイ----------*/
+//void Player::Sway(Game& g){
+//}
 
 /*----------被ダメ----------*/
-void Player::Damage(Game & g) {
+void Player::Damage(Game& g) {
 	if (_Cnt - _Action_Cnt == Damage_Frame) {
 		_Star_Cnt = _Cnt;
 		if (_Life > 0) {

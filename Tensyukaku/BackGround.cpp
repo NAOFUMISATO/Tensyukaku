@@ -5,10 +5,10 @@
 #include "DxLib.h"
 #include "BackGround.h"
 #include "ResourceServer.h"
-using namespace Tsk;
+
 BackGround::BackGround()
 {
-	_GrHandle = ResourceServer::LoadGraph("res/platformer_BG.png");		// ”wŒi‰æ‘œ‚ğƒ[ƒh‚·‚é
+	_GrHandle = ResourceServer::LoadGraph("res/BG.png");		// ”wŒi‰æ‘œ‚ğƒ[ƒh‚·‚é
 }
 
 BackGround::~BackGround()

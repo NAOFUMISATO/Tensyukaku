@@ -2,56 +2,56 @@
 #include "EnemyBase.h"
 #include <vector>
 // 忍者クラス
-namespace Tsk {
-	class Ninja : public EnemyBase {
-	public:
-		Ninja();
-		~Ninja();
-		virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::NINJA; }
 
-		void	Init()override;
-		void	Process(Game& g)override;
-		void	Draw(Game& g)override;
-		void	Delete(Game& g)override;
+class Ninja : public EnemyBase {
+public:
+	Ninja();
+	~Ninja();
+	virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::NINJA; }
 
-	private:
-		void	Patrol(Game& g);	//巡回状態時の処理
-		void	Coming(Game& g);	//追跡状態時の処理
-		void	Attack(Game& g);	//攻撃状態時の処理
-		void	Dead(Game& g);		//死亡状態時の処理
-		void	LoadActionGraph();	//武士の画像読み込み関数
+	void	Init()override;
+	void	Process(Game& g)override;
+	void	Draw(Game& g)override;
+	void	Delete(Game& g)override;
+	bool	isDead() { return _State == ENEMYSTATE::DEAD; };
 
-		/*----------メンバ変数----------*/
+private:
+	void	Patrol(Game& g);	//巡回状態時の処理
+	void	Coming(Game& g);	//追跡状態時の処理
+	void	Attack(Game& g);	//攻撃状態時の処理
+	void	Dead(Game& g);		//死亡状態時の処理
+	void	LoadActionGraph();	//武士の画像読み込み関数
+	
+	/*----------メンバ変数----------*/
 
-		//巡回状態描画用変数
-		int		_Patrol_GrHandle;
-		std::vector<int>	_Patrol_GrAll;
-		int		_Patrol_AnimeNo;
+	//巡回状態描画用変数
+	int		_Patrol_GrHandle;
+	std::vector<int>	_Patrol_GrAll;
+	int		_Patrol_AnimeNo;
 
-		//移動状態描画用変数
-		int		_Coming_GrHandle;
-		std::vector<int>	_Coming_GrAll;
-		int		_Coming_AnimeNo;
+	//移動状態描画用変数
+	int		_Coming_GrHandle;
+	std::vector<int>	_Coming_GrAll;
+	int		_Coming_AnimeNo;
 
-		//攻撃状態描画用変数
-		int		_Attack_GrHandle;
-		std::vector<int>	_Attack_GrAll;
-		int		_Attack_AnimeNo;
+	//攻撃状態描画用変数
+	int		_Attack_GrHandle;
+	std::vector<int>	_Attack_GrAll;
+	int		_Attack_AnimeNo;
 
-		//死亡状態描画用変数
-		int		_Dead_GrHandle;
-		std::vector<int>	_Dead_GrAll;
-		int		_Dead_AnimeNo;
+	//死亡状態描画用変数
+	int		_Dead_GrHandle;
+	std::vector<int>	_Dead_GrAll;
+	int		_Dead_AnimeNo;
 
-		//SEハンドル
-		int		_Walk_SEHandle;
-		int		_Attack_SEHandle;
-	};
-}
+	//SEハンドル
+	int		_Walk_SEHandle;
+	int		_Attack_SEHandle;
+};
 namespace NInfo {
 	/*----------忍者の各座標関係----------*/
 	constexpr auto PositionX = 1800;			//横軸初期位置（足下が基準）
-	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
+	constexpr auto PositionY = 1000;			//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -40;			//描画点から当たり判定左上座標までの差分
@@ -76,7 +76,7 @@ namespace NInfo {
 	constexpr auto AnimeSpeed_Patrol = 5;		//巡回状態
 	constexpr auto AnimeSpeed_Move = 20;		//移動状態
 	constexpr auto AnimeSpeed_Attack = 20;		//攻撃
-	constexpr auto AnimeSpeed_Dead = 5;			//死亡
+	constexpr auto AnimeSpeed_Dead = 60;		//死亡
 	//各モーションのフレーム数
 	constexpr auto Patrol_Frame = 120;			//巡回全フレーム
 	constexpr auto Attack_Frame = 60;			//攻撃全フレーム
@@ -97,13 +97,13 @@ namespace NInfo {
 	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
 	//移動
 	constexpr auto Coming_GraphName = "res/Ninja/N_Walk.png";	//画像ファイル名
-	constexpr auto Coming_AnimeMax = 3;			//全ての画像枚数
-	constexpr auto Coming_WidthCount = 3;		//横の画像枚数
+	constexpr auto Coming_AnimeMax = 4;			//全ての画像枚数
+	constexpr auto Coming_WidthCount = 4;		//横の画像枚数
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
 	constexpr auto Attack_GraphName = "res/Bushi/B_Attack.png";	//画像ファイル名
-	constexpr auto Attack_AnimeMax = 4;			//全ての画像枚数
-	constexpr auto Attack_WidthCount = 4;		//横の画像枚数
+	constexpr auto Attack_AnimeMax = 3;			//全ての画像枚数
+	constexpr auto Attack_WidthCount = 3;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
 	//死亡
 	constexpr auto Dead_GraphName = "res/Ninja/N_Dead.png";		//画像ファイル名

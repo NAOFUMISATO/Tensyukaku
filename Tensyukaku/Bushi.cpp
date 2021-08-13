@@ -6,7 +6,7 @@
 #include "Game.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
-using namespace Tsk;
+
 using namespace BInfo;
 Bushi::Bushi() :
 	_Patrol_GrHandle(-1),
@@ -26,7 +26,9 @@ Bushi::Bushi() :
 	LoadActionGraph();
 };
 
-Bushi::~Bushi() {};
+Bushi::~Bushi() {
+	
+};
 
 void Bushi::Init() {
 	_w = GraphWidth;
@@ -120,8 +122,8 @@ void Bushi::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(Coming_GraphName, Coming_AnimeMax, Coming_WidthCount, Coming_HeightCount, GraphWidth, GraphHeight, _Coming_GrAll.data());
 	_Attack_GrAll.resize(Attack_AnimeMax);
 	ResourceServer::LoadDivGraph(Attack_GraphName, Attack_AnimeMax, Attack_WidthCount, Attack_HeightCount, GraphWidth, GraphHeight, _Attack_GrAll.data());
-	_Damage_GrAll.resize(Attack_AnimeMax);
+	_Damage_GrAll.resize(Damage_AnimeMax);
 	ResourceServer::LoadDivGraph(Damage_GraphName, Damage_AnimeMax, Damage_WidthCount, Damage_HeightCount, GraphWidth, GraphHeight, _Damage_GrAll.data());
-	_Dead_GrAll.resize(Attack_AnimeMax);
+	_Dead_GrAll.resize(Dead_AnimeMax);
 	ResourceServer::LoadDivGraph(Dead_GraphName, Dead_AnimeMax, Dead_WidthCount, Dead_HeightCount, GraphWidth, GraphHeight, _Dead_GrAll.data());
 }

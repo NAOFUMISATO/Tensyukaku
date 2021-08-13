@@ -4,7 +4,7 @@
 #include "Game.h"
 #include "NinjaMotionCollision.h"
 #include "ObjectBase.h"
-using namespace Tsk;
+
 using namespace NInfo;
 void Ninja::Patrol(Game& g) {
 	if (_Cnt - _Action_Cnt == Patrol_Frame) {
@@ -190,6 +190,7 @@ void Ninja::Attack(Game& g) {
 }
 
 void Ninja::Dead(Game& g) {
+	
 	if (_Cnt - _Action_Cnt == Dead_Frame)
 	{
 		Delete(g);

@@ -153,6 +153,7 @@
     <ClCompile Include="BushiMotionCollision.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapChip.cpp" />
     <ClCompile Include="ModeBase.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="ObjectServer.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerHp.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />
     <ClCompile Include="PlayerMotionCollision.cpp" />
     <ClCompile Include="ResourceServer.cpp" />
@@ -176,6 +178,7 @@
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HitBox.h" />
+    <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="MapChip.h" />
     <ClInclude Include="ModeBase.h" />
     <ClInclude Include="ModeGame.h" />
@@ -186,6 +189,7 @@
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectServer.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerHp.h" />
     <ClInclude Include="PlayerMotionCollision.h" />
     <ClInclude Include="ResourceServer.h" />
   </ItemGroup>

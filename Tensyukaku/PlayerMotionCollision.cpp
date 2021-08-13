@@ -5,7 +5,7 @@
 #include "ResourceServer.h"
 #include "Player.h"
 
-using namespace Tsk;
+
 using namespace PInfo;
 
 //’†’iUŒ‚“–‚½‚è”»’èÀ‘Ì
@@ -119,12 +119,12 @@ IaiCollision::~IaiCollision() {
 }
 
 void IaiCollision::Init() {
-	_w = KickWidth;
-	_h = KickHeight;
+	_w = IaiWidth;
+	_h = IaiHeight;
 	_hit_x = 0;
 	_hit_y = 0;
-	_hit_w = KickWidth;
-	_hit_h = KickHeight;
+	_hit_w = IaiWidth;
+	_hit_h = IaiHeight;
 	_Action_Cnt = _Cnt;
 }
 

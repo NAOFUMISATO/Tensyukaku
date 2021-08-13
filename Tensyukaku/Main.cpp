@@ -4,7 +4,7 @@
 #include "game.h"
 #include "ResourceServer.h"
 
-using namespace Tsk;
+
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine, int nCmdShow)
 {
@@ -30,6 +30,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine
 	// 1フレームループを組む ----------------------------------------------------------
 	while (ProcessMessage() == 0)		// プログラムが終了するまでループ
 	{
+		if (CheckHitKey(KEY_INPUT_ESCAPE)) {
+			break;
+		}
 		g->Input();		// 入力
 		g->Process();	// 計算
 		g->Draw();		// 描画
@@ -43,5 +46,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine
 	DxLib_End();		// ＤＸライブラリ使用の終了処理
 
 	// 終了
+	
 	return 0;
 }

@@ -3,6 +3,7 @@
 
 // リソース管理サーバ
 // すべて静的メンバで構成する
+
 class ResourceServer {
 public:
 	static	void	Init();
@@ -26,5 +27,4 @@ private:
 
 	static std::unordered_map<std::string, int>	_mapSound;
 };
-
 

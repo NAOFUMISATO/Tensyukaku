@@ -5,7 +5,7 @@
 #include "DxLib.h"
 #include "ObjectBase.h"
 #include "Game.h"
-using namespace Tsk;
+
 ObjectBase::ObjectBase()
 {
 	Init();
@@ -17,7 +17,9 @@ ObjectBase::~ObjectBase()
 
 void ObjectBase::Init()
 {
+	_g = 0;
 	_Cnt = 0;
+	_stand = 0;
 	_hit_noCnt = 0;
 	_hit_main = 1;
 	_hit_sub = 1;
@@ -29,23 +31,23 @@ void ObjectBase::Process(Game& g)
 	{
 		_hit_noCnt--;
 	}
-	
-	//// 重力処理を行う
+	++_Cnt;
+	 //重力処理を行う
 	//_g += 1;			// キャラの、重力による加速値を大きくする
 	//_y += _g;			// 重力による加速値の分だけ移動する
 	//_stand = 0;			// 床に当たってないことを前提に、床フラグリセット
 
 	//// 上下の当たり判定
-	//if (g.GetChips().IsHit(*this, 0, _g) != 0)
+	//if (g.GetChip()->IsHit(*this, 0, _g) != 0)
 	//{
-	//	
+
 	//	if (_g > 0) // 当たった。当たったのは床か？（重力値はプラスだったか？）
 	//	{
 	//		_stand = 1;	//床に当たったのでフラグセット
 	//	}
 	//	_g = 0;		// 重力加速値をリセット
 	//}
-	++_Cnt;
+	
 }
 
 void ObjectBase::Draw(Game& g) {

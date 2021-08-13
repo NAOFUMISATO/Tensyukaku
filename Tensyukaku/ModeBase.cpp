@@ -1,7 +1,7 @@
 
 #include "ModeBase.h"
 
-using namespace Tsk;
+
 ModeBase::ModeBase() {
 	_szName = "";
 	_uid = 1;

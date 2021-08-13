@@ -1,100 +1,104 @@
 #pragma once
 #include	"ObjectBase.h"
 #include	<vector>
-namespace Tsk {
-	// プレイヤークラス
-	class Game;
-	class Player : public ObjectBase {
-	public:
-		Player();
-		~Player();
-		virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::PLAYER; }
 
-		void	Init()override;
-		void	Process(Game& g)override;
-		void	Draw(Game& g)override;
-		void	Delete(Game& g)override;
-	private:
-		//プレイヤーの状態列挙
-		enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD};
-		
-		void	Idle(Game& g);		//待機状態時の処理
-		void	Move(Game& g);		//移動時の処理
-		void	MidAttack(Game& g);	//中段攻撃時の処理
-		void	LowAttack(Game& g);	//下段攻撃時の処理
-		void	Kick(Game& g);		//蹴り時の処理
-		void	Iai(Game& g);		//居合時処理
-		void	Sway(Game& g);		//スウェイ時の処理
-		void	Damage(Game& g);	//被ダメ時の処理
-		void	Dead(Game& g);		//死亡時の処理
-		void	LoadActionGraph();	//プレイヤーの画像読み込み関数
-		void	LoadActionSE();		//プレイヤーの効果音読み込み関数
+// プレイヤークラス
+class Game;
+class Player : public ObjectBase {
+public:
+	Player();
+	~Player();
+	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::PLAYER; }
 
-		/*---------メンバ変数----------*/
-		PLAYERSTATE	_State;		//状態遷移変数
-		
-		//待機状態描画用変数
-		int		_Idle_GrHandle;
-		std::vector<int>	_Idle_GrAll;
-		int		_Idle_AnimeNo;
+	void	Init()override;
+	void	Process(Game& g)override;
+	void	Draw(Game& g)override;
+	void	Delete(Game& g)override;
+	
+private:
+	//プレイヤーの状態列挙
+	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD};
+	
+	void	Idle(Game& g);		//待機状態時の処理
+	void	Move(Game& g);		//移動時の処理
+	void	MidAttack(Game& g);	//中段攻撃時の処理
+	void	LowAttack(Game& g);	//下段攻撃時の処理
+	void	Kick(Game& g);		//蹴り時の処理
+	//void	Iai(Game& g);		//居合時処理
+	//void	Sway(Game& g);		//スウェイ時の処理
+	void	Damage(Game& g);	//被ダメ時の処理
+	void	Dead(Game& g);		//死亡時の処理
+	void	LoadActionGraph();	//プレイヤーの画像読み込み関数
+	void	LoadActionSE();		//プレイヤーの効果音読み込み関数
+	void	UIDraw(Game& g);	//プレイヤーのUI描画関数
 
-		//移動状態描画用変数
-		int		_Move_GrHandle;
-		std::vector<int>	_Move_GrAll;
-		int		_Move_AnimeNo;
+	/*---------メンバ変数----------*/
+	PLAYERSTATE	_State;		//状態遷移変数
+	
+	//待機状態描画用変数
+	int		_Idle_GrHandle;
+	std::vector<int>	_Idle_GrAll;
+	int		_Idle_AnimeNo;
 
-		//中段攻撃状態描画用変数
-		int		_MiddleAttack_GrHandle;
-		std::vector<int>	_MiddleAttack_GrAll;
-		int		_MiddleAttack_AnimeNo;
+	//移動状態描画用変数
+	int		_Move_GrHandle;
+	std::vector<int>	_Move_GrAll;
+	int		_Move_AnimeNo;
 
-		//下段攻撃状態描画用変数
-		int		_LowAttack_GrHandle;
-		std::vector<int>	_LowAttack_GrAll;
-		int		_LowAttack_AnimeNo;
+	//中段攻撃状態描画用変数
+	int		_MiddleAttack_GrHandle;
+	std::vector<int>	_MiddleAttack_GrAll;
+	int		_MiddleAttack_AnimeNo;
 
-		//蹴り状態描画用変数
-		int		_Kick_GrHandle;
-		std::vector<int>	_Kick_GrAll;
-		int		_Kick_AnimeNo;
+	//下段攻撃状態描画用変数
+	int		_LowAttack_GrHandle;
+	std::vector<int>	_LowAttack_GrAll;
+	int		_LowAttack_AnimeNo;
 
-		//居合状態描画用変数
-		int		_Iai_GrHandle;
-		std::vector<int>	_Iai_GrAll;
-		int		_Iai_AnimeNo;
+	//蹴り状態描画用変数
+	int		_Kick_GrHandle;
+	std::vector<int>	_Kick_GrAll;
+	int		_Kick_AnimeNo;
 
-		//スウェイ状態描画用変数
-		int		_Sway_GrHandle;
-		std::vector<int>	_Sway_GrAll;
-		int		_Sway_AnimeNo;
+	//居合状態描画用変数
+	int		_Iai_GrHandle;
+	std::vector<int>	_Iai_GrAll;
+	int		_Iai_AnimeNo;
 
-		//被ダメ状態描画用変数
-		int		_Damage_GrHandle;
-		std::vector<int>	_Damage_GrAll;
-		int		_Damage_AnimeNo;
+	//スウェイ状態描画用変数
+	int		_Sway_GrHandle;
+	std::vector<int>	_Sway_GrAll;
+	int		_Sway_AnimeNo;
 
-		//死亡状態描画用変数
-		int		_Dead_GrHandle;
-		std::vector<int>	_Dead_GrAll;
-		int		_Dead_AnimeNo;
-		
-		//無敵状態管理変数
-		bool	_Star_Flag;		//無敵状態管理フラグ
-		int		_Star_Cnt;		//無敵状態経過時間記録変数
+	//被ダメ状態描画用変数
+	int		_Damage_GrHandle;
+	std::vector<int>	_Damage_GrAll;
+	int		_Damage_AnimeNo;
 
-		//SEハンドル
-		int		_Walk_SEHandle;
-		int		_MiddleAttack_SEHandle;
-		int		_LowAttack_SEHandle;
-		int		_Kick_SEHandle;
-	};
-}
+	//死亡状態描画用変数
+	int		_Dead_GrHandle;
+	std::vector<int>	_Dead_GrAll;
+	int		_Dead_AnimeNo;
+	
+	//無敵状態管理変数
+	bool	_Star_Flag;		//無敵状態管理フラグ
+	int		_Star_Cnt;		//無敵状態経過時間記録変数
+	
+	int		_Iai_Gauge;		//居合ゲージ変数
+
+	//SEハンドル
+	int		_Walk_SEHandle;
+	int		_MiddleAttack_SEHandle;
+	int		_LowAttack_SEHandle;
+	int		_Kick_SEHandle;
+};
+
 
 namespace PInfo {
 
 	/*----------プレイヤーの各座標関係----------*/
 	constexpr auto PositionX =500;				//横軸初期位置（足下が基準）
-	constexpr auto PositionY = 900;				//縦軸初期位置（足下が基準）
+	constexpr auto PositionY = 1000;			//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -30;			//描画点から当たり判定左上座標までの差分
@@ -109,11 +113,11 @@ namespace PInfo {
 	constexpr auto LowAttackHeight = 100;		//下段攻撃当たり判定縦幅
 	constexpr auto KickWidth = 150;				//蹴り当たり判定横幅
 	constexpr auto KickHeight = 100;			//蹴り当たり判定縦幅
-	constexpr auto IaikWidth = 150;				//居合当たり判定横幅
-	constexpr auto IaikHeight = 100;			//居合当たり判定縦幅
+	constexpr auto IaiWidth = 150;				//居合当たり判定横幅
+	constexpr auto IaiHeight = 100;				//居合当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
-	constexpr auto LifeMax = 3;					//体力
+	constexpr auto LifeMax = 100;				//体力
 	constexpr auto Speed = 4;					//移動速度
 
 	/*----------アニメーション&当たり判定関係----------*/
@@ -124,8 +128,8 @@ namespace PInfo {
 	constexpr auto AnimeSpeed_LowAttack = 5;	//下段攻撃
 	constexpr auto AnimeSpeed_Kick = 8;			//蹴り
 	constexpr auto AnimeSpeed_Sway = 5;			//スウェイ
-	constexpr auto AnimeSpeed_Damage = 5;		//被ダメ
-	constexpr auto AnimeSpeed_Dead = 5;			//死亡
+	constexpr auto AnimeSpeed_Damage = 40;		//被ダメ
+	constexpr auto AnimeSpeed_Dead = 180;			//死亡
 	constexpr auto AnimeSpeed_Star = 10;		//無敵状態時の点滅速度
 	//各モーションのフレーム数
 	constexpr auto MiddleAttack_Frame = 40;		//中段攻撃全フレーム

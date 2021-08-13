@@ -4,28 +4,25 @@
 #include	"Player.h"
 
 
-namespace Tsk {
-	class ModeGame : public ModeBase
-	{
-		typedef ModeBase base;
-	public:
-		virtual bool Initialize(Game& g);
-		virtual bool Terminate(Game& g);
-		virtual bool Process(Game& g);
-		virtual bool Draw(Game& g);
+
+class ModeGame : public ModeBase
+{
+	typedef ModeBase base;
+public:
+	virtual bool Initialize(Game& g);
+	virtual bool Terminate(Game& g);
+	virtual bool Process(Game& g);
+	virtual bool Draw(Game& g);
 
 
-	protected:
+protected:
+	BackGround	_bg;
 
-		// 背景
-		BackGround	_bg;
+private:
+	// オブジェクト処理をストップする
+	bool	_stopObjProcess;
 
-	private:
-		// オブジェクト処理をストップする
-		bool	_stopObjProcess;
+	// BGM用
+	int		_bgm;
 
-		// BGM用
-		int		_bgm;
-
-	};
-}
+};

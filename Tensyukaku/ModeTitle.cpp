@@ -5,7 +5,7 @@
 #include "Game.h"
 #include "ResourceServer.h"
 
-using namespace Tsk;
+
 bool ModeTitle::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 
@@ -32,8 +32,6 @@ bool ModeTitle::Process(Game& g) {
 		ModeGame* modeGame = new ModeGame();
 		g.GetMS()->Add(modeGame, 0, "Game");
 	}
-
-
 	return true;
 }
 

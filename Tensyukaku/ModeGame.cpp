@@ -5,12 +5,13 @@
 #include "Player.h"
 #include "Bushi.h"
 #include "Ninja.h"
+#include "MapChip.h"
 
-using namespace Tsk;
+
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 
-	// プレイヤーを生成し、オブジェクトサーバに登録する
+	//オブジェクトサーバに登録する
 	g.GetOS()->Add(new Player);
 	g.GetOS()->Add(new Bushi);
 	g.GetOS()->Add(new Ninja);
@@ -18,12 +19,11 @@ bool ModeGame::Initialize(Game& g) {
 	// オブジェクト処理を行う
 	_stopObjProcess = false;
 
-	// BGM演奏開始
-	_bgm = PlaySoundFile("res/bgm/game_maoudamashii_1_battle35.ogg", DX_PLAYTYPE_LOOP);
+
 
 	// カメラ＆マップ初期化
 	g.SetmapW(SCREEN_W);
-	g.SetmapH(10000);
+	g.SetmapH(2160);
 	g.SetcvX(0);
 	g.SetcvY(g.GetmapH() - SCREEN_H);
 
@@ -34,8 +34,7 @@ bool ModeGame::Terminate(Game& g) {
 	base::Terminate(g);
 
 	g.GetOS()->Clear();
-
-
+	delete g.GetChip();
 	return true;
 }
 
@@ -44,8 +43,10 @@ bool ModeGame::Process(Game& g) {
 
 	if (_stopObjProcess == false)
 	{
+		g.GetChip()->Process(g);
 		// オブジェクトサーバに登録されているオブジェクトのProcess()を呼び出す
 		g.GetOS()->Process(g);
+		
 	}
 
 	return true;
@@ -53,9 +54,9 @@ bool ModeGame::Process(Game& g) {
 
 bool ModeGame::Draw(Game& g) {
 	base::Draw(g);
-
 	_bg.Draw(g);				// 背景画像描画
-	g.GetOS()->Draw(g);		// オブジェクトの描画
+	g.GetChip()->Draw();			//マップチップ描画
+	g.GetOS()->Draw(g);				// オブジェクトの描画
 
 	// 開発用
 	/*DrawFormatString(32, 32, GetColor(255, 0, 0), "カメラ x=%d, y=%d", g.GetcvX(), g.GetcvY());*/

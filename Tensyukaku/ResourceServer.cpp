@@ -4,7 +4,6 @@
 
 #include "DxLib.h"
 #include "ResourceServer.h"
-
 // Ã“Iƒƒ“ƒoÀ‘Ì
 std::unordered_map<std::string, int>	ResourceServer::_mapGraph;
 std::unordered_map<std::string, ResourceServer::DIVGRAPH>	ResourceServer::_mapDivGraph;

@@ -9,10 +9,14 @@
 #include "Game.h"
 #include "ObjectBase.h"
 #include "ModeGame.h"
+#include "PlayerHp.h"
+#include "Ninja.h"
+#include "Bushi.h"
 #include <vector>
 #include <sstream>
 
-using namespace Tsk;
+
+
 using namespace PInfo;
 Player::Player() :
 	_Idle_GrHandle(-1),
@@ -25,10 +29,10 @@ Player::Player() :
 	_LowAttack_AnimeNo(0),
 	_Kick_GrHandle(-1),
 	_Kick_AnimeNo(0),
-	_Iai_GrHandle(-1),
+	/*_Iai_GrHandle(-1),
 	_Iai_AnimeNo(0),
 	_Sway_GrHandle(-1),
-	_Sway_AnimeNo(0),
+	_Sway_AnimeNo(0),*/
 	_Damage_GrHandle(-1),
 	_Damage_AnimeNo(0),
 	_Dead_GrHandle(-1),
@@ -39,7 +43,6 @@ Player::Player() :
 	_Kick_SEHandle(-1),
 	_State(PLAYERSTATE::IDLE),
 	_Star_Flag(false)
-
 {
 	Init();
 	LoadActionGraph();
@@ -48,6 +51,7 @@ Player::Player() :
 
 Player::~Player()
 {
+	
 }
 
 void Player::Init()
@@ -104,13 +108,13 @@ void Player::Process(Game& g)
 		Kick(g);
 		break;
 		//居合状態
-	case PLAYERSTATE::IAI:
-		Iai(g);
-		break;
-		//スウェイ状態
-	case PLAYERSTATE::SWAY:
-		Sway(g);
-		break;
+	//case PLAYERSTATE::IAI:
+	//	Iai(g);
+	//	break;
+	//	//スウェイ状態
+	//case PLAYERSTATE::SWAY:
+	//	Sway(g);
+	//	break;
 		//被ダメ状態
 	case PLAYERSTATE::DAMAGE:
 		Damage(g);
@@ -124,9 +128,9 @@ void Player::Process(Game& g)
 }
 void Player::Draw(Game& g) {
 	// カメラから見た座標に変更（ワールド座標→ビュー座標）
-
-	auto x = _x + _gx/* - g.GetChips().GetScrX()*/;
-	auto y = _y + _gy/*- g.GetChips().GetScrY()*/;
+	UIDraw(g);
+	auto x = _x + _gx /*- g.GetChip()->GetScrX()*/;
+	auto y = _y + _gy/*- g.GetChip()->GetScrY()*/;
 
 	//プレイヤーの状態によるアニメーション遷移
 		//無敵状態
@@ -165,11 +169,11 @@ void Player::Draw(Game& g) {
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Kick_GrHandle, true, _isFlip);
 		break;
 		//居合状態
-	case PLAYERSTATE::IAI:
-		break;
-		//スウェイ状態
-	case PLAYERSTATE::SWAY:
-		break;
+	//case PLAYERSTATE::IAI:
+	//	break;
+	//	//スウェイ状態
+	//case PLAYERSTATE::SWAY:
+	//	break;
 		//被ダメ状態
 	case PLAYERSTATE::DAMAGE:
 		_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
@@ -184,7 +188,7 @@ void Player::Draw(Game& g) {
 		break;
 	}
 	// 主人公位置からカメラ座標決定
-	//g.GetChips().SetScr(_x - (SCREEN_W / 2), _y - (SCREEN_H * 7 / 10));		// 画面の横中央にキャラ配置,画面の縦70%にキャラ配置
+	g.GetChip()->SetScr(_x - (SCREEN_W / 2), _y - (SCREEN_H * 7 / 10));		// 画面の横中央にキャラ配置,画面の縦70%にキャラ配置
 	/*-----デバッグ描画-----*/
 #ifdef _DEBUG
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
@@ -193,9 +197,11 @@ void Player::Draw(Game& g) {
 	std::stringstream ss;
 	ss << "_Cnt=" << _Cnt << "\n";
 	ss << "PlayerLife=" << _Life << "\n";
-	ss << "PlayerActionCnt=" << _Action_Cnt << "\n";
+	ss << "IaiGauge=" << _Iai_Gauge << "\n";
 	DrawString(10, 10, ss.str().c_str(), GetColor(255, 50, 255));
 #endif
+	
+
 }
 
 void Player::Delete(Game& g) {
@@ -213,10 +219,10 @@ void Player::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(LowdAttack_GraphName, LowAttack_AnimeMax, LowAttack_WidthCount, LowAttack_HeightCount, GraphWidth, GraphHeight, _LowAttack_GrAll.data());
 	_Kick_GrAll.resize(Kick_AnimeMax);
 	ResourceServer::LoadDivGraph(Kick_GraphName, Kick_AnimeMax, Kick_WidthCount, Kick_HeightCount, GraphWidth, GraphHeight, _Kick_GrAll.data());
-	_Iai_GrAll.resize(Iai_AnimeMax);
+	/*_Iai_GrAll.resize(Iai_AnimeMax);
 	ResourceServer::LoadDivGraph(Iai_GraphName, Iai_AnimeMax, Iai_WidthCount, Iai_HeightCount, GraphWidth, GraphHeight, _Iai_GrAll.data());
 	_Sway_GrAll.resize(Sway_AnimeMax);
-	ResourceServer::LoadDivGraph(Sway_GraphName, Sway_AnimeMax, Sway_WidthCount, Sway_HeightCount, GraphWidth, GraphHeight, _Sway_GrAll.data());
+	ResourceServer::LoadDivGraph(Sway_GraphName, Sway_AnimeMax, Sway_WidthCount, Sway_HeightCount, GraphWidth, GraphHeight, _Sway_GrAll.data());*/
 	_Damage_GrAll.resize(Damage_AnimeMax);
 	ResourceServer::LoadDivGraph(Damage_GraphName, Damage_AnimeMax, Damage_WidthCount, Damage_HeightCount, GraphWidth, GraphHeight, _Damage_GrAll.data());
 	_Dead_GrAll.resize(Dead_AnimeMax);
@@ -229,4 +235,27 @@ void Player::LoadActionSE() {
 	_MiddleAttack_SEHandle = ResourceServer::LoadSoundMem(MiddleAttack_SE);
 	_LowAttack_SEHandle = ResourceServer::LoadSoundMem(LowAttack_SE);
 	_Kick_SEHandle= ResourceServer::LoadSoundMem(Kick_SE);
+}
+
+
+//プレイヤーのUI描画関数
+
+void Player::UIDraw(Game& g) {
+		PlayerHp* HP = new PlayerHp();
+		g.GetOS()->Add(HP);
+	if (_Life == 3) {
+		DrawRotaGraph(HP->GetX(), HP->GetY(), GraphScale, GraphAngle, HP->GetHp3(), true, false);
+		g.GetOS()->Del(HP);
+	}
+	else if (_Life == 2) {
+		DrawRotaGraph(HP->GetX(), HP->GetY(), GraphScale, GraphAngle, HP->GetHp2(), true, false);
+		g.GetOS()->Del(HP);
+	}
+	else if (_Life == 1) {
+		DrawRotaGraph(HP->GetX(), HP->GetY(), GraphScale, GraphAngle, HP->GetHp1(), true, false);
+		g.GetOS()->Del(HP);
+	}
+	else if(_Life <= 0) { g.GetOS()->Del(HP); }
+
+	
 }

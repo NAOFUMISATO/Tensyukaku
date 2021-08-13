@@ -1,9 +1,9 @@
 
 #include <cstddef>
-#include "DxLib.h"
+#include <DxLib.h>
 #include "ModeServer.h"
 
-using namespace Tsk;
+
 /// インスタンス 
 ModeServer* ModeServer::_lpInstance = NULL;
 

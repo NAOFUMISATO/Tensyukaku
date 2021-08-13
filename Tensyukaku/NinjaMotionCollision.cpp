@@ -5,7 +5,7 @@
 #include "ResourceServer.h"
 #include "Ninja.h"
 
-using namespace Tsk;
+
 using namespace NInfo;
 NinjaPatrolCollision::NinjaPatrolCollision() {
 	Init();

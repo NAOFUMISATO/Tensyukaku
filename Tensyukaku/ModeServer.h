@@ -2,67 +2,67 @@
 
 #include <list>
 #include "ModeBase.h"
-namespace Tsk {
-	class Game;
 
-	class	ModeServer
-	{
-		typedef	std::list<ModeBase*>		lstModeBase;
+class Game;
 
-	public:
-		ModeServer(Game& g);
-		virtual	~ModeServer();
-		static ModeServer* _lpInstance;
-		static ModeServer* GetInstance() { return (ModeServer*)_lpInstance; }
+class	ModeServer
+{
+	typedef	std::list<ModeBase*>		lstModeBase;
 
-		int Add(ModeBase* mode, int layer, const char* name);		// 登録はするが、一度メインを回さないといけない
-		int Del(ModeBase* mode);		// 削除予約
-		ModeBase* Get(int uid);
-		ModeBase* Get(const char* name);
-		int GetId(ModeBase* mode);
-		int GetId(const char* name);
-		const char* GetName(ModeBase* mode);
-		const char* GetName(int uid);
-		void Clear();
-		int	LayerTop() { return INT32_MAX; }
+public:
+	ModeServer(Game& g);
+	virtual	~ModeServer();
+	static ModeServer* _lpInstance;
+	static ModeServer* GetInstance() { return (ModeServer*)_lpInstance; }
 
-		static bool modeSort(const ModeBase* x, const ModeBase* y) {
-			return x->_layer < y->_layer;
-		}
+	int Add(ModeBase* mode, int layer, const char* name);		// 登録はするが、一度メインを回さないといけない
+	int Del(ModeBase* mode);		// 削除予約
+	ModeBase* Get(int uid);
+	ModeBase* Get(const char* name);
+	int GetId(ModeBase* mode);
+	int GetId(const char* name);
+	const char* GetName(ModeBase* mode);
+	const char* GetName(int uid);
+	void Clear();
+	int	LayerTop() { return INT32_MAX; }
 
-		int ProcessInit();	// プロセスを回すための初期化
-		int Process();		// レイヤーの上の方から処理
-		int ProcessFinish();		// プロセスを回した後の後始末
+	static bool modeSort(const ModeBase* x, const ModeBase* y) {
+		return x->_layer < y->_layer;
+	}
 
-		int DrawInit();		// 描画を回すための初期化
-		int Draw();		// レイヤーの下の方から処理
-		int DrawFinish();		// 描画を回した後の後始末
+	int ProcessInit();	// プロセスを回すための初期化
+	int Process();		// レイヤーの上の方から処理
+	int ProcessFinish();		// プロセスを回した後の後始末
 
-		int SkipProcessUnderLayer();		// 現Processで、今処理しているレイヤーより下のレイヤーは、処理を呼ばない
-		int SkipDrawUnderLayer();			// 現Processで、今処理しているレイヤーより下のレイヤーは、描画を呼ばない
-		int PauseProcessUnderLayer();		// 現Processで、今処理しているレイヤーより下のレイヤーは、時間経過を止める
+	int DrawInit();		// 描画を回すための初期化
+	int Draw();		// レイヤーの下の方から処理
+	int DrawFinish();		// 描画を回した後の後始末
 
-	private:
-		int Release(ModeBase* mode);		// 削除＆delete
-		bool IsDelRegist(ModeBase* mode);	// 削除予約されているか？
-		bool IsAdd(ModeBase* mode);		// リストにあるか？
+	int SkipProcessUnderLayer();		// 現Processで、今処理しているレイヤーより下のレイヤーは、処理を呼ばない
+	int SkipDrawUnderLayer();			// 現Processで、今処理しているレイヤーより下のレイヤーは、描画を呼ばない
+	int PauseProcessUnderLayer();		// 現Processで、今処理しているレイヤーより下のレイヤーは、時間経過を止める
 
-
-	public:
-		Game& _game;
+private:
+	int Release(ModeBase* mode);		// 削除＆delete
+	bool IsDelRegist(ModeBase* mode);	// 削除予約されているか？
+	bool IsAdd(ModeBase* mode);		// リストにあるか？
 
 
-	private:
-		lstModeBase		_vMode;			// モードリスト
-		int				_uid_count;		// uidカウンタ
-		lstModeBase		_vModeAdd;		// 追加予約
-		lstModeBase		_vModeDel;		// 削除予約
+public:
+	Game& _game;
 
-		ModeBase* _nowMode;		// 現在呼び出し中のモード
-		ModeBase* _skipProcessMode;	// このモードより下はProcessを呼ばない
-		ModeBase* _skipDrawMode;	// このモードより下はDrawを呼ばない
-		ModeBase* _pauseProcessMode;	// このモードより下はProcess時に時間経過をさせない
 
-	};
-}
+private:
+	lstModeBase		_vMode;			// モードリスト
+	int				_uid_count;		// uidカウンタ
+	lstModeBase		_vModeAdd;		// 追加予約
+	lstModeBase		_vModeDel;		// 削除予約
+
+	ModeBase* _nowMode;		// 現在呼び出し中のモード
+	ModeBase* _skipProcessMode;	// このモードより下はProcessを呼ばない
+	ModeBase* _skipDrawMode;	// このモードより下はDrawを呼ばない
+	ModeBase* _pauseProcessMode;	// このモードより下はProcess時に時間経過をさせない
+
+};
+
 
