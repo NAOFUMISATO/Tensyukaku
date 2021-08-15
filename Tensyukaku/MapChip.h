@@ -15,9 +15,17 @@ public:
 
 	int		CheckHit(int x, int y);
 	int		IsHit(ObjectBase& o, int mx, int my);
-	int		GetScrX() { return _scrX; }
-	int		GetScrY() { return _scrY; }
-	void	SetScr(int scrX, int scrY) {scrX = _scrX, scrY = _scrY;}
+	int		GetscrX() { return _scrX; }
+	int		GetscrY() { return _scrY; }
+	int		GetMSW() { return MAPSIZE_W; }
+	int		GetMSH() { return MAPSIZE_H; }
+	int		GetCC() { return CHIPCOUNT; }
+	int		GetCCW() { return CHIPCOUNT_W; }
+	int		GetCCH() { return CHIPCOUNT_H; }
+	int		GetCSW() { return CHIPSIZE_W; }
+	int		GetCSH() { return CHIPSIZE_H; }
+	void	SetscrX(int scrX) { _scrX = scrX; }
+	void	SetscrY(int scrY) { _scrY = scrY; }
 
 private:
 

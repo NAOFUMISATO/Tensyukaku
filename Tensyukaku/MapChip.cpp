@@ -23,7 +23,7 @@ MapChip::MapChip(std::string filePath, std::string tiledFileName)
 
 	// スクロール値
 	_scrX = 0;
-	_scrY = 1080;
+	_scrY = 0;
 
 }
 
@@ -243,9 +243,9 @@ int MapChip::IsHit(ObjectBase& o, int mx, int my)
 	int l, t, r, b;		// 左上(left,top) - 右下(right,bottom)
 	auto HB = o.GetHB();
 	l = HB._x + HB._hit_x;
-	t = HB._y /*+ HB._gy */+ HB._hit_y;
+	t = HB._y + HB._gy + HB._hit_y;
 	r = HB._x + HB._hit_x + HB._hit_w ;
-	b = HB._y /*+ HB._gy */+ HB._hit_y + HB._hit_h - 1;
+	b = HB._y + HB._gy + HB._hit_y + HB._hit_h - 1;
 
 	// キャラの左上座標～右下座標にあたるマップチップと、当たり判定を行う
 	for (y = t / CHIPSIZE_H; y <= b / CHIPSIZE_H; y++)

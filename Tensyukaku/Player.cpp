@@ -124,13 +124,21 @@ void Player::Process(Game& g)
 		Dead(g);
 		break;
 	}
-	
+	// 主人公位置からカメラ座標決定
+	auto GC = g.GetChip();
+	GC->SetscrX(_x - (SCREEN_W / 2));		// 画面の横中央にキャラを置く
+	GC->SetscrY(_y - (SCREEN_H * 92.55 / 100));	// 画面の縦92.55%にキャラを置く
+	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
+	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
+	if (GC->GetscrY() < 0) { GC->SetscrY(0); }
+	if (GC->GetscrY() > GC->GetMSH() * GC->GetCSH() - SCREEN_H) { GC->SetscrY(GC->GetMSH() * GC->GetCSH() - SCREEN_H); }
 }
 void Player::Draw(Game& g) {
+	/*UIDraw(g);*/
 	// カメラから見た座標に変更（ワールド座標→ビュー座標）
-	UIDraw(g);
-	auto x = _x + _gx /*- g.GetChip()->GetScrX()*/;
-	auto y = _y + _gy/*- g.GetChip()->GetScrY()*/;
+	auto GC = g.GetChip();
+	auto x = _x + _gx - GC->GetscrX();
+	auto y = _y + _gy - GC->GetscrY();
 
 	//プレイヤーの状態によるアニメーション遷移
 		//無敵状態
@@ -187,8 +195,7 @@ void Player::Draw(Game& g) {
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Dead_GrHandle, true, _isFlip);
 		break;
 	}
-	// 主人公位置からカメラ座標決定
-	g.GetChip()->SetScr(_x - (SCREEN_W / 2), _y - (SCREEN_H * 7 / 10));		// 画面の横中央にキャラ配置,画面の縦70%にキャラ配置
+	
 	/*-----デバッグ描画-----*/
 #ifdef _DEBUG
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
@@ -196,8 +203,10 @@ void Player::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 	std::stringstream ss;
 	ss << "_Cnt=" << _Cnt << "\n";
-	ss << "PlayerLife=" << _Life << "\n";
-	ss << "IaiGauge=" << _Iai_Gauge << "\n";
+	ss << "_scrX=" << g.GetChip()->GetscrX() << "\n";
+	ss << "_scrY=" << g.GetChip()->GetscrY() << "\n";
+	ss << "PlayerX=" << _x << "\n";
+	ss << "PlayerY=" << _y << "\n";
 	DrawString(10, 10, ss.str().c_str(), GetColor(255, 50, 255));
 #endif
 	

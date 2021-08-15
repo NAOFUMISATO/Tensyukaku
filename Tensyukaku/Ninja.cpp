@@ -62,8 +62,10 @@ void Ninja::Process(Game& g) {
 	}
 }
 void Ninja::Draw(Game& g) {
-	auto x = _x + _gx;
-	auto y = _y + _gy;
+	// カメラから見た座標に変更（ワールド座標→ビュー座標）
+	auto GC = g.GetChip();
+	auto x = _x + _gx - GC->GetscrX();
+	auto y = _y + _gy - GC->GetscrY();
 	//武士の状態によるアニメーション遷移
 	switch (_State) {
 		//巡回状態
