@@ -24,7 +24,7 @@ private:
 	void	MidAttack(Game& g);	//中段攻撃時の処理
 	void	LowAttack(Game& g);	//下段攻撃時の処理
 	void	Kick(Game& g);		//蹴り時の処理
-	//void	Iai(Game& g);		//居合時処理
+	void	Iai(Game& g);		//居合時処理
 	//void	Sway(Game& g);		//スウェイ時の処理
 	void	Damage(Game& g);	//被ダメ時の処理
 	void	Dead(Game& g);		//死亡時の処理
@@ -97,7 +97,7 @@ private:
 namespace PInfo {
 
 	/*----------プレイヤーの各座標関係----------*/
-	constexpr auto PositionX = 2000;			//横軸初期位置（足下が基準）
+	constexpr auto PositionX = 200;				//横軸初期位置（足下が基準）
 	constexpr auto PositionY = 2080;			//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
@@ -113,7 +113,7 @@ namespace PInfo {
 	constexpr auto LowAttackHeight = 100;		//下段攻撃当たり判定縦幅
 	constexpr auto KickWidth = 150;				//蹴り当たり判定横幅
 	constexpr auto KickHeight = 100;			//蹴り当たり判定縦幅
-	constexpr auto IaiWidth = 150;				//居合当たり判定横幅
+	constexpr auto IaiWidth = 400;				//居合当たり判定横幅
 	constexpr auto IaiHeight = 100;				//居合当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
@@ -129,13 +129,13 @@ namespace PInfo {
 	constexpr auto AnimeSpeed_Kick = 8;			//蹴り
 	constexpr auto AnimeSpeed_Sway = 5;			//スウェイ
 	constexpr auto AnimeSpeed_Damage = 40;		//被ダメ
-	constexpr auto AnimeSpeed_Dead = 180;			//死亡
+	constexpr auto AnimeSpeed_Dead = 180;		//死亡
 	constexpr auto AnimeSpeed_Star = 10;		//無敵状態時の点滅速度
 	//各モーションのフレーム数
 	constexpr auto MiddleAttack_Frame = 40;		//中段攻撃全フレーム
 	constexpr auto LowAttack_Frame = 40;		//下段攻撃全フレーム
 	constexpr auto Kick_Frame = 48;				//蹴り全フレーム
-	constexpr auto Iai_Frame = 40;				//居合フレーム
+	constexpr auto Iai_Frame = 64;				//居合フレーム
 	constexpr auto Sway_Frame = 40;				//スウェイフレーム
 	constexpr auto Damage_Frame = 40;			//被ダメ全フレーム
 	constexpr auto Dead_Frame = 180;			//死亡全フレーム
@@ -145,8 +145,8 @@ namespace PInfo {
 	constexpr auto LAEnd_Frame= 20;				//下段攻撃判定終了フレーム(発生してからのフレーム数)
 	constexpr auto KIBegin_Frame = 24;			//蹴り判定発生フレーム
 	constexpr auto KIEnd_Frame = 16;			//蹴り判定終了フレーム(発生してからのフレーム数)
-	constexpr auto IABegin_Frame = 15;			//居合判定発生フレーム
-	constexpr auto IAEnd_Frame = 20;			//居合判定終了フレーム(発生してからのフレーム数)
+	constexpr auto IABegin_Frame = 16;			//居合判定発生フレーム
+	constexpr auto IAEnd_Frame = 56;			//居合判定終了フレーム(発生してからのフレーム数)
 	constexpr auto Star_Frame = 180;			//被ダメ時の無敵フレーム
 
 	/*----------画像読み込み&描画関係----------*/

@@ -26,6 +26,7 @@ public:
 	int		GetKey() { return _gKey; }
 	int		GetTrg() { return _gTrg; }
 	int		GetmapH() { return _mapH; }
+	int		GetmapW() { return _mapW; }
 	int		GetcvX() { return _cvX; }
 	int		GetcvY() { return _cvY; }
 	MapChip* GetChip() { return _mapChip; }
@@ -33,10 +34,10 @@ public:
 	ObjectServer* GetOS() { return &_objServer; }
 	
 	//セッター関数
-	void	SetcvX(int cvX) { cvX = _cvX; }
-	void	SetcvY(int cvY) { cvY = _cvY; }
-	void	SetmapW(int mapW) { mapW = _mapW; }
-	void	SetmapH(int mapH) { mapH = _mapH; }
+	void	SetcvX(int cvX) { _cvX = cvX; }
+	void	SetcvY(int cvY) { _cvY = cvY; }
+	void	SetmapW(int mapW) { _mapW = mapW; }
+	void	SetmapH(int mapH) { _mapH = mapH; }
 
 private:
 	int _gKey;			// キー入力の情報

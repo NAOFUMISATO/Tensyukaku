@@ -108,9 +108,9 @@ void Player::Process(Game& g)
 		Kick(g);
 		break;
 		//居合状態
-	//case PLAYERSTATE::IAI:
-	//	Iai(g);
-	//	break;
+	case PLAYERSTATE::IAI:
+		Iai(g);
+		break;
 	//	//スウェイ状態
 	//case PLAYERSTATE::SWAY:
 	//	Sway(g);
@@ -125,6 +125,12 @@ void Player::Process(Game& g)
 		break;
 	}
 	// 主人公位置からカメラ座標決定
+	g.SetcvX(_x - (SCREEN_W / 2));
+	g.SetcvY(_y - (SCREEN_H * 92.55 / 100));
+	if (g.GetcvX() < 0) { g.SetcvX(0); }
+	if (g.GetcvX() > g.GetmapW()-SCREEN_W) { g.SetcvX(g.GetmapW() - SCREEN_W); }
+	if (g.GetcvY() < 0) { g.SetcvY(0); }
+	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
 	auto GC = g.GetChip();
 	GC->SetscrX(_x - (SCREEN_W / 2));		// 画面の横中央にキャラを置く
 	GC->SetscrY(_y - (SCREEN_H * 92.55 / 100));	// 画面の縦92.55%にキャラを置く
@@ -209,7 +215,6 @@ void Player::Draw(Game& g) {
 	ss << "PlayerY=" << _y << "\n";
 	DrawString(10, 10, ss.str().c_str(), GetColor(255, 50, 255));
 #endif
-	
 
 }
 
@@ -228,9 +233,9 @@ void Player::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(LowdAttack_GraphName, LowAttack_AnimeMax, LowAttack_WidthCount, LowAttack_HeightCount, GraphWidth, GraphHeight, _LowAttack_GrAll.data());
 	_Kick_GrAll.resize(Kick_AnimeMax);
 	ResourceServer::LoadDivGraph(Kick_GraphName, Kick_AnimeMax, Kick_WidthCount, Kick_HeightCount, GraphWidth, GraphHeight, _Kick_GrAll.data());
-	/*_Iai_GrAll.resize(Iai_AnimeMax);
+	_Iai_GrAll.resize(Iai_AnimeMax);
 	ResourceServer::LoadDivGraph(Iai_GraphName, Iai_AnimeMax, Iai_WidthCount, Iai_HeightCount, GraphWidth, GraphHeight, _Iai_GrAll.data());
-	_Sway_GrAll.resize(Sway_AnimeMax);
+	/*_Sway_GrAll.resize(Sway_AnimeMax);
 	ResourceServer::LoadDivGraph(Sway_GraphName, Sway_AnimeMax, Sway_WidthCount, Sway_HeightCount, GraphWidth, GraphHeight, _Sway_GrAll.data());*/
 	_Damage_GrAll.resize(Damage_AnimeMax);
 	ResourceServer::LoadDivGraph(Damage_GraphName, Damage_AnimeMax, Damage_WidthCount, Damage_HeightCount, GraphWidth, GraphHeight, _Damage_GrAll.data());

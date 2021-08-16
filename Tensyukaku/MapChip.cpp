@@ -153,10 +153,12 @@ void	MapChip::Draw()
 	int x, y, layer;
 	for (layer = 0; layer < MAPSIZE_LAYER; layer++)
 	{
-		for (y = 0; y < MAPSIZE_H; y++)
+		for (y = _scrY / CHIPSIZE_H; y <= (_scrY + SCREEN_H) / CHIPSIZE_H + 1; y++)
 		{
-			for (x = 0; x < MAPSIZE_W; x++)
+			if (y < 0 || MAPSIZE_H <= y) { continue; }
+			for (x =_scrX/CHIPSIZE_W; x <= (_scrX+SCREEN_W)/ CHIPSIZE_W+1; x++)
 			{
+				if (x < 0 || MAPSIZE_W <= x) { continue; }
 				int layerstart = MAPSIZE_W * MAPSIZE_H * layer;
 				int index = y * MAPSIZE_W + x;
 				int pos_x = x * CHIPSIZE_W - _scrX;

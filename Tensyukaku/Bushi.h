@@ -81,7 +81,7 @@ namespace BInfo {
 	/*----------アニメーション&当たり判定関係----------*/
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto AnimeSpeed_Patrol = 5;		//巡回状態
-	constexpr auto AnimeSpeed_Move = 5;			//移動状態
+	constexpr auto AnimeSpeed_Move = 30;		//移動状態
 	constexpr auto AnimeSpeed_Attack = 20;		//攻撃
 	constexpr auto AnimeSpeed_Damage = 60;		//被ダメ
 	constexpr auto AnimeSpeed_Dead = 60;		//死亡
@@ -106,9 +106,9 @@ namespace BInfo {
 	constexpr auto Patrol_WidthCount = 1;		//横の画像枚数
 	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
 	//移動
-	constexpr auto Coming_GraphName = "res/Bushi/B_Stand.png";	//画像ファイル名
-	constexpr auto Coming_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto Coming_WidthCount = 1;		//横の画像枚数
+	constexpr auto Coming_GraphName = "res/Bushi/B_Walk.png";	//画像ファイル名
+	constexpr auto Coming_AnimeMax = 4;			//全ての画像枚数
+	constexpr auto Coming_WidthCount = 4;		//横の画像枚数
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
 	constexpr auto Attack_GraphName = "res/Bushi/B_Attack.png";	//画像ファイル名

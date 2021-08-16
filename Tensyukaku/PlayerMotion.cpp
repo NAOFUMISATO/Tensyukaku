@@ -6,6 +6,10 @@
 using namespace PInfo;
 /*----------待機----------*/
 void Player::Idle(Game& g) {
+	if (g.GetTrg() & PAD_INPUT_1) {
+		_State = PLAYERSTATE::IAI;
+		_Action_Cnt = _Cnt;
+	}
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
 		_Action_Cnt = _Cnt;
@@ -44,7 +48,11 @@ void Player::Idle(Game& g) {
 }
 /*----------移動----------*/
 void Player::Move(Game& g) {
-	if (g.GetTrg() & PAD_INPUT_4) {
+	if (g.GetTrg() & PAD_INPUT_1) {
+		_State = PLAYERSTATE::IAI;
+		_Action_Cnt = _Cnt;
+	}
+	else if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
 		_Action_Cnt = _Cnt;
 		PlaySoundMem(_MiddleAttack_SEHandle, DX_PLAYTYPE_BACK, true);
@@ -69,6 +77,20 @@ void Player::Move(Game& g) {
 	else if (g.GetKey() & PAD_INPUT_RIGHT)
 	{
 		_x += _Spd;
+		g.GetChip()->IsHit(*this, 1, 0);
+		_isFlip = true;
+
+	}
+	else if(g.GetKey() & PAD_INPUT_UP)
+	{
+		_y -= _Spd;
+		g.GetChip()->IsHit(*this, 1, 0);
+		_isFlip = true;
+
+	}
+	else if (g.GetKey() & PAD_INPUT_DOWN)
+	{
+		_y += _Spd;
 		g.GetChip()->IsHit(*this, 1, 0);
 		_isFlip = true;
 
@@ -212,15 +234,17 @@ void Player::Kick(Game& g) {
 			}
 		}
 	}
-
 }
 
 /*----------居合----------*/
-//void Player::Iai(Game& g) {
-//	if (_Cnt - _Action_Cnt == Iai_Frame) {
-//
-//	}
-//}
+void Player::Iai(Game& g) {
+	if (_Cnt - _Action_Cnt == IABegin_Frame) {
+
+	}
+	if (_Cnt - _Action_Cnt == Iai_Frame) {
+
+	}
+}
 ///*----------スウェイ----------*/
 //void Player::Sway(Game& g){
 //}

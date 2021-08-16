@@ -22,7 +22,7 @@ bool ModeGame::Initialize(Game& g) {
 
 
 	// カメラ＆マップ初期化
-	g.SetmapW(SCREEN_W);
+	g.SetmapW(3840);
 	g.SetmapH(2160);
 	g.SetcvX(0);
 	g.SetcvY(g.GetmapH() - SCREEN_H);
@@ -34,7 +34,6 @@ bool ModeGame::Terminate(Game& g) {
 	base::Terminate(g);
 
 	g.GetOS()->Clear();
-	delete g.GetChip();
 	return true;
 }
 
