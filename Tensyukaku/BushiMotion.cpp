@@ -97,7 +97,22 @@ void Bushi::Patrol(Game& g) {
 			}
 		}
 	}
+	//敵とプレイヤーの居合オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの居合オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		{
 
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Life -= 3;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
 }
 /*----------追跡----------*/
 void Bushi::Coming(Game& g) {
@@ -185,6 +200,22 @@ void Bushi::Coming(Game& g) {
 			}
 		}
 	}
+	//敵とプレイヤーの居合オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの居合オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		{
+
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Life -= 3;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
 }
 /*----------攻撃----------*/
 void Bushi::Attack(Game& g) {
@@ -239,6 +270,22 @@ void Bushi::Attack(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DAMAGE;
+			}
+		}
+	}
+	//敵とプレイヤーの居合オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの居合オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		{
+
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Life -= 3;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
 			}
 		}
 	}

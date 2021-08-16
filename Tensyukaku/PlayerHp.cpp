@@ -21,8 +21,8 @@ PlayerHp::~PlayerHp() {
 }
 
 void PlayerHp::Init() {
-	_x = 300;
-	_y = 1000;
+	_x = 0;
+	_y = 0;
 }
 void PlayerHp::Process(Game& g) {
 	ObjectBase::Process(g);

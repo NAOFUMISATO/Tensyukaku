@@ -58,7 +58,7 @@ private:
 namespace BInfo {
 	/*----------武士の各座標関係----------*/
 	constexpr auto PositionX = 1500;			//横軸初期位置（足下が基準）
-	constexpr auto PositionY = 2080;			//縦軸初期位置（足下が基準）
+	constexpr auto PositionY = 2200;			//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -30;			//描画点から当たり判定左上座標までの差分

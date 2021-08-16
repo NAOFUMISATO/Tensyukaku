@@ -209,7 +209,7 @@ int MapChip::CheckHit(int x, int y)
 		// 当たるIDかどうかをチェック
 		int idtable[] =
 		{
-			7, 8, 9,-1		// 最後
+			2,3,4,5,6,7,-1		// 最後
 		};
 		int i = 0;
 		while (idtable[i] != -1)
@@ -246,7 +246,7 @@ int MapChip::IsHit(ObjectBase& o, int mx, int my)
 	auto HB = o.GetHB();
 	l = HB._x + HB._hit_x;
 	t = HB._y + HB._gy + HB._hit_y;
-	r = HB._x + HB._hit_x + HB._hit_w ;
+	r = HB._x + HB._hit_x + HB._hit_w;
 	b = HB._y + HB._gy + HB._hit_y + HB._hit_h - 1;
 
 	// キャラの左上座標～右下座標にあたるマップチップと、当たり判定を行う
@@ -259,7 +259,7 @@ int MapChip::IsHit(ObjectBase& o, int mx, int my)
 			int chip_no = CheckHit(x, y);
 			if (chip_no != 0)
 			{	// このチップと当たった。
-				// X,Yの移動方向を見て、その反対方向に補正する
+				// X,Yの移動方向を見て、その反対方向に補正するz
 				if (mx < 0)
 				{	// 左に動いていたので、右に補正
 					o.SetX(x * CHIPSIZE_W + CHIPSIZE_W - (HB._hit_x));

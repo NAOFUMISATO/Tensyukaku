@@ -51,7 +51,7 @@ private:
 namespace NInfo {
 	/*----------忍者の各座標関係----------*/
 	constexpr auto PositionX = 1800;			//横軸初期位置（足下が基準）
-	constexpr auto PositionY = 2080;			//縦軸初期位置（足下が基準）
+	constexpr auto PositionY = 2200;			//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -40;			//描画点から当たり判定左上座標までの差分
@@ -64,7 +64,7 @@ namespace NInfo {
 	constexpr auto PatrolHeight = 100;			//索敵範囲当たり判定縦幅
 	constexpr auto ComingWidth = 200;			//攻撃発生範囲当たり判定横幅
 	constexpr auto ComingHeight = 100;			//攻撃発生範囲当たり判定縦幅
-	constexpr auto AttackWidth = 150;			//攻撃当たり判定横幅
+	constexpr auto AttackWidth = 100;			//攻撃当たり判定横幅
 	constexpr auto AttackHeight = 100;			//攻撃当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
@@ -75,14 +75,14 @@ namespace NInfo {
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto AnimeSpeed_Patrol = 5;		//巡回状態
 	constexpr auto AnimeSpeed_Move = 20;		//移動状態
-	constexpr auto AnimeSpeed_Attack = 20;		//攻撃
+	constexpr auto AnimeSpeed_Attack = 10;		//攻撃
 	constexpr auto AnimeSpeed_Dead = 60;		//死亡
 	//各モーションのフレーム数
 	constexpr auto Patrol_Frame = 120;			//巡回全フレーム
-	constexpr auto Attack_Frame = 60;			//攻撃全フレーム
+	constexpr auto Attack_Frame = 30;			//攻撃全フレーム
 	constexpr auto Dead_Frame = 60;				//死亡全フレーム
-	constexpr auto ABegin_Frame = 20;			//攻撃発生フレーム
-	constexpr auto AEnd_Frame = 20;				//攻撃終了フレーム
+	constexpr auto ABegin_Frame = 10;			//攻撃発生フレーム
+	constexpr auto AEnd_Frame = 10;				//攻撃終了フレーム
 
 	/*----------画像読み込み&描画関係----------*/
 	constexpr auto GraphWidth = 420;			//1枚当たりの画像サイズ（横）
@@ -101,7 +101,7 @@ namespace NInfo {
 	constexpr auto Coming_WidthCount = 4;		//横の画像枚数
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
 	//攻撃
-	constexpr auto Attack_GraphName = "res/Bushi/B_Attack.png";	//画像ファイル名
+	constexpr auto Attack_GraphName = "res/Ninja/N_Attack.png";	//画像ファイル名
 	constexpr auto Attack_AnimeMax = 3;			//全ての画像枚数
 	constexpr auto Attack_WidthCount = 3;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数

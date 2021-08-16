@@ -79,6 +79,22 @@ void Ninja::Patrol(Game& g) {
 			}
 		}
 	}
+	//敵とプレイヤーの居合オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの居合オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		{
+
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
 }
 void Ninja::Coming(Game& g) {
 	if (_isFlip == false) {
@@ -147,6 +163,22 @@ void Ninja::Coming(Game& g) {
 			}
 		}
 	}
+	//敵とプレイヤーの居合オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの居合オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		{
+
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
 }
 
 void Ninja::Attack(Game& g) {
@@ -181,6 +213,22 @@ void Ninja::Attack(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
+	//敵とプレイヤーの居合オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの居合オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		{
+
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;

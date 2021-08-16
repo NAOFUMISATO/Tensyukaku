@@ -91,6 +91,9 @@ private:
 	int		_MiddleAttack_SEHandle;
 	int		_LowAttack_SEHandle;
 	int		_Kick_SEHandle;
+	int		_Damage_SEHandle;
+	int		_SwordIn_SEHandle;
+	int		_Iai_SEHandle;
 };
 
 
@@ -98,7 +101,7 @@ namespace PInfo {
 
 	/*----------プレイヤーの各座標関係----------*/
 	constexpr auto PositionX = 200;				//横軸初期位置（足下が基準）
-	constexpr auto PositionY = 2080;			//縦軸初期位置（足下が基準）
+	constexpr auto PositionY = 2200;			//縦軸初期位置（足下が基準）
 	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
 	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
 	constexpr auto PositionHitX = -30;			//描画点から当たり判定左上座標までの差分
@@ -113,11 +116,11 @@ namespace PInfo {
 	constexpr auto LowAttackHeight = 100;		//下段攻撃当たり判定縦幅
 	constexpr auto KickWidth = 150;				//蹴り当たり判定横幅
 	constexpr auto KickHeight = 100;			//蹴り当たり判定縦幅
-	constexpr auto IaiWidth = 400;				//居合当たり判定横幅
+	constexpr auto IaiWidth = 600;				//居合当たり判定横幅
 	constexpr auto IaiHeight = 100;				//居合当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
-	constexpr auto LifeMax = 100;				//体力
+	constexpr auto LifeMax = 3;					//体力
 	constexpr auto Speed = 4;					//移動速度
 
 	/*----------アニメーション&当たり判定関係----------*/
@@ -127,11 +130,13 @@ namespace PInfo {
 	constexpr auto AnimeSpeed_MiddleAttack = 5;	//中段攻撃
 	constexpr auto AnimeSpeed_LowAttack = 5;	//下段攻撃
 	constexpr auto AnimeSpeed_Kick = 8;			//蹴り
+	constexpr auto AnimeSpeed_Iai = 8;			//居合
 	constexpr auto AnimeSpeed_Sway = 5;			//スウェイ
 	constexpr auto AnimeSpeed_Damage = 40;		//被ダメ
 	constexpr auto AnimeSpeed_Dead = 180;		//死亡
 	constexpr auto AnimeSpeed_Star = 10;		//無敵状態時の点滅速度
 	//各モーションのフレーム数
+	constexpr auto Move_Frame = 180;			//移動SEの管理フレーム
 	constexpr auto MiddleAttack_Frame = 40;		//中段攻撃全フレーム
 	constexpr auto LowAttack_Frame = 40;		//下段攻撃全フレーム
 	constexpr auto Kick_Frame = 48;				//蹴り全フレーム
@@ -145,7 +150,7 @@ namespace PInfo {
 	constexpr auto LAEnd_Frame= 20;				//下段攻撃判定終了フレーム(発生してからのフレーム数)
 	constexpr auto KIBegin_Frame = 24;			//蹴り判定発生フレーム
 	constexpr auto KIEnd_Frame = 16;			//蹴り判定終了フレーム(発生してからのフレーム数)
-	constexpr auto IABegin_Frame = 16;			//居合判定発生フレーム
+	constexpr auto IABegin_Frame = 44;			//居合判定発生フレーム
 	constexpr auto IAEnd_Frame = 56;			//居合判定終了フレーム(発生してからのフレーム数)
 	constexpr auto Star_Frame = 180;			//被ダメ時の無敵フレーム
 
@@ -201,8 +206,12 @@ namespace PInfo {
 	constexpr auto Dead_HeightCount = 1;		//縦の画像枚数
 	
 	/*----------SE関係----------*/
-	constexpr auto Walk_SE = "se/walk.wav";				//移動
+	constexpr auto Walk_SE = "se/Footstep.wav";			//移動
 	constexpr auto MiddleAttack_SE = "se/slash3.wav";	//中段攻撃
-	constexpr auto LowAttack_SE = "se/slash2.wav";		//下段攻撃
+	constexpr auto LowAttack_SE = "se/Slash.wav";		//下段攻撃
 	constexpr auto Kick_SE = "se/Kick.wav";				//蹴り
+	constexpr auto Damage_SE = "se/Damage.wav";			//被ダメ
+	constexpr auto SwordIn_SE = "se/SwordIn.wav";		//納刀
+	constexpr auto Iai_SE = "se/Iai.wav";				//居合
+
 }

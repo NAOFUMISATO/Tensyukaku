@@ -140,7 +140,7 @@ void Player::Process(Game& g)
 	if (GC->GetscrY() > GC->GetMSH() * GC->GetCSH() - SCREEN_H) { GC->SetscrY(GC->GetMSH() * GC->GetCSH() - SCREEN_H); }
 }
 void Player::Draw(Game& g) {
-	/*UIDraw(g);*/
+	UIDraw(g);
 	// カメラから見た座標に変更（ワールド座標→ビュー座標）
 	auto GC = g.GetChip();
 	auto x = _x + _gx - GC->GetscrX();
@@ -183,8 +183,11 @@ void Player::Draw(Game& g) {
 		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Kick_GrHandle, true, _isFlip);
 		break;
 		//居合状態
-	//case PLAYERSTATE::IAI:
-	//	break;
+	case PLAYERSTATE::IAI:
+		_Iai_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Iai) % Iai_AnimeMax;
+		_Iai_GrHandle = _Iai_GrAll[_Iai_AnimeNo];
+		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Iai_GrHandle, true, _isFlip);
+		break;
 	//	//スウェイ状態
 	//case PLAYERSTATE::SWAY:
 	//	break;
@@ -249,6 +252,9 @@ void Player::LoadActionSE() {
 	_MiddleAttack_SEHandle = ResourceServer::LoadSoundMem(MiddleAttack_SE);
 	_LowAttack_SEHandle = ResourceServer::LoadSoundMem(LowAttack_SE);
 	_Kick_SEHandle= ResourceServer::LoadSoundMem(Kick_SE);
+	_Damage_SEHandle= ResourceServer::LoadSoundMem(Damage_SE);
+	_SwordIn_SEHandle = ResourceServer::LoadSoundMem(SwordIn_SE);
+	_Iai_SEHandle = ResourceServer::LoadSoundMem(Iai_SE);
 }
 
 
@@ -256,8 +262,9 @@ void Player::LoadActionSE() {
 
 void Player::UIDraw(Game& g) {
 		PlayerHp* HP = new PlayerHp();
+		HP->SetPosition(SCREEN_W - SCREEN_W+300 , SCREEN_H - 40);
 		g.GetOS()->Add(HP);
-	if (_Life == 3) {
+	if (_Life >= 3) {
 		DrawRotaGraph(HP->GetX(), HP->GetY(), GraphScale, GraphAngle, HP->GetHp3(), true, false);
 		g.GetOS()->Del(HP);
 	}

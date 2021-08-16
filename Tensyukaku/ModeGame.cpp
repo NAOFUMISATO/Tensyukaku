@@ -15,18 +15,17 @@ bool ModeGame::Initialize(Game& g) {
 	g.GetOS()->Add(new Player);
 	g.GetOS()->Add(new Bushi);
 	g.GetOS()->Add(new Ninja);
-
+	
 	// オブジェクト処理を行う
 	_stopObjProcess = false;
 
-
-
 	// カメラ＆マップ初期化
 	g.SetmapW(3840);
-	g.SetmapH(2160);
+	g.SetmapH(2280);
 	g.SetcvX(0);
 	g.SetcvY(g.GetmapH() - SCREEN_H);
-
+	// BGM演奏開始	
+	/*_bgm = PlaySoundFile("bgm/InGame.mp3", DX_PLAYTYPE_LOOP);*/
 	return true;
 }
 
@@ -39,9 +38,9 @@ bool ModeGame::Terminate(Game& g) {
 
 bool ModeGame::Process(Game& g) {
 	base::Process(g);
-
 	if (_stopObjProcess == false)
 	{
+		
 		g.GetChip()->Process(g);
 		// オブジェクトサーバに登録されているオブジェクトのProcess()を呼び出す
 		g.GetOS()->Process(g);
@@ -53,6 +52,7 @@ bool ModeGame::Process(Game& g) {
 
 bool ModeGame::Draw(Game& g) {
 	base::Draw(g);
+	
 	_bg.Draw(g);				// 背景画像描画
 	g.GetChip()->Draw();			//マップチップ描画
 	g.GetOS()->Draw(g);				// オブジェクトの描画

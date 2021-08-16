@@ -130,7 +130,7 @@ void IaiCollision::Init() {
 
 void IaiCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == KIEnd_Frame) {
+	if (_Cnt - _Action_Cnt == IAEnd_Frame) {
 		g.GetOS()->Del(this);
 	}
 }
