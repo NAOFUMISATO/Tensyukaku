@@ -18,6 +18,8 @@ MiddleAttackCollision::~MiddleAttackCollision() {
 void MiddleAttackCollision::Init() {
 	_w = MiddleAttackWidth;
 	_h = MiddleAttackHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = MiddleAttackWidth;
@@ -32,11 +34,7 @@ void MiddleAttackCollision::Process(Game& g) {
 	}
 }
 void MiddleAttackCollision::Draw(Game& g) {
-#ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// ”¼“§–¾•`‰æŽw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_w, _y + _hit_h, GetColor(255, 0, 0), FALSE);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æŽw’è
-#endif
+	ObjectBase::Draw(g);
 }
 void MiddleAttackCollision::Delete(Game& g) {
 	g.GetOS()->Del(this);
@@ -52,6 +50,8 @@ LowAttackCollision::~LowAttackCollision() {
 void LowAttackCollision::Init() {
 	_w = LowAttackWidth;
 	_h = LowAttackHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = LowAttackWidth;
@@ -66,12 +66,7 @@ void LowAttackCollision::Process(Game& g) {
 	}
 }
 void LowAttackCollision::Draw(Game& g) {
-#ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// ”¼“§–¾•`‰æŽw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_w, _y + _hit_h, GetColor(255, 0, 0), FALSE);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æŽw’è
-#endif
-
+	ObjectBase::Draw(g);
 }
 void LowAttackCollision::Delete(Game& g) {
 	g.GetOS()->Del(this);
@@ -87,6 +82,8 @@ KickCollision::~KickCollision() {
 void KickCollision::Init() {
 	_w = KickWidth;
 	_h = KickHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = KickWidth;
@@ -101,11 +98,7 @@ void KickCollision::Process(Game& g) {
 	}
 }
 void KickCollision::Draw(Game& g) {
-#ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// ”¼“§–¾•`‰æŽw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_w, _y + _hit_h, GetColor(255, 0, 0), FALSE);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æŽw’è
-#endif
+	ObjectBase::Draw(g);
 }
 void KickCollision::Delete(Game& g) {
 	g.GetOS()->Del(this);
@@ -121,6 +114,8 @@ IaiCollision::~IaiCollision() {
 void IaiCollision::Init() {
 	_w = IaiWidth;
 	_h = IaiHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = IaiWidth;
@@ -135,11 +130,7 @@ void IaiCollision::Process(Game& g) {
 	}
 }
 void IaiCollision::Draw(Game& g) {
-#ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// ”¼“§–¾•`‰æŽw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_w, _y + _hit_h, GetColor(255, 0, 0), FALSE);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æŽw’è
-#endif
+	ObjectBase::Draw(g);
 }
 void IaiCollision::Delete(Game& g) {
 	g.GetOS()->Del(this);

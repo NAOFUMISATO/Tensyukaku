@@ -25,7 +25,7 @@ bool ModeGame::Initialize(Game& g) {
 	g.SetcvX(0);
 	g.SetcvY(g.GetmapH() - SCREEN_H);
 	// BGM‰‰‘tŠJŽn	
-	/*_bgm = PlaySoundFile("bgm/InGame.mp3", DX_PLAYTYPE_LOOP);*/
+	_bgm = PlaySoundFile("bgm/InGame70dB.mp3", DX_PLAYTYPE_LOOP);
 	return true;
 }
 

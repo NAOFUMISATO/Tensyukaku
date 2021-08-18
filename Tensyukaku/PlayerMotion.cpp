@@ -2,10 +2,12 @@
 #include "Player.h"
 #include "Game.h"
 #include "PlayerMotionCollision.h"
+#include "ObjectBase.h"
 
 using namespace PInfo;
 /*----------待機----------*/
 void Player::Idle(Game& g) {
+	_GrHandle = _Idle_GrAll[_Idle_AnimeNo];
 	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
@@ -49,6 +51,7 @@ void Player::Idle(Game& g) {
 }
 /*----------移動----------*/
 void Player::Move(Game& g) {
+	_GrHandle = _Move_GrAll[_Move_AnimeNo];
 	if (_Cnt - _Action_Cnt == Move_Frame) {
 	PlaySoundMem(_Walk_SEHandle, DX_PLAYTYPE_BACK, true);
 	_Action_Cnt = _Cnt;
@@ -123,7 +126,7 @@ void Player::Move(Game& g) {
 }
 /*----------中段攻撃----------*/
 void Player::MidAttack(Game& g) {
-
+	_GrHandle = _MiddleAttack_GrAll[_MiddleAttack_AnimeNo];
 	if (_Cnt - _Action_Cnt == MABegin_Frame) {
 		PlaySoundMem(_MiddleAttack_SEHandle, DX_PLAYTYPE_BACK, true);
 		//中段攻撃判定オブジェクトの生成
@@ -165,6 +168,7 @@ void Player::MidAttack(Game& g) {
 }
 /*----------下段攻撃----------*/
 void Player::LowAttack(Game& g) {
+	_GrHandle = _LowAttack_GrAll[_LowAttack_AnimeNo];
 	//下段攻撃判定オブジェクトの生成
 	if (_Cnt - _Action_Cnt == LABegin_Frame) {
 		PlaySoundMem(_LowAttack_SEHandle, DX_PLAYTYPE_BACK, true);
@@ -207,6 +211,7 @@ void Player::LowAttack(Game& g) {
 
 /*----------蹴り----------*/
 void Player::Kick(Game& g) {
+	_GrHandle = _Kick_GrAll[_Kick_AnimeNo];
 	//蹴り判定オブジェクトの生成
 	if (_Cnt - _Action_Cnt == KIBegin_Frame) {
 		PlaySoundMem(_Kick_SEHandle, DX_PLAYTYPE_BACK, true);
@@ -249,7 +254,8 @@ void Player::Kick(Game& g) {
 
 /*----------居合----------*/
 void Player::Iai(Game& g) {
-	if (_Cnt - _Action_Cnt >= IABegin_Frame && IAEnd_Frame >= _Cnt - _Action_Cnt) {
+	_GrHandle = _Iai_GrAll[_Iai_AnimeNo];
+	if (_Cnt - _Action_Cnt >= IABegin_Frame && Iai_Frame >= _Cnt - _Action_Cnt) {
 		if (_isFlip == false) {
 			_x -= 40;
 			g.GetChip()->IsHit(*this, -1, 0);
@@ -259,6 +265,7 @@ void Player::Iai(Game& g) {
 			g.GetChip()->IsHit(*this, 1, 0);
 		}
 		if (_Cnt - _Action_Cnt == IABegin_Frame) {
+			StopSoundMem(_SwordIn_SEHandle);
 			PlaySoundMem(_Iai_SEHandle, DX_PLAYTYPE_BACK, true);
 			IaiCollision* IAC = new IaiCollision();
 			if (_isFlip == false) {
@@ -305,6 +312,7 @@ void Player::Iai(Game& g) {
 
 /*----------被ダメ----------*/
 void Player::Damage(Game& g) {
+	_GrHandle = _Damage_GrAll[_Damage_AnimeNo];
 	if (_Cnt - _Action_Cnt == Damage_Frame) {
 		_Star_Cnt = _Cnt;
 		if (_Life > 0) {
@@ -322,6 +330,7 @@ void Player::Damage(Game& g) {
 
 /*----------死亡----------*/
 void Player::Dead(Game& g) {
+	_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
 	if (_Cnt - _Action_Cnt == Dead_Frame) {
 		Delete(g);
 	}

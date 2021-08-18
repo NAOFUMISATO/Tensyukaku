@@ -10,10 +10,10 @@ public:
 	~ObjectBase();
 	//オブジェクトの種類列挙
 	enum class OBJECTTYPE {
-		PLAYER, ENEMY, MIDDLEATTACK, LOWATTACK,KICK,IAI,
+		PLAYER, ENEMY,UI,PARTICLE,
+		MIDDLEATTACK, LOWATTACK, KICK, IAI,
 		BUSHIPATROL, BUSHICOMING, BUSHIATTACK,
-		NINJAPATROL, NINJACOMING, NINJAATTACK,
-		PLAYERHP,IAIGAUGE
+		NINJAPATROL, NINJACOMING, NINJAATTACK
 	};
 	virtual OBJECTTYPE	GetObjType() = 0;
 
@@ -39,6 +39,7 @@ public:
 	void	SetY(int y) { _y = y; }
 
 protected:
+	int		_GrHandle;	// 画像ハンドル
 	int		_x, _y;		// 座標（基準位置）
 	int		_gx, _gy;	// 基準位置から描画時の差分
 	int		_w, _h;		// 大きさ

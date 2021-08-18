@@ -67,6 +67,18 @@
     <Filter Include="ソース ファイル\Object\UI">
       <UniqueIdentifier>{60eadb5e-53fb-4586-b85a-313424b70244}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Collision">
+      <UniqueIdentifier>{bb59c9a7-0543-4a13-bbbc-f0479c6219bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Collision">
+      <UniqueIdentifier>{a4461ce0-113e-4e53-914c-4475bc165e7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Particle">
+      <UniqueIdentifier>{b0d0d112-d46a-458b-9734-c4b61372abe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Particle">
+      <UniqueIdentifier>{2fab9641-8516-446a-b9ae-64caa4de552b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -111,22 +123,10 @@
     <ClCompile Include="BushiMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
-    <ClCompile Include="BushiMotionCollision.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
-    </ClCompile>
     <ClCompile Include="NinjaMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="NinjaMotionCollision.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerMotion.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectBase.cpp">
-      <Filter>ソース ファイル\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerMotionCollision.cpp">
       <Filter>ソース ファイル\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerHp.cpp">
@@ -138,13 +138,28 @@
     <ClCompile Include="EnemyBase.cpp">
       <Filter>ソース ファイル\Object\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="BushiMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleBase.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectBase.cpp">
+      <Filter>ソース ファイル\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="HitBushiParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectBase.h">
-      <Filter>ヘッダー ファイル\Object</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>ヘッダー ファイル\Object\Player</Filter>
@@ -176,29 +191,38 @@
     <ClInclude Include="ResourceServer.h">
       <Filter>ヘッダー ファイル\Server</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyBase.h">
-      <Filter>ヘッダー ファイル\Object\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Bushi.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
     <ClInclude Include="Ninja.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
-    <ClInclude Include="BushiMotionCollision.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
-    </ClInclude>
-    <ClInclude Include="NinjaMotionCollision.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerMotionCollision.h">
-      <Filter>ヘッダー ファイル\Object\Player</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerHp.h">
       <Filter>ヘッダー ファイル\Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="IaiGauge.h">
       <Filter>ヘッダー ファイル\Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="BushiMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectBase.h">
+      <Filter>ヘッダー ファイル\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBase.h">
+      <Filter>ヘッダー ファイル\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleBase.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="HitBushiParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

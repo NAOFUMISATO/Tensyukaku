@@ -21,6 +21,8 @@ BushiPatrolCollision::~BushiPatrolCollision() {
 void BushiPatrolCollision::Init() {
 	_w = PatrolWidth;
 	_h = PatrolHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = PatrolWidth;
@@ -42,6 +44,8 @@ BushiComingCollision::~BushiComingCollision() {
 void BushiComingCollision::Init() {
 	_w = ComingWidth;
 	_h = ComingHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = ComingWidth;
@@ -63,6 +67,8 @@ BushiAttackCollision::~BushiAttackCollision() {
 void BushiAttackCollision::Init() {
 	_w = AttackWidth;
 	_h = AttackHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = AttackWidth;
@@ -77,11 +83,7 @@ void BushiAttackCollision::Process(Game& g) {
 	}
 }
 void BushiAttackCollision::Draw(Game& g) {
-#ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// ”¼“§–¾•`‰æŽw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_w, _y + _hit_h, GetColor(255, 0, 0), FALSE);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æŽw’è
-#endif
+	ObjectBase::Draw(g);
 }
 void BushiAttackCollision::Delete(Game& g) {
 	g.GetOS()->Del(this);

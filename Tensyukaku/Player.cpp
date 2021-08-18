@@ -5,42 +5,32 @@
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Player.h"
-#include "PLayerMotionCollision.h"
 #include "Game.h"
 #include "ObjectBase.h"
 #include "ModeGame.h"
 #include "PlayerHp.h"
-#include "Ninja.h"
-#include "Bushi.h"
 #include <vector>
 #include <sstream>
 
-
-
 using namespace PInfo;
 Player::Player() :
-	_Idle_GrHandle(-1),
 	_Idle_AnimeNo(0),
-	_Move_GrHandle(-1),
 	_Move_AnimeNo(0),
-	_MiddleAttack_GrHandle(-1),
 	_MiddleAttack_AnimeNo(0),
-	_LowAttack_GrHandle(-1),
 	_LowAttack_AnimeNo(0),
-	_Kick_GrHandle(-1),
 	_Kick_AnimeNo(0),
-	/*_Iai_GrHandle(-1),
 	_Iai_AnimeNo(0),
-	_Sway_GrHandle(-1),
+	/*_Sway_GrHandle(-1),
 	_Sway_AnimeNo(0),*/
-	_Damage_GrHandle(-1),
 	_Damage_AnimeNo(0),
-	_Dead_GrHandle(-1),
 	_Dead_AnimeNo(0),
 	_Walk_SEHandle(-1),
 	_MiddleAttack_SEHandle(-1),
 	_LowAttack_SEHandle(-1),
 	_Kick_SEHandle(-1),
+	_Damage_SEHandle(-1),
+	_SwordIn_SEHandle(-1),
+	_Iai_SEHandle(-1),
 	_State(PLAYERSTATE::IDLE),
 	_Star_Flag(false)
 {
@@ -50,13 +40,13 @@ Player::Player() :
 }
 
 Player::~Player()
-{
-	
+{	
 }
 
 void Player::Init()
 {
 	// プレイヤー情報の初期化
+	_GrHandle = -1;
 	_w = GraphWidth;
 	_h = GraphHeight;
 	_x = PositionX;
@@ -76,8 +66,8 @@ void Player::Init()
 void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
-
 	
+	AnimeUpdate(g);
 
 	/*---状態毎の処理---*/
 		//無敵状態
@@ -125,97 +115,37 @@ void Player::Process(Game& g)
 		break;
 	}
 	// 主人公位置からカメラ座標決定
-	g.SetcvX(_x - (SCREEN_W / 2));
-	g.SetcvY(_y - (SCREEN_H * 92.55 / 100));
+	g.SetcvX(_x - (SCREEN_W * BackCameraX / 100));
+	g.SetcvY(_y - (SCREEN_H * BackCameraY / 100));
 	if (g.GetcvX() < 0) { g.SetcvX(0); }
 	if (g.GetcvX() > g.GetmapW()-SCREEN_W) { g.SetcvX(g.GetmapW() - SCREEN_W); }
 	if (g.GetcvY() < 0) { g.SetcvY(0); }
 	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
 	auto GC = g.GetChip();
-	GC->SetscrX(_x - (SCREEN_W / 2));		// 画面の横中央にキャラを置く
-	GC->SetscrY(_y - (SCREEN_H * 92.55 / 100));	// 画面の縦92.55%にキャラを置く
+	GC->SetscrX(_x - (SCREEN_W * ChipCameraX / 100));		// 画面の横中央にキャラを置く
+	GC->SetscrY(_y - (SCREEN_H * ChipCameraY / 100));	// 画面の縦92.55%にキャラを置く
 	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
 	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
 	if (GC->GetscrY() < 0) { GC->SetscrY(0); }
 	if (GC->GetscrY() > GC->GetMSH() * GC->GetCSH() - SCREEN_H) { GC->SetscrY(GC->GetMSH() * GC->GetCSH() - SCREEN_H); }
 }
+
 void Player::Draw(Game& g) {
 	UIDraw(g);
-	// カメラから見た座標に変更（ワールド座標→ビュー座標）
-	auto GC = g.GetChip();
-	auto x = _x + _gx - GC->GetscrX();
-	auto y = _y + _gy - GC->GetscrY();
-
-	//プレイヤーの状態によるアニメーション遷移
-		//無敵状態
+	//無敵状態の描画処理
 	if (_Star_Flag == true && (_Cnt / AnimeSpeed_Star % 2) == 0) {
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
 	}
-	switch (_State) {
-		//待機状態
-	case PLAYERSTATE::IDLE:
-		_Idle_AnimeNo = (_Cnt / AnimeSpeed_Idle) % Idle_AnimeMax;
-		_Idle_GrHandle = _Idle_GrAll[_Idle_AnimeNo];
-		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Idle_GrHandle, true, _isFlip);
-		break;
-		//移動状態
-	case PLAYERSTATE::MOVE:
-		_Move_AnimeNo = (_Cnt / AnimeSpeed_Move) % Move_AnimeMax;
-		_Move_GrHandle = _Move_GrAll[_Move_AnimeNo];
-		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Move_GrHandle, true, _isFlip);
-		break;
-		//中段攻撃状態
-	case PLAYERSTATE::MIDDLEATTACK:
-		_MiddleAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_MiddleAttack) % MiddleAttack_AnimeMax;
-		_MiddleAttack_GrHandle = _MiddleAttack_GrAll[_MiddleAttack_AnimeNo];
-		DrawRotaGraph(x, y, GraphScale, GraphAngle, _MiddleAttack_GrHandle, true, _isFlip);
-		break;
-		//下段攻撃状態
-	case PLAYERSTATE::LOWATTACK:
-		_LowAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_LowAttack) % LowAttack_AnimeMax;
-		_LowAttack_GrHandle = _LowAttack_GrAll[_LowAttack_AnimeNo];
-		DrawRotaGraph(x, y, GraphScale, GraphAngle, _LowAttack_GrHandle, true, _isFlip);
-		break;
-		//蹴り状態
-	case PLAYERSTATE::KICK:
-		_Kick_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Kick) % Kick_AnimeMax;
-		_Kick_GrHandle = _Kick_GrAll[_Kick_AnimeNo];
-		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Kick_GrHandle, true, _isFlip);
-		break;
-		//居合状態
-	case PLAYERSTATE::IAI:
-		_Iai_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Iai) % Iai_AnimeMax;
-		_Iai_GrHandle = _Iai_GrAll[_Iai_AnimeNo];
-		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Iai_GrHandle, true, _isFlip);
-		break;
-	//	//スウェイ状態
-	//case PLAYERSTATE::SWAY:
-	//	break;
-		//被ダメ状態
-	case PLAYERSTATE::DAMAGE:
-		_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
-		_Damage_GrHandle = _Damage_GrAll[_Damage_AnimeNo];
-		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Damage_GrHandle, true, _isFlip);
-		break;
-		//死亡状態
-	case PLAYERSTATE::DEAD:
-		_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
-		_Dead_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
-		DrawRotaGraph(x, y, GraphScale, GraphAngle, _Dead_GrHandle, true, _isFlip);
-		break;
-	}
-	
-	/*-----デバッグ描画-----*/
+	ObjectBase::Draw(g);
 #ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
-	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(255, 0, 0), FALSE);	// 半透明の赤で当たり判定描画
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 	std::stringstream ss;
 	ss << "_Cnt=" << _Cnt << "\n";
 	ss << "_scrX=" << g.GetChip()->GetscrX() << "\n";
 	ss << "_scrY=" << g.GetChip()->GetscrY() << "\n";
 	ss << "PlayerX=" << _x << "\n";
 	ss << "PlayerY=" << _y << "\n";
+	ss << "MidNo=" <<_MiddleAttack_AnimeNo<< "\n";
+	ss << "LowNo=" << _LowAttack_AnimeNo << "\n";
 	DrawString(10, 10, ss.str().c_str(), GetColor(255, 50, 255));
 #endif
 
@@ -257,6 +187,17 @@ void Player::LoadActionSE() {
 	_Iai_SEHandle = ResourceServer::LoadSoundMem(Iai_SE);
 }
 
+//プレイヤーのアニメーション関数
+void Player::AnimeUpdate(Game& g) {
+	_Idle_AnimeNo = (_Cnt / AnimeSpeed_Idle) % Idle_AnimeMax;
+	_Move_AnimeNo = (_Cnt / AnimeSpeed_Move) % Move_AnimeMax;
+	_MiddleAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_MiddleAttack) % MiddleAttack_AnimeMax;
+	_LowAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_LowAttack) % LowAttack_AnimeMax;
+	_Kick_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Kick) % Kick_AnimeMax;
+	_Iai_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Iai) % Iai_AnimeMax;
+	_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
+	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
+}
 
 //プレイヤーのUI描画関数
 
@@ -277,6 +218,4 @@ void Player::UIDraw(Game& g) {
 		g.GetOS()->Del(HP);
 	}
 	else if(_Life <= 0) { g.GetOS()->Del(HP); }
-
-	
 }

@@ -16,6 +16,8 @@ NinjaPatrolCollision::~NinjaPatrolCollision() {
 void NinjaPatrolCollision::Init() {
 	_w = PatrolWidth;
 	_h = PatrolHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = PatrolWidth;
@@ -35,6 +37,8 @@ NinjaComingCollision::~NinjaComingCollision() {
 void NinjaComingCollision::Init() {
 	_w = ComingWidth;
 	_h = ComingHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = ComingWidth;
@@ -54,6 +58,8 @@ NinjaAttackCollision::~NinjaAttackCollision() {
 void NinjaAttackCollision::Init() {
 	_w = AttackWidth;
 	_h = AttackHeight;
+	_gx = 0;
+	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
 	_hit_w = AttackWidth;
@@ -68,11 +74,7 @@ void NinjaAttackCollision::Process(Game& g) {
 	}
 }
 void NinjaAttackCollision::Draw(Game& g) {
-#ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// ”¼“§–¾•`‰æŽw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_w, _y + _hit_h, GetColor(255, 0, 0), FALSE);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æŽw’è
-#endif
+	ObjectBase::Draw(g);
 }
 void NinjaAttackCollision::Delete(Game& g) {
 	g.GetOS()->Del(this);

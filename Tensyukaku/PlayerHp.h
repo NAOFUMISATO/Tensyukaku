@@ -6,7 +6,7 @@ class PlayerHp :public ObjectBase {
 public:
 	PlayerHp();
 	~PlayerHp();
-	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::PLAYERHP; }
+	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::UI; }
 	void Init()override;
 	void Process(Game& g)override;
 	int GetHp1() { return _Hp1_GrHandle; }

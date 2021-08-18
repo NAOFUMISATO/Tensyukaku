@@ -1,6 +1,6 @@
 #pragma once
 #include "ObjectBase.h"
-//敵クラス
+//敵の基底クラス
 
 class EnemyBase : public ObjectBase {
 protected:
@@ -20,8 +20,9 @@ public:
 
 	virtual	void	Init();
 	virtual	void	Process(Game& g);
+	virtual	void	Draw(Game& g);
 	virtual	void	Delete(Game& g) {};
-	/*virtual	void	Draw(Game& g);*/
+	
 
 protected:
 	ENEMYTYPE _Type;

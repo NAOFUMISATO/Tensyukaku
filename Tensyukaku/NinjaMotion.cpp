@@ -7,6 +7,7 @@
 
 using namespace NInfo;
 void Ninja::Patrol(Game& g) {
+	_GrHandle = _Patrol_GrAll[_Patrol_AnimeNo];
 	if (_Cnt - _Action_Cnt == Patrol_Frame) {
 		_isFlip = true;
 	}
@@ -97,6 +98,7 @@ void Ninja::Patrol(Game& g) {
 	}
 }
 void Ninja::Coming(Game& g) {
+	_GrHandle = _Coming_GrAll[_Coming_AnimeNo];
 	if (_isFlip == false) {
 		_x -= _Spd;
 		//武士の攻撃発生範囲判定オブジェクトの生成
@@ -182,6 +184,7 @@ void Ninja::Coming(Game& g) {
 }
 
 void Ninja::Attack(Game& g) {
+	_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
 	if (_Cnt - _Action_Cnt == ABegin_Frame) {
 		//武士の攻撃判定オブジェクトの生成
 		NinjaAttackCollision* NAC = new NinjaAttackCollision();
@@ -238,7 +241,7 @@ void Ninja::Attack(Game& g) {
 }
 
 void Ninja::Dead(Game& g) {
-	
+	_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
 	if (_Cnt - _Action_Cnt == Dead_Frame)
 	{
 		Delete(g);

@@ -16,5 +16,7 @@ void EnemyBase::Init()
 }
 void EnemyBase::Process(Game& g) {
 	ObjectBase::Process(g);
-	
+}
+void EnemyBase::Draw(Game& g) {
+	ObjectBase::Draw(g);
 }

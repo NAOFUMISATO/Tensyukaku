@@ -153,6 +153,7 @@
     <ClCompile Include="BushiMotionCollision.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HitBushiParticle.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapChip.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="NinjaMotionCollision.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="ObjectServer.cpp" />
+    <ClCompile Include="ParticleBase.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerHp.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />
@@ -178,6 +180,7 @@
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HitBox.h" />
+    <ClInclude Include="HitBushiParticle.h" />
     <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="MapChip.h" />
     <ClInclude Include="ModeBase.h" />
@@ -188,6 +191,7 @@
     <ClInclude Include="NinjaMotionCollision.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectServer.h" />
+    <ClInclude Include="ParticleBase.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerHp.h" />
     <ClInclude Include="PlayerMotionCollision.h" />

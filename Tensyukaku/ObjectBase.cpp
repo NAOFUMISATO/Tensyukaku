@@ -5,6 +5,10 @@
 #include "DxLib.h"
 #include "ObjectBase.h"
 #include "Game.h"
+namespace {
+	constexpr auto GraphScale = 1.0;
+	constexpr auto GraphAngle = 0;
+}
 
 ObjectBase::ObjectBase()
 {
@@ -17,6 +21,7 @@ ObjectBase::~ObjectBase()
 
 void ObjectBase::Init()
 {
+	_GrHandle = -1;
 	_g = 0;
 	_Cnt = 0;
 	_stand = 0;
@@ -51,6 +56,17 @@ void ObjectBase::Process(Game& g)
 }
 
 void ObjectBase::Draw(Game& g) {
+	// カメラから見た座標に変更（ワールド座標→ビュー座標）
+	auto GC = g.GetChip();
+	auto x = _x + _gx - GC->GetscrX();
+	auto y = _y + _gy - GC->GetscrY();
+	DrawRotaGraph(x, y, GraphScale, GraphAngle, _GrHandle, true, _isFlip);
+
+#ifdef _DEBUG
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
+	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(255, 0, 0), FALSE);	// 半透明の赤で当たり判定描画
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
+#endif
 }
 bool ObjectBase::IsHit(ObjectBase& o) {
 	// このオブジェクトと、別オブジェクトoを、x,y,w,hで比較する

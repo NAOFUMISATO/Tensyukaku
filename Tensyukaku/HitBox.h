@@ -1,6 +1,6 @@
 #pragma once
 
-//当たり判定構造体
+//マップチップ用当たり判定構造体
 struct HitBox {
 	int _x;
 	int _y;

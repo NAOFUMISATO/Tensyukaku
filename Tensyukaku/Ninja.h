@@ -16,31 +16,29 @@ public:
 	bool	isDead() { return _State == ENEMYSTATE::DEAD; };
 
 private:
-	void	Patrol(Game& g);	//巡回状態時の処理
-	void	Coming(Game& g);	//追跡状態時の処理
-	void	Attack(Game& g);	//攻撃状態時の処理
-	void	Dead(Game& g);		//死亡状態時の処理
-	void	LoadActionGraph();	//武士の画像読み込み関数
+	void	Patrol(Game& g);		//巡回状態時の処理
+	void	Coming(Game& g);		//追跡状態時の処理
+	void	Attack(Game& g);		//攻撃状態時の処理
+	void	Dead(Game& g);			//死亡状態時の処理
+	void	LoadActionGraph();		//忍者の画像読み込み関数
+	void	LoadActionSE();			//忍者のSE読み込み関数
+	void	AnimeUpdate(Game& g);	//忍者のアニメーション関数
 	
 	/*----------メンバ変数----------*/
 
 	//巡回状態描画用変数
-	int		_Patrol_GrHandle;
 	std::vector<int>	_Patrol_GrAll;
 	int		_Patrol_AnimeNo;
 
 	//移動状態描画用変数
-	int		_Coming_GrHandle;
 	std::vector<int>	_Coming_GrAll;
 	int		_Coming_AnimeNo;
 
 	//攻撃状態描画用変数
-	int		_Attack_GrHandle;
 	std::vector<int>	_Attack_GrAll;
 	int		_Attack_AnimeNo;
 
 	//死亡状態描画用変数
-	int		_Dead_GrHandle;
 	std::vector<int>	_Dead_GrAll;
 	int		_Dead_AnimeNo;
 
@@ -75,13 +73,13 @@ namespace NInfo {
 	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto AnimeSpeed_Patrol = 5;		//巡回状態
 	constexpr auto AnimeSpeed_Move = 20;		//移動状態
-	constexpr auto AnimeSpeed_Attack = 10;		//攻撃
+	constexpr auto AnimeSpeed_Attack = 15;		//攻撃
 	constexpr auto AnimeSpeed_Dead = 60;		//死亡
 	//各モーションのフレーム数
 	constexpr auto Patrol_Frame = 120;			//巡回全フレーム
-	constexpr auto Attack_Frame = 30;			//攻撃全フレーム
-	constexpr auto Dead_Frame = 60;				//死亡全フレーム
-	constexpr auto ABegin_Frame = 10;			//攻撃発生フレーム
+	constexpr auto Attack_Frame = 40;			//攻撃全フレーム
+	constexpr auto Dead_Frame = 50;				//死亡全フレーム
+	constexpr auto ABegin_Frame = 30;			//攻撃発生フレーム
 	constexpr auto AEnd_Frame = 10;				//攻撃終了フレーム
 
 	/*----------画像読み込み&描画関係----------*/

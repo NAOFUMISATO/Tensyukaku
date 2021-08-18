@@ -4,10 +4,15 @@
 #include "Game.h"
 #include "BushiMotionCollision.h"
 #include "ObjectBase.h"
+#include "HitBushiParticle.h"
+#include <tuple>
+#include <utility>
 
 using namespace BInfo;
+using namespace ParInfo;
 /*----------巡回----------*/
 void Bushi::Patrol(Game& g) {
+	_GrHandle = _Patrol_GrAll[_Patrol_AnimeNo];
 	if (_Cnt - _Action_Cnt == Patrol_Frame) {
 		_isFlip = true;
 	}
@@ -116,6 +121,7 @@ void Bushi::Patrol(Game& g) {
 }
 /*----------追跡----------*/
 void Bushi::Coming(Game& g) {
+	_GrHandle = _Coming_GrAll[_Coming_AnimeNo];
 	if (_isFlip == false) {
 		_x -= _Spd;
 		//武士の攻撃発生範囲判定オブジェクトの生成
@@ -219,6 +225,7 @@ void Bushi::Coming(Game& g) {
 }
 /*----------攻撃----------*/
 void Bushi::Attack(Game& g) {
+	_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
 	if (_Cnt - _Action_Cnt == ABegin_Frame) {
 		//武士の攻撃判定オブジェクトの生成
 		BushiAttackCollision* BAC = new BushiAttackCollision();
@@ -292,6 +299,14 @@ void Bushi::Attack(Game& g) {
 }
 /*----------被ダメ----------*/
 void Bushi::Damage(Game& g) {
+	for (int i = 0; i < 5; i++)
+	{
+		std::pair<int, int> xy = std::make_pair(_x,_y);
+		std::pair<double, double> dxy = std::make_pair(((rand() % HBP_Xrand1) - HBP_Xrand2) / HBP_Xrand3, ((rand() % HBP_Yrand1) - HBP_Yrand2) / HBP_Yrand3);
+		HitBushiParticle* p = new HitBushiParticle(xy, dxy);
+		g.GetOS()->Add(p);
+	}
+	_GrHandle = _Damage_GrAll[_Damage_AnimeNo];
 	if (_Cnt - _Action_Cnt == Damage_Frame) {
 		if (_Life <= 0) {
 			_Action_Cnt = _Cnt;
@@ -305,6 +320,7 @@ void Bushi::Damage(Game& g) {
 }
 /*----------死亡----------*/
 void Bushi::Dead(Game& g) {
+	_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
 	if (_Cnt - _Action_Cnt == Dead_Frame) {
 		Delete(g);
 	}
