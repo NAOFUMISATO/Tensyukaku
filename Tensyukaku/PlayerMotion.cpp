@@ -3,8 +3,11 @@
 #include "Game.h"
 #include "PlayerMotionCollision.h"
 #include "ObjectBase.h"
+#include "MiddleAttackParticle.h"
+#include "LowAttackParticle.h"
 
 using namespace PInfo;
+using namespace ParInfo;
 /*----------待機----------*/
 void Player::Idle(Game& g) {
 	_GrHandle = _Idle_GrAll[_Idle_AnimeNo];
@@ -136,12 +139,44 @@ void Player::MidAttack(Game& g) {
 			MAC->SetPosition(_x + _hit_x - MAC->GetW(), _y - _hit_h);
 			// オブジェクトサーバ-に中段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(MAC);
+			for (int i = 0; i < 5; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % MAP1_Xrand1) - MAP1_Xrand2) / MAP1_Xrand3, ((rand() % MAP1_Yrand1) - MAP1_Yrand2) / MAP1_Yrand3);
+				MiddleAttackParticle1* m1 = new MiddleAttackParticle1(xy, dxy);
+				m1->SetFlip(false);
+				g.GetOS()->Add(m1);
+			}
+			for (int i = 0; i < 5; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % MAP2_Xrand1) - MAP2_Xrand2) / MAP2_Xrand3, ((rand() % MAP2_Yrand1) - MAP2_Yrand2) / MAP2_Yrand3);
+				MiddleAttackParticle2* m2 = new MiddleAttackParticle2(xy, dxy);
+				m2->SetFlip(false);
+				g.GetOS()->Add(m2);
+			}
 		};
 		if (_isFlip == true) {
 			// 中段攻撃判定オブジェクトの開始位置をプレイヤー位置から算出
 			MAC->SetPosition(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に中段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(MAC);
+			for (int i = 0; i < 5; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % MAP1_Xrand1) - MAP1_Xrand2) / MAP1_Xrand3, ((rand() % MAP1_Yrand1) - MAP1_Yrand2) / MAP1_Yrand3);
+				MiddleAttackParticle1* m1 = new MiddleAttackParticle1(xy, dxy);
+				m1->SetFlip(true);
+				g.GetOS()->Add(m1);
+			}
+			for (int i = 0; i < 5; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % MAP2_Xrand1) - MAP2_Xrand2) / MAP2_Xrand3, ((rand() % MAP2_Yrand1) - MAP2_Yrand2) / MAP2_Yrand3);
+				MiddleAttackParticle2* m2 = new MiddleAttackParticle2(xy, dxy);
+				m2->SetFlip(true);
+				g.GetOS()->Add(m2);
+			}
 		}
 	}
 	if (_Cnt - _Action_Cnt == MiddleAttack_Frame) {
@@ -178,12 +213,44 @@ void Player::LowAttack(Game& g) {
 			LAC->SetPosition(_x + _hit_x - LAC->GetW(), _y - LAC->GetH());
 			// オブジェクトサーバ-に下段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(LAC);
+			for (int i = 0; i < 5; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LAP1_Xrand1) - LAP1_Xrand2) / LAP1_Xrand3, ((rand() % -LAP1_Yrand1) - LAP1_Yrand2) / LAP1_Yrand3);
+				LowAttackParticle1* l1 = new LowAttackParticle1(xy, dxy);
+				l1->SetFlip(false);
+				g.GetOS()->Add(l1);
+			}
+			for (int i = 0; i < 5; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LAP2_Xrand1) - LAP2_Xrand2) / LAP2_Xrand3, ((rand() % LAP2_Yrand1) - LAP2_Yrand2) / LAP2_Yrand3);
+				LowAttackParticle2* l2 = new LowAttackParticle2(xy, dxy);
+				l2->SetFlip(false);
+				g.GetOS()->Add(l2);
+			}
 		};
 		if (_isFlip == true) {
 			// 下段攻撃判定オブジェクトの開始位置をプレイヤー位置から算出
 			LAC->SetPosition(_x - _hit_x, _y - LAC->GetH());
 			// オブジェクトサーバ-に下段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(LAC);
+			for (int i = 0; i < 5; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LAP1_Xrand1) - LAP1_Xrand2) / LAP1_Xrand3, ((rand() % -LAP1_Yrand1) - LAP1_Yrand2) / LAP1_Yrand3);
+				LowAttackParticle1* l1 = new LowAttackParticle1(xy, dxy);
+				l1->SetFlip(true);
+				g.GetOS()->Add(l1);
+			}
+			for (int i = 0; i < 5; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LAP2_Xrand1) - LAP2_Xrand2) / LAP2_Xrand3, ((rand() % LAP2_Yrand1) - LAP2_Yrand2) / LAP2_Yrand3);
+				LowAttackParticle2* l2 = new LowAttackParticle2(xy, dxy);
+				l2->SetFlip(true);
+				g.GetOS()->Add(l2);
+			}
 		}
 	}
 	if (_Cnt - _Action_Cnt == LowAttack_Frame) {

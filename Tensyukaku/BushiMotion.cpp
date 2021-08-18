@@ -4,12 +4,11 @@
 #include "Game.h"
 #include "BushiMotionCollision.h"
 #include "ObjectBase.h"
-#include "HitBushiParticle.h"
 #include <tuple>
 #include <utility>
 
 using namespace BInfo;
-using namespace ParInfo;
+
 /*----------èÑâÒ----------*/
 void Bushi::Patrol(Game& g) {
 	_GrHandle = _Patrol_GrAll[_Patrol_AnimeNo];
@@ -299,13 +298,6 @@ void Bushi::Attack(Game& g) {
 }
 /*----------îÌÉ_ÉÅ----------*/
 void Bushi::Damage(Game& g) {
-	for (int i = 0; i < 5; i++)
-	{
-		std::pair<int, int> xy = std::make_pair(_x,_y);
-		std::pair<double, double> dxy = std::make_pair(((rand() % HBP_Xrand1) - HBP_Xrand2) / HBP_Xrand3, ((rand() % HBP_Yrand1) - HBP_Yrand2) / HBP_Yrand3);
-		HitBushiParticle* p = new HitBushiParticle(xy, dxy);
-		g.GetOS()->Add(p);
-	}
 	_GrHandle = _Damage_GrAll[_Damage_AnimeNo];
 	if (_Cnt - _Action_Cnt == Damage_Frame) {
 		if (_Life <= 0) {

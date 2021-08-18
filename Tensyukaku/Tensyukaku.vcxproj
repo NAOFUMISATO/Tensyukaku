@@ -153,10 +153,11 @@
     <ClCompile Include="BushiMotionCollision.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="HitBushiParticle.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
+    <ClCompile Include="LowAttackParticle.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapChip.cpp" />
+    <ClCompile Include="MiddleAttackParticle.cpp" />
     <ClCompile Include="ModeBase.cpp" />
     <ClCompile Include="ModeGame.cpp" />
     <ClCompile Include="ModeServer.cpp" />
@@ -180,9 +181,10 @@
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HitBox.h" />
-    <ClInclude Include="HitBushiParticle.h" />
     <ClInclude Include="IaiGauge.h" />
+    <ClInclude Include="LowAttackParticle.h" />
     <ClInclude Include="MapChip.h" />
+    <ClInclude Include="MiddleAttackParticle.h" />
     <ClInclude Include="ModeBase.h" />
     <ClInclude Include="ModeGame.h" />
     <ClInclude Include="ModeServer.h" />

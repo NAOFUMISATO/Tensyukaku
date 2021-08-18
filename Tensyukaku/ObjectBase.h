@@ -37,6 +37,7 @@ public:
 	HitBox	GetHB() { return { _x,_y,_gx,_gy,_hit_x,_hit_y,_hit_w,_hit_h }; }
 	void	SetX(int x) { _x = x; }
 	void	SetY(int y) { _y = y; }
+	void	SetFlip(bool isflip) { _isFlip = isflip; }
 
 protected:
 	int		_GrHandle;	// ‰æ‘œƒnƒ“ƒhƒ‹

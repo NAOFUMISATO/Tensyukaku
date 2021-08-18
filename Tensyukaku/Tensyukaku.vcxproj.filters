@@ -153,7 +153,10 @@
     <ClCompile Include="ObjectBase.cpp">
       <Filter>ソース ファイル\Server</Filter>
     </ClCompile>
-    <ClCompile Include="HitBushiParticle.cpp">
+    <ClCompile Include="MiddleAttackParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="LowAttackParticle.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
   </ItemGroup>
@@ -221,7 +224,10 @@
     <ClInclude Include="ParticleBase.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="HitBushiParticle.h">
+    <ClInclude Include="MiddleAttackParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="LowAttackParticle.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
   </ItemGroup>
