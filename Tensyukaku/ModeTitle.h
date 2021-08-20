@@ -12,7 +12,7 @@ public:
 	virtual bool Process(Game& g);
 	virtual bool Draw(Game& g);
 
-protected:
+private:
 
 	// ƒ^ƒCƒgƒ‹
 	int		_cgTitle;

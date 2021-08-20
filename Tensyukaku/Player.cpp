@@ -59,7 +59,7 @@ void Player::Init()
 	_hit_h = CollisionHeight;
 	_Life = LifeMax;
 	_Spd = Speed;
-	_isFlip = false;
+	_isFlip = true;
 }
 
 

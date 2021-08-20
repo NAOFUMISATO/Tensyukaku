@@ -86,12 +86,13 @@ void Ninja::LoadActionGraph() {
 
 //忍者のSE読み込み関数
 void Ninja::LoadActionSE() {
+	_Walk_SEHandle=ResourceServer::LoadSoundMem(Walk_SE);
+	_Attack_SEHandle = ResourceServer::LoadSoundMem(Attack_SE);
 }
-
 //忍者のアニメーション関数
 void Ninja::AnimeUpdate(Game& g) {
 	_Patrol_AnimeNo = (_Cnt / AnimeSpeed_Patrol) % Patrol_AnimeMax;
-	_Coming_AnimeNo = (_Cnt / AnimeSpeed_Move) % Coming_AnimeMax;
+	_Coming_AnimeNo = (_Cnt / AnimeSpeed_Coming) % Coming_AnimeMax;
 	_Attack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Attack) % Attack_AnimeMax;
 	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
 }

@@ -97,7 +97,7 @@ void Bushi::LoadActionSE() {
 //武士のアニメーション関数
 void Bushi::AnimeUpdate(Game& g) {
 	_Patrol_AnimeNo = (_Cnt / AnimeSpeed_Patrol) % Patrol_AnimeMax;
-	_Coming_AnimeNo = (_Cnt / AnimeSpeed_Move) % Coming_AnimeMax;
+	_Coming_AnimeNo = (_Cnt / AnimeSpeed_Coming) % Coming_AnimeMax;
 	_Attack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Attack) % Attack_AnimeMax;
 	_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
 	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;

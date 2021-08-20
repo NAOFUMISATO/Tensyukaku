@@ -150,14 +150,17 @@
     <ClCompile Include="ParticleBase.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectBase.cpp">
-      <Filter>ソース ファイル\Server</Filter>
-    </ClCompile>
     <ClCompile Include="MiddleAttackParticle.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
     <ClCompile Include="LowAttackParticle.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="IaiParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectBase.cpp">
+      <Filter>ソース ファイル\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +231,9 @@
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
     <ClInclude Include="LowAttackParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="IaiParticle.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
   </ItemGroup>

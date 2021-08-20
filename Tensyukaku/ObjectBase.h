@@ -23,18 +23,17 @@ public:
 	virtual	bool	IsHit(ObjectBase& o);
 	virtual	void	Delete(Game& g) {};
 
-	void	SetPosition(int x, int y) { _x = x; _y = y; }
+	
 	int		GetX() { return _x; }
 	int		GetY() { return _y; }
 	int		GetW() { return _w; }
 	int		GetH() { return _h; }
-	int		GetGX() { return _gx; }
-	int		GetGY() { return _gy; }
 	int		GetHitW() { return _hit_w; }
 	int		GetHitH() { return _hit_h; }
 	int		GetHitX() { return _hit_x; }
 	int		GetHitY() { return _hit_y; }
 	HitBox	GetHB() { return { _x,_y,_gx,_gy,_hit_x,_hit_y,_hit_w,_hit_h }; }
+	void	SetPosition(int x, int y) { _x = x; _y = y; }
 	void	SetX(int x) { _x = x; }
 	void	SetY(int y) { _y = y; }
 	void	SetFlip(bool isflip) { _isFlip = isflip; }

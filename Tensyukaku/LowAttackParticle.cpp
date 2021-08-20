@@ -18,7 +18,7 @@ LowAttackParticle1::~LowAttackParticle1() {
 void LowAttackParticle1::Init() {
 	_mxy = std::make_pair(LowAttackPar1_PozX, LowAttackPar1_PozY);
 	_bm = LowAttackPar1_BLENDMODE;
-	_a = LowAttackPar1_Pal;
+	_pal = LowAttackPar1_Pal;
 	_rgb = std::make_tuple(LowAttackPar1_Red, LowAttackPar1_Green, LowAttackPar1_Blue);
 	_drg = std::make_pair(LowAttackPar1_Scale, LowAttackPar1_Angle);
 	_Cnt = LowAttackPar1_Cnt;
@@ -45,7 +45,7 @@ LowAttackParticle2::~LowAttackParticle2() {
 void LowAttackParticle2::Init() {
 	_mxy = std::make_pair(LowAttackPar2_PozX, LowAttackPar2_PozY);
 	_bm = LowAttackPar2_BLENDMODE;
-	_a = LowAttackPar2_Pal;
+	_pal = LowAttackPar2_Pal;
 	_rgb = std::make_tuple(LowAttackPar2_Red, LowAttackPar2_Green, LowAttackPar2_Blue);
 	_drg = std::make_pair(LowAttackPar2_Scale, LowAttackPar2_Angle);
 	_Cnt = LowAttackPar2_Cnt;

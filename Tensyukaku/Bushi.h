@@ -76,51 +76,50 @@ namespace BInfo {
 	constexpr auto LifeMax = 3;					//体力
 	constexpr auto Speed = 1;					//移動速度
 	
-	/*----------アニメーション&当たり判定関係----------*/
-	//各状態アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto AnimeSpeed_Patrol = 5;		//巡回状態
-	constexpr auto AnimeSpeed_Move = 30;		//移動状態
-	constexpr auto AnimeSpeed_Attack = 15;		//攻撃
-	constexpr auto AnimeSpeed_Damage = 60;		//被ダメ
-	constexpr auto AnimeSpeed_Dead = 60;		//死亡
-
-	//各モーションのフレーム数
-	constexpr auto Patrol_Frame = 180;			//巡回全フレーム
-	constexpr auto Attack_Frame = 40;			//攻撃全フレーム
-	constexpr auto Damage_Frame = 50;			//被ダメ全フレーム
-	constexpr auto Dead_Frame = 50;				//死亡全フレーム
-	constexpr auto ABegin_Frame = 15;			//攻撃判定発生フレーム
-	constexpr auto AEnd_Frame = 15;				//攻撃判定終了フレーム
-
-	/*----------画像読み込み&描画関係----------*/
+	/*----------画像読み込み&アニメーション&判定フレーム関係----------*/
+	//共通
 	constexpr auto GraphWidth = 540;			//1枚当たりの画像サイズ（横）
 	constexpr auto GraphHeight = 420;			//1枚当たりの画像サイズ（縦）
 	constexpr auto GraphScale = 1.0;			//拡大率
 	constexpr auto GraphAngle = 0;				//角度
-
-	//待機
+	//巡回
 	constexpr auto Patrol_GraphName = "res/Bushi/B_Stand.png";	//画像ファイル名
 	constexpr auto Patrol_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Patrol_WidthCount = 1;		//横の画像枚数
 	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
+	constexpr auto AnimeSpeed_Patrol = 5;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto Patrol_Frame = 180;			//巡回全フレーム
 	//移動
 	constexpr auto Coming_GraphName = "res/Bushi/B_Walk.png";	//画像ファイル名
 	constexpr auto Coming_AnimeMax = 4;			//全ての画像枚数
 	constexpr auto Coming_WidthCount = 4;		//横の画像枚数
 	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
+	constexpr auto AnimeSpeed_Coming = 30;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	//攻撃
 	constexpr auto Attack_GraphName = "res/Bushi/B_Attack.png";	//画像ファイル名
 	constexpr auto Attack_AnimeMax = 3;			//全ての画像枚数
 	constexpr auto Attack_WidthCount = 3;		//横の画像枚数
 	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
+	constexpr auto AnimeSpeed_Attack = 15;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto Attack_Frame = 40;			//攻撃全フレーム
+	constexpr auto ABegin_Frame = 15;			//攻撃判定発生フレーム
+	constexpr auto AEnd_Frame = 15;				//攻撃判定終了フレーム
 	//被ダメ
 	constexpr auto Damage_GraphName = "res/Bushi/B_Damage.png";	//画像ファイル名
 	constexpr auto Damage_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Damage_WidthCount = 1;		//横の画像枚数
 	constexpr auto Damage_HeightCount = 1;		//縦の画像枚数
+	constexpr auto AnimeSpeed_Damage = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto Damage_Frame = 50;			//被ダメ全フレーム
 	//死亡
 	constexpr auto Dead_GraphName = "res/Bushi/B_Dead.png";		//画像ファイル名
 	constexpr auto Dead_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Dead_WidthCount = 1;			//横の画像枚数
 	constexpr auto Dead_HeightCount = 1;		//縦の画像枚数
+	constexpr auto AnimeSpeed_Dead = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto Dead_Frame = 50;				//死亡全フレーム
+	/*----------SE関係----------*/
+	constexpr auto Walk_SE = "se/Footstep.wav";			//巡回
+	constexpr auto Attack_SE = "se/slash3.wav";			//攻撃	
+
 }

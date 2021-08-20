@@ -224,6 +224,7 @@ void Bushi::Coming(Game& g) {
 }
 /*----------攻撃----------*/
 void Bushi::Attack(Game& g) {
+	
 	_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
 	if (_Cnt - _Action_Cnt == ABegin_Frame) {
 		//武士の攻撃判定オブジェクトの生成
@@ -233,12 +234,14 @@ void Bushi::Attack(Game& g) {
 			BAC->SetPosition(_x + _hit_x - BAC->GetW(), _y - _hit_h);
 			// オブジェクトサーバ-に武士の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(BAC);
+			
 		};
 		if (_isFlip == true) {
 			// 武士の攻撃判定オブジェクトの開始位置を武士位置から算出
 			BAC->SetPosition(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に武士の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(BAC);
+			
 		}
 	}
 	if (_Cnt - _Action_Cnt == Attack_Frame)

@@ -5,7 +5,7 @@
 #include "ObjectBase.h"
 #include "MiddleAttackParticle.h"
 #include "LowAttackParticle.h"
-
+#include "IaiParticle.h"
 using namespace PInfo;
 using namespace ParInfo;
 /*----------待機----------*/
@@ -29,8 +29,8 @@ void Player::Idle(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 	if (g.GetKey() & PAD_INPUT_LEFT || g.GetKey() & PAD_INPUT_RIGHT) {
-		_State = PLAYERSTATE::MOVE;
 		PlaySoundMem(_Walk_SEHandle, DX_PLAYTYPE_BACK, true);
+		_State = PLAYERSTATE::MOVE;;
 		_Action_Cnt = _Cnt;
 	}
 	//敵の攻撃の当たり判定
@@ -105,7 +105,6 @@ void Player::Move(Game& g) {
 
 	}
 	else {
-		StopSoundMem(_Walk_SEHandle);
 		_State = PLAYERSTATE::IDLE;
 	}
 	//敵の攻撃の当たり判定
@@ -139,7 +138,8 @@ void Player::MidAttack(Game& g) {
 			MAC->SetPosition(_x + _hit_x - MAC->GetW(), _y - _hit_h);
 			// オブジェクトサーバ-に中段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(MAC);
-			for (int i = 0; i < 5; i++)
+			//パーティクル追加
+			for (int i = 0; i < MiddleAttackPar1_qty; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % MAP1_Xrand1) - MAP1_Xrand2) / MAP1_Xrand3, ((rand() % MAP1_Yrand1) - MAP1_Yrand2) / MAP1_Yrand3);
@@ -147,7 +147,7 @@ void Player::MidAttack(Game& g) {
 				m1->SetFlip(false);
 				g.GetOS()->Add(m1);
 			}
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < MiddleAttackPar2_qty; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % MAP2_Xrand1) - MAP2_Xrand2) / MAP2_Xrand3, ((rand() % MAP2_Yrand1) - MAP2_Yrand2) / MAP2_Yrand3);
@@ -161,7 +161,7 @@ void Player::MidAttack(Game& g) {
 			MAC->SetPosition(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に中段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(MAC);
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < MiddleAttackPar1_qty; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % MAP1_Xrand1) - MAP1_Xrand2) / MAP1_Xrand3, ((rand() % MAP1_Yrand1) - MAP1_Yrand2) / MAP1_Yrand3);
@@ -169,7 +169,7 @@ void Player::MidAttack(Game& g) {
 				m1->SetFlip(true);
 				g.GetOS()->Add(m1);
 			}
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < MiddleAttackPar2_qty; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % MAP2_Xrand1) - MAP2_Xrand2) / MAP2_Xrand3, ((rand() % MAP2_Yrand1) - MAP2_Yrand2) / MAP2_Yrand3);
@@ -213,7 +213,8 @@ void Player::LowAttack(Game& g) {
 			LAC->SetPosition(_x + _hit_x - LAC->GetW(), _y - LAC->GetH());
 			// オブジェクトサーバ-に下段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(LAC);
-			for (int i = 0; i < 5; i++)
+			//パーティクル追加
+			for (int i = 0; i < LowAttackPar1_qty; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % LAP1_Xrand1) - LAP1_Xrand2) / LAP1_Xrand3, ((rand() % -LAP1_Yrand1) - LAP1_Yrand2) / LAP1_Yrand3);
@@ -221,7 +222,7 @@ void Player::LowAttack(Game& g) {
 				l1->SetFlip(false);
 				g.GetOS()->Add(l1);
 			}
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < LowAttackPar2_qty; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % LAP2_Xrand1) - LAP2_Xrand2) / LAP2_Xrand3, ((rand() % LAP2_Yrand1) - LAP2_Yrand2) / LAP2_Yrand3);
@@ -235,7 +236,7 @@ void Player::LowAttack(Game& g) {
 			LAC->SetPosition(_x - _hit_x, _y - LAC->GetH());
 			// オブジェクトサーバ-に下段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(LAC);
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < LowAttackPar1_qty; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % LAP1_Xrand1) - LAP1_Xrand2) / LAP1_Xrand3, ((rand() % -LAP1_Yrand1) - LAP1_Yrand2) / LAP1_Yrand3);
@@ -243,7 +244,7 @@ void Player::LowAttack(Game& g) {
 				l1->SetFlip(true);
 				g.GetOS()->Add(l1);
 			}
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < LowAttackPar2_qty; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % LAP2_Xrand1) - LAP2_Xrand2) / LAP2_Xrand3, ((rand() % LAP2_Yrand1) - LAP2_Yrand2) / LAP2_Yrand3);
@@ -331,21 +332,75 @@ void Player::Iai(Game& g) {
 			_x += 40;
 			g.GetChip()->IsHit(*this, 1, 0);
 		}
-		if (_Cnt - _Action_Cnt == IABegin_Frame) {
-			StopSoundMem(_SwordIn_SEHandle);
-			PlaySoundMem(_Iai_SEHandle, DX_PLAYTYPE_BACK, true);
-			IaiCollision* IAC = new IaiCollision();
-			if (_isFlip == false) {
-				// 居合判定オブジェクトの開始位置をプレイヤー位置から算出
-				IAC->SetPosition(_x + _hit_x - IAC->GetW(), _y - _hit_h / 2);
-				// オブジェクトサーバ-に蹴り判定オブジェクトを追加
-				g.GetOS()->Add(IAC);
+	}
+	if (_Cnt - _Action_Cnt == IABegin_Frame - 6) {
+		if (_isFlip == false) {
+			for (int i = 0; i < Iai1_qty; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % IAI1_Xrand1) - IAI1_Xrand2) / IAI1_Xrand3, ((rand() % -IAI1_Yrand1) - IAI1_Yrand2) / IAI1_Yrand3);
+				IaiParticle1* I1 = new IaiParticle1(xy, dxy);
+				I1->SetFlip(false);
+				g.GetOS()->Add(I1);
 			}
-			if (_isFlip == true) {
-				// 居合判定オブジェクトの開始位置をプレイヤー位置から算出
-				IAC->SetPosition(_x - _hit_x, _y - _hit_h / 2);
-				// オブジェクトサーバ-に蹴り判定オブジェクトを追加
-				g.GetOS()->Add(IAC);
+		}
+		if (_isFlip == true) {
+			for (int i = 0; i < Iai1_qty; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % IAI1_Xrand1) - IAI1_Xrand2) / IAI1_Xrand3, ((rand() % -IAI1_Yrand1) - IAI1_Yrand2) / IAI1_Yrand3);
+				IaiParticle1* I1 = new IaiParticle1(xy, dxy);
+				I1->SetFlip(true);
+				g.GetOS()->Add(I1);
+			}
+		}
+	}
+	if (_Cnt - _Action_Cnt == IABegin_Frame) {
+		StopSoundMem(_SwordIn_SEHandle);
+		PlaySoundMem(_Iai_SEHandle, DX_PLAYTYPE_BACK, true);
+		IaiCollision* IAC = new IaiCollision();
+		if (_isFlip == false) {
+			// 居合判定オブジェクトの開始位置をプレイヤー位置から算出
+			IAC->SetPosition(_x + _hit_x - IAC->GetW(), _y - _hit_h / 2);
+			// オブジェクトサーバ-に蹴り判定オブジェクトを追加
+			g.GetOS()->Add(IAC);
+			for (int i = 0; i < Iai2_qty; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % IAI2_Xrand1) - IAI2_Xrand2) / IAI2_Xrand3, ((rand() % -IAI2_Yrand1) - IAI2_Yrand2) / IAI2_Yrand3);
+				IaiParticle2* I2 = new IaiParticle2(xy, dxy);
+				I2->SetFlip(false);
+				g.GetOS()->Add(I2);
+			}
+			for (int i = 0; i < Iai3_qty; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % IAI3_Xrand1) - IAI3_Xrand2) / IAI3_Xrand3, ((rand() % -IAI3_Yrand1) - IAI3_Yrand2) / IAI3_Yrand3);
+				IaiParticle3* I3 = new IaiParticle3(xy, dxy);
+				I3->SetFlip(false);
+				g.GetOS()->Add(I3);
+			}
+		}
+		if (_isFlip == true) {
+			// 居合判定オブジェクトの開始位置をプレイヤー位置から算出
+			IAC->SetPosition(_x - _hit_x, _y - _hit_h / 2);
+			// オブジェクトサーバ-に居合判定オブジェクトを追加
+			g.GetOS()->Add(IAC);
+			for (int i = 0; i < Iai2_qty; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % IAI2_Xrand1) - IAI2_Xrand2) / IAI2_Xrand3, ((rand() % -IAI2_Yrand1) - IAI2_Yrand2) / IAI2_Yrand3);
+				IaiParticle2* I2 = new IaiParticle2(xy, dxy);
+				I2->SetFlip(true);
+				g.GetOS()->Add(I2);
+			}
+			for (int i = 0; i < Iai3_qty; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % IAI3_Xrand1) - IAI3_Xrand2) / IAI3_Xrand3, ((rand() % -IAI3_Yrand1) - IAI3_Yrand2) / IAI3_Yrand3);
+				IaiParticle3* I3 = new IaiParticle3(xy, dxy);
+				I3->SetFlip(true);
+				g.GetOS()->Add(I3);
 			}
 		}
 		if (_Cnt - _Action_Cnt >= 0 && IABegin_Frame >= _Cnt - _Action_Cnt) {

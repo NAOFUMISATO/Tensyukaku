@@ -15,10 +15,8 @@ public:
 	virtual bool Draw(Game& g);
 
 
-protected:
-	BackGround	_bg;
-
 private:
+	BackGround	_bg;
 	// オブジェクト処理をストップする
 	bool	_stopObjProcess;
 

@@ -179,15 +179,15 @@ namespace PInfo {
 	constexpr auto Sway_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Sway_WidthCount = 1;			//横の画像枚数
 	constexpr auto Sway_HeightCount = 1;		//縦の画像枚数
-	constexpr auto AnimeSpeed_Sway = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto Sway_Frame = 40;				//スウェイフレーム
+	constexpr auto AnimeSpeed_Sway = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	//被ダメ
 	constexpr auto Damage_GraphName = "res/Samurai/S_Damage.png";	//画像ファイル名
 	constexpr auto Damage_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Damage_WidthCount = 1;		//横の画像枚数
 	constexpr auto Damage_HeightCount = 1;		//縦の画像枚数
-	constexpr auto AnimeSpeed_Damage = 40;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto Damage_Frame = 38;			//被ダメ全フレーム
+	constexpr auto AnimeSpeed_Damage = 40;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	//無敵
 	constexpr auto AnimeSpeed_Star = 8;			//無敵状態時の点滅速度 
 	constexpr auto Star_Frame = 180;			//被ダメ時の無敵フレーム
@@ -196,16 +196,16 @@ namespace PInfo {
 	constexpr auto Dead_AnimeMax = 1;			//全ての画像枚数
 	constexpr auto Dead_WidthCount = 1;			//横の画像枚数
 	constexpr auto Dead_HeightCount = 1;		//縦の画像枚数
-	constexpr auto AnimeSpeed_Dead = 120;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto Dead_Frame = 160;			//死亡全フレーム
-		
+	constexpr auto AnimeSpeed_Dead = 120;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	
 	/*----------SE関係----------*/
 	constexpr auto Walk_SE = "se/Footstep.wav";			//移動
 	constexpr auto MiddleAttack_SE = "se/slash3.wav";	//中段攻撃
 	constexpr auto LowAttack_SE = "se/Slash.wav";		//下段攻撃
 	constexpr auto Kick_SE = "se/Kick.wav";				//蹴り
 	constexpr auto Damage_SE = "se/Damage.wav";			//被ダメ
-	constexpr auto SwordIn_SE = "se/SwordIn.wav";		//納刀
+	constexpr auto SwordIn_SE = "se/Close.wav";			//納刀
 	constexpr auto Iai_SE = "se/Iai.wav";				//居合
 
 }

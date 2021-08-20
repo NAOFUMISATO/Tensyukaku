@@ -23,7 +23,7 @@ void ParticleBase::Process(Game& g) {
 }
 
 void ParticleBase::Draw(Game& g) {
-	int a = _a;
+	int a = _pal;
 	int& re = std::get<Red>(_rgb);
 	int& gr = std::get<Green>(_rgb);
 	int& bl = std::get<Blue>(_rgb);
