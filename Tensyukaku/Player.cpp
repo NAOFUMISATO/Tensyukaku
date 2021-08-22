@@ -60,6 +60,7 @@ void Player::Init()
 	_Life = LifeMax;
 	_Spd = Speed;
 	_isFlip = true;
+	_position = { 0,0 };
 }
 
 
@@ -76,6 +77,7 @@ void Player::Process(Game& g)
 			_Star_Flag = false;
 		}
 	}
+	
 	switch (_State) {
 		//待機状態
 	case PLAYERSTATE::IDLE:
@@ -113,21 +115,27 @@ void Player::Process(Game& g)
 	case PLAYERSTATE::DEAD:
 		Dead(g);
 		break;
+		//階段上がり状態
+	case PLAYERSTATE::STAIRUP:
+		StairUp(g);
+		break;
 	}
 	// 主人公位置からカメラ座標決定
-	g.SetcvX(_x - (SCREEN_W * BackCameraX / 100));
-	g.SetcvY(_y - (SCREEN_H * BackCameraY / 100));
+	g.SetcvX(_x- (SCREEN_W * BackCameraX / 100));// 背景の横中央にキャラを置く
+	g.SetcvY(_y - (SCREEN_H * BackCameraY / 100));// 背景の縦93%にキャラを置く
 	if (g.GetcvX() < 0) { g.SetcvX(0); }
 	if (g.GetcvX() > g.GetmapW()-SCREEN_W) { g.SetcvX(g.GetmapW() - SCREEN_W); }
 	if (g.GetcvY() < 0) { g.SetcvY(0); }
 	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
 	auto GC = g.GetChip();
-	GC->SetscrX(_x - (SCREEN_W * ChipCameraX / 100));		// 画面の横中央にキャラを置く
-	GC->SetscrY(_y - (SCREEN_H * ChipCameraY / 100));	// 画面の縦92.55%にキャラを置く
+	GC->SetscrX(_x - (SCREEN_W * ChipCameraX / 100));		// マップチップの横中央にキャラを置く
+	GC->SetscrY(_y - (SCREEN_H * ChipCameraY / 100));	// マップチップの縦93%にキャラを置く
 	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
 	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
 	if (GC->GetscrY() < 0) { GC->SetscrY(0); }
 	if (GC->GetscrY() > GC->GetMSH() * GC->GetCSH() - SCREEN_H) { GC->SetscrY(GC->GetMSH() * GC->GetCSH() - SCREEN_H); }
+	
+	
 }
 
 void Player::Draw(Game& g) {
@@ -136,7 +144,18 @@ void Player::Draw(Game& g) {
 	if (_Star_Flag == true && (_Cnt / AnimeSpeed_Star % 2) == 0) {
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
 	}
-	ObjectBase::Draw(g);
+	auto vx = static_cast<int>(_position.x);
+	auto vy = static_cast<int>(_position.y);
+	auto GC = g.GetChip();
+	auto x = _x + _gx - GC->GetscrX();
+	auto y = _y + _gy - GC->GetscrY();
+	DrawRotaGraph(x, y, GraphScale, GraphAngle, _GrHandle, true, _isFlip);
+
+#ifdef _DEBUG
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
+	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(255, 0, 0), FALSE);	// 半透明の赤で当たり判定描画
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
+#endif
 #ifdef _DEBUG
 	std::stringstream ss;
 	ss << "_Cnt=" << _Cnt << "\n";
@@ -200,7 +219,6 @@ void Player::AnimeUpdate(Game& g) {
 }
 
 //プレイヤーのUI描画関数
-
 void Player::UIDraw(Game& g) {
 		PlayerHp* HP = new PlayerHp();
 		HP->SetPosition(SCREEN_W - SCREEN_W+300 , SCREEN_H - 40);

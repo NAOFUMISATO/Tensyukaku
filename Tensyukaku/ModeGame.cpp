@@ -6,15 +6,17 @@
 #include "Bushi.h"
 #include "Ninja.h"
 #include "MapChip.h"
-
+#include "Stair.h"
 
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 
 	//オブジェクトサーバに登録する
-	g.GetOS()->Add(new Player);
+	
 	g.GetOS()->Add(new Bushi);
 	g.GetOS()->Add(new Ninja);
+	g.GetOS()->Add(new Stair);
+	g.GetOS()->Add(new Player);
 	
 	// オブジェクト処理を行う
 	_stopObjProcess = false;

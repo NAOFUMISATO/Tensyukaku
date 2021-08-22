@@ -1,6 +1,7 @@
 #pragma once
 #include "HitBox.h"
 #include <vector>
+#include "Math.h"
 
 class Game;
 // オブジェクトクラス
@@ -10,7 +11,7 @@ public:
 	~ObjectBase();
 	//オブジェクトの種類列挙
 	enum class OBJECTTYPE {
-		PLAYER, ENEMY,UI,PARTICLE,
+		PLAYER, ENEMY,UI,PARTICLE,STAIR,
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,
 		BUSHIPATROL, BUSHICOMING, BUSHIATTACK,
 		NINJAPATROL, NINJACOMING, NINJAATTACK
@@ -32,13 +33,17 @@ public:
 	int		GetHitH() { return _hit_h; }
 	int		GetHitX() { return _hit_x; }
 	int		GetHitY() { return _hit_y; }
-	HitBox	GetHB() { return { _x,_y,_gx,_gy,_hit_x,_hit_y,_hit_w,_hit_h }; }
+	bool	GetFlip() { return _isFlip; }
+	
 	void	SetPosition(int x, int y) { _x = x; _y = y; }
 	void	SetX(int x) { _x = x; }
 	void	SetY(int y) { _y = y; }
 	void	SetFlip(bool isflip) { _isFlip = isflip; }
+	HitBox	GetHB() { return { _x,_y,_gx,_gy,_hit_x,_hit_y,_hit_w,_hit_h }; }
+	Vector2 GetPosition() { return _position; }		//座標の取得
 
 protected:
+	Vector2 _position;	// 位置ベクトル
 	int		_GrHandle;	// 画像ハンドル
 	int		_x, _y;		// 座標（基準位置）
 	int		_gx, _gy;	// 基準位置から描画時の差分

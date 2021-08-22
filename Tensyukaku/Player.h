@@ -17,7 +17,7 @@ public:
 	
 private:
 	//プレイヤーの状態列挙
-	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD};
+	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD,STAIRUP};
 	
 	void	Idle(Game& g);			//待機状態時の処理
 	void	Move(Game& g);			//移動時の処理
@@ -28,6 +28,7 @@ private:
 	//void	Sway(Game& g);			//スウェイ時の処理
 	void	Damage(Game& g);		//被ダメ時の処理
 	void	Dead(Game& g);			//死亡時の処理
+	void	StairUp(Game& g);		//階段上がりの処理
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	AnimeUpdate(Game& g);	//プレイヤーのアニメーション関数
@@ -75,9 +76,11 @@ private:
 	//無敵状態管理変数
 	bool	_Star_Flag;		//無敵状態管理フラグ
 	int		_Star_Cnt;		//無敵状態経過時間記録変数
-	
 	int		_Iai_Gauge;		//居合ゲージ変数
-
+	//階段処理
+	Vector2 _velocityDir;	//速度方向
+	float	_Stairup_Spd;	//階段上昇速度
+	float	_angle;			//角度
 	//SEハンドル
 	int		_Walk_SEHandle;
 	int		_MiddleAttack_SEHandle;
@@ -101,9 +104,9 @@ namespace PInfo {
 	constexpr auto CollisionWidth = 60;			//プレイヤーの当たり判定横幅
 	constexpr auto CollisionHeight = 300;		//プレイヤーの当たり判定縦幅
 	constexpr auto BackCameraX = 50;			//背景をプレイヤ-のカメラを画面の何％に置くか（横軸）
-	constexpr auto BackCameraY = 92.55;			//背景をプレイヤ-のカメラを画面の何％に置くか（縦軸）
+	constexpr auto BackCameraY = 93;			//背景をプレイヤ-のカメラを画面の何％に置くか（縦軸）
 	constexpr auto ChipCameraX = 50;			//マップチップをプレイヤ-のカメラを画面の何％に置くか（横軸）
-	constexpr auto ChipCameraY = 92.55;			//マップチップをプレイヤ-のカメラを画面の何％に置くか（縦軸）
+	constexpr auto ChipCameraY = 93;			//マップチップをプレイヤ-のカメラを画面の何％に置くか（縦軸）
 
 	/*----------各モーションの当たり判定関係----------*/
 	constexpr auto MiddleAttackWidth = 150;		//中段攻撃当たり判定横幅

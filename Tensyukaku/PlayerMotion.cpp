@@ -29,8 +29,7 @@ void Player::Idle(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 	if (g.GetKey() & PAD_INPUT_LEFT || g.GetKey() & PAD_INPUT_RIGHT) {
-		PlaySoundMem(_Walk_SEHandle, DX_PLAYTYPE_BACK, true);
-		_State = PLAYERSTATE::MOVE;;
+		_State = PLAYERSTATE::MOVE;
 		_Action_Cnt = _Cnt;
 	}
 	//敵の攻撃の当たり判定
@@ -51,14 +50,29 @@ void Player::Idle(Game& g) {
 			}
 		}
 	}
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは階段オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::STAIR)
+		{
+			// プレイヤーとその階段の当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				if (g.GetTrg() & PAD_INPUT_2) {
+					_position = { static_cast<double>(_x),static_cast<double>(_y) };
+					_State = PLAYERSTATE::STAIRUP;
+				}
+			}
+		}
+	}
 }
 /*----------移動----------*/
 void Player::Move(Game& g) {
 	_GrHandle = _Move_GrAll[_Move_AnimeNo];
-	if (_Cnt - _Action_Cnt == Move_Frame) {
+	/*if (_Cnt - _Action_Cnt == Move_Frame) {
 	PlaySoundMem(_Walk_SEHandle, DX_PLAYTYPE_BACK, true);
 	_Action_Cnt = _Cnt;
-	}
+	}*/
 	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
@@ -122,6 +136,21 @@ void Player::Move(Game& g) {
 				_Action_Cnt = _Cnt;
 				_State = PLAYERSTATE::DAMAGE;
 				PlaySoundMem(_Damage_SEHandle, DX_PLAYTYPE_BACK, true);
+			}
+		}
+	}
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは階段オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::STAIR)
+		{
+			// プレイヤーとその階段の当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				if (g.GetTrg() & PAD_INPUT_2) {
+					_position = { static_cast<double>(_x),static_cast<double>(_y) };
+					_State=PLAYERSTATE::STAIRUP;
+				}
 			}
 		}
 	}
@@ -456,4 +485,29 @@ void Player::Dead(Game& g) {
 	if (_Cnt - _Action_Cnt == Dead_Frame) {
 		Delete(g);
 	}
+}
+
+/*--------階段----------*/
+void Player::StairUp(Game& g) {
+	_GrHandle = _Move_GrAll[_Move_AnimeNo];
+	_Stairup_Spd = 1.5f;
+	_angle = Math::ToRadians(280);
+	_velocityDir = { std::cos(_angle), std::sin(_angle) };
+	auto vd = _velocityDir * _Stairup_Spd;
+	_position += vd;
+	_x = _position.x;
+	_y = _position.y;
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは階段オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::STAIR)
+		{
+			// プレイヤーとその階段の当たり判定を行う
+			if (IsHit(*(*ite)) == false)
+			{
+				_State=PLAYERSTATE::IDLE;
+			}
+		}
+	}
+	
 }
