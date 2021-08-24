@@ -115,7 +115,11 @@ void Player::Process(Game& g)
 	case PLAYERSTATE::DEAD:
 		Dead(g);
 		break;
-		//階段上がり状態
+		//階段位置調整状態
+	case PLAYERSTATE::STAIRMOVE:
+		StairMove(g);
+		break;
+		//階段上昇状態
 	case PLAYERSTATE::STAIRUP:
 		StairUp(g);
 		break;
@@ -128,7 +132,7 @@ void Player::Process(Game& g)
 	if (g.GetcvY() < 0) { g.SetcvY(0); }
 	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
 	auto GC = g.GetChip();
-	GC->SetscrX(_x - (SCREEN_W * ChipCameraX / 100));		// マップチップの横中央にキャラを置く
+	GC->SetscrX(_x - (SCREEN_W * ChipCameraX / 100));	// マップチップの横中央にキャラを置く
 	GC->SetscrY(_y - (SCREEN_H * ChipCameraY / 100));	// マップチップの縦93%にキャラを置く
 	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
 	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
@@ -144,18 +148,7 @@ void Player::Draw(Game& g) {
 	if (_Star_Flag == true && (_Cnt / AnimeSpeed_Star % 2) == 0) {
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
 	}
-	auto vx = static_cast<int>(_position.x);
-	auto vy = static_cast<int>(_position.y);
-	auto GC = g.GetChip();
-	auto x = _x + _gx - GC->GetscrX();
-	auto y = _y + _gy - GC->GetscrY();
-	DrawRotaGraph(x, y, GraphScale, GraphAngle, _GrHandle, true, _isFlip);
-
-#ifdef _DEBUG
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
-	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(255, 0, 0), FALSE);	// 半透明の赤で当たり判定描画
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
-#endif
+	ObjectBase::Draw(g);
 #ifdef _DEBUG
 	std::stringstream ss;
 	ss << "_Cnt=" << _Cnt << "\n";

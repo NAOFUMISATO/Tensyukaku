@@ -23,7 +23,6 @@ protected:
 	int	_pal;
 	int _bm;
 	std::tuple<int, int, int> _rgb;
-	std::pair<double, double> _drg;
 };
 
 namespace ParInfo {

@@ -5,7 +5,7 @@
 class EnemyBase : public ObjectBase {
 protected:
 	//“G‚Ìó‘Ô—ñ‹“
-	enum class ENEMYSTATE { PATROL, COMING, ATTACK, DAMAGE, DEAD };
+	enum class ENEMYSTATE { PATROL, COMING, ATTACK, GUARDBREAK, DAMAGE, DEAD };
 public:
 	EnemyBase();
 	~EnemyBase();
@@ -14,7 +14,7 @@ public:
 
 	//“G‚Ìí—Ş—ñ‹“
 	enum class ENEMYTYPE {
-		BUSHI, NINJA, SHIELD
+		BUSHI, NINJA, SHIELDER
 	};
 	virtual ENEMYTYPE GetEneType() = 0;
 

@@ -7,6 +7,7 @@
 #include "Ninja.h"
 #include "MapChip.h"
 #include "Stair.h"
+#include "Shielder.h"
 
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
@@ -15,6 +16,7 @@ bool ModeGame::Initialize(Game& g) {
 	
 	g.GetOS()->Add(new Bushi);
 	g.GetOS()->Add(new Ninja);
+	g.GetOS()->Add(new Shielder);
 	g.GetOS()->Add(new Stair);
 	g.GetOS()->Add(new Player);
 	

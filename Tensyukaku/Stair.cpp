@@ -2,7 +2,7 @@
 #include "Stair.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
-using namespace SInfo;
+using namespace StInfo;
 Stair::Stair() {
 	Init();
 	_GrHandle=ResourceServer::LoadGraph("res/Map/Stair.png");
@@ -19,6 +19,7 @@ void Stair::Init() {
 	_hit_y = PositionHitY;
 	_hit_w = CollisionWidth;
 	_hit_h = CollisionHeight;
+	_isFlip = true;
 }
 void Stair::Process(Game& g) {
 	ObjectBase::Process(g);

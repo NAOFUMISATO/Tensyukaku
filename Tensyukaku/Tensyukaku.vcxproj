@@ -175,6 +175,10 @@
     <ClCompile Include="PlayerMotion.cpp" />
     <ClCompile Include="PlayerMotionCollision.cpp" />
     <ClCompile Include="ResourceServer.cpp" />
+    <ClCompile Include="Shield.cpp" />
+    <ClCompile Include="Shielder.cpp" />
+    <ClCompile Include="SielderMotion.cpp" />
+    <ClCompile Include="SielderMotionCollision.cpp" />
     <ClCompile Include="Stair.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +207,9 @@
     <ClInclude Include="PlayerHp.h" />
     <ClInclude Include="PlayerMotionCollision.h" />
     <ClInclude Include="ResourceServer.h" />
+    <ClInclude Include="Shield.h" />
+    <ClInclude Include="Shielder.h" />
+    <ClInclude Include="SielderMotionCollision.h" />
     <ClInclude Include="Stair.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

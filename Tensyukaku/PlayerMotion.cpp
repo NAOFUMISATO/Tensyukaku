@@ -6,6 +6,7 @@
 #include "MiddleAttackParticle.h"
 #include "LowAttackParticle.h"
 #include "IaiParticle.h"
+#include "Stair.h"
 using namespace PInfo;
 using namespace ParInfo;
 /*----------ë“ã@----------*/
@@ -59,8 +60,8 @@ void Player::Idle(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				if (g.GetTrg() & PAD_INPUT_2) {
-					_position = { static_cast<double>(_x),static_cast<double>(_y) };
-					_State = PLAYERSTATE::STAIRUP;
+					
+					_State = PLAYERSTATE::STAIRMOVE;
 				}
 			}
 		}
@@ -148,8 +149,8 @@ void Player::Move(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				if (g.GetTrg() & PAD_INPUT_2) {
-					_position = { static_cast<double>(_x),static_cast<double>(_y) };
-					_State=PLAYERSTATE::STAIRUP;
+					
+					_State=PLAYERSTATE::STAIRMOVE;
 				}
 			}
 		}
@@ -487,11 +488,46 @@ void Player::Dead(Game& g) {
 	}
 }
 
-/*--------äKíi----------*/
+/*---------äKíià íuí≤êÆ---------*/
+void Player::StairMove(Game& g) {
+	_GrHandle = _Move_GrAll[_Move_AnimeNo];
+	Stair st;
+	if (st.GetFlip() == false) {
+		if (_x >= st.GetX()+st.GetHitX()) {
+			_isFlip = false;
+			--_x;
+		}
+		if (_x <= st.GetX() + st.GetHitX()) {
+			_isFlip = true;
+			_position = { static_cast<double>(_x),static_cast<double>(_y) };
+			_State = PLAYERSTATE::STAIRUP;
+		}
+	}
+	if (st.GetFlip() == true) {
+		if (_x <= st.GetX() + st.GetHitX()+st.GetHitW()) {
+			_isFlip = true;
+			++_x;
+		}
+		if (_x >= st.GetX() + st.GetHitX() + st.GetHitW()) {
+			_isFlip = false;
+			_position = { static_cast<double>(_x),static_cast<double>(_y) };
+			_State = PLAYERSTATE::STAIRUP;
+		}
+	}
+	
+}
+
+/*---------äKíiè„è∏------------*/
 void Player::StairUp(Game& g) {
 	_GrHandle = _Move_GrAll[_Move_AnimeNo];
 	_Stairup_Spd = 1.5f;
-	_angle = Math::ToRadians(280);
+	Stair st;
+	if (st.GetFlip() == false) {
+		_angle = Math::ToRadians(280);
+	}
+	if (st.GetFlip() == true) {
+		_angle = Math::ToRadians(260);
+	}
 	_velocityDir = { std::cos(_angle), std::sin(_angle) };
 	auto vd = _velocityDir * _Stairup_Spd;
 	_position += vd;

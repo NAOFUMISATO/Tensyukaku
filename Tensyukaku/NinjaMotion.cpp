@@ -16,10 +16,10 @@ void Ninja::Patrol(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 	if (_isFlip == false) {
-		//武士の索敵範囲判定オブジェクトの生成
+		//忍者の索敵範囲判定オブジェクトの生成
 		NinjaPatrolCollision NPC;
 
-		// 武士の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
+		// 忍者の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
 		NPC.SetPosition(_x + _hit_x - NPC.GetW(), _y - _hit_h);
 		NPC.GetHitW();
 		NPC.GetHitH();
@@ -29,7 +29,6 @@ void Ninja::Patrol(Game& g) {
 			// iteはプレイヤーか？
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
-
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(NPC) == true)
 				{

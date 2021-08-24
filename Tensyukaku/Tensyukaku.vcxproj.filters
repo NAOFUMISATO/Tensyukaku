@@ -79,6 +79,12 @@
     <Filter Include="ソース ファイル\Object\Particle">
       <UniqueIdentifier>{2fab9641-8516-446a-b9ae-64caa4de552b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Enemy\Sierder">
+      <UniqueIdentifier>{4e820f49-7412-4bfc-bef8-66ac8be3500c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Enemy\Sielder">
+      <UniqueIdentifier>{4363bffc-dcff-4b1e-9fc6-91ccf89a3f3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -168,6 +174,18 @@
     <ClCompile Include="Stair.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Shielder.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Sielder</Filter>
+    </ClCompile>
+    <ClCompile Include="SielderMotion.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Sielder</Filter>
+    </ClCompile>
+    <ClCompile Include="SielderMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Sielder</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -247,6 +265,15 @@
     </ClInclude>
     <ClInclude Include="Stair.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Shielder.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Sierder</Filter>
+    </ClInclude>
+    <ClInclude Include="SielderMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Sierder</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

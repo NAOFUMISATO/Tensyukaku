@@ -14,10 +14,10 @@ public:
 	void	Process(Game& g)override;
 	void	Draw(Game& g)override;
 	void	Delete(Game& g)override;
-	
+	bool	GetFlip() { return _isFlip; }
 private:
 	//プレイヤーの状態列挙
-	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD,STAIRUP};
+	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD,STAIRUP,STAIRMOVE};
 	
 	void	Idle(Game& g);			//待機状態時の処理
 	void	Move(Game& g);			//移動時の処理
@@ -28,7 +28,8 @@ private:
 	//void	Sway(Game& g);			//スウェイ時の処理
 	void	Damage(Game& g);		//被ダメ時の処理
 	void	Dead(Game& g);			//死亡時の処理
-	void	StairUp(Game& g);		//階段上がりの処理
+	void	StairMove(Game& g);		//階段位置調整の処理
+	void	StairUp(Game& g);		//階段上昇の処理
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	AnimeUpdate(Game& g);	//プレイヤーのアニメーション関数

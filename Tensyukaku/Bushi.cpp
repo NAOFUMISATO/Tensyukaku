@@ -37,7 +37,7 @@ void Bushi::Init() {
 	_hit_y = PositionHitY;
 	_hit_w = CollisionWidth;
 	_hit_h = CollisionHeight;
-	_State=Bushi::ENEMYSTATE::PATROL;
+	_State=ENEMYSTATE::PATROL;
 	_Life = LifeMax;
 	_Spd = Speed;
 	_isFlip = false;
