@@ -6,8 +6,8 @@
 #include "ObjectBase.h"
 #include "Game.h"
 namespace {
-	constexpr auto Red = 0;
-	constexpr auto Green = 1;
+	constexpr auto RED = 0;
+	constexpr auto GREEN = 1;
 	constexpr auto Blue = 2;
 }
 ObjectBase::ObjectBase()
@@ -27,7 +27,7 @@ void ObjectBase::Init()
 	_hit_judge.second = 1;
 	_drg.first = 1.0;
 	_drg.second = 0.0;
-	_color = std::make_tuple(255,0,0);
+	_color = std::make_tuple(255,0,255);
 	_Dalpha = 128;
 	_fill = false;
 }
@@ -45,15 +45,15 @@ void ObjectBase::Draw(Game& g) {
 	auto scale = _drg.first;
 	auto angle = _drg.second;
 	DrawRotaGraph(x, y, scale, angle, _GrHandle, true, _isFlip);
-
 #ifdef _DEBUG
-	int& re = std::get<Red>(_color);
-	int& gr = std::get<Green>(_color);
+	int& re = std::get<RED>(_color);
+	int& gr = std::get<GREEN>(_color);
 	int& bl = std::get<Blue>(_color);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// 半透明描画指定
 	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(re, gr, bl), _fill);	// 半透明の赤で当たり判定描画
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 #endif
+	
 }
 bool ObjectBase::IsHit(ObjectBase& o) {
 	// このオブジェクトと、別オブジェクトoを、x,y,w,hで比較する

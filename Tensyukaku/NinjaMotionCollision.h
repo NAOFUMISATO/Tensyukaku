@@ -11,7 +11,6 @@ public:
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::NINJAPATROL; }
 
 	void	Init()override;
-	void	Process(Game& g)override;
 };
 
 // 忍者の攻撃発生範囲当たり判定クラス
@@ -22,7 +21,6 @@ public:
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::NINJACOMING; }
 
 	void	Init()override;
-	void	Process(Game& g)override;
 };
 
 // 忍者の攻撃当たり判定クラス

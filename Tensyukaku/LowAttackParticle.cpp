@@ -10,18 +10,18 @@ LowAttackParticle1::LowAttackParticle1(std::pair<double, double> xy, std::pair<d
 	_xy = xy;
 	_dxy = dxy;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(LowAttackPar1_Graph);
+	_GrHandle = ResourceServer::LoadGraph(LOWATTACK_PARTICLE1_GRAPH);
 }
 LowAttackParticle1::~LowAttackParticle1() {
 }
 
 void LowAttackParticle1::Init() {
-	_mxy = std::make_pair(LowAttackPar1_PozX, LowAttackPar1_PozY);
-	_bm = LowAttackPar1_BLENDMODE;
-	_pal = LowAttackPar1_Pal;
-	_rgb = std::make_tuple(LowAttackPar1_Red, LowAttackPar1_Green, LowAttackPar1_Blue);
-	_drg = std::make_pair(LowAttackPar1_Scale, LowAttackPar1_Angle);
-	_Cnt = LowAttackPar1_Cnt;
+	_mxy = std::make_pair(LOWATTACK_PARTICLE1_POSITIONX, LOWATTACK_PARTICLE1_POSITIONY);
+	_bm = LOWATTACK_PARTICLE1_BLENDMODE;
+	_pal = LOWATTACK_PARTICLE1_PAL;
+	_rgb = std::make_tuple(LOWATTACK_PARTICLE1_RED, LOWATTACK_PARTICLE1_GREEN, LOWATTACK_PARTICLE1_BLUE);
+	_drg = std::make_pair(LOWATTACK_PARTICLE1_SCALE, LOWATTACK_PARTICLE1_ANGLE);
+	_Cnt = LOWATTACK_PARTICLE1_CNT;
 	_isFlip = false;
 }
 
@@ -37,18 +37,18 @@ LowAttackParticle2::LowAttackParticle2(std::pair<double, double> xy, std::pair<d
 	_xy = xy;
 	_dxy = dxy;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(LowAttackPar2_Graph);
+	_GrHandle = ResourceServer::LoadGraph(LOWATTACK_PARTICLE2_GRAPH);
 }
 LowAttackParticle2::~LowAttackParticle2() {
 }
 
 void LowAttackParticle2::Init() {
-	_mxy = std::make_pair(LowAttackPar2_PozX, LowAttackPar2_PozY);
-	_bm = LowAttackPar2_BLENDMODE;
-	_pal = LowAttackPar2_Pal;
-	_rgb = std::make_tuple(LowAttackPar2_Red, LowAttackPar2_Green, LowAttackPar2_Blue);
-	_drg = std::make_pair(LowAttackPar2_Scale, LowAttackPar2_Angle);
-	_Cnt = LowAttackPar2_Cnt;
+	_mxy = std::make_pair(LOWATTACK_PARTICLE2_POSITIONX, LOWATTACK_PARTICLE2_POSITIONY);
+	_bm = LOWATTACK_PARTICLE2_BLENDMODE;
+	_pal = LOWATTACK_PARTICLE2_PAL;
+	_rgb = std::make_tuple(LOWATTACK_PARTICLE2_RED, LOWATTACK_PARTICLE2_GREEN, LOWATTACK_PARTICLE2_BLUE);
+	_drg = std::make_pair(LOWATTACK_PARTICLE2_SCALE, LOWATTACK_PARTICLE2_ANGLE);
+	_Cnt = LOWATTACK_PARTICLE2_CNT;
 	_isFlip = false;
 }
 

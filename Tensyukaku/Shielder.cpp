@@ -3,13 +3,14 @@
 #include <sstream>
 #include "EnemyBase.h"
 #include "Shielder.h"
+#include "ShielderMotionCollision.h"
 #include "Shield.h"
 #include "Game.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
+#include "player.h"
 
 using namespace SInfo;
-using namespace ShInfo;
 Shielder::Shielder() :
 	_Patrol_AnimeNo(0),
 	_Coming_AnimeNo(0),
@@ -19,7 +20,7 @@ Shielder::Shielder() :
 	_Walk_SEHandle(-1),
 	_Attack_SEHandle(-1),
 	_Shield_Flag(true),
-	_Shield_Cnt(-61)
+	_Shield_Cnt(-60)
 {
 	Init();
 	LoadActionGraph();
@@ -31,19 +32,19 @@ Shielder::~Shielder() {
 };
 
 void Shielder::Init() {
-	_w = SInfo::GraphWidth;
-	_h = SInfo::GraphHeight;
-	_x = PositionX;
-	_y = PositionY;
-	_gx = SInfo::GraphPointX;
-	_gy = SInfo::GraphPointY;
-	_hit_x = SInfo::PositionHitX;
-	_hit_y = SInfo::PositionHitY;
-	_hit_w = SInfo::CollisionWidth;
-	_hit_h = SInfo::CollisionHeight;
+	_w = GRAPH_WIDTH;
+	_h = GRAPH_HEIGHT;
+	_x = POSITION_X;
+	_y = POSITION_Y;
+	_gx = GRAPHPOINT_X;
+	_gy =GRAPHPOINT_Y;
+	_hit_x = POSITION_HITX;
+	_hit_y = POSITION_HITY;
+	_hit_w = COLLISION_WIDTH;
+	_hit_h = COLLISION_HEIGHT;
 	_State = ENEMYSTATE::PATROL;
-	_Life = LifeMax;
-	_Spd = Speed;
+	_Life = LIFE_MAX;
+	_Spd = SPEED;
 	_isFlip = false;
 }
 void Shielder::Process(Game& g) {
@@ -67,58 +68,67 @@ void Shielder::Process(Game& g) {
 		break;
 	}
 }
-void Shielder ::Draw(Game& g) {
-	EnemyBase::Draw(g);
-	
-	ShieldDraw(g);
+void Shielder::Draw(Game& g) {	
 #ifdef _DEBUG
-	std::stringstream ss;
-	ss << "ShielderLife=" << _Life << "\n";
-	ss << "ShielderActionCnt=" << _Action_Cnt << "\n";
-	DrawString(300, 10, ss.str().c_str(), GetColor(255, 50, 255));
-#endif
+	DebugDraw(g);
+#endif 
+	EnemyBase::Draw(g);
+	ShieldDraw(g);
 }
 void Shielder::Delete(Game& g) {
 	g.GetOS()->Del(this);
 }
-
+//盾の描画関数
 void Shielder::ShieldDraw(Game& g) {
 	if (_Shield_Flag == true) {
 		Shield Sh;
-		auto x = _x + ShInfo::GraphPointX;
-		auto y = _y + ShInfo::GraphPointY;
+		auto x = _x + SHIELD_DIFFPOINTX;
+		auto y = _y + SHIELD_DIFFPOINTY;
 		auto gr = Sh.GetHandle();
-		auto angle = Sh.GetAngle();
-		auto a =Alpha;
+		auto a = SHIELD_ALPHA;
 		auto frame = _Cnt - _Shield_Cnt;
-		if (_Cnt - _Shield_Cnt >= 0 && Shield_Frame >= _Cnt - _Shield_Cnt) {
-			angle += frame * AnChange;
-			a -= frame * AlChange;
-			y += frame * XChange;
-			x += frame * YChange;
-			gr = SetDrawBlendMode(DX_BLENDMODE_ALPHA, a);
+		if (_isFlip == false) {
+			auto angle = Sh.GetAngle();
+			if (frame >= 0 && GUARDBREAK_ALLFRAME >= frame) {
+				a -= frame * SHIELD_ALPHACHANGE;
+				angle += frame * SHIELD_ANGLECHANGE;
+				x += frame * SHIELD_XCHANGE;
+				y += frame * SHIELD_YCHANGE;
+			}
+			Sh.SetAngle(angle);
 		}
-		if (_Cnt - _Shield_Cnt == Shield_Frame) {
+		if (_isFlip == true) {
+			auto angle = -Sh.GetAngle();
+			if (frame >= 0 && GUARDBREAK_ALLFRAME >= frame) {
+				a -= frame * SHIELD_ALPHACHANGE;
+				angle -= frame * SHIELD_ANGLECHANGE;
+				x -= frame * SHIELD_XCHANGE;
+				y += frame * SHIELD_YCHANGE;
+			}
+			Sh.SetAngle(angle);
+		}
+		if (frame == GUARDBREAK_ALLFRAME) {
 			_Shield_Flag = false;
 		}
-		Sh.SetAngle(angle);
+		gr = SetDrawBlendMode(DX_BLENDMODE_ALPHA, a);
 		Sh.SetPosition(x, y);
 		Sh.Draw(g);
+		gr = SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
 	}
 }
 
 //盾兵の画像読み込み関数
 void Shielder::LoadActionGraph() {
-	_Patrol_GrAll.resize(Patrol_AnimeMax);
-	ResourceServer::LoadDivGraph(Patrol_GraphName, Patrol_AnimeMax, Patrol_WidthCount, Patrol_HeightCount, SInfo::GraphWidth, SInfo::GraphHeight, _Patrol_GrAll.data());
-	_Coming_GrAll.resize(Coming_AnimeMax);
-	ResourceServer::LoadDivGraph(Coming_GraphName, Coming_AnimeMax, Coming_WidthCount, Coming_HeightCount, SInfo::GraphWidth, SInfo::GraphHeight, _Coming_GrAll.data());
-	_Attack_GrAll.resize(Attack_AnimeMax);
-	ResourceServer::LoadDivGraph(Attack_GraphName, Attack_AnimeMax, Attack_WidthCount, Attack_HeightCount, SInfo::GraphWidth, SInfo::GraphHeight, _Attack_GrAll.data());
-	_GuardBreak_GrAll.resize(GuardBreak_AnimeMax);
-	ResourceServer::LoadDivGraph(GuardBreak_GraphName, GuardBreak_AnimeMax, GuardBreak_WidthCount, GuardBreak_HeightCount, SInfo::GraphWidth, SInfo::GraphHeight, _GuardBreak_GrAll.data());
-	_Dead_GrAll.resize(Dead_AnimeMax);
-	ResourceServer::LoadDivGraph(Dead_GraphName, Dead_AnimeMax, Dead_WidthCount, Dead_HeightCount, SInfo::GraphWidth, SInfo::GraphHeight, _Dead_GrAll.data());
+	_Patrol_GrAll.resize(PATROL_ANIMEMAX);
+	ResourceServer::LoadDivGraph(PATROL_GARAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Patrol_GrAll.data());
+	_Coming_GrAll.resize(COMING_ANIMEMAX);
+	ResourceServer::LoadDivGraph(COMING_GRAPHNAME, COMING_ANIMEMAX, COMING_WIDTHCOUNT, COMING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Coming_GrAll.data());
+	_Attack_GrAll.resize(ATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(ATTACK_GRAPHNAME, ATTACK_ANIMEMAX, ATTACK_WIDTHCOUNT, ATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Attack_GrAll.data());
+	_GuardBreak_GrAll.resize(GUARDBREAK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(GUARDBREAK_GRAPHNAME, GUARDBREAK_ANIMEMAX, GUARDBREAK_WIDTHCOUNT, GUARDBREAK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GuardBreak_GrAll.data());
+	_Dead_GrAll.resize(DEAD_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Dead_GrAll.data());
 }
 
 //盾兵のSE読み込み関数
@@ -127,9 +137,42 @@ void Shielder::LoadActionSE() {
 
 //盾兵のアニメーション関数
 void Shielder::AnimeUpdate(Game& g) {
-	_Patrol_AnimeNo = (_Cnt / AnimeSpeed_Patrol) % Patrol_AnimeMax;
-	_Coming_AnimeNo = (_Cnt / AnimeSpeed_Coming) % Coming_AnimeMax;
-	_Attack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Attack) % Attack_AnimeMax;
-	_GuardBreak_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_GuardBreak) % GuardBreak_AnimeMax;
-	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
+	_Patrol_AnimeNo = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
+	_Coming_AnimeNo = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+	_Attack_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
+	_GuardBreak_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_GUARDBREAK) % GUARDBREAK_ANIMEMAX;
+	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+}
+
+//デバッグ用関数
+void Shielder::DebugDraw(Game& g) {
+	ShielderPatrolCollision spc;
+	ShielderComingCollision scc;
+	switch (_State) {
+	case ENEMYSTATE::PATROL:
+		if (_isFlip == false) {
+			spc.SetPosition(_x + _hit_x - spc.GetHitW(), _y - _hit_h);
+			spc.Draw(g);
+		}
+		if (_isFlip == true) {
+			spc.SetPosition(_x - _hit_x, _y - _hit_h);
+			spc.Draw(g);
+		}
+		break;
+	case ENEMYSTATE::COMING:
+		if (_isFlip == false) {
+			scc.SetPosition(_x + _hit_x - scc.GetHitW(), _y - _hit_h);
+			scc.Draw(g);
+		}
+		if (_isFlip == true) {
+			scc.SetPosition(_x - _hit_x, _y - _hit_h);
+			scc.Draw(g);
+		}
+		break;
+	}
+	std::stringstream ss;
+	ss << "盾兵HP=" << _Life << "\n";
+	ss << "盾兵Spd=" << _Spd << "\n";
+	ss << "盾生存フラグ=" << _Shield_Flag << "\n";
+	DrawString(600, 10, ss.str().c_str(), GetColor(255, 50, 255));
 }

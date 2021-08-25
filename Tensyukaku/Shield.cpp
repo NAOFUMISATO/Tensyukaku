@@ -6,7 +6,7 @@
 #include "ObjectBase.h"
 #include <utility>
 
-using namespace ShInfo;
+using namespace SInfo;
 Shield::Shield() {
 	Init();
 	_GrHandle = ResourceServer::LoadGraph("res/Shielder/Shield.png");
@@ -15,15 +15,9 @@ Shield::~Shield() {
 }
 
 void Shield::Init() {
-	_w = GraphWidth;
-	_h = GraphHeight;
-	_gx = GraphX;
-	_gy = GraphY;
-	_hit_x = PositionHitX;
-	_hit_y = PositionHitY;
-	_hit_w = CollisionWidth;
-	_hit_h = CollisionHeight;
-	_drg.second = Angle;
+	_gx = SHIELD_GRAPH_POINTX;
+	_gy = SHIELD_GRAPH_POINTY;
+	_drg.second = SHIELD_ANGLE;
 	_Dalpha = 0;
 }
 

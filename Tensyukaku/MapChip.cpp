@@ -175,7 +175,7 @@ void	MapChip::Draw()
 					if (CheckHit(x, y) != 0)
 					{
 						
-						//SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);		// 半透明描画指定
+						//SetDrawBlendMode(DX_BLENDMODE_ALPHA, 64);		// 半透明描画指定
 						//DrawBox(pos_x, pos_y, pos_x + CHIPSIZE_W, pos_y + CHIPSIZE_H, GetColor(255, 0, 0), TRUE);	// 半透明の赤で当たり判定描画
 						//SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 						

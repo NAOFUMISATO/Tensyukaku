@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
+#include "BushiMotionCollision.h"
 
 using namespace BInfo;
 Bushi::Bushi() :
@@ -27,19 +28,19 @@ Bushi::~Bushi() {
 };
 
 void Bushi::Init() {
-	_w = GraphWidth;
-	_h = GraphHeight;
-	_x = PositionX;
-	_y = PositionY;
-	_gx = GraphPointX;
-	_gy = GraphPointY;
-	_hit_x = PositionHitX;
-	_hit_y = PositionHitY;
-	_hit_w = CollisionWidth;
-	_hit_h = CollisionHeight;
+	_w = GRAPH_WIDTH;
+	_h = GRAPH_HEIGHT;
+	_x = POSITION_X;
+	_y = POSITION_Y;
+	_gx = GRAPHPOINT_X;
+	_gy = GRAPHPOINT_Y;
+	_hit_x = POSITION_HITX;
+	_hit_y = POSITION_HITY;
+	_hit_w = COLLISION_WIDTH;
+	_hit_h = COLLISION_HEIGHT;
 	_State=ENEMYSTATE::PATROL;
-	_Life = LifeMax;
-	_Spd = Speed;
+	_Life = LIFE_MAX;
+	_Spd = SPEED;
 	_isFlip = false;
 }
 void Bushi::Process(Game& g) {
@@ -63,31 +64,30 @@ void Bushi::Process(Game& g) {
 		break;
 	}
 }
-void Bushi::Draw(Game& g) {
-	EnemyBase::Draw(g);
+
+void Bushi::Draw(Game& g) {	
 #ifdef _DEBUG
-	std::stringstream ss;
-	ss << "BushiLife=" << _Life << "\n";
-	ss << "BushiActionCnt=" << _Action_Cnt << "\n";
-	DrawString(300, 10, ss.str().c_str(), GetColor(255, 50, 255));
+	DebugDraw(g);
 #endif
+	EnemyBase::Draw(g);
 }
+
 void Bushi::Delete(Game& g) {
 		g.GetOS()->Del(this);
 }
 
 //ïêémÇÃâÊëúì«Ç›çûÇ›ä÷êî
 void Bushi::LoadActionGraph() {
-	_Patrol_GrAll.resize(Patrol_AnimeMax);
-	ResourceServer::LoadDivGraph(Patrol_GraphName, Patrol_AnimeMax, Patrol_WidthCount, Patrol_HeightCount, GraphWidth, GraphHeight, _Patrol_GrAll.data());
-	_Coming_GrAll.resize(Coming_AnimeMax);
-	ResourceServer::LoadDivGraph(Coming_GraphName, Coming_AnimeMax, Coming_WidthCount, Coming_HeightCount, GraphWidth, GraphHeight, _Coming_GrAll.data());
-	_Attack_GrAll.resize(Attack_AnimeMax);
-	ResourceServer::LoadDivGraph(Attack_GraphName, Attack_AnimeMax, Attack_WidthCount, Attack_HeightCount, GraphWidth, GraphHeight, _Attack_GrAll.data());
-	_Damage_GrAll.resize(Damage_AnimeMax);
-	ResourceServer::LoadDivGraph(Damage_GraphName, Damage_AnimeMax, Damage_WidthCount, Damage_HeightCount, GraphWidth, GraphHeight, _Damage_GrAll.data());
-	_Dead_GrAll.resize(Dead_AnimeMax);
-	ResourceServer::LoadDivGraph(Dead_GraphName, Dead_AnimeMax, Dead_WidthCount, Dead_HeightCount, GraphWidth, GraphHeight, _Dead_GrAll.data());
+	_Patrol_GrAll.resize(PATROL_ANIMEMAX);
+	ResourceServer::LoadDivGraph(PATROL_GRAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Patrol_GrAll.data());
+	_Coming_GrAll.resize(COMING_ANIMEMAX);
+	ResourceServer::LoadDivGraph(COMING_GRAPHNAME, COMING_ANIMEMAX, COMING_WIDTHCOUNT, COMING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Coming_GrAll.data());
+	_Attack_GrAll.resize(ATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(ATTACK_GRAPHNAME, ATTACK_ANIMEMAX, ATTACK_WIDTHCOUNT, ATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Attack_GrAll.data());
+	_Damage_GrAll.resize(DAMAGE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Damage_GrAll.data());
+	_Dead_GrAll.resize(DEAD_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Dead_GrAll.data());
 }
 
 //ïêémÇÃSEì«Ç›çûÇ›ä÷êî
@@ -96,9 +96,40 @@ void Bushi::LoadActionSE() {
 
 //ïêémÇÃÉAÉjÉÅÅ[ÉVÉáÉìä÷êî
 void Bushi::AnimeUpdate(Game& g) {
-	_Patrol_AnimeNo = (_Cnt / AnimeSpeed_Patrol) % Patrol_AnimeMax;
-	_Coming_AnimeNo = (_Cnt / AnimeSpeed_Coming) % Coming_AnimeMax;
-	_Attack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Attack) % Attack_AnimeMax;
-	_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
-	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
+	_Patrol_AnimeNo = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
+	_Coming_AnimeNo = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+	_Attack_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
+	_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+}
+//ÉfÉoÉbÉOópä÷êî
+void Bushi::DebugDraw(Game& g) {
+	BushiPatrolCollision bpc;
+	BushiComingCollision bcc;
+	switch (_State) {
+	case ENEMYSTATE::PATROL:
+		if (_isFlip == false) {
+			bpc.SetPosition(_x + _hit_x - bpc.GetHitW(), _y - _hit_h);
+			bpc.Draw(g);
+		}
+		if (_isFlip == true) {
+			bpc.SetPosition(_x - _hit_x, _y - _hit_h);
+			bpc.Draw(g);
+		}
+		break;
+	case ENEMYSTATE::COMING:
+		if (_isFlip == false) {
+			bcc.SetPosition(_x + _hit_x - bcc.GetHitW(), _y - _hit_h);
+			bcc.Draw(g);
+		}
+		if (_isFlip == true) {
+			bcc.SetPosition(_x - _hit_x, _y - _hit_h);
+			bcc.Draw(g);
+		}
+		break;
+	}
+	std::stringstream ss;
+	ss << "ïêémHP=" << _Life << "\n";
+	ss << "ïêémSpd=" << _Spd << "\n";
+	DrawString(200, 10, ss.str().c_str(), GetColor(255, 50, 255));
 }

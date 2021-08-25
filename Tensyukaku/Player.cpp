@@ -47,18 +47,18 @@ void Player::Init()
 {
 	// プレイヤー情報の初期化
 	_GrHandle = -1;
-	_w = GraphWidth;
-	_h = GraphHeight;
-	_x = PositionX;
-	_y = PositionY;
-	_gx = GraphPointX;
-	_gy = GraphPointY;
-	_hit_x = PositionHitX;
-	_hit_y = PositionHitY;
-	_hit_w = CollisionWidth;
-	_hit_h = CollisionHeight;
-	_Life = LifeMax;
-	_Spd = Speed;
+	_w = GRAPH_WIDTH;
+	_h = GRAPH_HEIGHT;
+	_x = POSITION_X;
+	_y = POSITION_Y;
+	_gx = GRAPHPOINT_X;
+	_gy = GRAPHPOINT_Y;
+	_hit_x = POSITION_HITX;
+	_hit_y = POSITION_HITY;
+	_hit_w = COLLISION_WIDTH;
+	_hit_h = COLLISION_HEIGHT;
+	_Life = LIFE_MAX;
+	_Spd = SPEED;
 	_isFlip = true;
 	_position = { 0,0 };
 }
@@ -67,13 +67,12 @@ void Player::Init()
 void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
-	
 	AnimeUpdate(g);
 
 	/*---状態毎の処理---*/
 		//無敵状態
 	if (_Star_Flag == true) {
-		if (_Cnt - _Star_Cnt == Star_Frame) {
+		if (_Cnt - _Star_Cnt == STAR_ALLFRAME) {
 			_Star_Flag = false;
 		}
 	}
@@ -125,15 +124,15 @@ void Player::Process(Game& g)
 		break;
 	}
 	// 主人公位置からカメラ座標決定
-	g.SetcvX(_x- (SCREEN_W * BackCameraX / 100));// 背景の横中央にキャラを置く
-	g.SetcvY(_y - (SCREEN_H * BackCameraY / 100));// 背景の縦93%にキャラを置く
+	g.SetcvX(_x- (SCREEN_W * BACK_CAMERA_X / 100));// 背景の横中央にキャラを置く
+	g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));// 背景の縦93%にキャラを置く
 	if (g.GetcvX() < 0) { g.SetcvX(0); }
 	if (g.GetcvX() > g.GetmapW()-SCREEN_W) { g.SetcvX(g.GetmapW() - SCREEN_W); }
 	if (g.GetcvY() < 0) { g.SetcvY(0); }
 	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
 	auto GC = g.GetChip();
-	GC->SetscrX(_x - (SCREEN_W * ChipCameraX / 100));	// マップチップの横中央にキャラを置く
-	GC->SetscrY(_y - (SCREEN_H * ChipCameraY / 100));	// マップチップの縦93%にキャラを置く
+	GC->SetscrX(_x - (SCREEN_W * CHIP_CAMERA_X / 100));	// マップチップの横中央にキャラを置く
+	GC->SetscrY(_y - (SCREEN_H * CHIP_CAMERA_Y / 100));	// マップチップの縦93%にキャラを置く
 	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
 	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
 	if (GC->GetscrY() < 0) { GC->SetscrY(0); }
@@ -143,24 +142,15 @@ void Player::Process(Game& g)
 }
 
 void Player::Draw(Game& g) {
-	UIDraw(g);
 	//無敵状態の描画処理
-	if (_Star_Flag == true && (_Cnt / AnimeSpeed_Star % 2) == 0) {
+	if (_Star_Flag == true && (_Cnt / ANIMESPEED_STAR % 2) == 0) {
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
 	}
-	ObjectBase::Draw(g);
 #ifdef _DEBUG
-	std::stringstream ss;
-	ss << "_Cnt=" << _Cnt << "\n";
-	ss << "_scrX=" << g.GetChip()->GetscrX() << "\n";
-	ss << "_scrY=" << g.GetChip()->GetscrY() << "\n";
-	ss << "PlayerX=" << _x << "\n";
-	ss << "PlayerY=" << _y << "\n";
-	ss << "MidNo=" <<_MiddleAttack_AnimeNo<< "\n";
-	ss << "LowNo=" << _LowAttack_AnimeNo << "\n";
-	DrawString(10, 10, ss.str().c_str(), GetColor(255, 50, 255));
+	DebugDraw(g);
 #endif
-
+	ObjectBase::Draw(g);
+	UIDraw(g);
 }
 
 void Player::Delete(Game& g) {
@@ -168,47 +158,57 @@ void Player::Delete(Game& g) {
 }
 //プレイヤーの画像読み込み関数
 void Player::LoadActionGraph() {
-	_Idle_GrAll.resize(Idle_AnimeMax);
-	ResourceServer::LoadDivGraph(Idle_GraphName, Idle_AnimeMax, Idle_WidthCount, Idle_HeightCount, GraphWidth, GraphHeight, _Idle_GrAll.data());
-	_Move_GrAll.resize(Move_AnimeMax);
-	ResourceServer::LoadDivGraph(Move_GraphName, Move_AnimeMax, Move_WidthCount, Move_HeightCount, GraphWidth, GraphHeight, _Move_GrAll.data());
-	_MiddleAttack_GrAll.resize(MiddleAttack_AnimeMax);
-	ResourceServer::LoadDivGraph(MiddleAttack_GraphName, MiddleAttack_AnimeMax, MiddleAttack_WidthCount, MiddleAttack_HeightCount, GraphWidth, GraphHeight, _MiddleAttack_GrAll.data());
-	_LowAttack_GrAll.resize(LowAttack_AnimeMax);
-	ResourceServer::LoadDivGraph(LowdAttack_GraphName, LowAttack_AnimeMax, LowAttack_WidthCount, LowAttack_HeightCount, GraphWidth, GraphHeight, _LowAttack_GrAll.data());
-	_Kick_GrAll.resize(Kick_AnimeMax);
-	ResourceServer::LoadDivGraph(Kick_GraphName, Kick_AnimeMax, Kick_WidthCount, Kick_HeightCount, GraphWidth, GraphHeight, _Kick_GrAll.data());
-	_Iai_GrAll.resize(Iai_AnimeMax);
-	ResourceServer::LoadDivGraph(Iai_GraphName, Iai_AnimeMax, Iai_WidthCount, Iai_HeightCount, GraphWidth, GraphHeight, _Iai_GrAll.data());
-	/*_Sway_GrAll.resize(Sway_AnimeMax);
-	ResourceServer::LoadDivGraph(Sway_GraphName, Sway_AnimeMax, Sway_WidthCount, Sway_HeightCount, GraphWidth, GraphHeight, _Sway_GrAll.data());*/
-	_Damage_GrAll.resize(Damage_AnimeMax);
-	ResourceServer::LoadDivGraph(Damage_GraphName, Damage_AnimeMax, Damage_WidthCount, Damage_HeightCount, GraphWidth, GraphHeight, _Damage_GrAll.data());
-	_Dead_GrAll.resize(Dead_AnimeMax);
-	ResourceServer::LoadDivGraph(Dead_GraphName, Dead_AnimeMax, Dead_WidthCount, Dead_HeightCount, GraphWidth, GraphHeight, _Dead_GrAll.data());
+	_Idle_GrAll.resize(IDLE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Idle_GrAll.data());
+	_Move_GrAll.resize(MOVE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Move_GrAll.data());
+	_MiddleAttack_GrAll.resize(MIDDLEATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MIDDLEATTACK_GRAPHNAME, MIDDLEATTACK_ANIMEMAX, MIDDLEATTACK_WIDTHCOUNT, MIDDLEATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _MiddleAttack_GrAll.data());
+	_LowAttack_GrAll.resize(LOWATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(LOWATTACK_GRAPHNAME, LOWATTACK_ANIMEMAX, LOWATTACK_WIDTHCOUNT, LOWATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _LowAttack_GrAll.data());
+	_Kick_GrAll.resize(KICK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(KICK_GRAPHNAME, KICK_ANIMEMAX, KICK_WIDTHCOUNT, KICK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Kick_GrAll.data());
+	_Iai_GrAll.resize(IAI_ANIMEMAX);
+	ResourceServer::LoadDivGraph(IAI_GRAPHNAME, IAI_ANIMEMAX, IAI_WIDTHCOUNT, IAI_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Iai_GrAll.data());
+	/*_Sway_GrAll.resize(SWAY_ANIMEMAX);
+	ResourceServer::LoadDivGraph(SWAY_GRAPHNAME, SWAY_ANIMEMAX, SWAY_WIDTHCOUNT, SWAY_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Sway_GrAll.data());*/
+	_Damage_GrAll.resize(DAMAGE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Damage_GrAll.data());
+	_Dead_GrAll.resize(DEAD_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Dead_GrAll.data());
 }
 
 //プレイヤーの効果音読み込み関数
 void Player::LoadActionSE() {
-	_Walk_SEHandle = ResourceServer::LoadSoundMem(Walk_SE);
-	_MiddleAttack_SEHandle = ResourceServer::LoadSoundMem(MiddleAttack_SE);
-	_LowAttack_SEHandle = ResourceServer::LoadSoundMem(LowAttack_SE);
-	_Kick_SEHandle= ResourceServer::LoadSoundMem(Kick_SE);
-	_Damage_SEHandle= ResourceServer::LoadSoundMem(Damage_SE);
-	_SwordIn_SEHandle = ResourceServer::LoadSoundMem(SwordIn_SE);
-	_Iai_SEHandle = ResourceServer::LoadSoundMem(Iai_SE);
+	_Walk_SEHandle = ResourceServer::LoadSoundMem(WALK_SE);
+	_MiddleAttack_SEHandle = ResourceServer::LoadSoundMem(MIDDLEATTACK_SE);
+	_LowAttack_SEHandle = ResourceServer::LoadSoundMem(LOWATTACK_SE);
+	_Kick_SEHandle= ResourceServer::LoadSoundMem(KICK_SE);
+	_Damage_SEHandle= ResourceServer::LoadSoundMem(DAMAGE_SE);
+	_SwordIn_SEHandle = ResourceServer::LoadSoundMem(SWORDIN_SE);
+	_Iai_SEHandle = ResourceServer::LoadSoundMem(IAI_SE);
 }
 
 //プレイヤーのアニメーション関数
 void Player::AnimeUpdate(Game& g) {
-	_Idle_AnimeNo = (_Cnt / AnimeSpeed_Idle) % Idle_AnimeMax;
-	_Move_AnimeNo = (_Cnt / AnimeSpeed_Move) % Move_AnimeMax;
-	_MiddleAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_MiddleAttack) % MiddleAttack_AnimeMax;
-	_LowAttack_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_LowAttack) % LowAttack_AnimeMax;
-	_Kick_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Kick) % Kick_AnimeMax;
-	_Iai_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Iai) % Iai_AnimeMax;
-	_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Damage) % Damage_AnimeMax;
-	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / AnimeSpeed_Dead) % Dead_AnimeMax;
+	_Idle_AnimeNo = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	_Move_AnimeNo = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
+	_MiddleAttack_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
+	_LowAttack_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
+	_Kick_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
+	_Iai_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
+	_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+}
+
+//デバック用関数
+void Player::DebugDraw(Game& g) {
+	std::stringstream ss;
+	ss << "Xスクロール値=" << g.GetChip()->GetscrX() << "\n";
+	ss << "Yスクロール値=" << g.GetChip()->GetscrY() << "\n";
+	ss << "プレイヤーX座標=" << _x << "\n";
+	ss << "プレイヤーY座標=" << _y << "\n";
+	DrawString(10, 10, ss.str().c_str(), GetColor(255, 50, 255));
 }
 
 //プレイヤーのUI描画関数
@@ -217,15 +217,15 @@ void Player::UIDraw(Game& g) {
 		HP->SetPosition(SCREEN_W - SCREEN_W+300 , SCREEN_H - 40);
 		g.GetOS()->Add(HP);
 	if (_Life >= 3) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), GraphScale, GraphAngle, HP->GetHp3(), true, false);
+		DrawRotaGraph(HP->GetX(), HP->GetY(), GRAPH_SCALE, GRAPH_ANGLE, HP->GetHp3(), true, false);
 		g.GetOS()->Del(HP);
 	}
 	else if (_Life == 2) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), GraphScale, GraphAngle, HP->GetHp2(), true, false);
+		DrawRotaGraph(HP->GetX(), HP->GetY(), GRAPH_SCALE, GRAPH_ANGLE, HP->GetHp2(), true, false);
 		g.GetOS()->Del(HP);
 	}
 	else if (_Life == 1) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), GraphScale, GraphAngle, HP->GetHp1(), true, false);
+		DrawRotaGraph(HP->GetX(), HP->GetY(), GRAPH_SCALE, GRAPH_ANGLE, HP->GetHp1(), true, false);
 		g.GetOS()->Del(HP);
 	}
 	else if(_Life <= 0) { g.GetOS()->Del(HP); }

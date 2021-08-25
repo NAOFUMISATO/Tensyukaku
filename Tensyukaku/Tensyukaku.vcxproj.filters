@@ -269,7 +269,7 @@
     <ClInclude Include="Shielder.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Sierder</Filter>
     </ClInclude>
-    <ClInclude Include="SielderMotionCollision.h">
+    <ClInclude Include="ShielderMotionCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Shield.h">

@@ -12,7 +12,6 @@ public:
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::BUSHIPATROL; }
 
 	void	Init()override;
-	void	Process(Game& g)override;
 };
 
 // 武士の攻撃発生範囲当たり判定クラス
@@ -23,7 +22,6 @@ public:
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::BUSHICOMING; }
 
 	void	Init()override;
-	void	Process(Game& g)override;
 };
 
 // 武士の攻撃当たり判定クラス

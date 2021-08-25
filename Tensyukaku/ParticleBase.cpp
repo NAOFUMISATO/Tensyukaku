@@ -24,9 +24,9 @@ void ParticleBase::Process(Game& g) {
 
 void ParticleBase::Draw(Game& g) {
 	int a = _pal;
-	int& re = std::get<Red>(_rgb);
-	int& gr = std::get<Green>(_rgb);
-	int& bl = std::get<Blue>(_rgb);
+	int& re = std::get<RED>(_rgb);
+	int& gr = std::get<GREEN>(_rgb);
+	int& bl = std::get<BLUE>(_rgb);
 	SetDrawBlendMode(_bm, a);
 	SetDrawBright(re,gr,bl);
 	auto GC = g.GetChip();

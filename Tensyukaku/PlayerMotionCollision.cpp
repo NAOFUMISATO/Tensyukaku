@@ -18,20 +18,25 @@ MiddleAttackCollision::~MiddleAttackCollision() {
 }
 
 void MiddleAttackCollision::Init() {
-	_w = MiddleAttackWidth;
-	_h = MiddleAttackHeight;
+	_w = MIDDLEATTACK_WIDTH;
+	_h = MIDDLEATTACK_HEIGHT;
 	_gx = 0;
 	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
-	_hit_w = MiddleAttackWidth;
-	_hit_h = MiddleAttackHeight;
+	_hit_w = MIDDLEATTACK_WIDTH;
+	_hit_h = MIDDLEATTACK_HEIGHT;
 	_Action_Cnt = _Cnt;
+#ifdef _DEBUG
+	_color = std::make_tuple(255, 0, 0);
+	_Dalpha = 128;
+	_fill = true;
+#endif
 }
 
 void MiddleAttackCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == MAEnd_Frame) {
+	if (_Cnt - _Action_Cnt == MIDDLEATTACK_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }
@@ -50,20 +55,25 @@ LowAttackCollision::~LowAttackCollision() {
 }
 
 void LowAttackCollision::Init() {
-	_w = LowAttackWidth;
-	_h = LowAttackHeight;
+	_w = LOWATTACK_WIDTH;
+	_h = LOWATTACK_HEIGHT;
 	_gx = 0;
 	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
-	_hit_w = LowAttackWidth;
-	_hit_h = LowAttackHeight;
+	_hit_w = LOWATTACK_WIDTH;
+	_hit_h = LOWATTACK_HEIGHT;
 	_Action_Cnt = _Cnt;
+#ifdef _DEBUG
+	_color = std::make_tuple(255, 0, 0);
+	_Dalpha = 128;
+	_fill = true;
+#endif
 }
 
 void LowAttackCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == LAEnd_Frame) {
+	if (_Cnt - _Action_Cnt == LOWATTACK_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }
@@ -82,20 +92,25 @@ KickCollision::~KickCollision() {
 }
 
 void KickCollision::Init() {
-	_w = KickWidth;
-	_h = KickHeight;
+	_w = KICK_WIDTH;
+	_h = KICK_HEIGHT;
 	_gx = 0;
 	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
-	_hit_w = KickWidth;
-	_hit_h = KickHeight;
+	_hit_w = KICK_WIDTH;
+	_hit_h = KICK_HEIGHT;
 	_Action_Cnt = _Cnt;
+#ifdef _DEBUG
+	_color = std::make_tuple(255, 0, 0);
+	_Dalpha = 128;
+	_fill = true;
+#endif
 }
 
 void KickCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == KIEnd_Frame) {
+	if (_Cnt - _Action_Cnt == KICK_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }
@@ -114,20 +129,25 @@ IaiCollision::~IaiCollision() {
 }
 
 void IaiCollision::Init() {
-	_w = IaiWidth;
-	_h = IaiHeight;
+	_w = IAI_WIDTH;
+	_h = IAI_HEIGHT;
 	_gx = 0;
 	_gy = 0;
 	_hit_x = 0;
 	_hit_y = 0;
-	_hit_w = IaiWidth;
-	_hit_h = IaiHeight;
+	_hit_w = IAI_WIDTH;
+	_hit_h = IAI_HEIGHT;
 	_Action_Cnt = _Cnt;
+#ifdef _DEBUG
+	_color = std::make_tuple(255, 0, 0);
+	_Dalpha = 128;
+	_fill = true;
+#endif
 }
 
 void IaiCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == IAEnd_Frame) {
+	if (_Cnt - _Action_Cnt == IAI_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }

@@ -209,7 +209,7 @@
     <ClInclude Include="ResourceServer.h" />
     <ClInclude Include="Shield.h" />
     <ClInclude Include="Shielder.h" />
-    <ClInclude Include="SielderMotionCollision.h" />
+    <ClInclude Include="ShielderMotionCollision.h" />
     <ClInclude Include="Stair.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

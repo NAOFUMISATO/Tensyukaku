@@ -17,7 +17,7 @@ public:
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,
 		BUSHIPATROL, BUSHICOMING, BUSHIATTACK,
 		NINJAPATROL, NINJACOMING, NINJAATTACK,
-		SIELDERPATROL,SIELDERCOMING,SIELDERATTACK,SHIELD
+		SHIELDERPATROL,SHIELDERCOMING,SHIELDERATTACK,SHIELD
 	};
 	virtual OBJECTTYPE	GetObjType() = 0;
 
@@ -60,7 +60,7 @@ protected:
 	int		_hit_w, _hit_h;				//当たり判定の幅
 	std::pair <int, int>_hit_judge;		//当たり判定用変数
 	std::pair <double, double>_drg;		//DrawRotaGraph用変数
-	int		_Dalpha;						//デバック用矩形透明度
+	int		_Dalpha;					//デバック用矩形透明度
 	bool	_fill;						//デバッグ用矩形塗りつぶしフラグ
 	std::tuple<int, int,int>_color;		//デバック用矩形カラー
 	int		_Cnt;						// 動作カウンタ

@@ -10,18 +10,18 @@ MiddleAttackParticle1::MiddleAttackParticle1(std::pair<double, double> xy, std::
 	_xy = xy;
 	_dxy = dxy;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(MiddleAttackPar1_Graph);
+	_GrHandle = ResourceServer::LoadGraph(MIDDLEATTACK_PARTICLE1_GRAPH);
 }
 MiddleAttackParticle1::~MiddleAttackParticle1() {
 }
 
 void MiddleAttackParticle1::Init() {
-	_mxy = std::make_pair(MiddleAttackPar1_PozX, MiddleAttackPar1_PozY);
-	_bm = MiddleAttackPar1_BLENDMODE;
-	_pal = MiddleAttackPar1_Pal;
-	_rgb = std::make_tuple(MiddleAttackPar1_Red, MiddleAttackPar1_Green, MiddleAttackPar1_Blue);
-	_drg = std::make_pair(MiddleAttackPar1_Scale, MiddleAttackPar1_Angle);
-	_Cnt = MiddleAttackPar1_Cnt;
+	_mxy = std::make_pair(MIDDLEATTACK_PARTICLE1_POSITIONX, MIDDLEATTACK_PARTICLE1_POSITIONY);
+	_bm = MIDDLEATTACK_PARTICLE1_BLENDMODE;
+	_pal = MIDDLEATTACK_PARTICLE1_PAL;
+	_rgb = std::make_tuple(MIDDLEATTACK_PARTICLE1_RED, MIDDLEATTACK_PARTICLE1_GREEN, MIDDLEATTACK_PARTICLE1_BLUE);
+	_drg = std::make_pair(MIDDLEATTACK_PARTICLE1_SCALE, MIDDLEATTACK_PARTICLE1_ANGLE);
+	_Cnt = MIDDLEATTACK_PARTICLE1_CNT;
 	_isFlip = false;
 }
 
@@ -37,18 +37,18 @@ MiddleAttackParticle2::MiddleAttackParticle2(std::pair<double, double> xy, std::
 	_xy = xy;
 	_dxy = dxy;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(MiddleAttackPar2_Graph);
+	_GrHandle = ResourceServer::LoadGraph(MIDDLEATTACK_PARTICLE2_GRAPH);
 }
 MiddleAttackParticle2::~MiddleAttackParticle2() {
 }
 
 void MiddleAttackParticle2::Init() {
-	_mxy = std::make_pair(MiddleAttackPar2_PozX, MiddleAttackPar2_PozY);
-	_bm = MiddleAttackPar2_BLENDMODE;
-	_pal = MiddleAttackPar2_Pal;
-	_rgb = std::make_tuple(MiddleAttackPar2_Red, MiddleAttackPar2_Green, MiddleAttackPar2_Blue);
-	_drg = std::make_pair(MiddleAttackPar2_Scale, MiddleAttackPar2_Angle);
-	_Cnt = MiddleAttackPar2_Cnt;
+	_mxy = std::make_pair(MIDDLEATTACK_PARTICLE2_POSITIONX, MIDDLEATTACK_PARTICLE2_POSITIONY);
+	_bm = MIDDLEATTACK_PARTICLE2_BLENDMODE;
+	_pal = MIDDLEATTACK_PARTICLE2_PAL;
+	_rgb = std::make_tuple(MIDDLEATTACK_PARTICLE2_RED, MIDDLEATTACK_PARTICLE2_GREEN, MIDDLEATTACK_PARTICLE2_BLUE);
+	_drg = std::make_pair(MIDDLEATTACK_PARTICLE2_SCALE, MIDDLEATTACK_PARTICLE2_ANGLE);
+	_Cnt = MIDDLEATTACK_PARTICLE2_CNT;
 	_isFlip = false;
 }
 

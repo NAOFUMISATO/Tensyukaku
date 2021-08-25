@@ -20,6 +20,11 @@ void Stair::Init() {
 	_hit_w = CollisionWidth;
 	_hit_h = CollisionHeight;
 	_isFlip = true;
+#ifdef _DEBUG
+	_color = std::make_tuple(0, 0, 255);
+	_Dalpha = 128;
+	_fill = false;
+#endif
 }
 void Stair::Process(Game& g) {
 	ObjectBase::Process(g);

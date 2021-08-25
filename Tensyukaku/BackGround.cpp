@@ -24,14 +24,14 @@ void	BackGround::Draw(Game& g)
     {
         int pos_y = y  - g.GetcvY();
         // 画面内に画像範囲が入っているか確認（高速化用）
-        if (0 <= pos_y < SCREEN_H)
+        if (0 <= pos_y ||pos_y< SCREEN_H)
         {
             for (x = 0; x < g.GetmapW()  + 1; x+=3840)
             {
                 
                 int pos_x = x- g.GetcvX();
                 // 画面内に画像範囲が入っているか確認（高速化用）
-                if (0 <= pos_x < SCREEN_W)
+                if (0 <= pos_x || pos_x < SCREEN_W)
                 {
                     DrawGraph(pos_x, pos_y, _GrHandle, FALSE);
                 }

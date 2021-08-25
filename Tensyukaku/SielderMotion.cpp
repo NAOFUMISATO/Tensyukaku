@@ -3,7 +3,7 @@
 #include "Shielder.h"
 #include "Shield.h"
 #include "Game.h"
-#include "SielderMotionCollision.h"
+#include "ShielderMotionCollision.h"
 #include "ObjectBase.h"
 #include <tuple>
 #include <utility>
@@ -13,30 +13,26 @@ using namespace SInfo;
 /*----------巡回----------*/
 void Shielder::Patrol(Game& g) {
 	_GrHandle = _Patrol_GrAll[_Patrol_AnimeNo];
-	if (_Cnt - _Action_Cnt == Patrol_Frame) {
+	if (_Cnt - _Action_Cnt == PATROL_TURNFRAME) {
 		_isFlip = true;
 	}
-	if (_Cnt - _Action_Cnt == Patrol_Frame + Patrol_Frame) {
+	if (_Cnt - _Action_Cnt == PATROL_TURNFRAME + PATROL_TURNFRAME) {
 		_isFlip = false;
 		_Action_Cnt = _Cnt;
 	}
 	if (_isFlip == false) {
 		//盾兵の索敵範囲判定オブジェクトの生成
-		ShielderPatrolCollision SPC;
-
+		ShielderPatrolCollision spc;
 		// 盾兵の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		SPC.SetPosition(_x + _hit_x - SPC.GetW(), _y - _hit_h);
-		SPC.GetHitW();
-		SPC.GetHitH();
+		spc.SetPosition(_x + _hit_x - spc.GetHitW(), _y - _hit_h);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
 			// iteはプレイヤーか？
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
-
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(SPC) == true)
+				if ((*ite)->IsHit(spc) == true)
 				{
 					_State = ENEMYSTATE::COMING;
 				}
@@ -45,21 +41,17 @@ void Shielder::Patrol(Game& g) {
 	}
 	if (_isFlip == true) {
 		//武士の索敵範囲判定オブジェクトの生成
-		ShielderPatrolCollision SPC;
+		ShielderPatrolCollision spc;
 		// 武士の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		SPC.SetPosition(_x - _hit_x, _y - _hit_h);
-		SPC.GetHitW();
-		SPC.GetHitH();
-		SPC.Draw(g);
+		spc.SetPosition(_x - _hit_x, _y - _hit_h);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
 			// iteはプレイヤーか？
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
-
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(SPC) == true)
+				if ((*ite)->IsHit(spc) == true)
 				{
 					_State = ENEMYSTATE::COMING;
 				}
@@ -73,7 +65,6 @@ void Shielder::Patrol(Game& g) {
 		// iteはプレイヤーの中段攻撃オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
 		{
-
 			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -92,7 +83,6 @@ void Shielder::Patrol(Game& g) {
 		// iteはプレイヤーの下段攻撃オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
 		{
-
 			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -111,7 +101,6 @@ void Shielder::Patrol(Game& g) {
 		// iteはプレイヤーのキックオブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::KICK)
 		{
-
 			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -132,6 +121,7 @@ void Shielder::Patrol(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				_Life--;
+				_Shield_Cnt = _Cnt;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
@@ -144,12 +134,9 @@ void Shielder::Coming(Game& g) {
 	if (_isFlip == false) {
 		_x -= _Spd;
 		//盾兵の攻撃発生範囲判定オブジェクトの生成
-		ShielderComingCollision SCC;
-
+		ShielderComingCollision scc;
 		// 盾兵の攻撃発生範囲オブジェクトの開始位置をプレイヤー位置から算出
-		SCC.SetPosition(_x + _hit_x - SCC.GetW(), _y - _hit_h);
-		SCC.GetHitW();
-		SCC.GetHitH();
+		scc.SetPosition(_x + _hit_x - scc.GetHitW(), _y - _hit_h);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -158,7 +145,7 @@ void Shielder::Coming(Game& g) {
 			{
 
 				// 攻撃発生範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(SCC) == true)
+				if ((*ite)->IsHit(scc) == true)
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::ATTACK;
@@ -169,21 +156,17 @@ void Shielder::Coming(Game& g) {
 	if (_isFlip == true) {
 		_x += _Spd;
 		//盾兵の攻撃発生範囲判定オブジェクトの生成
-		ShielderComingCollision SCC;
+		ShielderComingCollision scc;
 		//盾兵の攻撃発生範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		SCC.SetPosition(_x - _hit_x, _y - _hit_h);
-		SCC.GetHitW();
-		SCC.GetHitH();
-		SCC.Draw(g);
+		scc.SetPosition(_x - _hit_x, _y - _hit_h);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
 			// iteはプレイヤーか？
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
-
 				// 攻撃発生範囲判定オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(SCC) == true)
+				if ((*ite)->IsHit(scc) == true)
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::ATTACK;
@@ -197,8 +180,7 @@ void Shielder::Coming(Game& g) {
 		// iteはプレイヤーの中段攻撃オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
 		{
-
-			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
+		// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
@@ -216,7 +198,6 @@ void Shielder::Coming(Game& g) {
 		// iteはプレイヤーの下段攻撃オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
 		{
-
 			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -235,7 +216,6 @@ void Shielder::Coming(Game& g) {
 		// iteはプレイヤーのキックオブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::KICK)
 		{
-
 			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -252,11 +232,11 @@ void Shielder::Coming(Game& g) {
 		// iteはプレイヤーの居合オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
 		{
-
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
 				_Life--;
+				_Shield_Cnt = _Cnt;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
@@ -265,27 +245,29 @@ void Shielder::Coming(Game& g) {
 }
 /*----------攻撃----------*/
 void Shielder::Attack(Game& g) {
-
 	_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
-	if (_Cnt - _Action_Cnt == ABegin_Frame) {
+
+	/*if (_Cnt - _Action_Cnt <= ATTACK_BEGINFRAME + ATTACK_ENDFRAME+20) {
+	_Attack_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX; }*/
+	if (_Cnt - _Action_Cnt == ATTACK_BEGINFRAME) {
 		//盾兵の攻撃判定オブジェクトの生成
-		ShielderAttackCollision* SAC = new ShielderAttackCollision();
+		ShielderAttackCollision* sac = new ShielderAttackCollision();
 		if (_isFlip == false) {
 			//盾兵の攻撃判定オブジェクトの開始位置を盾兵位置から算出
-			SAC->SetPosition(_x + _hit_x - SAC->GetW(), _y - _hit_h);
+			sac->SetPosition(_x + _hit_x - sac->GetHitW(), _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
-			g.GetOS()->Add(SAC);
+			g.GetOS()->Add(sac);
 
 		};
 		if (_isFlip == true) {
 			//盾兵の攻撃判定オブジェクトの開始位置を盾兵位置から算出
-			SAC->SetPosition(_x - _hit_x, _y - _hit_h);
+			sac->SetPosition(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
-			g.GetOS()->Add(SAC);
+			g.GetOS()->Add(sac);
 
 		}
 	}
-	if (_Cnt - _Action_Cnt == Attack_Frame)
+	if (_Cnt - _Action_Cnt == ATTACK_ALLFRAME)
 	{
 		_State = ENEMYSTATE::PATROL;
 	}
@@ -295,7 +277,6 @@ void Shielder::Attack(Game& g) {
 		// iteはプレイヤーの中段攻撃オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
 		{
-
 			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -314,7 +295,6 @@ void Shielder::Attack(Game& g) {
 		// iteはプレイヤーの下段攻撃オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
 		{
-
 			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -333,7 +313,6 @@ void Shielder::Attack(Game& g) {
 		// iteはプレイヤーのキックオブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::KICK)
 		{
-
 			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -350,11 +329,11 @@ void Shielder::Attack(Game& g) {
 		// iteはプレイヤーの居合オブジェクトか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
 		{
-
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
 				_Life--;
+				_Shield_Cnt = _Cnt;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
@@ -364,7 +343,7 @@ void Shielder::Attack(Game& g) {
 /*----------盾崩し----------*/
 void Shielder::GuardBreak(Game& g) {
 	_GrHandle = _GuardBreak_GrAll[_GuardBreak_AnimeNo];
-	if (_Cnt - _Action_Cnt == GuardBreak_Frame) {
+	if (_Cnt - _Action_Cnt == GUARDBREAK_ALLFRAME) {
 	_Action_Cnt = _Cnt;
 	_State = ENEMYSTATE::PATROL;
 	}
@@ -372,7 +351,7 @@ void Shielder::GuardBreak(Game& g) {
 /*----------死亡----------*/
 void Shielder::Dead(Game& g) {
 	_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
-	if (_Cnt - _Action_Cnt == Dead_Frame) {
+	if (_Cnt - _Action_Cnt == DEAD_ALLFRAME) {
 		Delete(g);
 	}
 }

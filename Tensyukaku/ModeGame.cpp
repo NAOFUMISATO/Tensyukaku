@@ -14,10 +14,10 @@ bool ModeGame::Initialize(Game& g) {
 
 	//オブジェクトサーバに登録する
 	
+	g.GetOS()->Add(new Stair);
 	g.GetOS()->Add(new Bushi);
 	g.GetOS()->Add(new Ninja);
 	g.GetOS()->Add(new Shielder);
-	g.GetOS()->Add(new Stair);
 	g.GetOS()->Add(new Player);
 	
 	// オブジェクト処理を行う

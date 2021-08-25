@@ -12,15 +12,16 @@ public:
 	void	Draw(Game& g)override;
 	void	Delete(Game& g)override;
 private:
-	void	ShieldDraw(Game& g);	//盾の処理
 	void	Patrol(Game& g);		//巡回状態時の処理
 	void	Coming(Game& g);		//追跡状態時の処理
 	void	Attack(Game& g);		//攻撃状態時の処理
 	void	GuardBreak(Game& g);	//盾崩し状態時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
+	void	ShieldDraw(Game& g);	//盾の描画関数
 	void	LoadActionGraph();		//忍者の画像読み込み関数
 	void	LoadActionSE();			//忍者のSE読み込み関数
 	void	AnimeUpdate(Game& g);	//忍者のアニメーション関数
+	void	DebugDraw(Game& g);		//デバッグ用関数
 
 	/*----------メンバ変数----------*/
 
@@ -54,71 +55,88 @@ private:
 
 namespace SInfo {
 	/*----------盾兵の各座標関係----------*/
-	constexpr auto PositionX = 1000;			//横軸初期位置（足下が基準）
-	constexpr auto PositionY = 2200;			//縦軸初期位置（足下が基準）
-	constexpr auto GraphPointX = 0;				//X位置から描画点までの差分
-	constexpr auto GraphPointY = -210;			//Y位置から描画点までの差分
-	constexpr auto PositionHitX = -30;			//描画点から当たり判定左上座標までの差分
-	constexpr auto PositionHitY = -90;			//描画点から当たり判定左上座標までの差分
-	constexpr auto CollisionWidth = 60;			//当たり判定横幅
-	constexpr auto CollisionHeight = 300;		//当たり判定縦幅
+	constexpr auto POSITION_X = 1000;			//横軸初期位置（足下が基準）
+	constexpr auto POSITION_Y = 2200;			//縦軸初期位置（足下が基準）
+	constexpr auto GRAPHPOINT_X = 0;				//X位置から描画点までの差分
+	constexpr auto GRAPHPOINT_Y = -315;			//Y位置から描画点までの差分
+	constexpr auto POSITION_HITX = -30;			//描画点から当たり判定左上座標までの差分
+	constexpr auto POSITION_HITY = -90;			//描画点から当たり判定左上座標までの差分
+	constexpr auto COLLISION_WIDTH = 60;			//当たり判定横幅
+	constexpr auto COLLISION_HEIGHT = 300;		//当たり判定縦幅
 	
 	/*----------各モーションの当たり判定関係----------*/
-	constexpr auto PatrolWidth = 500;			//索敵範囲当たり判定横幅
-	constexpr auto PatrolHeight = 100;			//索敵範囲当たり判定縦幅
-	constexpr auto ComingWidth = 200;			//攻撃発生範囲当たり判定横幅
-	constexpr auto ComingHeight = 100;			//攻撃発生範囲当たり判定縦幅
-	constexpr auto AttackWidth = 150;			//攻撃当たり判定横幅
-	constexpr auto AttackHeight = 100;			//攻撃当たり判定縦幅
+	constexpr auto PATROL_WIDTH = 500;			//索敵範囲当たり判定横幅
+	constexpr auto PATROL_HEIGHT = 100;			//索敵範囲当たり判定縦幅
+	constexpr auto COMING_WIDTH = 200;			//攻撃発生範囲当たり判定横幅
+	constexpr auto COMING_HEIGHT = 100;			//攻撃発生範囲当たり判定縦幅
+	constexpr auto ATTACK_WIDTH = 150;			//攻撃当たり判定横幅
+	constexpr auto ATTACK_HEIGHT = 100;			//攻撃当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
-	constexpr auto LifeMax = 1;					//体力
-	constexpr auto Speed = 1;					//移動速度
+	constexpr auto LIFE_MAX = 1;				//体力
+	constexpr auto SPEED = 1;					//移動速度
 
 	/*----------画像読み込み&アニメーション&判定フレーム関係----------*/
 	//共通
-	constexpr auto GraphWidth = 540;			//1枚当たりの画像サイズ（横）
-	constexpr auto GraphHeight = 420;			//1枚当たりの画像サイズ（縦）
-	constexpr auto GraphScale = 1.0;			//拡大率
-	constexpr auto GraphAngle = 0;				//角度
+	constexpr auto GRAPH_WIDTH = 840;			//1枚当たりの画像サイズ（横）
+	constexpr auto GRAPH_HEIGHT = 630;			//1枚当たりの画像サイズ（縦）
+	constexpr auto GRAPH_SCALE = 1.0;			//拡大率
+	constexpr auto GRAPH_ANGLE = 0;				//角度
 	//巡回
-	constexpr auto Patrol_GraphName = "res/Shielder/T_Stand.png";	//画像ファイル名
-	constexpr auto Patrol_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto Patrol_WidthCount = 1;		//横の画像枚数
-	constexpr auto Patrol_HeightCount = 1;		//縦の画像枚数
-	constexpr auto AnimeSpeed_Patrol = 5;		//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto Patrol_Frame = 180;			//巡回全フレーム
+	constexpr auto PATROL_GARAPHNAME = "res/Shielder/T_Stand.png";	//画像ファイル名
+	constexpr auto PATROL_ANIMEMAX = 1;			//全ての画像枚数
+	constexpr auto PATROL_WIDTHCOUNT = 1;		//横の画像枚数
+	constexpr auto PATROL_HEIGHTCOUNT = 1;		//縦の画像枚数
+	constexpr auto ANIMESPEED_PATROL = 5;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto PATROL_TURNFRAME = 180;		//巡回の振り向きフレーム
 	//移動
-	constexpr auto Coming_GraphName = "res/Shielder/T_Walk.png";	//画像ファイル名
-	constexpr auto Coming_AnimeMax = 4;			//全ての画像枚数
-	constexpr auto Coming_WidthCount = 4;		//横の画像枚数
-	constexpr auto Coming_HeightCount = 1;		//縦の画像枚数	
-	constexpr auto AnimeSpeed_Coming = 30;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto COMING_GRAPHNAME = "res/Shielder/T_Walk.png";	//画像ファイル名
+	constexpr auto COMING_ANIMEMAX = 4;			//全ての画像枚数
+	constexpr auto COMING_WIDTHCOUNT = 4;		//横の画像枚数
+	constexpr auto COMING_HEIGHTCOUNT = 1;		//縦の画像枚数	
+	constexpr auto ANIMESPEED_COMING = 30;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	//攻撃
-	constexpr auto Attack_GraphName = "res/Shielder/T_Attack.png";	//画像ファイル名
-	constexpr auto Attack_AnimeMax = 3;			//全ての画像枚数
-	constexpr auto Attack_WidthCount = 3;		//横の画像枚数
-	constexpr auto Attack_HeightCount = 1;		//縦の画像枚数
-	constexpr auto AnimeSpeed_Attack = 15;		//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto Attack_Frame = 40;			//攻撃全フレーム
-	constexpr auto ABegin_Frame = 15;			//攻撃判定発生フレーム
-	constexpr auto AEnd_Frame = 15;				//攻撃判定終了フレーム
-	//被ダメ
-	constexpr auto GuardBreak_GraphName = "res/Shielder/T_Damage.png";	//画像ファイル名
-	constexpr auto GuardBreak_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto GuardBreak_WidthCount = 1;		//横の画像枚数
-	constexpr auto GuardBreak_HeightCount = 1;		//縦の画像枚数
-	constexpr auto AnimeSpeed_GuardBreak = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto GuardBreak_Frame = 50;			//被ダメ全フレーム
+	constexpr auto ATTACK_GRAPHNAME = "res/Shielder/T_Attack.png";	//画像ファイル名
+	constexpr auto ATTACK_ANIMEMAX = 3;			//全ての画像枚数
+	constexpr auto ATTACK_WIDTHCOUNT = 3;		//横の画像枚数
+	constexpr auto ATTACK_HEIGHTCOUNT = 1;		//縦の画像枚数
+	constexpr auto ANIMESPEED_ATTACK = 20;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ATTACK_ALLFRAME = 40;		//攻撃全フレーム
+	constexpr auto ATTACK_BEGINFRAME = 15;		//攻撃判定発生フレーム
+	constexpr auto ATTACK_ENDFRAME = 15;		//攻撃判定終了フレーム
+	//盾崩し
+	constexpr auto GUARDBREAK_GRAPHNAME = "res/Shielder/T_Damage.png";	//画像ファイル名
+	constexpr auto GUARDBREAK_ANIMEMAX = 3;		//全ての画像枚数
+	constexpr auto GUARDBREAK_WIDTHCOUNT = 3;	//横の画像枚数
+	constexpr auto GUARDBREAK_HEIGHTCOUNT = 1;	//縦の画像枚数
+	constexpr auto ANIMESPEED_GUARDBREAK = 15;	//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto GUARDBREAK_ALLFRAME = 44;	//被ダメ全フレーム
 	//死亡
-	constexpr auto Dead_GraphName = "res/Shielder/T_Dead.png";		//画像ファイル名
-	constexpr auto Dead_AnimeMax = 1;			//全ての画像枚数
-	constexpr auto Dead_WidthCount = 1;			//横の画像枚数
-	constexpr auto Dead_HeightCount = 1;		//縦の画像枚数
-	constexpr auto AnimeSpeed_Dead = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto Dead_Frame = 50;				//死亡全フレーム
+	constexpr auto DEAD_GRAPHNAME = "res/Shielder/T_Dead.png";		//画像ファイル名
+	constexpr auto DEAD_ANIMEMAX = 1;			//全ての画像枚数
+	constexpr auto DEAD_WIDTHCOUNT = 1;			//横の画像枚数
+	constexpr auto DEAD_HEIGHTCOUNT = 1;		//縦の画像枚数
+	constexpr auto ANIMESPEED_DEAD = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto DEAD_ALLFRAME = 50;				//死亡全フレーム
+	
+	/*----------盾の座標関係----------*/
+	constexpr auto SHIELD_WIDTH = 160;
+	constexpr auto SHIELD_HEIGHT = 230;
+	constexpr auto SHIELD_GRAPH_POINTX = 0;
+	constexpr auto SHIELD_GRAPH_POINTY = -80;
+
+	/*----------盾の挙動関係----------*/
+	constexpr auto SHIELD_ANGLE = -0.2;
+	constexpr auto SHIELD_DIFFPOINTX = -0;
+	constexpr auto SHIELD_DIFFPOINTY = -90;
+	constexpr auto SHIELD_ALPHA = 255;
+	constexpr auto SHIELD_ANGLECHANGE = 0.03;
+	constexpr auto SHIELD_ALPHACHANGE = 5;
+	constexpr auto SHIELD_XCHANGE = 1;
+	constexpr auto SHIELD_YCHANGE = 5;
+
 	/*----------SE関係----------*/
-	constexpr auto Walk_SE = "se/Footstep.wav";			//巡回
-	constexpr auto Attack_SE = "se/slash3.wav";			//攻撃	
+	constexpr auto WALK_SE = "se/Footstep.wav";			//巡回
+	constexpr auto ATTACK_SE = "se/slash3.wav";			//攻撃	
 
 };
