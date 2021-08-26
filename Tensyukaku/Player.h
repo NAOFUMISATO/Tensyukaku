@@ -84,14 +84,10 @@ private:
 	Vector2 _velocityDir;	//速度方向
 	float	_Stairup_Spd;	//階段上昇速度
 	float	_angle;			//角度
-	//SEハンドル
-	int		_Walk_SEHandle;
-	int		_MiddleAttack_SEHandle;
-	int		_LowAttack_SEHandle;
-	int		_Kick_SEHandle;
-	int		_Damage_SEHandle;
-	int		_SwordIn_SEHandle;
-	int		_Iai_SEHandle;
+	bool	_StairFlip_Flag;//階段の反転判定保存フラグ
+	int		_Stair_x;		//階段のX座標保存変数
+	int		_Player_y;		//階段用プレイヤーY座標保存変数
+
 };
 
 

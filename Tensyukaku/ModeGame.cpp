@@ -8,21 +8,22 @@
 #include "MapChip.h"
 #include "Stair.h"
 #include "Shielder.h"
+#include "GimikPlacement.h"
+#include "EnemySpawn.h"
 
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-
+	
 	//オブジェクトサーバに登録する
-	
-	g.GetOS()->Add(new Stair);
-	g.GetOS()->Add(new Bushi);
+	/*g.GetOS()->Add(new Bushi);
 	g.GetOS()->Add(new Ninja);
-	g.GetOS()->Add(new Shielder);
-	g.GetOS()->Add(new Player);
-	
+	g.GetOS()->Add(new Shielder);*/
+	_enemyspawn = new EnemySpawn(g);
+	_gimikplacement = new GimikPlacement(g);
+	_Player_Apeear = false;
 	// オブジェクト処理を行う
 	_stopObjProcess = false;
-
+	
 	// カメラ＆マップ初期化
 	g.SetmapW(3840);
 	g.SetmapH(2280);
@@ -35,7 +36,9 @@ bool ModeGame::Initialize(Game& g) {
 
 bool ModeGame::Terminate(Game& g) {
 	base::Terminate(g);
-
+	delete g.GetChip();
+	delete _enemyspawn;
+	delete _gimikplacement;
 	g.GetOS()->Clear();
 	return true;
 }
@@ -44,10 +47,14 @@ bool ModeGame::Process(Game& g) {
 	base::Process(g);
 	if (_stopObjProcess == false)
 	{
-		
 		g.GetChip()->Process(g);
-		// オブジェクトサーバに登録されているオブジェクトのProcess()を呼び出す
 		g.GetOS()->Process(g);
+		_gimikplacement->Process(g);
+		_enemyspawn->Process(g);
+		if (_Player_Apeear == false) {
+		_Player_Apeear = true;
+		g.GetOS()->Add(new Player);
+		}
 		
 	}
 

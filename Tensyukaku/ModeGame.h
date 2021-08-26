@@ -2,6 +2,8 @@
 #include	"ModeBase.h"
 #include	"BackGround.h"
 #include	"Player.h"
+#include	"GimikPlacement.h"
+#include	"EnemySpawn.h"
 
 
 
@@ -16,11 +18,13 @@ public:
 
 
 private:
-	BackGround	_bg;
 	// オブジェクト処理をストップする
 	bool	_stopObjProcess;
-
+	bool	_Player_Apeear;
 	// BGM用
 	int		_bgm;
 
+	BackGround	_bg;
+	GimikPlacement* _gimikplacement;
+	EnemySpawn* _enemyspawn;
 };

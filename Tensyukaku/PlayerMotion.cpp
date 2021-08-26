@@ -15,7 +15,7 @@ void Player::Idle(Game& g) {
 	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
-		PlaySoundMem(_SwordIn_SEHandle, DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["SwordIn"], DX_PLAYTYPE_BACK, true);
 	}
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
@@ -47,7 +47,7 @@ void Player::Idle(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Damage_SEHandle, DX_PLAYTYPE_BACK, true);
+				PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
 		}
 	}
@@ -60,7 +60,9 @@ void Player::Idle(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				if (g.GetTrg() & PAD_INPUT_2) {
-					
+					_Player_y = _y;
+					_Stair_x = (*ite)->GetX();
+					_StairFlip_Flag = (*ite)->GetFlip();
 					_State = PLAYERSTATE::STAIRMOVE;
 				}
 			}
@@ -77,7 +79,7 @@ void Player::Move(Game& g) {
 	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
-		PlaySoundMem(_SwordIn_SEHandle, DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["SwordIn"], DX_PLAYTYPE_BACK, true);
 	}
 	else if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
@@ -136,7 +138,7 @@ void Player::Move(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Damage_SEHandle, DX_PLAYTYPE_BACK, true);
+				PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
 		}
 	}
@@ -149,8 +151,10 @@ void Player::Move(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				if (g.GetTrg() & PAD_INPUT_2) {
-					
-					_State=PLAYERSTATE::STAIRMOVE;
+					_Player_y = _y;
+					_Stair_x = (*ite)->GetX();
+					_StairFlip_Flag = (*ite)->GetFlip();
+					_State = PLAYERSTATE::STAIRMOVE;
 				}
 			}
 		}
@@ -160,7 +164,7 @@ void Player::Move(Game& g) {
 void Player::MidAttack(Game& g) {
 	_GrHandle = _MiddleAttack_GrAll[_MiddleAttack_AnimeNo];
 	if (_Cnt - _Action_Cnt == MIDDLEATTACK_BEGINFRAME) {
-		PlaySoundMem(_MiddleAttack_SEHandle, DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["MiddleAttack"], DX_PLAYTYPE_BACK, true);
 		//中段攻撃判定オブジェクトの生成
 		MiddleAttackCollision* MAC = new MiddleAttackCollision();
 		if (_isFlip == false) {
@@ -226,7 +230,7 @@ void Player::MidAttack(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Damage_SEHandle, DX_PLAYTYPE_BACK, true);
+				PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
 		}
 	}
@@ -236,7 +240,7 @@ void Player::LowAttack(Game& g) {
 	_GrHandle = _LowAttack_GrAll[_LowAttack_AnimeNo];
 	//下段攻撃判定オブジェクトの生成
 	if (_Cnt - _Action_Cnt == LOWATTACK_BEGINFRAME) {
-		PlaySoundMem(_LowAttack_SEHandle, DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["LowAttack"], DX_PLAYTYPE_BACK, true);
 		LowAttackCollision* LAC = new LowAttackCollision();
 		if (_isFlip == false) {
 			// 下段攻撃判定オブジェクトの開始位置をプレイヤー位置から算出
@@ -301,7 +305,7 @@ void Player::LowAttack(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Damage_SEHandle, DX_PLAYTYPE_BACK, true);
+				PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
 		}
 	}
@@ -312,7 +316,7 @@ void Player::Kick(Game& g) {
 	_GrHandle = _Kick_GrAll[_Kick_AnimeNo];
 	//蹴り判定オブジェクトの生成
 	if (_Cnt - _Action_Cnt == KICK_BEGINFRAME) {
-		PlaySoundMem(_Kick_SEHandle, DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Kick"], DX_PLAYTYPE_BACK, true);
 		KickCollision* KIC = new KickCollision();
 		if (_isFlip == false) {
 			// 蹴り判定オブジェクトの開始位置をプレイヤー位置から算出
@@ -344,7 +348,7 @@ void Player::Kick(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Damage_SEHandle, DX_PLAYTYPE_BACK, true);
+				PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
 		}
 	}
@@ -386,8 +390,8 @@ void Player::Iai(Game& g) {
 		}
 	}
 	if (_Cnt - _Action_Cnt == IAI_BEGINFRAME) {
-		StopSoundMem(_SwordIn_SEHandle);
-		PlaySoundMem(_Iai_SEHandle, DX_PLAYTYPE_BACK, true);
+		StopSoundMem(_se["SwordIn"]);
+		PlaySoundMem(_se["Iai"], DX_PLAYTYPE_BACK, true);
 		IaiCollision* IAC = new IaiCollision();
 		if (_isFlip == false) {
 			// 居合判定オブジェクトの開始位置をプレイヤー位置から算出
@@ -448,7 +452,7 @@ void Player::Iai(Game& g) {
 						_Life--;
 						_Action_Cnt = _Cnt;
 						_State = PLAYERSTATE::DAMAGE;
-						PlaySoundMem(_Damage_SEHandle, DX_PLAYTYPE_BACK, true);
+						PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 					}
 				}
 			}
@@ -493,29 +497,28 @@ void Player::Dead(Game& g) {
 void Player::StairMove(Game& g) {
 	_GrHandle = _Move_GrAll[_Move_AnimeNo];
 	Stair st;
-	if (st.GetFlip() == false) {
-		if (_x >= st.GetX()+st.GetHitX()) {
+	if (_StairFlip_Flag == false) {
+		if (_x >= _Stair_x + st.GetHitX()) {
 			_isFlip = false;
 			--_x;
 		}
-		if (_x <= st.GetX() + st.GetHitX()) {
+		if (_x <= _Stair_x + st.GetHitX()) {
 			_isFlip = true;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
 			_State = PLAYERSTATE::STAIRUP;
 		}
 	}
-	if (st.GetFlip() == true) {
-		if (_x <= st.GetX() + st.GetHitX()+st.GetHitW()) {
+	if (_StairFlip_Flag == true) {
+		if (_x <= _Stair_x + st.GetHitX() + st.GetHitW()) {
 			_isFlip = true;
 			++_x;
 		}
-		if (_x >= st.GetX() + st.GetHitX() + st.GetHitW()) {
+		if (_x >= _Stair_x + st.GetHitX() + st.GetHitW()) {
 			_isFlip = false;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
 			_State = PLAYERSTATE::STAIRUP;
 		}
 	}
-	
 }
 
 /*---------階段上昇------------*/
@@ -523,10 +526,10 @@ void Player::StairUp(Game& g) {
 	_GrHandle = _Move_GrAll[_Move_AnimeNo];
 	_Stairup_Spd = 1.5f;
 	Stair st;
-	if (st.GetFlip() == false) {
+	if (_StairFlip_Flag == false) {
 		_angle = Math::ToRadians(280);
 	}
-	if (st.GetFlip() == true) {
+	if (_StairFlip_Flag == true) {
 		_angle = Math::ToRadians(260);
 	}
 	_velocityDir = { std::cos(_angle), std::sin(_angle) };
@@ -534,17 +537,19 @@ void Player::StairUp(Game& g) {
 	_position += vd;
 	_x = _position.x;
 	_y = _position.y;
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは階段オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::STAIR)
-		{
-			// プレイヤーとその階段の当たり判定を行う
-			if (IsHit(*(*ite)) == false)
-			{
-				_State=PLAYERSTATE::IDLE;
-			}
-		}
+	if (_y - _Player_y == -st.GetHitH()) {
+		_State = PLAYERSTATE::IDLE;
 	}
-	
+	//for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	//{
+	//	// iteは階段オブジェクトか？
+	//	if ((*ite)->GetObjType() == OBJECTTYPE::STAIR)
+	//	{
+	//		// プレイヤーとその階段の当たり判定を行う
+	//		if (IsHit(*(*ite)) == false)
+	//		{
+	//			_State = PLAYERSTATE::IDLE;
+	//		}
+	//	}
+	//}
 }

@@ -4,6 +4,7 @@
 #include "Math.h"
 #include <utility>
 #include <tuple>
+#include <unordered_map>
 
 class Game;
 // オブジェクトクラス
@@ -17,7 +18,8 @@ public:
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,
 		BUSHIPATROL, BUSHICOMING, BUSHIATTACK,
 		NINJAPATROL, NINJACOMING, NINJAATTACK,
-		SHIELDERPATROL,SHIELDERCOMING,SHIELDERATTACK,SHIELD
+		SHIELDERPATROL,SHIELDERCOMING,SHIELDERATTACK,SHIELD,
+		SCENARIO,ENEMYSPAWN
 	};
 	virtual OBJECTTYPE	GetObjType() = 0;
 
@@ -65,4 +67,5 @@ protected:
 	std::tuple<int, int,int>_color;		//デバック用矩形カラー
 	int		_Cnt;						// 動作カウンタ
 	int		_Action_Cnt;				//アクション経過時間記録変数
+	std::unordered_map<std::string, int> _se;		//SEマップ
 };

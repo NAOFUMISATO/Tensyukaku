@@ -26,7 +26,6 @@ Game::Game()
 Game::~Game()
 {
 	delete _serverMode;
-	delete _mapChip;
 }
 
 

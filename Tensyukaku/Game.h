@@ -32,7 +32,7 @@ public:
 	MapChip* GetChip() { return _mapChip; }
 	ModeServer* GetMS() { return _serverMode; }
 	ObjectServer* GetOS() { return &_objServer; }
-	
+
 	//セッター関数
 	void	SetcvX(int cvX) { _cvX = cvX; }
 	void	SetcvY(int cvY) { _cvY = cvY; }
@@ -49,5 +49,4 @@ private:
 	MapChip* _mapChip;			//マップチップ
 	ModeServer* _serverMode;	//モードサーバー
 	ObjectServer _objServer;	//プレイヤーや敵などを登録する
-	
 };

@@ -24,13 +24,6 @@ Player::Player() :
 	_Sway_AnimeNo(0),*/
 	_Damage_AnimeNo(0),
 	_Dead_AnimeNo(0),
-	_Walk_SEHandle(-1),
-	_MiddleAttack_SEHandle(-1),
-	_LowAttack_SEHandle(-1),
-	_Kick_SEHandle(-1),
-	_Damage_SEHandle(-1),
-	_SwordIn_SEHandle(-1),
-	_Iai_SEHandle(-1),
 	_State(PLAYERSTATE::IDLE),
 	_Star_Flag(false)
 {
@@ -180,13 +173,13 @@ void Player::LoadActionGraph() {
 
 //プレイヤーの効果音読み込み関数
 void Player::LoadActionSE() {
-	_Walk_SEHandle = ResourceServer::LoadSoundMem(WALK_SE);
-	_MiddleAttack_SEHandle = ResourceServer::LoadSoundMem(MIDDLEATTACK_SE);
-	_LowAttack_SEHandle = ResourceServer::LoadSoundMem(LOWATTACK_SE);
-	_Kick_SEHandle= ResourceServer::LoadSoundMem(KICK_SE);
-	_Damage_SEHandle= ResourceServer::LoadSoundMem(DAMAGE_SE);
-	_SwordIn_SEHandle = ResourceServer::LoadSoundMem(SWORDIN_SE);
-	_Iai_SEHandle = ResourceServer::LoadSoundMem(IAI_SE);
+	_se["Walk"] = ResourceServer::LoadSoundMem(WALK_SE);
+	_se["MiddleAttack"] = ResourceServer::LoadSoundMem(MIDDLEATTACK_SE);
+	_se["LowAttack"] = ResourceServer::LoadSoundMem(LOWATTACK_SE);
+	_se["Kick"] = ResourceServer::LoadSoundMem(KICK_SE);
+	_se["Damage"] = ResourceServer::LoadSoundMem(DAMAGE_SE);
+	_se["SwordIn"] = ResourceServer::LoadSoundMem(SWORDIN_SE);
+	_se["Iai"] = ResourceServer::LoadSoundMem(IAI_SE);
 }
 
 //プレイヤーのアニメーション関数

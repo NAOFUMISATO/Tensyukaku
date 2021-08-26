@@ -139,7 +139,7 @@ void IaiCollision::Init() {
 	_hit_h = IAI_HEIGHT;
 	_Action_Cnt = _Cnt;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 0, 0);
+	_color = std::make_tuple(255,0, 0);
 	_Dalpha = 128;
 	_fill = true;
 #endif

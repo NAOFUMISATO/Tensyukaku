@@ -186,6 +186,18 @@
     <ClCompile Include="Shield.cpp">
       <Filter>ソース ファイル\Object\Enemy\Sielder</Filter>
     </ClCompile>
+    <ClCompile Include="GimikPlacement.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySpawnCollisionBase.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySpawnCollision.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySpawn.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -274,6 +286,18 @@
     </ClInclude>
     <ClInclude Include="Shield.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Sierder</Filter>
+    </ClInclude>
+    <ClInclude Include="GimikPlacement.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySpawnCollisionBase.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySpawnCollision.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySpawn.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

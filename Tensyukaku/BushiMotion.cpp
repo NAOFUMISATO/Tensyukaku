@@ -202,7 +202,6 @@ void Bushi::Coming(Game& g) {
 }
 /*----------攻撃----------*/
 void Bushi::Attack(Game& g) {
-	
 	_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
 	if (_Cnt - _Action_Cnt == ATTACK_BEGINFRAME) {
 		//武士の攻撃判定オブジェクトの生成
