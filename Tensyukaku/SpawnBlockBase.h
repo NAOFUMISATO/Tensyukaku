@@ -1,10 +1,10 @@
 #pragma once
 #include "ObjectBase.h"
 
-class EnemySpawnCollisionBase :public ObjectBase {
+class SpawnBlockBase :public ObjectBase {
 public:
-	EnemySpawnCollisionBase();
-	~EnemySpawnCollisionBase();
+	SpawnBlockBase();
+	~SpawnBlockBase();
 
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::ENEMYSPAWN; }
 

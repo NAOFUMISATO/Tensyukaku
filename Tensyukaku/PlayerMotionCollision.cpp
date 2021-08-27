@@ -11,7 +11,9 @@ using namespace PInfo;
 
 
 //íÜíiçUåÇìñÇΩÇËîªíËé¿ëÃ
-MiddleAttackCollision::MiddleAttackCollision() {
+MiddleAttackCollision::MiddleAttackCollision(int x,int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 MiddleAttackCollision::~MiddleAttackCollision() {
@@ -28,9 +30,9 @@ void MiddleAttackCollision::Init() {
 	_hit_h = MIDDLEATTACK_HEIGHT;
 	_Action_Cnt = _Cnt;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 0, 0);
+	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 
@@ -48,7 +50,9 @@ void MiddleAttackCollision::Delete(Game& g) {
 }
 
 //â∫íiçUåÇìñÇΩÇËîªíËé¿ëÃ
-LowAttackCollision::LowAttackCollision() {
+LowAttackCollision::LowAttackCollision(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 LowAttackCollision::~LowAttackCollision() {
@@ -65,9 +69,9 @@ void LowAttackCollision::Init() {
 	_hit_h = LOWATTACK_HEIGHT;
 	_Action_Cnt = _Cnt;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 0, 0);
+	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 
@@ -85,7 +89,9 @@ void LowAttackCollision::Delete(Game& g) {
 }
 
 //èRÇËìñÇΩÇËîªíËé¿ëÃ
-KickCollision::KickCollision() {
+KickCollision::KickCollision(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 KickCollision::~KickCollision() {
@@ -102,9 +108,9 @@ void KickCollision::Init() {
 	_hit_h = KICK_HEIGHT;
 	_Action_Cnt = _Cnt;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 0, 0);
+	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 
@@ -122,7 +128,9 @@ void KickCollision::Delete(Game& g) {
 }
 
 //ãèçáìñÇΩÇËîªíËé¿ëÃ
-IaiCollision::IaiCollision() {
+IaiCollision::IaiCollision(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 IaiCollision::~IaiCollision() {
@@ -139,9 +147,9 @@ void IaiCollision::Init() {
 	_hit_h = IAI_HEIGHT;
 	_Action_Cnt = _Cnt;
 #ifdef _DEBUG
-	_color = std::make_tuple(255,0, 0);
+	_Color = std::make_tuple(255,0, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 

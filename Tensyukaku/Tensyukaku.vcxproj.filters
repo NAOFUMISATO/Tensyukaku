@@ -85,6 +85,18 @@
     <Filter Include="ソース ファイル\Object\Enemy\Sielder">
       <UniqueIdentifier>{4363bffc-dcff-4b1e-9fc6-91ccf89a3f3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Spawn">
+      <UniqueIdentifier>{512c20bd-8564-4c91-9b90-4a6e721b81d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Spawn">
+      <UniqueIdentifier>{c1e6d9cb-0508-4390-9fbe-3a1830751813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Gimik">
+      <UniqueIdentifier>{edf42e63-de24-4666-9a72-ff363dc1e727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Gimik">
+      <UniqueIdentifier>{3bb90729-b7c2-43aa-8469-5ff827901e50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -171,9 +183,6 @@
     <ClCompile Include="Math.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Stair.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Shielder.cpp">
       <Filter>ソース ファイル\Object\Enemy\Sielder</Filter>
     </ClCompile>
@@ -186,17 +195,20 @@
     <ClCompile Include="Shield.cpp">
       <Filter>ソース ファイル\Object\Enemy\Sielder</Filter>
     </ClCompile>
-    <ClCompile Include="GimikPlacement.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemySpawnCollisionBase.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemySpawnCollision.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="EnemySpawn.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Object\Spawn</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnBlock.cpp">
+      <Filter>ソース ファイル\Object\Spawn</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnBlockBase.cpp">
+      <Filter>ソース ファイル\Object\Spawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
+    </ClCompile>
+    <ClCompile Include="GimikPlacement.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,9 +287,6 @@
     <ClInclude Include="Math.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Stair.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Shielder.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Sierder</Filter>
     </ClInclude>
@@ -287,17 +296,20 @@
     <ClInclude Include="Shield.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Sierder</Filter>
     </ClInclude>
-    <ClInclude Include="GimikPlacement.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemySpawnCollisionBase.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemySpawnCollision.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="EnemySpawn.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Object\Spawn</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnBlock.h">
+      <Filter>ヘッダー ファイル\Object\Spawn</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnBlockBase.h">
+      <Filter>ヘッダー ファイル\Object\Spawn</Filter>
+    </ClInclude>
+    <ClInclude Include="GimikPlacement.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -39,42 +39,6 @@ private:
 	/*---------メンバ変数----------*/
 	PLAYERSTATE	_State;		//状態遷移変数
 	
-	//待機状態描画用変数
-	std::vector<int>	_Idle_GrAll;
-	int		_Idle_AnimeNo;
-
-	//移動状態描画用変数
-	std::vector<int>	_Move_GrAll;
-	int		_Move_AnimeNo;
-
-	//中段攻撃状態描画用変数
-	std::vector<int>	_MiddleAttack_GrAll;
-	int		_MiddleAttack_AnimeNo;
-
-	//下段攻撃状態描画用変数
-	std::vector<int>	_LowAttack_GrAll;
-	int		_LowAttack_AnimeNo;
-
-	//蹴り状態描画用変数
-	std::vector<int>	_Kick_GrAll;
-	int		_Kick_AnimeNo;
-
-	//居合状態描画用変数
-	std::vector<int>	_Iai_GrAll;
-	int		_Iai_AnimeNo;
-
-	//スウェイ状態描画用変数
-	std::vector<int>	_Sway_GrAll;
-	int		_Sway_AnimeNo;
-
-	//被ダメ状態描画用変数
-	std::vector<int>	_Damage_GrAll;
-	int		_Damage_AnimeNo;
-
-	//死亡状態描画用変数
-	std::vector<int>	_Dead_GrAll;
-	int		_Dead_AnimeNo;
-	
 	//無敵状態管理変数
 	bool	_Star_Flag;		//無敵状態管理フラグ
 	int		_Star_Cnt;		//無敵状態経過時間記録変数

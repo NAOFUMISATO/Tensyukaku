@@ -11,6 +11,6 @@ public:
 	void	Process(Game& g)override;
 	void	Draw(Game& g)override;
 	int		GetHandle() { return _GrHandle; }
-	double	GetAngle() { return _drg.second; }
-	void	SetAngle(double angle) { _drg.second = angle; }
+	double	GetAngle() { return _Drg.second; }
+	void	SetAngle(double angle) { _Drg.second = angle; }
 };

@@ -17,7 +17,7 @@ Shield::~Shield() {
 void Shield::Init() {
 	_gx = SHIELD_GRAPH_POINTX;
 	_gy = SHIELD_GRAPH_POINTY;
-	_drg.second = SHIELD_ANGLE;
+	_Drg.second = SHIELD_ANGLE;
 	_Dalpha = 0;
 }
 

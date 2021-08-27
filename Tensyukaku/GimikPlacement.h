@@ -1,5 +1,6 @@
 #pragma once
-
+#include "Stair.h"
+#include <unordered_map>
 class Game;
 class GimikPlacement {
 public:
@@ -7,11 +8,8 @@ public:
 	~GimikPlacement();
 
 	void Process(Game& g);
-
 private:
 	void StairAppear(Game& g);		//äKíiê›íËä÷êî
-
-	bool _Appear_Flag;
 };
 
 namespace GInfo {

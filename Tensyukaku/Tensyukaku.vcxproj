@@ -153,8 +153,8 @@
     <ClCompile Include="BushiMotionCollision.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
-    <ClCompile Include="EnemySpawnCollisionBase.cpp" />
-    <ClCompile Include="EnemySpawnCollision.cpp" />
+    <ClCompile Include="SpawnBlockBase.cpp" />
+    <ClCompile Include="SpawnBlock.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GimikPlacement.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
@@ -191,8 +191,8 @@
     <ClInclude Include="BushiMotionCollision.h" />
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="EnemySpawn.h" />
-    <ClInclude Include="EnemySpawnCollisionBase.h" />
-    <ClInclude Include="EnemySpawnCollision.h" />
+    <ClInclude Include="SpawnBlockBase.h" />
+    <ClInclude Include="SpawnBlock.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GimikPlacement.h" />
     <ClInclude Include="HitBox.h" />

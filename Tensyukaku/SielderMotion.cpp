@@ -12,19 +12,18 @@ using namespace SInfo;
 
 /*----------巡回----------*/
 void Shielder::Patrol(Game& g) {
-	_GrHandle = _Patrol_GrAll[_Patrol_AnimeNo];
-	if (_Cnt - _Action_Cnt == PATROL_TURNFRAME) {
+	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == PATROL_TURNFRAME) {
 		_isFlip = true;
 	}
-	if (_Cnt - _Action_Cnt == PATROL_TURNFRAME + PATROL_TURNFRAME) {
+	if (frame == PATROL_TURNFRAME *2) {
 		_isFlip = false;
 		_Action_Cnt = _Cnt;
 	}
 	if (_isFlip == false) {
 		//盾兵の索敵範囲判定オブジェクトの生成
-		ShielderPatrolCollision spc;
-		// 盾兵の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		spc.SetPosition(_x + _hit_x - spc.GetHitW(), _y - _hit_h);
+		ShielderPatrolCollision spc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -41,9 +40,7 @@ void Shielder::Patrol(Game& g) {
 	}
 	if (_isFlip == true) {
 		//武士の索敵範囲判定オブジェクトの生成
-		ShielderPatrolCollision spc;
-		// 武士の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		spc.SetPosition(_x - _hit_x, _y - _hit_h);
+		ShielderPatrolCollision spc(_x - _hit_x, _y - _hit_h);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -130,13 +127,11 @@ void Shielder::Patrol(Game& g) {
 }
 /*----------追跡----------*/
 void Shielder::Coming(Game& g) {
-	_GrHandle = _Coming_GrAll[_Coming_AnimeNo];
+	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
 	if (_isFlip == false) {
 		_x -= _Spd;
 		//盾兵の攻撃発生範囲判定オブジェクトの生成
-		ShielderComingCollision scc;
-		// 盾兵の攻撃発生範囲オブジェクトの開始位置をプレイヤー位置から算出
-		scc.SetPosition(_x + _hit_x - scc.GetHitW(), _y - _hit_h);
+		ShielderComingCollision scc(_x + _hit_x - COMING_WIDTH, _y - _hit_h);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -156,9 +151,7 @@ void Shielder::Coming(Game& g) {
 	if (_isFlip == true) {
 		_x += _Spd;
 		//盾兵の攻撃発生範囲判定オブジェクトの生成
-		ShielderComingCollision scc;
-		//盾兵の攻撃発生範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		scc.SetPosition(_x - _hit_x, _y - _hit_h);
+		ShielderComingCollision scc(_x - _hit_x, _y - _hit_h);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -245,29 +238,24 @@ void Shielder::Coming(Game& g) {
 }
 /*----------攻撃----------*/
 void Shielder::Attack(Game& g) {
-	_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
-
-	/*if (_Cnt - _Action_Cnt <= ATTACK_BEGINFRAME + ATTACK_ENDFRAME+20) {
-	_Attack_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX; }*/
-	if (_Cnt - _Action_Cnt == ATTACK_BEGINFRAME) {
-		//盾兵の攻撃判定オブジェクトの生成
-		ShielderAttackCollision* sac = new ShielderAttackCollision();
+	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == ATTACK_BEGINFRAME) {
 		if (_isFlip == false) {
-			//盾兵の攻撃判定オブジェクトの開始位置を盾兵位置から算出
-			sac->SetPosition(_x + _hit_x - sac->GetHitW(), _y - _hit_h);
+			//盾兵の攻撃判定オブジェクトの生成
+			auto sac = new ShielderAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(sac);
 
 		};
 		if (_isFlip == true) {
-			//盾兵の攻撃判定オブジェクトの開始位置を盾兵位置から算出
-			sac->SetPosition(_x - _hit_x, _y - _hit_h);
+			//盾兵の攻撃判定オブジェクトの生成
+			auto sac = new ShielderAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(sac);
-
 		}
 	}
-	if (_Cnt - _Action_Cnt == ATTACK_ALLFRAME)
+	if (frame == ATTACK_ALLFRAME)
 	{
 		_State = ENEMYSTATE::PATROL;
 	}
@@ -342,16 +330,18 @@ void Shielder::Attack(Game& g) {
 }
 /*----------盾崩し----------*/
 void Shielder::GuardBreak(Game& g) {
-	_GrHandle = _GuardBreak_GrAll[_GuardBreak_AnimeNo];
-	if (_Cnt - _Action_Cnt == GUARDBREAK_ALLFRAME) {
+	_GrHandle =_GrAll["GuardBreak"][_Anime["GuardBreak"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == GUARDBREAK_ALLFRAME) {
 	_Action_Cnt = _Cnt;
 	_State = ENEMYSTATE::PATROL;
 	}
 }
 /*----------死亡----------*/
 void Shielder::Dead(Game& g) {
-	_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
-	if (_Cnt - _Action_Cnt == DEAD_ALLFRAME) {
+	_GrHandle =_GrAll["Dead"][_Anime["Dead"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == DEAD_ALLFRAME) {
 		Delete(g);
 	}
 }

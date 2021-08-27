@@ -1,4 +1,4 @@
-#include "EnemySpawnCollision.h"
+#include "SpawnBlock.h"
 #include "Game.h"
 #include "Bushi.h"
 #include "Ninja.h"
@@ -7,7 +7,6 @@
 using namespace SpaInfo;
 //スポーンブロック実体
 Spawn1::Spawn1() {
-	EnemySpawnCollisionBase::Init();
 	_x = SPAWN1_XPOSITION;
 	_y = SPAWN1_YPOSITION;
 }
@@ -22,9 +21,7 @@ void Spawn1::Process(Game& g) {
 		{
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
-				Bushi* bu1 = new Bushi();
-				bu1->SetPosition(SPAWN1_BUSHI1_X, SPAWN1_BUSHI1_Y);
-				bu1->SetFlip(SPAWN1_BUSHI1_FLIP);
+				Bushi* bu1 = new Bushi(SPAWN1_BUSHI1_X, SPAWN1_BUSHI1_Y,SPAWN1_BUSHI1_FLIP);
 				g.GetOS()->Add(bu1);
 				/*Bushi* bu2 = new Bushi();
 				bu2->SetPosition(SPAWN1_BUSHI1_X, SPAWN1_BUSHI1_Y);
@@ -35,5 +32,5 @@ void Spawn1::Process(Game& g) {
 	}
 }
 void Spawn1::Draw(Game& g) {
-	EnemySpawnCollisionBase::Draw(g);
+	SpawnBlockBase::Draw(g);
 }

@@ -3,7 +3,7 @@
 
 class Shielder :public EnemyBase {
 public:
-	Shielder();
+	Shielder(int x, int y, bool flip);
 	~Shielder();
 	virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::SHIELDER; }
 
@@ -23,40 +23,12 @@ private:
 	void	AnimeUpdate(Game& g);	//忍者のアニメーション関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
 
-	/*----------メンバ変数----------*/
-
-	//巡回状態描画用変数
-	std::vector<int>	_Patrol_GrAll;
-	int		_Patrol_AnimeNo;
-
-	//移動状態描画用変数
-	std::vector<int>	_Coming_GrAll;
-	int		_Coming_AnimeNo;
-
-	//攻撃状態描画用変数
-	std::vector<int>	_Attack_GrAll;
-	int		_Attack_AnimeNo;
-
-	//被ダメ状態描画用変数
-	std::vector<int>	_GuardBreak_GrAll;
-	int		_GuardBreak_AnimeNo;
-
-	//死亡状態描画用変数
-	std::vector<int>	_Dead_GrAll;
-	int		_Dead_AnimeNo;
-
-	//SEハンドル
-	int		_Walk_SEHandle;
-	int		_Attack_SEHandle;
-
 	bool	_Shield_Flag;		//盾の生存フラグ
 	int		_Shield_Cnt;		
 };
 
 namespace SInfo {
 	/*----------盾兵の各座標関係----------*/
-	constexpr auto POSITION_X = 1000;			//横軸初期位置（足下が基準）
-	constexpr auto POSITION_Y = 2200;			//縦軸初期位置（足下が基準）
 	constexpr auto GRAPHPOINT_X = 0;				//X位置から描画点までの差分
 	constexpr auto GRAPHPOINT_Y = -315;			//Y位置から描画点までの差分
 	constexpr auto POSITION_HITX = -30;			//描画点から当たり判定左上座標までの差分

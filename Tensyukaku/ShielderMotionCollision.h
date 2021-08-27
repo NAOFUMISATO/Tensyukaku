@@ -5,7 +5,7 @@
 class Game;
 class ShielderPatrolCollision : public ObjectBase {
 public:
-	ShielderPatrolCollision();
+	ShielderPatrolCollision(int x, int y);
 	~ShielderPatrolCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::SHIELDERPATROL; }
 
@@ -15,7 +15,7 @@ public:
 // 盾兵の攻撃発生範囲当たり判定クラス
 class ShielderComingCollision : public ObjectBase {
 public:
-	ShielderComingCollision();
+	ShielderComingCollision(int x,int y);
 	~ShielderComingCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::SHIELDERCOMING; }
 
@@ -25,7 +25,7 @@ public:
 // 盾兵の攻撃当たり判定クラス
 class ShielderAttackCollision : public ObjectBase {
 public:
-	ShielderAttackCollision();
+	ShielderAttackCollision(int x, int y);
 	~ShielderAttackCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::SHIELDERATTACK; }
 

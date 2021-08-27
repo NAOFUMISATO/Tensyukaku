@@ -4,7 +4,7 @@
 #include <utility>
 class MiddleAttackParticle1 : public ParticleBase {
 public:
-	MiddleAttackParticle1(std::pair<double, double> xy, std::pair<double, double> vxy);
+	MiddleAttackParticle1(std::pair<double, double> xy, std::pair<double, double> vxy,bool flip);
 	~MiddleAttackParticle1();
 
 	virtual PARTICLETYPE GetParType() { return PARTICLETYPE::MIDDLEATTACK1; }
@@ -14,7 +14,7 @@ public:
 };
 class MiddleAttackParticle2 : public ParticleBase {
 public:
-	MiddleAttackParticle2(std::pair<double, double> xy, std::pair<double, double> vxy);
+	MiddleAttackParticle2(std::pair<double, double> xy, std::pair<double, double> vxy, bool flip);
 	~MiddleAttackParticle2();
 
 	virtual PARTICLETYPE GetParType() { return PARTICLETYPE::MIDDLEATTACK2; }

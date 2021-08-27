@@ -11,19 +11,18 @@ using namespace BInfo;
 
 /*----------巡回----------*/
 void Bushi::Patrol(Game& g) {
-	_GrHandle = _Patrol_GrAll[_Patrol_AnimeNo];
-	if (_Cnt - _Action_Cnt == PATROL_FRAME) {
+	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == PATROL_FRAME) {
 		_isFlip = true;
 	}
-	if (_Cnt - _Action_Cnt == PATROL_FRAME + PATROL_FRAME) {
+	if (frame == PATROL_FRAME *2) {
 		_isFlip = false;
 		_Action_Cnt = _Cnt;
 	}
 	if (_isFlip == false) {
 		//武士の索敵範囲判定オブジェクトの生成
-		BushiPatrolCollision bpc;
-		// 武士の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		bpc.SetPosition(_x + _hit_x - bpc.GetHitW(), _y - _hit_h);
+		BushiPatrolCollision bpc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -40,9 +39,7 @@ void Bushi::Patrol(Game& g) {
 	}
 	if (_isFlip == true) {
 		//武士の索敵範囲判定オブジェクトの生成
-		BushiPatrolCollision bpc;
-		// 武士の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		bpc.SetPosition(_x - _hit_x, _y - _hit_h);
+		BushiPatrolCollision bpc(_x - _hit_x, _y - _hit_h);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -68,7 +65,7 @@ void Bushi::Patrol(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life -= 3;
+				_Life = 0;
 				_Action_Cnt = _Cnt;
 				_State =ENEMYSTATE::DAMAGE;
 			}
@@ -108,13 +105,11 @@ void Bushi::Patrol(Game& g) {
 }
 /*----------追跡----------*/
 void Bushi::Coming(Game& g) {
-	_GrHandle = _Coming_GrAll[_Coming_AnimeNo];
+	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
 	if (_isFlip == false) {
 		_x -= _Spd;
 		//武士の攻撃発生範囲判定オブジェクトの生成
-		BushiComingCollision bcc;
-		// 武士の攻撃発生範囲オブジェクトの開始位置をプレイヤー位置から算出
-		bcc.SetPosition(_x + _hit_x - bcc.GetHitW(), _y - _hit_h);
+		BushiComingCollision bcc(_x + _hit_x - COMING_WIDTH, _y - _hit_h);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -133,9 +128,7 @@ void Bushi::Coming(Game& g) {
 	if (_isFlip == true) {
 		_x += _Spd;
 		//武士の攻撃発生範囲判定オブジェクトの生成
-		BushiComingCollision bcc;
-		// 武士の攻撃発生範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		bcc.SetPosition(_x - _hit_x, _y - _hit_h);
+		BushiComingCollision bcc(_x - _hit_x, _y - _hit_h);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -202,19 +195,17 @@ void Bushi::Coming(Game& g) {
 }
 /*----------攻撃----------*/
 void Bushi::Attack(Game& g) {
-	_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
+	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
 	if (_Cnt - _Action_Cnt == ATTACK_BEGINFRAME) {
-		//武士の攻撃判定オブジェクトの生成
-		BushiAttackCollision* bac= new BushiAttackCollision();
 		if (_isFlip == false) {
-			// 武士の攻撃判定オブジェクトの開始位置を武士位置から算出
-			bac->SetPosition(_x + _hit_x - bac->GetHitW(), _y - _hit_h);
+			//武士の攻撃判定オブジェクトの生成
+			auto bac = new BushiAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
 			// オブジェクトサーバ-に武士の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(bac);
 		};
 		if (_isFlip == true) {
-			// 武士の攻撃判定オブジェクトの開始位置を武士位置から算出
-			bac->SetPosition(_x - _hit_x, _y - _hit_h);
+			//武士の攻撃判定オブジェクトの生成
+			auto bac = new BushiAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に武士の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(bac);
 		}
@@ -273,8 +264,9 @@ void Bushi::Attack(Game& g) {
 }
 /*----------被ダメ----------*/
 void Bushi::Damage(Game& g) {
-	_GrHandle = _Damage_GrAll[_Damage_AnimeNo];
-	if (_Cnt - _Action_Cnt == DAMAGE_ALLFRAME) {
+	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == DAMAGE_ALLFRAME) {
 		if (_Life <= 0) {
 			_Action_Cnt = _Cnt;
 			_State = ENEMYSTATE::DEAD;
@@ -287,8 +279,9 @@ void Bushi::Damage(Game& g) {
 }
 /*----------死亡----------*/
 void Bushi::Dead(Game& g) {
-	_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
-	if (_Cnt - _Action_Cnt == DEAD_ALLFRAME) {
+	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == DEAD_ALLFRAME) {
 		Delete(g);
 	}
 }

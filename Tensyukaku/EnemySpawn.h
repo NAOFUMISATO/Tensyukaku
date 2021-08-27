@@ -7,7 +7,4 @@ public:
 	~EnemySpawn();
 
 	void Process(Game& g);
-
-private:
-	bool _Appear_Flag;
 };

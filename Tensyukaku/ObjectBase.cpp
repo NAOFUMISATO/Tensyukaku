@@ -25,11 +25,11 @@ void ObjectBase::Init()
 	_Cnt = 0;
 	_hit_judge.first = 1;
 	_hit_judge.second = 1;
-	_drg.first = 1.0;
-	_drg.second = 0.0;
-	_color = std::make_tuple(255,0,255);
+	_Drg.first = 1.0;
+	_Drg.second = 0.0;
+	_Color = std::make_tuple(255,0,255);
 	_Dalpha = 128;
-	_fill = false;
+	_Fill = false;
 }
 
 void ObjectBase::Process(Game& g)
@@ -42,15 +42,15 @@ void ObjectBase::Draw(Game& g) {
 	auto GC = g.GetChip();
 	auto x = _x + _gx - GC->GetscrX();
 	auto y = _y + _gy - GC->GetscrY();
-	auto scale = _drg.first;
-	auto angle = _drg.second;
+	auto scale = _Drg.first;
+	auto angle = _Drg.second;
 	DrawRotaGraph(x, y, scale, angle, _GrHandle, true, _isFlip);
 #ifdef _DEBUG
-	int& re = std::get<RED>(_color);
-	int& gr = std::get<GREEN>(_color);
-	int& bl = std::get<Blue>(_color);
+	int& re = std::get<RED>(_Color);
+	int& gr = std::get<GREEN>(_Color);
+	int& bl = std::get<Blue>(_Color);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
-	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(re, gr, bl), _fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
+	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æw’è
 #endif
 	

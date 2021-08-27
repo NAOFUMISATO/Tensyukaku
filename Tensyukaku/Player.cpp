@@ -14,16 +14,6 @@
 
 using namespace PInfo;
 Player::Player() :
-	_Idle_AnimeNo(0),
-	_Move_AnimeNo(0),
-	_MiddleAttack_AnimeNo(0),
-	_LowAttack_AnimeNo(0),
-	_Kick_AnimeNo(0),
-	_Iai_AnimeNo(0),
-	/*_Sway_GrHandle(-1),
-	_Sway_AnimeNo(0),*/
-	_Damage_AnimeNo(0),
-	_Dead_AnimeNo(0),
 	_State(PLAYERSTATE::IDLE),
 	_Star_Flag(false)
 {
@@ -53,7 +43,7 @@ void Player::Init()
 	_Life = LIFE_MAX;
 	_Spd = SPEED;
 	_isFlip = true;
-	_position = { 0,0 };
+	_Position = { 0,0 };
 }
 
 
@@ -151,47 +141,47 @@ void Player::Delete(Game& g) {
 }
 //プレイヤーの画像読み込み関数
 void Player::LoadActionGraph() {
-	_Idle_GrAll.resize(IDLE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Idle_GrAll.data());
-	_Move_GrAll.resize(MOVE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Move_GrAll.data());
-	_MiddleAttack_GrAll.resize(MIDDLEATTACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(MIDDLEATTACK_GRAPHNAME, MIDDLEATTACK_ANIMEMAX, MIDDLEATTACK_WIDTHCOUNT, MIDDLEATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _MiddleAttack_GrAll.data());
-	_LowAttack_GrAll.resize(LOWATTACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(LOWATTACK_GRAPHNAME, LOWATTACK_ANIMEMAX, LOWATTACK_WIDTHCOUNT, LOWATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _LowAttack_GrAll.data());
-	_Kick_GrAll.resize(KICK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(KICK_GRAPHNAME, KICK_ANIMEMAX, KICK_WIDTHCOUNT, KICK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Kick_GrAll.data());
-	_Iai_GrAll.resize(IAI_ANIMEMAX);
-	ResourceServer::LoadDivGraph(IAI_GRAPHNAME, IAI_ANIMEMAX, IAI_WIDTHCOUNT, IAI_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Iai_GrAll.data());
+	_GrAll["Idle"].resize(IDLE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Idle"].data());
+	_GrAll["Move"].resize(MOVE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Move"].data());
+	_GrAll["MiddleAttack"].resize(MIDDLEATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MIDDLEATTACK_GRAPHNAME, MIDDLEATTACK_ANIMEMAX, MIDDLEATTACK_WIDTHCOUNT, MIDDLEATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["MiddleAttack"].data());
+	_GrAll["LowAttack"].resize(LOWATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(LOWATTACK_GRAPHNAME, LOWATTACK_ANIMEMAX, LOWATTACK_WIDTHCOUNT, LOWATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["LowAttack"].data());
+	_GrAll["Kick"].resize(KICK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(KICK_GRAPHNAME, KICK_ANIMEMAX, KICK_WIDTHCOUNT, KICK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Kick"].data());
+	_GrAll["Iai"].resize(IAI_ANIMEMAX);
+	ResourceServer::LoadDivGraph(IAI_GRAPHNAME, IAI_ANIMEMAX, IAI_WIDTHCOUNT, IAI_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Iai"].data());
 	/*_Sway_GrAll.resize(SWAY_ANIMEMAX);
 	ResourceServer::LoadDivGraph(SWAY_GRAPHNAME, SWAY_ANIMEMAX, SWAY_WIDTHCOUNT, SWAY_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Sway_GrAll.data());*/
-	_Damage_GrAll.resize(DAMAGE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Damage_GrAll.data());
-	_Dead_GrAll.resize(DEAD_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Dead_GrAll.data());
+	_GrAll["Damage"].resize(DAMAGE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Damage"].data());
+	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
 }
 
 //プレイヤーの効果音読み込み関数
 void Player::LoadActionSE() {
-	_se["Walk"] = ResourceServer::LoadSoundMem(WALK_SE);
-	_se["MiddleAttack"] = ResourceServer::LoadSoundMem(MIDDLEATTACK_SE);
-	_se["LowAttack"] = ResourceServer::LoadSoundMem(LOWATTACK_SE);
-	_se["Kick"] = ResourceServer::LoadSoundMem(KICK_SE);
-	_se["Damage"] = ResourceServer::LoadSoundMem(DAMAGE_SE);
-	_se["SwordIn"] = ResourceServer::LoadSoundMem(SWORDIN_SE);
-	_se["Iai"] = ResourceServer::LoadSoundMem(IAI_SE);
+	_Se["Walk"] = ResourceServer::LoadSoundMem(WALK_SE);
+	_Se["MiddleAttack"] = ResourceServer::LoadSoundMem(MIDDLEATTACK_SE);
+	_Se["LowAttack"] = ResourceServer::LoadSoundMem(LOWATTACK_SE);
+	_Se["Kick"] = ResourceServer::LoadSoundMem(KICK_SE);
+	_Se["Damage"] = ResourceServer::LoadSoundMem(DAMAGE_SE);
+	_Se["SwordIn"] = ResourceServer::LoadSoundMem(SWORDIN_SE);
+	_Se["Iai"] = ResourceServer::LoadSoundMem(IAI_SE);
 }
 
 //プレイヤーのアニメーション関数
 void Player::AnimeUpdate(Game& g) {
-	_Idle_AnimeNo = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
-	_Move_AnimeNo = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
-	_MiddleAttack_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
-	_LowAttack_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
-	_Kick_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
-	_Iai_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
-	_Damage_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
-	_Dead_AnimeNo = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
+	_Anime["MiddleAttack"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
+	_Anime["LowAttack"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
+	_Anime["Kick"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
+	_Anime["Iai"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
+	_Anime["Damage"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	_Anime["Dead"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 }
 
 //デバック用関数

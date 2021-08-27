@@ -7,20 +7,18 @@
 
 using namespace NInfo;
 void Ninja::Patrol(Game& g) {
-	_GrHandle = _Patrol_GrAll[_Patrol_AnimeNo];
-	if (_Cnt - _Action_Cnt == PATROL_ALLFRAME) {
+	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == PATROL_ALLFRAME) {
 		_isFlip = true;
 	}
-	if (_Cnt - _Action_Cnt == PATROL_ALLFRAME + PATROL_ALLFRAME) {
+	if (frame == PATROL_ALLFRAME *2) {
 		_isFlip = false;
 		_Action_Cnt = _Cnt;
 	}
 	if (_isFlip == false) {
 		//忍者の索敵範囲判定オブジェクトの生成
-		NinjaPatrolCollision npc;
-
-		// 忍者の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		npc.SetPosition(_x + _hit_x - npc.GetHitW(), _y - _hit_h);
+		NinjaPatrolCollision npc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -37,10 +35,8 @@ void Ninja::Patrol(Game& g) {
 	}
 
 	if (_isFlip == true) {
-		//武士の索敵範囲判定オブジェクトの生成
-		NinjaPatrolCollision npc;
-		// 武士の索敵範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		npc.SetPosition(_x - _hit_x, _y - _hit_h);
+		//忍者の索敵範囲判定オブジェクトの生成
+		NinjaPatrolCollision npc(_x - _hit_x, _y - _hit_h);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -88,13 +84,12 @@ void Ninja::Patrol(Game& g) {
 	}
 }
 void Ninja::Coming(Game& g) {
-	_GrHandle = _Coming_GrAll[_Coming_AnimeNo];
+	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
+	auto frame = _Cnt - _Action_Cnt;
 	if (_isFlip == false) {
 		_x -= _Spd;
-		//武士の攻撃発生範囲判定オブジェクトの生成
-		NinjaComingCollision ncc;
-		// 武士の攻撃発生範囲オブジェクトの開始位置をプレイヤー位置から算出
-		ncc.SetPosition(_x + _hit_x - ncc.GetHitW(), _y - _hit_h);
+		//忍者の攻撃発生範囲判定オブジェクトの生成
+		NinjaComingCollision ncc(_x + _hit_x - COMING_WIDTH, _y - _hit_h);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -112,10 +107,8 @@ void Ninja::Coming(Game& g) {
 	}
 	if (_isFlip == true) {
 		_x += _Spd;
-		//武士の攻撃発生範囲判定オブジェクトの生成
-		NinjaComingCollision ncc;
-		// 武士の攻撃発生範囲判定オブジェクトの開始位置をプレイヤー位置から算出
-		ncc.SetPosition(_x - _hit_x, _y - _hit_h);
+		//忍者の攻撃発生範囲判定オブジェクトの生成
+		NinjaComingCollision ncc(_x - _hit_x, _y - _hit_h);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -165,24 +158,24 @@ void Ninja::Coming(Game& g) {
 }
 
 void Ninja::Attack(Game& g) {
-	_GrHandle = _Attack_GrAll[_Attack_AnimeNo];
-	if (_Cnt - _Action_Cnt == ATTACK_BEGINFRAME) {
-		//忍者の攻撃判定オブジェクトの生成
-		NinjaAttackCollision* nac = new NinjaAttackCollision();
+	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == ATTACK_BEGINFRAME) {
+		
 		if (_isFlip == false) {
-			// 忍者の攻撃判定オブジェクトの開始位置を武士位置から算出
-			nac->SetPosition(_x + _hit_x - nac->GetHitW(), _y - _hit_h);
+			//忍者の攻撃判定オブジェクトの生成
+			auto nac = new NinjaAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
 			// オブジェクトサーバ-に武士の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(nac);
 		};
 		if (_isFlip == true) {
-			// 忍者の攻撃判定オブジェクトの開始位置を武士位置から算出
-			nac->SetPosition(_x - _hit_x, _y - _hit_h);
+			//忍者の攻撃判定オブジェクトの生成
+			auto nac = new NinjaAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に武士の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(nac);
 		}
 	}
-	if (_Cnt - _Action_Cnt == ATTACK_ALLFRAME)
+	if (frame == ATTACK_ALLFRAME)
 	{
 		_State = Ninja::ENEMYSTATE::PATROL;
 	}
@@ -220,8 +213,9 @@ void Ninja::Attack(Game& g) {
 }
 
 void Ninja::Dead(Game& g) {
-	_GrHandle = _Dead_GrAll[_Dead_AnimeNo];
-	if (_Cnt - _Action_Cnt == DEAD_FRAME)
+	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == DEAD_FRAME)
 	{
 		Delete(g);
 	}

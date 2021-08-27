@@ -7,7 +7,7 @@
 class Game;
 class BushiPatrolCollision : public ObjectBase {
 public:
-	BushiPatrolCollision();
+	BushiPatrolCollision(int x, int y);
 	~BushiPatrolCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::BUSHIPATROL; }
 
@@ -17,7 +17,7 @@ public:
 // •m‚ÌUŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èƒNƒ‰ƒX
 class BushiComingCollision : public ObjectBase {
 public:
-	BushiComingCollision();
+	BushiComingCollision(int x, int y);
 	~BushiComingCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::BUSHICOMING; }
 
@@ -27,7 +27,7 @@ public:
 // •m‚ÌUŒ‚“–‚½‚è”»’èƒNƒ‰ƒX
 class BushiAttackCollision : public ObjectBase {
 public:
-	BushiAttackCollision();
+	BushiAttackCollision(int x, int y);
 	~BushiAttackCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::BUSHIATTACK; }
 

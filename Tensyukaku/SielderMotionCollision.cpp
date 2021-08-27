@@ -12,7 +12,9 @@ using namespace SInfo;
 */
 
 //õ“G”ÍˆÍ“–‚½‚è”»’èÀ‘Ì
-ShielderPatrolCollision::ShielderPatrolCollision() {
+ShielderPatrolCollision::ShielderPatrolCollision(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 ShielderPatrolCollision::~ShielderPatrolCollision() {
@@ -26,14 +28,16 @@ void ShielderPatrolCollision::Init() {
 	_hit_w = PATROL_WIDTH;
 	_hit_h = PATROL_HEIGHT;
 #ifdef _DEBUG
-	_color = std::make_tuple(0, 255, 0);
+	_Color = std::make_tuple(0, 255, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 
 //UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èÀ‘Ì
-ShielderComingCollision::ShielderComingCollision() {
+ShielderComingCollision::ShielderComingCollision(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 ShielderComingCollision::~ShielderComingCollision() {
@@ -47,14 +51,16 @@ void ShielderComingCollision::Init() {
 	_hit_w = COMING_WIDTH;
 	_hit_h = COMING_HEIGHT;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 255, 0);
+	_Color = std::make_tuple(255, 255, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 
 //UŒ‚“–‚½‚è”»’èÀ‘Ì
-ShielderAttackCollision::ShielderAttackCollision() {
+ShielderAttackCollision::ShielderAttackCollision(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 ShielderAttackCollision::~ShielderAttackCollision() {
@@ -69,9 +75,9 @@ void ShielderAttackCollision::Init() {
 	_hit_h = ATTACK_HEIGHT;
 	_Action_Cnt = _Cnt;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 0, 0);
+	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 

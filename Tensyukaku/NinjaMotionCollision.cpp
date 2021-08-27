@@ -10,7 +10,9 @@
 */
 using namespace NInfo;
 //õ“G”ÍˆÍ“–‚½‚è”»’èÀ‘Ì
-NinjaPatrolCollision::NinjaPatrolCollision() {
+NinjaPatrolCollision::NinjaPatrolCollision(int x,int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 NinjaPatrolCollision::~NinjaPatrolCollision() {
@@ -24,13 +26,15 @@ void NinjaPatrolCollision::Init() {
 	_hit_w = PATROL_WIDTH;
 	_hit_h = PATROL_HEIGHT;
 #ifdef _DEBUG
-	_color = std::make_tuple(0, 255, 0);
+	_Color = std::make_tuple(0, 255, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 //UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èÀ‘Ì
-NinjaComingCollision::NinjaComingCollision() {
+NinjaComingCollision::NinjaComingCollision(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 NinjaComingCollision::~NinjaComingCollision() {
@@ -44,14 +48,16 @@ void NinjaComingCollision::Init() {
 	_hit_w = COMING_WIDTH;
 	_hit_h = COMING_HEIGHT;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 255, 0);
+	_Color = std::make_tuple(255, 255, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 
 //UŒ‚“–‚½‚è”»’èÀ‘Ì
-NinjaAttackCollision::NinjaAttackCollision() {
+NinjaAttackCollision::NinjaAttackCollision(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 NinjaAttackCollision::~NinjaAttackCollision() {
@@ -66,9 +72,9 @@ void NinjaAttackCollision::Init() {
 	_hit_h = ATTACK_HEIGHT;
 	_Action_Cnt = _Cnt;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 0, 0);
+	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
 

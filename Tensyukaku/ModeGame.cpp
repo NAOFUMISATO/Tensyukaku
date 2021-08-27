@@ -13,14 +13,9 @@
 
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	
-	//オブジェクトサーバに登録する
-	/*g.GetOS()->Add(new Bushi);
-	g.GetOS()->Add(new Ninja);
-	g.GetOS()->Add(new Shielder);*/
 	_enemyspawn = new EnemySpawn(g);
 	_gimikplacement = new GimikPlacement(g);
-	_Player_Apeear = false;
+	_Apeear_Flag = false;
 	// オブジェクト処理を行う
 	_stopObjProcess = false;
 	
@@ -49,10 +44,10 @@ bool ModeGame::Process(Game& g) {
 	{
 		g.GetChip()->Process(g);
 		g.GetOS()->Process(g);
+		if (_Apeear_Flag == false) {
+		_Apeear_Flag = true;
 		_gimikplacement->Process(g);
 		_enemyspawn->Process(g);
-		if (_Player_Apeear == false) {
-		_Player_Apeear = true;
 		g.GetOS()->Add(new Player);
 		}
 		

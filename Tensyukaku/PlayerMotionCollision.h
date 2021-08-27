@@ -6,7 +6,7 @@
 class Game;
 class MiddleAttackCollision : public ObjectBase {
 public:
-	MiddleAttackCollision();
+	MiddleAttackCollision(int x, int y);
 	~MiddleAttackCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::MIDDLEATTACK; }
 
@@ -19,7 +19,7 @@ public:
 // プレイヤーの下段攻撃当たり判定クラス
 class LowAttackCollision : public ObjectBase {
 public:
-	LowAttackCollision();
+	LowAttackCollision(int x, int y);
 	~LowAttackCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::LOWATTACK; }
 
@@ -32,7 +32,7 @@ public:
 //プレイヤーの蹴り当たり判定クラス
 class KickCollision : public ObjectBase {
 public:
-	KickCollision();
+	KickCollision(int x, int y);
 	~KickCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::KICK; }
 
@@ -45,7 +45,7 @@ public:
 //プレイヤーの居合当たり判定クラス
 class IaiCollision : public ObjectBase {
 public:
-	IaiCollision();
+	IaiCollision(int x, int y);
 	~IaiCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::IAI; }
 

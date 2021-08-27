@@ -6,7 +6,7 @@
 
 class Bushi : public EnemyBase {
 public:
-	Bushi();
+	Bushi(int x, int y, bool flip);
 	~Bushi();
 	virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::BUSHI; }
 
@@ -25,38 +25,10 @@ private:
 	void	LoadActionSE();			//武士のSE読み込み関数
 	void	AnimeUpdate(Game& g);	//武士のアニメーション関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
-
-	/*----------メンバ変数----------*/
-
-	//巡回状態描画用変数
-	std::vector<int>	_Patrol_GrAll;
-	int		_Patrol_AnimeNo;
-
-	//移動状態描画用変数
-	std::vector<int>	_Coming_GrAll;
-	int		_Coming_AnimeNo;
-
-	//攻撃状態描画用変数
-	std::vector<int>	_Attack_GrAll;
-	int		_Attack_AnimeNo;
-
-	//被ダメ状態描画用変数
-	std::vector<int>	_Damage_GrAll;
-	int		_Damage_AnimeNo;
-
-	//死亡状態描画用変数
-	std::vector<int>	_Dead_GrAll;
-	int		_Dead_AnimeNo;
-
-	//SEハンドル
-	int		_Walk_SEHandle;
-	int		_Attack_SEHandle;
 };
 
 namespace BInfo {
 	/*----------武士の各座標関係----------*/
-	constexpr auto POSITION_X = 1800;			//横軸初期位置（足下が基準）
-	constexpr auto POSITION_Y = 2200;			//縦軸初期位置（足下が基準）
 	constexpr auto GRAPHPOINT_X = 0;				//X位置から描画点までの差分
 	constexpr auto GRAPHPOINT_Y = -210;			//Y位置から描画点までの差分
 	constexpr auto POSITION_HITX = -30;			//描画点から当たり判定左上座標までの差分
@@ -74,7 +46,7 @@ namespace BInfo {
 
 	/*----------パラメーター関係----------*/
 	constexpr auto LIFE_MAX = 3;					//体力
-	constexpr auto SPEED = 1;					//移動速度
+	constexpr auto SPEED = 2;					//移動速度
 	
 	/*----------画像読み込み&アニメーション&判定フレーム関係----------*/
 	//共通

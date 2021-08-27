@@ -6,7 +6,7 @@
 class Game;
 class NinjaPatrolCollision : public ObjectBase {
 public:
-	NinjaPatrolCollision();
+	NinjaPatrolCollision(int x, int y);
 	~NinjaPatrolCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::NINJAPATROL; }
 
@@ -16,7 +16,7 @@ public:
 // ”EÒ‚ÌUŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èƒNƒ‰ƒX
 class NinjaComingCollision : public ObjectBase {
 public:
-	NinjaComingCollision();
+	NinjaComingCollision(int x, int y);
 	~NinjaComingCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::NINJACOMING; }
 
@@ -26,7 +26,7 @@ public:
 // ”EÒ‚ÌUŒ‚“–‚½‚è”»’èƒNƒ‰ƒX
 class NinjaAttackCollision : public ObjectBase {
 public:
-	NinjaAttackCollision();
+	NinjaAttackCollision(int x, int y);
 	~NinjaAttackCollision();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::NINJAATTACK; }
 

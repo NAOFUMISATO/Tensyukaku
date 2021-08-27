@@ -1,16 +1,15 @@
 #pragma once
 #include "ObjectBase.h"
 
+
 class Stair :public ObjectBase {
 public:
-	Stair();
+	Stair(int x,int y,bool flip);
 	~Stair();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::STAIR; }
 	void	Init()override;
 	void	Process(Game& g)override;
 	void	Draw(Game& g)override;
-private:
-	bool	_StairAppear_Flag;
 };
 
 namespace StInfo {

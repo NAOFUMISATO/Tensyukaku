@@ -1,4 +1,4 @@
-#include "EnemySpawnCollisionBase.h"
+#include "SpawnBlockBase.h"
 #include "Game.h"
 namespace {
 	constexpr auto GRAPHPOINT_X = 0;		//XˆÊ’u‚©‚ç•`‰æ“_‚Ü‚Å‚Ì·•ª
@@ -8,13 +8,13 @@ namespace {
 	constexpr auto COLLISION_WIDTH = 100;	//ŠK’i‚Ì“–‚½‚è”»’è‰¡•
 	constexpr auto COLLISION_HEIGHT = 100;	//ŠK’i‚Ì“–‚½‚è”»’èc•
 }
-EnemySpawnCollisionBase::EnemySpawnCollisionBase() {
+SpawnBlockBase::SpawnBlockBase() {
 	Init();
 }
-EnemySpawnCollisionBase::~EnemySpawnCollisionBase() {
+SpawnBlockBase::~SpawnBlockBase() {
 }
 
-void EnemySpawnCollisionBase::Init() {
+void SpawnBlockBase::Init() {
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
@@ -22,14 +22,14 @@ void EnemySpawnCollisionBase::Init() {
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 #ifdef _DEBUG
-	_color = std::make_tuple(255, 0, 255);
+	_Color = std::make_tuple(255, 0, 255);
 	_Dalpha = 128;
-	_fill = true;
+	_Fill = true;
 #endif
 }
-void EnemySpawnCollisionBase::Draw(Game& g) {
+void SpawnBlockBase::Draw(Game& g) {
 	ObjectBase::Draw(g);
 }
-void EnemySpawnCollisionBase::Delete(Game& g) {
+void SpawnBlockBase::Delete(Game& g) {
 	g.GetOS()->Del(this);
 }

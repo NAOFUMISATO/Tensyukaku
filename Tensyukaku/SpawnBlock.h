@@ -1,7 +1,7 @@
 #pragma once
-#include "EnemySpawnCollisionBase.h"
+#include "SpawnBlockBase.h"
 
-class Spawn1 :public EnemySpawnCollisionBase {
+class Spawn1 :public SpawnBlockBase {
 public:
 	Spawn1();
 	~Spawn1();
