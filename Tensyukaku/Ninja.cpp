@@ -8,7 +8,9 @@
 #include "ObjectBase.h"
 #include "NinjaMotionCollision.h"
 
-
+/*
+	”EŽÒ
+*/
 using namespace NInfo;
 Ninja::Ninja(int x, int y, bool flip)
 {

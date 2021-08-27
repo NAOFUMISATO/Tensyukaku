@@ -58,8 +58,8 @@ private:
 namespace PInfo {
 
 	/*----------プレイヤーの各座標関係----------*/
-	constexpr auto POSITION_X = 200;			//横軸初期位置（足下が基準）
-	constexpr auto POSITION_Y = 2200;			//縦軸初期位置（足下が基準）
+	constexpr auto POSITION_X = 4000;			//横軸初期位置（足下が基準）
+	constexpr auto POSITION_Y = 7840;			//縦軸初期位置（足下が基準）
 	constexpr auto GRAPHPOINT_X = 0;			//X位置から描画点までの差分
 	constexpr auto GRAPHPOINT_Y = -210;			//Y位置から描画点までの差分
 	constexpr auto POSITION_HITX = -30;			//描画点から当たり判定左上座標までの差分

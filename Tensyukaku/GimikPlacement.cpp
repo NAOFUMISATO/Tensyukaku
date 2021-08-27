@@ -27,4 +27,7 @@ void GimikPlacement::StairAppear(Game& g) {
 	//3F
 	auto st3 = new Stair(FLOOR3STAIR_X, FLOOR3STAIR_Y, FLOOR3STAIR_FLIP);
 	g.GetOS()->Add(st3);
+	//4F
+	auto st4 = new Stair(FLOOR4STAIR_X, FLOOR4STAIR_Y, FLOOR4STAIR_FLIP);
+	g.GetOS()->Add(st4);
 }

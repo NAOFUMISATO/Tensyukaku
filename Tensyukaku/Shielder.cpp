@@ -10,6 +10,9 @@
 #include "ObjectBase.h"
 #include "player.h"
 
+/*
+	èÇï∫
+*/
 using namespace SInfo;
 Shielder::Shielder(int x, int y, bool flip) :
 	_Shield_Flag(true),

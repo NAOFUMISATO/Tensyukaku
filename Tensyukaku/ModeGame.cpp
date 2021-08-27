@@ -20,8 +20,8 @@ bool ModeGame::Initialize(Game& g) {
 	_stopObjProcess = false;
 	
 	// カメラ＆マップ初期化
-	g.SetmapW(3840);
-	g.SetmapH(2280);
+	g.SetmapW(5760);
+	g.SetmapH(7920);
 	g.SetcvX(0);
 	g.SetcvY(g.GetmapH() - SCREEN_H);
 	// BGM演奏開始	

@@ -7,7 +7,9 @@
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "BushiMotionCollision.h"
-
+/*
+	ïêém
+*/
 using namespace BInfo;
 Bushi::Bushi(int x,int y,bool flip)
 {
