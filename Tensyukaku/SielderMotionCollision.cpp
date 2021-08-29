@@ -11,52 +11,6 @@ using namespace SInfo;
 ‚•º‚ÌŠeƒ‚[ƒVƒ‡ƒ“‚Ì“–‚½‚è”»’èÀ‘Ì
 */
 
-//õ“G”ÍˆÍ“–‚½‚è”»’èÀ‘Ì
-ShielderPatrolCollision::ShielderPatrolCollision(int x, int y) {
-	_x = x;
-	_y = y;
-	Init();
-}
-ShielderPatrolCollision::~ShielderPatrolCollision() {
-}
-
-void ShielderPatrolCollision::Init() {
-	_gx = 0;
-	_gy = 0;
-	_hit_x = 0;
-	_hit_y = 0;
-	_hit_w = PATROL_WIDTH;
-	_hit_h = PATROL_HEIGHT;
-#ifdef _DEBUG
-	_Color = std::make_tuple(0, 255, 0);
-	_Dalpha = 128;
-	_Fill = true;
-#endif
-}
-
-//UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èÀ‘Ì
-ShielderComingCollision::ShielderComingCollision(int x, int y) {
-	_x = x;
-	_y = y;
-	Init();
-}
-ShielderComingCollision::~ShielderComingCollision() {
-}
-
-void ShielderComingCollision::Init() {
-	_gx = 0;
-	_gy = 0;
-	_hit_x = 0;
-	_hit_y = 0;
-	_hit_w = COMING_WIDTH;
-	_hit_h = COMING_HEIGHT;
-#ifdef _DEBUG
-	_Color = std::make_tuple(255, 255, 0);
-	_Dalpha = 128;
-	_Fill = true;
-#endif
-}
-
 //UŒ‚“–‚½‚è”»’èÀ‘Ì
 ShielderAttackCollision::ShielderAttackCollision(int x, int y) {
 	_x = x;

@@ -6,7 +6,7 @@ public:
 	SpawnBlockBase();
 	~SpawnBlockBase();
 
-	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::ENEMYSPAWN; }
+	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::SPAWNBLOCK; }
 
 	enum class SPAWNTYPE{
 		SPAWN1,SPAWN2,SPAWN3,SPAWN4

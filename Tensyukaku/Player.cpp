@@ -42,7 +42,8 @@ void Player::Init()
 	_hit_h = COLLISION_HEIGHT;
 	_Life = LIFE_MAX;
 	_Spd = SPEED;
-	_isFlip = true;
+	_isFlip = FIRST_FLIP;
+	_alpha = FIRST_ALPHA;
 	_Position = { 0,0 };
 }
 
@@ -55,7 +56,12 @@ void Player::Process(Game& g)
 	/*---状態毎の処理---*/
 		//無敵状態
 	if (_Star_Flag == true) {
+		_alpha = FIRST_ALPHA;
+		if ((_Cnt / ANIMESPEED_STAR % 2) == 0) {
+			_alpha = STAR_ALPHA;
+		}
 		if (_Cnt - _Star_Cnt == STAR_ALLFRAME) {
+			_alpha = FIRST_ALPHA;
 			_Star_Flag = false;
 		}
 	}
@@ -86,9 +92,9 @@ void Player::Process(Game& g)
 		Iai(g);
 		break;
 	//	//スウェイ状態
-	//case PLAYERSTATE::SWAY:
-	//	Sway(g);
-	//	break;
+	case PLAYERSTATE::SWAY:
+		Sway(g);
+		break;
 		//被ダメ状態
 	case PLAYERSTATE::DAMAGE:
 		Damage(g);
@@ -125,13 +131,10 @@ void Player::Process(Game& g)
 }
 
 void Player::Draw(Game& g) {
-	//無敵状態の描画処理
-	if (_Star_Flag == true && (_Cnt / ANIMESPEED_STAR % 2) == 0) {
-		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
-	}
 #ifdef _DEBUG
 	DebugDraw(g);
 #endif
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
 	UIDraw(g);
 }
@@ -153,8 +156,8 @@ void Player::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(KICK_GRAPHNAME, KICK_ANIMEMAX, KICK_WIDTHCOUNT, KICK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Kick"].data());
 	_GrAll["Iai"].resize(IAI_ANIMEMAX);
 	ResourceServer::LoadDivGraph(IAI_GRAPHNAME, IAI_ANIMEMAX, IAI_WIDTHCOUNT, IAI_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Iai"].data());
-	/*_Sway_GrAll.resize(SWAY_ANIMEMAX);
-	ResourceServer::LoadDivGraph(SWAY_GRAPHNAME, SWAY_ANIMEMAX, SWAY_WIDTHCOUNT, SWAY_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _Sway_GrAll.data());*/
+	_GrAll["Sway"].resize(SWAY_ANIMEMAX);
+	ResourceServer::LoadDivGraph(SWAY_GRAPHNAME, SWAY_ANIMEMAX, SWAY_WIDTHCOUNT, SWAY_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Sway"].data());
 	_GrAll["Damage"].resize(DAMAGE_ANIMEMAX);
 	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Damage"].data());
 	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
@@ -174,14 +177,16 @@ void Player::LoadActionSE() {
 
 //プレイヤーのアニメーション関数
 void Player::AnimeUpdate(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
 	_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
-	_Anime["MiddleAttack"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
-	_Anime["LowAttack"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
-	_Anime["Kick"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
-	_Anime["Iai"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
-	_Anime["Damage"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
-	_Anime["Dead"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	_Anime["MiddleAttack"] = ((frame) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
+	_Anime["LowAttack"] = ((frame) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
+	_Anime["Kick"] = ((frame) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
+	_Anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
+	_Anime["Sway"] = ((frame) / ANIMESPEED_IAI) % SWAY_ANIMEMAX;
+	_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 }
 
 //デバック用関数

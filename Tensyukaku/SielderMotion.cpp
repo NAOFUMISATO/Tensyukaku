@@ -5,15 +5,15 @@
 #include "Game.h"
 #include "ShielderMotionCollision.h"
 #include "ObjectBase.h"
-#include <tuple>
-#include <utility>
+#include "PrivateCollision.h"
 
 using namespace SInfo;
 
 /*----------巡回----------*/
 void Shielder::Patrol(Game& g) {
-	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
+	_Anime["Patrol"] = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
 	if (frame == PATROL_TURNFRAME) {
 		_isFlip = true;
 	}
@@ -23,7 +23,7 @@ void Shielder::Patrol(Game& g) {
 	}
 	if (_isFlip == false) {
 		//盾兵の索敵範囲判定オブジェクトの生成
-		ShielderPatrolCollision spc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h);
+		PrivateCollision spc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -40,7 +40,7 @@ void Shielder::Patrol(Game& g) {
 	}
 	if (_isFlip == true) {
 		//武士の索敵範囲判定オブジェクトの生成
-		ShielderPatrolCollision spc(_x - _hit_x, _y - _hit_h);
+		PrivateCollision spc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -128,10 +128,11 @@ void Shielder::Patrol(Game& g) {
 /*----------追跡----------*/
 void Shielder::Coming(Game& g) {
 	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
+	_Anime["Coming"] = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
 	if (_isFlip == false) {
 		_x -= _Spd;
 		//盾兵の攻撃発生範囲判定オブジェクトの生成
-		ShielderComingCollision scc(_x + _hit_x - COMING_WIDTH, _y - _hit_h);
+		PrivateCollision scc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -147,11 +148,27 @@ void Shielder::Coming(Game& g) {
 				}
 			}
 		}
+		//盾兵の追跡中止範囲判定オブジェクトの生成
+		PrivateCollision sccc(_x + _hit_x - COMINGCANCEL_WIDTH, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
+		//追跡中止範囲オブジェクトはプレイヤーに当たったか？
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteはプレイヤーか？
+			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+			{
+				// 追跡中止範囲オブジェクトとプレイヤーの当たり判定を行う
+				if ((*ite)->IsHit(sccc) == false)
+				{
+					_Action_Cnt;
+					_State = ENEMYSTATE::PATROL;
+				}
+			}
+		}
 	}
 	if (_isFlip == true) {
 		_x += _Spd;
 		//盾兵の攻撃発生範囲判定オブジェクトの生成
-		ShielderComingCollision scc(_x - _hit_x, _y - _hit_h);
+		PrivateCollision scc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -163,6 +180,22 @@ void Shielder::Coming(Game& g) {
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::ATTACK;
+				}
+			}
+		}
+		//盾兵の追跡中止範囲判定オブジェクトの生成
+		PrivateCollision sccc(_x - _hit_x, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
+		//追跡中止範囲オブジェクトはプレイヤーに当たったか？
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteはプレイヤーか？
+			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+			{
+				// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
+				if ((*ite)->IsHit(sccc) == false)
+				{
+					_Action_Cnt = _Cnt;
+					_State = ENEMYSTATE::PATROL;
 				}
 			}
 		}
@@ -238,8 +271,47 @@ void Shielder::Coming(Game& g) {
 }
 /*----------攻撃----------*/
 void Shielder::Attack(Game& g) {
-	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
+	if (frame<ATTACK_ANIMEFRAME){
+		_Anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX; 
+	}
+	if (_isFlip == false) {
+		PrivateCollision sacc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
+		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
+			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+			{
+				// iteはプレイヤーか？
+				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+				{
+					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
+					if ((*ite)->IsHit(sacc) == false)
+					{
+						_State = ENEMYSTATE::COMING;
+					}
+				}
+			}
+		}
+	}
+	if (_isFlip == true) {
+		PrivateCollision sacc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
+		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
+			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+			{
+				// iteはプレイヤーか？
+				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+				{
+					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
+					if ((*ite)->IsHit(sacc) == false)
+					{
+						_State = ENEMYSTATE::COMING;
+					}
+				}
+			}
+		}
+	}
 	if (frame == ATTACK_BEGINFRAME) {
 		if (_isFlip == false) {
 			//盾兵の攻撃判定オブジェクトの生成
@@ -254,10 +326,6 @@ void Shielder::Attack(Game& g) {
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(sac);
 		}
-	}
-	if (frame == ATTACK_ALLFRAME)
-	{
-		_State = ENEMYSTATE::PATROL;
 	}
 	//敵とプレイヤーの中段攻撃オブジェクトの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -327,11 +395,15 @@ void Shielder::Attack(Game& g) {
 			}
 		}
 	}
+	if (frame == ATTACK_ALLFRAME) {
+		_Action_Cnt = _Cnt;
+	}
 }
 /*----------盾崩し----------*/
 void Shielder::GuardBreak(Game& g) {
-	_GrHandle =_GrAll["GuardBreak"][_Anime["GuardBreak"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle =_GrAll["GuardBreak"][_Anime["GuardBreak"]];
+	_Anime["GuardBreak"] = ((frame) / ANIMESPEED_GUARDBREAK) % GUARDBREAK_ANIMEMAX;
 	if (frame == GUARDBREAK_ALLFRAME) {
 	_Action_Cnt = _Cnt;
 	_State = ENEMYSTATE::PATROL;
@@ -339,8 +411,9 @@ void Shielder::GuardBreak(Game& g) {
 }
 /*----------死亡----------*/
 void Shielder::Dead(Game& g) {
-	_GrHandle =_GrAll["Dead"][_Anime["Dead"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle =_GrAll["Dead"][_Anime["Dead"]];
+	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 	if (frame == DEAD_ALLFRAME) {
 		Delete(g);
 	}

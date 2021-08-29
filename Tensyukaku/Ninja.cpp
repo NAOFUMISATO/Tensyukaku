@@ -7,6 +7,7 @@
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "NinjaMotionCollision.h"
+#include "PrivateCollision.h"
 
 /*
 	忍者
@@ -39,7 +40,6 @@ void Ninja::Init() {
 }
 void Ninja::Process(Game& g) {
 	EnemyBase::Process(g);
-	AnimeUpdate(g);
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		Patrol(g);
@@ -81,33 +81,31 @@ void Ninja::LoadActionSE() {
 	_Se["Walk"]=ResourceServer::LoadSoundMem(WALK_SE);
 	_Se["Attack"] = ResourceServer::LoadSoundMem(ATTACK_SE);
 }
-//忍者のアニメーション関数
-void Ninja::AnimeUpdate(Game& g) {
-	_Anime["Patrol"] = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
-	_Anime["Coming"] = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
-	_Anime["Atatck"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
-	_Anime["Dead"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
-}
+
 //デバッグ用関数
 void Ninja::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		if (_isFlip == false) {
-			NinjaPatrolCollision npc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h);
+			PrivateCollision npc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h,PATROL_WIDTH,PATROL_HEIGHT);
+			npc.SetColor(std::make_tuple(0, 255, 0));
 			npc.Draw(g);
 		}
 		if (_isFlip == true) {
-			NinjaPatrolCollision npc(_x - _hit_x, _y - _hit_h);
+			PrivateCollision npc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
+			npc.SetColor(std::make_tuple(0, 255, 0));
 			npc.Draw(g);
 		}
 		break;
 	case ENEMYSTATE::COMING:
 		if (_isFlip == false) {
-			NinjaComingCollision ncc(_x + _hit_x - COMING_WIDTH, _y - _hit_h);
+			PrivateCollision ncc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			ncc.SetColor(std::make_tuple(255, 255, 0));
 			ncc.Draw(g);
 		}
 		if (_isFlip == true) {
-			NinjaComingCollision ncc(_x - _hit_x, _y - _hit_h);
+			PrivateCollision ncc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			ncc.SetColor(std::make_tuple(255, 255, 0));
 			ncc.Draw(g);
 		}
 		break;

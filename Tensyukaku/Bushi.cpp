@@ -7,6 +7,7 @@
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "BushiMotionCollision.h"
+#include "PrivateCollision.h"
 /*
 	武士
 */
@@ -40,7 +41,6 @@ void Bushi::Init() {
 }
 void Bushi::Process(Game& g) {
 	EnemyBase::Process(g);
-	AnimeUpdate(g);
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		Patrol(g);
@@ -89,34 +89,30 @@ void Bushi::LoadActionGraph() {
 void Bushi::LoadActionSE() {
 }
 
-//武士のアニメーション関数
-void Bushi::AnimeUpdate(Game& g) {
-	_Anime["Patrol"] = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
-	_Anime["Coming"] = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
-	_Anime["Attack"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
-	_Anime["Damage"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
-	_Anime["Dead"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
-}
 //デバッグ用関数
 void Bushi::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		if (_isFlip == false) {
-			BushiPatrolCollision bpc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h);
+			PrivateCollision bpc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h,PATROL_WIDTH,PATROL_HEIGHT);
+			bpc.SetColor(std::make_tuple(0, 255, 0));
 			bpc.Draw(g);
 		}
 		if (_isFlip == true) {
-			BushiPatrolCollision bpc(_x - _hit_x, _y - _hit_h);
+			PrivateCollision bpc(_x - _hit_x, _y - _hit_h,PATROL_WIDTH, PATROL_HEIGHT);
+			bpc.SetColor(std::make_tuple(0, 255, 0));
 			bpc.Draw(g);
 		}
 		break;
 	case ENEMYSTATE::COMING:
 		if (_isFlip == false) {
-			BushiComingCollision bcc(_x + _hit_x - COMING_WIDTH, _y - _hit_h);
+			PrivateCollision bcc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			bcc.SetColor(std::make_tuple(255, 255, 0));
 			bcc.Draw(g);
 		}
 		if (_isFlip == true) {
-			BushiComingCollision bcc(_x - _hit_x, _y - _hit_h);
+			PrivateCollision bcc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			bcc.SetColor(std::make_tuple(255, 255, 0));
 			bcc.Draw(g);
 		}
 		break;

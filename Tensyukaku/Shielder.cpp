@@ -9,6 +9,7 @@
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "player.h"
+#include "PrivateCollision.h"
 
 /*
 	盾兵
@@ -45,7 +46,6 @@ void Shielder::Init() {
 }
 void Shielder::Process(Game& g) {
 	EnemyBase::Process(g);
-	AnimeUpdate(g);
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		Patrol(g);
@@ -131,35 +131,30 @@ void Shielder::LoadActionGraph() {
 void Shielder::LoadActionSE() {
 }
 
-//盾兵のアニメーション関数
-void Shielder::AnimeUpdate(Game& g) {
-	_Anime["Patrol"] = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
-	_Anime["Coming"] = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
-	_Anime["Attack"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
-	_Anime["GuardBreak"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_GUARDBREAK) % GUARDBREAK_ANIMEMAX;
-	_Anime["Dead"] = ((_Cnt - _Action_Cnt) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
-}
-
 //デバッグ用関数
 void Shielder::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		if (_isFlip == false) {
-			ShielderPatrolCollision spc(_x + _hit_x -PATROL_WIDTH, _y - _hit_h);
+			PrivateCollision spc(_x + _hit_x -PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
+			spc.SetColor(std::make_tuple(0, 255, 0));
 			spc.Draw(g);
 		}
 		if (_isFlip == true) {
-			ShielderPatrolCollision spc(_x - _hit_x, _y - _hit_h);
+			PrivateCollision spc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
+			spc.SetColor(std::make_tuple(0, 255, 0));
 			spc.Draw(g);
 		}
 		break;
 	case ENEMYSTATE::COMING:
 		if (_isFlip == false) {
-			ShielderComingCollision scc(_x + _hit_x - COMING_WIDTH, _y - _hit_h);
+			PrivateCollision scc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			scc.SetColor(std::make_tuple(2555, 255, 0));
 			scc.Draw(g);
 		}
 		if (_isFlip == true) {
-			ShielderComingCollision scc(_x - _hit_x, _y - _hit_h);
+			PrivateCollision scc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			scc.SetColor(std::make_tuple(255, 255, 0));
 			scc.Draw(g);
 		}
 		break;

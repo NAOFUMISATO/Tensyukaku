@@ -29,7 +29,7 @@ namespace ParInfo {
 	/*----------中段攻撃1----------*/
 	constexpr auto MIDDLEATTACK_PARTICLE1_GRAPH = "res/Particle/MiddleAttack.png";		//画像ファイル名
 	constexpr auto MIDDLEATTACK_PARTICLE1_POSITIONX = 0.0;								//基準点(足下)から描画点へのX座標差分
-	constexpr auto MIDDLEATTACK_PARTICLE1_POSITIONY = -150.0;							//基準点(足下)から描画点へのY座標差分
+	constexpr auto MIDDLEATTACK_PARTICLE1_POSITIONY = -225.0;							//基準点(足下)から描画点へのY座標差分
 	constexpr auto MIDDLEATTACK_PARTICLE1_BLENDMODE = DX_BLENDMODE_SUB;					//ブレンドモード設定
 	constexpr auto MIDDLEATTACK_PARTICLE1_PAL = 64;										//ブレンド値(0～255)
 	constexpr auto MIDDLEATTACK_PARTICLE1_RED = 128;									//赤色値(0～255)
@@ -50,7 +50,7 @@ namespace ParInfo {
 	/*----------中段攻撃2----------*/
 	constexpr auto MIDDLEATTACK_PARTICLE2_GRAPH = "res/Particle/MiddleAttacksub.png";	//画像ファイル名
 	constexpr auto MIDDLEATTACK_PARTICLE2_POSITIONX = 0.0;								//基準点(足下)から描画点へのX座標差分
-	constexpr auto MIDDLEATTACK_PARTICLE2_POSITIONY = -150.0;							//基準点(足下)から描画点へのY座標差分
+	constexpr auto MIDDLEATTACK_PARTICLE2_POSITIONY = -225.0;							//基準点(足下)から描画点へのY座標差分
 	constexpr auto MIDDLEATTACK_PARTICLE2_BLENDMODE = DX_BLENDMODE_SUB;					//ブレンドモード設定
 	constexpr auto MIDDLEATTACK_PARTICLE2_PAL = 128;									//ブレンド値(0～255)
 	constexpr auto MIDDLEATTACK_PARTICLE2_RED = 200;									//赤色値(0～255)
@@ -70,7 +70,7 @@ namespace ParInfo {
 	/*----------下段攻撃1----------*/
 	constexpr auto LOWATTACK_PARTICLE1_GRAPH = "res/Particle/LowAttack.png";			//画像ファイル名
 	constexpr auto LOWATTACK_PARTICLE1_POSITIONX = 0.0;									//基準点(足下)から描画点へのX座標差分
-	constexpr auto LOWATTACK_PARTICLE1_POSITIONY = -150.0;								//基準点(足下)から描画点へのY座標差分
+	constexpr auto LOWATTACK_PARTICLE1_POSITIONY = -225.0;								//基準点(足下)から描画点へのY座標差分
 	constexpr auto LOWATTACK_PARTICLE1_BLENDMODE = DX_BLENDMODE_SUB;					//ブレンドモード設定
 	constexpr auto LOWATTACK_PARTICLE1_PAL = 64;										//ブレンド値(0～255)
 	constexpr auto LOWATTACK_PARTICLE1_RED = 128;										//赤色値(0～255)
@@ -90,7 +90,7 @@ namespace ParInfo {
 	/*----------下段攻撃2----------*/
 	constexpr auto LOWATTACK_PARTICLE2_GRAPH = "res/Particle/LowAttacksub.png";			//画像ファイル名
 	constexpr auto LOWATTACK_PARTICLE2_POSITIONX = 0.0;									//基準点(足下)から描画点へのX座標差分
-	constexpr auto LOWATTACK_PARTICLE2_POSITIONY = -150.0;								//基準点(足下)から描画点へのY座標差分
+	constexpr auto LOWATTACK_PARTICLE2_POSITIONY = -225.0;								//基準点(足下)から描画点へのY座標差分
 	constexpr auto LOWATTACK_PARTICLE2_BLENDMODE = DX_BLENDMODE_SUB;					//ブレンドモード設定
 	constexpr auto LOWATTACK_PARTICLE2_PAL = 128;										//ブレンド値(0～255)
 	constexpr auto LOWATTACK_PARTICLE2_RED = 200;										//赤色値(0～255)
@@ -111,7 +111,7 @@ namespace ParInfo {
 	/*----------居合1----------*/
 	constexpr auto IAI_PARTICLE1_GRAPH = "res/Particle/Iai1.png";						//画像ファイル名
 	constexpr auto IAI_PARTICLE1_POSITIONX = 0.0;										//基準点(足下)から描画点へのX座標差分
-	constexpr auto IAI_PARTICLE1_POSITIONY = -150.0;									//基準点(足下)から描画点へのY座標差分
+	constexpr auto IAI_PARTICLE1_POSITIONY = -225.0;									//基準点(足下)から描画点へのY座標差分
 	constexpr auto IAI_PARTICLE1_BLENDMODE = DX_BLENDMODE_ADD;							//ブレンドモード設定
 	constexpr auto IAI_PARTICLE1_PAL = 128;												//ブレンド値(0～255)
 	constexpr auto IAI_PARTICLE1_RED = 80;												//赤色値(0～255)
@@ -132,7 +132,7 @@ namespace ParInfo {
 	/*----------居合2----------*/
 	constexpr auto IAI_PARTICLE2_GRAPH = "res/Particle/Iai2.png";						//画像ファイル名
 	constexpr auto IAI_PARTICLE2_POSITIONX = 0.0;										//基準点(足下)から描画点へのX座標差分
-	constexpr auto IAI_PARTICLE2_POSITIONY = -150.0;									//基準点(足下)から描画点へのY座標差分
+	constexpr auto IAI_PARTICLE2_POSITIONY = -225.0;									//基準点(足下)から描画点へのY座標差分
 	constexpr auto IAI_PARTICLE2_BLENDMODE = DX_BLENDMODE_SUB;							//ブンドモード設定
 	constexpr auto IAI_PARTICLE2_PAL = 128;												//ブレンド値(0～255)
 	constexpr auto IAI_PARTICLE2_RED = 64;												//赤色値(0～255)
@@ -153,7 +153,7 @@ namespace ParInfo {
 	/*----------居合3----------*/
 	constexpr auto IAI_PARTICLE3_GRAPH = "res/Particle/Iai3.png";						//画像ファイル名
 	constexpr auto IAI_PARTICLE3_POSITIONX = 0.0;										//基準点(足下)から描画点へのX座標差分
-	constexpr auto IAI_PARTICLE3_POSITIONY = -150.0;									//基準点(足下)から描画点へのY座標差分
+	constexpr auto IAI_PARTICLE3_POSITIONY = -225.0;									//基準点(足下)から描画点へのY座標差分
 	constexpr auto IAI_PARTICLE3_BLENDMODE = DX_BLENDMODE_SUB;							//ブレンドモード設定
 	constexpr auto IAI_PARTICLE3_PAL = 128;												//ブレンド値(0～255)
 	constexpr auto IAI_PARTICLE3_RED = 200;												//赤色値(0～255)

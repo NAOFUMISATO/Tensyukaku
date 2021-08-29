@@ -39,18 +39,20 @@ private:
 	/*---------メンバ変数----------*/
 	PLAYERSTATE	_State;		//状態遷移変数
 	
+	int		_alpha;			//SetDrawBlendMode用a値変数
+	int		_Iai_Gauge;		//居合ゲージ変数
+
 	//無敵状態管理変数
 	bool	_Star_Flag;		//無敵状態管理フラグ
 	int		_Star_Cnt;		//無敵状態経過時間記録変数
-	int		_Iai_Gauge;		//居合ゲージ変数
 	
-	//階段処理
+	//階段処理変数
 	Vector2 _velocityDir;	//速度方向
 	float	_Stairup_Spd;	//階段上昇速度
 	float	_angle;			//角度
 	bool	_StairFlip_Flag;//階段の反転判定保存フラグ
 	int		_Stair_x;		//階段のX座標保存変数
-	int		_Player_y;		//階段用プレイヤーY座標保存変数
+	int		_Player_y;		//階段上昇時のプレイヤーY座標保存変数
 
 };
 
@@ -61,34 +63,38 @@ namespace PInfo {
 	constexpr auto POSITION_X = 4000;			//横軸初期位置（足下が基準）
 	constexpr auto POSITION_Y = 7840;			//縦軸初期位置（足下が基準）
 	constexpr auto GRAPHPOINT_X = 0;			//X位置から描画点までの差分
-	constexpr auto GRAPHPOINT_Y = -210;			//Y位置から描画点までの差分
-	constexpr auto POSITION_HITX = -30;			//描画点から当たり判定左上座標までの差分
-	constexpr auto POSITION_HITY = -90;			//描画点から当たり判定左上座標までの差分
-	constexpr auto COLLISION_WIDTH = 60;		//プレイヤーの当たり判定横幅
-	constexpr auto COLLISION_HEIGHT = 300;		//プレイヤーの当たり判定縦幅
+	constexpr auto GRAPHPOINT_Y = -315;			//Y位置から描画点までの差分
+	constexpr auto POSITION_HITX = -45;			//描画点から当たり判定左上座標までの差分
+	constexpr auto POSITION_HITY = -135;			//描画点から当たり判定左上座標までの差分
+	constexpr auto COLLISION_WIDTH = 90;		//プレイヤーの当たり判定横幅
+	constexpr auto COLLISION_HEIGHT = 450;		//プレイヤーの当たり判定縦幅
 	constexpr auto BACK_CAMERA_X = 50;			//背景をプレイヤ-のカメラを画面の何％に置くか（横軸）
 	constexpr auto BACK_CAMERA_Y = 93;			//背景をプレイヤ-のカメラを画面の何％に置くか（縦軸）
 	constexpr auto CHIP_CAMERA_X = 50;			//マップチップをプレイヤ-のカメラを画面の何％に置くか（横軸）
 	constexpr auto CHIP_CAMERA_Y = 93;			//マップチップをプレイヤ-のカメラを画面の何％に置くか（縦軸）
 
 	/*----------各モーションの当たり判定関係----------*/
-	constexpr auto MIDDLEATTACK_WIDTH = 150;	//中段攻撃当たり判定横幅
-	constexpr auto MIDDLEATTACK_HEIGHT = 100;	//中段攻撃当たり判定縦幅
-	constexpr auto LOWATTACK_WIDTH = 150;		//下段攻撃当たり判定横幅
-	constexpr auto LOWATTACK_HEIGHT = 100;		//下段攻撃当たり判定縦幅
-	constexpr auto KICK_WIDTH = 150;			//蹴り当たり判定横幅
-	constexpr auto KICK_HEIGHT = 100;			//蹴り当たり判定縦幅
+	constexpr auto MIDDLEATTACK_WIDTH = 225;	//中段攻撃当たり判定横幅
+	constexpr auto MIDDLEATTACK_HEIGHT = 150;	//中段攻撃当たり判定縦幅
+	constexpr auto LOWATTACK_WIDTH = 225;		//下段攻撃当たり判定横幅
+	constexpr auto LOWATTACK_HEIGHT = 150;		//下段攻撃当たり判定縦幅
+	constexpr auto KICK_WIDTH = 225;			//蹴り当たり判定横幅
+	constexpr auto KICK_HEIGHT = 150;			//蹴り当たり判定縦幅
 	constexpr auto IAI_WIDTH = 600;				//居合当たり判定横幅
 	constexpr auto IAI_HEIGHT = 100;			//居合当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
-	constexpr auto LIFE_MAX = 3;				//体力
+	constexpr auto LIFE_MAX = 5;				//体力
 	constexpr auto SPEED = 7;					//移動速度
+
+	/*----------描画関係初期化値----------*/
+	constexpr auto FIRST_FLIP = true;					//反転
+	constexpr auto FIRST_ALPHA = 255;					//透明度
 
 	/*----------画像読み込み&アニメーション&判定フレーム関係----------*/
 	//共通
-	constexpr auto GRAPH_WIDTH = 720;			//1枚当たりの画像サイズ（横）
-	constexpr auto GRAPH_HEIGHT = 420;			//1枚当たりの画像サイズ（縦）
+	constexpr auto GRAPH_WIDTH = 1080;			//1枚当たりの画像サイズ（横）
+	constexpr auto GRAPH_HEIGHT = 630;			//1枚当たりの画像サイズ（縦）
 	constexpr auto GRAPH_SCALE = 1.0;			//拡大率
 	constexpr auto GRAPH_ANGLE = 0;				//角度
 	//待機
@@ -140,6 +146,7 @@ namespace PInfo {
 	constexpr auto IAI_ALLFRAME = 38;			//居合全フレーム
 	constexpr auto IAI_BEGINFRAME = 26;			//居合判定発生フレーム
 	constexpr auto IAI_ENDFRAME = 12;			//居合判定終了フレーム(発生してからのフレーム数)
+	constexpr auto IAI_MOVEMENT = 40;			//居合時の1フレームあたりの移動量
 	//スウェイ
 	constexpr auto SWAY_GRAPHNAME = "res/Samurai/S_Sway.png";		//画像ファイル名
 	constexpr auto SWAY_ANIMEMAX = 1;			//全ての画像枚数
@@ -147,8 +154,9 @@ namespace PInfo {
 	constexpr auto SWAY_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_SWAY = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto SWAY_ALLFRAME = 40;			//スウェイ全フレーム
-	constexpr auto SWAY_BEGINFRAME = 15;		//無敵判定発生フレーム
-	constexpr auto SWAY_ENDFRAME = 15;			//無敵判定終了フレーム(発生してからのフレーム数)
+	constexpr auto SWAY_MOVEFRAME = 25;			//スウェイ時の移動フレーム
+	constexpr auto SWAY_STARFRAME = 15;			//無敵判定フレーム(状態遷移後からのフレーム数)
+	constexpr auto SWAY_MOVEMENT = 12;			//スウェイ時の1フレームあたりの移動量
 	//被ダメ
 	constexpr auto DAMAGE_GRAPHNAME = "res/Samurai/S_Damage.png";	//画像ファイル名
 	constexpr auto DAMAGE_ANIMEMAX = 1;			//全ての画像枚数
@@ -158,7 +166,9 @@ namespace PInfo {
 	constexpr auto DAMAGE_ALLFRAME = 38;		//被ダメ全フレーム
 	//無敵
 	constexpr auto ANIMESPEED_STAR = 8;			//無敵状態時の点滅速度 
+	constexpr auto STAR_ALPHA = 128;			//無敵状態時の透明度
 	constexpr auto STAR_ALLFRAME = 180;			//被ダメ時の無敵フレーム
+
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Samurai/S_Dead.png";		//画像ファイル名
 	constexpr auto DEAD_ANIMEMAX = 1;			//全ての画像枚数

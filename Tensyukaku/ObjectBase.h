@@ -16,10 +16,11 @@ public:
 	enum class OBJECTTYPE {
 		PLAYER, ENEMY,UI,PARTICLE,STAIR,
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,
+		PRIVATECOLLISION,
 		BUSHIPATROL, BUSHICOMING, BUSHIATTACK,
 		NINJAPATROL, NINJACOMING, NINJAATTACK,
-		SHIELDERPATROL,SHIELDERCOMING,SHIELDERATTACK,SHIELD,
-		SCENARIO,ENEMYSPAWN
+		SHIELDERPATROL,SHIELDERCOMING,SHIELDERATTACK,SHIELD
+		,SPAWNBLOCK
 	};
 	virtual OBJECTTYPE	GetObjType() = 0;
 
@@ -49,6 +50,7 @@ public:
 	void	SetY(int y) { _y = y; }
 	void	SetFlip(bool isflip) { _isFlip = isflip; }
 	
+	
 protected:
 	Vector2 _Position;	// 位置ベクトル
 	int		_GrHandle;	// 画像ハンドル
@@ -64,7 +66,7 @@ protected:
 	int		_hit_x, _hit_y;				//描画点から左上座標までの差分
 	int		_hit_w, _hit_h;				//当たり判定の幅
 	std::pair <int, int>_hit_judge;		//当たり判定用変数
-	std::pair <double, double>_Drg;		//DrawRotaGraph用変数
+	std::pair <double, double>_drg;		//DrawRotaGraph用変数
 	int		_Dalpha;					//デバック用矩形透明度
 	bool	_Fill;						//デバッグ用矩形塗りつぶしフラグ
 	std::tuple<int, int,int>_Color;		//デバック用矩形カラー

@@ -210,6 +210,9 @@
     <ClCompile Include="GimikPlacement.cpp">
       <Filter>ソース ファイル\Object\Gimik</Filter>
     </ClCompile>
+    <ClCompile Include="PrivateCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -247,9 +250,6 @@
     </ClInclude>
     <ClInclude Include="Bushi.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
-    </ClInclude>
-    <ClInclude Include="Ninja.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
     <ClInclude Include="PlayerHp.h">
       <Filter>ヘッダー ファイル\Object\UI</Filter>
@@ -310,6 +310,12 @@
     </ClInclude>
     <ClInclude Include="Stair.h">
       <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="PrivateCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Ninja.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

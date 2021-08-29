@@ -10,6 +10,7 @@
 #include "Shielder.h"
 #include "GimikPlacement.h"
 #include "EnemySpawn.h"
+#include <memory>
 
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }

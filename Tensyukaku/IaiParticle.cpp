@@ -1,6 +1,4 @@
 #include <DxLib.h>
-#include <tuple>
-#include <utility>
 #include "Game.h"
 #include "ResourceServer.h"
 #include "IaiParticle.h"
@@ -21,7 +19,7 @@ void IaiParticle1::Init() {
 	_bm = IAI_PARTICLE1_BLENDMODE;
 	_pal = IAI_PARTICLE1_PAL;
 	_rgb = std::make_tuple(IAI_PARTICLE1_RED, IAI_PARTICLE1_GREEN, IAI_PARTICLE1_BLUE);
-	_Drg = std::make_pair(IAI_PARTICLE1_SCALE, IAI_PARTICLE1_ANGLE);
+	_drg = std::make_pair(IAI_PARTICLE1_SCALE, IAI_PARTICLE1_ANGLE);
 	_Cnt = IAI_PARTICLE1_CNT;	
 }
 
@@ -48,7 +46,7 @@ void IaiParticle2::Init() {
 	_bm = IAI_PARTICLE2_BLENDMODE;
 	_pal = IAI_PARTICLE2_PAL;
 	_rgb = std::make_tuple(IAI_PARTICLE2_RED, IAI_PARTICLE2_GREEN, IAI_PARTICLE2_BLUE);
-	_Drg = std::make_pair(IAI_PARTICLE2_SCALE, IAI_PARTICLE2_ANGLE);
+	_drg = std::make_pair(IAI_PARTICLE2_SCALE, IAI_PARTICLE2_ANGLE);
 	_Cnt = IAI_PARTICLE2_CNT;
 }
 
@@ -75,7 +73,7 @@ void IaiParticle3::Init() {
 	_bm = IAI_PARTICLE3_BLENDMODE;
 	_pal = IAI_PARTICLE3_PAL;
 	_rgb = std::make_tuple(IAI_PARTICLE3_RED, IAI_PARTICLE3_GREEN, IAI_PARTICLE3_BLUE);
-	_Drg = std::make_pair(IAI_PARTICLE3_SCALE, IAI_PARTICLE3_ANGLE);
+	_drg = std::make_pair(IAI_PARTICLE3_SCALE, IAI_PARTICLE3_ANGLE);
 	_Cnt = IAI_PARTICLE3_CNT;
 }
 

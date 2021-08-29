@@ -32,8 +32,8 @@ void ParticleBase::Draw(Game& g) {
 	auto GC = g.GetChip();
 	auto x = _xy.first + _mxy.first - GC->GetscrX();
 	auto y = _xy.second + _mxy.second - GC->GetscrY();
-	double scale = _Drg.first;
-	double angle = _Drg.second;
+	double scale = _drg.first;
+	double angle = _drg.second;
 	DrawRotaGraph(x, y,scale,angle, _GrHandle, true,_isFlip);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	SetDrawBright(255, 255, 255);

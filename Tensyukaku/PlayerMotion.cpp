@@ -18,6 +18,10 @@ void Player::Idle(Game& g) {
 		_Action_Cnt = _Cnt;
 		PlaySoundMem(_Se["SwordIn"], DX_PLAYTYPE_BACK, true);
 	}
+	if (g.GetTrg() & PAD_INPUT_3) {
+		_State = PLAYERSTATE::SWAY;
+		_Action_Cnt = _Cnt;
+	}
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
 		_Action_Cnt = _Cnt;		
@@ -104,20 +108,20 @@ void Player::Move(Game& g) {
 		_isFlip = true;
 
 	}
+#ifdef _DEBUG
 	else if(g.GetKey() & PAD_INPUT_UP)
 	{
 		_y -= _Spd;
-		g.GetChip()->IsHit(*this, 1, 0);
 		_isFlip = true;
 
 	}
 	else if (g.GetKey() & PAD_INPUT_DOWN)
 	{
 		_y += _Spd;
-		g.GetChip()->IsHit(*this, 1, 0);
 		_isFlip = true;
 
 	}
+#endif
 	else {
 		_State = PLAYERSTATE::IDLE;
 	}
@@ -189,6 +193,7 @@ void Player::MidAttack(Game& g) {
 			auto mac = new MiddleAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に中段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(mac);
+			//パーティクル発生
 			for (int i = 0; i < MIDDLEATTACK_PARTICLE1_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -238,7 +243,7 @@ void Player::LowAttack(Game& g) {
 			auto lac = new LowAttackCollision(_x + _hit_x - LOWATTACK_WIDTH, _y - LOWATTACK_HEIGHT);
 			// オブジェクトサーバ-に下段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(lac);
-			//パーティクル追加
+			//パーティクル発生
 			for (int i = 0; i < LOWATTACK_PARTICLE1_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -259,6 +264,7 @@ void Player::LowAttack(Game& g) {
 			auto lac = new LowAttackCollision(_x - _hit_x, _y - LOWATTACK_HEIGHT);
 			// オブジェクトサーバ-に下段攻撃判定オブジェクトを追加
 			g.GetOS()->Add(lac);
+			//パーティクル発生
 			for (int i = 0; i < LOWATTACK_PARTICLE1_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -346,16 +352,17 @@ void Player::Iai(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME >= frame) {
 		if (_isFlip == false) {
-			_x -= 40;
+			_x -= IAI_MOVEMENT;
 			g.GetChip()->IsHit(*this, -1, 0);
 		}
 		if (_isFlip == true) {
-			_x += 40;
+			_x += IAI_MOVEMENT;
 			g.GetChip()->IsHit(*this, 1, 0);
 		}
 	}
 	if (frame == IAI_BEGINFRAME - 6) {
 		if (_isFlip == false) {
+			//パーティクル発生
 			for (int i = 0; i < IAI_PARTICLE1_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -365,6 +372,7 @@ void Player::Iai(Game& g) {
 			}
 		}
 		if (_isFlip == true) {
+			//パーティクル発生
 			for (int i = 0; i < IAI_PARTICLE1_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -383,6 +391,7 @@ void Player::Iai(Game& g) {
 			auto iac = new IaiCollision(_x + _hit_x - IAI_WIDTH, _y - _hit_h / 2);
 			// オブジェクトサーバ-に蹴り判定オブジェクトを追加
 			g.GetOS()->Add(iac);
+			//パーティクル発生
 			for (int i = 0; i < IAI_PARTICLE2_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -403,6 +412,7 @@ void Player::Iai(Game& g) {
 			auto iac = new IaiCollision(_x - _hit_x, _y - _hit_h / 2);
 			// オブジェクトサーバ-に居合判定オブジェクトを追加
 			g.GetOS()->Add(iac);
+			//パーティクル発生
 			for (int i = 0; i < IAI_PARTICLE2_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -445,7 +455,39 @@ void Player::Iai(Game& g) {
 }
 ///*----------スウェイ----------*/
 void Player::Sway(Game& g){
-
+	_GrHandle = _GrAll["Sway"][_Anime["Sway"]];
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame < SWAY_STARFRAME) {
+		//敵の攻撃の当たり判定
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteは敵の攻撃オブジェクトか？
+			if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK)
+			{
+				// プレイヤーとその攻撃の当たり判定を行う
+				if (IsHit(*(*ite)) == true && _Star_Flag == false)
+				{
+					// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
+					(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+					_Life--;
+					_Action_Cnt = _Cnt;
+					_State = PLAYERSTATE::DAMAGE;
+					PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
+				}
+			}
+		}
+	}
+	if (frame < SWAY_MOVEFRAME) {
+		if (_isFlip == false)
+			_x += SWAY_MOVEMENT;
+		g.GetChip()->IsHit(*this, 1, 0);
+		if (_isFlip == true)
+			_x -= SWAY_MOVEMENT;
+		g.GetChip()->IsHit(*this, -1, 0);
+	}
+	if (frame == SWAY_ALLFRAME) {
+		_State = PLAYERSTATE::IDLE;
+	}
 }
 
 /*----------被ダメ----------*/
@@ -471,7 +513,7 @@ void Player::Damage(Game& g) {
 void Player::Dead(Game& g) {
 	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
 	auto frame = _Cnt - _Action_Cnt;
-	if (_Cnt - _Action_Cnt == DEAD_ALLFRAME) {
+	if (frame == DEAD_ALLFRAME) {
 		Delete(g);
 	}
 }

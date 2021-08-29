@@ -9,51 +9,6 @@
 •m‚ÌŠeƒ‚[ƒVƒ‡ƒ“‚Ì“–‚½‚è”»’èÀ‘Ì
 */
 using namespace BInfo;
-//õ“G”ÍˆÍ“–‚½‚è”»’èÀ‘Ì
-BushiPatrolCollision::BushiPatrolCollision(int x,int y) {
-	_x = x;
-	_y = y;
-	Init();
-}
-BushiPatrolCollision::~BushiPatrolCollision() {
-}
-
-void BushiPatrolCollision::Init() {
-	_gx = 0;
-	_gy = 0;
-	_hit_x = 0;
-	_hit_y = 0;
-	_hit_w = PATROL_WIDTH;
-	_hit_h = PATROL_HEIGHT;
-#ifdef _DEBUG
-	_Color = std::make_tuple(0, 255, 0);
-	_Dalpha = 128;
-	_Fill = true;
-#endif
-}
-
-//UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èÀ‘Ì
-BushiComingCollision::BushiComingCollision(int x, int y) {
-	_x = x;
-	_y = y;
-	Init();
-}
-BushiComingCollision::~BushiComingCollision() {
-}
-
-void BushiComingCollision::Init() {
-	_gx = 0;
-	_gy = 0;
-	_hit_x = 0;
-	_hit_y = 0;
-	_hit_w = COMING_WIDTH;
-	_hit_h = COMING_HEIGHT;
-#ifdef _DEBUG
-	_Color = std::make_tuple(255,255, 0);
-	_Dalpha = 128;
-	_Fill = true;
-#endif
-}
 
 //UŒ‚“–‚½‚è”»’èÀ‘Ì
 BushiAttackCollision::BushiAttackCollision(int x, int y) {
