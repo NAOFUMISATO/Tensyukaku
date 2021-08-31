@@ -13,6 +13,7 @@ using namespace StInfo;
 /*----------待機----------*/
 void Player::Idle(Game& g) {
 	_GrHandle = _GrAll["Idle"] [_Anime["Idle"]];
+	_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
@@ -42,7 +43,7 @@ void Player::Idle(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK|| (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK|| (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK|| (*ite)->GetObjType() == OBJECTTYPE::POISON)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true&& _Star_Flag == false)
@@ -77,6 +78,7 @@ void Player::Idle(Game& g) {
 /*----------移動----------*/
 void Player::Move(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
+	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
 	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
@@ -129,7 +131,7 @@ void Player::Move(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK|| (*ite)->GetObjType() == OBJECTTYPE::POISON)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -163,8 +165,9 @@ void Player::Move(Game& g) {
 }
 /*----------中段攻撃----------*/
 void Player::MidAttack(Game& g) {
-	_GrHandle = _GrAll["MiddleAttack"][_Anime["MiddleAttack"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["MiddleAttack"][_Anime["MiddleAttack"]];
+	_Anime["MiddleAttack"] = ((frame) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
 	if (frame == MIDDLEATTACK_BEGINFRAME) {
 		PlaySoundMem(_Se["MiddleAttack"], DX_PLAYTYPE_BACK, true);
 		if (_isFlip == false) {
@@ -217,7 +220,7 @@ void Player::MidAttack(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -234,8 +237,9 @@ void Player::MidAttack(Game& g) {
 }
 /*----------下段攻撃----------*/
 void Player::LowAttack(Game& g) {
-	_GrHandle = _GrAll["LowAttack"][_Anime["LowAttack"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["LowAttack"][_Anime["LowAttack"]];
+	_Anime["LowAttack"] = ((frame) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
 	if (frame == LOWATTACK_BEGINFRAME) {
 		PlaySoundMem(_Se["LowAttack"], DX_PLAYTYPE_BACK, true);
 		if (_isFlip == false) {
@@ -288,7 +292,7 @@ void Player::LowAttack(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK||(*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK||(*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -306,8 +310,9 @@ void Player::LowAttack(Game& g) {
 
 /*----------蹴り----------*/
 void Player::Kick(Game& g) {
-	_GrHandle = _GrAll["Kick"][_Anime["Kick"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Kick"][_Anime["Kick"]];
+	_Anime["Kick"] = ((frame) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
 	if (frame == KICK_BEGINFRAME) {
 		PlaySoundMem(_Se["Kick"], DX_PLAYTYPE_BACK, true);
 		if (_isFlip == false) {
@@ -330,7 +335,7 @@ void Player::Kick(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -348,8 +353,9 @@ void Player::Kick(Game& g) {
 
 /*----------居合----------*/
 void Player::Iai(Game& g) {
-	_GrHandle = _GrAll["Iai"][_Anime["Iai"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Iai"][_Anime["Iai"]];
+	_Anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
 	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME >= frame) {
 		if (_isFlip == false) {
 			_x -= IAI_MOVEMENT;
@@ -433,7 +439,7 @@ void Player::Iai(Game& g) {
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 			{
 				// iteは敵の攻撃オブジェクトか？
-				if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK)
+				if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
 				{
 					// プレイヤーとその敵の攻撃の当たり判定を行う
 					if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -455,14 +461,15 @@ void Player::Iai(Game& g) {
 }
 ///*----------スウェイ----------*/
 void Player::Sway(Game& g){
-	_GrHandle = _GrAll["Sway"][_Anime["Sway"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Sway"][_Anime["Sway"]];
+	_Anime["Sway"] = ((frame) / ANIMESPEED_IAI) % SWAY_ANIMEMAX;
 	if (frame < SWAY_STARFRAME) {
 		//敵の攻撃の当たり判定
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
 			// iteは敵の攻撃オブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK)
+			if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
 			{
 				// プレイヤーとその攻撃の当たり判定を行う
 				if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -492,8 +499,9 @@ void Player::Sway(Game& g){
 
 /*----------被ダメ----------*/
 void Player::Damage(Game& g) {
-	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
+	_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
 	if (frame == DAMAGE_ALLFRAME) {
 		_Star_Cnt = _Cnt;
 		if (_Life > 0) {
@@ -511,8 +519,9 @@ void Player::Damage(Game& g) {
 
 /*----------死亡----------*/
 void Player::Dead(Game& g) {
-	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
 	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
+	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 	if (frame == DEAD_ALLFRAME) {
 		Delete(g);
 	}
@@ -521,6 +530,7 @@ void Player::Dead(Game& g) {
 /*---------階段位置調整---------*/
 void Player::StairMove(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
+	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
 	if (_StairFlip_Flag == false) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
 			_isFlip = false;
@@ -548,18 +558,21 @@ void Player::StairMove(Game& g) {
 /*---------階段上昇------------*/
 void Player::StairUp(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
+	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
 	_Stairup_Spd = 3.0f;
 	if (_StairFlip_Flag == false) {
-		_angle = Math::ToRadians(280);
+		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
 	}
 	if (_StairFlip_Flag == true) {
-		_angle = Math::ToRadians(260);
+		_angle = 4.53756055185257f;/*Math::ToRadians(260)*/
 	}
 	_velocityDir = { std::cos(_angle), std::sin(_angle) };
 	auto vd = _velocityDir * _Stairup_Spd;
+	auto positionX = static_cast<int>( _Position.x);
+	auto positionY = static_cast<int>( _Position.y);
 	_Position += vd;
-	_x = _Position.x;
-	_y = _Position.y;
+	_x = positionX;
+	_y = positionY;
 	auto upheight = _y - _Player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
 		_State = PLAYERSTATE::IDLE;

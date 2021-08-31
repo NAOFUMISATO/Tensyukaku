@@ -51,7 +51,6 @@ void Player::Init()
 void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
-	AnimeUpdate(g);
 
 	/*---状態毎の処理---*/
 		//無敵状態
@@ -175,20 +174,6 @@ void Player::LoadActionSE() {
 	_Se["Iai"] = ResourceServer::LoadSoundMem(IAI_SE);
 }
 
-//プレイヤーのアニメーション関数
-void Player::AnimeUpdate(Game& g) {
-	auto frame = _Cnt - _Action_Cnt;
-	_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
-	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
-	_Anime["MiddleAttack"] = ((frame) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
-	_Anime["LowAttack"] = ((frame) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
-	_Anime["Kick"] = ((frame) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
-	_Anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
-	_Anime["Sway"] = ((frame) / ANIMESPEED_IAI) % SWAY_ANIMEMAX;
-	_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
-	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
-}
-
 //デバック用関数
 void Player::DebugDraw(Game& g) {
 	std::stringstream ss;
@@ -205,15 +190,15 @@ void Player::UIDraw(Game& g) {
 		HP->SetPosition(SCREEN_W - SCREEN_W+300 , SCREEN_H - 40);
 		g.GetOS()->Add(HP);
 	if (_Life >= 3) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), GRAPH_SCALE, GRAPH_ANGLE, HP->GetHp3(), true, false);
+		DrawRotaGraph(HP->GetX(), HP->GetY(), _drg.first, _drg.second, HP->GetHp3(), true, false);
 		g.GetOS()->Del(HP);
 	}
 	else if (_Life == 2) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), GRAPH_SCALE, GRAPH_ANGLE, HP->GetHp2(), true, false);
+		DrawRotaGraph(HP->GetX(), HP->GetY(), _drg.first, _drg.second, HP->GetHp2(), true, false);
 		g.GetOS()->Del(HP);
 	}
 	else if (_Life == 1) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), GRAPH_SCALE, GRAPH_ANGLE, HP->GetHp1(), true, false);
+		DrawRotaGraph(HP->GetX(), HP->GetY(), _drg.first, _drg.second, HP->GetHp1(), true, false);
 		g.GetOS()->Del(HP);
 	}
 	else if(_Life <= 0) { g.GetOS()->Del(HP); }

@@ -9,16 +9,29 @@
 #include <utility>
 
 using namespace BInfo;
+/*----------出現----------*/
+void Bushi::Appear(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
+	_Anime["Appear"] = (_Cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
+	if (frame < APPEAR_ALLFRAME) {
+		_Alpha += FADEIN_SPEED;
+	}
+	if (frame == APPEAR_ALLFRAME) {
+		_Alpha = 255;
+		_State=ENEMYSTATE::PATROL;
+	}
+}
 
 /*----------巡回----------*/
 void Bushi::Patrol(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
 	_Anime["Patrol"] = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
-	if (frame == PATROL_FRAME) {
+	if (frame == PATROL_TURNFRAME) {
 		_isFlip = true;
 	}
-	if (frame == PATROL_FRAME *2) {
+	if (frame == PATROL_TURNFRAME *2) {
 		_isFlip = false;
 		_Action_Cnt = _Cnt;
 	}
@@ -57,7 +70,6 @@ void Bushi::Patrol(Game& g) {
 				}
 			}
 		}
-
 	}
 	//敵とプレイヤーの中段攻撃オブジェクトの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -95,7 +107,7 @@ void Bushi::Patrol(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
 		{
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
@@ -218,7 +230,7 @@ void Bushi::Coming(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
 		{
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
@@ -238,6 +250,12 @@ void Bushi::Attack(Game& g) {
 		_Anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
 	}
 	if (_isFlip == false) {
+		if (frame == STEP_BEGINFRAME) {
+			_x -= ATTACK_STEP;
+		}
+		if (frame == STEP_ENDFRAME) {
+			_x += ATTACK_STEP;
+		}
 		PrivateCollision bacc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME|| frame == ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
@@ -249,6 +267,7 @@ void Bushi::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(bacc) == false)
 					{
+						_Anime["Attack"] = 0;
 						_State = ENEMYSTATE::COMING;
 					}
 				}
@@ -256,6 +275,12 @@ void Bushi::Attack(Game& g) {
 		}
 	}
 	if (_isFlip == true) {
+		if (frame == STEP_BEGINFRAME) {
+			_x += ATTACK_STEP;
+		}
+		if (frame == STEP_ENDFRAME) {
+			_x -= ATTACK_STEP;
+		}
 		PrivateCollision bacc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame==ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
@@ -267,6 +292,7 @@ void Bushi::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(bacc) == false)
 					{
+						_Anime["Attack"] = 0;
 						_State = ENEMYSTATE::COMING;
 					}
 				}
@@ -299,7 +325,7 @@ void Bushi::Attack(Game& g) {
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life -= 3;
 				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DAMAGE;
+				_State = ENEMYSTATE::DEAD;
 			}
 		}
 	}
@@ -315,6 +341,7 @@ void Bushi::Attack(Game& g) {
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life--;
 				_Action_Cnt = _Cnt;
+				_Anime["Attack"] = 0;
 				_State = ENEMYSTATE::DAMAGE;
 			}
 		}
@@ -323,7 +350,7 @@ void Bushi::Attack(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
 		{
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)

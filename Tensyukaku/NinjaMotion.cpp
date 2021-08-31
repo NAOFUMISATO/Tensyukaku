@@ -7,14 +7,28 @@
 #include "PrivateCollision.h"
 
 using namespace NInfo;
+/*----------出現----------*/
+void Ninja::Appear(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
+	_Anime["Appear"] = (_Cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
+	if (frame < APPEAR_ALLFRAME) {
+		_Alpha += FADEIN_SPEED;
+	}
+	if (frame == APPEAR_ALLFRAME) {
+		_Alpha = 255;
+		_State = ENEMYSTATE::PATROL;
+	}
+}
+/*----------巡回---------*/
 void Ninja::Patrol(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
 	_Anime["Patrol"] = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
-	if (frame == PATROL_ALLFRAME) {
+	if (frame == PATROL_TURNFRAME) {
 		_isFlip = true;
 	}
-	if (frame == PATROL_ALLFRAME *2) {
+	if (frame == PATROL_TURNFRAME *2) {
 		_isFlip = false;
 		_Action_Cnt = _Cnt;
 	}
@@ -73,7 +87,7 @@ void Ninja::Patrol(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
 		{
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
@@ -85,6 +99,7 @@ void Ninja::Patrol(Game& g) {
 		}
 	}
 }
+/*----------追跡----------*/
 void Ninja::Coming(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
@@ -179,7 +194,7 @@ void Ninja::Coming(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
 		{
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
@@ -191,7 +206,7 @@ void Ninja::Coming(Game& g) {
 		}
 	}
 }
-
+/*--------------攻撃---------------*/
 void Ninja::Attack(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
@@ -210,6 +225,7 @@ void Ninja::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(nacc) == false)
 					{
+						_Anime["Attack"] = 0;
 						_State = ENEMYSTATE::COMING;
 					}
 				}
@@ -228,6 +244,7 @@ void Ninja::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(nacc) == false)
 					{
+						_Anime["Attack"] = 0;
 						_State = ENEMYSTATE::COMING;
 					}
 				}
@@ -269,7 +286,7 @@ void Ninja::Attack(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI)
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
 		{
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)

@@ -28,7 +28,7 @@ void Spawn1::Process(Game& g) {
 				g.GetOS()->Add(bu1);
 				auto bu2 = new Bushi(SPAWN1_BUSHI2_X, SPAWN1_BUSHI2_Y, SPAWN1_BUSHI2_FLIP);
 				g.GetOS()->Add(bu2);
-				auto bu3 = new Bushi(SPAWN1_BUSHI3_X, SPAWN1_BUSHI3_Y, SPAWN1_BUSHI3_FLIP);
+				/*auto bu3 = new Bushi(SPAWN1_BUSHI3_X, SPAWN1_BUSHI3_Y, SPAWN1_BUSHI3_FLIP);
 				g.GetOS()->Add(bu3);
 				auto bu4 = new Bushi(SPAWN1_BUSHI4_X, SPAWN1_BUSHI4_Y, SPAWN1_BUSHI4_FLIP);
 				g.GetOS()->Add(bu4);
@@ -45,7 +45,7 @@ void Spawn1::Process(Game& g) {
 				auto ni2 = new Ninja(SPAWN1_NINJA2_X, SPAWN1_NINJA2_Y, SPAWN1_NINJA2_FLIP);
 				g.GetOS()->Add(ni2);
 				auto ni3 = new Ninja(SPAWN1_NINJA3_X, SPAWN1_NINJA3_Y, SPAWN1_NINJA3_FLIP);
-				g.GetOS()->Add(ni3);
+				g.GetOS()->Add(ni3);*/
 				auto sh1 = new Shielder(SPAWN1_SHIELDER1_X, SPAWN1_SHIELDER1_Y, SPAWN1_SHIELDER1_FLIP);
 				g.GetOS()->Add(sh1);
 			}

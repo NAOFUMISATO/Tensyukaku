@@ -32,7 +32,6 @@ private:
 	void	StairUp(Game& g);		//階段上昇の処理
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
-	void	AnimeUpdate(Game& g);	//プレイヤーのアニメーション関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
 	void	UIDraw(Game& g);		//プレイヤーのUI描画関数
 
@@ -95,8 +94,6 @@ namespace PInfo {
 	//共通
 	constexpr auto GRAPH_WIDTH = 1080;			//1枚当たりの画像サイズ（横）
 	constexpr auto GRAPH_HEIGHT = 630;			//1枚当たりの画像サイズ（縦）
-	constexpr auto GRAPH_SCALE = 1.0;			//拡大率
-	constexpr auto GRAPH_ANGLE = 0;				//角度
 	//待機
 	constexpr auto IDLE_GRAPHNAME = "res/Samurai/S_Stand.png";	//画像ファイル名
 	constexpr auto IDLE_ANIMEMAX = 1;			//全ての画像枚数

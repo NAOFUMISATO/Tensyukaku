@@ -147,12 +147,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Andon.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Bushi.cpp" />
     <ClCompile Include="BushiMotion.cpp" />
     <ClCompile Include="BushiMotionCollision.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
+    <ClCompile Include="Flame.cpp" />
+    <ClCompile Include="Poison.cpp" />
+    <ClCompile Include="PoisonNinja.cpp" />
     <ClCompile Include="PrivateCollision.cpp" />
     <ClCompile Include="SpawnBlockBase.cpp" />
     <ClCompile Include="SpawnBlock.cpp" />
@@ -187,11 +191,15 @@
     <ClCompile Include="Stair.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Andon.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bushi.h" />
     <ClInclude Include="BushiMotionCollision.h" />
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="EnemySpawn.h" />
+    <ClInclude Include="Flame.h" />
+    <ClInclude Include="Poison.h" />
+    <ClInclude Include="PoisonNinja.h" />
     <ClInclude Include="PrivateCollision.h" />
     <ClInclude Include="SpawnBlockBase.h" />
     <ClInclude Include="SpawnBlock.h" />

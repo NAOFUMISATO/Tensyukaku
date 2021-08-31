@@ -15,22 +15,22 @@ public:
 	void	Delete(Game& g)override;
 
 private:
+	void	Appear(Game& g);		//出現状態時の処理
 	void	Patrol(Game& g);		//巡回状態時の処理
 	void	Coming(Game& g);		//追跡状態時の処理
 	void	Attack(Game& g);		//攻撃状態時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
 	void	LoadActionGraph();		//忍者の画像読み込み関数
 	void	LoadActionSE();			//忍者のSE読み込み関数
-	void	AnimeUpdate(Game& g);	//忍者のアニメーション関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
 };
 namespace NInfo {
 	/*----------忍者の各座標関係----------*/
-	constexpr auto GRAPHPOINT_X = 0;				//X位置から描画点までの差分
+	constexpr auto GRAPHPOINT_X = 0;			//X位置から描画点までの差分
 	constexpr auto GRAPHPOINT_Y = -315;			//Y位置から描画点までの差分
 	constexpr auto POSITION_HITX = -60;			//描画点から当たり判定左上座標までの差分
 	constexpr auto POSITION_HITY = 105;			//描画点から当たり判定左上座標までの差分
-	constexpr auto COLLISION_WIDTH = 120;			//当たり判定横幅
+	constexpr auto COLLISION_WIDTH = 120;		//当たり判定横幅
 	constexpr auto COLLISION_HEIGHT = 210;		//当たり判定縦幅
 
 	/*----------各モーションの当たり判定関係----------*/
@@ -53,16 +53,22 @@ namespace NInfo {
 	//共通
 	constexpr auto GRAPH_WIDTH = 630;			//1枚当たりの画像サイズ（横）
 	constexpr auto GRAPH_HEIGHT = 630;			//1枚当たりの画像サイズ（縦）
-	constexpr auto GRAPH_SCALE = 1.0;			//拡大率
-	constexpr auto GRAPH_ANGLE = 0;				//角度
-	//待機
+	//出現
+	constexpr auto APPEAR_GRAPHNAME = "res/Ninja/N_Stand.png";	//画像ファイル名
+	constexpr auto APPEAR_ANIMEMAX = 1;			//全ての画像枚数
+	constexpr auto APPEAR_WIDTHCOUNT = 1;		//横の画像枚数
+	constexpr auto APPEAR_HEIGHTCOUNT = 1;		//縦の画像枚数
+	constexpr auto ANIMESPEED_APPEAR = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto FADEIN_SPEED = 4;			//アッパー時のフェードインスピード
+	constexpr auto APPEAR_ALLFRAME = 60;		//出現全フレーム
+	//巡回
 	constexpr auto PATROL_GRAPHNAME = "res/Ninja/N_Stand.png";	//画像ファイル名
 	constexpr auto PATROL_ANIMEMAX = 1;			//全ての画像枚数
 	constexpr auto PATROL_WIDTHCOUNT = 1;		//横の画像枚数
 	constexpr auto PATROL_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_PATROL = 5;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto PATROL_ALLFRAME = 120;		//巡回全フレーム
-	//移動
+	constexpr auto PATROL_TURNFRAME = 120;		//巡回の振り向きフレーム
+	//追跡
 	constexpr auto COMING_GRAPHNAME = "res/Ninja/N_Walk.png";	//画像ファイル名
 	constexpr auto COMING_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto COMING_WIDTHCOUNT = 4;		//横の画像枚数

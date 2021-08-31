@@ -9,7 +9,7 @@ Stair::Stair(int x,int y,bool flip) {
 	_y = y;
 	_isFlip = flip;
 	Init();
-	_GrHandle=ResourceServer::LoadGraph("res/Map/Stair.png");
+	_GrHandle=ResourceServer::LoadGraph("res/Gimik/Stair.png");
 }
 Stair::~Stair() {
 }

@@ -35,13 +35,17 @@ void Bushi::Init() {
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_State=ENEMYSTATE::PATROL;
+	_State=ENEMYSTATE::APPEAR;
 	_Life = LIFE_MAX;
 	_Spd = SPEED;
+	_Alpha = 0;
 }
 void Bushi::Process(Game& g) {
 	EnemyBase::Process(g);
 	switch (_State) {
+	case ENEMYSTATE::APPEAR:
+		Appear(g);
+		break;
 	case ENEMYSTATE::PATROL:
 		Patrol(g);
 		break;
@@ -64,6 +68,7 @@ void Bushi::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
 #endif
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA,_Alpha);
 	EnemyBase::Draw(g);
 }
 
@@ -73,6 +78,8 @@ void Bushi::Delete(Game& g) {
 
 //ïêémÇÃâÊëúì«Ç›çûÇ›ä÷êî
 void Bushi::LoadActionGraph() {
+	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
+	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
 	_GrAll["Patrol"].resize(PATROL_ANIMEMAX);
 	ResourceServer::LoadDivGraph(PATROL_GRAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Patrol"].data());
 	_GrAll["Coming"].resize(COMING_ANIMEMAX);

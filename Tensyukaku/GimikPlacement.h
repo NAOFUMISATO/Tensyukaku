@@ -10,6 +10,8 @@ public:
 	void Process(Game& g);
 private:
 	void StairAppear(Game& g);		//ŠK’iİ’èŠÖ”
+	void PoisonAppear(Game& g);		//“Å‰t”EÒİ’èŠÖ”
+	void AndonAppear(Game& g);		//s“•İ’èŠÖ”
 };
 
 namespace GInfo {

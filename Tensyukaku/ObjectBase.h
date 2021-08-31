@@ -14,13 +14,10 @@ public:
 	~ObjectBase();
 	//オブジェクトの種類列挙
 	enum class OBJECTTYPE {
-		PLAYER, ENEMY,UI,PARTICLE,STAIR,
+		PLAYER, ENEMY, UI, PARTICLE,
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,
-		PRIVATECOLLISION,
-		BUSHIPATROL, BUSHICOMING, BUSHIATTACK,
-		NINJAPATROL, NINJACOMING, NINJAATTACK,
-		SHIELDERPATROL,SHIELDERCOMING,SHIELDERATTACK,SHIELD
-		,SPAWNBLOCK
+		PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,SHIELDERATTACK,SHIELD,
+		STAIR, POISONNINJA, POISON,ANDON,FLAME, SPAWNBLOCK
 	};
 	virtual OBJECTTYPE	GetObjType() = 0;
 
@@ -62,7 +59,8 @@ protected:
 	int		_w, _h;		// 大きさ
 	int		_Life;		// 体力
 	int		_Spd;		// 移動速度
-	bool	_isFlip;	//反転判定
+	bool	_isFlip;	//　反転判定
+	int		_Alpha;		//　透明度
 	int		_hit_x, _hit_y;				//描画点から左上座標までの差分
 	int		_hit_w, _hit_h;				//当たり判定の幅
 	std::pair <int, int>_hit_judge;		//当たり判定用変数

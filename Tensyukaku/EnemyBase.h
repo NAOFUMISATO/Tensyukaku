@@ -5,7 +5,7 @@
 class EnemyBase : public ObjectBase {
 protected:
 	//ìGÇÃèÛë‘óÒãì
-	enum class ENEMYSTATE { PATROL, COMING, ATTACK, GUARDBREAK, DAMAGE, DEAD };
+	enum class ENEMYSTATE { APPEAR, PATROL, COMING, ATTACK, GUARDBREAK, DAMAGE, DEAD };
 public:
 	EnemyBase();
 	~EnemyBase();

@@ -144,9 +144,6 @@
     <ClCompile Include="NinjaMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMotion.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerHp.cpp">
       <Filter>ソース ファイル\Object\UI</Filter>
     </ClCompile>
@@ -212,6 +209,21 @@
     </ClCompile>
     <ClCompile Include="PrivateCollision.cpp">
       <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMotion.cpp">
+      <Filter>ソース ファイル\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PoisonNinja.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
+    </ClCompile>
+    <ClCompile Include="Poison.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
+    </ClCompile>
+    <ClCompile Include="Andon.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
+    </ClCompile>
+    <ClCompile Include="Flame.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +328,18 @@
     </ClInclude>
     <ClInclude Include="Ninja.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="PoisonNinja.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="Poison.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="Andon.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="Flame.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
