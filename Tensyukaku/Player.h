@@ -76,7 +76,7 @@ namespace PInfo {
 	constexpr auto MIDDLEATTACK_WIDTH = 225;	//中段攻撃当たり判定横幅
 	constexpr auto MIDDLEATTACK_HEIGHT = 150;	//中段攻撃当たり判定縦幅
 	constexpr auto LOWATTACK_WIDTH = 225;		//下段攻撃当たり判定横幅
-	constexpr auto LOWATTACK_HEIGHT = 150;		//下段攻撃当たり判定縦幅
+	constexpr auto LOWATTACK_HEIGHT = 200;		//下段攻撃当たり判定縦幅
 	constexpr auto KICK_WIDTH = 225;			//蹴り当たり判定横幅
 	constexpr auto KICK_HEIGHT = 150;			//蹴り当たり判定縦幅
 	constexpr auto IAI_WIDTH = 600;				//居合当たり判定横幅
@@ -84,7 +84,7 @@ namespace PInfo {
 
 	/*----------パラメーター関係----------*/
 	constexpr auto LIFE_MAX = 5;				//体力
-	constexpr auto SPEED = 7;					//移動速度
+	constexpr auto SPEED = 9;					//移動速度
 
 	/*----------描画関係初期化値----------*/
 	constexpr auto FIRST_FLIP = true;					//反転

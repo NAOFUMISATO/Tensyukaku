@@ -14,6 +14,3 @@ public:
 	void	Delete(Game& g)override;
 
 };
-
-
-

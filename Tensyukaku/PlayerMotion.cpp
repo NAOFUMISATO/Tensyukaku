@@ -7,6 +7,7 @@
 #include "LowAttackParticle.h"
 #include "IaiParticle.h"
 #include "Stair.h"
+#include "EnemyBase.h"
 using namespace PInfo;
 using namespace ParInfo;
 using namespace StInfo;
@@ -43,7 +44,7 @@ void Player::Idle(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK|| (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK|| (*ite)->GetObjType() == OBJECTTYPE::POISON)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK|| (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK|| (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true&& _Star_Flag == false)
@@ -79,6 +80,7 @@ void Player::Idle(Game& g) {
 void Player::Move(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
+	
 	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
@@ -100,6 +102,18 @@ void Player::Move(Game& g) {
 	{
 		_x -= _Spd;
 		g.GetChip()->IsHit(*this, -1, 0);
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteは敵か？
+			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+			{
+				// プレイヤーとその敵の当たり判定を行う
+				if (IsHit(*(*ite)) == true) {
+					_x = _Before_x;
+
+				}
+			}
+		}
 		_isFlip = false;
 
 	}
@@ -107,6 +121,17 @@ void Player::Move(Game& g) {
 	{
 		_x += _Spd;
 		g.GetChip()->IsHit(*this, 1, 0);
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteは敵か？
+			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+			{
+				// プレイヤーとその敵の当たり判定を行う
+				if (IsHit(*(*ite)) == true) {
+					_x = _Before_x;
+				}
+			}
+		}
 		_isFlip = true;
 
 	}
@@ -131,7 +156,7 @@ void Player::Move(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK|| (*ite)->GetObjType() == OBJECTTYPE::POISON)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK|| (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -170,6 +195,17 @@ void Player::MidAttack(Game& g) {
 	_Anime["MiddleAttack"] = ((frame) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
 	if (frame == MIDDLEATTACK_BEGINFRAME) {
 		PlaySoundMem(_Se["MiddleAttack"], DX_PLAYTYPE_BACK, true);
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteは敵か？
+			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+			{
+				// プレイヤーとその敵の当たり判定を行う
+				if (IsHit(*(*ite)) == true) {
+					_x = _Before_x;
+				}
+			}
+		}
 		if (_isFlip == false) {
 			//中段攻撃判定オブジェクトの生成
 			auto mac = new MiddleAttackCollision(_x + _hit_x - MIDDLEATTACK_WIDTH, _y - _hit_h);
@@ -220,7 +256,7 @@ void Player::MidAttack(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -292,7 +328,7 @@ void Player::LowAttack(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK||(*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK||(*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -335,7 +371,7 @@ void Player::Kick(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
+		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
 		{
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -439,7 +475,7 @@ void Player::Iai(Game& g) {
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 			{
 				// iteは敵の攻撃オブジェクトか？
-				if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
+				if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
 				{
 					// プレイヤーとその敵の攻撃の当たり判定を行う
 					if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -469,7 +505,7 @@ void Player::Sway(Game& g){
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
 			// iteは敵の攻撃オブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON)
+			if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
 			{
 				// プレイヤーとその攻撃の当たり判定を行う
 				if (IsHit(*(*ite)) == true && _Star_Flag == false)
@@ -488,9 +524,31 @@ void Player::Sway(Game& g){
 		if (_isFlip == false)
 			_x += SWAY_MOVEMENT;
 		g.GetChip()->IsHit(*this, 1, 0);
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteは敵か？
+			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+			{
+				// プレイヤーとその敵の当たり判定を行う
+				if (IsHit(*(*ite)) == true) {
+					_x = _Before_x;
+				}
+			}
+		}
 		if (_isFlip == true)
 			_x -= SWAY_MOVEMENT;
 		g.GetChip()->IsHit(*this, -1, 0);
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteは敵か？
+			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+			{
+				// プレイヤーとその敵の当たり判定を行う
+				if (IsHit(*(*ite)) == true) {
+					_x = _Before_x;
+				}
+			}
+		}
 	}
 	if (frame == SWAY_ALLFRAME) {
 		_State = PLAYERSTATE::IDLE;

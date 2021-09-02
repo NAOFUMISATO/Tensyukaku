@@ -13,11 +13,12 @@
 	”EŽÒ
 */
 using namespace NInfo;
-Ninja::Ninja(int x, int y, bool flip)
+Ninja::Ninja(int x, int y, bool flip,int kunai_stock)
 {
 	_x = x;
 	_y = y;
 	_isFlip = flip;
+	_Kunai_Stock = kunai_stock;
 	Init();
 	LoadActionGraph();
 	LoadActionSE();
@@ -36,7 +37,7 @@ void Ninja::Init() {
 	_hit_h = COLLISION_HEIGHT;
 	_State= ENEMYSTATE::APPEAR;
 	_Life = LIFE_MAX;
-	_Spd = SPPED;
+	_Spd = SPEED;
 	_Alpha = 0;
 }
 void Ninja::Process(Game& g) {
@@ -53,6 +54,9 @@ void Ninja::Process(Game& g) {
 		break;
 	case ENEMYSTATE::ATTACK:
 		Attack(g);
+		break;
+	case ENEMYSTATE::THROW:
+		Throw(g);
 		break;
 	case ENEMYSTATE::DEAD:
 		Dead(g);

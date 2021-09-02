@@ -60,6 +60,9 @@ void Shielder::Process(Game& g) {
 	case ENEMYSTATE::ATTACK:
 		Attack(g);
 		break;
+	case ENEMYSTATE::GUARDATTACK:
+		GuardAttack(g);
+		break;
 	case ENEMYSTATE::GUARDBREAK:
 		GuardBreak(g);
 		break;
@@ -128,6 +131,8 @@ void Shielder::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(COMING_GRAPHNAME, COMING_ANIMEMAX, COMING_WIDTHCOUNT, COMING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Coming"].data());
 	_GrAll["Attack"].resize(ATTACK_ANIMEMAX);
 	ResourceServer::LoadDivGraph(ATTACK_GRAPHNAME, ATTACK_ANIMEMAX, ATTACK_WIDTHCOUNT, ATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Attack"].data());
+	_GrAll["GuardAttack"].resize(GUARDATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(GUARDATTACK_GRAPHNAME, GUARDATTACK_ANIMEMAX, GUARDATTACK_WIDTHCOUNT, GUARDATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["GuardAttack"].data());
 	_GrAll["GuardBreak"].resize(GUARDBREAK_ANIMEMAX);
 	ResourceServer::LoadDivGraph(GUARDBREAK_GRAPHNAME, GUARDBREAK_ANIMEMAX, GUARDBREAK_WIDTHCOUNT, GUARDBREAK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["GuardBreak"].data());
 	_GrAll["Dead"].resize(DEAD_ANIMEMAX);

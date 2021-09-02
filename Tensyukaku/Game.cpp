@@ -40,6 +40,7 @@ void Game::Input()
 	int keyold = _gKey;
 	_gKey = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	_gTrg = (_gKey ^ keyold) & _gKey;	// キーのトリガ情報生成（押した瞬間しか反応しないキー情報）
+
 }
 
 // フレーム処理：計算

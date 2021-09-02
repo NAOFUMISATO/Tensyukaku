@@ -5,7 +5,7 @@
 
 class Ninja : public EnemyBase {
 public:
-	Ninja(int x, int y, bool flip);
+	Ninja(int x, int y, bool flip,int kunai_stock);
 	~Ninja();
 	virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::NINJA; }
 
@@ -19,10 +19,14 @@ private:
 	void	Patrol(Game& g);		//巡回状態時の処理
 	void	Coming(Game& g);		//追跡状態時の処理
 	void	Attack(Game& g);		//攻撃状態時の処理
+	void	Throw(Game& g);			//クナイ投げ時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
 	void	LoadActionGraph();		//忍者の画像読み込み関数
 	void	LoadActionSE();			//忍者のSE読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
+	
+/*---------メンバ変数--------*/
+	int		_Kunai_Stock;
 };
 namespace NInfo {
 	/*----------忍者の各座標関係----------*/
@@ -34,20 +38,22 @@ namespace NInfo {
 	constexpr auto COLLISION_HEIGHT = 210;		//当たり判定縦幅
 
 	/*----------各モーションの当たり判定関係----------*/
-	constexpr auto PATROL_WIDTH = 1000;			//索敵範囲当たり判定横幅
+	constexpr auto PATROL_WIDTH = 800;			//索敵範囲当たり判定横幅
 	constexpr auto PATROL_HEIGHT = 100;			//索敵範囲当たり判定縦幅
 	constexpr auto COMING_WIDTH = 150;			//攻撃発生範囲当たり判定横幅
 	constexpr auto COMING_HEIGHT = 100;			//攻撃発生範囲当たり判定縦幅
 	constexpr auto ATTACK_WIDTH = 150;			//攻撃当たり判定横幅
 	constexpr auto ATTACK_HEIGHT = 150;			//攻撃当たり判定縦幅
-	constexpr auto COMINGCANCEL_WIDTH = 1000;	//追跡中止当たり判定横幅
+	constexpr auto COMINGCANCEL_WIDTH = 800;	//追跡中止当たり判定横幅
 	constexpr auto COMINGCANCEL_HEIGHT = 100;	//追跡中止当たり判定縦幅
 	constexpr auto ATTACKCANCEL_WIDTH = 150;	//攻撃中止当たり判定横幅
 	constexpr auto ATTACKCANCEL_HEIGHT = 100;	//攻撃中止当たり判定縦幅
+	constexpr auto THROWCANCEL_WIDTH = 800;		//クナイ投げ中止当たり判定横幅
+	constexpr auto THROWCANCEL_HEIGHT = 100;	//クナイ投げ中止当たり判定縦幅
 
 	/*----------パラメーター関係----------*/
 	constexpr auto LIFE_MAX = 1;				//体力
-	constexpr auto SPPED = 3;					//移動速度
+	constexpr auto SPEED = 3;					//移動速度
 
 	/*----------画像読み込み&アニメーション&判定フレーム関係----------*/
 	//共通
@@ -74,6 +80,10 @@ namespace NInfo {
 	constexpr auto COMING_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto COMING_HEIGHTCOUNT = 1;		//縦の画像枚数	
 	constexpr auto ANIMESPEED_COMING = 10;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto COMING_ALLFRAME= COMING_ANIMEMAX * ANIMESPEED_COMING;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto COMINGSPEED_UPFRAME = 20;	//スピードアップフレーム
+	constexpr auto COMINGSPEED_DOWNFRAME = 30;	//スピードダウンフレーム
+	constexpr auto COMING_UPSPEED = 15;	//スピードの上昇時の値
 	//攻撃
 	constexpr auto ATTACK_GRAPHNAME = "res/Ninja/N_Attack.png";	//画像ファイル名
 	constexpr auto ATTACK_ANIMEMAX =4;			//全ての画像枚数
@@ -82,16 +92,48 @@ namespace NInfo {
 	constexpr auto ANIMESPEED_ATTACK = 10;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto ATTACK_ANIMEFRAME = ATTACK_ANIMEMAX * ANIMESPEED_ATTACK;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto ATTACK_ALLFRAME = 50;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
-	constexpr auto ATTACK_BEGINFRAME = 15;		//攻撃判定発生フレーム
-	constexpr auto ATTACK_ENDFRAME = 30;		//攻撃判定終了フレーム
+	constexpr auto ATTACK_BEGINFRAME = 20;		//攻撃判定発生フレーム
+	constexpr auto ATTACK_ENDFRAME = 10;		//攻撃判定終了フレーム
+	//クナイ投げ
+	constexpr auto THROW_GRAPHNAME = "res/Ninja/N_Attack.png";	//画像ファイル名
+	constexpr auto THROW_ANIMEMAX = 4;			//全ての画像枚数
+	constexpr auto THROW_WIDTHCOUNT = 4;		//横の画像枚数
+	constexpr auto THROW_HEIGHTCOUNT = 1;		//縦の画像枚数
+	constexpr auto ANIMESPEED_THROW = 10;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto THROW_ANIMEFRAME = THROW_ANIMEMAX * ANIMESPEED_THROW;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto THROW_ALLFRAME = 160;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
+	constexpr auto KUNAI_RELEASEFRAME = 20;		//攻撃判定発生フレーム
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Ninja/N_Dead.png";		//画像ファイル名
 	constexpr auto DEAD_ANIMEMAX = 3;			//全ての画像枚数
 	constexpr auto DEAD_WIDTHCOUNT = 3;			//横の画像枚数
 	constexpr auto DEAD_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_DEAD = 20;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto DEAD_FRAME = 55;				//死亡全フレーム
+	constexpr auto DEAD_ANIMEFRAME = DEAD_ANIMEMAX * ANIMESPEED_DEAD;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto DEAD_ALLFRAME = 120;			//死亡全フレーム
+	constexpr auto FADEOUT_SPEED = 4;			//フェードアウトスピード
+
+	/*----------クナイの各座標関係----------*/
+	constexpr auto KUNAI_GRAPHPOINT_X = 0;		//X位置から描画点までの差分
+	constexpr auto KUNAI_GRAPHPOINT_Y = -45;	//Y位置から描画点までの差分
+	constexpr auto KUNAI_POSITION_HITX = -45;	//描画点から当たり判定左上座標までの差分
+	constexpr auto KUNAI_POSITION_HITY = -20;	//描画点から当たり判定左上座標までの差分
+	constexpr auto KUNAI_COLLISION_WIDTH = 90;	//当たり判定横幅
+	constexpr auto KUNAI_COLLISION_HEIGHT = 40;	//当たり判定縦幅
+
+	/*----------パラメーター関係----------*/
+	constexpr auto KUNAI_SPEED = 10;			//クナイのスピード
+
+	/*----------画像読み込み&アニメーション関係----------*/
+	constexpr auto KUNAI_GRAPHNAME = "res/Ninja/Kunai.png";	//画像ファイル名
+	constexpr auto REPEL_FRAME = 60;			//弾かれてから消滅までのフレーム
+	constexpr auto KUNAI_ALPHACHANGE = 4;		//弾かれた後の1フレーム当たりの透明度の減少量
+	constexpr auto KUNAI_ANGLECHANGE = 0.1;		//弾かれた後の1フレーム当たりの角度の変更量
+	constexpr auto KUNAI_XCHANGE = 2;			//弾かれた後の1フレーム当たりのX移動量
+	constexpr auto KUNAI_YCHANGE = 4;			//弾かれた後の1フレーム当たりのY移動量
+
 	/*----------SE関係----------*/
 	constexpr auto WALK_SE = "se/Footstep.wav";			//巡回
 	constexpr auto ATTACK_SE = "se/slash3.wav";			//攻撃
+
 }

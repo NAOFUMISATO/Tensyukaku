@@ -83,7 +83,7 @@ void Bushi::Patrol(Game& g) {
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life = 0;
 				_Action_Cnt = _Cnt;
-				_State =ENEMYSTATE::DAMAGE;
+				_State =ENEMYSTATE::DEAD;
 			}
 		}
 	}
@@ -206,7 +206,7 @@ void Bushi::Coming(Game& g) {
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life -= 3;
 				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DAMAGE;
+				_State = ENEMYSTATE::DEAD;
 			}
 		}
 	}
@@ -369,15 +369,16 @@ void Bushi::Attack(Game& g) {
 void Bushi::Damage(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
-	_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	if (frame < DAMAGE_ANIMEFRAME) {
+		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	}
 	if (frame == DAMAGE_ALLFRAME) {
 		if (_Life <= 0) {
 			_Action_Cnt = _Cnt;
 			_State = ENEMYSTATE::DEAD;
 		}
 		else {
-			_Action_Cnt = _Cnt;
-			_State = ENEMYSTATE::PATROL;
+			_State = ENEMYSTATE::COMING;
 		}
 	}
 }
@@ -385,7 +386,13 @@ void Bushi::Damage(Game& g) {
 void Bushi::Dead(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];	
-	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	_hit_x = 10000;
+	if (frame < DEAD_ANIMEFRAME) {
+		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	}
+	if (frame >= DEAD_ANIMEFRAME && DEAD_ALLFRAME > frame) {
+		_Alpha -= FADEOUT_SPEED;
+	}
 	if (frame == DEAD_ALLFRAME) {
 		Delete(g);
 	}

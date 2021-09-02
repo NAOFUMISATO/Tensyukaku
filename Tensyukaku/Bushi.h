@@ -96,14 +96,17 @@ namespace BInfo {
 	constexpr auto DAMAGE_WIDTHCOUNT = 3;		//横の画像枚数
 	constexpr auto DAMAGE_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_DAMAGE = 15;		//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto DAMAGE_ALLFRAME = 44;		//被ダメ全フレーム
+	constexpr auto DAMAGE_ANIMEFRAME = DAMAGE_ANIMEMAX * ANIMESPEED_DAMAGE;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto DAMAGE_ALLFRAME = 55;		//被ダメ全フレーム
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Bushi/B_Dead.png";		//画像ファイル名
-	constexpr auto DEAD_ANIMEMAX = 1;			//全ての画像枚数
-	constexpr auto DEAD_WIDTHCOUNT = 1;			//横の画像枚数
+	constexpr auto DEAD_ANIMEMAX = 3;			//全ての画像枚数
+	constexpr auto DEAD_WIDTHCOUNT = 3;			//横の画像枚数
 	constexpr auto DEAD_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_DEAD = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto DEAD_ALLFRAME = 50;			//死亡全フレーム
+	constexpr auto ANIMESPEED_DEAD = 20;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto DEAD_ANIMEFRAME = DEAD_ANIMEMAX * ANIMESPEED_DEAD;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto DEAD_ALLFRAME = 120 ;		//死亡全フレーム
+	constexpr auto FADEOUT_SPEED = 4;			//フェードアウトスピード
 	/*----------SE関係----------*/
 	constexpr auto WALK_SE = "se/Footstep.wav";			//巡回
 	constexpr auto ATTACK_SE = "se/slash3.wav";			//攻撃	

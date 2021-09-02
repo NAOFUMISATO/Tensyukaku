@@ -44,6 +44,8 @@ void ObjectBase::Draw(Game& g) {
 	auto y = _y + _gy - GC->GetscrY();
 	auto scale = _drg.first;
 	auto angle = _drg.second;
+	_Before_x = _x + _gx;
+	_Before_y = _y + _gy;
 	DrawRotaGraph(x, y, scale, angle, _GrHandle, true, _isFlip);
 #ifdef _DEBUG
 	int& re = std::get<RED>(_Color);

@@ -1,6 +1,8 @@
 #pragma once
 #include "EnemyBase.h"
-
+/*
+	盾兵
+*/
 class Shielder :public EnemyBase {
 public:
 	Shielder(int x, int y, bool flip);
@@ -16,6 +18,7 @@ private:
 	void	Patrol(Game& g);		//巡回状態時の処理
 	void	Coming(Game& g);		//追跡状態時の処理
 	void	Attack(Game& g);		//攻撃状態時の処理
+	void	GuardAttack(Game& g);	//盾持ち攻撃状態時の処理
 	void	GuardBreak(Game& g);	//盾崩し状態時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
 	void	ShieldDraw(Game& g);	//盾の描画関数
@@ -23,8 +26,9 @@ private:
 	void	LoadActionSE();			//忍者のSE読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
 
+	/*---------メンバ変数---------*/
 	bool	_Shield_Flag;		//盾の生存フラグ
-	int		_Shield_Cnt;		
+	int		_Shield_Cnt;		//盾用の動作カウンタ保存変数
 };
 
 namespace SInfo {
@@ -89,26 +93,39 @@ namespace SInfo {
 	constexpr auto ATTACK_ALLFRAME = 100;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
 	constexpr auto ATTACK_BEGINFRAME = 20;		//攻撃判定発生フレーム
 	constexpr auto ATTACK_ENDFRAME = 40;		//攻撃判定終了フレーム
+	//盾持ち攻撃
+	constexpr auto GUARDATTACK_GRAPHNAME = "res/Shielder/T_GuardAttack.png";	//画像ファイル名
+	constexpr auto GUARDATTACK_ANIMEMAX = 4;		//全ての画像枚数
+	constexpr auto GUARDATTACK_WIDTHCOUNT = 4;		//横の画像枚数
+	constexpr auto GUARDATTACK_HEIGHTCOUNT = 1;		//縦の画像枚数
+	constexpr auto ANIMESPEED_GUARDATTACK = 20;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto GUARDATTACK_ANIMEFRAME = GUARDATTACK_ANIMEMAX * ANIMESPEED_GUARDATTACK;//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto GUARDATTACK_ALLFRAME = 100;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
+	constexpr auto GUARDATTACK_BEGINFRAME = 20;		//攻撃判定発生フレーム
+	constexpr auto GUARDATTACK_ENDFRAME = 40;		//攻撃判定終了フレーム
 	//盾崩し
 	constexpr auto GUARDBREAK_GRAPHNAME = "res/Shielder/T_Damage.png";	//画像ファイル名
 	constexpr auto GUARDBREAK_ANIMEMAX = 3;		//全ての画像枚数
 	constexpr auto GUARDBREAK_WIDTHCOUNT = 3;	//横の画像枚数
 	constexpr auto GUARDBREAK_HEIGHTCOUNT = 1;	//縦の画像枚数
 	constexpr auto ANIMESPEED_GUARDBREAK = 15;	//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto GUARDBREAK_ALLFRAME = 44;	//被ダメ全フレーム
+	constexpr auto GUARDBREAK_ANIMEFRAME = GUARDBREAK_ANIMEMAX * ANIMESPEED_GUARDBREAK;	//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto GUARDBREAK_ALLFRAME = 55;	//被ダメ全フレーム
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Shielder/T_Dead.png";		//画像ファイル名
 	constexpr auto DEAD_ANIMEMAX = 1;			//全ての画像枚数
 	constexpr auto DEAD_WIDTHCOUNT = 1;			//横の画像枚数
 	constexpr auto DEAD_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_DEAD = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto DEAD_ALLFRAME = 50;				//死亡全フレーム
+	constexpr auto DEAD_ANIMEFRAME = DEAD_ANIMEMAX * ANIMESPEED_DEAD;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto DEAD_ALLFRAME = 120;			//死亡全フレーム
+	constexpr auto FADEOUT_SPEED = 4;			//フェードアウトスピード
 	
 	/*----------盾の座標関係----------*/
-	constexpr auto SHIELD_WIDTH = 840;
-	constexpr auto SHIELD_HEIGHT = 630;
-	constexpr auto SHIELD_GRAPH_POINTX = 0;
-	constexpr auto SHIELD_GRAPH_POINTY = -120;
+	constexpr auto SHIELD_WIDTH = 840;			//盾の横幅
+	constexpr auto SHIELD_HEIGHT = 630;			//盾の縦幅
+	constexpr auto SHIELD_GRAPH_POINTX = 0;		//X位置から描画点までの差分
+	constexpr auto SHIELD_GRAPH_POINTY = -120;	//Y位置から描画点までの差分
 
 	/*----------盾の挙動関係----------*/
 	constexpr auto SHIELD_ANGLE = -0.0;

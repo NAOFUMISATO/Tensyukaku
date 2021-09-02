@@ -114,9 +114,12 @@ void Shielder::Patrol(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
-				_Shield_Cnt = _Cnt;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::GUARDBREAK;
+				if (_Shield_Flag == true) {
+					_Anime["Attack"] = 0;
+					_Shield_Cnt = _Cnt;
+					_Action_Cnt = _Cnt;
+					_State = ENEMYSTATE::GUARDBREAK;
+				}
 			}
 		}
 	}
@@ -156,7 +159,12 @@ void Shielder::Coming(Game& g) {
 				if ((*ite)->IsHit(scc) == true)
 				{
 					_Action_Cnt = _Cnt;
-					_State = ENEMYSTATE::ATTACK;
+					if (_Shield_Flag == false) {
+						_State = ENEMYSTATE::ATTACK;
+					}
+					else {
+						_State = ENEMYSTATE::GUARDATTACK;
+					}
 				}
 			}
 		}
@@ -191,7 +199,12 @@ void Shielder::Coming(Game& g) {
 				if ((*ite)->IsHit(scc) == true)
 				{
 					_Action_Cnt = _Cnt;
-					_State = ENEMYSTATE::ATTACK;
+					if (_Shield_Flag == false) {
+						_State = ENEMYSTATE::ATTACK;
+					}
+					else {
+						_State = ENEMYSTATE::GUARDATTACK;
+					}
 				}
 			}
 		}
@@ -258,9 +271,12 @@ void Shielder::Coming(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
-				_Shield_Cnt = _Cnt;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::GUARDBREAK;
+				if (_Shield_Flag == true) {
+					_Anime["Attack"] = 0;
+					_Shield_Cnt = _Cnt;
+					_Action_Cnt = _Cnt;
+					_State = ENEMYSTATE::GUARDBREAK;
+				}
 			}
 		}
 	}
@@ -377,23 +393,7 @@ void Shielder::Attack(Game& g) {
 			}
 		}
 	}
-	//敵とプレイヤーのキックオブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーのキックオブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::KICK)
-		{
-			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
-				_Anime["Attack"] = 0;
-				_Shield_Cnt = _Cnt;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::GUARDBREAK;
-			}
-		}
-	}
+	
 	//敵とプレイヤーの居合オブジェクトの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
@@ -403,7 +403,6 @@ void Shielder::Attack(Game& g) {
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
-				_Life--;
 				_Shield_Cnt = _Cnt;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
@@ -414,21 +413,142 @@ void Shielder::Attack(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 }
+
+/*---------盾持ち攻撃----------*/
+void Shielder::GuardAttack(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["GuardAttack"][_Anime["GuardAttack"]];
+	if (frame < ATTACK_ANIMEFRAME) {
+		_Anime["GuardAttack"] = ((frame) / ANIMESPEED_GUARDATTACK) % GUARDATTACK_ANIMEMAX;
+	}
+	if (_isFlip == false) {
+		PrivateCollision sacc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
+		if (frame == GUARDATTACK_ANIMEFRAME || frame == GUARDATTACK_ALLFRAME) {
+			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+			{
+				// iteはプレイヤーか？
+				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+				{
+					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
+					if ((*ite)->IsHit(sacc) == false)
+					{
+						_Anime["GuardAttack"] = 0;
+						_State = ENEMYSTATE::COMING;
+					}
+				}
+			}
+		}
+	}
+	if (_isFlip == true) {
+		PrivateCollision sacc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
+		if (frame == GUARDATTACK_ANIMEFRAME || frame == GUARDATTACK_ALLFRAME) {
+			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+			{
+				// iteはプレイヤーか？
+				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+				{
+					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
+					if ((*ite)->IsHit(sacc) == false)
+					{
+						_Anime["GuardAttack"] = 0;
+						_State = ENEMYSTATE::COMING;
+					}
+				}
+			}
+		}
+	}
+	if (frame == ATTACK_BEGINFRAME) {
+		if (_isFlip == false) {
+			//盾兵の攻撃判定オブジェクトの生成
+			auto sac = new ShielderAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
+			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
+			g.GetOS()->Add(sac);
+
+		};
+		if (_isFlip == true) {
+			//盾兵の攻撃判定オブジェクトの生成
+			auto sac = new ShielderAttackCollision(_x - _hit_x, _y - _hit_h);
+			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
+			g.GetOS()->Add(sac);
+		}
+	}
+	//敵とプレイヤーのキックオブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーのキックオブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::KICK)
+		{
+			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
+				if (_Shield_Flag == true) {
+					_Anime["GuardAttack"] = 0;
+					_Shield_Cnt = _Cnt;
+					_Action_Cnt = _Cnt;
+					_State = ENEMYSTATE::GUARDBREAK;
+				}
+			}
+		}
+	}
+	//敵とプレイヤーの攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK|| (*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+		{
+			// 敵とプレイヤーの攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+			}
+		}
+	}
+
+	//敵とプレイヤーの居合オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの居合オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
+		{
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Shield_Cnt = _Cnt;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
+	if (frame == GUARDATTACK_ALLFRAME) {
+		_Action_Cnt = _Cnt;
+	}
+}
 /*----------盾崩し----------*/
 void Shielder::GuardBreak(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle =_GrAll["GuardBreak"][_Anime["GuardBreak"]];
-	_Anime["GuardBreak"] = ((frame) / ANIMESPEED_GUARDBREAK) % GUARDBREAK_ANIMEMAX;
+	if (frame < GUARDBREAK_ANIMEFRAME) {
+		_Anime["GuardBreak"] = ((frame) / ANIMESPEED_GUARDBREAK) % GUARDBREAK_ANIMEMAX;
+	}
 	if (frame == GUARDBREAK_ALLFRAME) {
 	_Action_Cnt = _Cnt;
-	_State = ENEMYSTATE::PATROL;
+	_State = ENEMYSTATE::COMING;
 	}
 }
 /*----------死亡----------*/
 void Shielder::Dead(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle =_GrAll["Dead"][_Anime["Dead"]];
-	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	_hit_x = 10000;
+	if (frame < DEAD_ANIMEFRAME) {
+		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	}
+	if (frame >= DEAD_ANIMEFRAME && DEAD_ALLFRAME > frame) {
+		_Alpha -= FADEOUT_SPEED;
+	}
 	if (frame == DEAD_ALLFRAME) {
 		Delete(g);
 	}

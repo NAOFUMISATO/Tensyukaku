@@ -141,13 +141,7 @@
     <ClCompile Include="BushiMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
-    <ClCompile Include="NinjaMotion.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerHp.cpp">
-      <Filter>ソース ファイル\Object\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="IaiGauge.cpp">
       <Filter>ソース ファイル\Object\UI</Filter>
     </ClCompile>
     <ClCompile Include="EnemyBase.cpp">
@@ -213,17 +207,23 @@
     <ClCompile Include="PlayerMotion.cpp">
       <Filter>ソース ファイル\Object\Player</Filter>
     </ClCompile>
-    <ClCompile Include="PoisonNinja.cpp">
-      <Filter>ソース ファイル\Object\Gimik</Filter>
-    </ClCompile>
-    <ClCompile Include="Poison.cpp">
-      <Filter>ソース ファイル\Object\Gimik</Filter>
-    </ClCompile>
     <ClCompile Include="Andon.cpp">
       <Filter>ソース ファイル\Object\Gimik</Filter>
     </ClCompile>
     <ClCompile Include="Flame.cpp">
       <Filter>ソース ファイル\Object\Gimik</Filter>
+    </ClCompile>
+    <ClCompile Include="Kunai.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaMotion.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="PoisonNinja.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="Poison.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -264,9 +264,6 @@
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
     <ClInclude Include="PlayerHp.h">
-      <Filter>ヘッダー ファイル\Object\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="IaiGauge.h">
       <Filter>ヘッダー ファイル\Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="PlayerMotionCollision.h">
@@ -340,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="Flame.h">
       <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="Kunai.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

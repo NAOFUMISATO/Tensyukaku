@@ -5,6 +5,7 @@
 #include "NinjaMotionCollision.h"
 #include "ObjectBase.h"
 #include "PrivateCollision.h"
+#include "Kunai.h"
 
 using namespace NInfo;
 /*----------出現----------*/
@@ -44,7 +45,13 @@ void Ninja::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(npc) == true)
 				{
-					_State = ENEMYSTATE::COMING;
+					_Action_Cnt = _Cnt;
+					if (_Kunai_Stock > 0) {
+						_State = ENEMYSTATE::THROW;
+					}
+					else {
+						_State = ENEMYSTATE::COMING;
+					}
 				}
 			}
 		}
@@ -62,7 +69,13 @@ void Ninja::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(npc) == true)
 				{
-					_State = ENEMYSTATE::COMING;
+					_Action_Cnt = _Cnt;
+					if (_Kunai_Stock > 0) {
+						_State = ENEMYSTATE::THROW;
+					}
+					else {
+						_State = ENEMYSTATE::COMING;
+					}
 				}
 			}
 		}
@@ -103,9 +116,19 @@ void Ninja::Patrol(Game& g) {
 void Ninja::Coming(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
-	_Anime["Coming"] = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+	if (frame < COMING_ALLFRAME) {
+		_Anime["Coming"] = ((frame) / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+	}
+	if (frame >COMINGSPEED_UPFRAME && COMINGSPEED_DOWNFRAME >= frame) {
+		_Spd = COMING_UPSPEED;
+	}
+	else {
+		_Spd =SPEED;
+	}
 	if (_isFlip == false) {
+	
 		_x -= _Spd;
+		
 		//忍者の攻撃発生範囲判定オブジェクトの生成
 		PrivateCollision ncc(_x + _hit_x - COMING_WIDTH, _y - _hit_h,COMING_WIDTH,COMING_HEIGHT);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
@@ -119,6 +142,7 @@ void Ninja::Coming(Game& g) {
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::ATTACK;
+					_Anime["Coming"] = 0;
 				}
 			}
 		}
@@ -133,8 +157,9 @@ void Ninja::Coming(Game& g) {
 				// 追跡中止範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(nccc) == false)
 				{
-					_Action_Cnt;
+					_Action_Cnt=_Cnt;
 					_State = ENEMYSTATE::PATROL;
+					_Anime["Coming"] = 0;
 				}
 			}
 		}
@@ -154,6 +179,7 @@ void Ninja::Coming(Game& g) {
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::ATTACK;
+					_Anime["Coming"] = 0;
 				}
 			}
 		}
@@ -170,6 +196,7 @@ void Ninja::Coming(Game& g) {
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::PATROL;
+					_Anime["Coming"] = 0;
 				}
 			}
 		}
@@ -205,6 +232,10 @@ void Ninja::Coming(Game& g) {
 			}
 		}
 	}
+	if (frame == COMING_ALLFRAME) {
+		_Action_Cnt = _Cnt;
+		_Anime["Coming"] = 0;
+	}
 }
 /*--------------攻撃---------------*/
 void Ninja::Attack(Game& g) {
@@ -225,6 +256,7 @@ void Ninja::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(nacc) == false)
 					{
+						_Action_Cnt = _Cnt;
 						_Anime["Attack"] = 0;
 						_State = ENEMYSTATE::COMING;
 					}
@@ -244,6 +276,7 @@ void Ninja::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(nacc) == false)
 					{
+						_Action_Cnt = _Cnt;
 						_Anime["Attack"] = 0;
 						_State = ENEMYSTATE::COMING;
 					}
@@ -301,12 +334,127 @@ void Ninja::Attack(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 }
+/*---------クナイ投げ--------*/
+void Ninja::Throw(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
+	if (frame < THROW_ANIMEFRAME) {
+		_Anime["Attack"] = ((frame) / ANIMESPEED_THROW) % THROW_ANIMEMAX;
+	}
+	if (_isFlip == false) {
+		PrivateCollision nacc(_x + _hit_x - THROWCANCEL_WIDTH, _y - _hit_h, THROWCANCEL_WIDTH, THROWCANCEL_HEIGHT);
+		if (frame == THROW_ANIMEFRAME || frame == THROW_ALLFRAME) {
+			if (_Kunai_Stock <= 0) {
+				_Action_Cnt = _Cnt;
+				_Anime["Attack"] = 0;
+				_State = ENEMYSTATE::COMING;
+			}
+			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+			{
+				// iteはプレイヤーか？
+				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+				{
+					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
+					if ((*ite)->IsHit(nacc) == false)
+					{
+						_Action_Cnt = _Cnt;
+						_Anime["Attack"] = 0;
+						_State = ENEMYSTATE::PATROL;
+					}
+				}
+			}
+		}
+	}
+	if (_isFlip == true) {
+		PrivateCollision nacc(_x - _hit_x, _y - _hit_h, THROWCANCEL_WIDTH, THROWCANCEL_HEIGHT);
+		if (frame == THROW_ANIMEFRAME || frame == THROW_ALLFRAME) {
+			if (_Kunai_Stock <= 0) {
+				_Anime["Attack"] = 0;
+				_State = ENEMYSTATE::COMING;
+			}
+			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+			{
+				// iteはプレイヤーか？
+				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+				{
+					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
+					if ((*ite)->IsHit(nacc) == false)
+					{
+						_Action_Cnt = _Cnt;
+						_Anime["Attack"] = 0;
+						_State = ENEMYSTATE::PATROL;
+					}
+				}
+			}
+		}
+	}
+	if (frame == KUNAI_RELEASEFRAME) {
+		_Kunai_Stock--;
+		if (_isFlip == false) {
+			//クナイオブジェクトの生成
+			auto ku = new Kunai(_x -110, _y -130,false);
+			// オブジェクトサーバ-にクナイオブジェクトを追加
+			g.GetOS()->Add(ku);
+		};
+		if (_isFlip == true) {
+			//クナイオブジェクトの生成
+			auto ku = new Kunai(_x + 110, _y - 130, true);
+			// オブジェクトサーバ-にクナイオブジェクトを追加
+			g.GetOS()->Add(ku);
 
+		}
+	}
+	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの下段攻撃オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+		{
+			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
+	//敵とプレイヤーの居合オブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーの居合オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
+		{
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+		}
+	}
+	if (frame == THROW_ALLFRAME) {
+		_Action_Cnt = _Cnt;
+	}
+
+
+}
+/*---------死亡----------*/
 void Ninja::Dead(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
-	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
-	if (frame == DEAD_FRAME)
+	_hit_x = 10000;
+	if (frame < DEAD_ANIMEFRAME) {
+		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	}
+	if (frame >= DEAD_ANIMEFRAME && DEAD_ALLFRAME > frame) {
+		_Alpha -= FADEOUT_SPEED;
+	}
+	if (frame == DEAD_ALLFRAME)
 	{
 		Delete(g);
 	}

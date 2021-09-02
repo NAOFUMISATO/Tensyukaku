@@ -16,7 +16,7 @@ public:
 	enum class OBJECTTYPE {
 		PLAYER, ENEMY, UI, PARTICLE,
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,
-		PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,SHIELDERATTACK,SHIELD,
+		PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,KUNAI,SHIELDERATTACK,SHIELD,
 		STAIR, POISONNINJA, POISON,ANDON,FLAME, SPAWNBLOCK
 	};
 	virtual OBJECTTYPE	GetObjType() = 0;
@@ -27,7 +27,6 @@ public:
 	virtual	bool	IsHit(ObjectBase& o);
 	virtual	void	Delete(Game& g) {};
 
-	
 	int		GetX() { return _x; }
 	int		GetY() { return _y; }
 	int		GetGX() { return _gx; }
@@ -41,6 +40,7 @@ public:
 	bool	GetFlip() { return _isFlip; }
 	HitBox	GetHB() { return { _x,_y,_gx,_gy,_hit_x,_hit_y,_hit_w,_hit_h }; }
 	Vector2 GetPosition() { return _Position; }		//座標の取得
+
 
 	void	SetPosition(int x, int y) { _x = x; _y = y; }
 	void	SetX(int x) { _x = x; }
@@ -70,5 +70,6 @@ protected:
 	std::tuple<int, int,int>_Color;		//デバック用矩形カラー
 	int		_Cnt;						//動作カウンタ
 	int		_Action_Cnt;				//アクション経過時間保存変数
-	
+	int		_Before_x;					//前回のX座標保存変数
+	int		_Before_y;					//前回のY座標保存変数
 };

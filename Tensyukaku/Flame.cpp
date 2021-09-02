@@ -23,6 +23,7 @@ void Flame::Init() {
 	_hit_h = COLLISION_HEIGHT;
 	_Alpha = 255;
 	_Action_Cnt = _Cnt;
+	_Color = std::make_tuple(0, 0, 255);
 }
 
 void Flame::Process(Game& g) {

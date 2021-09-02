@@ -155,6 +155,7 @@
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="Flame.cpp" />
+    <ClCompile Include="Kunai.cpp" />
     <ClCompile Include="Poison.cpp" />
     <ClCompile Include="PoisonNinja.cpp" />
     <ClCompile Include="PrivateCollision.cpp" />
@@ -162,7 +163,6 @@
     <ClCompile Include="SpawnBlock.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GimikPlacement.cpp" />
-    <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="IaiParticle.cpp" />
     <ClCompile Include="LowAttackParticle.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -198,6 +198,7 @@
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="Flame.h" />
+    <ClInclude Include="Kunai.h" />
     <ClInclude Include="Poison.h" />
     <ClInclude Include="PoisonNinja.h" />
     <ClInclude Include="PrivateCollision.h" />
@@ -206,7 +207,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GimikPlacement.h" />
     <ClInclude Include="HitBox.h" />
-    <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="IaiParticle.h" />
     <ClInclude Include="LowAttackParticle.h" />
     <ClInclude Include="MapChip.h" />

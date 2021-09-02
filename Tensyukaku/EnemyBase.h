@@ -5,7 +5,7 @@
 class EnemyBase : public ObjectBase {
 protected:
 	//ìGÇÃèÛë‘óÒãì
-	enum class ENEMYSTATE { APPEAR, PATROL, COMING, ATTACK, GUARDBREAK, DAMAGE, DEAD };
+	enum class ENEMYSTATE { APPEAR, PATROL, COMING, ATTACK,GUARDATTACK,THROW,GUARDBREAK, DAMAGE, DEAD };
 public:
 	EnemyBase();
 	~EnemyBase();
@@ -22,7 +22,6 @@ public:
 	virtual	void	Process(Game& g);
 	virtual	void	Draw(Game& g);
 	virtual	void	Delete(Game& g) {};
-	
 
 protected:
 	ENEMYTYPE _Type;

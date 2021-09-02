@@ -64,7 +64,6 @@ void Player::Process(Game& g)
 			_Star_Flag = false;
 		}
 	}
-	
 	switch (_State) {
 		//待機状態
 	case PLAYERSTATE::IDLE:
@@ -111,6 +110,7 @@ void Player::Process(Game& g)
 		StairUp(g);
 		break;
 	}
+	
 	// 主人公位置からカメラ座標決定
 	g.SetcvX(_x- (SCREEN_W * BACK_CAMERA_X / 100));// 背景の横中央にキャラを置く
 	g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));// 背景の縦93%にキャラを置く

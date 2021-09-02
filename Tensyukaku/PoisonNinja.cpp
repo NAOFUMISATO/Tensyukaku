@@ -51,9 +51,13 @@ void PoisonNinja::Process(Game& g) {
 		// iteはプレイヤーか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 		{
+			//プレイヤーとY座標が同じなら消去
 			auto py=(*ite)->GetY();
 			if (py == _y) {
-				Delete(g);
+				_Alpha -= FADEOUT_SPEED;
+				if (_Alpha == DELETE_ALPHA) {
+					Delete(g);
+				}
 			}
 		}
 	}
