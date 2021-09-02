@@ -11,6 +11,8 @@ Game::Game()
 {
 	_gKey = 0;
 	_gTrg = 0;
+	_Xbuf = 0;
+	_Ybuf = 0;
 	_gCnt = 0;
 	// モードサーバの初期化
 	_serverMode = new ModeServer(*this);
@@ -40,7 +42,7 @@ void Game::Input()
 	int keyold = _gKey;
 	_gKey = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	_gTrg = (_gKey ^ keyold) & _gKey;	// キーのトリガ情報生成（押した瞬間しか反応しないキー情報）
-
+	GetJoypadAnalogInput(&_Xbuf, &_Ybuf, DX_INPUT_KEY_PAD1);
 }
 
 // フレーム処理：計算

@@ -28,6 +28,7 @@ void Andon::Init() {
 	_Alpha = 255;
 	_drg.second = 0.0;
 	_Flame_y = _y;
+	_Dalpha = 0;
 }
 
 void Andon::Process(Game& g) {

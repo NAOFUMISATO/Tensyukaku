@@ -150,15 +150,41 @@ namespace SpaInfo {
 	constexpr auto  SPAWN5A_NINJA1_X = 1900;	constexpr auto  SPAWN5A_NINJA1_Y = 4800;	constexpr auto  SPAWN5A_NINJA1_FLIP = true;		constexpr auto  SPAWN5A_NINJA1_KUNAI = 3;	//忍者1
 	//スポーンブロック5B
 	constexpr auto  SPAWN5B_XPOSITION = 1900;	constexpr auto SPAWN5B_YPOSITION = 4800;	//スポーンブロック5B
-
+	constexpr auto  SPAWN5B_BUSHI1_X = 1500;	constexpr auto  SPAWN5B_BUSHI1_Y = 4800;	constexpr auto  SPAWN5B_BUSHI1_FLIP = false;	//武士1
+	constexpr auto  SPAWN5B_BUSHI2_X = 2700;	constexpr auto  SPAWN5B_BUSHI2_Y = 4800;	constexpr auto  SPAWN5B_BUSHI2_FLIP = false;	//武士2
+	constexpr auto  SPAWN5B_NINJA1_X = 3500;	constexpr auto  SPAWN5B_NINJA1_Y = 4800;	constexpr auto  SPAWN5B_NINJA1_FLIP = true;		constexpr auto  SPAWN5B_NINJA1_KUNAI = 2;	//忍者1
+	constexpr auto  SPAWN5B_SHIEL1_X = 2400;	constexpr auto  SPAWN5B_SHIEL1_Y = 4800;	constexpr auto  SPAWN5B_SHIEL1_FLIP = true;		//盾兵1
+	constexpr auto  SPAWN5B_SHIEL2_X = 3100;	constexpr auto  SPAWN5B_SHIEL2_Y = 4800;	constexpr auto  SPAWN5B_SHIEL2_FLIP = true;		//盾兵2
 	//スポーンブロック7A
-	constexpr auto  SPAWN7A_XPOSITION = 2700;	constexpr auto SPAWN7A_YPOSITION = 3280;	//スポーンブロック7A
+	constexpr auto  SPAWN7A_XPOSITION = 3200;	constexpr auto  SPAWN7A_YPOSITION = 3280;	//スポーンブロック7A
+	constexpr auto  SPAWN7A_SHIEL1_X = 2400;	constexpr auto  SPAWN7A_SHIEL1_Y = 3280;	constexpr auto  SPAWN7A_SHIEL1_FLIP = false;	//盾兵1
+	constexpr auto  SPAWN7A_SHIEL2_X = 2700;	constexpr auto  SPAWN7A_SHIEL2_Y = 3280;	constexpr auto  SPAWN7A_SHIEL2_FLIP = false;	//盾兵2
+	constexpr auto  SPAWN7A_SHIEL3_X = 3000;	constexpr auto  SPAWN7A_SHIEL3_Y = 3280;	constexpr auto  SPAWN7A_SHIEL3_FLIP = false;	//盾兵3
+	constexpr auto  SPAWN7A_SHIEL4_X = 3600;	constexpr auto  SPAWN7A_SHIEL4_Y = 3280;	constexpr auto  SPAWN7A_SHIEL4_FLIP = true;		//盾兵4
+	constexpr auto  SPAWN7A_SHIEL5_X = 3900;	constexpr auto  SPAWN7A_SHIEL5_Y = 3280;	constexpr auto  SPAWN7A_SHIEL5_FLIP = true;		//盾兵5
+	constexpr auto  SPAWN7A_SHIEL6_X = 4200;	constexpr auto  SPAWN7A_SHIEL6_Y = 3280;	constexpr auto  SPAWN7A_SHIEL6_FLIP = true;		//盾兵6
 	//スポーンブロック9A
-	constexpr auto  SPAWN9A_XPOSITION = 3000;	constexpr auto SPAWN9A_YPOSITION = 1760;	//スポーンブロック9A
+	constexpr auto  SPAWN9A_XPOSITION = 3400;	constexpr auto SPAWN9A_YPOSITION = 1760;	//スポーンブロック9A
+	constexpr auto  SPAWN9A_BUSHI1_X = 3500;	constexpr auto  SPAWN9A_BUSHI1_Y = 1760;	constexpr auto  SPAWN9A_BUSHI1_FLIP = false;	//武士1
+	constexpr auto  SPAWN9A_BUSHI2_X = 3000;	constexpr auto  SPAWN9A_BUSHI2_Y = 1760;	constexpr auto  SPAWN9A_BUSHI2_FLIP = false;	//武士2
+	constexpr auto  SPAWN9A_BUSHI3_X = 2700;	constexpr auto  SPAWN9A_BUSHI3_Y = 1760;	constexpr auto  SPAWN9A_BUSHI3_FLIP = false;	//武士3
+	constexpr auto  SPAWN9A_NINJA1_X = 2400;	constexpr auto  SPAWN9A_NINJA1_Y = 1760;	constexpr auto  SPAWN9A_NINJA1_FLIP = true;		constexpr auto  SPAWN9A_NINJA1_KUNAI = 2;	//忍者1
+	constexpr auto  SPAWN9A_POIJA1_X = 2600;	constexpr auto  SPAWN9A_POIJA1_Y = 1760;	constexpr auto  SPAWN9A_POIJA1_FLIP = true;		//毒液忍者1
 	//スポーンブロック9B
-	constexpr auto  SPAWN9B_XPOSITION = 1600;	constexpr auto SPAWN9B_YPOSITION = 2760;	//スポーンブロック9B
+	constexpr auto  SPAWN9B_XPOSITION = 1600;	constexpr auto SPAWN9B_YPOSITION = 1760;	//スポーンブロック9B
+	constexpr auto  SPAWN9B_BUSHI1_X = 1300;	constexpr auto  SPAWN9B_BUSHI1_Y = 1760;	constexpr auto  SPAWN9B_BUSHI1_FLIP = false;	//武士1
+	constexpr auto  SPAWN9B_NINJA1_X = 1900;	constexpr auto  SPAWN9B_NINJA1_Y = 1760;	constexpr auto  SPAWN9B_NINJA1_FLIP = true;		constexpr auto  SPAWN9B_NINJA1_KUNAI = 0;	//忍者1
+	constexpr auto  SPAWN9B_NINJA2_X = 1000;	constexpr auto  SPAWN9B_NINJA2_Y = 1760;	constexpr auto  SPAWN9B_NINJA2_FLIP = false;	constexpr auto  SPAWN9B_NINJA2_KUNAI = 2;	//忍者2
+	constexpr auto  SPAWN9B_NINJA3_X = 800;		constexpr auto  SPAWN9B_NINJA3_Y = 1760;	constexpr auto  SPAWN9B_NINJA3_FLIP = false;	constexpr auto  SPAWN9B_NINJA3_KUNAI = 3;	//忍者3
+	constexpr auto  SPAWN9B_POIJA1_X = 1800;	constexpr auto  SPAWN9B_POIJA1_Y = 1000;	constexpr auto  SPAWN9B_POIJA1_FLIP = true;		//毒液忍者1
 	//スポーンブロック10A
 	constexpr auto  SPAWN10A_XPOSITION = 1700;	constexpr auto SPAWN10A_YPOSITION = 1000;	//スポーンブロック10A
+	constexpr auto  SPAWN10A_BUSHI1_X = 1300;	constexpr auto  SPAWN10A_BUSHI1_Y = 1000;	constexpr auto  SPAWN10A_BUSHI1_FLIP = false;	//武士1
+	constexpr auto  SPAWN10A_NINJA1_X =  900;	constexpr auto  SPAWN10A_NINJA1_Y = 1000;	constexpr auto  SPAWN10A_NINJA1_FLIP = true;	constexpr auto  SPAWN10A_NINJA1_KUNAI = 0;	//忍者1
+	constexpr auto  SPAWN10A_SHIEL1_X = 2100;	constexpr auto  SPAWN10A_SHIEL1_Y = 1000;	constexpr auto  SPAWN10A_SHIEL1_FLIP = false;	//盾兵1
+	constexpr auto  SPAWN10A_SHIEL2_X = 2400;	constexpr auto  SPAWN10A_SHIEL2_Y = 1000;	constexpr auto  SPAWN10A_SHIEL2_FLIP = false;	//盾兵2
 	//スポーンブロック10B
 	constexpr auto  SPAWN10B_XPOSITION = 2700;	constexpr auto SPAWN10B_YPOSITION = 1000;	//スポーンブロック10B
+	constexpr auto  SPAWN10B_NINJA1_X = 3100;	constexpr auto  SPAWN10B_NINJA1_Y = 1000;	constexpr auto  SPAWN10B_NINJA1_FLIP = true;	constexpr auto  SPAWN10B_NINJA1_KUNAI = 0;	//忍者1
+	constexpr auto  SPAWN10B_NINJA2_X = 3400;	constexpr auto  SPAWN10B_NINJA2_Y = 1000;	constexpr auto  SPAWN10B_NINJA2_FLIP = true;	constexpr auto  SPAWN10B_NINJA2_KUNAI = 0;	//忍者2
 }

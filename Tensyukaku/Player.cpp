@@ -51,6 +51,13 @@ void Player::Init()
 void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
+	auto xbuf=g.GetXBuf();
+	if ( xbuf< 200 && -200 < xbuf) {
+		_Spd = 5;
+	}
+	if (xbuf >= 800 || -800 >= xbuf) {
+		_Spd = 9;
+	}
 
 	/*---ó‘Ô–ˆ‚Ìˆ—---*/
 		//–³“Gó‘Ô

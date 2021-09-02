@@ -17,4 +17,18 @@ void EnemySpawn::Process(Game& g) {
 		g.GetOS()->Add(sp3a);
 		auto sp4a = new Spawn4A();
 		g.GetOS()->Add(sp4a);
+		auto sp5a = new Spawn5A();
+		g.GetOS()->Add(sp5a);
+		auto sp5b = new Spawn5B();
+		g.GetOS()->Add(sp5b);
+		auto sp7a = new Spawn7A();
+		g.GetOS()->Add(sp7a);
+		auto sp9a = new Spawn9A();
+		g.GetOS()->Add(sp9a);
+		auto sp9b = new Spawn9B();
+		g.GetOS()->Add(sp9b);
+		auto sp10a = new Spawn10A();
+		g.GetOS()->Add(sp10a);
+		auto sp10b = new Spawn10B();
+		g.GetOS()->Add(sp10b);
 }

@@ -15,24 +15,24 @@ using namespace StInfo;
 void Player::Idle(Game& g) {
 	_GrHandle = _GrAll["Idle"] [_Anime["Idle"]];
 	_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
-	if (g.GetTrg() & PAD_INPUT_1) {
+	if (g.GetTrg() & PAD_INPUT_6) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
 		PlaySoundMem(_Se["SwordIn"], DX_PLAYTYPE_BACK, true);
 	}
-	if (g.GetTrg() & PAD_INPUT_3) {
+	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::SWAY;
 		_Action_Cnt = _Cnt;
 	}
-	if (g.GetTrg() & PAD_INPUT_4) {
+	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
 		_Action_Cnt = _Cnt;		
 	}
-	if (g.GetTrg() & PAD_INPUT_5) {
+	if (g.GetTrg() & PAD_INPUT_3) {
 		_State = PLAYERSTATE::LOWATTACK;
 		_Action_Cnt = _Cnt;
 	}
-	if (g.GetTrg() & PAD_INPUT_6) {
+	if (g.GetTrg() & PAD_INPUT_2) {
 		_State = PLAYERSTATE::KICK;
 		_Action_Cnt = _Cnt;
 	}
@@ -40,6 +40,13 @@ void Player::Idle(Game& g) {
 		_State = PLAYERSTATE::MOVE;
 		_Action_Cnt = _Cnt;
 	}
+#ifdef _DEBUG
+	if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_5|| g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_5)
+	{
+		_State = PLAYERSTATE::MOVE;
+		_Action_Cnt = _Cnt;
+	}
+#endif
 	//“G‚ÌUŒ‚‚Ì“–‚½‚è”»’è
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
@@ -66,7 +73,7 @@ void Player::Idle(Game& g) {
 			// ƒvƒŒƒCƒ„[‚Æ‚»‚ÌŠK’i‚Ì“–‚½‚è”»’è‚ðs‚¤
 			if (IsHit(*(*ite)) == true)
 			{
-				if (g.GetTrg() & PAD_INPUT_2) {
+				if (g.GetTrg() & PAD_INPUT_UP) {
 					_Player_y = _y;
 					_Stair_x = (*ite)->GetX();
 					_StairFlip_Flag = (*ite)->GetFlip();
@@ -81,20 +88,24 @@ void Player::Move(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
 	
-	if (g.GetTrg() & PAD_INPUT_1) {
+	if (g.GetTrg() & PAD_INPUT_6) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
 		PlaySoundMem(_Se["SwordIn"], DX_PLAYTYPE_BACK, true);
 	}
 	else if (g.GetTrg() & PAD_INPUT_4) {
+		_State = PLAYERSTATE::SWAY;
+		_Action_Cnt = _Cnt;
+	}
+	else if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
 		_Action_Cnt = _Cnt;
 	}
-	else if (g.GetTrg() & PAD_INPUT_5) {
+	else if (g.GetTrg() & PAD_INPUT_3) {
 		_State = PLAYERSTATE::LOWATTACK;
 		_Action_Cnt = _Cnt;
 	}
-	else if (g.GetTrg() & PAD_INPUT_6) {
+	else if (g.GetTrg() & PAD_INPUT_2) {
 		_State = PLAYERSTATE::KICK;
 		_Action_Cnt = _Cnt;
 	}
@@ -136,13 +147,13 @@ void Player::Move(Game& g) {
 
 	}
 #ifdef _DEBUG
-	else if(g.GetKey() & PAD_INPUT_UP)
+	else if(g.GetKey() & PAD_INPUT_UP&& g.GetKey() & PAD_INPUT_5)
 	{
 		_y -= _Spd;
 		_isFlip = true;
 
 	}
-	else if (g.GetKey() & PAD_INPUT_DOWN)
+	else if (g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_5)
 	{
 		_y += _Spd;
 		_isFlip = true;
