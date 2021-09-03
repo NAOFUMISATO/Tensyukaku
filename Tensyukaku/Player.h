@@ -40,6 +40,7 @@ private:
 	
 	int		_alpha;			//SetDrawBlendMode用a値変数
 	int		_Iai_Gauge;		//居合ゲージ変数
+	int		_Move_AnimeSpeed;//移動時のアニメスピード
 
 	//無敵状態管理変数
 	bool	_Star_Flag;		//無敵状態管理フラグ
@@ -82,10 +83,13 @@ namespace PInfo {
 	constexpr auto IAI_WIDTH = 600;				//居合当たり判定横幅
 	constexpr auto IAI_HEIGHT = 100;			//居合当たり判定縦幅
 
-	/*----------パラメーター関係----------*/
+	/*----------パラメーター&入力量関係----------*/
 	constexpr auto LIFE_MAX = 5;				//体力
-	constexpr auto SPEED = 9;					//移動速度
-
+	constexpr auto WALKSPEED = 5;				//歩き移動速度
+	constexpr auto RUNSPEED = 9;				//走り移動速度
+	constexpr auto MAX_BUF = 1000;				//入力量限界値
+	constexpr auto RUN_XBUF = 800;				//走り状態になるための必要なX入力量
+	constexpr auto UP_YBUF = 800;				//階段を上がるための必要なY入力量
 	/*----------描画関係初期化値----------*/
 	constexpr auto FIRST_FLIP = true;					//反転
 	constexpr auto FIRST_ALPHA = 255;					//透明度
@@ -105,8 +109,10 @@ namespace PInfo {
 	constexpr auto MOVE_ANIMEMAX = 6;			//全ての画像枚数
 	constexpr auto MOVE_WIDTHCOUNT = 6;			//横の画像枚数
 	constexpr auto MOVE_HEIGHTCOUNT = 1;		//縦の画像枚数	
-	constexpr auto ANIMESPEED_MOVE = 6;			//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_WALK = 9;			//歩きアニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_RUN = 5;			//走りアニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto MOVE_SEFRAME = 120;			//移動SEの管理フレーム
+	constexpr auto STAIRMOVE_SPEED = 3;			//階段位置調整スピード
 	//中段攻撃
 	constexpr auto MIDDLEATTACK_GRAPHNAME = "res/Samurai/S_MidAttack.png";	//画像ファイル名
 	constexpr auto MIDDLEATTACK_ANIMEMAX = 8;	//全ての画像枚数
@@ -150,10 +156,9 @@ namespace PInfo {
 	constexpr auto SWAY_WIDTHCOUNT = 1;			//横の画像枚数
 	constexpr auto SWAY_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_SWAY = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto SWAY_ALLFRAME = 40;			//スウェイ全フレーム
-	constexpr auto SWAY_MOVEFRAME = 25;			//スウェイ時の移動フレーム
-	constexpr auto SWAY_STARFRAME = 15;			//無敵判定フレーム(状態遷移後からのフレーム数)
-	constexpr auto SWAY_MOVEMENT = 12;			//スウェイ時の1フレームあたりの移動量
+	constexpr auto SWAY_ALLFRAME = 30;			//スウェイ全フレーム
+	constexpr auto SWAY_MOVEFRAME = 20;			//スウェイ時の移動フレーム
+	constexpr auto SWAY_MOVEMENT = 10;			//スウェイ時の1フレームあたりの移動量
 	//被ダメ
 	constexpr auto DAMAGE_GRAPHNAME = "res/Samurai/S_Damage.png";	//画像ファイル名
 	constexpr auto DAMAGE_ANIMEMAX = 1;			//全ての画像枚数

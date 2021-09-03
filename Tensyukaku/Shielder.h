@@ -113,10 +113,10 @@ namespace SInfo {
 	constexpr auto GUARDBREAK_ALLFRAME = 55;	//被ダメ全フレーム
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Shielder/T_Dead.png";		//画像ファイル名
-	constexpr auto DEAD_ANIMEMAX = 1;			//全ての画像枚数
-	constexpr auto DEAD_WIDTHCOUNT = 1;			//横の画像枚数
+	constexpr auto DEAD_ANIMEMAX = 3;			//全ての画像枚数
+	constexpr auto DEAD_WIDTHCOUNT = 3;			//横の画像枚数
 	constexpr auto DEAD_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_DEAD = 60;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_DEAD = 20;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto DEAD_ANIMEFRAME = DEAD_ANIMEMAX * ANIMESPEED_DEAD;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto DEAD_ALLFRAME = 120;			//死亡全フレーム
 	constexpr auto FADEOUT_SPEED = 4;			//フェードアウトスピード

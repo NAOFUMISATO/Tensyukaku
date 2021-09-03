@@ -1,7 +1,0 @@
-スプライトとして、以下のCC BY-SA 3.0データを使用しています。
-http://opengameart.org/content/lpc-tile-atlas
-
-field_layerB.pngをCC BY-SA 3.0で頒布します。
-
-LPCについて
-https://creativecommons.jp/2012/04/23/liberated-pixel-cup/

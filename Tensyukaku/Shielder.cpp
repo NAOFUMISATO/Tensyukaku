@@ -171,9 +171,4 @@ void Shielder::DebugDraw(Game& g) {
 		}
 		break;
 	}
-	std::stringstream ss;
-	ss << "‚•ºHP=" << _Life << "\n";
-	ss << "‚•ºSpd=" << _Spd << "\n";
-	ss << "‚¶‘¶ƒtƒ‰ƒO=" << _Shield_Flag << "\n";
-	DrawString(600, 10, ss.str().c_str(), GetColor(255, 50, 255));
 }

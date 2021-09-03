@@ -124,8 +124,4 @@ void Bushi::DebugDraw(Game& g) {
 		}
 		break;
 	}
-	std::stringstream ss;
-	ss << "•ŽmHP=" << _Life << "\n";
-	ss << "•ŽmSpd=" << _Spd << "\n";
-	DrawString(200, 10, ss.str().c_str(), GetColor(255, 50, 255));
 }

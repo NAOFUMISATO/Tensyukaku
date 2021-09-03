@@ -268,7 +268,7 @@ int MapChip::IsHit(ObjectBase& o, int mx, int my)
 				}
 				if (mx > 0)
 				{	// ‰E‚É“®‚¢‚Ä‚¢‚½‚Ì‚ÅA¶‚É•â³
-					o.SetX(x * CHIPSIZE_W - (HB._hit_x + HB._hit_w));
+					o.SetX(x * CHIPSIZE_W  - (HB._hit_x + HB._hit_w));
 				}
 				if (my > 0)
 				{	// ‰º‚É“®‚¢‚Ä‚¢‚½‚Ì‚ÅAã‚É•â³

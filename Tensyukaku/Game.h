@@ -26,6 +26,7 @@ public:
 	int		GetKey() { return _gKey; }
 	int		GetTrg() { return _gTrg; }
 	int		GetXBuf() { return _Xbuf; }
+	int		GetYBuf() { return _Ybuf; }
 	int		GetmapH() { return _mapH; }
 	int		GetmapW() { return _mapW; }
 	int		GetcvX() { return _cvX; }

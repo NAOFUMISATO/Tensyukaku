@@ -73,7 +73,7 @@ void Player::Idle(Game& g) {
 			// プレイヤーとその階段の当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
-				if (g.GetTrg() & PAD_INPUT_UP) {
+				if (g.GetKey() & PAD_INPUT_UP&&g.GetYBuf()<-UP_YBUF) {
 					_Player_y = _y;
 					_Stair_x = (*ite)->GetX();
 					_StairFlip_Flag = (*ite)->GetFlip();
@@ -86,7 +86,7 @@ void Player::Idle(Game& g) {
 /*----------移動----------*/
 void Player::Move(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
-	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
+	_Anime["Move"] = (_Cnt / _Move_AnimeSpeed) % MOVE_ANIMEMAX;
 	
 	if (g.GetTrg() & PAD_INPUT_6) {
 		_State = PLAYERSTATE::IAI;
@@ -189,7 +189,7 @@ void Player::Move(Game& g) {
 			// プレイヤーとその階段の当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
-				if (g.GetTrg() & PAD_INPUT_2) {
+				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
 					_Player_y = _y;
 					_Stair_x = (*ite)->GetX();
 					_StairFlip_Flag = (*ite)->GetFlip();
@@ -510,53 +510,35 @@ void Player::Iai(Game& g) {
 void Player::Sway(Game& g){
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Sway"][_Anime["Sway"]];
-	_Anime["Sway"] = ((frame) / ANIMESPEED_IAI) % SWAY_ANIMEMAX;
-	if (frame < SWAY_STARFRAME) {
-		//敵の攻撃の当たり判定
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteは敵の攻撃オブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
-			{
-				// プレイヤーとその攻撃の当たり判定を行う
-				if (IsHit(*(*ite)) == true && _Star_Flag == false)
-				{
-					// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
-					(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-					_Life--;
-					_Action_Cnt = _Cnt;
-					_State = PLAYERSTATE::DAMAGE;
-					PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
-				}
-			}
-		}
-	}
+	_Anime["Sway"] = ((frame) / ANIMESPEED_SWAY) % SWAY_ANIMEMAX;
 	if (frame < SWAY_MOVEFRAME) {
-		if (_isFlip == false)
+		if (_isFlip == false) {
 			_x += SWAY_MOVEMENT;
-		g.GetChip()->IsHit(*this, 1, 0);
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteは敵か？
-			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+			g.GetChip()->IsHit(*this, 1, 0);
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 			{
-				// プレイヤーとその敵の当たり判定を行う
-				if (IsHit(*(*ite)) == true) {
-					_x = _Before_x;
+				// iteは敵か？
+				if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+				{
+					// プレイヤーとその敵の当たり判定を行う
+					if (IsHit(*(*ite)) == true) {
+						_x = _Before_x;
+					}
 				}
 			}
 		}
-		if (_isFlip == true)
+		if (_isFlip == true) {
 			_x -= SWAY_MOVEMENT;
-		g.GetChip()->IsHit(*this, -1, 0);
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteは敵か？
-			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+			g.GetChip()->IsHit(*this, -1, 0);
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 			{
-				// プレイヤーとその敵の当たり判定を行う
-				if (IsHit(*(*ite)) == true) {
-					_x = _Before_x;
+				// iteは敵か？
+				if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+				{
+					// プレイヤーとその敵の当たり判定を行う
+					if (IsHit(*(*ite)) == true) {
+						_x = _Before_x;
+					}
 				}
 			}
 		}
@@ -599,11 +581,11 @@ void Player::Dead(Game& g) {
 /*---------階段位置調整---------*/
 void Player::StairMove(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
-	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
+	_Anime["Move"] = (_Cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
 	if (_StairFlip_Flag == false) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
 			_isFlip = false;
-			--_x;
+			_x -= STAIRMOVE_SPEED;
 		}
 		if (_x <= _Stair_x + StInfo::POSITION_HITX) {
 			_isFlip = true;
@@ -614,7 +596,7 @@ void Player::StairMove(Game& g) {
 	if (_StairFlip_Flag == true) {
 		if (_x <= _Stair_x + StInfo::POSITION_HITX + StInfo::COLLISION_WIDTH) {
 			_isFlip = true;
-			++_x;
+			_x += STAIRMOVE_SPEED;
 		}
 		if (_x >= _Stair_x + StInfo::POSITION_HITX + StInfo::COLLISION_WIDTH) {
 			_isFlip = false;
@@ -627,7 +609,7 @@ void Player::StairMove(Game& g) {
 /*---------階段上昇------------*/
 void Player::StairUp(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
-	_Anime["Move"] = (_Cnt / ANIMESPEED_MOVE) % MOVE_ANIMEMAX;
+	_Anime["Move"] = (_Cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
 	_Stairup_Spd = 3.0f;
 	if (_StairFlip_Flag == false) {
 		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/

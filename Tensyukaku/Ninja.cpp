@@ -121,8 +121,4 @@ void Ninja::DebugDraw(Game& g) {
 		}
 		break;
 	}
-	std::stringstream ss;
-	ss << "”EŽÒHP=" << _Life << "\n";
-	ss << "”EŽÒSpd=" << _Spd << "\n";
-	DrawString(400, 10, ss.str().c_str(), GetColor(255, 50, 255));
 }

@@ -99,9 +99,9 @@ namespace SpaInfo {
 	constexpr auto  SPAWN1A_BUSHI2_X = 5040;	constexpr auto  SPAWN1A_BUSHI2_Y = 7840;	constexpr auto  SPAWN1A_BUSHI2_FLIP = true;		//ïêém2
 	constexpr auto  SPAWN1A_BUSHI3_X = 5000;	constexpr auto  SPAWN1A_BUSHI3_Y = 7080;	constexpr auto  SPAWN1A_BUSHI3_FLIP = false;	//ïêém3
 	constexpr auto  SPAWN1A_BUSHI4_X = 4600;	constexpr auto  SPAWN1A_BUSHI4_Y = 7080;	constexpr auto  SPAWN1A_BUSHI4_FLIP = true;		//ïêém4
-	constexpr auto  SPAWN1A_BUSHI5_X = 3500;	constexpr auto  SPAWN1A_BUSHI5_Y = 5560;	constexpr auto  SPAWN1A_BUSHI5_FLIP = true;		//ïêém5
-	constexpr auto  SPAWN1A_BUSHI6_X = 3100;	constexpr auto  SPAWN1A_BUSHI6_Y = 5560;	constexpr auto  SPAWN1A_BUSHI6_FLIP = false;	//ïêém6
-	constexpr auto  SPAWN1A_BUSHI7_X = 2900;	constexpr auto  SPAWN1A_BUSHI7_Y = 2520;	constexpr auto  SPAWN1A_BUSHI7_FLIP = false;	//ïêém7
+	constexpr auto  SPAWN1A_BUSHI5_X = 3100;	constexpr auto  SPAWN1A_BUSHI5_Y = 5560;	constexpr auto  SPAWN1A_BUSHI5_FLIP = true;		//ïêém5
+	constexpr auto  SPAWN1A_BUSHI6_X = 2900;	constexpr auto  SPAWN1A_BUSHI6_Y = 5560;	constexpr auto  SPAWN1A_BUSHI6_FLIP = false;	//ïêém6
+	constexpr auto  SPAWN1A_BUSHI7_X = 2700;	constexpr auto  SPAWN1A_BUSHI7_Y = 2520;	constexpr auto  SPAWN1A_BUSHI7_FLIP = false;	//ïêém7
 	constexpr auto  SPAWN1A_BUSHI8_X = 2600;	constexpr auto  SPAWN1A_BUSHI8_Y = 2520;	constexpr auto  SPAWN1A_BUSHI8_FLIP = false;	//ïêém8
 	constexpr auto  SPAWN1A_BUSHI9_X = 2300;	constexpr auto  SPAWN1A_BUSHI9_Y = 2520;	constexpr auto  SPAWN1A_BUSHI9_FLIP = false;	//ïêém9
 	constexpr auto SPAWN1A_BUSHI10_X = 5300;	constexpr auto SPAWN1A_BUSHI10_Y = 1760;	constexpr auto SPAWN1A_BUSHI10_FLIP = false;	//ïêém10

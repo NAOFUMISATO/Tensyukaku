@@ -15,6 +15,7 @@
 using namespace PInfo;
 Player::Player() :
 	_State(PLAYERSTATE::IDLE),
+	_Move_AnimeSpeed(0),
 	_Star_Flag(false)
 {
 	Init();
@@ -41,7 +42,7 @@ void Player::Init()
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 	_Life = LIFE_MAX;
-	_Spd = SPEED;
+	_Spd = 0;
 	_isFlip = FIRST_FLIP;
 	_alpha = FIRST_ALPHA;
 	_Position = { 0,0 };
@@ -52,11 +53,13 @@ void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
 	auto xbuf=g.GetXBuf();
-	if ( xbuf< 200 && -200 < xbuf) {
-		_Spd = 5;
+	if ( xbuf< MAX_BUF-RUN_XBUF && -(MAX_BUF-RUN_XBUF) < xbuf) {
+		_Spd = WALKSPEED;
+		_Move_AnimeSpeed = ANIMESPEED_WALK;
 	}
-	if (xbuf >= 800 || -800 >= xbuf) {
-		_Spd = 9;
+	if (xbuf >= RUN_XBUF || -RUN_XBUF >= xbuf) {
+		_Spd = RUNSPEED;
+		_Move_AnimeSpeed = ANIMESPEED_RUN;
 	}
 
 	/*---状態毎の処理---*/
@@ -188,7 +191,9 @@ void Player::DebugDraw(Game& g) {
 	ss << "Yスクロール値=" << g.GetChip()->GetscrY() << "\n";
 	ss << "プレイヤーX座標=" << _x << "\n";
 	ss << "プレイヤーY座標=" << _y << "\n";
-	DrawString(10, 10, ss.str().c_str(), GetColor(255, 50, 255));
+	ss<<"左スティック入力量X="<<g.GetXBuf()<< "\n";
+	ss <<"左スティック入力量Y="<<g.GetYBuf()<< "\n";
+	DrawString(10, 10, ss.str().c_str(), GetColor(255, 0,0));
 }
 
 //プレイヤーのUI描画関数
