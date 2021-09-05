@@ -152,10 +152,13 @@
     <ClCompile Include="Bushi.cpp" />
     <ClCompile Include="BushiMotion.cpp" />
     <ClCompile Include="BushiMotionCollision.cpp" />
+    <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="Kunai.cpp" />
+    <ClCompile Include="OutGameParticle.cpp" />
+    <ClCompile Include="PlayerParticle.cpp" />
     <ClCompile Include="Poison.cpp" />
     <ClCompile Include="PoisonNinja.cpp" />
     <ClCompile Include="PrivateCollision.cpp" />
@@ -163,12 +166,9 @@
     <ClCompile Include="SpawnBlock.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GimikPlacement.cpp" />
-    <ClCompile Include="IaiParticle.cpp" />
-    <ClCompile Include="LowAttackParticle.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapChip.cpp" />
     <ClCompile Include="Math.cpp" />
-    <ClCompile Include="MiddleAttackParticle.cpp" />
     <ClCompile Include="ModeBase.cpp" />
     <ClCompile Include="ModeGame.cpp" />
     <ClCompile Include="ModeServer.cpp" />
@@ -189,16 +189,20 @@
     <ClCompile Include="SielderMotion.cpp" />
     <ClCompile Include="SielderMotionCollision.cpp" />
     <ClCompile Include="Stair.cpp" />
+    <ClCompile Include="TitleSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Andon.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bushi.h" />
     <ClInclude Include="BushiMotionCollision.h" />
+    <ClInclude Include="Cursor.h" />
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="Flame.h" />
     <ClInclude Include="Kunai.h" />
+    <ClInclude Include="OutGameParticle.h" />
+    <ClInclude Include="PlayerParticle.h" />
     <ClInclude Include="Poison.h" />
     <ClInclude Include="PoisonNinja.h" />
     <ClInclude Include="PrivateCollision.h" />
@@ -207,11 +211,8 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GimikPlacement.h" />
     <ClInclude Include="HitBox.h" />
-    <ClInclude Include="IaiParticle.h" />
-    <ClInclude Include="LowAttackParticle.h" />
     <ClInclude Include="MapChip.h" />
     <ClInclude Include="Math.h" />
-    <ClInclude Include="MiddleAttackParticle.h" />
     <ClInclude Include="ModeBase.h" />
     <ClInclude Include="ModeGame.h" />
     <ClInclude Include="ModeServer.h" />
@@ -229,6 +230,7 @@
     <ClInclude Include="Shielder.h" />
     <ClInclude Include="ShielderMotionCollision.h" />
     <ClInclude Include="Stair.h" />
+    <ClInclude Include="TitleSelect.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

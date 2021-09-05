@@ -97,6 +97,12 @@
     <Filter Include="ヘッダー ファイル\Object\Gimik">
       <UniqueIdentifier>{3bb90729-b7c2-43aa-8469-5ff827901e50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Object\OutGame">
+      <UniqueIdentifier>{ae0e9924-196f-4c63-8d11-25952dfbc536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Outgame">
+      <UniqueIdentifier>{5e3df5e7-2337-4c07-a3d2-5e2b9247b479}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -159,15 +165,6 @@
     <ClCompile Include="ParticleBase.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="MiddleAttackParticle.cpp">
-      <Filter>ソース ファイル\Object\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="LowAttackParticle.cpp">
-      <Filter>ソース ファイル\Object\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="IaiParticle.cpp">
-      <Filter>ソース ファイル\Object\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectBase.cpp">
       <Filter>ソース ファイル\Object</Filter>
     </ClCompile>
@@ -224,6 +221,18 @@
     </ClCompile>
     <ClCompile Include="Poison.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="Cursor.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleSelect.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="OutGameParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -284,15 +293,6 @@
     <ClInclude Include="ParticleBase.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="MiddleAttackParticle.h">
-      <Filter>ヘッダー ファイル\Object\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="LowAttackParticle.h">
-      <Filter>ヘッダー ファイル\Object\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="IaiParticle.h">
-      <Filter>ヘッダー ファイル\Object\Particle</Filter>
-    </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -340,6 +340,18 @@
     </ClInclude>
     <ClInclude Include="Kunai.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="Cursor.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleSelect.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="OutGameParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

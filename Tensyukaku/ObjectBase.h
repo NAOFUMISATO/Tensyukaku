@@ -14,6 +14,7 @@ public:
 	~ObjectBase();
 	//オブジェクトの種類列挙
 	enum class OBJECTTYPE {
+		TITLELOGO,GAMESTART, EXPLAIN,GAMEEND, CURSOR,
 		PLAYER, ENEMY, UI, PARTICLE,
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,
 		PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,KUNAI,SHIELDERATTACK,SHIELD,
@@ -37,6 +38,7 @@ public:
 	int		GetHitH() { return _hit_h; }
 	int		GetHitX() { return _hit_x; }
 	int		GetHitY() { return _hit_y; }
+	int		GetHp() { return _Life; }
 	bool	GetFlip() { return _isFlip; }
 	HitBox	GetHB() { return { _x,_y,_gx,_gy,_hit_x,_hit_y,_hit_w,_hit_h }; }
 	Vector2 GetPosition() { return _Position; }		//座標の取得

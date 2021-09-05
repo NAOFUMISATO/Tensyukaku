@@ -12,6 +12,7 @@ public:
 
 	void	Clear();
 	void	Add(ObjectBase* obj);
+	void	OBAdd(ObjectBase* obj);
 	void	Del(ObjectBase* obj);
 
 	void	Process(Game& g);

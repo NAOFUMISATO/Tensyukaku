@@ -3,13 +3,11 @@
 #include "Game.h"
 #include "PlayerMotionCollision.h"
 #include "ObjectBase.h"
-#include "MiddleAttackParticle.h"
-#include "LowAttackParticle.h"
-#include "IaiParticle.h"
+#include "PlayerParticle.h"
 #include "Stair.h"
 #include "EnemyBase.h"
 using namespace PInfo;
-using namespace ParInfo;
+using namespace PParInfo;
 using namespace StInfo;
 /*----------待機----------*/
 void Player::Idle(Game& g) {
@@ -204,6 +202,40 @@ void Player::MidAttack(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["MiddleAttack"][_Anime["MiddleAttack"]];
 	_Anime["MiddleAttack"] = ((frame) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
+	if (frame < MIDDLEATTACK_BEGINFRAME) {
+		if (_isFlip == false) {
+			_x -= 10;
+			g.GetChip()->IsHit(*this, -1, 0);
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+			{
+				// iteは敵か？
+				if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+				{
+					// プレイヤーとその敵の当たり判定を行う
+					if (IsHit(*(*ite)) == true) {
+						_x = _Before_x;
+					}
+				}
+			}
+		}
+	}
+	if (frame < MIDDLEATTACK_BEGINFRAME) {
+		if (_isFlip == true) {
+			_x += 10;
+			g.GetChip()->IsHit(*this, 1, 0);
+			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+			{
+				// iteは敵か？
+				if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+				{
+					// プレイヤーとその敵の当たり判定を行う
+					if (IsHit(*(*ite)) == true) {
+						_x = _Before_x;
+					}
+				}
+			}
+		}
+	}
 	if (frame == MIDDLEATTACK_BEGINFRAME) {
 		PlaySoundMem(_Se["MiddleAttack"], DX_PLAYTYPE_BACK, true);
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -572,7 +604,10 @@ void Player::Damage(Game& g) {
 void Player::Dead(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
-	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	_hit_x = 10000;
+	if (frame < DEAD_ANIMEFRAME){
+	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX; 
+		}
 	if (frame == DEAD_ALLFRAME) {
 		Delete(g);
 	}

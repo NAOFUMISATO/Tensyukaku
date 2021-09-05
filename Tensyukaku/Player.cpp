@@ -145,7 +145,6 @@ void Player::Draw(Game& g) {
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
-	UIDraw(g);
 }
 
 void Player::Delete(Game& g) {
@@ -196,22 +195,3 @@ void Player::DebugDraw(Game& g) {
 	DrawString(10, 10, ss.str().c_str(), GetColor(255, 0,0));
 }
 
-//ƒvƒŒƒCƒ„[‚ÌUI•`‰æŠÖ”
-void Player::UIDraw(Game& g) {
-		PlayerHp* HP = new PlayerHp();
-		HP->SetPosition(SCREEN_W - SCREEN_W+300 , SCREEN_H - 40);
-		g.GetOS()->Add(HP);
-	if (_Life >= 3) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), _drg.first, _drg.second, HP->GetHp3(), true, false);
-		g.GetOS()->Del(HP);
-	}
-	else if (_Life == 2) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), _drg.first, _drg.second, HP->GetHp2(), true, false);
-		g.GetOS()->Del(HP);
-	}
-	else if (_Life == 1) {
-		DrawRotaGraph(HP->GetX(), HP->GetY(), _drg.first, _drg.second, HP->GetHp1(), true, false);
-		g.GetOS()->Del(HP);
-	}
-	else if(_Life <= 0) { g.GetOS()->Del(HP); }
-}

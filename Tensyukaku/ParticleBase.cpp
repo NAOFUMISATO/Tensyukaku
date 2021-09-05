@@ -3,8 +3,12 @@
 #include <tuple>
 #include "ParticleBase.h"
 #include "Game.h"
-
-using namespace ParInfo;
+namespace {
+/*----------TupleŒ^‰Â“Ç«Œüã---------*/
+	constexpr auto RED = 0;
+	constexpr auto GREEN = 1;
+	constexpr auto BLUE = 2;
+}
 ParticleBase::ParticleBase() {
 	Init();
 }

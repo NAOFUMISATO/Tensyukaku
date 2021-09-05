@@ -1,7 +1,8 @@
 #pragma once
-
 #include	<string>
-
+#include	<tuple>
+#include	<utility>
+#include	<unordered_map>
 class ModeServer;
 class Game;
 
@@ -16,7 +17,18 @@ public:
 	virtual bool	Terminate(Game& g);
 	virtual bool	Process(Game& g);
 	virtual bool	Draw(Game& g);
-
+protected:
+	int		_GrHandle;									//画像ハンドル
+	int		_x;											//描画点X座標
+	int		_y;											//描画点Y座標
+	int		_Cnt;										//動作カウンタ
+	int		_Mode_Cnt;									//経過時間記録変数
+	int		_Pal;										//BlendMode用変数
+	std::pair<double, double> _drg;						//DrawRotaGraph用ペア変数（first拡縮率、second角度）
+	std::tuple<int, int, int> _rgb;						//Color用タプル型変数
+	std::unordered_map<std::string, std::vector<int>> _GrAll;		//全ての画像ハンドルマップ
+	std::unordered_map<std::string, int> _Anime;					//アニメーションマップ
+	std::unordered_map<std::string, int> _Se;						//SEマップ
 
 public:
 	int	GetModeCount() { return _cntMode; }			// このモードが始まってからのカウンタ
@@ -27,11 +39,9 @@ public:
 	void SetCallOfCount(int count) { _callOfCount = count; }		// 1回の呼び出しに何回Process()を呼ぶか(def:1)
 	int GetCallPerFrame() { return _callPerFrame; }
 	int GetCallOfCount() { return _callOfCount; }
-
-
 private:
 	friend	ModeServer;
-	// ModeServer用
+	/*-----ModeServer用-----*/
 	std::string		_szName;
 	int				_uid;
 	int				_layer;

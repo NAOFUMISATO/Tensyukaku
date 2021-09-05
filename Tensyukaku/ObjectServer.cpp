@@ -34,6 +34,12 @@ void	ObjectServer::Add(ObjectBase* obj)
 	_vAdd.push_back(obj);
 }
 
+//オブジェクトリストの先頭にオブジェクトを登録する
+void	ObjectServer::OBAdd(ObjectBase* obj)
+{
+	_vObject.insert(_vObject.begin(), obj);
+}
+
 // Delリストにオブジェクトを登録する
 void	ObjectServer::Del(ObjectBase* obj)
 {

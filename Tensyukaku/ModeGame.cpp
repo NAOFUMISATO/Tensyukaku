@@ -11,13 +11,13 @@
 #include "GimikPlacement.h"
 #include "EnemySpawn.h"
 #include <memory>
+#include "PlayerHp.h"
 
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_enemyspawn = new EnemySpawn(g);
 	_gimikplacement = new GimikPlacement(g);
 	_Apeear_Flag = false;
-	// オブジェクト処理を行う
 	_stopObjProcess = false;
 	
 	// カメラ＆マップ初期化
@@ -50,6 +50,7 @@ bool ModeGame::Process(Game& g) {
 		_gimikplacement->Process(g);
 		_enemyspawn->Process(g);
 		g.GetOS()->Add(new Player);
+		g.GetOS()->Add(new PlayerHp);
 		}
 		
 	}
@@ -63,10 +64,6 @@ bool ModeGame::Draw(Game& g) {
 	_bg.Draw(g);				// 背景画像描画
 	g.GetChip()->Draw();			//マップチップ描画
 	g.GetOS()->Draw(g);				// オブジェクトの描画
-
-	// 開発用
-	/*DrawFormatString(32, 32, GetColor(255, 0, 0), "カメラ x=%d, y=%d", g.GetcvX(), g.GetcvY());*/
-
 	return true;
 }
 
