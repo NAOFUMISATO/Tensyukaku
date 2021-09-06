@@ -371,6 +371,7 @@ void Ninja::Throw(Game& g) {
 		if (frame == THROW_ANIMEFRAME || frame == THROW_ALLFRAME) {
 			if (_Kunai_Stock <= 0) {
 				_Anime["Attack"] = 0;
+				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::COMING;
 			}
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？

@@ -34,12 +34,11 @@ void	ObjectServer::Add(ObjectBase* obj)
 	_vAdd.push_back(obj);
 }
 
-//オブジェクトリストの先頭にオブジェクトを登録する
-void	ObjectServer::OBAdd(ObjectBase* obj)
+// BAddリストにオブジェクトを登録する
+void	ObjectServer::BAdd(ObjectBase* obj)
 {
-	_vObject.insert(_vObject.begin(), obj);
+	_vBAdd.push_back(obj);
 }
-
 // Delリストにオブジェクトを登録する
 void	ObjectServer::Del(ObjectBase* obj)
 {
@@ -55,7 +54,15 @@ void	ObjectServer::AddListObjects()
 	}
 	_vAdd.clear();
 }
-
+// BAddリストのオブジェクトを追加する
+void	ObjectServer::BAddListObjects()
+{
+	for (auto iteAdd = _vBAdd.begin(); iteAdd != _vBAdd.end(); iteAdd++)
+	{
+		_vObject.insert(_vObject.begin(),(*iteAdd));
+	}
+	_vBAdd.clear();
+}
 // Delリストのオブジェクトを削除する
 void	ObjectServer::DelListObjects()
 {
@@ -81,6 +88,8 @@ void	ObjectServer::DelListObjects()
 // Process()を登録順に回す
 void	ObjectServer::Process(Game& g)
 {
+	//BAddリストにあるオブジェクトをリストに登録する
+	BAddListObjects();
 	// Addリストにあるオブジェクトをリストに登録する
 	AddListObjects();
 

@@ -9,6 +9,7 @@
 #include "ObjectBase.h"
 #include "ModeGame.h"
 #include "PlayerHp.h"
+#include "IaiGauge.h"
 #include <vector>
 #include <sstream>
 
@@ -16,7 +17,8 @@ using namespace PInfo;
 Player::Player() :
 	_State(PLAYERSTATE::IDLE),
 	_Move_AnimeSpeed(0),
-	_Star_Flag(false)
+	_Star_Flag(false),
+	_UI_Flag(false)
 {
 	Init();
 	LoadActionGraph();
@@ -43,6 +45,7 @@ void Player::Init()
 	_hit_h = COLLISION_HEIGHT;
 	_Life = LIFE_MAX;
 	_Spd = 0;
+	_Iai_Gauge = 0;
 	_isFlip = FIRST_FLIP;
 	_alpha = FIRST_ALPHA;
 	_Position = { 0,0 };
@@ -52,6 +55,17 @@ void Player::Init()
 void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは敵か？
+		if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+		{
+			if ((*ite)->isDead()) { 
+				_Iai_Gauge++;
+			}
+		}
+	}
+	UIDraw(g);
 	auto xbuf=g.GetXBuf();
 	if ( xbuf< MAX_BUF-RUN_XBUF && -(MAX_BUF-RUN_XBUF) < xbuf) {
 		_Spd = WALKSPEED;
@@ -192,6 +206,23 @@ void Player::DebugDraw(Game& g) {
 	ss << "プレイヤーY座標=" << _y << "\n";
 	ss<<"左スティック入力量X="<<g.GetXBuf()<< "\n";
 	ss <<"左スティック入力量Y="<<g.GetYBuf()<< "\n";
-	DrawString(10, 10, ss.str().c_str(), GetColor(255, 0,0));
+	ss << "速さ=" << _Spd << "\n";
+	ss << "居合ゲージ=" << _Iai_Gauge << "\n";
+	DrawString(10, 10, ss.str().c_str(), GetColor(255, 0, 0));
 }
 
+//UI描画用関数
+void Player::UIDraw(Game& g){
+	if (_UI_Flag == false) {
+		auto hp1 = new PlayerHp(0);
+		g.GetOS()->Add(hp1);
+		auto hp2 = new PlayerHp(1);
+		g.GetOS()->Add(hp2);
+		auto hp3 = new PlayerHp(2);
+		g.GetOS()->Add(hp3);
+		auto ig = new IaiGauge();
+		g.GetOS()->Add(ig);
+		_UI_Flag = true;
+	}
+
+}

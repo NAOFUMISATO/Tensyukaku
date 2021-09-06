@@ -33,12 +33,11 @@ private:
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
-
+	void	UIDraw(Game& g);		//UI描画関数
 	/*---------メンバ変数----------*/
 	PLAYERSTATE	_State;		//状態遷移変数
 	
 	int		_alpha;			//SetDrawBlendMode用a値変数
-	int		_Iai_Gauge;		//居合ゲージ変数
 	int		_Move_AnimeSpeed;//移動時のアニメスピード
 
 	//無敵状態管理変数
@@ -52,7 +51,7 @@ private:
 	bool	_StairFlip_Flag;//階段の反転判定保存フラグ
 	int		_Stair_x;		//階段のX座標保存変数
 	int		_Player_y;		//階段上昇時のプレイヤーY座標保存変数
-
+	bool	_UI_Flag;		//UI描画用フラグ
 };
 
 
@@ -83,9 +82,10 @@ namespace PInfo {
 	constexpr auto IAI_HEIGHT = 100;			//居合当たり判定縦幅
 
 	/*----------パラメーター&入力量関係----------*/
-	constexpr auto LIFE_MAX = 5;				//体力
+	constexpr auto LIFE_MAX = 3;				//体力
 	constexpr auto WALKSPEED = 5;				//歩き移動速度
 	constexpr auto RUNSPEED = 9;				//走り移動速度
+	constexpr auto IAI_MAX = 6;					//居合ゲージの最大値
 	constexpr auto MAX_BUF = 1000;				//入力量限界値
 	constexpr auto RUN_XBUF = 800;				//走り状態になるための必要なX入力量
 	constexpr auto UP_YBUF = 800;				//階段を上がるための必要なY入力量
@@ -102,57 +102,57 @@ namespace PInfo {
 	constexpr auto IDLE_ANIMEMAX = 10;			//全ての画像枚数
 	constexpr auto IDLE_WIDTHCOUNT = 10;		//横の画像枚数
 	constexpr auto IDLE_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_IDLE = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_IDLE = 8;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	//移動
 	constexpr auto MOVE_GRAPHNAME = "res/Samurai/S_Walk.png";	//画像ファイル名
-	constexpr auto MOVE_ANIMEMAX = 6;			//全ての画像枚数
-	constexpr auto MOVE_WIDTHCOUNT = 6;			//横の画像枚数
+	constexpr auto MOVE_ANIMEMAX = 8;			//全ての画像枚数
+	constexpr auto MOVE_WIDTHCOUNT = 8;			//横の画像枚数
 	constexpr auto MOVE_HEIGHTCOUNT = 1;		//縦の画像枚数	
 	constexpr auto ANIMESPEED_WALK = 9;			//歩きアニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto ANIMESPEED_RUN = 5;			//走りアニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_RUN = 6;			//走りアニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto MOVE_SEFRAME = 120;			//移動SEの管理フレーム
 	constexpr auto STAIRMOVE_SPEED = 3;			//階段位置調整スピード
 	//中段攻撃
 	constexpr auto MIDDLEATTACK_GRAPHNAME = "res/Samurai/S_MidAttack.png";	//画像ファイル名
-	constexpr auto MIDDLEATTACK_ANIMEMAX = 6;	//全ての画像枚数
-	constexpr auto MIDDLEATTACK_WIDTHCOUNT = 6;	//横の画像枚数
+	constexpr auto MIDDLEATTACK_ANIMEMAX = 8;	//全ての画像枚数
+	constexpr auto MIDDLEATTACK_WIDTHCOUNT = 8;	//横の画像枚数
 	constexpr auto MIDDLEATTACK_HEIGHTCOUNT = 1;//縦の画像枚数
 	constexpr auto ANIMESPEED_MIDDLEATTACK = 5;	//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto MIDDLEATTACK_ANIMEFRAME = MIDDLEATTACK_ANIMEMAX * ANIMESPEED_MIDDLEATTACK; //アニメーションフレーム
-	constexpr auto MIDDLEATTACK_ALLFRAME = 30;	//中段攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto MIDDLEATTACK_ALLFRAME = 40;	//中段攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	constexpr auto MIDDLEATTACK_BEGINFRAME = 15;//中段攻撃判定発生フレーム
-	constexpr auto MIDDLEATTACK_ENDFRAME = 25;	//中段攻撃判定終了フレーム(発生してからのフレーム数）
+	constexpr auto MIDDLEATTACK_ENDFRAME = 20;	//中段攻撃判定終了フレーム(発生してからのフレーム数）
 	//下段攻撃
 	constexpr auto LOWATTACK_GRAPHNAME = "res/Samurai/S_LowAttack.png";	//画像ファイル名
-	constexpr auto LOWATTACK_ANIMEMAX = 7;		//全ての画像枚数
-	constexpr auto LOWATTACK_WIDTHCOUNT = 7;	//横の画像枚数
+	constexpr auto LOWATTACK_ANIMEMAX = 10;		//全ての画像枚数
+	constexpr auto LOWATTACK_WIDTHCOUNT = 10;	//横の画像枚数
 	constexpr auto LOWATTACK_HEIGHTCOUNT = 1;	//縦の画像枚数
 	constexpr auto ANIMESPEED_LOWATTACK = 4;	//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto LOWATTACK_ANIMEFRAME = LOWATTACK_ANIMEMAX * ANIMESPEED_LOWATTACK; //アニメーションフレーム
-	constexpr auto LOWATTACK_ALLFRAME = 28;		//下段攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto LOWATTACK_ALLFRAME = 40;		//下段攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	constexpr auto LOWATTACK_BEGINFRAME = 20;	//下段攻撃判定発生フレーム
-	constexpr auto LOWATTACK_ENDFRAME = 28;		//下段攻撃判定終了フレーム(発生してからのフレーム数)
+	constexpr auto LOWATTACK_ENDFRAME = 16;		//下段攻撃判定終了フレーム(発生してからのフレーム数)
 	//蹴り
 	constexpr auto KICK_GRAPHNAME = "res/Samurai/S_Kick.png";		//画像ファイル名
-	constexpr auto KICK_ANIMEMAX = 4;			//全ての画像枚数
-	constexpr auto KICK_WIDTHCOUNT = 4;			//横の画像枚数
+	constexpr auto KICK_ANIMEMAX = 6;			//全ての画像枚数
+	constexpr auto KICK_WIDTHCOUNT = 6;			//横の画像枚数
 	constexpr auto KICK_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_KICK = 7;			//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_KICK = 6;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto KICK_ANIMEFRAME = KICK_ANIMEMAX * ANIMESPEED_KICK; //アニメーションフレーム
-	constexpr auto KICK_ALLFRAME = 28;			//蹴り全フレーム(全フレームーアニメーションフレーム＝猶予時間)
-	constexpr auto KICK_BEGINFRAME = 14;		//蹴り判定発生フレーム
-	constexpr auto KICK_ENDFRAME = 21;			//蹴り判定終了フレーム(発生してからのフレーム数)
+	constexpr auto KICK_ALLFRAME = 36;			//蹴り全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto KICK_BEGINFRAME = 18;		//蹴り判定発生フレーム
+	constexpr auto KICK_ENDFRAME = 12;			//蹴り判定終了フレーム(発生してからのフレーム数)
 	//居合
 	constexpr auto IAI_GRAPHNAME = "res/Samurai/S_Iai.png";			//画像ファイル名
-	constexpr auto IAI_ANIMEMAX = 11;			//全ての画像枚数
-	constexpr auto IAI_WIDTHCOUNT = 11;			//横の画像枚数
+	constexpr auto IAI_ANIMEMAX = 13;			//全ての画像枚数
+	constexpr auto IAI_WIDTHCOUNT = 13;			//横の画像枚数
 	constexpr auto IAI_HEIGHTCOUNT = 1;			//縦の画像枚数
 	constexpr auto ANIMESPEED_IAI = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto IAI_ANIMEFRAME = IAI_ANIMEMAX * ANIMESPEED_IAI; //アニメーションフレーム
-	constexpr auto IAI_ALLFRAME = 55;			//居合全フレーム(全フレームーアニメーションフレーム＝猶予時間)
-	constexpr auto IAI_BEGINFRAME = 30;			//居合判定発生フレーム
-	constexpr auto IAI_ENDFRAME =55;			//居合判定終了フレーム(発生してからのフレーム数)
-	constexpr auto IAI_MOVEMENT = 40;			//居合時の1フレームあたりの移動量
+	constexpr auto IAI_ALLFRAME = 67;			//居合全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto IAI_BEGINFRAME = 40;			//居合判定発生フレーム
+	constexpr auto IAI_ENDFRAME =15;			//居合判定終了フレーム(発生してからのフレーム数)
+	constexpr auto IAI_MOVEMENT = 60;			//居合時の1フレームあたりの移動量
 	//スウェイ
 	constexpr auto SWAY_GRAPHNAME = "res/Samurai/S_Sway.png";		//画像ファイル名
 	constexpr auto SWAY_ANIMEMAX = 4;			//全ての画像枚数
@@ -161,14 +161,15 @@ namespace PInfo {
 	constexpr auto ANIMESPEED_SWAY = 6;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto SWAY_ALLFRAME = 24;			//スウェイ全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	constexpr auto SWAY_MOVEFRAME = 20;			//スウェイ時の移動フレーム
-	constexpr auto SWAY_MOVEMENT = 10;			//スウェイ時の1フレームあたりの移動量
+	constexpr auto SWAY_MOVEMENT = 15;			//スウェイ時の1フレームあたりの移動量
 	//被ダメ
 	constexpr auto DAMAGE_GRAPHNAME = "res/Samurai/S_Damage.png";	//画像ファイル名
 	constexpr auto DAMAGE_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto DAMAGE_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto DAMAGE_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_DAMAGE = 5;		//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto DAMAGE_ALLFRAME = 20;		//被ダメ全フレーム
+	constexpr auto DAMAGE_ANIMEFRAME = DAMAGE_ANIMEMAX * ANIMESPEED_DAMAGE; //アニメーションフレーム
+	constexpr auto DAMAGE_ALLFRAME = 25;		//被ダメ全フレーム
 	//無敵
 	constexpr auto ANIMESPEED_STAR = 8;			//無敵状態時の点滅速度 
 	constexpr auto STAR_ALPHA = 128;			//無敵状態時の透明度
@@ -176,12 +177,12 @@ namespace PInfo {
 
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Samurai/S_Dead.png";		//画像ファイル名
-	constexpr auto DEAD_ANIMEMAX = 6;			//全ての画像枚数
-	constexpr auto DEAD_WIDTHCOUNT = 6;			//横の画像枚数
+	constexpr auto DEAD_ANIMEMAX = 8;			//全ての画像枚数
+	constexpr auto DEAD_WIDTHCOUNT = 8;			//横の画像枚数
 	constexpr auto DEAD_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_DEAD = 10;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_DEAD = 8;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto DEAD_ANIMEFRAME = DEAD_ANIMEMAX * ANIMESPEED_DEAD; //アニメーションフレーム
-	constexpr auto DEAD_ALLFRAME = 120;			//死亡全フレーム
+	constexpr auto DEAD_ALLFRAME = 128;			//死亡全フレーム
 	
 	/*----------SE関係----------*/
 	constexpr auto WALK_SE = "se/Footstep.wav";			//移動

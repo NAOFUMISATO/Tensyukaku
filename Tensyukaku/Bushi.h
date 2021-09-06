@@ -51,7 +51,7 @@ namespace BInfo {
 	/*----------パラメーター関係----------*/
 	constexpr auto LIFE_MAX = 3;					//体力
 	constexpr auto SPEED = 2;					//移動速度
-	
+	constexpr auto PLAYER_IAI_MAX = 6;			//プレイヤーの居合最大値
 	/*----------画像読み込み&アニメーション&判定フレーム関係----------*/
 	//共通
 	constexpr auto GRAPH_WIDTH = 810;			//1枚当たりの画像サイズ（横）

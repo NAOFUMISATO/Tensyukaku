@@ -156,6 +156,7 @@
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="Flame.cpp" />
+    <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="Kunai.cpp" />
     <ClCompile Include="OutGameParticle.cpp" />
     <ClCompile Include="PlayerParticle.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="Flame.h" />
+    <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="Kunai.h" />
     <ClInclude Include="OutGameParticle.h" />
     <ClInclude Include="PlayerParticle.h" />

@@ -13,7 +13,7 @@ using namespace StInfo;
 void Player::Idle(Game& g) {
 	_GrHandle = _GrAll["Idle"] [_Anime["Idle"]];
 	_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
-	if (g.GetTrg() & PAD_INPUT_6) {
+	if (g.GetTrg() & PAD_INPUT_6&&_Iai_Gauge==IAI_MAX) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
 		PlaySoundMem(_Se["SwordIn"], DX_PLAYTYPE_BACK, true);
@@ -86,7 +86,7 @@ void Player::Move(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / _Move_AnimeSpeed) % MOVE_ANIMEMAX;
 	
-	if (g.GetTrg() & PAD_INPUT_6) {
+	if (g.GetTrg() & PAD_INPUT_6 && _Iai_Gauge == IAI_MAX) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
 		PlaySoundMem(_Se["SwordIn"], DX_PLAYTYPE_BACK, true);
@@ -434,8 +434,10 @@ void Player::Kick(Game& g) {
 void Player::Iai(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Iai"][_Anime["Iai"]];
-	_Anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
-	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME >= frame) {
+	if (frame < IAI_ANIMEFRAME) {
+		_Anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
+	}
+	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME-15 >= frame) {
 		if (_isFlip == false) {
 			_x -= IAI_MOVEMENT;
 			g.GetChip()->IsHit(*this, -1, 0);
@@ -535,6 +537,7 @@ void Player::Iai(Game& g) {
 		}
 	}
 	if (frame == IAI_ALLFRAME) {
+		_Iai_Gauge = 0;
 		_State = PLAYERSTATE::IDLE;
 	}
 }
@@ -584,7 +587,9 @@ void Player::Sway(Game& g){
 void Player::Damage(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
-	_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	if (frame < DAMAGE_ANIMEFRAME) {
+		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	}
 	if (frame == DAMAGE_ALLFRAME) {
 		_Star_Cnt = _Cnt;
 		if (_Life > 0) {

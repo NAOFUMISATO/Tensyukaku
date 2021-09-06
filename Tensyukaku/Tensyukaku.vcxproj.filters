@@ -234,6 +234,9 @@
     <ClCompile Include="OutGameParticle.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
+    <ClCompile Include="IaiGauge.cpp">
+      <Filter>ソース ファイル\Object\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -352,6 +355,9 @@
     </ClInclude>
     <ClInclude Include="OutGameParticle.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="IaiGauge.h">
+      <Filter>ヘッダー ファイル\Object\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

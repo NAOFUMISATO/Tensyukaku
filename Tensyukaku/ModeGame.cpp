@@ -12,6 +12,7 @@
 #include "EnemySpawn.h"
 #include <memory>
 #include "PlayerHp.h"
+#include "IaiGauge.h"
 
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
@@ -50,7 +51,7 @@ bool ModeGame::Process(Game& g) {
 		_gimikplacement->Process(g);
 		_enemyspawn->Process(g);
 		g.GetOS()->Add(new Player);
-		g.GetOS()->Add(new PlayerHp);
+
 		}
 		
 	}

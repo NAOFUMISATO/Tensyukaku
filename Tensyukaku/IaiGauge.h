@@ -1,14 +1,13 @@
 #pragma once
 #include "ObjectBase.h"
 
-class PlayerHp :public ObjectBase {
+class IaiGauge :public ObjectBase {
 public:
-	PlayerHp(int hp);
-	~PlayerHp();
+	IaiGauge();
+	~IaiGauge();
+
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::UI; }
 	void Init()override;
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
-	void Delete(Game& g)override;
 };
-

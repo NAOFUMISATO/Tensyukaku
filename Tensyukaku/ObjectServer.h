@@ -12,9 +12,8 @@ public:
 
 	void	Clear();
 	void	Add(ObjectBase* obj);
-	void	OBAdd(ObjectBase* obj);
+	void	BAdd(ObjectBase* obj);
 	void	Del(ObjectBase* obj);
-
 	void	Process(Game& g);
 	void	Draw(Game& g);
 
@@ -22,11 +21,13 @@ public:
 
 private:
 	void	AddListObjects();
+	void	BAddListObjects();
 	void	DelListObjects();
 
 protected:
 	std::vector<ObjectBase*>	_vObject;	// ObjectBaseを登録するリスト
 	std::vector<ObjectBase*>	_vAdd;	// 追加するオブジェクトリスト
+	std::vector<ObjectBase*>	_vBAdd;	// 先頭に追加するオブジェクトリスト
 	std::vector<ObjectBase*>	_vDel;	// 削除するオブジェクトリスト
 
 

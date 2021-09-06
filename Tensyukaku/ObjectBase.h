@@ -12,6 +12,10 @@ class ObjectBase {
 public:
 	ObjectBase();
 	~ObjectBase();
+	//オブジェクトの状態列挙
+	enum class OBJECTSTATE {
+		ALLIBE,DEAD
+	};
 	//オブジェクトの種類列挙
 	enum class OBJECTTYPE {
 		TITLELOGO,GAMESTART, EXPLAIN,GAMEEND, CURSOR,
@@ -39,11 +43,13 @@ public:
 	int		GetHitX() { return _hit_x; }
 	int		GetHitY() { return _hit_y; }
 	int		GetHp() { return _Life; }
+	int		GetGauge() { return _Iai_Gauge; }
 	bool	GetFlip() { return _isFlip; }
 	HitBox	GetHB() { return { _x,_y,_gx,_gy,_hit_x,_hit_y,_hit_w,_hit_h }; }
 	Vector2 GetPosition() { return _Position; }		//座標の取得
+	bool isDead() const { return _OState == OBJECTSTATE::DEAD; }
 
-
+	void	SetGauge(int ig) {_Iai_Gauge=ig; }
 	void	SetPosition(int x, int y) { _x = x; _y = y; }
 	void	SetX(int x) { _x = x; }
 	void	SetY(int y) { _y = y; }
@@ -52,6 +58,7 @@ public:
 	
 protected:
 	Vector2 _Position;	// 位置ベクトル
+	OBJECTSTATE _OState;// オブジェクトの状態列挙変数
 	int		_GrHandle;	// 画像ハンドル
 	std::unordered_map<std::string, std::vector<int>> _GrAll;	//全ての画像ハンドルマップ
 	std::unordered_map<std::string, int> _Anime;				//アニメーションマップ
@@ -63,6 +70,7 @@ protected:
 	int		_Spd;		// 移動速度
 	bool	_isFlip;	//　反転判定
 	int		_Alpha;		//　透明度
+	int		_Iai_Gauge;	// 居合ゲージ
 	int		_hit_x, _hit_y;				//描画点から左上座標までの差分
 	int		_hit_w, _hit_h;				//当たり判定の幅
 	std::pair <int, int>_hit_judge;		//当たり判定用変数

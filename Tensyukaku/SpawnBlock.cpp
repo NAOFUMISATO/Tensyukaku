@@ -116,7 +116,7 @@ void Spawn2A::Process(Game& g) {
 				Delete(g);
 				auto bu1 = new Bushi(SPAWN2A_BUSHI1_X, SPAWN2A_BUSHI1_Y, SPAWN2A_BUSHI1_FLIP);
 				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN2A_BUSHI1_X, SPAWN2A_BUSHI2_Y, SPAWN2A_BUSHI2_FLIP);
+				auto bu2 = new Bushi(SPAWN2A_BUSHI2_X, SPAWN2A_BUSHI2_Y, SPAWN2A_BUSHI2_FLIP);
 				g.GetOS()->Add(bu2);
 				auto ni1 = new Ninja(SPAWN2A_NINJA1_X, SPAWN2A_NINJA1_Y, SPAWN2A_NINJA1_FLIP, SPAWN2A_NINJA1_KUNAI);
 				g.GetOS()->Add(ni1);

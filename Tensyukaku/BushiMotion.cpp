@@ -84,6 +84,19 @@ void Bushi::Patrol(Game& g) {
 				_Life = 0;
 				_Action_Cnt = _Cnt;
 				_State =ENEMYSTATE::DEAD;
+				//居合ゲージの増加
+				//居合ゲージの増加
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+				{
+					// iteはプレイヤか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+					{
+						auto ig = (*ite)->GetGauge();
+						if (ig < PLAYER_IAI_MAX) {
+							(*ite)->SetGauge(ig += 1);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -207,6 +220,19 @@ void Bushi::Coming(Game& g) {
 				_Life -= 3;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
+				//居合ゲージの増加
+				//居合ゲージの増加
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+				{
+					// iteはプレイヤか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+					{
+						auto ig = (*ite)->GetGauge();
+						if (ig < PLAYER_IAI_MAX) {
+							(*ite)->SetGauge(ig += 1);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -326,6 +352,18 @@ void Bushi::Attack(Game& g) {
 				_Life -= 3;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
+				//居合ゲージの増加
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+				{
+					// iteはプレイヤか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+					{
+						auto ig = (*ite)->GetGauge();
+						if (ig < PLAYER_IAI_MAX) {
+							(*ite)->SetGauge(ig += 1);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -393,7 +431,7 @@ void Bushi::Dead(Game& g) {
 	if (frame >= DEAD_ANIMEFRAME && DEAD_ALLFRAME > frame) {
 		_Alpha -= FADEOUT_SPEED;
 	}
-	if (frame == DEAD_ALLFRAME) {
+	if (frame == DEAD_ALLFRAME) {	
 		Delete(g);
 	}
 }

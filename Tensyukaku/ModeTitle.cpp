@@ -101,19 +101,19 @@ bool ModeTitle::Process(Game& g) {
 		if (frame == TITLE_FADEINENDFRAME) {
 			_Pal = 255;
 			auto tl = new TitleLogo();
-			g.GetOS()->OBAdd(tl);
+			g.GetOS()->BAdd(tl);
 		}
 		if (frame == GAMESTART_APPEARFRAME) {
 			auto gs = new GameStart();
-			g.GetOS()->OBAdd(gs);
+			g.GetOS()->BAdd(gs);
 		}
 		if (frame == EXPLAIN_APPEARFRAME) {
 			auto ex = new Explain();
-			g.GetOS()->OBAdd(ex);
+			g.GetOS()->BAdd(ex);
 		}
 		if (frame == GAMEEND_APPEARFRAME) {
 			auto ge = new GameEnd();
-			g.GetOS()->OBAdd(ge);
+			g.GetOS()->BAdd(ge);
 		}
 		break;
 	}
