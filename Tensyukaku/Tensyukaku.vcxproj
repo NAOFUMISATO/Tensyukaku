@@ -149,6 +149,8 @@
   <ItemGroup>
     <ClCompile Include="Andon.cpp" />
     <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="BossMapChip.cpp" />
+    <ClCompile Include="BossStair.cpp" />
     <ClCompile Include="Bushi.cpp" />
     <ClCompile Include="BushiMotion.cpp" />
     <ClCompile Include="BushiMotionCollision.cpp" />
@@ -158,7 +160,9 @@
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="Kunai.cpp" />
+    <ClCompile Include="ModeBossGame.cpp" />
     <ClCompile Include="OutGameParticle.cpp" />
+    <ClCompile Include="OverlayBlack.cpp" />
     <ClCompile Include="PlayerParticle.cpp" />
     <ClCompile Include="Poison.cpp" />
     <ClCompile Include="PoisonNinja.cpp" />
@@ -195,6 +199,8 @@
   <ItemGroup>
     <ClInclude Include="Andon.h" />
     <ClInclude Include="BackGround.h" />
+    <ClInclude Include="BossMapChip.h" />
+    <ClInclude Include="BossStair.h" />
     <ClInclude Include="Bushi.h" />
     <ClInclude Include="BushiMotionCollision.h" />
     <ClInclude Include="Cursor.h" />
@@ -203,7 +209,9 @@
     <ClInclude Include="Flame.h" />
     <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="Kunai.h" />
+    <ClInclude Include="ModeBossGame.h" />
     <ClInclude Include="OutGameParticle.h" />
+    <ClInclude Include="OverlayBlack.h" />
     <ClInclude Include="PlayerParticle.h" />
     <ClInclude Include="Poison.h" />
     <ClInclude Include="PoisonNinja.h" />

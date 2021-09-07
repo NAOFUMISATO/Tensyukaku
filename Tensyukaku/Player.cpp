@@ -133,6 +133,14 @@ void Player::Process(Game& g)
 	case PLAYERSTATE::STAIRUP:
 		StairUp(g);
 		break;
+		//ボス階段位置調整状態
+	case PLAYERSTATE::BOSSSTAIRMOVE:
+		BossStairMove(g);
+		break;
+		//ボス階段上昇状態
+	case PLAYERSTATE::BOSSSTAIRUP:
+		BossStairUp(g);
+		break;
 	}
 	
 	// 主人公位置からカメラ座標決定

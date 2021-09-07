@@ -6,6 +6,7 @@
 #include "ObjectBase.h"
 #include "ModeGame.h"
 #include "Math.h"
+#include "OverlayBlack.h"
 using namespace CParInfo;
 Cursor::Cursor():_State(CURSOLSTATE::NOHIT){
 	Init();
@@ -26,6 +27,8 @@ void Cursor::Init() {
 	_Position = { 960,540 };
 	_velocityDir = { 0,0 };
 	_colortype = 2;
+	_Cnt = 121;
+	_Input_Flag=false;
 }
 
 void Cursor::Process(Game& g) {
@@ -71,13 +74,20 @@ void Cursor::Process(Game& g) {
 		}
 		break;
 	case CURSOLSTATE::STARTHIT:
-		if (g.GetTrg() & PAD_INPUT_1)
+		if (g.GetTrg() & PAD_INPUT_1&&_Input_Flag ==false)
 		{
+			_Input_Flag =true;
+			_Action_Cnt = _Cnt;
+			auto ol = new OverlayBlack();
+			ol->FadeSetting(120, 240, 360, 2);
+			g.GetMS()->Add(ol,99999, "OverlayBlack");
+		}
+		if (_Cnt - _Action_Cnt == 120) {
+			_Input_Flag =false;
 			// タイトルモードを削除
 			g.GetMS()->Del(g.GetMS()->Get("Title"));
-
 			// ゲームモードを追加
-			ModeGame* mg = new ModeGame();
+			auto mg = new ModeGame();
 			g.GetMS()->Add(mg, 0, "Game");
 		}
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -133,45 +143,47 @@ void Cursor::Process(Game& g) {
 	}
 	auto xbuf = g.GetXBuf();
 	auto ybuf = g.GetYBuf();
-	if (g.GetKey() & PAD_INPUT_RIGHT) {
-		_velocityDir.x = 1;   // (3-3)右入力あり
+	if (_Input_Flag == false) {
+		if (g.GetKey() & PAD_INPUT_RIGHT) {
+			_velocityDir.x = 1;   // (3-3)右入力あり
+		}
+		else if (g.GetKey() & PAD_INPUT_LEFT) {
+			_velocityDir.x = -1;  // (3-4)左入力あり
+		}
+		else if (g.GetKey() & PAD_INPUT_UP) {
+			_velocityDir.y = -1;  // (3-4)上入力あり
+		}
+		else if (g.GetKey() & PAD_INPUT_DOWN) {
+			_velocityDir.y = 1;  // (3-4)下入力あり
+		}
+		else {
+			_velocityDir.x = 0;   // (3-5.)左右入力なし
+			_velocityDir.y = 0;   // (3-5.)上下入力なし
+		}
+		if (_velocityDir.x != 0 && _velocityDir.y != 0) {
+			// (4-5)入力あれば正規化して単位ベクトルにする
+			_velocityDir.Normalize();
+		}
+		if (xbuf == 0 && ybuf == 0) {
+			_velocityDir = { 0, 0 };  // 入力なし
+		}
+		else {
+			// レバーの倒し度合いをベクトルにする
+			_velocityDir = { static_cast<float>(xbuf), static_cast<float>(ybuf) };
+			// レバーの倒し度合いで速度を変える
+			auto len = _velocityDir.Length();
+			auto spd = static_cast<double>(_Spd);
+			spd = 3 * len / 1000;
+			// 正規化して単位ベクトルにする
+			_velocityDir.Normalize();
+		}
+		auto vd = _velocityDir * _Spd;
+		auto positionX = static_cast<int>(_Position.x);
+		auto positionY = static_cast<int>(_Position.y);
+		_Position += vd;
+		_x = positionX;
+		_y = positionY;
 	}
-	else if (g.GetKey() & PAD_INPUT_LEFT) {
-		_velocityDir.x = -1;  // (3-4)左入力あり
-	}
-	else if (g.GetKey() & PAD_INPUT_UP) {
-		_velocityDir.y = -1;  // (3-4)上入力あり
-	}
-	else if (g.GetKey() & PAD_INPUT_DOWN) {
-		_velocityDir.y = 1;  // (3-4)下入力あり
-	}
-	else {
-		_velocityDir.x = 0;   // (3-5.)左右入力なし
-		_velocityDir.y = 0;   // (3-5.)上下入力なし
-	}
-	if (_velocityDir.x != 0 && _velocityDir.y != 0) {
-		// (4-5)入力あれば正規化して単位ベクトルにする
-		_velocityDir.Normalize();
-	}
-	if (xbuf == 0 && ybuf == 0) {
-		_velocityDir = { 0, 0 };  // 入力なし
-	}
-	else {
-		// レバーの倒し度合いをベクトルにする
-		_velocityDir = { static_cast<float>(xbuf), static_cast<float>(ybuf) };
-		// レバーの倒し度合いで速度を変える
-		auto len = _velocityDir.Length();
-		auto spd = static_cast<double>(_Spd);
-		spd = 3 * len / 1000;
-		// 正規化して単位ベクトルにする
-		_velocityDir.Normalize();
-	}
-	auto vd = _velocityDir * _Spd;
-	auto positionX = static_cast<int>(_Position.x);
-	auto positionY = static_cast<int>(_Position.y);
-	_Position += vd;
-	_x = positionX;
-	_y = positionY;
 }
 
 void Cursor::Draw(Game& g) {

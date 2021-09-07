@@ -1,0 +1,15 @@
+{ "columns":13,
+ "image":"resourse\/ST_Floor01.png",
+ "imageheight":520,
+ "imagewidth":520,
+ "margin":0,
+ "name":"Tensyukaku",
+ "spacing":0,
+ "tilecount":169,
+ "tiledversion":"1.7.2",
+ "tileheight":40,
+ "tilewidth":40,
+ "transparentcolor":"#ff00ff",
+ "type":"tileset",
+ "version":"1.6"
+}

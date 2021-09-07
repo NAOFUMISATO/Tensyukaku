@@ -10,7 +10,7 @@
 TitleLogo::TitleLogo() {
 	Init();
 	_GrAll["TitleLogo"].resize(30);
-	ResourceServer::LoadDivGraph("res/Mode/TitleLogo.png",30,30,1,1016,330, _GrAll["TitleLogo"].data());
+	ResourceServer::LoadDivGraph("res/Mode/TitleLogo.png",30,30,1,1000,320, _GrAll["TitleLogo"].data());
 }
 TitleLogo::~TitleLogo() {
 }
@@ -29,8 +29,8 @@ void TitleLogo::Process(Game& g) {
 	ObjectBase::Process(g);
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["TitleLogo"][_Anime["TitleLogo"]];
-	if (frame < 60) {
-		_Anime["TitleLogo"]= ((frame) / 2) % 30;
+	if (frame < 90) {
+		_Anime["TitleLogo"]= ((frame) / 3) % 30;
 	}
 }
 

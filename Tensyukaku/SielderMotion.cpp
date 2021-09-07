@@ -82,6 +82,18 @@ void Shielder::Patrol(Game& g) {
 					_Life--;
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -100,6 +112,18 @@ void Shielder::Patrol(Game& g) {
 					_Life--;
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -239,6 +263,18 @@ void Shielder::Coming(Game& g) {
 					_Life--;
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -257,6 +293,18 @@ void Shielder::Coming(Game& g) {
 					_Life--;
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -371,6 +419,18 @@ void Shielder::Attack(Game& g) {
 					_Life--;
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -389,6 +449,18 @@ void Shielder::Attack(Game& g) {
 					_Life--;
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
 				}
 			}
 		}

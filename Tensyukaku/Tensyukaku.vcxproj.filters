@@ -237,6 +237,18 @@
     <ClCompile Include="IaiGauge.cpp">
       <Filter>ソース ファイル\Object\UI</Filter>
     </ClCompile>
+    <ClCompile Include="OverlayBlack.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="BossStair.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeBossGame.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="BossMapChip.cpp">
+      <Filter>ソース ファイル\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -358,6 +370,18 @@
     </ClInclude>
     <ClInclude Include="IaiGauge.h">
       <Filter>ヘッダー ファイル\Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="OverlayBlack.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="BossStair.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeBossGame.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="BossMapChip.h">
+      <Filter>ヘッダー ファイル\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

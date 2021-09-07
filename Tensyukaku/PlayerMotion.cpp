@@ -6,6 +6,7 @@
 #include "PlayerParticle.h"
 #include "Stair.h"
 #include "EnemyBase.h"
+#include "OverlayBlack.h"
 using namespace PInfo;
 using namespace PParInfo;
 using namespace StInfo;
@@ -76,6 +77,23 @@ void Player::Idle(Game& g) {
 					_Stair_x = (*ite)->GetX();
 					_StairFlip_Flag = (*ite)->GetFlip();
 					_State = PLAYERSTATE::STAIRMOVE;
+				}
+			}
+		}
+	}
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは階段オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::BOSSSTAIR)
+		{
+			// プレイヤーとその階段の当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
+					_Player_y = _y;
+					_Stair_x = (*ite)->GetX();
+					_StairFlip_Flag = (*ite)->GetFlip();
+					_State = PLAYERSTATE::BOSSSTAIRMOVE;
 				}
 			}
 		}
@@ -173,7 +191,6 @@ void Player::Move(Game& g) {
 				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life--;
-				_Action_Cnt = _Cnt;
 				_State = PLAYERSTATE::DAMAGE;
 				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
@@ -192,6 +209,23 @@ void Player::Move(Game& g) {
 					_Stair_x = (*ite)->GetX();
 					_StairFlip_Flag = (*ite)->GetFlip();
 					_State = PLAYERSTATE::STAIRMOVE;
+				}
+			}
+		}
+	}
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは階段オブジェクトか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::BOSSSTAIR)
+		{
+			// プレイヤーとその階段の当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
+					_Player_y = _y;
+					_Stair_x = (*ite)->GetX();
+					_StairFlip_Flag = (*ite)->GetFlip();
+					_State = PLAYERSTATE::BOSSSTAIRMOVE;
 				}
 			}
 		}
@@ -661,6 +695,64 @@ void Player::StairUp(Game& g) {
 	auto vd = _velocityDir * _Stairup_Spd;
 	auto positionX = static_cast<int>( _Position.x);
 	auto positionY = static_cast<int>( _Position.y);
+	_Position += vd;
+	_x = positionX;
+	_y = positionY;
+	auto upheight = _y - _Player_y;
+	if (upheight == -StInfo::COLLISION_HEIGHT) {
+		_State = PLAYERSTATE::IDLE;
+	}
+}
+
+/*---------ボス階段位置調整---------*/
+void Player::BossStairMove(Game& g) {
+	_GrHandle = _GrAll["Move"][_Anime["Move"]];
+	_Anime["Move"] = (_Cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
+	if (_StairFlip_Flag == false) {
+		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
+			_isFlip = false;
+			_x -= STAIRMOVE_SPEED;
+		}
+		if (_x <= _Stair_x + StInfo::POSITION_HITX) {
+			_isFlip = true;
+			_Position = { static_cast<double>(_x),static_cast<double>(_y) };
+			auto ol = new OverlayBlack();
+			ol->FadeSetting(120, 240, 360, 2);
+			g.GetMS()->Add(ol, 99999, "OverlayBlack");
+			_State = PLAYERSTATE::BOSSSTAIRUP;
+		}
+	}
+	if (_StairFlip_Flag == true) {
+		if (_x <= _Stair_x + StInfo::POSITION_HITX + StInfo::COLLISION_WIDTH) {
+			_isFlip = true;
+			_x += STAIRMOVE_SPEED;
+		}
+		if (_x >= _Stair_x + StInfo::POSITION_HITX + StInfo::COLLISION_WIDTH) {
+			_isFlip = false;
+			_Position = { static_cast<double>(_x),static_cast<double>(_y) };
+			auto ol = new OverlayBlack();
+			ol->FadeSetting(120, 240, 360, 2);
+			g.GetMS()->Add(ol, 99999, "OverlayBlack");
+			_State = PLAYERSTATE::BOSSSTAIRUP;
+		}
+	}
+}
+
+/*---------ボス階段上昇------------*/
+void Player::BossStairUp(Game& g) {
+	_GrHandle = _GrAll["Move"][_Anime["Move"]];
+	_Anime["Move"] = (_Cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
+	_Stairup_Spd = 3.0f;
+	if (_StairFlip_Flag == false) {
+		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
+	}
+	if (_StairFlip_Flag == true) {
+		_angle = 4.53756055185257f;/*Math::ToRadians(260)*/
+	}
+	_velocityDir = { std::cos(_angle), std::sin(_angle) };
+	auto vd = _velocityDir * _Stairup_Spd;
+	auto positionX = static_cast<int>(_Position.x);
+	auto positionY = static_cast<int>(_Position.y);
 	_Position += vd;
 	_x = positionX;
 	_y = positionY;

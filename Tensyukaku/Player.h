@@ -17,7 +17,7 @@ public:
 
 private:
 	//プレイヤーの状態列挙
-	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD,STAIRUP,STAIRMOVE};
+	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD,STAIRUP,STAIRMOVE,BOSSSTAIRMOVE,BOSSSTAIRUP};
 	
 	void	Idle(Game& g);			//待機状態時の処理
 	void	Move(Game& g);			//移動時の処理
@@ -30,6 +30,8 @@ private:
 	void	Dead(Game& g);			//死亡時の処理
 	void	StairMove(Game& g);		//階段位置調整の処理
 	void	StairUp(Game& g);		//階段上昇の処理
+	void	BossStairMove(Game& g);	//ボス階段位置調整の処理
+	void	BossStairUp(Game& g);	//ボス階段上昇時の処理
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
@@ -144,12 +146,12 @@ namespace PInfo {
 	constexpr auto KICK_ENDFRAME = 12;			//蹴り判定終了フレーム(発生してからのフレーム数)
 	//居合
 	constexpr auto IAI_GRAPHNAME = "res/Samurai/S_Iai.png";			//画像ファイル名
-	constexpr auto IAI_ANIMEMAX = 13;			//全ての画像枚数
-	constexpr auto IAI_WIDTHCOUNT = 13;			//横の画像枚数
+	constexpr auto IAI_ANIMEMAX = 14;			//全ての画像枚数
+	constexpr auto IAI_WIDTHCOUNT = 14;			//横の画像枚数
 	constexpr auto IAI_HEIGHTCOUNT = 1;			//縦の画像枚数
 	constexpr auto ANIMESPEED_IAI = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto IAI_ANIMEFRAME = IAI_ANIMEMAX * ANIMESPEED_IAI; //アニメーションフレーム
-	constexpr auto IAI_ALLFRAME = 67;			//居合全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto IAI_ALLFRAME = 73;			//居合全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	constexpr auto IAI_BEGINFRAME = 40;			//居合判定発生フレーム
 	constexpr auto IAI_ENDFRAME =15;			//居合判定終了フレーム(発生してからのフレーム数)
 	constexpr auto IAI_MOVEMENT = 60;			//居合時の1フレームあたりの移動量

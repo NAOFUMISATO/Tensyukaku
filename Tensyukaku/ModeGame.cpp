@@ -18,6 +18,7 @@ bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_enemyspawn = new EnemySpawn(g);
 	_gimikplacement = new GimikPlacement(g);
+	g.GetOS()->Add(new Player);
 	_Apeear_Flag = false;
 	_stopObjProcess = false;
 	
@@ -50,8 +51,6 @@ bool ModeGame::Process(Game& g) {
 		_Apeear_Flag = true;
 		_gimikplacement->Process(g);
 		_enemyspawn->Process(g);
-		g.GetOS()->Add(new Player);
-
 		}
 		
 	}

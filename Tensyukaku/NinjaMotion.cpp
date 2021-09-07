@@ -93,6 +93,18 @@ void Ninja::Patrol(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
+				//居合ゲージの増加
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+				{
+					// iteはプレイヤか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+					{
+						auto ig = (*ite)->GetGauge();
+						if (ig < PLAYER_IAI_MAX) {
+							(*ite)->SetGauge(ig += 1);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -214,6 +226,18 @@ void Ninja::Coming(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
+				//居合ゲージの増加
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+				{
+					// iteはプレイヤか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+					{
+						auto ig = (*ite)->GetGauge();
+						if (ig < PLAYER_IAI_MAX) {
+							(*ite)->SetGauge(ig += 1);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -312,6 +336,18 @@ void Ninja::Attack(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
+				//居合ゲージの増加
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+				{
+					// iteはプレイヤか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+					{
+						auto ig = (*ite)->GetGauge();
+						if (ig < PLAYER_IAI_MAX) {
+							(*ite)->SetGauge(ig += 1);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -420,6 +456,18 @@ void Ninja::Throw(Game& g) {
 				_Life--;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
+				//居合ゲージの増加
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+				{
+					// iteはプレイヤか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+					{
+						auto ig = (*ite)->GetGauge();
+						if (ig < PLAYER_IAI_MAX) {
+							(*ite)->SetGauge(ig += 1);
+						}
+					}
+				}
 			}
 		}
 	}

@@ -221,7 +221,6 @@ void Bushi::Coming(Game& g) {
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
-				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 				{
 					// iteはプレイヤか？

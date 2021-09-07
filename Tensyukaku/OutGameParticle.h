@@ -20,7 +20,7 @@ namespace CParInfo {
 	constexpr auto CURSOR_PARTICLE1_GRAPH = "res/Particle/Cursor.png";				//画像ファイル名
 	constexpr auto CURSOR_PARTICLE1_POSITIONX = 0.0;								//基準点(足下)から描画点へのX座標差分
 	constexpr auto CURSOR_PARTICLE1_POSITIONY = -10.0;								//基準点(足下)から描画点へのY座標差分
-	constexpr auto CURSOR_PARTICLE1_BLENDMODE = DX_BLENDMODE_ADD;					//ブレンドモード設定
+	constexpr auto CURSOR_PARTICLE1_BLENDMODE = DX_BLENDMODE_PMA_ADD;					//ブレンドモード設定
 	constexpr auto CURSOR_PARTICLE1_PAL = 50;										//ブレンド値
 	constexpr auto CURSOR_PARTICLE1_SCALE = 1.0;									//拡縮値
 	constexpr auto CURSOR_PARTICLE1_ANGLE = 0.0;									//描画角度(3.14=180°)
