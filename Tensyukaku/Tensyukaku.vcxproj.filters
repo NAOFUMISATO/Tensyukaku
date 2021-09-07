@@ -103,6 +103,12 @@
     <Filter Include="ソース ファイル\Object\Outgame">
       <UniqueIdentifier>{5e3df5e7-2337-4c07-a3d2-5e2b9247b479}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Event">
+      <UniqueIdentifier>{e5a811ca-d945-41ae-a29e-687f6b5528a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Event">
+      <UniqueIdentifier>{c4c004a9-0d53-407f-b405-54d1094f102e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -243,11 +249,14 @@
     <ClCompile Include="BossStair.cpp">
       <Filter>ソース ファイル\Object\Gimik</Filter>
     </ClCompile>
-    <ClCompile Include="ModeBossGame.cpp">
-      <Filter>ソース ファイル\Mode</Filter>
+    <ClCompile Include="RecoveryBlock.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
-    <ClCompile Include="BossMapChip.cpp">
-      <Filter>ソース ファイル\Map</Filter>
+    <ClCompile Include="EventBlockBase.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHappen.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -377,11 +386,14 @@
     <ClInclude Include="BossStair.h">
       <Filter>ヘッダー ファイル\Object\Gimik</Filter>
     </ClInclude>
-    <ClInclude Include="ModeBossGame.h">
-      <Filter>ヘッダー ファイル\Mode</Filter>
+    <ClInclude Include="EventBlockBase.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
     </ClInclude>
-    <ClInclude Include="BossMapChip.h">
-      <Filter>ヘッダー ファイル\Map</Filter>
+    <ClInclude Include="RecoveryBlock.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHappen.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

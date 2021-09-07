@@ -1,7 +1,6 @@
 #pragma once
 #include	"BackGround.h"
 #include	"MapChip.h"
-#include	"BossMapChip.h"
 #include	"Player.h"
 #include	"ObjectServer.h"
 #include	"ModeServer.h"
@@ -33,7 +32,6 @@ public:
 	int		GetcvX() { return _cvX; }
 	int		GetcvY() { return _cvY; }
 	MapChip* GetChip() { return _mapChip; }
-	BossMapChip* GetBossChip() { return _bossmapChip; }
 	ModeServer* GetMS() { return _serverMode; }
 	ObjectServer* GetOS() { return &_objServer; }
 
@@ -53,7 +51,6 @@ private:
 	int _mapW, _mapH;	// マップ
 
 	MapChip* _mapChip;			//マップチップ
-	BossMapChip* _bossmapChip;	//ボスマップチップ
 	ModeServer* _serverMode;	//モードサーバー
 	ObjectServer _objServer;	//プレイヤーや敵などを登録する
 };

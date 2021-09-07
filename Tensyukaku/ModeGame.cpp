@@ -1,23 +1,16 @@
 
-#include "DxLib.h"
+#include <DxLib.h>
 #include "ModeGame.h"
 #include "Game.h"
 #include "Player.h"
-#include "Bushi.h"
-#include "Ninja.h"
 #include "MapChip.h"
-#include "Stair.h"
-#include "Shielder.h"
 #include "GimikPlacement.h"
-#include "EnemySpawn.h"
-#include <memory>
-#include "PlayerHp.h"
-#include "IaiGauge.h"
 
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_enemyspawn = new EnemySpawn(g);
 	_gimikplacement = new GimikPlacement(g);
+	_eventhappen = new EventHappen(g);
 	g.GetOS()->Add(new Player);
 	_Apeear_Flag = false;
 	_stopObjProcess = false;
@@ -36,6 +29,7 @@ bool ModeGame::Terminate(Game& g) {
 	base::Terminate(g);
 	delete g.GetChip();
 	delete _enemyspawn;
+	delete _eventhappen;
 	delete _gimikplacement;
 	g.GetOS()->Clear();
 	return true;
@@ -51,6 +45,7 @@ bool ModeGame::Process(Game& g) {
 		_Apeear_Flag = true;
 		_gimikplacement->Process(g);
 		_enemyspawn->Process(g);
+		_eventhappen->Process(g);
 		}
 		
 	}

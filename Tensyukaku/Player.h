@@ -19,6 +19,7 @@ private:
 	//プレイヤーの状態列挙
 	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD,STAIRUP,STAIRMOVE,BOSSSTAIRMOVE,BOSSSTAIRUP};
 	
+	void	Star(Game& g);			//無敵状態時の処理
 	void	Idle(Game& g);			//待機状態時の処理
 	void	Move(Game& g);			//移動時の処理
 	void	MidAttack(Game& g);		//中段攻撃時の処理
@@ -32,10 +33,14 @@ private:
 	void	StairUp(Game& g);		//階段上昇の処理
 	void	BossStairMove(Game& g);	//ボス階段位置調整の処理
 	void	BossStairUp(Game& g);	//ボス階段上昇時の処理
+	void	CameraSetting(Game& g);	//プレイヤー位置からカメラ座標設定
+	void	UIAppear(Game& g);		//UIインスタンス生成関数
+	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
+	void	Recovery(Game& g);		//プレイヤーの体力回復
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
-	void	UIDraw(Game& g);		//UI描画関数
+	
 	/*---------メンバ変数----------*/
 	PLAYERSTATE	_State;		//状態遷移変数
 	

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClCompile Include="Andon.cpp" />
     <ClCompile Include="BackGround.cpp" />
-    <ClCompile Include="BossMapChip.cpp" />
     <ClCompile Include="BossStair.cpp" />
     <ClCompile Include="Bushi.cpp" />
     <ClCompile Include="BushiMotion.cpp" />
@@ -157,16 +156,18 @@
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
+    <ClCompile Include="EventBlockBase.cpp" />
+    <ClCompile Include="EventHappen.cpp" />
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="Kunai.cpp" />
-    <ClCompile Include="ModeBossGame.cpp" />
     <ClCompile Include="OutGameParticle.cpp" />
     <ClCompile Include="OverlayBlack.cpp" />
     <ClCompile Include="PlayerParticle.cpp" />
     <ClCompile Include="Poison.cpp" />
     <ClCompile Include="PoisonNinja.cpp" />
     <ClCompile Include="PrivateCollision.cpp" />
+    <ClCompile Include="RecoveryBlock.cpp" />
     <ClCompile Include="SpawnBlockBase.cpp" />
     <ClCompile Include="SpawnBlock.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -199,23 +200,24 @@
   <ItemGroup>
     <ClInclude Include="Andon.h" />
     <ClInclude Include="BackGround.h" />
-    <ClInclude Include="BossMapChip.h" />
     <ClInclude Include="BossStair.h" />
     <ClInclude Include="Bushi.h" />
     <ClInclude Include="BushiMotionCollision.h" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="EnemySpawn.h" />
+    <ClInclude Include="EventBlockBase.h" />
+    <ClInclude Include="EventHappen.h" />
     <ClInclude Include="Flame.h" />
     <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="Kunai.h" />
-    <ClInclude Include="ModeBossGame.h" />
     <ClInclude Include="OutGameParticle.h" />
     <ClInclude Include="OverlayBlack.h" />
     <ClInclude Include="PlayerParticle.h" />
     <ClInclude Include="Poison.h" />
     <ClInclude Include="PoisonNinja.h" />
     <ClInclude Include="PrivateCollision.h" />
+    <ClInclude Include="RecoveryBlock.h" />
     <ClInclude Include="SpawnBlockBase.h" />
     <ClInclude Include="SpawnBlock.h" />
     <ClInclude Include="Game.h" />

@@ -4,6 +4,7 @@
 #include	"Player.h"
 #include	"GimikPlacement.h"
 #include	"EnemySpawn.h"
+#include	"EventHappen.h"
 
 
 
@@ -27,4 +28,5 @@ private:
 	BackGround	_bg;
 	GimikPlacement* _gimikplacement;
 	EnemySpawn* _enemyspawn;
+	EventHappen* _eventhappen;
 };

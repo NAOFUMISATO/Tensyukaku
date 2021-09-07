@@ -7,7 +7,8 @@
 PlayerHp::PlayerHp(int hp){
 	_Life = hp;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph("res/UI/HP.png");
+	_GrAll["HP"].resize(2);
+	ResourceServer::LoadDivGraph("res/UI/HP.png",2,2,1,80,80, _GrAll["HP"].data());
 }
 PlayerHp::~PlayerHp() {
 }
@@ -22,10 +23,12 @@ void PlayerHp::Process(Game& g) {
 	{
 		// iteはプレイヤーか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER) {
+			_GrHandle = _GrAll["HP"][_Anime["HP"]];
 			auto hp=(*ite)->GetHp();
 			if (hp <= _Life) {
-				Delete(g);
+				_Anime["HP"] = 1;
 			}
+			else { _Anime["HP"] = 0; }
 		}
 	}
 }

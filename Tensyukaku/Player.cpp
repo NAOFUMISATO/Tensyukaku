@@ -55,39 +55,15 @@ void Player::Init()
 void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは敵か？
-		if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
-		{
-			if ((*ite)->isDead()) { 
-				_Iai_Gauge++;
-			}
-		}
-	}
-	UIDraw(g);
-	auto xbuf=g.GetXBuf();
-	if ( xbuf< MAX_BUF-RUN_XBUF && -(MAX_BUF-RUN_XBUF) < xbuf) {
-		_Spd = WALKSPEED;
-		_Move_AnimeSpeed = ANIMESPEED_WALK;
-	}
-	if (xbuf >= RUN_XBUF || -RUN_XBUF >= xbuf) {
-		_Spd = RUNSPEED;
-		_Move_AnimeSpeed = ANIMESPEED_RUN;
-	}
-
+	//UIのインスタンス生成
+	UIAppear(g);
+	//左スティックの入力量によるステータス設定
+	BufSetting(g);
+	//プレイヤーの体力回復
+	Recovery(g);
 	/*---状態毎の処理---*/
 		//無敵状態
-	if (_Star_Flag == true) {
-		_alpha = FIRST_ALPHA;
-		if ((_Cnt / ANIMESPEED_STAR % 2) == 0) {
-			_alpha = STAR_ALPHA;
-		}
-		if (_Cnt - _Star_Cnt == STAR_ALLFRAME) {
-			_alpha = FIRST_ALPHA;
-			_Star_Flag = false;
-		}
-	}
+		Star(g);
 	switch (_State) {
 		//待機状態
 	case PLAYERSTATE::IDLE:
@@ -142,23 +118,8 @@ void Player::Process(Game& g)
 		BossStairUp(g);
 		break;
 	}
-	
-	// 主人公位置からカメラ座標決定
-	g.SetcvX(_x- (SCREEN_W * BACK_CAMERA_X / 100));// 背景の横中央にキャラを置く
-	g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));// 背景の縦93%にキャラを置く
-	if (g.GetcvX() < 0) { g.SetcvX(0); }
-	if (g.GetcvX() > g.GetmapW()-SCREEN_W) { g.SetcvX(g.GetmapW() - SCREEN_W); }
-	if (g.GetcvY() < 0) { g.SetcvY(0); }
-	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
-	auto GC = g.GetChip();
-	GC->SetscrX(_x - (SCREEN_W * CHIP_CAMERA_X / 100));	// マップチップの横中央にキャラを置く
-	GC->SetscrY(_y - (SCREEN_H * CHIP_CAMERA_Y / 100));	// マップチップの縦93%にキャラを置く
-	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
-	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
-	if (GC->GetscrY() < 0) { GC->SetscrY(0); }
-	if (GC->GetscrY() > GC->GetMSH() * GC->GetCSH() - SCREEN_H) { GC->SetscrY(GC->GetMSH() * GC->GetCSH() - SCREEN_H); }
-	
-	
+	//プレイヤー位置からのカメラ位置設定
+	CameraSetting(g);
 }
 
 void Player::Draw(Game& g) {
@@ -214,13 +175,14 @@ void Player::DebugDraw(Game& g) {
 	ss << "プレイヤーY座標=" << _y << "\n";
 	ss<<"左スティック入力量X="<<g.GetXBuf()<< "\n";
 	ss <<"左スティック入力量Y="<<g.GetYBuf()<< "\n";
+	ss << "体力=" << _Life << "\n";
 	ss << "速さ=" << _Spd << "\n";
 	ss << "居合ゲージ=" << _Iai_Gauge << "\n";
 	DrawString(10, 10, ss.str().c_str(), GetColor(255, 0, 0));
 }
 
-//UI描画用関数
-void Player::UIDraw(Game& g){
+//UIインスタンス生成関数
+void Player::UIAppear(Game& g){
 	if (_UI_Flag == false) {
 		auto hp1 = new PlayerHp(0);
 		g.GetOS()->Add(hp1);
@@ -232,5 +194,60 @@ void Player::UIDraw(Game& g){
 		g.GetOS()->Add(ig);
 		_UI_Flag = true;
 	}
-
+}
+//プレイヤー位置からのカメラ位置設定
+void Player::CameraSetting(Game& g) {
+	g.SetcvX(_x - (SCREEN_W * BACK_CAMERA_X / 100));// 背景の横中央にキャラを置く
+	g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));// 背景の縦93%にキャラを置く
+	if (g.GetcvX() < 0) { g.SetcvX(0); }
+	if (g.GetcvX() > g.GetmapW() - SCREEN_W) { g.SetcvX(g.GetmapW() - SCREEN_W); }
+	if (g.GetcvY() < 0) { g.SetcvY(0); }
+	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
+	auto GC = g.GetChip();
+	GC->SetscrX(_x - (SCREEN_W * CHIP_CAMERA_X / 100));	// マップチップの横中央にキャラを置く
+	GC->SetscrY(_y - (SCREEN_H * CHIP_CAMERA_Y / 100));	// マップチップの縦93%にキャラを置く
+	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
+	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
+	if (GC->GetscrY() < 0) { GC->SetscrY(0); }
+	if (GC->GetscrY() > GC->GetMSH() * GC->GetCSH() - SCREEN_H) { GC->SetscrY(GC->GetMSH() * GC->GetCSH() - SCREEN_H); }
+}
+//無敵状態時の処理
+void Player::Star(Game& g) {
+	if (_Star_Flag == true) {
+		_alpha = FIRST_ALPHA;
+		if ((_Cnt / ANIMESPEED_STAR % 2) == 0) {
+			_alpha = STAR_ALPHA;
+		}
+		if (_Cnt - _Star_Cnt == STAR_ALLFRAME) {
+			_alpha = FIRST_ALPHA;
+			_Star_Flag = false;
+		}
+	}
+}
+//左スティックの入力量によるステータス設定
+void Player::BufSetting(Game& g) {
+	auto xbuf = g.GetXBuf();
+	if (xbuf < MAX_BUF - RUN_XBUF && -(MAX_BUF - RUN_XBUF) < xbuf) {
+		_Spd = WALKSPEED;
+		_Move_AnimeSpeed = ANIMESPEED_WALK;
+	}
+	if (xbuf >= RUN_XBUF || -RUN_XBUF >= xbuf) {
+		_Spd = RUNSPEED;
+		_Move_AnimeSpeed = ANIMESPEED_RUN;
+	}
+}
+//プレイヤーの体力回復
+void Player::Recovery(Game& g) {
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは回復判定か？
+		if ((*ite)->GetObjType() == OBJECTTYPE::RECOVERYBLOCK)
+		{
+			// プレイヤーとその回復判定の当たり判定を行う
+			if (IsHit(*(*ite)) == true) {
+				(*ite)->Delete(g);
+				_Life = 3;
+			}
+		}
+	}
 }
