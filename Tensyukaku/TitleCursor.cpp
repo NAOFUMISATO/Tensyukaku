@@ -1,6 +1,6 @@
 #include <DxLib.h>
 #include "ResourceServer.h"
-#include "Cursor.h"
+#include "TitleCursor.h"
 #include "OutGameParticle.h"
 #include "Game.h"
 #include "ObjectBase.h"
@@ -8,13 +8,13 @@
 #include "Math.h"
 #include "OverlayBlack.h"
 using namespace CParInfo;
-Cursor::Cursor():_State(CURSOLSTATE::NOHIT){
+TitleCursor::TitleCursor():_State(CURSOLSTATE::NOHIT){
 	Init();
 };
-Cursor::~Cursor() {
+TitleCursor::~TitleCursor() {
 }
 
-void Cursor::Init() {
+void TitleCursor::Init() {
 	_x = 960;
 	_y = 540;
 	_gx = 0;
@@ -31,7 +31,7 @@ void Cursor::Init() {
 	_Input_Flag=false;
 }
 
-void Cursor::Process(Game& g) {
+void TitleCursor::Process(Game& g) {
 	ObjectBase::Process(g);
 	switch (_State) {
 	case CURSOLSTATE::NOHIT:
@@ -76,11 +76,11 @@ void Cursor::Process(Game& g) {
 	case CURSOLSTATE::STARTHIT:
 		if (g.GetTrg() & PAD_INPUT_1&&_Input_Flag ==false)
 		{
-			_Input_Flag =true;
 			_Action_Cnt = _Cnt;
 			auto ol = new OverlayBlack();
-			ol->FadeSetting(120, 240, 360, 3);
-			g.GetMS()->Add(ol,1, "OverlayBlack");
+			ol->FadeSetting(120, 240, 360, 2);
+			g.GetMS()->Add(ol,12000, "OverlayBlack");
+			_Input_Flag = true;
 		}
 		if (_Cnt - _Action_Cnt == 120) {
 			_Input_Flag =false;
@@ -186,6 +186,6 @@ void Cursor::Process(Game& g) {
 	}
 }
 
-void Cursor::Draw(Game& g) {
+void TitleCursor::Draw(Game& g) {
 	ObjectBase::Draw(g);
 }

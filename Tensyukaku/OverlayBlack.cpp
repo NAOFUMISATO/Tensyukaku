@@ -8,7 +8,6 @@ bool OverlayBlack::Initialize(Game& g) {
 	_x = 960;
 	_y = 540;
 	_Pal = 0;
-	_Trans_Flag = false;
 	_Mode_Cnt = _Cnt;
 	_GrHandle=ResourceServer::LoadGraph("res/Mode/Black.png");
 	return true;
@@ -39,7 +38,6 @@ bool OverlayBlack::Process(Game& g) {
 		_Pal = 0;
 		g.GetMS()->Del(this);
 	}
-
 	return true;
 }
 bool OverlayBlack::Draw(Game& g) {

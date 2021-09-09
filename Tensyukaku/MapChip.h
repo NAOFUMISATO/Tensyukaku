@@ -11,7 +11,7 @@ public:
 	~MapChip();
 
 	void	Process(Game& g);
-	void	Draw();
+	void	Draw(Game& g);
 
 	int		CheckHit(int x, int y);
 	int		IsHit(ObjectBase& o, int mx, int my);

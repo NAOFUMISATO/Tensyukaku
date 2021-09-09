@@ -9,11 +9,16 @@
 // 起動時に1回だけ実行される
 Game::Game()
 {
+
 	_gKey = 0;
 	_gTrg = 0;
 	_Xbuf = 0;
 	_Ybuf = 0;
 	_gCnt = 0;
+	_cvX = 0;
+	_cvY = 0;
+	_mapW = 0;
+	_mapH = 0 ;
 	// モードサーバの初期化
 	_serverMode = new ModeServer(*this);
 	// タイトルモードを生成し、モードサーバに登録する
@@ -28,6 +33,7 @@ Game::Game()
 Game::~Game()
 {
 	delete _serverMode;
+	delete _mapChip;
 }
 
 
@@ -51,9 +57,6 @@ void Game::Process()
 	_serverMode->ProcessInit();
 	_serverMode->Process();
 	_serverMode->ProcessFinish();
-
-	
-
 	_gCnt++;
 }
 

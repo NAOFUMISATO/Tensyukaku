@@ -180,7 +180,7 @@ namespace PInfo {
 	//無敵
 	constexpr auto ANIMESPEED_STAR = 8;			//無敵状態時の点滅速度 
 	constexpr auto STAR_ALPHA = 128;			//無敵状態時の透明度
-	constexpr auto STAR_ALLFRAME = 180;			//被ダメ時の無敵フレーム
+	constexpr auto STAR_ALLFRAME = 60;			//被ダメ時の無敵フレーム
 
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Samurai/S_Dead.png";		//画像ファイル名

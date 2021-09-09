@@ -4,12 +4,12 @@
 
 using namespace EHInfo;
 EventHappen::EventHappen(Game& g) {
-
+	Init(g);
 }
 EventHappen::~EventHappen() {
 }
 
-void EventHappen::Process(Game& g) {
+void EventHappen::Init(Game& g) {
 	//‰ñ•œƒuƒƒbƒN¶¬
 	auto eb = new RecoveryBlock(RECOVERY_X, RECOVERY_Y);
 	g.GetOS()->Add(eb);

@@ -8,12 +8,12 @@
 
 using namespace GInfo;
 GimikPlacement::GimikPlacement(Game& g){
-	
+	Init(g);
 }
 GimikPlacement::~GimikPlacement() {
 }
 
-void GimikPlacement::Process(Game& g) {
+void GimikPlacement::Init(Game& g) {
 		StairAppear(g);
 		AndonAppear(g);
 }

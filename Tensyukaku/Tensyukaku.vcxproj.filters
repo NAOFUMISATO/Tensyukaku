@@ -258,6 +258,18 @@
     <ClCompile Include="EventHappen.cpp">
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
+    <ClCompile Include="ModeGameover.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="OverCursor.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="OverSelect.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="OverBlack.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -394,6 +406,18 @@
     </ClInclude>
     <ClInclude Include="EventHappen.h">
       <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeGameover.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="OverCursor.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="OverSelect.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="OverBlack.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -32,7 +32,7 @@ bool	ModeBase::Initialize(Game& g) {
 	_GrHandle = -1;
 	_Cnt = 0;
 	_Pal = 255;
-	_Trans_Flag = true;
+	_Trans_Flag = false;
 	_drg = std::make_pair(1.0, 0.0);
 	_rgb = std::make_tuple(255,255,255);
 	return true;

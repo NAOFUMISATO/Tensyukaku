@@ -6,7 +6,7 @@ public:
 	EventHappen(Game& g);
 	~EventHappen();
 
-	void Process(Game& g);
+	void Init(Game& g);
 };
 
 namespace EHInfo {

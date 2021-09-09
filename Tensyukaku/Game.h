@@ -40,6 +40,7 @@ public:
 	void	SetcvY(int cvY) { _cvY = cvY; }
 	void	SetmapW(int mapW) { _mapW = mapW; }
 	void	SetmapH(int mapH) { _mapH = mapH; }
+	void	SetChip(MapChip* map) { _mapChip = map; }
 
 private:
 	int _gKey;			// ƒL[“ü—Í‚Ìî•ñ

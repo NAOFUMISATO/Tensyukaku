@@ -148,7 +148,7 @@ void	MapChip::Process(Game& g)
 	if (_scrY > MAPSIZE_H * CHIPSIZE_H - SCREEN_H) { _scrY = MAPSIZE_H * CHIPSIZE_H - SCREEN_H; }
 
 }
-void	MapChip::Draw()
+void	MapChip::Draw(Game& g)
 {
 	int x, y, layer;
 	for (layer = 0; layer < MAPSIZE_LAYER; layer++)

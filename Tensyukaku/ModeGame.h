@@ -16,12 +16,12 @@ public:
 	virtual bool Terminate(Game& g);
 	virtual bool Process(Game& g);
 	virtual bool Draw(Game& g);
+	void SetStopProcess(bool stopprocess) { _stopObjProcess = stopprocess; }
 
 
 private:
 	// オブジェクト処理をストップする
 	bool	_stopObjProcess;
-	bool	_Apeear_Flag;
 	// BGM用
 	int		_bgm;
 

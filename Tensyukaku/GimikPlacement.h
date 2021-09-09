@@ -6,8 +6,7 @@ class GimikPlacement {
 public:
 	GimikPlacement(Game& g);
 	~GimikPlacement();
-
-	void Process(Game& g);
+	void Init(Game& g);
 private:
 	void StairAppear(Game& g);		//ŠK’iİ’èŠÖ”
 	void AndonAppear(Game& g);		//s“•İ’èŠÖ”

@@ -6,5 +6,5 @@ public:
 	EnemySpawn(Game& g);
 	~EnemySpawn();
 
-	void Process(Game& g);
+	void Init(Game& g);
 };

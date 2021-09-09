@@ -5,7 +5,12 @@
 #include "ResourceServer.h"
 #include "OutGameParticle.h"
 #include "ParticleBase.h"
-
+namespace {
+	/*----------Tupleå^â¬ì«ê´å¸è„---------*/
+	constexpr auto RED = 0;
+	constexpr auto GREEN = 1;
+	constexpr auto BLUE = 2;
+}
 using namespace CParInfo;
 CursorParticle1::CursorParticle1(std::pair<double, double> xy, std::pair<double, double> dxy,int colortype){
 	_xy = xy;
@@ -51,6 +56,21 @@ void CursorParticle1::Process(Game& g) {
 }
 
 void CursorParticle1::Draw(Game& g) {
-	ParticleBase::Draw(g);
+	int a = _pal;
+	int& re = std::get<RED>(_rgb);
+	int& gr = std::get<GREEN>(_rgb);
+	int& bl = std::get<BLUE>(_rgb);
+	SetDrawBlendMode(_bm, a);
+	SetDrawBright(re, gr, bl);
+	auto GC = g.GetChip();
+	auto x = _xy.first + _mxy.first;
+	auto y = _xy.second + _mxy.second;
+	double scale = _drg.first;
+	double angle = _drg.second;
+	auto cx = static_cast<int>(x);
+	auto cy = static_cast<int>(y);
+	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isFlip);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	SetDrawBright(255, 255, 255);
 }
 

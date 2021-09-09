@@ -2,12 +2,12 @@
 #include "SpawnBlock.h"
 #include "Game.h"
 EnemySpawn::EnemySpawn(Game& g){
-
+	Init(g);
 }
 EnemySpawn::~EnemySpawn() {
 }
 
-void EnemySpawn::Process(Game& g) {
+void EnemySpawn::Init(Game& g) {
 		//各スポーンブロック生成
 		auto sp1a = new Spawn1A();
 		g.GetOS()->Add(sp1a);

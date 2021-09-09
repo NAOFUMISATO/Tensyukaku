@@ -69,7 +69,6 @@ bool ModeTitle::Process(Game& g) {
 			_Pal = 0;
 			_Mode_Cnt = _Cnt;
 			_Type = TITLETYPE::TEAMLOGO;
-
 		}
 		break;
 	case TITLETYPE::TEAMLOGO:

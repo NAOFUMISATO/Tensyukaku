@@ -7,6 +7,8 @@
 #include "Stair.h"
 #include "EnemyBase.h"
 #include "OverlayBlack.h"
+#include "ModeGameover.h"
+#include "ModeGame.h"
 using namespace PInfo;
 using namespace PParInfo;
 using namespace StInfo;
@@ -193,6 +195,7 @@ void Player::Move(Game& g) {
 				_Life--;
 				_State = PLAYERSTATE::DAMAGE;
 				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
+				_Action_Cnt = _Cnt;
 			}
 		}
 	}
@@ -648,7 +651,9 @@ void Player::Dead(Game& g) {
 	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX; 
 		}
 	if (frame == DEAD_ALLFRAME) {
-		Delete(g);
+		
+		auto mgo = new ModeGameover();
+		g.GetMS()->Add(mgo,1, "Gameover");
 	}
 }
 

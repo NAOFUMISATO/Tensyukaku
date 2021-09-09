@@ -2,7 +2,7 @@
 #include "ParticleBase.h"
 #include <tuple>
 #include <utility>
-//カーソル
+//タイトルカーソル
 class CursorParticle1: public ParticleBase {
 public:
 	CursorParticle1(std::pair<double, double> xy, std::pair<double, double> vxy,int colortype);
@@ -15,8 +15,9 @@ public:
 private:
 	int _ColorType;
 };
+
 namespace CParInfo {
-	/*----------カーソル1----------*/
+	/*----------タイトルカーソル----------*/
 	constexpr auto CURSOR_PARTICLE1_GRAPH = "res/Particle/Cursor.png";				//画像ファイル名
 	constexpr auto CURSOR_PARTICLE1_POSITIONX = 0.0;								//基準点(足下)から描画点へのX座標差分
 	constexpr auto CURSOR_PARTICLE1_POSITIONY = -10.0;								//基準点(足下)から描画点へのY座標差分
@@ -33,4 +34,5 @@ namespace CParInfo {
 	constexpr auto CURSOR_PARTICLE1_RANDOMY1 = 17;									//パーティクルのYランダム値
 	constexpr auto CURSOR_PARTICLE1_RANDOMY2 = 19.5;								//		〃
 	constexpr auto CURSOR_PARTICLE1_RANDOMY3 = 8.5;									//		〃
+	
 }

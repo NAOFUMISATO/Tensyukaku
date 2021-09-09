@@ -161,8 +161,12 @@
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="Kunai.cpp" />
+    <ClCompile Include="ModeGameover.cpp" />
     <ClCompile Include="OutGameParticle.cpp" />
+    <ClCompile Include="OverBlack.cpp" />
+    <ClCompile Include="OverCursor.cpp" />
     <ClCompile Include="OverlayBlack.cpp" />
+    <ClCompile Include="OverSelect.cpp" />
     <ClCompile Include="PlayerParticle.cpp" />
     <ClCompile Include="Poison.cpp" />
     <ClCompile Include="PoisonNinja.cpp" />
@@ -211,8 +215,12 @@
     <ClInclude Include="Flame.h" />
     <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="Kunai.h" />
+    <ClInclude Include="ModeGameover.h" />
     <ClInclude Include="OutGameParticle.h" />
+    <ClInclude Include="OverBlack.h" />
+    <ClInclude Include="OverCursor.h" />
     <ClInclude Include="OverlayBlack.h" />
+    <ClInclude Include="OverSelect.h" />
     <ClInclude Include="PlayerParticle.h" />
     <ClInclude Include="Poison.h" />
     <ClInclude Include="PoisonNinja.h" />
