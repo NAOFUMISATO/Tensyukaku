@@ -10,6 +10,7 @@ ObjectServer::ObjectServer()
 {
 	_vObject.clear();
 	_vAdd.clear();
+	_vBAdd.clear();
 	_vDel.clear();
 }
 

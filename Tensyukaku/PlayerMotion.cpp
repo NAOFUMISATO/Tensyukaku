@@ -766,3 +766,15 @@ void Player::BossStairUp(Game& g) {
 		_State = PLAYERSTATE::IDLE;
 	}
 }
+/*-----イベントAの処理-----*/
+void Player::BossEventA(Game& g) {
+
+}
+/*-----イベントBの処理-----*/
+void Player::BossEventB(Game& g) {
+
+}
+/*-----イベントCの処理-----*/
+void Player::BossEventC(Game& g) {
+
+}

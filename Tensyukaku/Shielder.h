@@ -93,7 +93,7 @@ namespace SInfo {
 	constexpr auto ATTACK_ANIMEFRAME = ATTACK_ANIMEMAX * ANIMESPEED_ATTACK;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto ATTACK_ALLFRAME = 100;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
 	constexpr auto ATTACK_BEGINFRAME = 20;		//攻撃判定発生フレーム
-	constexpr auto ATTACK_ENDFRAME = 40;		//攻撃判定終了フレーム
+	constexpr auto ATTACK_ENDFRAME = 20;		//攻撃判定終了フレーム
 	//盾持ち攻撃
 	constexpr auto GUARDATTACK_GRAPHNAME = "res/Shielder/T_GuardAttack.png";	//画像ファイル名
 	constexpr auto GUARDATTACK_ANIMEMAX = 4;		//全ての画像枚数

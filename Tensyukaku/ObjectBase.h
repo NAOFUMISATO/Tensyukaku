@@ -14,16 +14,16 @@ public:
 	~ObjectBase();
 	//オブジェクトの状態列挙
 	enum class OBJECTSTATE {
-		ALLIBE,DEAD
+		ALLIBE,DEAD,EVENTA,EVENTB,EVENTC
 	};
 	//オブジェクトの種類列挙
 	enum class OBJECTTYPE {
 		TITLELOGO,GAMESTART, EXPLAIN,GAMEEND, CURSOR,
 		OVERLOGO,OVERRETRY,OVERGOTITLE,OVERBLACK,OVERCURSOR,
-		PLAYER, ENEMY, UI, PARTICLE,
+		PLAYER, ENEMY,BOSS, UI, PARTICLE,
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,
 		PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,KUNAI,SHIELDERATTACK,SHIELD,
-		STAIR,BOSSSTAIR, POISONNINJA, POISON,ANDON,FLAME, SPAWNBLOCK, EVENTBLOCK, RECOVERYBLOCK,CPOINTBLOCK
+		STAIR,BOSSSTAIR, POISONNINJA, POISON,ANDON,FLAME, SPAWNBLOCK, EVENTBLOCK, RECOVERYBLOCK,CPOINTBLOCK,BOSSEVENTBLOCK
 	};
 	virtual OBJECTTYPE	GetObjType() = 0;
 
@@ -32,6 +32,7 @@ public:
 	virtual	void	Draw(Game& g);
 	virtual	bool	IsHit(ObjectBase& o);
 	virtual	void	Delete(Game& g) {};
+	
 
 	int		GetX() { return _x; }
 	int		GetY() { return _y; }
@@ -55,6 +56,9 @@ public:
 	void	SetX(int x) { _x = x; }
 	void	SetY(int y) { _y = y; }
 	void	SetFlip(bool isflip) { _isFlip = isflip; }
+	void	SetEventA() { _OState = OBJECTSTATE::EVENTA; }
+	void	SetEventB() { _OState = OBJECTSTATE::EVENTB; }
+	void	SetEventC() { _OState = OBJECTSTATE::EVENTC; }
 	
 	
 protected:
@@ -83,4 +87,5 @@ protected:
 	int		_Action_Cnt;				//アクション経過時間保存変数
 	int		_Before_x;					//前回のX座標保存変数
 	int		_Before_y;					//前回のY座標保存変数
+	bool	_Draw_Flag;					//描画フラグ
 };

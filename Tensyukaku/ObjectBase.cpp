@@ -10,7 +10,8 @@ namespace {
 	constexpr auto GREEN = 1;
 	constexpr auto Blue = 2;
 }
-ObjectBase::ObjectBase()
+ObjectBase::ObjectBase():
+	_Draw_Flag(false)
 {
 	Init();
 }
@@ -35,11 +36,11 @@ void ObjectBase::Init()
 
 void ObjectBase::Process(Game& g)
 {
+	
 	++_Cnt;
 }
 
 void ObjectBase::Draw(Game& g) {
-	// カメラから見た座標に変更（ワールド座標→ビュー座標）
 	auto GC = g.GetChip();
 	auto x = _x + _gx - GC->GetscrX();
 	auto y = _y + _gy - GC->GetscrY();
@@ -47,6 +48,7 @@ void ObjectBase::Draw(Game& g) {
 	auto angle = _drg.second;
 	_Before_x = _x + _gx;
 	_Before_y = _y + _gy;
+	
 	DrawRotaGraph(x, y, scale, angle, _GrHandle, true, _isFlip);
 #ifdef _DEBUG
 	int& re = std::get<RED>(_Color);
@@ -56,7 +58,7 @@ void ObjectBase::Draw(Game& g) {
 	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// 半透明の赤で当たり判定描画
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
-}
+	}
 bool ObjectBase::IsHit(ObjectBase& o) {
 	// このオブジェクトと、別オブジェクトoを、x,y,w,hで比較する
 	if (_x +_gx+ _hit_x < o._x +o._hit_x + o._hit_w && o._x + o._hit_x < _x +_gx+ _hit_x + _hit_w		// x方向の判定

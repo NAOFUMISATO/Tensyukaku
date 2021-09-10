@@ -15,12 +15,12 @@ namespace {
 TitleLogo::TitleLogo() {
 	Init();
 	_GrAll["TitleLogo"].resize(30);
-	ResourceServer::LoadDivGraph("res/Mode/TitleLogo.png",30,30,1,1000,320, _GrAll["TitleLogo"].data());
+	ResourceServer::LoadDivGraph("res/Mode/TitleLogo.png",30,7,5,1280,410, _GrAll["TitleLogo"].data());
 }
 TitleLogo::~TitleLogo() {
 }
 void TitleLogo::Init() {
-	_x = 1400;
+	_x = 1300;
 	_y = 250;
 	_gx = 0;
 	_gy = -60;

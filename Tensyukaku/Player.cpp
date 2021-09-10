@@ -47,7 +47,7 @@ void Player::Init()
 	_Spd = 0;
 	_Iai_Gauge = 0;
 	_isFlip = FIRST_FLIP;
-	_alpha = FIRST_ALPHA;
+	_Alpha = FIRST_ALPHA;
 	_Position = { 0,0 };
 }
 
@@ -60,7 +60,16 @@ void Player::Process(Game& g)
 	//左スティックの入力量によるステータス設定
 	BufSetting(g);
 	//プレイヤーのイベント処理
-	Event(g);
+	NormalEvent(g);
+	if (_OState == OBJECTSTATE::EVENTA) {
+		_State = PLAYERSTATE::EVENTA;
+	}
+	else if (_OState == OBJECTSTATE::EVENTB) {
+		_State = PLAYERSTATE::EVENTB;
+	}
+	else if (_OState == OBJECTSTATE::EVENTC) {
+		_State = PLAYERSTATE::EVENTC;
+	}
 	/*---状態毎の処理---*/
 		//無敵状態
 		Star(g);
@@ -89,7 +98,7 @@ void Player::Process(Game& g)
 	case PLAYERSTATE::IAI:
 		Iai(g);
 		break;
-	//	//スウェイ状態
+		//	//スウェイ状態
 	case PLAYERSTATE::SWAY:
 		Sway(g);
 		break;
@@ -117,6 +126,18 @@ void Player::Process(Game& g)
 	case PLAYERSTATE::BOSSSTAIRUP:
 		BossStairUp(g);
 		break;
+		//イベントA状態
+	case PLAYERSTATE::EVENTA:
+		BossEventA(g);
+		break;
+		//イベントB状態
+	case PLAYERSTATE::EVENTB:
+		BossEventB(g);
+		break;
+		//イベントC状態
+	case PLAYERSTATE::EVENTC:
+		BossEventC(g);
+		break;
 	}
 	//プレイヤー位置からのカメラ位置設定
 	CameraSetting(g);
@@ -126,7 +147,7 @@ void Player::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	ObjectBase::Draw(g);
 }
 
@@ -214,12 +235,12 @@ void Player::CameraSetting(Game& g) {
 //無敵状態時の処理
 void Player::Star(Game& g) {
 	if (_Star_Flag == true) {
-		_alpha = FIRST_ALPHA;
+		_Alpha = FIRST_ALPHA;
 		if ((_Cnt / ANIMESPEED_STAR % 2) == 0) {
-			_alpha = STAR_ALPHA;
+			_Alpha = STAR_ALPHA;
 		}
 		if (_Cnt - _Star_Cnt == STAR_ALLFRAME) {
-			_alpha = FIRST_ALPHA;
+			_Alpha = FIRST_ALPHA;
 			_Star_Flag = false;
 		}
 	}
@@ -237,7 +258,7 @@ void Player::BufSetting(Game& g) {
 	}
 }
 //プレイヤーのイベント処理
-void Player::Event(Game& g) {
+void Player::NormalEvent(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは回復判定か？
@@ -252,7 +273,7 @@ void Player::Event(Game& g) {
 	}
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
-		// iteは回復判定か？
+		// iteはチェックポイントか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::CPOINTBLOCK)
 		{
 			// プレイヤーとその回復判定の当たり判定を行う

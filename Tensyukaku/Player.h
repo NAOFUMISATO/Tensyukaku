@@ -14,12 +14,9 @@ public:
 	void	Process(Game& g)override;
 	void	Draw(Game& g)override;
 	void	Delete(Game& g)override;
-	
-
 private:
 	//プレイヤーの状態列挙
-	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD,STAIRUP,STAIRMOVE,BOSSSTAIRMOVE,BOSSSTAIRUP};
-	
+	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD, STAIRUP, STAIRMOVE, BOSSSTAIRMOVE, BOSSSTAIRUP, EVENTA, EVENTB, EVENTC };
 	void	Star(Game& g);			//無敵状態時の処理
 	void	Idle(Game& g);			//待機状態時の処理
 	void	Move(Game& g);			//移動時の処理
@@ -37,7 +34,10 @@ private:
 	void	CameraSetting(Game& g);	//プレイヤー位置からカメラ座標設定
 	void	UIAppear(Game& g);		//UIインスタンス生成関数
 	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
-	void	Event(Game& g);			//プレイヤーのイベント処理
+	void	NormalEvent(Game& g);	//プレイヤーのイベント処理
+	void	BossEventA(Game& g);	//プレイヤーのボスイベント処理A
+	void	BossEventB(Game& g);	//プレイヤーのボスイベント処理B
+	void	BossEventC(Game& g);	//プレイヤーのボスイベント処理C
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
@@ -45,7 +45,6 @@ private:
 	/*---------メンバ変数----------*/
 	PLAYERSTATE	_State;		//状態遷移変数
 	
-	int		_alpha;			//SetDrawBlendMode用a値変数
 	int		_Move_AnimeSpeed;//移動時のアニメスピード
 
 	//無敵状態管理変数
@@ -84,13 +83,13 @@ namespace PInfo {
 	constexpr auto CHIP_CAMERA_Y = 93;			//マップチップをプレイヤ-のカメラを画面の何％に置くか（縦軸）
 
 	/*----------各モーションの当たり判定関係----------*/
-	constexpr auto MIDDLEATTACK_WIDTH = 225;	//中段攻撃当たり判定横幅
+	constexpr auto MIDDLEATTACK_WIDTH = 275;	//中段攻撃当たり判定横幅
 	constexpr auto MIDDLEATTACK_HEIGHT = 150;	//中段攻撃当たり判定縦幅
-	constexpr auto LOWATTACK_WIDTH = 225;		//下段攻撃当たり判定横幅
+	constexpr auto LOWATTACK_WIDTH = 275;		//下段攻撃当たり判定横幅
 	constexpr auto LOWATTACK_HEIGHT = 200;		//下段攻撃当たり判定縦幅
 	constexpr auto KICK_WIDTH = 225;			//蹴り当たり判定横幅
 	constexpr auto KICK_HEIGHT = 150;			//蹴り当たり判定縦幅
-	constexpr auto IAI_WIDTH = 600;				//居合当たり判定横幅
+	constexpr auto IAI_WIDTH = 780;				//居合当たり判定横幅
 	constexpr auto IAI_HEIGHT = 100;			//居合当たり判定縦幅
 
 	/*----------パラメーター&入力量関係----------*/
@@ -162,8 +161,8 @@ namespace PInfo {
 	constexpr auto ANIMESPEED_IAI = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto IAI_ANIMEFRAME = IAI_ANIMEMAX * ANIMESPEED_IAI; //アニメーションフレーム
 	constexpr auto IAI_ALLFRAME = 73;			//居合全フレーム(全フレームーアニメーションフレーム＝猶予時間)
-	constexpr auto IAI_BEGINFRAME = 40;			//居合判定発生フレーム
-	constexpr auto IAI_ENDFRAME =15;			//居合判定終了フレーム(発生してからのフレーム数)
+	constexpr auto IAI_BEGINFRAME = 45;			//居合判定発生フレーム
+	constexpr auto IAI_ENDFRAME =55;			//居合判定終了フレーム(発生してからのフレーム数)
 	constexpr auto IAI_MOVEMENT = 60;			//居合時の1フレームあたりの移動量
 	//スウェイ
 	constexpr auto SWAY_GRAPHNAME = "res/Samurai/S_Sway.png";		//画像ファイル名

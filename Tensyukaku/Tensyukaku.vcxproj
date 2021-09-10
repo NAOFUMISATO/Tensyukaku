@@ -149,6 +149,8 @@
   <ItemGroup>
     <ClCompile Include="Andon.cpp" />
     <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossEvent.cpp" />
     <ClCompile Include="BossStair.cpp" />
     <ClCompile Include="Bushi.cpp" />
     <ClCompile Include="BushiMotion.cpp" />
@@ -204,6 +206,8 @@
   <ItemGroup>
     <ClInclude Include="Andon.h" />
     <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossEvent.h" />
     <ClInclude Include="BossStair.h" />
     <ClInclude Include="Bushi.h" />
     <ClInclude Include="BushiMotionCollision.h" />

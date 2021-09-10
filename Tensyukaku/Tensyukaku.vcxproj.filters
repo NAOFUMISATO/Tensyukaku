@@ -270,6 +270,12 @@
     <ClCompile Include="CPointBlock.cpp">
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>ソース ファイル\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BossEvent.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -417,6 +423,12 @@
       <Filter>ヘッダー ファイル\Object\OutGame</Filter>
     </ClInclude>
     <ClInclude Include="CPointBlock.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>ヘッダー ファイル\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BossEvent.h">
       <Filter>ヘッダー ファイル\Object\Event</Filter>
     </ClInclude>
   </ItemGroup>

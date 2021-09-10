@@ -6,9 +6,9 @@
 #include "MapChip.h"
 namespace {
 	constexpr auto POSITION_X = 4000;			//横軸初期位置（足下が基準）
-	constexpr auto POSITION_Y = 7840;			//縦軸初期位置（足下が基準）
+	constexpr auto POSITION_Y = 9360;			//縦軸初期位置（足下が基準）
 	constexpr auto CPOINT_POSITION_X = 3500;	//チェックポイントX座標
-	constexpr auto CPOINT_POSITION_Y = 4040;	//チェックポイントY座標
+	constexpr auto CPOINT_POSITION_Y = 6320;	//チェックポイントY座標
 }
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
@@ -28,7 +28,7 @@ bool ModeGame::Initialize(Game& g) {
 	_stopObjProcess = false;
 	// カメラ＆マップ初期化
 	g.SetmapW(5760);
-	g.SetmapH(7920);
+	g.SetmapH(9440);
 	g.SetcvX(0);
 	g.SetcvY(g.GetmapH() - SCREEN_H);
 	_bgm = PlaySoundFile("bgm/InGame70dB.mp3", DX_PLAYTYPE_LOOP);

@@ -20,7 +20,7 @@ void	BackGround::Draw(Game& g)
 {
 	// カメラスクロール分から、背景の位置を算出する
     int x, y;
-    for (y = 0; y < g.GetmapH()+1; y+=7920)
+    for (y = 0; y < g.GetmapH()+1; y+=9440)
     {
         int pos_y = y  - g.GetcvY();
         // 画面内に画像範囲が入っているか確認（高速化用）
