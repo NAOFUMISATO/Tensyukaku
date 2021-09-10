@@ -14,12 +14,14 @@
 #include <sstream>
 
 using namespace PInfo;
-Player::Player() :
+Player::Player(int x,int y) :
 	_State(PLAYERSTATE::IDLE),
 	_Move_AnimeSpeed(0),
 	_Star_Flag(false),
 	_UI_Flag(false)
 {
+	_x = x;
+	_y = y;
 	Init();
 	LoadActionGraph();
 	LoadActionSE();
@@ -35,8 +37,6 @@ void Player::Init()
 	_GrHandle = -1;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
-	_x = POSITION_X;
-	_y = POSITION_Y;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
@@ -59,8 +59,8 @@ void Player::Process(Game& g)
 	UIAppear(g);
 	//左スティックの入力量によるステータス設定
 	BufSetting(g);
-	//プレイヤーの体力回復
-	Recovery(g);
+	//プレイヤーのイベント処理
+	Event(g);
 	/*---状態毎の処理---*/
 		//無敵状態
 		Star(g);
@@ -236,8 +236,8 @@ void Player::BufSetting(Game& g) {
 		_Move_AnimeSpeed = ANIMESPEED_RUN;
 	}
 }
-//プレイヤーの体力回復
-void Player::Recovery(Game& g) {
+//プレイヤーのイベント処理
+void Player::Event(Game& g) {
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは回復判定か？
@@ -247,6 +247,18 @@ void Player::Recovery(Game& g) {
 			if (IsHit(*(*ite)) == true) {
 				(*ite)->Delete(g);
 				_Life = 3;
+			}
+		}
+	}
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは回復判定か？
+		if ((*ite)->GetObjType() == OBJECTTYPE::CPOINTBLOCK)
+		{
+			// プレイヤーとその回復判定の当たり判定を行う
+			if (IsHit(*(*ite)) == true) {
+				(*ite)->Delete(g);
+				g.SetCPointFlag(true);
 			}
 		}
 	}

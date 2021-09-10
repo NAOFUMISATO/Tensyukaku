@@ -39,6 +39,7 @@ bool ModeTitle::Initialize(Game& g) {
 	ResourceServer::LoadDivGraph("res/Mode/TeamLogo.png", 1, 1, 1, 1920, 1080, _GrAll["TeamLogo"].data());
 	_GrAll["TitleBG"].resize(1);
 	ResourceServer::LoadDivGraph("res/Mode/TitleBG.png", 1, 1, 1, 1920, 1080, _GrAll["TitleBG"].data());
+	g.SetCPointFlag(false);
 	return true;
 }
 

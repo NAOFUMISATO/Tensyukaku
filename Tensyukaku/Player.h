@@ -6,7 +6,7 @@
 class Game;
 class Player : public ObjectBase {
 public:
-	Player();
+	Player(int x,int y);
 	~Player();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::PLAYER; }
 
@@ -14,6 +14,7 @@ public:
 	void	Process(Game& g)override;
 	void	Draw(Game& g)override;
 	void	Delete(Game& g)override;
+	
 
 private:
 	//プレイヤーの状態列挙
@@ -36,7 +37,7 @@ private:
 	void	CameraSetting(Game& g);	//プレイヤー位置からカメラ座標設定
 	void	UIAppear(Game& g);		//UIインスタンス生成関数
 	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
-	void	Recovery(Game& g);		//プレイヤーの体力回復
+	void	Event(Game& g);			//プレイヤーのイベント処理
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
@@ -59,6 +60,8 @@ private:
 	int		_Stair_x;		//階段のX座標保存変数
 	int		_Player_y;		//階段上昇時のプレイヤーY座標保存変数
 	bool	_UI_Flag;		//UI描画用フラグ
+
+	
 };
 
 
@@ -67,6 +70,8 @@ namespace PInfo {
 	/*----------プレイヤーの各座標関係----------*/
 	constexpr auto POSITION_X = 4000;			//横軸初期位置（足下が基準）
 	constexpr auto POSITION_Y = 7840;			//縦軸初期位置（足下が基準）
+	constexpr auto CPOINT_POSITION_X = 3500;	//チェックポイントX座標
+	constexpr auto CPOINT_POSITION_Y = 4040;	//チェックポイントY座標
 	constexpr auto GRAPHPOINT_X = 0;			//X位置から描画点までの差分
 	constexpr auto GRAPHPOINT_Y = -315;			//Y位置から描画点までの差分
 	constexpr auto POSITION_HITX = -45;			//描画点から当たり判定左上座標までの差分

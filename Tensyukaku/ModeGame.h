@@ -24,7 +24,8 @@ private:
 	bool	_stopObjProcess;
 	// BGM—p
 	int		_bgm;
-
+	int		_Player_x;
+	int		_Player_y;
 	BackGround	_bg;
 	GimikPlacement* _gimikplacement;
 	EnemySpawn* _enemyspawn;

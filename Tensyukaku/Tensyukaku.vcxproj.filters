@@ -252,9 +252,6 @@
     <ClCompile Include="RecoveryBlock.cpp">
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
-    <ClCompile Include="EventBlockBase.cpp">
-      <Filter>ソース ファイル\Object\Event</Filter>
-    </ClCompile>
     <ClCompile Include="EventHappen.cpp">
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
@@ -269,6 +266,9 @@
     </ClCompile>
     <ClCompile Include="OverBlack.cpp">
       <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="CPointBlock.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -398,9 +398,6 @@
     <ClInclude Include="BossStair.h">
       <Filter>ヘッダー ファイル\Object\Gimik</Filter>
     </ClInclude>
-    <ClInclude Include="EventBlockBase.h">
-      <Filter>ヘッダー ファイル\Object\Event</Filter>
-    </ClInclude>
     <ClInclude Include="RecoveryBlock.h">
       <Filter>ヘッダー ファイル\Object\Event</Filter>
     </ClInclude>
@@ -418,6 +415,9 @@
     </ClInclude>
     <ClInclude Include="OverBlack.h">
       <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CPointBlock.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

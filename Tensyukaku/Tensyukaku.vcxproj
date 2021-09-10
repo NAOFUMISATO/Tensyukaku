@@ -153,10 +153,10 @@
     <ClCompile Include="Bushi.cpp" />
     <ClCompile Include="BushiMotion.cpp" />
     <ClCompile Include="BushiMotionCollision.cpp" />
+    <ClCompile Include="CPointBlock.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
-    <ClCompile Include="EventBlockBase.cpp" />
     <ClCompile Include="EventHappen.cpp" />
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
@@ -207,10 +207,10 @@
     <ClInclude Include="BossStair.h" />
     <ClInclude Include="Bushi.h" />
     <ClInclude Include="BushiMotionCollision.h" />
+    <ClInclude Include="CPointBlock.h" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="EnemySpawn.h" />
-    <ClInclude Include="EventBlockBase.h" />
     <ClInclude Include="EventHappen.h" />
     <ClInclude Include="Flame.h" />
     <ClInclude Include="IaiGauge.h" />
