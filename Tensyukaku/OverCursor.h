@@ -15,4 +15,5 @@ private:
 	Vector2 _velocityDir;	//速度方向
 	int		_colortype;		//パーティクルの色指定
 	bool	_Input_Flag;	//入力管理フラグ
+	
 };

@@ -14,14 +14,14 @@ public:
 	~ObjectBase();
 	//オブジェクトの状態列挙
 	enum class OBJECTSTATE {
-		ALLIBE,DEAD,EVENTA,EVENTB,EVENTC
+		ALLIBE,DEAD
 	};
 	//オブジェクトの種類列挙
 	enum class OBJECTTYPE {
 		TITLELOGO,GAMESTART, EXPLAIN,GAMEEND, CURSOR,
 		OVERLOGO,OVERRETRY,OVERGOTITLE,OVERBLACK,OVERCURSOR,
 		PLAYER, ENEMY,BOSS, UI, PARTICLE,
-		MIDDLEATTACK, LOWATTACK, KICK, IAI,
+		MIDDLEATTACK, LOWATTACK, KICK, IAI,SPECIAL,
 		PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,KUNAI,SHIELDERATTACK,SHIELD,
 		STAIR,BOSSSTAIR, POISONNINJA, POISON,ANDON,FLAME, SPAWNBLOCK, EVENTBLOCK, RECOVERYBLOCK,CPOINTBLOCK,BOSSEVENTBLOCK
 	};
@@ -56,9 +56,8 @@ public:
 	void	SetX(int x) { _x = x; }
 	void	SetY(int y) { _y = y; }
 	void	SetFlip(bool isflip) { _isFlip = isflip; }
-	void	SetEventA() { _OState = OBJECTSTATE::EVENTA; }
-	void	SetEventB() { _OState = OBJECTSTATE::EVENTB; }
-	void	SetEventC() { _OState = OBJECTSTATE::EVENTC; }
+	void	SetBEventA(bool beventAflag) { _BEventA_Flag =beventAflag; }
+	void	SetBEventB(bool beventBflag) { _BEventB_Flag =beventBflag; }
 	
 	
 protected:
@@ -87,5 +86,6 @@ protected:
 	int		_Action_Cnt;				//アクション経過時間保存変数
 	int		_Before_x;					//前回のX座標保存変数
 	int		_Before_y;					//前回のY座標保存変数
-	bool	_Draw_Flag;					//描画フラグ
+	bool	_BEventA_Flag;				//ボスイベントAフラグ
+	bool	_BEventB_Flag;				//ボスイベントBフラグ
 };

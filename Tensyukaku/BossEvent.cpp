@@ -1,7 +1,9 @@
 #include "BossEvent.h"
 #include "Game.h"
 using namespace BEInfo;
-BossEventA::BossEventA() {
+BossEventA::BossEventA(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 BossEventA::~BossEventA() {
@@ -14,6 +16,11 @@ void BossEventA::Init() {
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
+#ifdef _DEBUG
+	_Color = std::make_tuple(255, 255, 255);
+	_Dalpha = 128;
+	_Fill = true;
+#endif
 }
 void BossEventA::Process(Game& g) {
 	ObjectBase::Process(g);
@@ -27,13 +34,13 @@ void BossEventA::Process(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				Delete(g);
-				(*ite)->SetEventA();
+				(*ite)->SetBEventA(true);
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 				{
 					// iteはプレイヤーか？
 					if ((*ite)->GetObjType() == OBJECTTYPE::BOSS)
 					{
-						(*ite)->SetEventA();
+						(*ite)->SetBEventA(true);
 					}
 				}
 			}
@@ -46,7 +53,9 @@ void BossEventA::Draw(Game& g) {
 void BossEventA::Delete(Game& g) {
 	g.GetOS()->Del(this);
 }
-BossEventB::BossEventB() {
+BossEventB::BossEventB(int x, int y) {
+	_x = x;
+	_y = y;
 	Init();
 }
 BossEventB::~BossEventB() {
@@ -59,6 +68,12 @@ void BossEventB::Init() {
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
+#ifdef _DEBUG
+	_Color = std::make_tuple(255, 255, 255);
+	_Dalpha = 128;
+	_Fill = true;
+#endif
+
 }
 void BossEventB::Process(Game& g) {
 	ObjectBase::Process(g);
@@ -72,13 +87,13 @@ void BossEventB::Process(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				Delete(g);
-				(*ite)->SetEventB();
+				(*ite)->SetBEventB(true);
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 				{
 					// iteはプレイヤーか？
 					if ((*ite)->GetObjType() == OBJECTTYPE::BOSS)
 					{
-						(*ite)->SetEventB();
+						(*ite)->SetBEventB(true);
 					}
 				}
 			}
@@ -89,50 +104,5 @@ void BossEventB::Draw(Game& g) {
 	ObjectBase::Draw(g);
 }
 void BossEventB::Delete(Game& g) {
-	g.GetOS()->Del(this);
-}
-BossEventC::BossEventC() {
-	Init();
-}
-BossEventC::~BossEventC() {
-}
-
-void BossEventC::Init() {
-	_gx = GRAPHPOINT_X;
-	_gy = GRAPHPOINT_Y;
-	_hit_x = POSITION_HITX;
-	_hit_y = POSITION_HITY;
-	_hit_w = COLLISION_WIDTH;
-	_hit_h = COLLISION_HEIGHT;
-}
-void BossEventC::Process(Game& g) {
-	ObjectBase::Process(g);
-	//ボスイベントAとプレイヤーの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			// //ボスイベントAとプレイヤーの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				Delete(g);
-				(*ite)->SetEventC();
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
-					// iteはプレイヤーか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::BOSS)
-					{
-						(*ite)->SetEventC();
-					}
-				}
-			}
-		}
-	}
-}
-void BossEventC::Draw(Game& g) {
-	ObjectBase::Draw(g);
-}
-void BossEventC::Delete(Game& g) {
 	g.GetOS()->Del(this);
 }

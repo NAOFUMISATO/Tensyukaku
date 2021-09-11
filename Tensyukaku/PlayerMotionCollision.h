@@ -54,3 +54,16 @@ public:
 	void	Draw(Game& g)override;
 	void	Delete(Game& g)override;
 };
+
+//プレイヤーの特殊攻撃当たり判定クラス
+class SpecialCollision : public ObjectBase {
+public:
+	SpecialCollision(int x, int y);
+	~SpecialCollision();
+	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::IAI; }
+
+	void	Init()override;
+	void	Process(Game& g)override;
+	void	Draw(Game& g)override;
+	void	Delete(Game& g)override;
+};

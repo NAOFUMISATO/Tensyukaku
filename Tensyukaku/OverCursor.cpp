@@ -35,6 +35,7 @@ void OverCursor::Init() {
 	_colortype = 2;
 	_Cnt = 121;
 	_Input_Flag = false;
+	
 }
 
 void OverCursor::Process(Game& g) {
@@ -51,6 +52,7 @@ void OverCursor::Process(Game& g) {
 				if (IsHit(*(*ite)) == true) {
 					_State = CURSOLSTATE::RETRYHIT;
 					_colortype = GetRand(4);
+
 				}
 			}
 		}
@@ -63,6 +65,7 @@ void OverCursor::Process(Game& g) {
 				if (IsHit(*(*ite)) == true) {
 					_State = CURSOLSTATE::GOTITLEHIT;
 					_colortype = GetRand(4);
+
 				}
 			}
 		}

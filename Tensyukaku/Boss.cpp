@@ -1,9 +1,14 @@
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Boss.h"
+#include "Game.h"
 using namespace BossInifo;
-Boss::Boss(int x,int y) {
+Boss::Boss(int x,int y,bool flip) {
+	_x = x;
+	_y = y;
+	_isFlip = flip;
 	Init();
+	LoadActionGraph();
 }
 Boss::~Boss() {
 }
@@ -18,30 +23,25 @@ void Boss::Init() {
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 	_Alpha = 255;
+	_State = BOSSSTATE::IDLE;
 }
 
 void Boss::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_OState == OBJECTSTATE::EVENTA) {
-		_State = BOSSSTATE::EVENTA;
-	}
-	else if (_OState == OBJECTSTATE::EVENTB) {
-		_State = BOSSSTATE::EVENTB;
-	}
-	else if (_OState == OBJECTSTATE::EVENTC) {
-		_State = BOSSSTATE::EVENTC;
-	}
-	else { _State = BOSSSTATE::IDLE; }
+	EventChange(g);
 	/*---状態毎の処理---*/
 	switch (_State) {
+	case BOSSSTATE::IDLE:
+		Idle(g);
+		break;
 	case BOSSSTATE::EVENTA:
-		EventA(g);
+		BossEventA(g);
 		break;
 	case BOSSSTATE::EVENTB:
-		EventB(g);
+		BossEventB(g);
 		break;
-	case BOSSSTATE::EVENTC:
-		EventC(g);
+	case BOSSSTATE::DEAD:
+		Dead(g);
 		break;
 	}
 
@@ -51,34 +51,95 @@ void Boss::Draw(Game& g) {
 	ObjectBase::Draw(g);
 }
 
-//プレイヤーの画像読み込み関数
+/*---------状態毎の処理----------*/
+void Boss::Idle(Game& g) {
+	_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
+	_Anime["Idle"] = 0;
+}
+void Boss::BossEventA(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame >= 0 && 120 >= frame) {
+		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
+		_Anime["Idle"] = 0;
+	}
+	if (frame == 60) {
+		_isFlip = false;
+	}
+	if (frame == 120) {
+		_isFlip = true;
+	}
+	if (frame > 120&&360>frame){
+		_GrHandle = _GrAll["Move"][_Anime["Move"]];
+		_Anime["Move"] = (_Cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
+		_x -= 4;
+	}
+	if (frame ==360) {
+		g.GetOS()->Del(this);
+	}
+}
+void Boss::BossEventB(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_Spd = 3;
+	_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
+	_Anime["Idle"] = 0;
+	if (frame == 30) {
+		_isFlip = true;
+	}
+	if (frame >= 90 && 250 > frame) {
+		_GrHandle = _GrAll["Back"][_Anime["Back"]];
+		_Anime["Back"] = (_Cnt / ANIMESPEED_BACK) % BACK_ANIMEMAX;
+		_x += _Spd;
+	}
+	if (frame >= 250) {
+		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
+		_Anime["Idle"] = 0;
+	}
+	if (frame == 270) {
+		_isFlip = false;
+	}
+	if (frame == 290) {
+		_isFlip = true;
+	}
+	if (frame > 290) {
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteはプレイヤーの特殊攻撃オブジェクトか？
+			if ((*ite)->GetObjType() == OBJECTTYPE::SPECIAL)
+			{
+				// 敵とプレイヤーの特殊攻撃オブジェクトの当たり判定を行う
+				if (IsHit(*(*ite)) == true) {
+				}
+			}
+		}
+	}
+}
+void Boss::Dead(Game& g) {
+}
+//ボスのイベント状態遷移関数
+void Boss::EventChange(Game& g) {
+	if (_BEventA_Flag == true) {
+		_State = BOSSSTATE::EVENTA;
+		_Action_Cnt = _Cnt;
+		_BEventA_Flag = false;
+	}
+	if (_BEventB_Flag == true) {
+		_State = BOSSSTATE::EVENTB;
+		_Action_Cnt = _Cnt;
+		_BEventB_Flag = false;
+	}
+}
+//ボスの画像読み込み関数
 void Boss::LoadActionGraph() {
 	_GrAll["Idle"].resize(IDLE_ANIMEMAX);
 	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Idle"].data());
 	_GrAll["Move"].resize(MOVE_ANIMEMAX);
 	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Move"].data());
+	_GrAll["Back"].resize(BACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(BACK_GRAPHNAME, BACK_ANIMEMAX, BACK_WIDTHCOUNT, BACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Back"].data());
 	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
 	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
-	
 }
-
-//プレイヤーの効果音読み込み関数
+//ボスの効果音読み込み関数
 void Boss::LoadActionSE() {
-	
-}
-
-void Boss::Idle(Game& g) {
-
-}
-
-void Boss::EventA(Game& g) {
-
-}
-
-void Boss::EventB(Game& g) {
-
-}
-
-void Boss::EventC(Game& g) {
 
 }

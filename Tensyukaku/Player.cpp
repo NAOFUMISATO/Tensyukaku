@@ -49,6 +49,7 @@ void Player::Init()
 	_isFlip = FIRST_FLIP;
 	_Alpha = FIRST_ALPHA;
 	_Position = { 0,0 };
+	_CameraX = 500;
 }
 
 
@@ -60,16 +61,8 @@ void Player::Process(Game& g)
 	//左スティックの入力量によるステータス設定
 	BufSetting(g);
 	//プレイヤーのイベント処理
-	NormalEvent(g);
-	if (_OState == OBJECTSTATE::EVENTA) {
-		_State = PLAYERSTATE::EVENTA;
-	}
-	else if (_OState == OBJECTSTATE::EVENTB) {
-		_State = PLAYERSTATE::EVENTB;
-	}
-	else if (_OState == OBJECTSTATE::EVENTC) {
-		_State = PLAYERSTATE::EVENTC;
-	}
+	EventChange(g);
+	
 	/*---状態毎の処理---*/
 		//無敵状態
 		Star(g);
@@ -134,9 +127,9 @@ void Player::Process(Game& g)
 	case PLAYERSTATE::EVENTB:
 		BossEventB(g);
 		break;
-		//イベントC状態
-	case PLAYERSTATE::EVENTC:
-		BossEventC(g);
+		//特殊攻撃状態
+	case PLAYERSTATE::SPECIALATTACK:
+		SpecialAttack(g);
 		break;
 	}
 	//プレイヤー位置からのカメラ位置設定
@@ -174,6 +167,8 @@ void Player::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Damage"].data());
 	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
 	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
+	_GrAll["Special"].resize(SPECIALATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(SPECIALATTACK_GRAPHNAME, SPECIALATTACK_ANIMEMAX, SPECIALATTACK_WIDTHCOUNT, SPECIALATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Special"].data());
 }
 
 //プレイヤーの効果音読み込み関数
@@ -198,7 +193,8 @@ void Player::DebugDraw(Game& g) {
 	ss <<"左スティック入力量Y="<<g.GetYBuf()<< "\n";
 	ss << "体力=" << _Life << "\n";
 	ss << "速さ=" << _Spd << "\n";
-	ss << "居合ゲージ=" << _Iai_Gauge << "\n";
+	ss << "カメラ割合=" << _CameraX << "\n";
+	ss << "フレーム=" << _Cnt-_Action_Cnt << "\n";
 	DrawString(10, 10, ss.str().c_str(), GetColor(255, 0, 0));
 }
 
@@ -218,15 +214,17 @@ void Player::UIAppear(Game& g){
 }
 //プレイヤー位置からのカメラ位置設定
 void Player::CameraSetting(Game& g) {
-	g.SetcvX(_x - (SCREEN_W * BACK_CAMERA_X / 100));// 背景の横中央にキャラを置く
-	g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));// 背景の縦93%にキャラを置く
+
+	g.SetcvX(_x - (SCREEN_W * _CameraX / 1000));				// 背景の横中央にキャラを置く
+	g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));		// 背景の縦93%にキャラを置く
 	if (g.GetcvX() < 0) { g.SetcvX(0); }
 	if (g.GetcvX() > g.GetmapW() - SCREEN_W) { g.SetcvX(g.GetmapW() - SCREEN_W); }
 	if (g.GetcvY() < 0) { g.SetcvY(0); }
 	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
+
 	auto GC = g.GetChip();
-	GC->SetscrX(_x - (SCREEN_W * CHIP_CAMERA_X / 100));	// マップチップの横中央にキャラを置く
-	GC->SetscrY(_y - (SCREEN_H * CHIP_CAMERA_Y / 100));	// マップチップの縦93%にキャラを置く
+	GC->SetscrX(_x - (SCREEN_W * _CameraX / 1000));			// マップチップの横中央にキャラを置く
+	GC->SetscrY(_y - (SCREEN_H * CHIP_CAMERA_Y / 100));		// マップチップの縦93%にキャラを置く
 	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
 	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
 	if (GC->GetscrY() < 0) { GC->SetscrY(0); }
@@ -258,7 +256,18 @@ void Player::BufSetting(Game& g) {
 	}
 }
 //プレイヤーのイベント処理
-void Player::NormalEvent(Game& g) {
+void Player::EventChange(Game& g) {
+	//ボスステージのイベント処理状態遷移用関数
+	if (_BEventA_Flag == true) {
+		_Action_Cnt = _Cnt;
+		_State = PLAYERSTATE::EVENTA;
+		_BEventA_Flag = false;
+	}
+	if (_BEventB_Flag == true) {
+		_Action_Cnt = _Cnt;
+		_State = PLAYERSTATE::EVENTB;
+		_BEventB_Flag = false;
+	}
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteは回復判定か？

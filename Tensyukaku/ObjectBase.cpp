@@ -10,8 +10,7 @@ namespace {
 	constexpr auto GREEN = 1;
 	constexpr auto Blue = 2;
 }
-ObjectBase::ObjectBase():
-	_Draw_Flag(false)
+ObjectBase::ObjectBase()
 {
 	Init();
 }
@@ -32,6 +31,8 @@ void ObjectBase::Init()
 	_Color = std::make_tuple(255,0,255);
 	_Dalpha = 128;
 	_Fill = false;
+	_BEventA_Flag=false;
+	_BEventB_Flag=false;
 }
 
 void ObjectBase::Process(Game& g)

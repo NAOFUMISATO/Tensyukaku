@@ -16,7 +16,7 @@ public:
 	void	Delete(Game& g)override;
 private:
 	//プレイヤーの状態列挙
-	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD, STAIRUP, STAIRMOVE, BOSSSTAIRMOVE, BOSSSTAIRUP, EVENTA, EVENTB, EVENTC };
+	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD, STAIRUP, STAIRMOVE, BOSSSTAIRMOVE, BOSSSTAIRUP, EVENTA, EVENTB,SPECIALATTACK};
 	void	Star(Game& g);			//無敵状態時の処理
 	void	Idle(Game& g);			//待機状態時の処理
 	void	Move(Game& g);			//移動時の処理
@@ -34,10 +34,10 @@ private:
 	void	CameraSetting(Game& g);	//プレイヤー位置からカメラ座標設定
 	void	UIAppear(Game& g);		//UIインスタンス生成関数
 	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
-	void	NormalEvent(Game& g);	//プレイヤーのイベント処理
+	void	EventChange(Game& g);	//プレイヤーのイベント処理
 	void	BossEventA(Game& g);	//プレイヤーのボスイベント処理A
 	void	BossEventB(Game& g);	//プレイヤーのボスイベント処理B
-	void	BossEventC(Game& g);	//プレイヤーのボスイベント処理C
+	void	SpecialAttack(Game& g);	//プレイヤーの特殊攻撃処理
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
@@ -58,8 +58,10 @@ private:
 	bool	_StairFlip_Flag;//階段の反転判定保存フラグ
 	int		_Stair_x;		//階段のX座標保存変数
 	int		_Player_y;		//階段上昇時のプレイヤーY座標保存変数
-	bool	_UI_Flag;		//UI描画用フラグ
 
+
+	bool	_UI_Flag;		//UI描画用フラグ
+	int		_CameraX;			//カメラ位置
 	
 };
 
@@ -91,6 +93,8 @@ namespace PInfo {
 	constexpr auto KICK_HEIGHT = 150;			//蹴り当たり判定縦幅
 	constexpr auto IAI_WIDTH = 780;				//居合当たり判定横幅
 	constexpr auto IAI_HEIGHT = 100;			//居合当たり判定縦幅
+	constexpr auto SPECIALATTACK_WIDTH = 300;	//特殊攻撃当たり判定横幅
+	constexpr auto SPECIALATTACK_HEIGHT = 100;	//特殊攻撃当たり判定縦幅
 
 	/*----------パラメーター&入力量関係----------*/
 	constexpr auto LIFE_MAX = 3;				//体力
@@ -185,7 +189,6 @@ namespace PInfo {
 	constexpr auto ANIMESPEED_STAR = 8;			//無敵状態時の点滅速度 
 	constexpr auto STAR_ALPHA = 128;			//無敵状態時の透明度
 	constexpr auto STAR_ALLFRAME = 60;			//被ダメ時の無敵フレーム
-
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Samurai/S_Dead.png";		//画像ファイル名
 	constexpr auto DEAD_ANIMEMAX = 8;			//全ての画像枚数
@@ -194,6 +197,16 @@ namespace PInfo {
 	constexpr auto ANIMESPEED_DEAD = 8;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto DEAD_ANIMEFRAME = DEAD_ANIMEMAX * ANIMESPEED_DEAD; //アニメーションフレーム
 	constexpr auto DEAD_ALLFRAME = 128;			//死亡全フレーム
+	//特殊攻撃
+	constexpr auto SPECIALATTACK_GRAPHNAME = "res/Samurai/S_Special.png";	//画像ファイル名
+	constexpr auto SPECIALATTACK_ANIMEMAX = 37;	//全ての画像枚数
+	constexpr auto SPECIALATTACK_WIDTHCOUNT = 13;	//横の画像枚数
+	constexpr auto SPECIALATTACK_HEIGHTCOUNT = 3;	//縦の画像枚数
+	constexpr auto ANIMESPEED_SPECIALATTACK = 4;	//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto SPECIALATTACK_ANIMEFRAME = SPECIALATTACK_ANIMEMAX * ANIMESPEED_SPECIALATTACK; //アニメーションフレーム
+	constexpr auto SPECIALATTACK_ALLFRAME = 185;	//特殊攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto SPECIALATTACK_BEGINFRAME = 15;	//特殊攻撃判定発生フレーム
+	constexpr auto SPECIALATTACK_ENDFRAME = 95;		//特殊攻撃判定終了フレーム(発生してからのフレーム数）
 	
 	/*----------SE関係----------*/
 	constexpr auto WALK_SE = "se/Footstep.wav";			//移動

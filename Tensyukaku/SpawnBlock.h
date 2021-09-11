@@ -89,7 +89,14 @@ public:
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
 };
-
+class BossSpawn :public SpawnBlockBase {
+public:
+	BossSpawn();
+	~BossSpawn();
+	virtual SPAWNTYPE	GetSpaType() { return SPAWNTYPE::BOSSSPAWN; }
+	void Process(Game& g)override;
+	void Draw(Game& g)override;
+};
 
 namespace SpaInfo {
 	/*----------スポーンブロックの位置&スポーンする敵の位置&忍者のクナイ本数----------*/
@@ -130,6 +137,7 @@ namespace SpaInfo {
 	constexpr auto  SPAWN1A_POIJA6_X = 1300;	constexpr auto  SPAWN1A_POIJA6_Y = 5560;	constexpr auto  SPAWN1A_POIJA6_FLIP = false;	//毒液忍者6
 	constexpr auto  SPAWN1A_POIJA7_X = 1600;	constexpr auto  SPAWN1A_POIJA7_Y = 5560;	constexpr auto  SPAWN1A_POIJA7_FLIP = true;		//毒液忍者7
 	constexpr auto  SPAWN1A_POIJA8_X = 1900;	constexpr auto  SPAWN1A_POIJA8_Y = 5560;	constexpr auto  SPAWN1A_POIJA8_FLIP = false;	//毒液忍者8
+	constexpr auto  SPAWN1A_BOSS_X = 4200;		constexpr auto  SPAWN1A_BOSS_Y = 1760;		constexpr auto  SPAWN1A_BOSS_FLIP = true;		//ボス
 	//スポーンブロック2A
 	constexpr auto  SPAWN2A_XPOSITION = 3900;	constexpr auto SPAWN2A_YPOSITION = 8600;	//スポーンブロック2A
 	constexpr auto  SPAWN2A_BUSHI1_X = 3300;	constexpr auto  SPAWN2A_BUSHI1_Y = 8600;	constexpr auto  SPAWN2A_BUSHI1_FLIP = false;	//武士1
@@ -187,4 +195,7 @@ namespace SpaInfo {
 	constexpr auto  SPAWN10B_XPOSITION = 2700;	constexpr auto SPAWN10B_YPOSITION = 2520;	//スポーンブロック10B
 	constexpr auto  SPAWN10B_NINJA1_X = 3100;	constexpr auto  SPAWN10B_NINJA1_Y = 2520;	constexpr auto  SPAWN10B_NINJA1_FLIP = true;	constexpr auto  SPAWN10B_NINJA1_KUNAI = 0;	//忍者1
 	constexpr auto  SPAWN10B_NINJA2_X = 3400;	constexpr auto  SPAWN10B_NINJA2_Y = 2520;	constexpr auto  SPAWN10B_NINJA2_FLIP = true;	constexpr auto  SPAWN10B_NINJA2_KUNAI = 0;	//忍者2
+	//ボススポーンブロック
+	constexpr auto  BOSSSPAWN_XPOSITION = 200;	constexpr auto BOSSSPAWN_YPOSITION = 1000;	//ボススポーンブロック
+	constexpr auto  BOSSSPAWN_X = 5050;			constexpr auto  BOSSSPAWN_Y = 1000;			constexpr auto  BOSSSPAWN_FLIP = false;			//ボス
 }

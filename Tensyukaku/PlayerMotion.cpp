@@ -430,6 +430,7 @@ void Player::Kick(Game& g) {
 	_GrHandle = _GrAll["Kick"][_Anime["Kick"]];
 	_Anime["Kick"] = ((frame) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
 	if (frame == KICK_BEGINFRAME) {
+		
 		PlaySoundMem(_Se["Kick"], DX_PLAYTYPE_BACK, true);
 		if (_isFlip == false) {
 			//蹴り判定オブジェクトの生成
@@ -445,6 +446,7 @@ void Player::Kick(Game& g) {
 		}
 	}
 	if (frame == KICK_ALLFRAME) {
+		
 		_State = PLAYERSTATE::IDLE;
 	}
 	//敵の攻撃の当たり判定
@@ -768,13 +770,50 @@ void Player::BossStairUp(Game& g) {
 }
 /*-----イベントAの処理-----*/
 void Player::BossEventA(Game& g) {
-
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
+	_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	if (frame == 1) {
+		_CameraX = 855;
+	}
+	if (frame <=120) {
+		_CameraX +=1;
+	}
+	if (frame >= 240) {
+		_CameraX -=1;
+	}
+	if (frame == 360) {
+		_CameraX = 500;
+		_State = PLAYERSTATE::IDLE;
+	}
 }
 /*-----イベントBの処理-----*/
 void Player::BossEventB(Game& g) {
-
+	auto frame = _Cnt - _Action_Cnt;
+	_Spd = 4;
+	if (frame <= 120) {
+		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
+		_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	}
+	if (frame > 120 && 310 >= frame) {
+		_x += _Spd;
+		_GrHandle = _GrAll["Move"][_Anime["Move"]];
+		_Anime["Move"] = (_Cnt / 10) % MOVE_ANIMEMAX;
+	}
+	if (frame > 310) {
+		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
+		_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+		if (g.GetTrg() & PAD_INPUT_1) {
+			_State = PLAYERSTATE::SPECIALATTACK;
+			_Action_Cnt = _Cnt;
+		}
+	}
 }
-/*-----イベントCの処理-----*/
-void Player::BossEventC(Game& g) {
-
+/*-----特殊攻撃の処理-----*/
+void Player::SpecialAttack(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Special"][_Anime["Special"]];
+	if (frame < SPECIALATTACK_ANIMEFRAME) {
+		_Anime["Special"] = ((frame) / ANIMESPEED_SPECIALATTACK) % SPECIALATTACK_ANIMEMAX;
+	}
 }

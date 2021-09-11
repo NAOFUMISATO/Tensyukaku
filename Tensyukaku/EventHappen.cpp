@@ -18,6 +18,9 @@ void EventHappen::Init(Game& g) {
 	//チェックポイントブロック生成
 	auto cb = new CPointBlock(CPOINT_X, CPOINT_Y);
 	g.GetOS()->Add(cb);
-	////ボスイベントブロック作成
-	//auto bsa=new BossEventA(BOSSA)
+	//ボスイベントブロック作成
+	auto bsa = new BossEventA(BOSSA_X, BOSSA_Y);
+	g.GetOS()->Add(bsa);
+	auto bsb = new BossEventB(BOSSB_X, BOSSB_Y);
+	g.GetOS()->Add(bsb);
 }

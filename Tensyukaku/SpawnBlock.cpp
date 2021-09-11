@@ -4,6 +4,7 @@
 #include "Ninja.h"
 #include "Shielder.h"
 #include "PoisonNinja.h"
+#include "Boss.h"
 
 using namespace SpaInfo;
 /*
@@ -91,6 +92,8 @@ void Spawn1A::Process(Game& g) {
 				g.GetOS()->Add(pn5);
 				auto pn6 = new PoisonNinja(SPAWN1A_POIJA6_X, SPAWN1A_POIJA6_Y, SPAWN1A_POIJA6_FLIP);
 				g.GetOS()->Add(pn6);
+				auto boss = new Boss(SPAWN1A_BOSS_X, SPAWN1A_BOSS_Y, SPAWN1A_BOSS_FLIP);
+				g.GetOS()->Add(boss);
 			}
 		}
 	}
@@ -416,5 +419,31 @@ void Spawn10B::Process(Game& g) {
 	}
 }
 void Spawn10B::Draw(Game& g) {
+	SpawnBlockBase::Draw(g);
+}
+
+//ボススポーンブロック
+BossSpawn::BossSpawn() {
+	_x = BOSSSPAWN_XPOSITION;
+	_y = BOSSSPAWN_YPOSITION;
+}
+BossSpawn::~BossSpawn() {
+}
+void BossSpawn::Process(Game& g) {
+	//プレイヤーとの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+		{
+			if (IsHit(*(*ite)) == true) {
+				Delete(g);
+				auto boss = new Boss(BOSSSPAWN_X, BOSSSPAWN_Y, BOSSSPAWN_FLIP);
+				g.GetOS()->Add(boss);
+			}
+		}
+	}
+}
+void BossSpawn::Draw(Game& g) {
 	SpawnBlockBase::Draw(g);
 }

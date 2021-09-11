@@ -96,7 +96,7 @@ void Ninja::Patrol(Game& g) {
 				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 				{
-					// iteはプレイヤか？
+					// iteはプレイヤーか？
 					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 					{
 						auto ig = (*ite)->GetGauge();
