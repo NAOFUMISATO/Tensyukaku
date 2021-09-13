@@ -205,8 +205,8 @@ namespace PInfo {
 	constexpr auto ANIMESPEED_SPECIALATTACK = 4;	//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto SPECIALATTACK_ANIMEFRAME = SPECIALATTACK_ANIMEMAX * ANIMESPEED_SPECIALATTACK; //アニメーションフレーム
 	constexpr auto SPECIALATTACK_ALLFRAME = 185;	//特殊攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
-	constexpr auto SPECIALATTACK_BEGINFRAME = 15;	//特殊攻撃判定発生フレーム
-	constexpr auto SPECIALATTACK_ENDFRAME = 95;		//特殊攻撃判定終了フレーム(発生してからのフレーム数）
+	constexpr auto SPECIALATTACK_BEGINFRAME = 40;	//特殊攻撃判定発生フレーム
+	constexpr auto SPECIALATTACK_ENDFRAME = 80;		//特殊攻撃判定終了フレーム(発生してからのフレーム数）
 	
 	/*----------SE関係----------*/
 	constexpr auto WALK_SE = "se/Footstep.wav";			//移動

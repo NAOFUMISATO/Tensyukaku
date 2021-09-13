@@ -816,4 +816,10 @@ void Player::SpecialAttack(Game& g) {
 	if (frame < SPECIALATTACK_ANIMEFRAME) {
 		_Anime["Special"] = ((frame) / ANIMESPEED_SPECIALATTACK) % SPECIALATTACK_ANIMEMAX;
 	}
+	if (frame == SPECIALATTACK_BEGINFRAME) {
+		//特殊攻撃判定オブジェクトの生成
+		auto sc = new SpecialCollision(_x - _hit_x, _y - _hit_h);
+		// オブジェクトサーバ-に特殊攻撃判定オブジェクトを追加
+		g.GetOS()->Add(sc);
+	}
 }

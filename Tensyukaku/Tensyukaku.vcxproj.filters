@@ -276,6 +276,24 @@
     <ClCompile Include="BossEvent.cpp">
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
+    <ClCompile Include="OverlayFlame.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="FlameBlock.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="ModePrologue.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PrologueText.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeEpilogue.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="EpilogueText.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -430,6 +448,24 @@
     </ClInclude>
     <ClInclude Include="BossEvent.h">
       <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="OverlayFlame.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="FlameBlock.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="ModePrologue.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PrologueText.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeEpilogue.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="EpilogueText.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

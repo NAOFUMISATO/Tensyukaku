@@ -77,13 +77,13 @@ void BossEventB::Init() {
 }
 void BossEventB::Process(Game& g) {
 	ObjectBase::Process(g);
-	//ボスイベントAとプレイヤーの当たり判定
+	//ボスイベントBとプレイヤーの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 		{
-			// //ボスイベントAとプレイヤーの当たり判定を行う
+			// //ボスイベントBとプレイヤーの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
 				Delete(g);
@@ -94,6 +94,7 @@ void BossEventB::Process(Game& g) {
 					if ((*ite)->GetObjType() == OBJECTTYPE::BOSS)
 					{
 						(*ite)->SetBEventB(true);
+						g.GetMS()->Del(g.GetMS()->Get("Flame"));
 					}
 				}
 			}

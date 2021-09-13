@@ -422,14 +422,15 @@ void Spawn10B::Draw(Game& g) {
 	SpawnBlockBase::Draw(g);
 }
 
-//ボススポーンブロック
-BossSpawn::BossSpawn() {
-	_x = BOSSSPAWN_XPOSITION;
-	_y = BOSSSPAWN_YPOSITION;
+//スポーンブロック11A
+Spawn11A::Spawn11A() {
+	_x = SPAWN11A_XPOSITION;
+	_y = SPAWN11A_YPOSITION;
 }
-BossSpawn::~BossSpawn() {
+Spawn11A::~Spawn11A() {
 }
-void BossSpawn::Process(Game& g) {
+
+void Spawn11A::Process(Game& g) {
 	//プレイヤーとの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
@@ -438,12 +439,184 @@ void BossSpawn::Process(Game& g) {
 		{
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
-				auto boss = new Boss(BOSSSPAWN_X, BOSSSPAWN_Y, BOSSSPAWN_FLIP);
+				auto bu1 = new Bushi(SPAWN11A_BUSHI1_X, SPAWN11A_BUSHI1_Y, SPAWN11A_BUSHI1_FLIP);
+				g.GetOS()->Add(bu1);
+				auto bu2 = new Bushi(SPAWN11A_BUSHI2_X, SPAWN11A_BUSHI2_Y, SPAWN11A_BUSHI2_FLIP);
+				g.GetOS()->Add(bu2);
+				
+			}
+		}
+	}
+}
+void Spawn11A::Draw(Game& g) {
+	SpawnBlockBase::Draw(g);
+}
+
+//スポーンブロック11B
+Spawn11B::Spawn11B() {
+	_x = SPAWN11B_XPOSITION;
+	_y = SPAWN11B_YPOSITION;
+}
+Spawn11B::~Spawn11B() {
+}
+
+void Spawn11B::Process(Game& g) {
+	//プレイヤーとの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+		{
+			if (IsHit(*(*ite)) == true) {
+				Delete(g);
+				auto bu1 = new Bushi(SPAWN11B_BUSHI1_X, SPAWN11B_BUSHI1_Y, SPAWN11B_BUSHI1_FLIP);
+				g.GetOS()->Add(bu1);
+				auto bu2 = new Bushi(SPAWN11B_BUSHI2_X, SPAWN11B_BUSHI2_Y, SPAWN11B_BUSHI2_FLIP);
+				g.GetOS()->Add(bu2);
+				auto ni1 = new Ninja(SPAWN11B_NINJA1_X, SPAWN11B_NINJA1_Y, SPAWN11B_NINJA1_FLIP, SPAWN11B_NINJA1_KUNAI);
+				g.GetOS()->Add(ni1);
+				auto sh1 = new Shielder(SPAWN11B_SHIEL1_X, SPAWN11B_SHIEL1_Y, SPAWN11B_SHIEL1_FLIP);
+				g.GetOS()->Add(sh1);
+				auto pn1 = new PoisonNinja(SPAWN11B_POIJA1_X, SPAWN11B_POIJA1_Y, SPAWN11B_POIJA1_FLIP);
+				g.GetOS()->Add(pn1);
+				auto pn2 = new PoisonNinja(SPAWN11B_POIJA2_X, SPAWN11B_POIJA2_Y, SPAWN11B_POIJA2_FLIP);
+				g.GetOS()->Add(pn2);
+			}
+		}
+	}
+}
+void Spawn11B::Draw(Game& g) {
+	SpawnBlockBase::Draw(g);
+}
+
+//スポーンブロック11C
+Spawn11C::Spawn11C() {
+	_x = SPAWN11C_XPOSITION;
+	_y = SPAWN11C_YPOSITION;
+}
+Spawn11C::~Spawn11C() {
+}
+
+void Spawn11C::Process(Game& g) {
+	//プレイヤーとの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+		{
+			if (IsHit(*(*ite)) == true) {
+				Delete(g);
+				auto bu1 = new Bushi(SPAWN11C_BUSHI1_X, SPAWN11C_BUSHI1_Y, SPAWN11C_BUSHI1_FLIP);
+				g.GetOS()->Add(bu1);
+				auto bu2 = new Bushi(SPAWN11C_BUSHI2_X, SPAWN11C_BUSHI2_Y, SPAWN11C_BUSHI2_FLIP);
+				g.GetOS()->Add(bu2);
+				auto sh1 = new Shielder(SPAWN11C_SHIEL1_X, SPAWN11C_SHIEL1_Y, SPAWN11C_SHIEL1_FLIP);
+				g.GetOS()->Add(sh1);
+				auto sh2 = new Shielder(SPAWN11C_SHIEL2_X, SPAWN11C_SHIEL2_Y, SPAWN11C_SHIEL2_FLIP);
+				g.GetOS()->Add(sh2);
+				auto sh3 = new Shielder(SPAWN11C_SHIEL3_X, SPAWN11C_SHIEL3_Y, SPAWN11C_SHIEL3_FLIP);
+				g.GetOS()->Add(sh3);
+				auto boss = new Boss(SPAWN11C_BOSS_X, SPAWN11C_BOSS_Y, SPAWN11C_BOSS_FLIP);
 				g.GetOS()->Add(boss);
 			}
 		}
 	}
 }
-void BossSpawn::Draw(Game& g) {
+void Spawn11C::Draw(Game& g) {
+	SpawnBlockBase::Draw(g);
+}
+
+//スポーンブロック12A
+Spawn12A::Spawn12A() {
+	_x = SPAWN12A_XPOSITION;
+	_y = SPAWN12A_YPOSITION;
+}
+Spawn12A::~Spawn12A() {
+}
+
+void Spawn12A::Process(Game& g) {
+	//プレイヤーとの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+		{
+			if (IsHit(*(*ite)) == true) {
+				Delete(g);
+				auto bu1 = new Bushi(SPAWN12A_BUSHI1_X, SPAWN12A_BUSHI1_Y, SPAWN12A_BUSHI1_FLIP);
+				g.GetOS()->Add(bu1);
+				auto ni1 = new Ninja(SPAWN12A_NINJA1_X, SPAWN12A_NINJA1_Y, SPAWN12A_NINJA1_FLIP, SPAWN12A_NINJA1_KUNAI);
+				g.GetOS()->Add(ni1);
+				auto sh1 = new Shielder(SPAWN12A_SHIEL1_X, SPAWN12A_SHIEL1_Y, SPAWN12A_SHIEL1_FLIP);
+				g.GetOS()->Add(sh1);
+			}
+		}
+	}
+}
+void Spawn12A::Draw(Game& g) {
+	SpawnBlockBase::Draw(g);
+}
+
+//スポーンブロック12B
+Spawn12B::Spawn12B() {
+	_x = SPAWN12B_XPOSITION;
+	_y = SPAWN12B_YPOSITION;
+}
+Spawn12B::~Spawn12B() {
+}
+
+void Spawn12B::Process(Game& g) {
+	//プレイヤーとの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+		{
+			if (IsHit(*(*ite)) == true) {
+				Delete(g);
+				auto sh1 = new Shielder(SPAWN12B_SHIEL1_X, SPAWN12B_SHIEL1_Y, SPAWN12B_SHIEL1_FLIP);
+				g.GetOS()->Add(sh1);
+				auto sh2 = new Shielder(SPAWN12B_SHIEL2_X, SPAWN12B_SHIEL2_Y, SPAWN12B_SHIEL2_FLIP);
+				g.GetOS()->Add(sh2);
+				auto sh3 = new Shielder(SPAWN12B_SHIEL3_X, SPAWN12B_SHIEL3_Y, SPAWN12B_SHIEL3_FLIP);
+				g.GetOS()->Add(sh3);
+			}
+		}
+	}
+}
+void Spawn12B::Draw(Game& g) {
+	SpawnBlockBase::Draw(g);
+}
+
+//スポーンブロック12C
+Spawn12C::Spawn12C() {
+	_x = SPAWN12C_XPOSITION;
+	_y = SPAWN12C_YPOSITION;
+}
+Spawn12C::~Spawn12C() {
+}
+
+void Spawn12C::Process(Game& g) {
+	//プレイヤーとの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+		{
+			if (IsHit(*(*ite)) == true) {
+				Delete(g); 
+				auto sh1 = new Shielder(SPAWN12C_SHIEL1_X, SPAWN12C_SHIEL1_Y, SPAWN12C_SHIEL1_FLIP);
+				g.GetOS()->Add(sh1);
+				auto sh2 = new Shielder(SPAWN12C_SHIEL2_X, SPAWN12C_SHIEL2_Y, SPAWN12C_SHIEL2_FLIP);
+				g.GetOS()->Add(sh2);
+				auto bu1 = new Bushi(SPAWN12C_BUSHI1_X, SPAWN12C_BUSHI1_Y, SPAWN12C_BUSHI1_FLIP);
+				g.GetOS()->Add(bu1);
+				auto ni1 = new Ninja(SPAWN12C_NINJA1_X, SPAWN12C_NINJA1_Y, SPAWN12C_NINJA1_FLIP, SPAWN12C_NINJA1_KUNAI);
+				g.GetOS()->Add(ni1);
+			}
+		}
+	}
+}
+void Spawn12C::Draw(Game& g) {
 	SpawnBlockBase::Draw(g);
 }

@@ -44,6 +44,8 @@ void GimikPlacement::StairAppear(Game& g) {
 	g.GetOS()->BAdd(st9);
 	auto bs = new BossStair(FLOOR10_STAIR_X, FLOOR10_STAIR_Y);
 	g.GetOS()->BAdd(bs);
+	auto st11 = new Stair(FLOOR11_STAIR_X, FLOOR11_STAIR_Y, FLOOR11_STAIR_FLIP);
+	g.GetOS()->BAdd(st11);
 }
 
 
@@ -55,4 +57,15 @@ void GimikPlacement::AndonAppear(Game& g) {
 	g.GetOS()->BAdd(an7);
 	auto an10 = new Andon(FLOOR10_ANDON_X, FLOOR10_ANDON_Y);
 	g.GetOS()->BAdd(an10);
+	auto an11a = new Andon(FLOOR11A_ANDON_X, FLOOR11A_ANDON_Y);
+	g.GetOS()->BAdd(an11a);
+	auto an11b = new Andon(FLOOR11B_ANDON_X, FLOOR11B_ANDON_Y);
+	g.GetOS()->BAdd(an11b);
+	auto an11c = new Andon(FLOOR11C_ANDON_X, FLOOR11C_ANDON_Y);
+	g.GetOS()->BAdd(an11c);
+	auto an11d = new Andon(FLOOR11D_ANDON_X, FLOOR11D_ANDON_Y);
+	g.GetOS()->BAdd(an11d);
+	auto an12 = new Andon(FLOOR12A_ANDON_X, FLOOR12A_ANDON_Y);
+	g.GetOS()->BAdd(an12);
+	
 }

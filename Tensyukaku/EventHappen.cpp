@@ -2,6 +2,7 @@
 #include "RecoveryBlock.h"
 #include "BossEvent.h"
 #include "CPointBlock.h"
+#include "FlameBlock.h"
 #include "Game.h"
 
 using namespace EHInfo;
@@ -23,4 +24,7 @@ void EventHappen::Init(Game& g) {
 	g.GetOS()->Add(bsa);
 	auto bsb = new BossEventB(BOSSB_X, BOSSB_Y);
 	g.GetOS()->Add(bsb);
+	//炎演出ブロックの作成
+	auto fb = new FlameBlock(FLAME_X, FLAME_Y);
+	g.GetOS()->Add(fb);
 }

@@ -27,8 +27,15 @@ namespace GInfo {
 	constexpr auto FLOOR8B_STAIR_X = 5600;	constexpr auto FLOOR8B_STAIR_Y = 4040;	constexpr auto FLOOR8B_STAIR_FLIP = false;
 	constexpr auto  FLOOR9_STAIR_X =  200;	 constexpr auto FLOOR9_STAIR_Y = 3280;	 constexpr auto FLOOR9_STAIR_FLIP = true;
 	constexpr auto FLOOR10_STAIR_X = 5600;	constexpr auto FLOOR10_STAIR_Y = 2520;	constexpr auto FLOOR10_STAIR_FLIP = false;
+	constexpr auto FLOOR11_STAIR_X = 200;	constexpr auto FLOOR11_STAIR_Y = 1760;	constexpr auto FLOOR11_STAIR_FLIP = true;
+
 	//çsìï
 	constexpr auto  FLOOR6_ANDON_X = 2700;	 constexpr auto FLOOR6_ANDON_Y = 5560;
 	constexpr auto  FLOOR7_ANDON_X = 3400;	 constexpr auto FLOOR7_ANDON_Y = 4800;
 	constexpr auto FLOOR10_ANDON_X = 1800;	constexpr auto FLOOR10_ANDON_Y = 2520;
+	constexpr auto FLOOR11A_ANDON_X = 5100;	constexpr auto FLOOR11A_ANDON_Y = 1760;
+	constexpr auto FLOOR11B_ANDON_X = 3700;	constexpr auto FLOOR11B_ANDON_Y = 1760;
+	constexpr auto FLOOR11C_ANDON_X = 1800;	constexpr auto FLOOR11C_ANDON_Y = 1760;
+	constexpr auto FLOOR11D_ANDON_X = 900;	constexpr auto FLOOR11D_ANDON_Y = 1760;
+	constexpr auto FLOOR12A_ANDON_X = 2300;	constexpr auto FLOOR12A_ANDON_Y = 1000;
 }

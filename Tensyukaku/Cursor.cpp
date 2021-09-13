@@ -4,7 +4,7 @@
 #include "OutGameParticle.h"
 #include "Game.h"
 #include "ObjectBase.h"
-#include "ModeGame.h"
+#include "ModePrologue.h"
 #include "Math.h"
 #include "OverlayBlack.h"
 using namespace CParInfo;
@@ -79,16 +79,16 @@ void Cursor::Process(Game& g) {
 			_Input_Flag =true;
 			_Action_Cnt = _Cnt;
 			auto ol = new OverlayBlack();
-			ol->FadeSetting(120, 240, 360, 3);
+			ol->FadeSetting(120, 120, 120, 3);
 			g.GetMS()->Add(ol,1, "OverlayBlack");
 		}
 		if (_Cnt - _Action_Cnt == 120) {
 			_Input_Flag =false;
 			// タイトルモードを削除
 			g.GetMS()->Del(g.GetMS()->Get("Title"));
-			// ゲームモードを追加
-			auto mg = new ModeGame();
-			g.GetMS()->Add(mg, 0, "Game");
+			// プロローグモードを追加
+			auto mp = new ModePrologue();
+			g.GetMS()->Add(mp, 0, "Prologue");
 		}
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{

@@ -60,7 +60,7 @@ class SpecialCollision : public ObjectBase {
 public:
 	SpecialCollision(int x, int y);
 	~SpecialCollision();
-	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::IAI; }
+	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::SPECIAL; }
 
 	void	Init()override;
 	void	Process(Game& g)override;

@@ -11,10 +11,11 @@ public:
 	void Draw(Game& g)override;
 private:
 	//ボスの状態列挙
-	enum class BOSSSTATE {IDLE, EVENTA, EVENTB, DEAD };
+	enum class BOSSSTATE {IDLE, EVENTA, EVENTB,DAMAGE, DEAD };
 	void Idle(Game& g);				//待機状態時の処理
 	void BossEventA(Game& g);		//イベントA時の処理
 	void BossEventB(Game& g);		//イベントB時の処理
+	void Damage(Game& g);			//被ダメ時の処理
 	void Dead(Game& g);				//死亡時の処理
 	void EventChange(Game& g);		//ボスイベントへの状態遷移処理
 	void LoadActionGraph();			//ボスの画像読み込み関数
@@ -59,12 +60,20 @@ namespace BossInifo {
 	constexpr auto BACK_HEIGHTCOUNT =2;			//縦の画像枚数	
 	constexpr auto ANIMESPEED_BACK = 10;		//後ずさりアニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto BACK_SEFRAME = 120;			//移動SEの管理フレーム
+	//被ダメ
+	constexpr auto DAMAGE_GRAPHNAME = "res/Boss/BossDamage.png";	//画像ファイル名
+	constexpr auto DAMAGE_ANIMEMAX = 1;	//全ての画像枚数
+	constexpr auto DAMAGE_WIDTHCOUNT = 1;	//横の画像枚数
+	constexpr auto DAMAGE_HEIGHTCOUNT = 1;//縦の画像枚数
+	constexpr auto ANIMESPEED_DAMAGE = 40;	//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto DAMAGE_ANIMEFRAME = DAMAGE_ANIMEMAX * ANIMESPEED_DAMAGE; //アニメーションフレーム
+	constexpr auto DAMAGE_ALLFRAME = 60;		//死亡全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	//死亡
-	constexpr auto DEAD_GRAPHNAME = "res/Boss/BossDead.png";	//画像ファイル名
-	constexpr auto DEAD_ANIMEMAX = 4;	//全ての画像枚数
-	constexpr auto DEAD_WIDTHCOUNT = 4;	//横の画像枚数
+	constexpr auto DEAD_GRAPHNAME = "res/Boss/BossDead2.png";	//画像ファイル名
+	constexpr auto DEAD_ANIMEMAX = 3;	//全ての画像枚数
+	constexpr auto DEAD_WIDTHCOUNT = 3;	//横の画像枚数
 	constexpr auto DEAD_HEIGHTCOUNT = 1;//縦の画像枚数
-	constexpr auto ANIMESPEED_DEAD = 10;	//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_DEAD = 60;	//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto DEAD_ANIMEFRAME = DEAD_ANIMEMAX * ANIMESPEED_DEAD; //アニメーションフレーム
-	constexpr auto DEAD_ALLFRAME = 60;	//死亡全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto DEAD_ALLFRAME = 180;		//死亡全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 }

@@ -1,5 +1,7 @@
 #include <DxLib.h>
 #include "ResourceServer.h"
+#include "ModeEpilogue.h"
+#include "OverlayBlack.h"
 #include "Boss.h"
 #include "Game.h"
 using namespace BossInifo;
@@ -39,6 +41,9 @@ void Boss::Process(Game& g) {
 		break;
 	case BOSSSTATE::EVENTB:
 		BossEventB(g);
+		break;
+	case BOSSSTATE::DAMAGE:
+		Damage(g);
 		break;
 	case BOSSSTATE::DEAD:
 		Dead(g);
@@ -108,12 +113,42 @@ void Boss::BossEventB(Game& g) {
 			{
 				// 敵とプレイヤーの特殊攻撃オブジェクトの当たり判定を行う
 				if (IsHit(*(*ite)) == true) {
+					(*ite)->Delete(g);
+					_Action_Cnt = _Cnt;
+					_State = BOSSSTATE::DAMAGE;
 				}
 			}
 		}
 	}
 }
+void Boss::Damage(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
+	_Anime["Damage"] = 0;
+	if (frame == DAMAGE_ALLFRAME) {
+		_Action_Cnt = _Cnt;
+		_State = BOSSSTATE::DEAD;
+}
+}
+
 void Boss::Dead(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
+	if (frame < DEAD_ANIMEFRAME) {
+		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+	}
+	auto modechangeframe = 120;
+	if (frame == DEAD_ALLFRAME) {
+		auto ol = new OverlayBlack();
+		ol->FadeSetting(modechangeframe, 240, 300, 3);
+		g.GetMS()->Add(ol, 2, "OverlayBlack");
+	}
+	
+	if (frame == DEAD_ALLFRAME + modechangeframe) {
+		g.GetMS()->Del(g.GetMS()->Get("Game"));
+		auto me = new ModeEpilogue();
+		g.GetMS()->Add(me, 0, "Epilogue");
+	}
 }
 //ボスのイベント状態遷移関数
 void Boss::EventChange(Game& g) {
@@ -136,6 +171,8 @@ void Boss::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Move"].data());
 	_GrAll["Back"].resize(BACK_ANIMEMAX);
 	ResourceServer::LoadDivGraph(BACK_GRAPHNAME, BACK_ANIMEMAX, BACK_WIDTHCOUNT, BACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Back"].data());
+	_GrAll["Damage"].resize(DAMAGE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Damage"].data());
 	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
 	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
 }
