@@ -34,6 +34,8 @@ bool PrologueText::Process(Game& g) {
 	}
 	if (frame == TEXT1_FADEIN_FRAME) {
 		_Pal = 255;
+		auto as = new PrologueASkip();
+		g.GetMS()->Add(as, 1, "PASkip");
 	}
 	if (frame >= TEXT1_FADEOUT_BEGINFRAME && TEXT1_FADEOUT_ENDFRAME>frame) {
 		_Pal -= TEXT_FADE_SPEED;
@@ -102,6 +104,38 @@ bool PrologueText::Process(Game& g) {
 }
 
 bool PrologueText::Draw(Game& g) {
+	base::Draw(g);
+	return true;
+}
+
+//Aボタンススキップ
+bool PrologueASkip::Initialize(Game& g) {
+	if (!base::Initialize(g)) { return false; }
+	_x = 1650;
+	_y = 1000;
+	_Trans_Flag = true;
+	_GrHandle = ResourceServer::LoadGraph("res/Mode/ASkip.png");
+	return true;
+}
+
+bool PrologueASkip::Terminate(Game& g) {
+	base::Terminate(g);
+	return true;
+}
+
+bool PrologueASkip::Process(Game& g) {
+	base::Process(g);
+	if (g.GetTrg() & PAD_INPUT_4) {
+		g.GetMS()->Del(g.GetMS()->Get("Prologue"));
+		g.GetMS()->Del(g.GetMS()->Get("PText"));
+		g.GetMS()->Del(this);
+		auto mg = new ModeGame();
+		g.GetMS()->Add(mg, 0, "Game");
+	}
+	return true;
+}
+
+bool PrologueASkip::Draw(Game& g) {
 	base::Draw(g);
 	return true;
 }

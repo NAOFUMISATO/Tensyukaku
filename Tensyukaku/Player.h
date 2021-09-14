@@ -100,7 +100,7 @@ namespace PInfo {
 	constexpr auto LIFE_MAX = 3;				//体力
 	constexpr auto WALKSPEED = 5;				//歩き移動速度
 	constexpr auto RUNSPEED = 9;				//走り移動速度
-	constexpr auto IAI_MAX = 6;					//居合ゲージの最大値
+	constexpr auto IAI_MAX = 5;					//居合ゲージの最大値
 	constexpr auto MAX_BUF = 1000;				//入力量限界値
 	constexpr auto RUN_XBUF = 800;				//走り状態になるための必要なX入力量
 	constexpr auto UP_YBUF = 800;				//階段を上がるための必要なY入力量
@@ -165,9 +165,9 @@ namespace PInfo {
 	constexpr auto ANIMESPEED_IAI = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto IAI_ANIMEFRAME = IAI_ANIMEMAX * ANIMESPEED_IAI; //アニメーションフレーム
 	constexpr auto IAI_ALLFRAME = 73;			//居合全フレーム(全フレームーアニメーションフレーム＝猶予時間)
-	constexpr auto IAI_BEGINFRAME = 45;			//居合判定発生フレーム
+	constexpr auto IAI_BEGINFRAME = 40;			//居合判定発生フレーム
 	constexpr auto IAI_ENDFRAME =55;			//居合判定終了フレーム(発生してからのフレーム数)
-	constexpr auto IAI_MOVEMENT = 60;			//居合時の1フレームあたりの移動量
+	constexpr auto IAI_MOVEMENT = 40;			//居合時の1フレームあたりの移動量
 	//スウェイ
 	constexpr auto SWAY_GRAPHNAME = "res/Samurai/S_Sway.png";		//画像ファイル名
 	constexpr auto SWAY_ANIMEMAX = 4;			//全ての画像枚数
@@ -207,14 +207,5 @@ namespace PInfo {
 	constexpr auto SPECIALATTACK_ALLFRAME = 185;	//特殊攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	constexpr auto SPECIALATTACK_BEGINFRAME = 40;	//特殊攻撃判定発生フレーム
 	constexpr auto SPECIALATTACK_ENDFRAME = 80;		//特殊攻撃判定終了フレーム(発生してからのフレーム数）
-	
-	/*----------SE関係----------*/
-	constexpr auto WALK_SE = "se/Footstep.wav";			//移動
-	constexpr auto MIDDLEATTACK_SE = "se/slash3.wav";	//中段攻撃
-	constexpr auto LOWATTACK_SE = "se/Slash.wav";		//下段攻撃
-	constexpr auto KICK_SE = "se/Kick.wav";				//蹴り
-	constexpr auto DAMAGE_SE = "se/Damage.wav";			//被ダメ
-	constexpr auto SWORDIN_SE = "se/Close.wav";			//納刀
-	constexpr auto IAI_SE = "se/Iai.wav";				//居合
 
 }

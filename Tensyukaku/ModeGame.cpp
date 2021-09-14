@@ -4,11 +4,13 @@
 #include "Game.h"
 #include "Player.h"
 #include "MapChip.h"
+#include "ModePause.h"
+#include "ResourceServer.h"
 namespace {
 	constexpr auto POSITION_X = 4000;			//横軸初期位置（足下が基準）
 	constexpr auto POSITION_Y = 9360;			//縦軸初期位置（足下が基準）
-	constexpr auto CPOINT_POSITION_X = 3500;	//チェックポイントX座標
-	constexpr auto CPOINT_POSITION_Y = 6320;	//チェックポイントY座標
+	constexpr auto CPOINT_POSITION_X = 5600;	//チェックポイントX座標
+	constexpr auto CPOINT_POSITION_Y = 1760;	//チェックポイントY座標
 }
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
@@ -17,7 +19,7 @@ bool ModeGame::Initialize(Game& g) {
 	_eventhappen = new EventHappen(g);
 	if (g.GetCPointFlag() == false) {
 		_Player_x = POSITION_X;
-		_Player_y = POSITION_Y;
+		_Player_y =POSITION_Y;
 	}
 	else {
 		_Player_x = CPOINT_POSITION_X;
@@ -25,13 +27,18 @@ bool ModeGame::Initialize(Game& g) {
 	}
 	auto pl = new Player(_Player_x,_Player_y);
 	g.GetOS()->Add(pl);
-	_stopObjProcess = false;
 	// カメラ＆マップ初期化
 	g.SetmapW(5760);
 	g.SetmapH(9440);
 	g.SetcvX(0);
 	g.SetcvY(g.GetmapH() - SCREEN_H);
-	_bgm = PlaySoundFile("bgm/InGame70dB.mp3", DX_PLAYTYPE_LOOP);
+	//オブジェクト処理を止める
+	_stopObjProcess = false;
+	//ポーズ画面が出現しているか
+	_Pause_Flag = false;
+	//音源読み込み
+	LoadSound();
+	PlaySoundMem(_bgm, DX_PLAYTYPE_LOOP, true);
 	return true;
 }
 
@@ -46,10 +53,17 @@ bool ModeGame::Terminate(Game& g) {
 
 bool ModeGame::Process(Game& g) {
 	base::Process(g);
-	if (_stopObjProcess == false)
+
+	if (_stopObjProcess==false)
 	{
 		g.GetChip()->Process(g);
 		g.GetOS()->Process(g);
+	}
+	if (g.GetTrg() & PAD_INPUT_12&&_Pause_Flag==false) {
+		_stopObjProcess=true;
+		_Pause_Flag = true;
+		auto mp = new ModePause();
+		g.GetMS()->Add(mp, 2, "Pause");
 	}
 
 	return true;
@@ -63,3 +77,6 @@ bool ModeGame::Draw(Game& g) {
 	return true;
 }
 
+void ModeGame::LoadSound() {
+	_bgm=ResourceServer::LoadSoundMem("bgm/MainStage.wav");
+}

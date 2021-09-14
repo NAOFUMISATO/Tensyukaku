@@ -59,6 +59,7 @@ bool ModePrologue::Process(Game& g) {
 	}
 	if (frame == PROLOGUE_FADEOUT_FRAME + fadeoutendframe) {
 		g.GetMS()->Del(g.GetMS()->Get("Prologue"));
+		g.GetMS()->Del(g.GetMS()->Get("PASkip"));
 		auto mg = new ModeGame();
 		g.GetMS()->Add(mg,0,"Game");
 	}

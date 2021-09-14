@@ -140,7 +140,7 @@ void Boss::Dead(Game& g) {
 	auto modechangeframe = 120;
 	if (frame == DEAD_ALLFRAME) {
 		auto ol = new OverlayBlack();
-		ol->FadeSetting(modechangeframe, 240, 300, 3);
+		ol->FadeSetting(modechangeframe, 240, 300, 4);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
 	}
 	

@@ -170,6 +170,7 @@ void Shielder::Coming(Game& g) {
 	_Anime["Coming"] = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
 	if (_isFlip == false) {
 		_x -= _Spd;
+		g.GetChip()->IsHit(*this, -1, 0);
 		//盾兵の攻撃発生範囲判定オブジェクトの生成
 		PrivateCollision scc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
@@ -211,6 +212,7 @@ void Shielder::Coming(Game& g) {
 	}
 	if (_isFlip == true) {
 		_x += _Spd;
+		g.GetChip()->IsHit(*this, 1, 0);
 		//盾兵の攻撃発生範囲判定オブジェクトの生成
 		PrivateCollision scc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？

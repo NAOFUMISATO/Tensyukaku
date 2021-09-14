@@ -43,6 +43,6 @@ void EnemySpawn::Init(Game& g) {
 		g.GetOS()->Add(sp12b);
 		auto sp12c = new Spawn12C();
 		g.GetOS()->Add(sp12c);
-
-		
+		auto boss = new BossSpawn();
+		g.GetOS()->Add(boss);
 }

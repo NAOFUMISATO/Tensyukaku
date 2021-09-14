@@ -32,6 +32,7 @@ bool ModeTitle::Initialize(Game& g) {
 	_y = 540;
 	_Pal = 0;
 	_Mode_Cnt = _Cnt;
+	_stopObjProcess = false;
 	_Type = TITLETYPE::AMGLOGO;
 	_GrAll["AmgLogo"].resize(1);
 	ResourceServer::LoadDivGraph("res/Mode/AmgLogo.png",1,1,1,1920,1080, _GrAll["AmgLogo"].data());
@@ -117,7 +118,9 @@ bool ModeTitle::Process(Game& g) {
 		}
 		break;
 	}
-	g.GetOS()->Process(g);
+	if (_stopObjProcess == false) {
+		g.GetOS()->Process(g);
+	}
 	return true;
 }
 

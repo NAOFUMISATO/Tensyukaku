@@ -5,7 +5,9 @@
 #include "Game.h"
 #include "ObjectBase.h"
 #include "ModePrologue.h"
+#include "ModeTitle.h"
 #include "Math.h"
+#include "ExPlain.h"
 #include "OverlayBlack.h"
 using namespace CParInfo;
 Cursor::Cursor():_State(CURSOLSTATE::NOHIT){
@@ -33,6 +35,7 @@ void Cursor::Init() {
 
 void Cursor::Process(Game& g) {
 	ObjectBase::Process(g);
+	auto frame = _Cnt - _Action_Cnt;
 	switch (_State) {
 	case CURSOLSTATE::NOHIT:
 		_colortype = 5;
@@ -82,7 +85,7 @@ void Cursor::Process(Game& g) {
 			ol->FadeSetting(120, 120, 120, 3);
 			g.GetMS()->Add(ol,1, "OverlayBlack");
 		}
-		if (_Cnt - _Action_Cnt == 120) {
+		if (frame == 120) {
 			_Input_Flag =false;
 			// タイトルモードを削除
 			g.GetMS()->Del(g.GetMS()->Get("Title"));
@@ -103,6 +106,16 @@ void Cursor::Process(Game& g) {
 		}
 		break;
 	case CURSOLSTATE::EXHIT:
+		if (g.GetTrg() & PAD_INPUT_1)
+		{
+			_Action_Cnt = _Cnt;
+		}
+		if (frame == 5) {
+			auto ex = new ExPlain();
+			g.GetMS()->Add(ex, 1, "ExPlain");
+			auto mt = (ModeTitle*)g.GetMS()->Get("Title");
+			mt->SetStopObjProcess(true);
+		}
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
 			// iteはExplainオブジェクトか？

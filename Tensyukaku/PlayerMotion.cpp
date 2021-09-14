@@ -653,9 +653,10 @@ void Player::Dead(Game& g) {
 	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX; 
 		}
 	if (frame == DEAD_ALLFRAME) {
-		
+		g.GetMS()->Del(g.GetMS()->Get("Flame"));
 		auto mgo = new ModeGameover();
 		g.GetMS()->Add(mgo,1, "Gameover");
+		
 	}
 }
 
@@ -774,7 +775,7 @@ void Player::BossEventA(Game& g) {
 	_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
 	_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 	if (frame == 1) {
-		_CameraX = 855;
+		_CameraX = 800;
 	}
 	if (frame <=120) {
 		_CameraX +=1;

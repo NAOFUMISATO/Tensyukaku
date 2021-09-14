@@ -6,6 +6,7 @@
 namespace {
 	constexpr auto FADEIN_FRAME = 120;
 	constexpr auto FADE_SPEED = 2;
+	constexpr auto FADEOUT_FRAME = 120;
 }
 bool OverlayFlame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }

@@ -43,6 +43,7 @@ public:
 	void	SetmapH(int mapH) { _mapH = mapH; }
 	void	SetChip(MapChip* map) { _mapChip = map; }
 	void	SetCPointFlag(bool cpointflag) { _CPoint_Flag = cpointflag; }
+	
 
 private:
 	int _gKey;			// キー入力の情報
@@ -52,8 +53,8 @@ private:
 	int _gCnt;			// 毎フレーム+1するカウント
 	int	_cvX, _cvY;		// カメラ
 	int _mapW, _mapH;	// マップ
-	bool _CPoint_Flag;
-
+	bool _CPoint_Flag;	//チェックポイントフラグ
+	
 	MapChip* _mapChip;			//マップチップ
 	ModeServer* _serverMode;	//モードサーバー
 	ObjectServer _objServer;	//プレイヤーや敵などを登録する

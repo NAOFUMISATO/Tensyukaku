@@ -16,12 +16,13 @@ public:
 	virtual bool Terminate(Game& g);
 	virtual bool Process(Game& g);
 	virtual bool Draw(Game& g);
-	void SetStopProcess(bool stopprocess) { _stopObjProcess = stopprocess; }
-
+	void	SetStopObjProcess(bool stopobjprocess) { _stopObjProcess = stopobjprocess; }
+	void	SetPauseFlag(bool pauseflag) { _Pause_Flag = pauseflag; }
+	void	LoadSound();
 
 private:
-	// オブジェクト処理をストップする
-	bool	_stopObjProcess;
+	bool	_stopObjProcess;	//オブジェクト処理をストップする
+	bool	_Pause_Flag;		//ポーズ画面が出現しているかのフラグ
 	// BGM用
 	int		_bgm;
 	int		_Player_x;

@@ -54,7 +54,7 @@ namespace NInfo {
 	/*----------パラメーター関係----------*/
 	constexpr auto LIFE_MAX = 1;				//体力
 	constexpr auto SPEED = 3;					//移動速度
-	constexpr auto PLAYER_IAI_MAX = 6;			//プレイヤーの居合最大値
+	constexpr auto PLAYER_IAI_MAX = 5;			//プレイヤーの居合最大値
 
 	/*----------画像読み込み&アニメーション&判定フレーム関係----------*/
 	//共通

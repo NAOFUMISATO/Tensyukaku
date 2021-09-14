@@ -18,6 +18,7 @@ public:
 	virtual bool	Process(Game& g);
 	virtual bool	Draw(Game& g);
 protected:
+
 	int		_GrHandle;									//画像ハンドル
 	int		_x;											//描画点X座標
 	int		_y;											//描画点Y座標
@@ -25,6 +26,7 @@ protected:
 	int		_Mode_Cnt;									//経過時間記録変数
 	int		_Pal;										//BlendMode用変数
 	int		_FadeSpeed;									//フェードスピード
+	int		_bgm;										//BGMハンドル
 	bool	_Trans_Flag;								//DrawRotaGraphの透明度フラグ
 	std::pair<double, double> _drg;						//DrawRotaGraph用ペア変数（first拡縮率、second角度）
 	std::tuple<int, int, int> _rgb;						//Color用タプル型変数

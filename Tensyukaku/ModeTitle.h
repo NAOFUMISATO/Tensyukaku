@@ -12,7 +12,11 @@ public:
 	virtual bool Terminate(Game& g);
 	virtual bool Process(Game& g);
 	virtual bool Draw(Game& g);
+	void	SetStopObjProcess(bool stopobjprocess) { _stopObjProcess = stopobjprocess; }
+	
 private:
 	TITLETYPE _Type;
+	bool	_stopObjProcess;	//オブジェクト処理をストップする
+
 };
 

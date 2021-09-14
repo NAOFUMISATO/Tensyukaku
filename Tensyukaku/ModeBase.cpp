@@ -72,6 +72,7 @@ bool	ModeBase::Draw(Game& g)
 	return	true;
 }
 
+
 // ŠÔŒo‰ß‚ğ‚³‚¹‚é
 void ModeBase::StepTime(unsigned long tmNow) {
 	// ŠÔŒo‰ßˆ—

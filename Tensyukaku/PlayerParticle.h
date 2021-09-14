@@ -79,12 +79,23 @@ public:
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
 };
+//居合ゲージ
+class IaiGaugeParticle : public ParticleBase {
+public:
+	IaiGaugeParticle(std::pair<double, double> xy, std::pair<double, double> vxy, bool flip);
+	~IaiGaugeParticle();
+
+	virtual PARTICLETYPE GetParType() { return PARTICLETYPE::IAIGAUGE; }
+	void Init()override;
+	void Process(Game& g)override;
+	void Draw(Game& g)override;
+};
 
 namespace PParInfo {
 	/*----------中段攻撃1----------*/
 	constexpr auto MIDDLEATTACK_PARTICLE1_GRAPH = "res/Particle/MiddleAttack.png";		//画像ファイル名
 	constexpr auto MIDDLEATTACK_PARTICLE1_POSITIONX = 0.0;								//基準点(足下)から描画点へのX座標差分
-	constexpr auto MIDDLEATTACK_PARTICLE1_POSITIONY = -225.0;							//基準点(足下)から描画点へのY座標差分
+	constexpr auto MIDDLEATTACK_PARTICLE1_POSITIONY = -325.0;							//基準点(足下)から描画点へのY座標差分
 	constexpr auto MIDDLEATTACK_PARTICLE1_BLENDMODE = DX_BLENDMODE_SUB;					//ブレンドモード設定
 	constexpr auto MIDDLEATTACK_PARTICLE1_PAL = 64;										//ブレンド値(0～255)
 	constexpr auto MIDDLEATTACK_PARTICLE1_RED = 128;									//赤色値(0～255)
@@ -93,7 +104,7 @@ namespace PParInfo {
 	constexpr auto MIDDLEATTACK_PARTICLE1_SCALE = 1.0;									//拡縮値(1.0がデフォルト)
 	constexpr auto MIDDLEATTACK_PARTICLE1_ANGLE = 0.0;									//描画角度(3.14=180°)
 	constexpr auto MIDDLEATTACK_PARTICLE1_CNT = 20;										//パーティクル1個あたりの生存時間
-	constexpr auto MIDDLEATTACK_PARTICLE1_QTY = 5;										//1フレーム当たりのパーティクル数
+	constexpr auto MIDDLEATTACK_PARTICLE1_QTY = 10;										//1フレーム当たりのパーティクル数
 	//パーティクル1個当たりの移動方向のランダム値調整
 	constexpr auto MIDDLEATTACK_PARTICLE1_RANDOMX1 = 20;								//パーティクルのXランダム値
 	constexpr auto MIDDLEATTACK_PARTICLE1_RANDOMX2 = 10.0;								//		〃
@@ -103,9 +114,9 @@ namespace PParInfo {
 	constexpr auto MIDDLEATTACK_PARTICLE1_RANDOMY3 = 8.0;								//		〃
 
 	/*----------中段攻撃2----------*/
-	constexpr auto MIDDLEATTACK_PARTICLE2_GRAPH = "res/Particle/MiddleAttacksub.png";	//画像ファイル名
+	constexpr auto MIDDLEATTACK_PARTICLE2_GRAPH = "res/Particle/MiddleSibuki.png";	//画像ファイル名
 	constexpr auto MIDDLEATTACK_PARTICLE2_POSITIONX = 0.0;								//基準点(足下)から描画点へのX座標差分
-	constexpr auto MIDDLEATTACK_PARTICLE2_POSITIONY = -225.0;							//基準点(足下)から描画点へのY座標差分
+	constexpr auto MIDDLEATTACK_PARTICLE2_POSITIONY = -325.0;							//基準点(足下)から描画点へのY座標差分
 	constexpr auto MIDDLEATTACK_PARTICLE2_BLENDMODE = DX_BLENDMODE_SUB;					//ブレンドモード設定
 	constexpr auto MIDDLEATTACK_PARTICLE2_PAL = 128;									//ブレンド値(0～255)
 	constexpr auto MIDDLEATTACK_PARTICLE2_RED = 200;									//赤色値(0～255)
@@ -185,7 +196,7 @@ namespace PParInfo {
 	constexpr auto IAI_PARTICLE1_RANDOMY3 = 8.0;										//		〃
 
 	/*----------居合2----------*/
-	constexpr auto IAI_PARTICLE2_GRAPH = "res/Particle/Iai2.png";						//画像ファイル名
+	constexpr auto IAI_PARTICLE2_GRAPH = "res/Particle/Iai.png";						//画像ファイル名
 	constexpr auto IAI_PARTICLE2_POSITIONX = 0.0;										//基準点(足下)から描画点へのX座標差分
 	constexpr auto IAI_PARTICLE2_POSITIONY = -225.0;									//基準点(足下)から描画点へのY座標差分
 	constexpr auto IAI_PARTICLE2_BLENDMODE = DX_BLENDMODE_SUB;							//ブンドモード設定
@@ -225,4 +236,25 @@ namespace PParInfo {
 	constexpr auto IAI_PARTICLE3_RANDOMY1 = 20;											//パーティクルのYランダム値
 	constexpr auto IAI_PARTICLE3_RANDOMY2 = 5.0;										//		〃
 	constexpr auto IAI_PARTICLE3_RANDOMY3 = 2.0;										//		〃
+
+	/*----------居合ゲージ----------*/
+	constexpr auto IAIG_PARTICLE_GRAPH = "res/Particle/IaiGaugeP.png";					//画像ファイル名
+	constexpr auto IAIG_PARTICLE_POSITIONX = 0.0;									//基準点(足下)から描画点へのX座標差分
+	constexpr auto IAIG_PARTICLE_POSITIONY = 0.0;										//基準点(足下)から描画点へのY座標差分
+	constexpr auto IAIG_PARTICLE_BLENDMODE = DX_BLENDMODE_ADD;							//ブレンドモード設定
+	constexpr auto IAIG_PARTICLE_PAL = 128;												//ブレンド値(0～255)
+	constexpr auto IAIG_PARTICLE_RED = 230;												//赤色値(0～255)
+	constexpr auto IAIG_PARTICLE_GREEN = 70;											//緑色値(0～255)
+	constexpr auto IAIG_PARTICLE_BLUE = 5;												//青色値(0～255)
+	constexpr auto IAIG_PARTICLE_SCALE = 1.0;											//拡縮値(1.0がデフォルト)
+	constexpr auto IAIG_PARTICLE_ANGLE = 0.0;											//描画角度(3.14=180°)
+	constexpr auto IAIG_PARTICLE_CNT = 10;												//パーティクル1個あたりの生存時間
+	constexpr auto IAIG_PARTICLE_QTY = 5;												//1フレーム当たりのパーティクル数
+	//パーティクル1個当たりの移動方向のランダム値調整
+	constexpr auto IAIG_PARTICLE_RANDOMX1 = 10;											//パーティクルのXランダム値
+	constexpr auto IAIG_PARTICLE_RANDOMX2 = 5.0;										//		〃
+	constexpr auto IAIG_PARTICLE_RANDOMX3 = 4.0;										//		〃
+	constexpr auto IAIG_PARTICLE_RANDOMY1 = 10;											//パーティクルのYランダム値
+	constexpr auto IAIG_PARTICLE_RANDOMY2 = 5.0;										//		〃
+	constexpr auto IAIG_PARTICLE_RANDOMY3 = 4.0;										//		〃
 }

@@ -20,8 +20,8 @@ TitleLogo::TitleLogo() {
 TitleLogo::~TitleLogo() {
 }
 void TitleLogo::Init() {
-	_x = 1300;
-	_y = 250;
+	_x = 1350;
+	_y = 200;
 	_gx = 0;
 	_gy = -60;
 	_hit_x = -400;
@@ -41,12 +41,12 @@ void TitleLogo::Process(Game& g) {
 
 void TitleLogo::Draw(Game& g) {
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
-	int& re = std::get<RED>(_Color);
-	int& gr = std::get<GREEN>(_Color);
-	int& bl = std::get<Blue>(_Color);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	//int& re = std::get<RED>(_Color);
+	//int& gr = std::get<GREEN>(_Color);
+	//int& bl = std::get<Blue>(_Color);
+	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
+	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
+	//SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 //ƒQ[ƒ€ƒXƒ^[ƒg
 GameStart::GameStart() {
@@ -57,33 +57,33 @@ GameStart::~GameStart() {
 };
 
 void GameStart::Init() {
-	_x = 1580;
-	_y = 500;
-	_hit_x = -320;
+	_x = 1800;
+	_y = 550;
+	_hit_x = -260;
 	_hit_y = -60;
-	_hit_w = 550;
-	_hit_h = 150;
+	_hit_w = 460;
+	_hit_h = 120;
 	_Alpha = 0;
 }
 
 void GameStart::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_x >= 1460) {
+	if (_x >= 1600) {
 		_x -= 2;
 	}
 	if (_Alpha <= 255) {
-		_Alpha += 4;
+		_Alpha += 2;
 	}
 }
 
 void GameStart::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
-	int& re = std::get<RED>(_Color);
-	int& gr = std::get<GREEN>(_Color);
-	int& bl = std::get<Blue>(_Color);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
+	//int& re = std::get<RED>(_Color);
+	//int& gr = std::get<GREEN>(_Color);
+	//int& bl = std::get<Blue>(_Color);
+	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
+	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 //à–¾‰æ–Ê
@@ -95,32 +95,32 @@ Explain::~Explain() {
 };
 
 void Explain::Init() {
-	_x = 1580;
-	_y = 700;
-	_hit_x = -320;
+	_x = 1800;
+	_y = 730;
+	_hit_x = -220;
 	_hit_y = -60;
-	_hit_w = 550;
-	_hit_h = 150;
+	_hit_w = 400;
+	_hit_h = 120;
 	_Alpha = 0;
 }
 void Explain::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_x >= 1460) {
+	if (_x >= 1620) {
 		_x -= 2;
 	}
 	if (_Alpha <= 255) {
-		_Alpha += 4;
+		_Alpha += 2;
 	}
 }
 
 void Explain::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
-	int& re = std::get<RED>(_Color);
-	int& gr = std::get<GREEN>(_Color);
-	int& bl = std::get<Blue>(_Color);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
+	//int& re = std::get<RED>(_Color);
+	//int& gr = std::get<GREEN>(_Color);
+	//int& bl = std::get<Blue>(_Color);
+	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
+	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 //ƒQ[ƒ€I—¹
@@ -132,32 +132,32 @@ GameEnd::~GameEnd() {
 };
 
 void GameEnd::Init() {
-	_x = 1580;
-	_y = 900;
-	_hit_x = -320;
+	_x = 1800;
+	_y = 880;
+	_hit_x = -220;
 	_hit_y = -60;
-	_hit_w = 550;
-	_hit_h = 150;
+	_hit_w = 400;
+	_hit_h = 120;
 	_Alpha = 0;
 }
 
 void GameEnd::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_x >= 1460) {
+	if (_x >= 1620) {
 		_x -= 2;
 	}
 	if (_Alpha <= 255) {
-		_Alpha += 4;
+		_Alpha +=2 ;
 	}
 }
 
 void GameEnd::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
-	int& re = std::get<RED>(_Color);
-	int& gr = std::get<GREEN>(_Color);
-	int& bl = std::get<Blue>(_Color);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
+	//int& re = std::get<RED>(_Color);
+	//int& gr = std::get<GREEN>(_Color);
+	//int& bl = std::get<Blue>(_Color);
+	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
+	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }

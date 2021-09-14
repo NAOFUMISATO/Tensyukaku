@@ -42,8 +42,6 @@ void Spawn1A::Process(Game& g) {
 				g.GetOS()->BAdd(bu7);
 				auto bu8 = new Bushi(SPAWN1A_BUSHI8_X, SPAWN1A_BUSHI8_Y, SPAWN1A_BUSHI8_FLIP);
 				g.GetOS()->BAdd(bu8);
-				auto bu9 = new Bushi(SPAWN1A_BUSHI9_X, SPAWN1A_BUSHI9_Y, SPAWN1A_BUSHI9_FLIP);
-				g.GetOS()->BAdd(bu9);
 				auto bu10 = new Bushi(SPAWN1A_BUSHI10_X, SPAWN1A_BUSHI10_Y, SPAWN1A_BUSHI10_FLIP);
 				g.GetOS()->Add(bu10);
 				auto bu11 = new Bushi(SPAWN1A_BUSHI11_X, SPAWN1A_BUSHI11_Y, SPAWN1A_BUSHI11_FLIP);
@@ -440,9 +438,9 @@ void Spawn11A::Process(Game& g) {
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
 				auto bu1 = new Bushi(SPAWN11A_BUSHI1_X, SPAWN11A_BUSHI1_Y, SPAWN11A_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
+				g.GetOS()->BAdd(bu1);
 				auto bu2 = new Bushi(SPAWN11A_BUSHI2_X, SPAWN11A_BUSHI2_Y, SPAWN11A_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
+				g.GetOS()->BAdd(bu2);
 				
 			}
 		}
@@ -470,17 +468,17 @@ void Spawn11B::Process(Game& g) {
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
 				auto bu1 = new Bushi(SPAWN11B_BUSHI1_X, SPAWN11B_BUSHI1_Y, SPAWN11B_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
+				g.GetOS()->BAdd(bu1);
 				auto bu2 = new Bushi(SPAWN11B_BUSHI2_X, SPAWN11B_BUSHI2_Y, SPAWN11B_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
+				g.GetOS()->BAdd(bu2);
 				auto ni1 = new Ninja(SPAWN11B_NINJA1_X, SPAWN11B_NINJA1_Y, SPAWN11B_NINJA1_FLIP, SPAWN11B_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
+				g.GetOS()->BAdd(ni1);
 				auto sh1 = new Shielder(SPAWN11B_SHIEL1_X, SPAWN11B_SHIEL1_Y, SPAWN11B_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
+				g.GetOS()->BAdd(sh1);
 				auto pn1 = new PoisonNinja(SPAWN11B_POIJA1_X, SPAWN11B_POIJA1_Y, SPAWN11B_POIJA1_FLIP);
-				g.GetOS()->Add(pn1);
+				g.GetOS()->BAdd(pn1);
 				auto pn2 = new PoisonNinja(SPAWN11B_POIJA2_X, SPAWN11B_POIJA2_Y, SPAWN11B_POIJA2_FLIP);
-				g.GetOS()->Add(pn2);
+				g.GetOS()->BAdd(pn2);
 			}
 		}
 	}
@@ -507,17 +505,15 @@ void Spawn11C::Process(Game& g) {
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
 				auto bu1 = new Bushi(SPAWN11C_BUSHI1_X, SPAWN11C_BUSHI1_Y, SPAWN11C_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
+				g.GetOS()->BAdd(bu1);
 				auto bu2 = new Bushi(SPAWN11C_BUSHI2_X, SPAWN11C_BUSHI2_Y, SPAWN11C_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
+				g.GetOS()->BAdd(bu2);
 				auto sh1 = new Shielder(SPAWN11C_SHIEL1_X, SPAWN11C_SHIEL1_Y, SPAWN11C_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
+				g.GetOS()->BAdd(sh1);
 				auto sh2 = new Shielder(SPAWN11C_SHIEL2_X, SPAWN11C_SHIEL2_Y, SPAWN11C_SHIEL2_FLIP);
-				g.GetOS()->Add(sh2);
+				g.GetOS()->BAdd(sh2);
 				auto sh3 = new Shielder(SPAWN11C_SHIEL3_X, SPAWN11C_SHIEL3_Y, SPAWN11C_SHIEL3_FLIP);
-				g.GetOS()->Add(sh3);
-				auto boss = new Boss(SPAWN11C_BOSS_X, SPAWN11C_BOSS_Y, SPAWN11C_BOSS_FLIP);
-				g.GetOS()->Add(boss);
+				g.GetOS()->BAdd(sh3);
 			}
 		}
 	}
@@ -544,11 +540,11 @@ void Spawn12A::Process(Game& g) {
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
 				auto bu1 = new Bushi(SPAWN12A_BUSHI1_X, SPAWN12A_BUSHI1_Y, SPAWN12A_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
+				g.GetOS()->BAdd(bu1);
 				auto ni1 = new Ninja(SPAWN12A_NINJA1_X, SPAWN12A_NINJA1_Y, SPAWN12A_NINJA1_FLIP, SPAWN12A_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
+				g.GetOS()->BAdd(ni1);
 				auto sh1 = new Shielder(SPAWN12A_SHIEL1_X, SPAWN12A_SHIEL1_Y, SPAWN12A_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
+				g.GetOS()->BAdd(sh1);
 			}
 		}
 	}
@@ -575,11 +571,11 @@ void Spawn12B::Process(Game& g) {
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
 				auto sh1 = new Shielder(SPAWN12B_SHIEL1_X, SPAWN12B_SHIEL1_Y, SPAWN12B_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
+				g.GetOS()->BAdd(sh1);
 				auto sh2 = new Shielder(SPAWN12B_SHIEL2_X, SPAWN12B_SHIEL2_Y, SPAWN12B_SHIEL2_FLIP);
-				g.GetOS()->Add(sh2);
+				g.GetOS()->BAdd(sh2);
 				auto sh3 = new Shielder(SPAWN12B_SHIEL3_X, SPAWN12B_SHIEL3_Y, SPAWN12B_SHIEL3_FLIP);
-				g.GetOS()->Add(sh3);
+				g.GetOS()->BAdd(sh3);
 			}
 		}
 	}
@@ -606,17 +602,45 @@ void Spawn12C::Process(Game& g) {
 			if (IsHit(*(*ite)) == true) {
 				Delete(g); 
 				auto sh1 = new Shielder(SPAWN12C_SHIEL1_X, SPAWN12C_SHIEL1_Y, SPAWN12C_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
+				g.GetOS()->BAdd(sh1);
 				auto sh2 = new Shielder(SPAWN12C_SHIEL2_X, SPAWN12C_SHIEL2_Y, SPAWN12C_SHIEL2_FLIP);
-				g.GetOS()->Add(sh2);
+				g.GetOS()->BAdd(sh2);
 				auto bu1 = new Bushi(SPAWN12C_BUSHI1_X, SPAWN12C_BUSHI1_Y, SPAWN12C_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
+				g.GetOS()->BAdd(bu1);
 				auto ni1 = new Ninja(SPAWN12C_NINJA1_X, SPAWN12C_NINJA1_Y, SPAWN12C_NINJA1_FLIP, SPAWN12C_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
+				g.GetOS()->BAdd(ni1);
 			}
 		}
 	}
 }
 void Spawn12C::Draw(Game& g) {
 	SpawnBlockBase::Draw(g);
+}
+
+//ボススポーンブロック
+BossSpawn::BossSpawn() {
+	_x = BOSSSPAWN_XPOSITION;
+	_y = BOSSSPAWN_YPOSITION;
+}
+BossSpawn::~BossSpawn() {
+}
+
+void BossSpawn::Process(Game& g) {
+	//プレイヤーとの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteはプレイヤーか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+		{
+			if (IsHit(*(*ite)) == true) {
+				Delete(g);
+				auto boss = new Boss(BOSSSPAWN_BOSS_X,BOSSSPAWN_BOSS_Y, BOSSSPAWN_BOSS_FLIP);
+				g.GetOS()->BAdd(boss);
+			}
+		}
+	}
+}
+
+void BossSpawn::Draw(Game& g) {
+	ObjectBase::Draw(g);
 }

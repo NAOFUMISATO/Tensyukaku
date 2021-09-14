@@ -62,7 +62,6 @@ void Player::Process(Game& g)
 	BufSetting(g);
 	//プレイヤーのイベント処理
 	EventChange(g);
-	
 	/*---状態毎の処理---*/
 		//無敵状態
 		Star(g);
@@ -173,13 +172,13 @@ void Player::LoadActionGraph() {
 
 //プレイヤーの効果音読み込み関数
 void Player::LoadActionSE() {
-	_Se["Walk"] = ResourceServer::LoadSoundMem(WALK_SE);
-	_Se["MiddleAttack"] = ResourceServer::LoadSoundMem(MIDDLEATTACK_SE);
-	_Se["LowAttack"] = ResourceServer::LoadSoundMem(LOWATTACK_SE);
-	_Se["Kick"] = ResourceServer::LoadSoundMem(KICK_SE);
-	_Se["Damage"] = ResourceServer::LoadSoundMem(DAMAGE_SE);
-	_Se["SwordIn"] = ResourceServer::LoadSoundMem(SWORDIN_SE);
-	_Se["Iai"] = ResourceServer::LoadSoundMem(IAI_SE);
+	_Se["Walk"] =		ResourceServer::LoadSoundMem("se/Footstep.wav");
+	_Se["MiddleAttack"]=ResourceServer::LoadSoundMem("se/slash3.wav");
+	_Se["LowAttack"] =	ResourceServer::LoadSoundMem("se/Slash.wav");
+	_Se["Kick"] =		ResourceServer::LoadSoundMem("se/Kick.wav");
+	_Se["Damage"] =		ResourceServer::LoadSoundMem("se/Damage.wav");
+	_Se["SwordIn"] =	ResourceServer::LoadSoundMem("se/Close.wav");
+	_Se["Iai"] =		ResourceServer::LoadSoundMem("se/Iai.wav");
 }
 
 //デバック用関数
