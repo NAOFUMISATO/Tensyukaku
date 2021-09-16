@@ -73,7 +73,7 @@ bool OverSelect::Process(Game& g) {
 		if (g.GetTrg() & PAD_INPUT_1) {
 			_Mode_Cnt = _Cnt;
 			auto ob =new OverlayBlack();
-			ob->FadeSetting(60, 60, 60, 4);
+			ob->FadeSetting(60, 70, 70, 4);
 			g.GetMS()->Add(ob, 5, "OverlayBlack");
 		}
 		if (frame==60 ) {

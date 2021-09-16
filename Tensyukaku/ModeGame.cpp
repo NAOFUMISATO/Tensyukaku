@@ -19,8 +19,8 @@ bool ModeGame::Initialize(Game& g) {
 	_eventhappen = new EventHappen(g);
 	if (g.GetCPointFlag() == false) {
 		PlaySoundMem(g.GetBgm()["Main"], DX_PLAYTYPE_LOOP, true);
-		_Player_x = POSITION_X;
-		_Player_y =POSITION_Y;
+		_Player_x = 1500/*POSITION_X*/;
+		_Player_y =1760/*POSITION_Y*/;
 	}
 	else {
 		_Player_x = CPOINT_POSITION_X;

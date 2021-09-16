@@ -4,7 +4,6 @@
 #include "Game.h"
 #include "ResourceServer.h"
 #include "PlayerParticle.h"
-#include "ParticleBase.h"
 using namespace PParInfo;
 //’†’iUŒ‚1
 MiddleAttackParticle1::MiddleAttackParticle1(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {

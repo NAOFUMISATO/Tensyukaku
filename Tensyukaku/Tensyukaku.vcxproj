@@ -164,6 +164,7 @@
     <ClCompile Include="ExPlain.cpp" />
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="FlameBlock.cpp" />
+    <ClCompile Include="FlamePerformParticle.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="Kunai.cpp" />
     <ClCompile Include="ModeEpilogue.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="ExPlain.h" />
     <ClInclude Include="Flame.h" />
     <ClInclude Include="FlameBlock.h" />
+    <ClInclude Include="FlamePerformParticle.h" />
     <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="Kunai.h" />
     <ClInclude Include="ModeEpilogue.h" />

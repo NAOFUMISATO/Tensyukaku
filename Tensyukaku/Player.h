@@ -147,18 +147,18 @@ namespace PInfo {
 	constexpr auto ANIMESPEED_LOWATTACK = 4;	//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto LOWATTACK_ANIMEFRAME = LOWATTACK_ANIMEMAX * ANIMESPEED_LOWATTACK; //アニメーションフレーム
 	constexpr auto LOWATTACK_ALLFRAME = 40;		//下段攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
-	constexpr auto LOWATTACK_BEGINFRAME = 20;	//下段攻撃判定発生フレーム
-	constexpr auto LOWATTACK_ENDFRAME = 16;		//下段攻撃判定終了フレーム(発生してからのフレーム数)
+	constexpr auto LOWATTACK_BEGINFRAME = 16;	//下段攻撃判定発生フレーム
+	constexpr auto LOWATTACK_ENDFRAME = 20;		//下段攻撃判定終了フレーム(発生してからのフレーム数)
 	//蹴り
 	constexpr auto KICK_GRAPHNAME = "res/Samurai/S_Kick.png";		//画像ファイル名
 	constexpr auto KICK_ANIMEMAX = 6;			//全ての画像枚数
 	constexpr auto KICK_WIDTHCOUNT = 6;			//横の画像枚数
 	constexpr auto KICK_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_KICK = 6;			//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_KICK = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto KICK_ANIMEFRAME = KICK_ANIMEMAX * ANIMESPEED_KICK; //アニメーションフレーム
-	constexpr auto KICK_ALLFRAME = 36;			//蹴り全フレーム(全フレームーアニメーションフレーム＝猶予時間)
-	constexpr auto KICK_BEGINFRAME = 18;		//蹴り判定発生フレーム
-	constexpr auto KICK_ENDFRAME = 12;			//蹴り判定終了フレーム(発生してからのフレーム数)
+	constexpr auto KICK_ALLFRAME = 30;			//蹴り全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto KICK_BEGINFRAME = 12;		//蹴り判定発生フレーム
+	constexpr auto KICK_ENDFRAME = 10;			//蹴り判定終了フレーム(発生してからのフレーム数)
 	//居合
 	constexpr auto IAI_GRAPHNAME = "res/Samurai/S_Iai.png";			//画像ファイル名
 	constexpr auto IAI_ANIMEMAX = 14;			//全ての画像枚数

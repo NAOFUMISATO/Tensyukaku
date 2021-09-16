@@ -132,8 +132,6 @@ bool PrologueASkip::Process(Game& g) {
 	auto fadeoutframe = 60;
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_Mode_Cnt = _Cnt;
-	}
-	if (frame == 5) {
 		auto ol = new OverlayBlack();
 		ol->FadeSetting(fadeoutframe, 120, 180, 5);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
