@@ -21,6 +21,7 @@ bool ModePause::Initialize(Game& g) {
 	auto ps = new PauseSelect();
 	g.GetMS()->Add(ps, 3, "PSelect");
 	auto pc = new PController();
+	pc->PositionSetting(960,350);
 	g.GetMS()->Add(pc, 3, "PController");
 	return true;
 }

@@ -3,7 +3,7 @@
 
 class Spawn1A :public SpawnBlockBase {
 public:
-	Spawn1A();
+	Spawn1A(Game& g);
 	~Spawn1A();
 	virtual SPAWNTYPE	GetSpaType() { return SPAWNTYPE::SPAWN1A; }
 	void Process(Game& g)override;

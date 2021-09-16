@@ -9,7 +9,7 @@ EnemySpawn::~EnemySpawn() {
 
 void EnemySpawn::Init(Game& g) {
 		//各スポーンブロック生成
-		auto sp1a = new Spawn1A();
+		auto sp1a = new Spawn1A(g);
 		g.GetOS()->Add(sp1a);
 		auto sp2a = new Spawn2A();
 		g.GetOS()->Add(sp2a);

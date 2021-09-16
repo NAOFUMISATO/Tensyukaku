@@ -17,7 +17,8 @@ GimikPlacement::~GimikPlacement() {
 void GimikPlacement::Init(Game& g) {
 		StairAppear(g);
 		AndonAppear(g);
-		auto rp = new RestPoint();
+		//‹x‘§—pƒ|ƒCƒ“ƒgŠ|‚¯Ž²
+		auto rp = new RestPoint(REST_OBJ_X, REST_OBJ_Y);
 		g.GetOS()->Add(rp);
 }
 

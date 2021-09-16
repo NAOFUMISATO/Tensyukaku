@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "ModeTitle.h"
 #include "MapChip.h"
+#include "ResourceServer.h"
 
 
 // アプリの初期化
@@ -19,6 +20,7 @@ Game::Game()
 	_cvY = 0;
 	_mapW = 0;
 	_mapH = 0 ;
+	_Vpal = 255;
 	// モードサーバの初期化
 	_serverMode = new ModeServer(*this);
 	// タイトルモードを生成し、モードサーバに登録する
@@ -26,6 +28,8 @@ Game::Game()
 	_serverMode->Add(modeTitle, 0, "Title");
 	//マップチップ指定
 	_mapChip = new MapChip("res/Map/", "Tensyukaku");
+	//音源読み込み
+	LoadSound();
 }
 
 // アプリの解放
@@ -67,4 +71,9 @@ void Game::Draw()
 	_serverMode->Draw();
 	_serverMode->DrawFinish();
 }
-
+// 音源読み込み
+void Game::LoadSound() {
+	_Bgm["Main"] = ResourceServer::LoadSoundMem("bgm/MainStage.wav");
+	_Bgm["Boss"] = ResourceServer::LoadSoundMem("bgm/BossStage.wav");
+	_Bgm["Flame"]= ResourceServer::LoadSoundMem("bgm/Flame.wav");
+}

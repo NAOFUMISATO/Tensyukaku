@@ -18,7 +18,7 @@ public:
 	virtual bool Draw(Game& g);
 	void	SetStopObjProcess(bool stopobjprocess) { _stopObjProcess = stopobjprocess; }
 	void	SetPauseFlag(bool pauseflag) { _Pause_Flag = pauseflag; }
-	void	LoadSound();
+	
 
 private:
 	bool	_stopObjProcess;	//オブジェクト処理をストップする

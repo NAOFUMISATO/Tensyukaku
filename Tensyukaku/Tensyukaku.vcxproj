@@ -171,10 +171,9 @@
     <ClCompile Include="ModePause.cpp" />
     <ClCompile Include="ModePrologue.cpp" />
     <ClCompile Include="OutGameParticle.cpp" />
-    <ClCompile Include="OverBlack.cpp" />
-    <ClCompile Include="OverCursor.cpp" />
     <ClCompile Include="OverlayBlack.cpp" />
     <ClCompile Include="OverlayFlame.cpp" />
+    <ClCompile Include="Overlogo.cpp" />
     <ClCompile Include="OverSelect.cpp" />
     <ClCompile Include="PauseSelect.cpp" />
     <ClCompile Include="PController.cpp" />
@@ -238,10 +237,9 @@
     <ClInclude Include="ModePause.h" />
     <ClInclude Include="ModePrologue.h" />
     <ClInclude Include="OutGameParticle.h" />
-    <ClInclude Include="OverBlack.h" />
-    <ClInclude Include="OverCursor.h" />
     <ClInclude Include="OverlayBlack.h" />
     <ClInclude Include="OverlayFlame.h" />
+    <ClInclude Include="Overlogo.h" />
     <ClInclude Include="OverSelect.h" />
     <ClInclude Include="PauseSelect.h" />
     <ClInclude Include="PController.h" />

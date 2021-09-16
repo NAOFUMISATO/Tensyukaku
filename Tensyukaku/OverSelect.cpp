@@ -1,119 +1,99 @@
 #include <DxLib.h>
-#include "ResourceServer.h"
 #include "OverSelect.h"
 #include "Game.h"
-#include "ObjectBase.h"
-namespace {
-	constexpr auto RED = 0;
-	constexpr auto GREEN = 1;
-	constexpr auto Blue = 2;
-}
+#include "ModeTitle.h"
+#include "ModeGame.h"
+#include "ResourceServer.h"
+#include "OverlayBlack.h"
 
-//óéñΩÉçÉS
-OverLogo::OverLogo() {
-	Init();
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/OverLogo.png");
-}
-OverLogo::~OverLogo() {
-}
-void OverLogo::Init() {
+bool OverSelect::Initialize(Game& g) {
+	if (!base::Initialize(g)) { return false; }
 	_x = 960;
-	_y = 250;
-	_hit_x = -500;
-	_hit_y = -200;
-	_hit_w = 1000;
-	_hit_h = 400;
-	_Alpha = 0;
+	_y = 900;
+	_Pal = 0;
+	_GraphNo = 0;
+	_Type = SELECTTYPE::NOSELECT;
+	_Trans_Flag = true;
+	_GrAll["PSelect"].resize(3);
+	ResourceServer::LoadDivGraph("res/Mode/PauseSelect.png", 3, 3, 1, 1800, 340, _GrAll["PSelect"].data());
+	return true;
 }
-void OverLogo::Process(Game& g) {
-	ObjectBase::Process(g);
-	if (_Alpha <= 255) {
-		_Alpha += 2;
+
+bool OverSelect::Terminate(Game& g) {
+	base::Terminate(g);
+	return true;
+}
+
+bool OverSelect::Process(Game& g) {
+	base::Process(g);
+	_GrHandle = _GrAll["PSelect"][_Anime["PSelect"]];
+	_Anime["PSelect"] = _GraphNo;
+	auto frame = _Cnt - _Mode_Cnt;
+	if (frame < 60) {
+		_Pal += 4;
 	}
-}
-
-void OverLogo::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
-#ifdef _DEBUG
-	int& re = std::get<RED>(_Color);
-	int& gr = std::get<GREEN>(_Color);
-	int& bl = std::get<Blue>(_Color);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);	// îºìßñæï`âÊéwíË
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// îºìßñæÇÃê‘Ç≈ìñÇΩÇËîªíËï`âÊ
-#endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-}
-//ÉäÉgÉâÉC
-OverRetry::OverRetry() {
-	Init();
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/OverRetry.png");
-};
-OverRetry::~OverRetry() {
-};
-
-void OverRetry::Init() {
-	_x = 540;
-	_y = 700;
-	_hit_x = -370;
-	_hit_y = -80;
-	_hit_w = 650;
-	_hit_h = 190;
-	_Alpha = 0;
-}
-
-void OverRetry::Process(Game& g) {
-	ObjectBase::Process(g);
-	if (_Alpha <= 255) {
-		_Alpha += 4;
+	if (frame == 60) {
+		_Pal = 255;
 	}
-}
-
-void OverRetry::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
-#ifdef _DEBUG
-	int& re = std::get<RED>(_Color);
-	int& gr = std::get<GREEN>(_Color);
-	int& bl = std::get<Blue>(_Color);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// îºìßñæï`âÊéwíË
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// îºìßñæÇÃê‘Ç≈ìñÇΩÇËîªíËï`âÊ
-#endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-}
-//É^ÉCÉgÉãÇ÷ñﬂÇÈ
-OverGotitle::OverGotitle() {
-	Init();
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/OverGotitle.png");
-};
-OverGotitle::~OverGotitle() {
-};
-
-void OverGotitle::Init() {
-	_x = 1380;
-	_y = 700;
-	_hit_x = -370;
-	_hit_y = -80;
-	_hit_w = 650;
-	_hit_h = 190;
-	_Alpha = 0;
-}
-void OverGotitle::Process(Game& g) {
-	ObjectBase::Process(g);
-	if (_Alpha <= 255) {
-		_Alpha += 4;
+	
+	switch (_Type) {
+	case SELECTTYPE::NOSELECT:
+		_GraphNo = 0;
+		if (frame > 60) {
+			if (g.GetTrg() & PAD_INPUT_LEFT) {
+				_Type = SELECTTYPE::RETRYSELECT;
+			}
+			if (g.GetTrg() & PAD_INPUT_RIGHT) {
+				_Type = SELECTTYPE::GOTITLESELECT;
+			}
+		}
+		break;
+	case SELECTTYPE::RETRYSELECT:
+		_GraphNo = 1;
+		if (g.GetTrg() & PAD_INPUT_1) {
+			_Mode_Cnt = _Cnt;
+			auto ob = new OverlayBlack();
+			ob->FadeSetting(60, 90, 150, 4);
+			g.GetMS()->Add(ob, 5, "OverlayBlack");
+		}
+		if (frame == 60) {
+			g.GetMS()->Del(this);
+			g.GetMS()->Del(g.GetMS()->Get("Gameover"));
+			g.GetMS()->Del(g.GetMS()->Get("OverLogo"));
+			g.GetMS()->Del(g.GetMS()->Get("Game"));
+			auto mg = new ModeGame();
+			g.GetMS()->Add(mg, 0, "Game");
+		}
+		if (g.GetTrg() & PAD_INPUT_RIGHT) {
+			_Type = SELECTTYPE::GOTITLESELECT;
+		}
+		break;
+	case SELECTTYPE::GOTITLESELECT:
+		_GraphNo = 2;
+		if (g.GetTrg() & PAD_INPUT_1) {
+			_Mode_Cnt = _Cnt;
+			auto ob =new OverlayBlack();
+			ob->FadeSetting(60, 60, 60, 4);
+			g.GetMS()->Add(ob, 5, "OverlayBlack");
+		}
+		if (frame==60 ) {
+			g.GetMS()->Del(this);
+			g.GetMS()->Del(g.GetMS()->Get("OverLogo"));
+			g.GetMS()->Del(g.GetMS()->Get("Gameover"));
+			g.GetMS()->Del(g.GetMS()->Get("Game"));
+			auto mt = new ModeTitle();
+			g.GetMS()->Add(mt, 0, "Title");
+		}
+		if (g.GetTrg() & PAD_INPUT_LEFT) {
+			_Type = SELECTTYPE::RETRYSELECT;
+		}
+		break;
 	}
+	return true;
 }
 
-void OverGotitle::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
-#ifdef _DEBUG
-	int& re = std::get<RED>(_Color);
-	int& gr = std::get<GREEN>(_Color);
-	int& bl = std::get<Blue>(_Color);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// îºìßñæï`âÊéwíË
-	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// îºìßñæÇÃê‘Ç≈ìñÇΩÇËîªíËï`âÊ
-#endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+bool OverSelect::Draw(Game& g) {
+	base::Draw(g);
+	return true;
 }
+

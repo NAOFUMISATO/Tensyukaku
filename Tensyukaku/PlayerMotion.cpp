@@ -19,7 +19,7 @@ void Player::Idle(Game& g) {
 	if (g.GetTrg() & PAD_INPUT_6&&_Iai_Gauge==IAI_MAX) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
-		PlaySoundMem(_Se["SwordIn"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_Se["Iai"], DX_PLAYTYPE_BACK, true);
 	}
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::SWAY;
@@ -109,7 +109,7 @@ void Player::Move(Game& g) {
 	if (g.GetTrg() & PAD_INPUT_6 && _Iai_Gauge == IAI_MAX) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
-		PlaySoundMem(_Se["SwordIn"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_Se["Iai"], DX_PLAYTYPE_BACK, true);
 	}
 	else if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::SWAY;
@@ -509,9 +509,6 @@ void Player::Iai(Game& g) {
 		}
 	}
 	if (frame == IAI_BEGINFRAME) {
-		StopSoundMem(_Se["SwordIn"]);
-		PlaySoundMem(_Se["Iai"], DX_PLAYTYPE_BACK, true);
-		
 		if (_isFlip == false) {
 			//居合オブジェクトの生成
 			auto iac = new IaiCollision(_x + _hit_x - IAI_WIDTH, _y - _hit_h / 2);
@@ -654,6 +651,8 @@ void Player::Dead(Game& g) {
 		}
 	if (frame == DEAD_ALLFRAME) {
 		g.GetMS()->Del(g.GetMS()->Get("Flame"));
+		StopSoundMem(g.GetBgm()["Main"]);
+		StopSoundMem(g.GetBgm()["Boss"]);
 		auto mgo = new ModeGameover();
 		g.GetMS()->Add(mgo,1, "Gameover");
 		
@@ -692,7 +691,7 @@ void Player::StairMove(Game& g) {
 void Player::StairUp(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
-	_Stairup_Spd = 3.0f;
+	_Stairup_Spd = STAIRUP_SPEED;
 	if (_StairFlip_Flag == false) {
 		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
 	}
@@ -716,6 +715,7 @@ void Player::StairUp(Game& g) {
 void Player::BossStairMove(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
+	
 	if (_StairFlip_Flag == false) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
 			_isFlip = false;
@@ -750,7 +750,8 @@ void Player::BossStairMove(Game& g) {
 void Player::BossStairUp(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
-	_Stairup_Spd = 3.0f;
+	_Vpal["Main"]-=2;
+	_Stairup_Spd = BOSSSTAIRUP_SPEED;
 	if (_StairFlip_Flag == false) {
 		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
 	}
@@ -766,6 +767,7 @@ void Player::BossStairUp(Game& g) {
 	_y = positionY;
 	auto upheight = _y - _Player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
+		StopSoundMem(g.GetBgm()["Main"]);
 		_State = PLAYERSTATE::IDLE;
 	}
 }
@@ -792,9 +794,15 @@ void Player::BossEventA(Game& g) {
 void Player::BossEventB(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_Spd = 4;
+	if (frame == 120) {
+		StopSoundMem(g.GetBgm()["Boss"]);
+		StopSoundMem(g.GetBgm()["Flame"]);
+	}
 	if (frame <= 120) {
 		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
 		_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+		_Vpal["Boss"] -= 2;
+		_Vpal["Flame"] -= 2;
 	}
 	if (frame > 120 && 310 >= frame) {
 		_x += _Spd;

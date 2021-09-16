@@ -255,15 +255,6 @@
     <ClCompile Include="ModeGameover.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
-    <ClCompile Include="OverCursor.cpp">
-      <Filter>ソース ファイル\Object\Outgame</Filter>
-    </ClCompile>
-    <ClCompile Include="OverSelect.cpp">
-      <Filter>ソース ファイル\Object\Outgame</Filter>
-    </ClCompile>
-    <ClCompile Include="OverBlack.cpp">
-      <Filter>ソース ファイル\Object\Outgame</Filter>
-    </ClCompile>
     <ClCompile Include="CPointBlock.cpp">
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
@@ -307,7 +298,13 @@
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
     <ClCompile Include="PlayerParticle.cpp">
-      <Filter>ソース ファイル\Object\Player</Filter>
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Overlogo.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="OverSelect.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -446,15 +443,6 @@
     <ClInclude Include="ModeGameover.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
-    <ClInclude Include="OverCursor.h">
-      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
-    </ClInclude>
-    <ClInclude Include="OverSelect.h">
-      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
-    </ClInclude>
-    <ClInclude Include="OverBlack.h">
-      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
-    </ClInclude>
     <ClInclude Include="CPointBlock.h">
       <Filter>ヘッダー ファイル\Object\Event</Filter>
     </ClInclude>
@@ -495,6 +483,12 @@
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
     <ClInclude Include="ExPlain.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="Overlogo.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="OverSelect.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
   </ItemGroup>

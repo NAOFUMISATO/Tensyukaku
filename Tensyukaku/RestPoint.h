@@ -3,7 +3,7 @@
 
 class RestPoint :public ObjectBase {
 public:
-	RestPoint();
+	RestPoint(int x,int y);
 	~RestPoint();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::RESTPOINT; }
 	void Init()override;

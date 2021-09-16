@@ -94,6 +94,7 @@ void Bushi::LoadActionGraph() {
 
 //武士のSE読み込み関数
 void Bushi::LoadActionSE() {
+	_Se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/BushiAttack.wav");
 }
 
 //デバッグ用関数

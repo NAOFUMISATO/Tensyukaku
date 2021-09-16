@@ -89,8 +89,7 @@ void Ninja::LoadActionGraph() {
 
 //忍者のSE読み込み関数
 void Ninja::LoadActionSE() {
-	_Se["Walk"]=ResourceServer::LoadSoundMem(WALK_SE);
-	_Se["Attack"] = ResourceServer::LoadSoundMem(ATTACK_SE);
+	_Se["Attack"] = ResourceServer::LoadSoundMem("bgm/NinjaAttack.wav");
 }
 
 //デバッグ用関数

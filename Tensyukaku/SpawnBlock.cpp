@@ -11,7 +11,7 @@ using namespace SpaInfo;
 	スポーンブロック
 */
 //スポーンブロック1A
-Spawn1A::Spawn1A() {
+Spawn1A::Spawn1A(Game& g) {
 	_x = SPAWN1A_XPOSITION;
 	_y = SPAWN1A_YPOSITION;
 }
@@ -42,6 +42,8 @@ void Spawn1A::Process(Game& g) {
 				g.GetOS()->BAdd(bu7);
 				auto bu8 = new Bushi(SPAWN1A_BUSHI8_X, SPAWN1A_BUSHI8_Y, SPAWN1A_BUSHI8_FLIP);
 				g.GetOS()->BAdd(bu8);
+				/*auto bu9 = new Bushi(SPAWN1A_BUSHI9_X, SPAWN1A_BUSHI9_Y, SPAWN1A_BUSHI9_FLIP);
+				g.GetOS()->BAdd(bu9);*/
 				auto bu10 = new Bushi(SPAWN1A_BUSHI10_X, SPAWN1A_BUSHI10_Y, SPAWN1A_BUSHI10_FLIP);
 				g.GetOS()->Add(bu10);
 				auto bu11 = new Bushi(SPAWN1A_BUSHI11_X, SPAWN1A_BUSHI11_Y, SPAWN1A_BUSHI11_FLIP);

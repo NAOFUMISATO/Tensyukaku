@@ -38,7 +38,7 @@ void Cursor::Process(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	switch (_State) {
 	case CURSOLSTATE::NOHIT:
-		_colortype = 5;
+		_colortype = 0;
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
 			// iteはGameStartオブジェクトか？
@@ -47,7 +47,7 @@ void Cursor::Process(Game& g) {
 				// カーソルとそのオブジェクトの当たり判定を行う
 				if (IsHit(*(*ite)) == true) {
 					_State = CURSOLSTATE::STARTHIT;
-					_colortype = GetRand(4);
+					_colortype =3;
 				}
 			}
 		}
@@ -59,7 +59,7 @@ void Cursor::Process(Game& g) {
 				// カーソルとそのオブジェクトの当たり判定を行う
 				if (IsHit(*(*ite)) == true) {
 					_State = CURSOLSTATE::EXHIT;
-					_colortype = GetRand(4);
+					_colortype = 4;
 				}
 			}
 		}
@@ -71,7 +71,7 @@ void Cursor::Process(Game& g) {
 				// カーソルとそのオブジェクトの当たり判定を行う
 				if (IsHit(*(*ite)) == true) {
 					_State = CURSOLSTATE::ENDHIT;
-					_colortype = GetRand(4);
+					_colortype =2;
 				}
 			}
 		}

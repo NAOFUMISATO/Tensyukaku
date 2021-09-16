@@ -26,7 +26,6 @@ protected:
 	int		_Mode_Cnt;									//経過時間記録変数
 	int		_Pal;										//BlendMode用変数
 	int		_FadeSpeed;									//フェードスピード
-	int		_bgm;										//BGMハンドル
 	bool	_Trans_Flag;								//DrawRotaGraphの透明度フラグ
 	std::pair<double, double> _drg;						//DrawRotaGraph用ペア変数（first拡縮率、second角度）
 	std::tuple<int, int, int> _rgb;						//Color用タプル型変数

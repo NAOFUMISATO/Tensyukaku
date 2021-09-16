@@ -39,5 +39,6 @@ namespace GInfo {
 	constexpr auto FLOOR11D_ANDON_X = 1200;	constexpr auto FLOOR11D_ANDON_Y = 1760;
 	constexpr auto FLOOR12A_ANDON_X = 2300;	constexpr auto FLOOR12A_ANDON_Y = 1000;
 
-
+	//休息用ポイント
+	constexpr auto  REST_OBJ_X = 2700;	 constexpr auto REST_OBJ_Y = 3650;
 }

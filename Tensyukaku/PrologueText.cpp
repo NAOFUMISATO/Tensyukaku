@@ -3,6 +3,7 @@
 #include "PrologueText.h"
 #include "ModeGame.h"
 #include "Game.h"
+#include "OverlayBlack.h"
 #include "ResourceServer.h"
 using namespace ProInfo;
 bool PrologueText::Initialize(Game& g) {
@@ -84,6 +85,7 @@ bool PrologueText::Process(Game& g) {
 	}
 	if (frame == TEXT4_FADEOUT_ENDFRAME) {
 		_Pal = 0;
+		_x = 1200;
 		_GraphNo = 4;
 	}
 	//テキスト5
@@ -113,8 +115,9 @@ bool PrologueASkip::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 1650;
 	_y = 1000;
+	_Cnt = 121;
 	_Trans_Flag = true;
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/ASkip.png");
+	_GrHandle=ResourceServer::LoadGraph("res/Mode/ASkip.png");
 	return true;
 }
 
@@ -125,7 +128,17 @@ bool PrologueASkip::Terminate(Game& g) {
 
 bool PrologueASkip::Process(Game& g) {
 	base::Process(g);
+	auto frame = _Cnt - _Mode_Cnt;
+	auto fadeoutframe = 60;
 	if (g.GetTrg() & PAD_INPUT_4) {
+		_Mode_Cnt = _Cnt;
+	}
+	if (frame == 5) {
+		auto ol = new OverlayBlack();
+		ol->FadeSetting(fadeoutframe, 120, 180, 5);
+		g.GetMS()->Add(ol, 2, "OverlayBlack");
+	}
+	if (frame == fadeoutframe) {
 		g.GetMS()->Del(g.GetMS()->Get("Prologue"));
 		g.GetMS()->Del(g.GetMS()->Get("PText"));
 		g.GetMS()->Del(this);

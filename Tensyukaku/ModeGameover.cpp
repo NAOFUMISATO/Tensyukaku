@@ -1,10 +1,9 @@
 #include <DxLib.h>
 #include "ModeGameover.h"
 #include "ModeGame.h"
-#include "OverCursor.h"
-#include "OverSelect.h"
-#include "OverBlack.h"
 #include "OverlayBlack.h"
+#include "OverSelect.h"
+#include "OverLogo.h"
 #include "Game.h"
 #include "ResourceServer.h"
 
@@ -14,6 +13,7 @@ bool ModeGameover::Initialize(Game& g) {
 	_y = 540;
 	_Pal = 0;
 	_Mode_Cnt = _Cnt;
+	_GrHandle = ResourceServer::LoadGraph("res/Mode/Black.png");
 	return true;
 }
 
@@ -25,21 +25,17 @@ bool ModeGameover::Terminate(Game& g) {
 bool ModeGameover::Process(Game& g) {
 	base::Process(g);
 	auto frame = _Cnt - _Mode_Cnt;
-	if (frame == 1) {
-		auto ob = new OverBlack();
-		g.GetOS()->Add(ob);
-		auto olo = new OverLogo();
-		g.GetOS()->Add(olo);
+	if (frame < 60) {
+		_Pal += 3;
 	}
-	if (frame == 200) {
-		auto ore = new OverRetry();
-		g.GetOS()->Add(ore);
-		auto ogt = new OverGotitle();
-		g.GetOS()->Add(ogt);
+	if (frame == 60) {
+		_Pal = 200;
+		auto ol = new Overlogo();
+		g.GetMS()->Add(ol, 3, "OverLogo");
 	}
-	if (frame == 400) {
-		auto ocu = new OverCursor();
-		g.GetOS()->Add(ocu);
+	if (frame == 120) {
+		auto ps = new OverSelect();
+		g.GetMS()->Add(ps, 3, "PSelect");
 	}
 	return true;
 }

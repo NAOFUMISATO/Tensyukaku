@@ -4,6 +4,7 @@
 #include	"Player.h"
 #include	"ObjectServer.h"
 #include	"ModeServer.h"
+#include	<unordered_map>
 
 // 画面設定
 constexpr auto SCREEN_W = 1920;		///< 画面の横解像度
@@ -21,6 +22,7 @@ public:
 	void	Input();		// フレーム処理：入力
 	void	Process();		// フレーム処理：計算
 	void	Draw();		// フレーム処理：描画
+	
 
 	//ゲッター関数
 	int		GetKey() { return _gKey; }
@@ -32,9 +34,11 @@ public:
 	int		GetcvX() { return _cvX; }
 	int		GetcvY() { return _cvY; }
 	int		GetCPointFlag() { return _CPoint_Flag; }
+	int		GetVpal() { return _Vpal; }
 	MapChip* GetChip() { return _mapChip; }
 	ModeServer* GetMS() { return _serverMode; }
 	ObjectServer* GetOS() { return &_objServer; }
+	std::unordered_map<std::string, int> GetBgm() { return _Bgm; }
 
 	//セッター関数
 	void	SetcvX(int cvX) { _cvX = cvX; }
@@ -43,9 +47,11 @@ public:
 	void	SetmapH(int mapH) { _mapH = mapH; }
 	void	SetChip(MapChip* map) { _mapChip = map; }
 	void	SetCPointFlag(bool cpointflag) { _CPoint_Flag = cpointflag; }
-	
+	void	SetVpal(int vpal) { _Vpal = vpal; }
 
 private:
+	void	LoadSound();	//音源読み込み
+
 	int _gKey;			// キー入力の情報
 	int _gTrg;			// キー入力のトリガ情報
 	int	_Xbuf;			//左ステッィクX入力量
@@ -54,6 +60,9 @@ private:
 	int	_cvX, _cvY;		// カメラ
 	int _mapW, _mapH;	// マップ
 	bool _CPoint_Flag;	//チェックポイントフラグ
+	int	_Vpal;			//ボリュームの設定
+	std::unordered_map<std::string, int> _Bgm; //BGMマップ
+
 	
 	MapChip* _mapChip;			//マップチップ
 	ModeServer* _serverMode;	//モードサーバー

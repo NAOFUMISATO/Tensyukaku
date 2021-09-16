@@ -1,30 +1,17 @@
 #pragma once
-#include "ObjectBase.h"
-class OverLogo :public ObjectBase {
-public:
-	OverLogo();
-	~OverLogo();
-	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::OVERLOGO; }
-	void Init()override;
-	void Process(Game& g)override;
-	void Draw(Game& g)override;
-};
-class OverRetry :public ObjectBase {
-public:
-	OverRetry();
-	~OverRetry();
-	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::OVERRETRY; }
-	void Init()override;
-	void Process(Game& g)override;
-	void Draw(Game& g)override;
-};
+#include "ModeBase.h"
 
-class OverGotitle :public ObjectBase {
+class OverSelect :public ModeBase {
+	typedef ModeBase base;
 public:
-	OverGotitle();
-	~OverGotitle();
-	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::OVERGOTITLE; }
-	void Init()override;
-	void Process(Game& g)override;
-	void Draw(Game& g)override;
+	virtual bool Initialize(Game& g);
+	virtual bool Terminate(Game& g);
+	virtual bool Process(Game& g);
+	virtual bool Draw(Game& g);
+private:
+	enum class SELECTTYPE {
+		NOSELECT, RETRYSELECT, GOTITLESELECT
+	};
+	SELECTTYPE _Type;
+	int _GraphNo;
 };

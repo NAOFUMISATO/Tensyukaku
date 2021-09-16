@@ -3,8 +3,6 @@
 #include "PController.h"
 bool PController::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = 960;
-	_y = 540;
 	_Pal = 255;
 	_Mode_Cnt = _Cnt;
 	_Trans_Flag = true;
@@ -17,6 +15,10 @@ bool PController::Terminate(Game& g) {
 	return true;
 }
 
+void PController::PositionSetting(int x,int y) {
+	_x = x;
+	_y = y;
+}
 bool PController::Process(Game& g) {
 	base::Process(g);
 	return true;

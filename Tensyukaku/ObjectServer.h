@@ -26,7 +26,7 @@ private:
 
 protected:
 	std::vector<ObjectBase*>	_vObject;	// ObjectBaseを登録するリスト
-	std::vector<ObjectBase*>	_vAdd;	// 追加するオブジェクトリスト
+	std::vector<ObjectBase*>	_vAdd;	// 末尾に追加するオブジェクトリスト
 	std::vector<ObjectBase*>	_vBAdd;	// 先頭に追加するオブジェクトリスト
 	std::vector<ObjectBase*>	_vDel;	// 削除するオブジェクトリスト
 

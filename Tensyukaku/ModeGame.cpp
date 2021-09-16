@@ -18,6 +18,7 @@ bool ModeGame::Initialize(Game& g) {
 	_gimikplacement = new GimikPlacement(g);
 	_eventhappen = new EventHappen(g);
 	if (g.GetCPointFlag() == false) {
+		PlaySoundMem(g.GetBgm()["Main"], DX_PLAYTYPE_LOOP, true);
 		_Player_x = POSITION_X;
 		_Player_y =POSITION_Y;
 	}
@@ -36,9 +37,6 @@ bool ModeGame::Initialize(Game& g) {
 	_stopObjProcess = false;
 	//ポーズ画面が出現しているか
 	_Pause_Flag = false;
-	//音源読み込み
-	LoadSound();
-	PlaySoundMem(_bgm, DX_PLAYTYPE_LOOP, true);
 	return true;
 }
 
@@ -65,7 +63,6 @@ bool ModeGame::Process(Game& g) {
 		auto mp = new ModePause();
 		g.GetMS()->Add(mp, 2, "Pause");
 	}
-
 	return true;
 }
 
@@ -77,6 +74,4 @@ bool ModeGame::Draw(Game& g) {
 	return true;
 }
 
-void ModeGame::LoadSound() {
-	_bgm=ResourceServer::LoadSoundMem("bgm/MainStage.wav");
-}
+

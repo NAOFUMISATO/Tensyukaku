@@ -159,6 +159,7 @@ void IaiParticle2::Init() {
 	_rgb = std::make_tuple(IAI_PARTICLE2_RED, IAI_PARTICLE2_GREEN, IAI_PARTICLE2_BLUE);
 	_drg = std::make_pair(IAI_PARTICLE2_SCALE, IAI_PARTICLE2_ANGLE);
 	_Cnt = IAI_PARTICLE2_CNT;
+	
 }
 
 void IaiParticle2::Process(Game& g) {

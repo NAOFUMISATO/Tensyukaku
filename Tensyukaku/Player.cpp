@@ -50,6 +50,9 @@ void Player::Init()
 	_Alpha = FIRST_ALPHA;
 	_Position = { 0,0 };
 	_CameraX = 500;
+	_Vpal["Main"] = 200;
+	_Vpal["Flame"] = 200;
+	_Vpal["Boss"] = 128;
 }
 
 
@@ -141,6 +144,9 @@ void Player::Draw(Game& g) {
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	ObjectBase::Draw(g);
+	ChangeVolumeSoundMem(_Vpal["Main"], g.GetBgm()["Main"]);
+	ChangeVolumeSoundMem(_Vpal["Boss"], g.GetBgm()["Boss"]);
+	ChangeVolumeSoundMem(_Vpal["Flame"], g.GetBgm()["Flame"]);
 }
 
 void Player::Delete(Game& g) {
@@ -172,13 +178,12 @@ void Player::LoadActionGraph() {
 
 //プレイヤーの効果音読み込み関数
 void Player::LoadActionSE() {
-	_Se["Walk"] =		ResourceServer::LoadSoundMem("se/Footstep.wav");
-	_Se["MiddleAttack"]=ResourceServer::LoadSoundMem("se/slash3.wav");
-	_Se["LowAttack"] =	ResourceServer::LoadSoundMem("se/Slash.wav");
-	_Se["Kick"] =		ResourceServer::LoadSoundMem("se/Kick.wav");
-	_Se["Damage"] =		ResourceServer::LoadSoundMem("se/Damage.wav");
-	_Se["SwordIn"] =	ResourceServer::LoadSoundMem("se/Close.wav");
-	_Se["Iai"] =		ResourceServer::LoadSoundMem("se/Iai.wav");
+	_Se["Walk"] =		ResourceServer::LoadSoundMem("se/Player/Footstep.wav");
+	_Se["MiddleAttack"]=ResourceServer::LoadSoundMem("se/Player/MiddleAttack1.wav");
+	_Se["LowAttack"] =	ResourceServer::LoadSoundMem("se/Player/LowAttack1.wav");
+	_Se["Kick"] =		ResourceServer::LoadSoundMem("se/Player/Kick.wav");
+	_Se["Damage"] =		ResourceServer::LoadSoundMem("se/Player/Damage.wav");
+	_Se["Iai"] =		ResourceServer::LoadSoundMem("se/Player/Iai.wav");
 }
 
 //デバック用関数
@@ -287,7 +292,19 @@ void Player::EventChange(Game& g) {
 			// プレイヤーとその回復判定の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {
 				(*ite)->Delete(g);
+				PlaySoundMem(g.GetBgm()["Boss"], DX_PLAYTYPE_LOOP, true);
 				g.SetCPointFlag(true);
+			}
+		}
+	}
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		// iteは炎演出ブロックか？
+		if ((*ite)->GetObjType() == OBJECTTYPE::FLAMEBLOCK)
+		{
+			// プレイヤーとその炎演出の当たり判定を行う
+			if (IsHit(*(*ite)) == true) {
+				PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
 			}
 		}
 	}

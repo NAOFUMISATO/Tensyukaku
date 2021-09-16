@@ -100,6 +100,9 @@ namespace PInfo {
 	constexpr auto LIFE_MAX = 3;				//体力
 	constexpr auto WALKSPEED = 5;				//歩き移動速度
 	constexpr auto RUNSPEED = 9;				//走り移動速度
+	constexpr auto STAIRMOVE_SPEED = 3;			//階段位置調整スピード
+	constexpr auto STAIRUP_SPEED = 5.01f;		//階段上昇速度
+	constexpr auto BOSSSTAIRUP_SPEED = 3.0f;	//ボス階段上昇速度
 	constexpr auto IAI_MAX = 5;					//居合ゲージの最大値
 	constexpr auto MAX_BUF = 1000;				//入力量限界値
 	constexpr auto RUN_XBUF = 800;				//走り状態になるための必要なX入力量
@@ -126,7 +129,6 @@ namespace PInfo {
 	constexpr auto ANIMESPEED_WALK = 9;			//歩きアニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto ANIMESPEED_RUN = 6;			//走りアニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto MOVE_SEFRAME = 120;			//移動SEの管理フレーム
-	constexpr auto STAIRMOVE_SPEED = 3;			//階段位置調整スピード
 	//中段攻撃
 	constexpr auto MIDDLEATTACK_GRAPHNAME = "res/Samurai/S_MidAttack.png";	//画像ファイル名
 	constexpr auto MIDDLEATTACK_ANIMEMAX = 8;	//全ての画像枚数

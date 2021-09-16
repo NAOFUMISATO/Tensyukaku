@@ -13,6 +13,7 @@ bool ExPlain::Initialize(Game& g) {
 	_Cnt = 6;
 	_GrHandle = ResourceServer::LoadGraph("res/Mode/Black.png");
 	auto pc = new PController();
+	pc->PositionSetting(960, 540);
 	g.GetMS()->Add(pc, 3, "PController");
 	return true;
 }
