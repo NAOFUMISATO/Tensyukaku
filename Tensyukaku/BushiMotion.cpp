@@ -71,20 +71,19 @@ void Bushi::Patrol(Game& g) {
 			}
 		}
 	}
-	//敵とプレイヤーの中段攻撃オブジェクトの当たり判定
+	//敵とプレイヤーのアクションの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
-		// iteはプレイヤーの中段攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
-		{
+		OBJECTTYPE objType = (*ite)->GetObjType();
+		switch (objType){
+		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
 			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life = 0;
 				_Action_Cnt = _Cnt;
-				_State =ENEMYSTATE::DEAD;
-				//居合ゲージの増加
+				_State = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 				{
@@ -98,30 +97,19 @@ void Bushi::Patrol(Game& g) {
 					}
 				}
 			}
-		}
-	}
-	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの下段攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
-		{
+			break;
+		case ObjectBase::OBJECTTYPE::LOWATTACK:
 			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life--;
 				_Action_Cnt = _Cnt;
-				_State =ENEMYSTATE::DAMAGE;
+				_State = ENEMYSTATE::DAMAGE;
 			}
-		}
-	}
-	//敵とプレイヤーの居合オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
-		{
+			break;
+		case ObjectBase::OBJECTTYPE::IAI:
+		case ObjectBase::OBJECTTYPE::FLAME:
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -129,6 +117,9 @@ void Bushi::Patrol(Game& g) {
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
+			break;
+		default:
+			break;
 		}
 	}
 }
@@ -209,17 +200,17 @@ void Bushi::Coming(Game& g) {
 			}
 		}
 	}
-	//敵とプレイヤーの中段攻撃オブジェクトの当たり判定
+	//敵とプレイヤーのアクションの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
-		// iteはプレイヤーの中段攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
-		{
+		OBJECTTYPE objType = (*ite)->GetObjType();
+		switch (objType) {
+		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
 			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life -= 3;
+				_Life = 0;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
@@ -235,14 +226,8 @@ void Bushi::Coming(Game& g) {
 					}
 				}
 			}
-		}
-	}
-	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの下段攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
-		{
+			break;
+		case ObjectBase::OBJECTTYPE::LOWATTACK:
 			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -251,14 +236,9 @@ void Bushi::Coming(Game& g) {
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DAMAGE;
 			}
-		}
-	}
-	//敵とプレイヤーの居合オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
-		{
+			break;
+		case ObjectBase::OBJECTTYPE::IAI:
+		case ObjectBase::OBJECTTYPE::FLAME:
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -266,6 +246,9 @@ void Bushi::Coming(Game& g) {
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
+			break;
+		default:
+			break;
 		}
 	}
 }
@@ -279,9 +262,6 @@ void Bushi::Attack(Game& g) {
 	if (_isFlip == false) {
 		if (frame == STEP_BEGINFRAME) {
 			_x -= ATTACK_STEP;
-		}
-		if (frame == STEP_ENDFRAME) {
-			_x += ATTACK_STEP;
 		}
 		PrivateCollision bacc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME|| frame == ATTACK_ALLFRAME) {
@@ -304,9 +284,6 @@ void Bushi::Attack(Game& g) {
 	if (_isFlip == true) {
 		if (frame == STEP_BEGINFRAME) {
 			_x += ATTACK_STEP;
-		}
-		if (frame == STEP_ENDFRAME) {
-			_x -= ATTACK_STEP;
 		}
 		PrivateCollision bacc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame==ATTACK_ALLFRAME) {

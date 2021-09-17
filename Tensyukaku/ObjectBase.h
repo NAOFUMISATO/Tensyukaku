@@ -78,6 +78,9 @@ protected:
 	int		_Iai_Gauge;	// 居合ゲージ
 	int		_hit_x, _hit_y;				//描画点から左上座標までの差分
 	int		_hit_w, _hit_h;				//当たり判定の幅
+	bool	_Draw_Flag;					//XY座標が画面内ならば描画するフラグ
+	int		_Dx;						//描画判定用変数
+	int		_Dy;						//描画判定用変数
 	std::pair <int, int>_hit_judge;		//当たり判定用変数
 	std::pair <double, double>_drg;		//DrawRotaGraph用変数
 	int		_Dalpha;					//デバック用矩形透明度
@@ -89,4 +92,5 @@ protected:
 	int		_Before_y;					//前回のY座標保存変数
 	bool	_BEventA_Flag;				//ボスイベントAフラグ
 	bool	_BEventB_Flag;				//ボスイベントBフラグ
+	
 };

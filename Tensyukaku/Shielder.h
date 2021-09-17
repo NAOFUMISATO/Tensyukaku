@@ -27,8 +27,12 @@ private:
 	void	DebugDraw(Game& g);		//デバッグ用関数
 
 	/*---------メンバ変数---------*/
-	bool	_Shield_Flag;		//盾の生存フラグ
+	bool	_ShieldAppear_Flag;	//盾の出現フラグ
+	bool	_ShieldAlive_Flag;	//盾の生存フラグ
+	bool	_ShieldAttack_Flag;	//盾保持時の攻撃フラグ
+	bool	_ShieldBreak_Flag;	//盾崩しフラグ
 	int		_Shield_Cnt;		//盾用の動作カウンタ保存変数
+
 };
 
 namespace SInfo {
@@ -94,6 +98,8 @@ namespace SInfo {
 	constexpr auto ATTACK_ALLFRAME = 100;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
 	constexpr auto ATTACK_BEGINFRAME = 20;		//攻撃判定発生フレーム
 	constexpr auto ATTACK_ENDFRAME = 20;		//攻撃判定終了フレーム
+	constexpr auto STEP_BEGINFRAME = 20;		//攻撃時の移動開始フレーム
+	constexpr auto ATTACK_STEP = 60;			//攻撃時の移動距離
 	//盾持ち攻撃
 	constexpr auto GUARDATTACK_GRAPHNAME = "res/Shielder/T_GuardAttack.png";	//画像ファイル名
 	constexpr auto GUARDATTACK_ANIMEMAX = 4;		//全ての画像枚数
@@ -123,15 +129,17 @@ namespace SInfo {
 	constexpr auto FADEOUT_SPEED = 4;			//フェードアウトスピード
 	
 	/*----------盾の座標関係----------*/
-	constexpr auto SHIELD_WIDTH = 840;			//盾の横幅
-	constexpr auto SHIELD_HEIGHT = 630;			//盾の縦幅
-	constexpr auto SHIELD_GRAPH_POINTX = 0;		//X位置から描画点までの差分
-	constexpr auto SHIELD_GRAPH_POINTY = -120;	//Y位置から描画点までの差分
+	constexpr auto SHIELD_GRAPH_POINTX = 0;				//X位置から描画点までの差分
+	constexpr auto SHIELD_GRAPH_POINTY = -120;			//Y位置から描画点までの差分
+	constexpr auto SHIELD_POSITION_HITX = -45;			//描画点から当たり判定左上座標までの差分
+	constexpr auto SHIELD_POSITION_HITY = -135;			//描画点から当たり判定左上座標までの差分
+	constexpr auto SHIELD_COLLISION_WIDTH = 90;			//当たり判定横幅
+	constexpr auto SHIELD_COLLISION_HEIGHT = 450;		//当たり判定縦幅
 
 	/*----------盾の挙動関係----------*/
 	constexpr auto SHIELD_ANGLE = -0.0;
 	constexpr auto SHIELD_DIFFPOINTX = -0;
-	constexpr auto SHIELD_DIFFPOINTY = -180;
+	constexpr auto SHIELD_DIFFPOINTY = -55;
 	constexpr auto SHIELD_ALPHA = 255;
 	constexpr auto SHIELD_ANGLECHANGE = 0.03;
 	constexpr auto SHIELD_ALPHACHANGE = 5;

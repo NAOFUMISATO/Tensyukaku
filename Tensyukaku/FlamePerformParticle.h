@@ -16,7 +16,7 @@ namespace FParInfo {
 	/*----------炎演出----------*/
 	constexpr auto FLAME_GRAPH = "res/Particle/Flame.png";			//画像ファイル名
 	constexpr auto FLAME_POSITIONX = 0.0;							//基準点(足下)から描画点へのX座標差分
-	constexpr auto FLAME_POSITIONY = 360.0;							//基準点(足下)から描画点へのY座標差分
+	constexpr auto FLAME_POSITIONY = 350.0;							//基準点(足下)から描画点へのY座標差分
 	constexpr auto FLAME_BLENDMODE = DX_BLENDMODE_ADD;				//ブレンドモード設定
 	constexpr auto FLAME_PAL = 64;									//ブレンド値(0～255)
 	constexpr auto FLAME_RED = 240;									//赤色値(0～255)

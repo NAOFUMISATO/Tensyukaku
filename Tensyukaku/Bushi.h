@@ -86,8 +86,7 @@ namespace BInfo {
 	constexpr auto ATTACK_ANIMEFRAME = ATTACK_ANIMEMAX * ANIMESPEED_ATTACK;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto ATTACK_ALLFRAME = 80;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
 	constexpr auto ATTACK_STEP = 60;			//ステップ距離
-	constexpr auto STEP_BEGINFRAME = 5;			//ステップの開始フレーム
-	constexpr auto STEP_ENDFRAME = 50;			//ステップの戻りフレーム
+	constexpr auto STEP_BEGINFRAME = 15;		//ステップの開始フレーム
 	constexpr auto ATTACK_BEGINFRAME = 15;		//攻撃判定発生フレーム
 	constexpr auto ATTACK_ENDFRAME = 15;		//攻撃判定終了フレーム
 	//被ダメ

@@ -13,7 +13,7 @@ bool PauseSelect::Initialize(Game& g) {
 	_Type = SELECTTYPE::NOSELECT;
 	_Trans_Flag = true;
 	_GrAll["PSelect"].resize(3);
-	ResourceServer::LoadDivGraph("res/Mode/PauseSelect.png",3,3,1,1800,340,_GrAll["PSelect"].data());
+	ResourceServer::LoadDivGraph("res/Mode/PauseSelect.png",3,3,1,1690,340,_GrAll["PSelect"].data());
 	return true;
 }
 

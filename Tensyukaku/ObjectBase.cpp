@@ -33,33 +33,46 @@ void ObjectBase::Init()
 	_Fill = false;
 	_BEventA_Flag=false;
 	_BEventB_Flag=false;
+	_Draw_Flag = false;
+	_Dx = 0;
+	_Dy = 0;
 }
 
 void ObjectBase::Process(Game& g)
 {
-	
+	if (_Dx > 0-400 && _Dx < SCREEN_W+400 &&_Dy>0-400 && _Dy < SCREEN_H+400) {
+		_Draw_Flag =true;
+	}
+	else {
+		_Draw_Flag = false;
+	}
 	++_Cnt;
 }
 
 void ObjectBase::Draw(Game& g) {
-	auto GC = g.GetChip();
-	auto x = _x + _gx - GC->GetscrX();
-	auto y = _y + _gy - GC->GetscrY();
-	auto scale = _drg.first;
-	auto angle = _drg.second;
-	_Before_x = _x + _gx;
-	_Before_y = _y + _gy;
 	
-	DrawRotaGraph(x, y, scale, angle, _GrHandle, true, _isFlip);
+		auto GC = g.GetChip();
+		auto x = _x + _gx - GC->GetscrX();
+		auto y = _y + _gy - GC->GetscrY();
+		auto scale = _drg.first;
+		auto angle = _drg.second;
+		_Before_x = _x + _gx;
+		_Before_y = _y + _gy;
+		_Dx = x;
+		_Dy = y;
+		if (_Draw_Flag == true) {
+		DrawRotaGraph(x,y, scale, angle, _GrHandle, true, _isFlip);
+		}
 #ifdef _DEBUG
-	int& re = std::get<RED>(_Color);
-	int& gr = std::get<GREEN>(_Color);
-	int& bl = std::get<Blue>(_Color);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// 半透明描画指定
-	DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// 半透明の赤で当たり判定描画
+		int& re = std::get<RED>(_Color);
+		int& gr = std::get<GREEN>(_Color);
+		int& bl = std::get<Blue>(_Color);
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// 半透明描画指定
+		DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// 半透明の赤で当たり判定描画
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
-	}
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
+	
+}
 bool ObjectBase::IsHit(ObjectBase& o) {
 	// このオブジェクトと、別オブジェクトoを、x,y,w,hで比較する
 	if (_x +_gx+ _hit_x < o._x +o._hit_x + o._hit_w && o._x + o._hit_x < _x +_gx+ _hit_x + _hit_w		// x方向の判定

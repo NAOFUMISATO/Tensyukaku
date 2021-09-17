@@ -11,7 +11,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine
 	// 初期化 -------------------------------------------------------------------------
 	// ＤＸライブラリ初期化処理
 	SetGraphMode(SCREEN_W, SCREEN_H, SCREEN_DEPTH);
-	ChangeWindowMode(false);							// ウィンドウモードに指定する
+	ChangeWindowMode(true);							// ウィンドウモードに指定する
 	if (DxLib_Init() == -1)
 	{	// エラーが起きたら直ちに終了
 		return -1;

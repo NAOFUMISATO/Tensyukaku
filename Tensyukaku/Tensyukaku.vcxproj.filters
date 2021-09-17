@@ -79,9 +79,6 @@
     <Filter Include="ソース ファイル\Object\Particle">
       <UniqueIdentifier>{2fab9641-8516-446a-b9ae-64caa4de552b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Object\Enemy\Sierder">
-      <UniqueIdentifier>{4e820f49-7412-4bfc-bef8-66ac8be3500c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Object\Enemy\Sielder">
       <UniqueIdentifier>{4363bffc-dcff-4b1e-9fc6-91ccf89a3f3b}</UniqueIdentifier>
     </Filter>
@@ -108,6 +105,9 @@
     </Filter>
     <Filter Include="ソース ファイル\Object\Event">
       <UniqueIdentifier>{c4c004a9-0d53-407f-b405-54d1094f102e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Enemy\Shierder">
+      <UniqueIdentifier>{4e820f49-7412-4bfc-bef8-66ac8be3500c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,7 +180,7 @@
     <ClCompile Include="Shielder.cpp">
       <Filter>ソース ファイル\Object\Enemy\Sielder</Filter>
     </ClCompile>
-    <ClCompile Include="SielderMotion.cpp">
+    <ClCompile Include="ShielderMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Sielder</Filter>
     </ClCompile>
     <ClCompile Include="SielderMotionCollision.cpp">
@@ -372,13 +372,13 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Shielder.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Sierder</Filter>
+      <Filter>ヘッダー ファイル\Object\Enemy\Shierder</Filter>
     </ClInclude>
     <ClInclude Include="ShielderMotionCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Shield.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Sierder</Filter>
+      <Filter>ヘッダー ファイル\Object\Enemy\Shierder</Filter>
     </ClInclude>
     <ClInclude Include="EnemySpawn.h">
       <Filter>ヘッダー ファイル\Object\Spawn</Filter>

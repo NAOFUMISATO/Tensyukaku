@@ -16,7 +16,9 @@
 */
 using namespace SInfo;
 Shielder::Shielder(int x, int y, bool flip) :
-	_Shield_Flag(true),
+	_ShieldAlive_Flag(true),
+	_ShieldAttack_Flag(false),
+	_ShieldBreak_Flag(false),
 	_Shield_Cnt(-60)
 {
 	_x = x;
@@ -25,6 +27,7 @@ Shielder::Shielder(int x, int y, bool flip) :
 	Init();
 	LoadActionGraph();
 	LoadActionSE();
+	
 };
 
 Shielder::~Shielder() {
@@ -70,6 +73,7 @@ void Shielder::Process(Game& g) {
 		Dead(g);
 		break;
 	}
+	
 }
 void Shielder::Draw(Game& g) {	
 #ifdef _DEBUG
@@ -84,40 +88,63 @@ void Shielder::Delete(Game& g) {
 }
 //‚‚Ì•`‰æŠÖ”
 void Shielder::ShieldDraw(Game& g) {
-	if (_Shield_Flag == true) {
+	if (_ShieldAlive_Flag == true) {
 		Shield Sh;
 		auto x = _x + SHIELD_DIFFPOINTX;
 		auto y = _y + SHIELD_DIFFPOINTY;
 		auto gr = Sh.GetHandle();
 		auto a = _Alpha;
 		auto frame = _Cnt - _Shield_Cnt;
-		if (_isFlip == false) {
-			auto angle = Sh.GetAngle();
-			if (frame >= 0 && GUARDBREAK_ALLFRAME >= frame) {
-				a -= frame * SHIELD_ALPHACHANGE;
-				angle += frame * SHIELD_ANGLECHANGE;
-				x += frame * SHIELD_XCHANGE;
-				y += frame * SHIELD_YCHANGE;
+		if (_ShieldAttack_Flag == true) {
+			if (frame >= 0 && frame < 40) {
+				if (_isFlip == false) {
+					Sh.SetAngle(-0.5);
+					x -= 40;
+				}
+				if (_isFlip == true) {
+					Sh.SetAngle(0.5);
+					x += 40;
+				}
+				y += 20;
 			}
-			Sh.SetAngle(angle);
-		}
-		if (_isFlip == true) {
-			auto angle = -Sh.GetAngle();
-			if (frame >= 0 && GUARDBREAK_ALLFRAME >= frame) {
-				a -= frame * SHIELD_ALPHACHANGE;
-				angle -= frame * SHIELD_ANGLECHANGE;
-				x -= frame * SHIELD_XCHANGE;
-				y += frame * SHIELD_YCHANGE;
+			else {
+				Sh.SetAngle(0.0);
+				x = _x + SHIELD_DIFFPOINTX;
+				y = _y + SHIELD_DIFFPOINTY;
 			}
-			Sh.SetAngle(angle);
 		}
-		if (frame == GUARDBREAK_ALLFRAME) {
-			_Shield_Flag = false;
+		if (_ShieldBreak_Flag == true) {
+			if (_isFlip == false) {
+				auto angle = Sh.GetAngle();
+				if (frame >= 0 && GUARDBREAK_ALLFRAME >= frame) {
+					a -= frame * SHIELD_ALPHACHANGE;
+					angle += frame * SHIELD_ANGLECHANGE;
+					x += frame * SHIELD_XCHANGE;
+					y += frame * SHIELD_YCHANGE;
+				}
+				Sh.SetAngle(angle);
+				if (frame == GUARDBREAK_ALLFRAME) {
+					_ShieldAlive_Flag = false;
+				}
+			}
+			if (_isFlip == true) {
+				auto angle = -Sh.GetAngle();
+				if (frame >= 0 && GUARDBREAK_ALLFRAME >= frame) {
+					a -= frame * SHIELD_ALPHACHANGE;
+					angle -= frame * SHIELD_ANGLECHANGE;
+					x -= frame * SHIELD_XCHANGE;
+					y += frame * SHIELD_YCHANGE;
+				}
+				Sh.SetAngle(angle);
+				if (frame == GUARDBREAK_ALLFRAME) {
+					_ShieldAlive_Flag = false;
+				}
+			}
 		}
 		gr = SetDrawBlendMode(DX_BLENDMODE_ALPHA, a);
 		Sh.SetPosition(x, y);
 		Sh.Draw(g);
-		gr = SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+		gr = SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 }
 

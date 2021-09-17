@@ -41,12 +41,14 @@ void TitleLogo::Process(Game& g) {
 
 void TitleLogo::Draw(Game& g) {
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+#ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
 	//int& gr = std::get<GREEN>(_Color);
 	//int& bl = std::get<Blue>(_Color);
 	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// îºìßñæï`âÊéwíË
 	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// îºìßñæÇÃê‘Ç≈ìñÇΩÇËîªíËï`âÊ
-	//SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+#endif
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 //ÉQÅ[ÉÄÉXÉ^Å[Ég
 GameStart::GameStart() {
@@ -79,11 +81,13 @@ void GameStart::Process(Game& g) {
 void GameStart::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+#ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
 	//int& gr = std::get<GREEN>(_Color);
 	//int& bl = std::get<Blue>(_Color);
 	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// îºìßñæï`âÊéwíË
 	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// îºìßñæÇÃê‘Ç≈ìñÇΩÇËîªíËï`âÊ
+#endif
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 //ê‡ñæâÊñ 
@@ -116,11 +120,13 @@ void Explain::Process(Game& g) {
 void Explain::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+#ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
 	//int& gr = std::get<GREEN>(_Color);
 	//int& bl = std::get<Blue>(_Color);
 	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// îºìßñæï`âÊéwíË
 	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// îºìßñæÇÃê‘Ç≈ìñÇΩÇËîªíËï`âÊ
+#endif
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 //ÉQÅ[ÉÄèIóπ
@@ -154,10 +160,12 @@ void GameEnd::Process(Game& g) {
 void GameEnd::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+#ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
 	//int& gr = std::get<GREEN>(_Color);
 	//int& bl = std::get<Blue>(_Color);
 	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// îºìßñæï`âÊéwíË
 	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// îºìßñæÇÃê‘Ç≈ìñÇΩÇËîªíËï`âÊ
+#endif
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
