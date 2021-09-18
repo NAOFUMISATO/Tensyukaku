@@ -61,7 +61,10 @@ void Bushi::Process(Game& g) {
 	case ENEMYSTATE::DEAD:
 		Dead(g);
 		break;
+	default:
+		break;
 	}
+	DamageJudge(g);
 }
 
 void Bushi::Draw(Game& g) {	
@@ -74,6 +77,72 @@ void Bushi::Draw(Game& g) {
 
 void Bushi::Delete(Game& g) {
 		g.GetOS()->Del(this);
+}
+
+//被ダメ判定&押し出しの処理
+void Bushi::DamageJudge(Game& g) {
+	//敵とプレイヤーのアクションの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		OBJECTTYPE objType = (*ite)->GetObjType();
+		switch (objType) {
+		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
+			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life -= 3;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+				//居合ゲージの増加
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+				{
+					// iteはプレイヤか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+					{
+						auto ig = (*ite)->GetGauge();
+						if (ig < PLAYER_IAI_MAX) {
+							(*ite)->SetGauge(ig += 1);
+						}
+					}
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::LOWATTACK:
+			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				if (_Life <= 0) {
+					_State = ENEMYSTATE::DEAD;
+				}
+				else { _State = ENEMYSTATE::DAMAGE; }
+				_Action_Cnt = _Cnt;
+				_Anime["Attack"] = 0;
+			
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::IAI:
+		case ObjectBase::OBJECTTYPE::FLAME:
+			// 敵とプレイヤーの居合&行燈の炎オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Life -= 3;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::PLAYER:
+			// プレイヤーとその敵の当たり判定を行う
+			if (IsHit(*(*ite)) == true) {
+				_x = _Before_x;
+			}
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 //武士の画像読み込み関数

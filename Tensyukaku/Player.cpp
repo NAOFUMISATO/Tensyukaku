@@ -18,7 +18,9 @@ Player::Player(int x,int y) :
 	_State(PLAYERSTATE::IDLE),
 	_Move_AnimeSpeed(0),
 	_Star_Flag(false),
-	_UI_Flag(false)
+	_UI_Flag(false),
+	_Iai_Flag(false),
+	_StairUp_Flag(false)
 {
 	_x = x;
 	_y = y;
@@ -63,8 +65,6 @@ void Player::Process(Game& g)
 	UIAppear(g);
 	//左スティックの入力量によるステータス設定
 	BufSetting(g);
-	//プレイヤーのイベント処理
-	EventChange(g);
 	/*---状態毎の処理---*/
 		//無敵状態
 		Star(g);
@@ -134,6 +134,8 @@ void Player::Process(Game& g)
 		SpecialAttack(g);
 		break;
 	}
+	//当たり判定の処理
+	HitJudge(g);
 	//プレイヤー位置からのカメラ位置設定
 	CameraSetting(g);
 }
@@ -151,6 +153,108 @@ void Player::Draw(Game& g) {
 
 void Player::Delete(Game& g) {
 		g.GetOS()->Del(this);
+}
+
+//プレイヤーの被ダメ&押し出し&各イベントブロック判定の処理
+void	Player::HitJudge(Game& g) {
+	//ボスステージのイベント処理状態遷移用処理
+	if (_BEventA_Flag == true) {
+		_Action_Cnt = _Cnt;
+		_State = PLAYERSTATE::EVENTA;
+		_BEventA_Flag = false;
+	}
+	if (_BEventB_Flag == true) {
+		_Action_Cnt = _Cnt;
+		_State = PLAYERSTATE::EVENTB;
+		_BEventB_Flag = false;
+	}
+	//待機と移動時のみ階段判定を受け付ける処理
+	if (_State == PLAYERSTATE::IDLE || _State == PLAYERSTATE::MOVE) {
+		_StairUp_Flag = true;
+	}
+	else { _StairUp_Flag = false; }
+	//敵の攻撃の当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		OBJECTTYPE objType = (*ite)->GetObjType();
+		switch (objType) {
+		case ObjectBase::OBJECTTYPE::BUSHIATTACK:
+		case ObjectBase::OBJECTTYPE::NINJAATTACK:
+		case ObjectBase::OBJECTTYPE::SHIELDERATTACK:
+		case ObjectBase::OBJECTTYPE::POISON:
+		case ObjectBase::OBJECTTYPE::KUNAI:
+			// プレイヤーとその攻撃の当たり判定を行う
+			if (IsHit(*(*ite)) == true && _Star_Flag == false&&_Iai_Flag==false)
+			{
+				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				_Life--;
+				_Action_Cnt = _Cnt;
+				_State = PLAYERSTATE::DAMAGE;
+				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
+			}
+			break;
+		//階段との当たり判定
+		case ObjectBase::OBJECTTYPE::STAIR:
+			// プレイヤーとその階段の当たり判定を行う
+			if (IsHit(*(*ite)) == true&&_StairUp_Flag==true)
+			{
+				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
+					_Player_y = _y;
+					_Stair_x = (*ite)->GetX();
+					_StairFlip_Flag = (*ite)->GetFlip();
+					_State = PLAYERSTATE::STAIRMOVE;
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::BOSSSTAIR:
+			// プレイヤーとその階段の当たり判定を行う
+			if (IsHit(*(*ite)) == true && _StairUp_Flag == true)
+			{
+				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
+					_Player_y = _y;
+					_Stair_x = (*ite)->GetX();
+					_StairFlip_Flag = (*ite)->GetFlip();
+					_State = PLAYERSTATE::BOSSSTAIRMOVE;
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::ENEMY:
+			// iteは敵か？
+			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
+			{
+				// プレイヤーとその敵の当たり判定を行う
+				if (IsHit(*(*ite)) == true) {
+					_x = _Before_x;
+
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::RECOVERYBLOCK:
+				// プレイヤーとその回復判定の当たり判定を行う
+				if (IsHit(*(*ite)) == true) {
+					(*ite)->Delete(g);
+					_Life = 3;
+				}
+				break;
+		case ObjectBase::OBJECTTYPE::CPOINTBLOCK:
+			// プレイヤーとそのチェックポイントの当たり判定を行う
+			if (IsHit(*(*ite)) == true) {
+				(*ite)->Delete(g);
+				PlaySoundMem(g.GetBgm()["Boss"], DX_PLAYTYPE_LOOP, true);
+				g.SetCPointFlag(true);
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::FLAMEBLOCK:
+			// プレイヤーとその炎演出の当たり判定を行う
+			if (IsHit(*(*ite)) == true) {
+				PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
+			}
+			break;
+		default:
+			break;
+		}
+	}
 }
 //プレイヤーの画像読み込み関数
 void Player::LoadActionGraph() {
@@ -257,55 +361,5 @@ void Player::BufSetting(Game& g) {
 	if (xbuf >= RUN_XBUF || -RUN_XBUF >= xbuf) {
 		_Spd = RUNSPEED;
 		_Move_AnimeSpeed = ANIMESPEED_RUN;
-	}
-}
-//プレイヤーのイベント処理
-void Player::EventChange(Game& g) {
-	//ボスステージのイベント処理状態遷移用関数
-	if (_BEventA_Flag == true) {
-		_Action_Cnt = _Cnt;
-		_State = PLAYERSTATE::EVENTA;
-		_BEventA_Flag = false;
-	}
-	if (_BEventB_Flag == true) {
-		_Action_Cnt = _Cnt;
-		_State = PLAYERSTATE::EVENTB;
-		_BEventB_Flag = false;
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは回復判定か？
-		if ((*ite)->GetObjType() == OBJECTTYPE::RECOVERYBLOCK)
-		{
-			// プレイヤーとその回復判定の当たり判定を行う
-			if (IsHit(*(*ite)) == true) {
-				(*ite)->Delete(g);
-				_Life = 3;
-			}
-		}
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはチェックポイントか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::CPOINTBLOCK)
-		{
-			// プレイヤーとその回復判定の当たり判定を行う
-			if (IsHit(*(*ite)) == true) {
-				(*ite)->Delete(g);
-				PlaySoundMem(g.GetBgm()["Boss"], DX_PLAYTYPE_LOOP, true);
-				g.SetCPointFlag(true);
-			}
-		}
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは炎演出ブロックか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::FLAMEBLOCK)
-		{
-			// プレイヤーとその炎演出の当たり判定を行う
-			if (IsHit(*(*ite)) == true) {
-				PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
-			}
-		}
 	}
 }

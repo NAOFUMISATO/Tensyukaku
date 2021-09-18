@@ -56,13 +56,14 @@ bool ModeGame::Process(Game& g) {
 	{
 		g.GetChip()->Process(g);
 		g.GetOS()->Process(g);
+		if (g.GetTrg() & PAD_INPUT_12 && _Pause_Flag == false) {
+			_stopObjProcess = true;
+			_Pause_Flag = true;
+			auto mp = new ModePause();
+			g.GetMS()->Add(mp, 2, "Pause");
+		}
 	}
-	if (g.GetTrg() & PAD_INPUT_12&&_Pause_Flag==false) {
-		_stopObjProcess=true;
-		_Pause_Flag = true;
-		auto mp = new ModePause();
-		g.GetMS()->Add(mp, 2, "Pause");
-	}
+	
 	return true;
 }
 

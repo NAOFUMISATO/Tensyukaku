@@ -19,7 +19,8 @@ Shielder::Shielder(int x, int y, bool flip) :
 	_ShieldAlive_Flag(true),
 	_ShieldAttack_Flag(false),
 	_ShieldBreak_Flag(false),
-	_Shield_Cnt(-60)
+	_ShieldDraw_Flag(true),
+	_Shield_Cnt(0)
 {
 	_x = x;
 	_y = y;
@@ -73,7 +74,7 @@ void Shielder::Process(Game& g) {
 		Dead(g);
 		break;
 	}
-	
+	DamageJudge(g);
 }
 void Shielder::Draw(Game& g) {	
 #ifdef _DEBUG
@@ -86,9 +87,80 @@ void Shielder::Draw(Game& g) {
 void Shielder::Delete(Game& g) {
 	g.GetOS()->Del(this);
 }
+
+//被ダメ判定&押し出しの処理
+void Shielder::DamageJudge(Game& g) {
+	//敵とプレイヤーアクションオブジェクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		OBJECTTYPE objType = (*ite)->GetObjType();
+		switch (objType) {
+		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
+		case ObjectBase::OBJECTTYPE::LOWATTACK:
+			// 敵とプレイヤーの中段攻撃&下段攻撃オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+				if (_ShieldAlive_Flag == false) {
+					_Life--;
+					_Action_Cnt = _Cnt;
+					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::KICK:
+			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
+				if (_ShieldAlive_Flag == true) {
+					_Anime["Attack"] = 0;
+					_ShieldBreak_Flag = true;
+					_ShieldAlive_Flag = false;
+					_Shield_Cnt = _Cnt;
+					_Action_Cnt = _Cnt;
+					_State = ENEMYSTATE::GUARDBREAK;
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::IAI:
+		case ObjectBase::OBJECTTYPE::FLAME:
+			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true)
+			{
+				_Life--;
+				_ShieldBreak_Flag = true;
+				_Shield_Cnt = _Cnt;
+				_Action_Cnt = _Cnt;
+				_State = ENEMYSTATE::DEAD;
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::PLAYER:
+			// プレイヤーとその敵の当たり判定を行う
+			if (IsHit(*(*ite)) == true) {
+				_x = _Before_x;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+}
 //盾の描画関数
 void Shielder::ShieldDraw(Game& g) {
-	if (_ShieldAlive_Flag == true) {
+	if (_ShieldDraw_Flag == true) {
 		Shield Sh;
 		auto x = _x + SHIELD_DIFFPOINTX;
 		auto y = _y + SHIELD_DIFFPOINTY;
@@ -124,7 +196,7 @@ void Shielder::ShieldDraw(Game& g) {
 				}
 				Sh.SetAngle(angle);
 				if (frame == GUARDBREAK_ALLFRAME) {
-					_ShieldAlive_Flag = false;
+					_ShieldDraw_Flag = false;
 				}
 			}
 			if (_isFlip == true) {
@@ -137,7 +209,7 @@ void Shielder::ShieldDraw(Game& g) {
 				}
 				Sh.SetAngle(angle);
 				if (frame == GUARDBREAK_ALLFRAME) {
-					_ShieldAlive_Flag = false;
+					_ShieldDraw_Flag = false;
 				}
 			}
 		}

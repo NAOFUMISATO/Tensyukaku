@@ -53,9 +53,9 @@ void PoisonNinja::Process(Game& g) {
 		{
 			//プレイヤーとY座標が同じなら消去
 			auto py=(*ite)->GetY();
-			if (py == _y) {
+			if (py <= _y) {
 				_Alpha -= FADEOUT_SPEED;
-				if (_Alpha == DELETE_ALPHA) {
+				if (_Alpha <0) {
 					Delete(g);
 				}
 			}

@@ -48,64 +48,12 @@ void Player::Idle(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 #endif
-	//敵の攻撃の当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK|| (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK|| (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
-		{
-			// プレイヤーとその攻撃の当たり判定を行う
-			if (IsHit(*(*ite)) == true&& _Star_Flag == false)
-			{
-				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
-				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
-			}
-		}
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは階段オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::STAIR)
-		{
-			// プレイヤーとその階段の当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				if (g.GetKey() & PAD_INPUT_UP&&g.GetYBuf()<-UP_YBUF) {
-					_Player_y = _y;
-					_Stair_x = (*ite)->GetX();
-					_StairFlip_Flag = (*ite)->GetFlip();
-					_State = PLAYERSTATE::STAIRMOVE;
-				}
-			}
-		}
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは階段オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BOSSSTAIR)
-		{
-			// プレイヤーとその階段の当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
-					_Player_y = _y;
-					_Stair_x = (*ite)->GetX();
-					_StairFlip_Flag = (*ite)->GetFlip();
-					_State = PLAYERSTATE::BOSSSTAIRMOVE;
-				}
-			}
-		}
-	}
 }
 /*----------移動----------*/
 void Player::Move(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / _Move_AnimeSpeed) % MOVE_ANIMEMAX;
-	
+
 	if (g.GetTrg() & PAD_INPUT_6 && _Iai_Gauge == IAI_MAX) {
 		_State = PLAYERSTATE::IAI;
 		_Action_Cnt = _Cnt;
@@ -131,18 +79,6 @@ void Player::Move(Game& g) {
 	{
 		_x -= _Spd;
 		g.GetChip()->IsHit(*this, -1, 0);
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteは敵か？
-			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
-			{
-				// プレイヤーとその敵の当たり判定を行う
-				if (IsHit(*(*ite)) == true) {
-					_x = _Before_x;
-
-				}
-			}
-		}
 		_isFlip = false;
 
 	}
@@ -150,22 +86,11 @@ void Player::Move(Game& g) {
 	{
 		_x += _Spd;
 		g.GetChip()->IsHit(*this, 1, 0);
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteは敵か？
-			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
-			{
-				// プレイヤーとその敵の当たり判定を行う
-				if (IsHit(*(*ite)) == true) {
-					_x = _Before_x;
-				}
-			}
-		}
 		_isFlip = true;
 
 	}
 #ifdef _DEBUG
-	else if(g.GetKey() & PAD_INPUT_UP&& g.GetKey() & PAD_INPUT_5)
+	else if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_5)
 	{
 		_y -= _Spd;
 		_isFlip = true;
@@ -181,58 +106,6 @@ void Player::Move(Game& g) {
 	else {
 		_State = PLAYERSTATE::IDLE;
 	}
-	//敵の攻撃の当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK|| (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
-		{
-			// プレイヤーとその攻撃の当たり判定を行う
-			if (IsHit(*(*ite)) == true && _Star_Flag == false)
-			{
-				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
-				_Action_Cnt = _Cnt;
-			}
-		}
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは階段オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::STAIR)
-		{
-			// プレイヤーとその階段の当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
-					_Player_y = _y;
-					_Stair_x = (*ite)->GetX();
-					_StairFlip_Flag = (*ite)->GetFlip();
-					_State = PLAYERSTATE::STAIRMOVE;
-				}
-			}
-		}
-	}
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは階段オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BOSSSTAIR)
-		{
-			// プレイヤーとその階段の当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
-					_Player_y = _y;
-					_Stair_x = (*ite)->GetX();
-					_StairFlip_Flag = (*ite)->GetFlip();
-					_State = PLAYERSTATE::BOSSSTAIRMOVE;
-				}
-			}
-		}
-	}
 }
 /*----------中段攻撃----------*/
 void Player::MidAttack(Game& g) {
@@ -243,49 +116,14 @@ void Player::MidAttack(Game& g) {
 		if (_isFlip == false) {
 			_x -= 10;
 			g.GetChip()->IsHit(*this, -1, 0);
-			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-			{
-				// iteは敵か？
-				if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
-				{
-					// プレイヤーとその敵の当たり判定を行う
-					if (IsHit(*(*ite)) == true) {
-						_x = _Before_x;
-					}
-				}
-			}
 		}
-	}
-	if (frame < MIDDLEATTACK_BEGINFRAME) {
 		if (_isFlip == true) {
 			_x += 10;
 			g.GetChip()->IsHit(*this, 1, 0);
-			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-			{
-				// iteは敵か？
-				if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
-				{
-					// プレイヤーとその敵の当たり判定を行う
-					if (IsHit(*(*ite)) == true) {
-						_x = _Before_x;
-					}
-				}
-			}
 		}
 	}
 	if (frame == MIDDLEATTACK_BEGINFRAME) {
 		PlaySoundMem(_Se["MiddleAttack"], DX_PLAYTYPE_BACK, true);
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteは敵か？
-			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
-			{
-				// プレイヤーとその敵の当たり判定を行う
-				if (IsHit(*(*ite)) == true) {
-					_x = _Before_x;
-				}
-			}
-		}
 		if (_isFlip == false) {
 			//中段攻撃判定オブジェクトの生成
 			auto mac = new MiddleAttackCollision(_x + _hit_x - MIDDLEATTACK_WIDTH, _y - _hit_h);
@@ -296,14 +134,14 @@ void Player::MidAttack(Game& g) {
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % MIDDLEATTACK_PARTICLE1_RANDOMX1) - MIDDLEATTACK_PARTICLE1_RANDOMX2) / MIDDLEATTACK_PARTICLE1_RANDOMX3, ((rand() % MIDDLEATTACK_PARTICLE1_RANDOMY1) - MIDDLEATTACK_PARTICLE1_RANDOMY2) / MIDDLEATTACK_PARTICLE1_RANDOMY3);
-				auto m1 = new MiddleAttackParticle1(xy, dxy,false);
+				auto m1 = new MiddleAttackParticle1(xy, dxy, false);
 				g.GetOS()->Add(m1);
 			}
 			for (int i = 0; i < MIDDLEATTACK_PARTICLE2_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % MIDDLEATTACK_PARTICLE2_RANDOMX1) - MIDDLEATTACK_PARTICLE2_RANDOMX2) / MIDDLEATTACK_PARTICLE2_RANDOMX3, ((rand() % MIDDLEATTACK_PARTICLE2_RANDOMY1) - MIDDLEATTACK_PARTICLE2_RANDOMY2) / MIDDLEATTACK_PARTICLE2_RANDOMY3);
-				auto m2 = new MiddleAttackParticle2(xy, dxy,false);
+				auto m2 = new MiddleAttackParticle2(xy, dxy, false);
 				g.GetOS()->Add(m2);
 			}
 		};
@@ -317,14 +155,14 @@ void Player::MidAttack(Game& g) {
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % MIDDLEATTACK_PARTICLE1_RANDOMX1) - MIDDLEATTACK_PARTICLE1_RANDOMX2) / MIDDLEATTACK_PARTICLE1_RANDOMX3, ((rand() % MIDDLEATTACK_PARTICLE1_RANDOMY1) - MIDDLEATTACK_PARTICLE1_RANDOMY2) / MIDDLEATTACK_PARTICLE1_RANDOMY3);
-				auto m1 = new MiddleAttackParticle1(xy, dxy,true);
+				auto m1 = new MiddleAttackParticle1(xy, dxy, true);
 				g.GetOS()->Add(m1);
 			}
 			for (int i = 0; i < MIDDLEATTACK_PARTICLE2_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % MIDDLEATTACK_PARTICLE2_RANDOMX1) - MIDDLEATTACK_PARTICLE2_RANDOMX2) / MIDDLEATTACK_PARTICLE2_RANDOMX3, ((rand() % MIDDLEATTACK_PARTICLE2_RANDOMY1) - MIDDLEATTACK_PARTICLE2_RANDOMY2) / MIDDLEATTACK_PARTICLE2_RANDOMY3);
-				auto m2 = new MiddleAttackParticle2(xy, dxy,true);
+				auto m2 = new MiddleAttackParticle2(xy, dxy, true);
 				g.GetOS()->Add(m2);
 			}
 		}
@@ -332,24 +170,7 @@ void Player::MidAttack(Game& g) {
 	if (frame == MIDDLEATTACK_ALLFRAME) {
 		_State = PLAYERSTATE::IDLE;
 	}
-	//敵の攻撃の当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
-		{
-			// プレイヤーとその攻撃の当たり判定を行う
-			if (IsHit(*(*ite)) == true && _Star_Flag == false)
-			{
-				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
-				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
-			}
-		}
-	}
+	
 }
 /*----------下段攻撃----------*/
 void Player::LowAttack(Game& g) {
@@ -404,24 +225,6 @@ void Player::LowAttack(Game& g) {
 	if (frame == LOWATTACK_ALLFRAME) {
 		_State = PLAYERSTATE::IDLE;
 	}
-	//敵の攻撃の当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK||(*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
-		{
-			// プレイヤーとその攻撃の当たり判定を行う
-			if (IsHit(*(*ite)) == true && _Star_Flag == false)
-			{
-				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
-				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
-			}
-		}
-	}
 }
 
 /*----------蹴り----------*/
@@ -449,24 +252,6 @@ void Player::Kick(Game& g) {
 		
 		_State = PLAYERSTATE::IDLE;
 	}
-	//敵の攻撃の当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteは敵の攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK|| (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
-		{
-			// プレイヤーとその攻撃の当たり判定を行う
-			if (IsHit(*(*ite)) == true && _Star_Flag == false)
-			{
-				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
-				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
-			}
-		}
-	}
 }
 
 /*----------居合----------*/
@@ -476,7 +261,8 @@ void Player::Iai(Game& g) {
 	if (frame < IAI_ANIMEFRAME) {
 		_Anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
 	}
-	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME-15 >= frame) {
+	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME - 15 >= frame) {
+		_Iai_Flag = true;
 		if (_isFlip == false) {
 			_x -= IAI_MOVEMENT;
 			g.GetChip()->IsHit(*this, -1, 0);
@@ -486,6 +272,7 @@ void Player::Iai(Game& g) {
 			g.GetChip()->IsHit(*this, 1, 0);
 		}
 	}
+	else { _Iai_Flag = false; }
 	if (frame == IAI_BEGINFRAME - 6) {
 		if (_isFlip == false) {
 			//パーティクル発生
@@ -493,7 +280,7 @@ void Player::Iai(Game& g) {
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % IAI_PARTICLE1_RANDOMX1) - IAI_PARTICLE1_RANDOMX2) / IAI_PARTICLE1_RANDOMX3, ((rand() % -IAI_PARTICLE1_RANDOMY1) - IAI_PARTICLE1_RANDOMY2) / IAI_PARTICLE1_RANDOMY3);
-				auto i1 = new IaiParticle1(xy, dxy,false);
+				auto i1 = new IaiParticle1(xy, dxy, false);
 				g.GetOS()->Add(i1);
 			}
 		}
@@ -503,12 +290,13 @@ void Player::Iai(Game& g) {
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % IAI_PARTICLE1_RANDOMX1) - IAI_PARTICLE1_RANDOMX2) / IAI_PARTICLE1_RANDOMX3, ((rand() % -IAI_PARTICLE1_RANDOMY1) - IAI_PARTICLE1_RANDOMY2) / IAI_PARTICLE1_RANDOMY3);
-				auto i1 = new IaiParticle1(xy, dxy,true);
+				auto i1 = new IaiParticle1(xy, dxy, true);
 				g.GetOS()->Add(i1);
 			}
 		}
 	}
 	if (frame == IAI_BEGINFRAME) {
+		_Iai_Gauge = 0;
 		if (_isFlip == false) {
 			//居合オブジェクトの生成
 			auto iac = new IaiCollision(_x + _hit_x - IAI_WIDTH, _y - _hit_h / 2);
@@ -519,14 +307,14 @@ void Player::Iai(Game& g) {
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % IAI_PARTICLE2_RANDOMX1) - IAI_PARTICLE2_RANDOMX2) / IAI_PARTICLE2_RANDOMX3, ((rand() % -IAI_PARTICLE2_RANDOMY1) - IAI_PARTICLE2_RANDOMY2) / IAI_PARTICLE2_RANDOMY3);
-				auto i2 = new IaiParticle2(xy, dxy,false);
+				auto i2 = new IaiParticle2(xy, dxy, false);
 				g.GetOS()->Add(i2);
 			}
 			for (int i = 0; i < IAI_PARTICLE3_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % IAI_PARTICLE3_RANDOMX1) - IAI_PARTICLE3_RANDOMX2) / IAI_PARTICLE3_RANDOMX3, ((rand() % -IAI_PARTICLE3_RANDOMY1) - IAI_PARTICLE3_RANDOMY2) / IAI_PARTICLE3_RANDOMY3);
-				auto i3 = new IaiParticle3(xy, dxy,false);
+				auto i3 = new IaiParticle3(xy, dxy, false);
 				g.GetOS()->Add(i3);
 			}
 		}
@@ -540,40 +328,19 @@ void Player::Iai(Game& g) {
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % IAI_PARTICLE2_RANDOMX1) - IAI_PARTICLE2_RANDOMX2) / IAI_PARTICLE2_RANDOMX3, ((rand() % -IAI_PARTICLE2_RANDOMY1) - IAI_PARTICLE2_RANDOMY2) / IAI_PARTICLE2_RANDOMY3);
-				auto i2 = new IaiParticle2(xy, dxy,true);
+				auto i2 = new IaiParticle2(xy, dxy, true);
 				g.GetOS()->Add(i2);
 			}
 			for (int i = 0; i < IAI_PARTICLE3_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % IAI_PARTICLE3_RANDOMX1) - IAI_PARTICLE3_RANDOMX2) / IAI_PARTICLE3_RANDOMX3, ((rand() % -IAI_PARTICLE3_RANDOMY1) - IAI_PARTICLE3_RANDOMY2) / IAI_PARTICLE3_RANDOMY3);
-				auto i3 = new IaiParticle3(xy, dxy,true);
+				auto i3 = new IaiParticle3(xy, dxy, true);
 				g.GetOS()->Add(i3);
-			}
-		}
-		if (frame >= 0 && IAI_BEGINFRAME >= frame) {
-			//敵の攻撃の当たり判定
-			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-			{
-				// iteは敵の攻撃オブジェクトか？
-				if ((*ite)->GetObjType() == OBJECTTYPE::BUSHIATTACK || (*ite)->GetObjType() == OBJECTTYPE::NINJAATTACK || (*ite)->GetObjType() == OBJECTTYPE::SHIELDERATTACK || (*ite)->GetObjType() == OBJECTTYPE::POISON || (*ite)->GetObjType() == OBJECTTYPE::KUNAI)
-				{
-					// プレイヤーとその敵の攻撃の当たり判定を行う
-					if (IsHit(*(*ite)) == true && _Star_Flag == false)
-					{
-						// プレイヤーの状態遷移と敵の攻撃オブジェクトのダメージ処理
-						(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-						_Life--;
-						_Action_Cnt = _Cnt;
-						_State = PLAYERSTATE::DAMAGE;
-						PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
-					}
-				}
 			}
 		}
 	}
 	if (frame == IAI_ALLFRAME) {
-		_Iai_Gauge = 0;
 		_State = PLAYERSTATE::IDLE;
 	}
 }
@@ -586,32 +353,10 @@ void Player::Sway(Game& g){
 		if (_isFlip == false) {
 			_x += SWAY_MOVEMENT;
 			g.GetChip()->IsHit(*this, 1, 0);
-			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-			{
-				// iteは敵か？
-				if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
-				{
-					// プレイヤーとその敵の当たり判定を行う
-					if (IsHit(*(*ite)) == true) {
-						_x = _Before_x;
-					}
-				}
-			}
 		}
 		if (_isFlip == true) {
 			_x -= SWAY_MOVEMENT;
-			g.GetChip()->IsHit(*this, -1, 0);
-			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-			{
-				// iteは敵か？
-				if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
-				{
-					// プレイヤーとその敵の当たり判定を行う
-					if (IsHit(*(*ite)) == true) {
-						_x = _Before_x;
-					}
-				}
-			}
+			g.GetChip()->IsHit(*this, -1, 0);	
 		}
 	}
 	if (frame == SWAY_ALLFRAME) {
@@ -623,6 +368,7 @@ void Player::Sway(Game& g){
 void Player::Damage(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
+	StopSoundMem(_Se["Iai"]);
 	if (frame < DAMAGE_ANIMEFRAME) {
 		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
 	}
@@ -650,6 +396,8 @@ void Player::Dead(Game& g) {
 	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX; 
 		}
 	if (frame == DEAD_ALLFRAME) {
+		auto mg = (ModeGame*)g.GetMS()->Get("Game");
+		mg->SetStopObjProcess(true);
 		g.GetMS()->Del(g.GetMS()->Get("Flame"));
 		StopSoundMem(g.GetBgm()["Main"]);
 		StopSoundMem(g.GetBgm()["Boss"]);

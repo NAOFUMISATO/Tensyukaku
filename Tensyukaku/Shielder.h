@@ -21,6 +21,7 @@ private:
 	void	GuardAttack(Game& g);	//盾持ち攻撃状態時の処理
 	void	GuardBreak(Game& g);	//盾崩し状態時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
+	void	DamageJudge(Game& g);	//被ダメ判定&押し出しの処理
 	void	ShieldDraw(Game& g);	//盾の描画関数
 	void	LoadActionGraph();		//忍者の画像読み込み関数
 	void	LoadActionSE();			//忍者のSE読み込み関数
@@ -28,9 +29,10 @@ private:
 
 	/*---------メンバ変数---------*/
 	bool	_ShieldAppear_Flag;	//盾の出現フラグ
-	bool	_ShieldAlive_Flag;	//盾の生存フラグ
+	bool	_ShieldAlive_Flag;		//盾の生存フラグ
 	bool	_ShieldAttack_Flag;	//盾保持時の攻撃フラグ
 	bool	_ShieldBreak_Flag;	//盾崩しフラグ
+	bool	_ShieldDraw_Flag;		//盾の描画フラグ
 	int		_Shield_Cnt;		//盾用の動作カウンタ保存変数
 
 };

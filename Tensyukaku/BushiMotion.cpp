@@ -71,57 +71,6 @@ void Bushi::Patrol(Game& g) {
 			}
 		}
 	}
-	//敵とプレイヤーのアクションの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		OBJECTTYPE objType = (*ite)->GetObjType();
-		switch (objType){
-		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
-			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life = 0;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-				//居合ゲージの増加
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
-					// iteはプレイヤか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-					{
-						auto ig = (*ite)->GetGauge();
-						if (ig < PLAYER_IAI_MAX) {
-							(*ite)->SetGauge(ig += 1);
-						}
-					}
-				}
-			}
-			break;
-		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DAMAGE;
-			}
-			break;
-		case ObjectBase::OBJECTTYPE::IAI:
-		case ObjectBase::OBJECTTYPE::FLAME:
-			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				_Life -= 3;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-			}
-			break;
-		default:
-			break;
-		}
-	}
 }
 /*----------追跡----------*/
 void Bushi::Coming(Game& g) {
@@ -200,57 +149,6 @@ void Bushi::Coming(Game& g) {
 			}
 		}
 	}
-	//敵とプレイヤーのアクションの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		OBJECTTYPE objType = (*ite)->GetObjType();
-		switch (objType) {
-		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
-			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life = 0;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-				//居合ゲージの増加
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
-					// iteはプレイヤか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-					{
-						auto ig = (*ite)->GetGauge();
-						if (ig < PLAYER_IAI_MAX) {
-							(*ite)->SetGauge(ig += 1);
-						}
-					}
-				}
-			}
-			break;
-		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DAMAGE;
-			}
-			break;
-		case ObjectBase::OBJECTTYPE::IAI:
-		case ObjectBase::OBJECTTYPE::FLAME:
-			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				_Life -= 3;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-			}
-			break;
-		default:
-			break;
-		}
-	}
 }
 /*----------攻撃----------*/
 void Bushi::Attack(Game& g) {
@@ -317,66 +215,6 @@ void Bushi::Attack(Game& g) {
 			g.GetOS()->Add(bac);
 		}
 	}
-	//敵とプレイヤーの中段攻撃オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの中段攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK)
-		{
-			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life -= 3;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-				//居合ゲージの増加
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
-					// iteはプレイヤか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-					{
-						auto ig = (*ite)->GetGauge();
-						if (ig < PLAYER_IAI_MAX) {
-							(*ite)->SetGauge(ig += 1);
-						}
-					}
-				}
-			}
-		}
-	}
-	//敵とプレイヤーの下段攻撃オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの下段攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
-		{
-			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
-				_Anime["Attack"] = 0;
-				_State = ENEMYSTATE::DAMAGE;
-			}
-		}
-	}
-	//敵とプレイヤーの居合オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
-		{
-			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				_Life -= 3;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-			}
-		}
-	}
 	if (frame == ATTACK_ALLFRAME) {
 		_Action_Cnt=_Cnt;
 	}
@@ -389,13 +227,7 @@ void Bushi::Damage(Game& g) {
 		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
 	}
 	if (frame == DAMAGE_ALLFRAME) {
-		if (_Life <= 0) {
-			_Action_Cnt = _Cnt;
-			_State = ENEMYSTATE::DEAD;
-		}
-		else {
 			_State = ENEMYSTATE::COMING;
-		}
 	}
 }
 /*----------死亡----------*/
@@ -413,3 +245,4 @@ void Bushi::Dead(Game& g) {
 		Delete(g);
 	}
 }
+

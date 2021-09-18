@@ -22,6 +22,7 @@ private:
 	void	Attack(Game& g);		//攻撃状態時の処理
 	void	Damage(Game& g);		//被ダメ状態時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
+	void	DamageJudge(Game& g);	//被ダメ判定&押し出しの処理
 	void	LoadActionGraph();		//武士の画像読み込み関数
 	void	LoadActionSE();			//武士のSE読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数

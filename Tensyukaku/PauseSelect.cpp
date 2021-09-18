@@ -42,7 +42,7 @@ bool PauseSelect::Process(Game& g) {
 		if (g.GetTrg() & PAD_INPUT_1) {
 			_Mode_Cnt = _Cnt;
 		}
-		if (frame == 10) {
+		if (frame == 5) {
 			g.GetMS()->Del(this);
 			g.GetMS()->Del(g.GetMS()->Get("Pause"));
 			g.GetMS()->Del(g.GetMS()->Get("PController"));

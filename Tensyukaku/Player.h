@@ -31,13 +31,13 @@ private:
 	void	StairUp(Game& g);		//階段上昇の処理
 	void	BossStairMove(Game& g);	//ボス階段位置調整の処理
 	void	BossStairUp(Game& g);	//ボス階段上昇時の処理
-	void	CameraSetting(Game& g);	//プレイヤー位置からカメラ座標設定
-	void	UIAppear(Game& g);		//UIインスタンス生成関数
-	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
-	void	EventChange(Game& g);	//プレイヤーのイベント処理
 	void	BossEventA(Game& g);	//プレイヤーのボスイベント処理A
 	void	BossEventB(Game& g);	//プレイヤーのボスイベント処理B
 	void	SpecialAttack(Game& g);	//プレイヤーの特殊攻撃処理
+	void	HitJudge(Game& g);//プレイヤーの被ダメ&押し出し&各イベントブロック判定の処理
+	void	CameraSetting(Game& g);	//プレイヤー位置からカメラ座標設定
+	void	UIAppear(Game& g);		//UIインスタンス生成関数
+	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
@@ -46,6 +46,9 @@ private:
 	PLAYERSTATE	_State;		//状態遷移変数
 	
 	int		_Move_AnimeSpeed;//移動時のアニメスピード
+	int		_CameraX;			//カメラ位置
+	bool	_UI_Flag;				//UI描画用フラグ
+	bool	_Iai_Flag;			//居合中かどうかのフラグ
 
 	//無敵状態管理変数
 	bool	_Star_Flag;		//無敵状態管理フラグ
@@ -55,13 +58,13 @@ private:
 	Vector2 _velocityDir;	//速度方向
 	float	_Stairup_Spd;	//階段上昇速度
 	float	_angle;			//角度
+	bool	_StairUp_Flag;	//階段上昇の受付判定用フラグ
 	bool	_StairFlip_Flag;//階段の反転判定保存フラグ
 	int		_Stair_x;		//階段のX座標保存変数
 	int		_Player_y;		//階段上昇時のプレイヤーY座標保存変数
 
 
-	bool	_UI_Flag;		//UI描画用フラグ
-	int		_CameraX;			//カメラ位置
+	
 	
 };
 

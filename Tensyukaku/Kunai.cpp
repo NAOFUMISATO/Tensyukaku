@@ -64,7 +64,7 @@ void Kunai::Process(Game& g) {
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
 			// iteはプレイヤーの下段攻撃オブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
+			if ((*ite)->GetObjType() == OBJECTTYPE::LOWATTACK|| (*ite)->GetObjType() == OBJECTTYPE:: IAI)
 			{
 				// クナイとプレイヤーの下段攻撃オブジェクトの当たり判定を行う
 				if (IsHit(*(*ite)) == true) {

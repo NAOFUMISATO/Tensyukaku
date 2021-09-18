@@ -67,64 +67,6 @@ void Shielder::Patrol(Game& g) {
 			}
 		}
 	}
-	//敵とプレイヤーアクションオブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		OBJECTTYPE objType = (*ite)->GetObjType();
-		switch (objType) {
-		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
-		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの中段攻撃&下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				if (_ShieldAlive_Flag == false) {
-					_Life--;
-					_Action_Cnt = _Cnt;
-					_State = ENEMYSTATE::DEAD;
-					//居合ゲージの増加
-					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-					{
-						// iteはプレイヤか？
-						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-						{
-							auto ig = (*ite)->GetGauge();
-							if (ig < PLAYER_IAI_MAX) {
-								(*ite)->SetGauge(ig += 1);
-							}
-						}
-					}
-				}
-			}
-			break;
-		case ObjectBase::OBJECTTYPE::KICK:
-			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
-				if (_ShieldAlive_Flag == true) {
-					_Anime["Attack"] = 0;
-					_ShieldBreak_Flag = true;
-					_Shield_Cnt = _Cnt;
-					_Action_Cnt = _Cnt;
-					_State = ENEMYSTATE::GUARDBREAK;
-				}
-			}
-			break;
-		case ObjectBase::OBJECTTYPE::IAI:
-		case ObjectBase::OBJECTTYPE::FLAME:
-			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				_Life--;
-				_ShieldBreak_Flag = true;
-				_Shield_Cnt = _Cnt;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-			}
-			break;
-		}
-	}
 }
 /*----------追跡----------*/
 void Shielder::Coming(Game& g) {
@@ -213,66 +155,6 @@ void Shielder::Coming(Game& g) {
 			}
 		}
 	}
-	//敵とプレイヤーアクションオブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		OBJECTTYPE objType = (*ite)->GetObjType();
-		switch (objType) {
-		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
-		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの中段攻撃&下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				if (_ShieldAlive_Flag == false) {
-					_Life--;
-					_Action_Cnt = _Cnt;
-					_State = ENEMYSTATE::DEAD;
-					//居合ゲージの増加
-					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-					{
-						// iteはプレイヤか？
-						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-						{
-							auto ig = (*ite)->GetGauge();
-							if (ig < PLAYER_IAI_MAX) {
-								(*ite)->SetGauge(ig += 1);
-							}
-						}
-					}
-				}
-			}
-			break;
-		case ObjectBase::OBJECTTYPE::KICK:
-			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
-				if (_ShieldAlive_Flag == true) {
-					_Anime["Attack"] = 0;
-					_ShieldBreak_Flag = true;
-					_Shield_Cnt = _Cnt;
-					_Action_Cnt = _Cnt;
-					_State = ENEMYSTATE::GUARDBREAK;
-				}
-			}
-			break;
-		case ObjectBase::OBJECTTYPE::IAI:
-		case ObjectBase::OBJECTTYPE::FLAME:
-			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				_Life--;
-				_ShieldBreak_Flag = true;
-				_Shield_Cnt = _Cnt;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-			}
-			break;
-		default:
-		break;
-		}
-	}
 }
 /*----------攻撃----------*/
 void Shielder::Attack(Game& g) {
@@ -282,6 +164,9 @@ void Shielder::Attack(Game& g) {
 		_Anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX; 
 	}
 	if (_isFlip == false) {
+		if (frame == STEP_BEGINFRAME) {
+			_x -= ATTACK_STEP;
+		}
 		PrivateCollision sacc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
@@ -301,6 +186,9 @@ void Shielder::Attack(Game& g) {
 		}
 	}
 	if (_isFlip == true) {
+		if (frame == STEP_BEGINFRAME) {
+			_x += ATTACK_STEP;
+		}
 		PrivateCollision sacc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
@@ -334,49 +222,6 @@ void Shielder::Attack(Game& g) {
 			g.GetOS()->Add(sac);
 		}
 	}
-	//敵とプレイヤーアクションの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		OBJECTTYPE objType = (*ite)->GetObjType();
-		switch (objType) {
-			//中段攻撃&下段攻撃
-		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
-		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				if (_ShieldAlive_Flag == false) {
-					_Life--;
-					_Action_Cnt = _Cnt;
-					_State = ENEMYSTATE::DEAD;
-					//居合ゲージの増加
-					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-					{
-						// iteはプレイヤか？
-						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-						{
-							auto ig = (*ite)->GetGauge();
-							if (ig < PLAYER_IAI_MAX) {
-								(*ite)->SetGauge(ig += 1);
-							}
-						}
-					}
-				}
-			}
-			break;
-			//居合と行燈との当たり判定
-		case ObjectBase::OBJECTTYPE::IAI:
-		case ObjectBase::OBJECTTYPE::FLAME:
-			if (IsHit(*(*ite)) == true)
-			{
-				_Shield_Cnt = _Cnt;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-			}
-			break;
-		}
-	}
 	if (frame == ATTACK_ALLFRAME) {
 		_Action_Cnt = _Cnt;
 	}
@@ -391,7 +236,7 @@ void Shielder::GuardAttack(Game& g) {
 	}
 	if (_isFlip == false) {
 		if (frame == STEP_BEGINFRAME) {
-			_x -= ATTACK_STEP;
+			_x -=ATTACK_STEP;
 		}
 		PrivateCollision sacc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == GUARDATTACK_ANIMEFRAME || frame == GUARDATTACK_ALLFRAME) {
@@ -448,55 +293,6 @@ void Shielder::GuardAttack(Game& g) {
 			auto sac = new ShielderAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(sac);
-		}
-	}
-	//敵とプレイヤーのキックオブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーのキックオブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::KICK)
-		{
-			// 敵とプレイヤーのキックオブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
-				if (_ShieldAlive_Flag == true) {
-					_Anime["GuardAttack"] = 0;
-					_ShieldBreak_Flag = true;
-					_Shield_Cnt = _Cnt;
-					_Action_Cnt = _Cnt;
-					_State = ENEMYSTATE::GUARDBREAK;
-				}
-			}
-		}
-	}
-	//敵とプレイヤーの攻撃オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの攻撃オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::MIDDLEATTACK|| (*ite)->GetObjType() == OBJECTTYPE::LOWATTACK)
-		{
-			// 敵とプレイヤーの攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-			}
-		}
-	}
-
-	//敵とプレイヤーの居合オブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーの居合オブジェクトか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::IAI || (*ite)->GetObjType() == OBJECTTYPE::FLAME)
-		{
-			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				_Shield_Cnt = _Cnt;
-				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-			}
 		}
 	}
 	if (frame == GUARDATTACK_ALLFRAME) {

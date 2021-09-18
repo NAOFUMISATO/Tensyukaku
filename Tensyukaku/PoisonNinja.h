@@ -69,5 +69,4 @@ constexpr auto POISON_SPAWN_Y = 80;			//忍者からの毒液が染み込む座標へのY差分
 //消去
 constexpr auto DELETE_HEIGHT = 500;			//毒液忍者が消えるYの移動量
 constexpr auto FADEOUT_SPEED = 10;			//フェードスピード
-constexpr auto DELETE_ALPHA = 250;			//フェードしていき、透明度がこの数値になったら強制消去
 }

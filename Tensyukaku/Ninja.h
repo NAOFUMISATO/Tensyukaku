@@ -21,6 +21,7 @@ private:
 	void	Attack(Game& g);		//攻撃状態時の処理
 	void	Throw(Game& g);			//クナイ投げ時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
+	void	DamageJudge(Game& g);	//被ダメ判定&押し出しの処理
 	void	LoadActionGraph();		//忍者の画像読み込み関数
 	void	LoadActionSE();			//忍者のSE読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
