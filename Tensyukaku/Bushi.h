@@ -22,7 +22,7 @@ private:
 	void	Attack(Game& g);		//攻撃状態時の処理
 	void	Damage(Game& g);		//被ダメ状態時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
-	void	DamageJudge(Game& g);	//被ダメ判定&押し出しの処理
+	void	HitJudge(Game& g);	//被ダメ判定&押し出しの処理
 	void	LoadActionGraph();		//武士の画像読み込み関数
 	void	LoadActionSE();			//武士のSE読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
@@ -39,6 +39,7 @@ namespace BInfo {
 
 	/*----------各モーションの当たり判定関係----------*/
 	constexpr auto PATROL_WIDTH = 500;			//索敵範囲当たり判定横幅
+	constexpr auto	PATROL_BACKWIDTH = 250;	//背部索敵範囲当たり判定横幅
 	constexpr auto PATROL_HEIGHT = 100;			//索敵範囲当たり判定縦幅
 	constexpr auto COMING_WIDTH = 200;			//攻撃発生範囲当たり判定横幅
 	constexpr auto COMING_HEIGHT = 100;			//攻撃発生範囲当たり判定縦幅

@@ -109,6 +109,12 @@
     <Filter Include="ヘッダー ファイル\Object\Enemy\Shierder">
       <UniqueIdentifier>{4e820f49-7412-4bfc-bef8-66ac8be3500c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Enemy\Lancer">
+      <UniqueIdentifier>{88014f16-3dd5-464f-8060-aecc35774301}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Enemy\Lancer">
+      <UniqueIdentifier>{15830b04-1c8e-482d-badd-5a364d52cb10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -309,6 +315,39 @@
     <ClCompile Include="FlamePerformParticle.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
+    <ClCompile Include="MugenAndon.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
+    </ClCompile>
+    <ClCompile Include="MugenFlame.cpp">
+      <Filter>ソース ファイル\Object\Gimik</Filter>
+    </ClCompile>
+    <ClCompile Include="Lancer.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Lancer</Filter>
+    </ClCompile>
+    <ClCompile Include="LancerMotion.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Lancer</Filter>
+    </ClCompile>
+    <ClCompile Include="LancerMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Busyo.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
+    <ClCompile Include="BusyoMotion.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
+    </ClCompile>
+    <ClCompile Include="BusyoMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Zyounin.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="ZyouninMotionCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="ZyouninMotion.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -401,12 +440,6 @@
     <ClInclude Include="Ninja.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
-    <ClInclude Include="PoisonNinja.h">
-      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
-    </ClInclude>
-    <ClInclude Include="Poison.h">
-      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
-    </ClInclude>
     <ClInclude Include="Andon.h">
       <Filter>ヘッダー ファイル\Object\Gimik</Filter>
     </ClInclude>
@@ -496,6 +529,36 @@
     </ClInclude>
     <ClInclude Include="FlamePerformParticle.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="MugenAndon.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="MugenFlame.h">
+      <Filter>ヘッダー ファイル\Object\Gimik</Filter>
+    </ClInclude>
+    <ClInclude Include="Lancer.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Lancer</Filter>
+    </ClInclude>
+    <ClInclude Include="LancerMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Poison.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="PoisonNinja.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="Busyo.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
+    </ClInclude>
+    <ClInclude Include="BusyoMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Zyounin.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="ZyouninMotionCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

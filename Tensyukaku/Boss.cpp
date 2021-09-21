@@ -16,6 +16,7 @@ Boss::~Boss() {
 }
 
 void Boss::Init() {
+	_Sort = 12;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
 	_gx = GRAPHPOINT_X;

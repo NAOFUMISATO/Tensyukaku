@@ -155,6 +155,9 @@
     <ClCompile Include="Bushi.cpp" />
     <ClCompile Include="BushiMotion.cpp" />
     <ClCompile Include="BushiMotionCollision.cpp" />
+    <ClCompile Include="Busyo.cpp" />
+    <ClCompile Include="BusyoMotionCollision.cpp" />
+    <ClCompile Include="BusyoMotion.cpp" />
     <ClCompile Include="CPointBlock.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
@@ -167,10 +170,15 @@
     <ClCompile Include="FlamePerformParticle.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
     <ClCompile Include="Kunai.cpp" />
+    <ClCompile Include="Lancer.cpp" />
+    <ClCompile Include="LancerMotion.cpp" />
+    <ClCompile Include="LancerMotionCollision.cpp" />
     <ClCompile Include="ModeEpilogue.cpp" />
     <ClCompile Include="ModeGameover.cpp" />
     <ClCompile Include="ModePause.cpp" />
     <ClCompile Include="ModePrologue.cpp" />
+    <ClCompile Include="MugenAndon.cpp" />
+    <ClCompile Include="MugenFlame.cpp" />
     <ClCompile Include="OutGameParticle.cpp" />
     <ClCompile Include="OverlayBlack.cpp" />
     <ClCompile Include="OverlayFlame.cpp" />
@@ -213,6 +221,9 @@
     <ClCompile Include="SielderMotionCollision.cpp" />
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="TitleSelect.cpp" />
+    <ClCompile Include="Zyounin.cpp" />
+    <ClCompile Include="ZyouninMotion.cpp" />
+    <ClCompile Include="ZyouninMotionCollision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Andon.h" />
@@ -222,6 +233,8 @@
     <ClInclude Include="BossStair.h" />
     <ClInclude Include="Bushi.h" />
     <ClInclude Include="BushiMotionCollision.h" />
+    <ClInclude Include="Busyo.h" />
+    <ClInclude Include="BusyoMotionCollision.h" />
     <ClInclude Include="CPointBlock.h" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="EnemyBase.h" />
@@ -234,10 +247,14 @@
     <ClInclude Include="FlamePerformParticle.h" />
     <ClInclude Include="IaiGauge.h" />
     <ClInclude Include="Kunai.h" />
+    <ClInclude Include="Lancer.h" />
+    <ClInclude Include="LancerMotionCollision.h" />
     <ClInclude Include="ModeEpilogue.h" />
     <ClInclude Include="ModeGameover.h" />
     <ClInclude Include="ModePause.h" />
     <ClInclude Include="ModePrologue.h" />
+    <ClInclude Include="MugenAndon.h" />
+    <ClInclude Include="MugenFlame.h" />
     <ClInclude Include="OutGameParticle.h" />
     <ClInclude Include="OverlayBlack.h" />
     <ClInclude Include="OverlayFlame.h" />
@@ -277,6 +294,8 @@
     <ClInclude Include="ShielderMotionCollision.h" />
     <ClInclude Include="Stair.h" />
     <ClInclude Include="TitleSelect.h" />
+    <ClInclude Include="Zyounin.h" />
+    <ClInclude Include="ZyouninMotionCollision.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

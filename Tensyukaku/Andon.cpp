@@ -19,6 +19,7 @@ Andon::~Andon() {
 };
 
 void Andon::Init() {
+	_Sort = 8;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;

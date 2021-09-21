@@ -19,6 +19,7 @@ void Bushi::Appear(Game& g) {
 	}
 	if (frame == APPEAR_ALLFRAME) {
 		_Alpha = 255;
+		_Action_Cnt = _Cnt;
 		_State=ENEMYSTATE::PATROL;
 	}
 }
@@ -29,16 +30,22 @@ void Bushi::Patrol(Game& g) {
 	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
 	_Anime["Patrol"] = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
 	if (frame == PATROL_TURNFRAME) {
-		_isFlip = true;
+		if (_isFlip == false) {
+			_isFlip = true;
+		}
+		else {_isFlip = false;}
 	}
 	if (frame == PATROL_TURNFRAME *2) {
-		_isFlip = false;
+		if (_isFlip == false) {
+			_isFlip = true;
+		}
+		else { _isFlip = false; }
 		_Action_Cnt = _Cnt;
 	}
 	if (_isFlip == false) {
 		//武士の索敵範囲判定オブジェクトの生成
-		PrivateCollision bpc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
-
+		PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
+		PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -46,17 +53,35 @@ void Bushi::Patrol(Game& g) {
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(bpc) == true)
+				if ((*ite)->IsHit(pc) == true)
 				{
 					_State = ENEMYSTATE::COMING;
+				}
+				if ((*ite)->IsHit(bpc) == true)
+				{
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤーか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ps = (*ite)->GetSpd();
+							if (ps > 5) {
+								if (_isFlip == false) {
+									_isFlip = true;
+								}
+								else { _isFlip = false; }
+								_State = ENEMYSTATE::COMING;
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 	if (_isFlip == true) {
 		//武士の索敵範囲判定オブジェクトの生成
-		PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
-
+		PrivateCollision pc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
+		PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -64,9 +89,27 @@ void Bushi::Patrol(Game& g) {
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(bpc) == true)
+				if ((*ite)->IsHit(pc) == true)
 				{
 					_State = ENEMYSTATE::COMING;
+				}
+				if ((*ite)->IsHit(bpc) == true)
+				{
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤーか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ps = (*ite)->GetSpd();
+							if (ps > 5) {
+								if (_isFlip == false) {
+									_isFlip = true;
+								}
+								else { _isFlip = false; }
+								_State = ENEMYSTATE::COMING;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -80,7 +123,7 @@ void Bushi::Coming(Game& g) {
 		_x -= _Spd;
 		g.GetChip()->IsHit(*this, -1, 0);
 		//武士の攻撃発生範囲判定オブジェクトの生成
-		PrivateCollision bcc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+		PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -88,15 +131,16 @@ void Bushi::Coming(Game& g) {
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
 				// 攻撃発生範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(bcc) == true)
+				if ((*ite)->IsHit(cc) == true)
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::ATTACK;
+					_Anime["Coming"] = 0;
 				}
 			}
 		}
 		//武士の追跡中止範囲判定オブジェクトの生成
-		PrivateCollision bccc(_x + _hit_x - COMINGCANCEL_WIDTH, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
+		PrivateCollision ccc(_x + _hit_x - COMINGCANCEL_WIDTH, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
 		//追跡中止範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -104,10 +148,11 @@ void Bushi::Coming(Game& g) {
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
 				// 追跡中止範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(bccc) == false)
+				if ((*ite)->IsHit(ccc) == false)
 				{
-					_Action_Cnt;
+					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::PATROL;
+					_Anime["Coming"] = 0;
 				}
 			}
 		}	
@@ -116,7 +161,7 @@ void Bushi::Coming(Game& g) {
 		_x += _Spd;
 		g.GetChip()->IsHit(*this, 1, 0);
 		//武士の攻撃発生範囲判定オブジェクトの生成
-		PrivateCollision bcc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+		PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -125,15 +170,16 @@ void Bushi::Coming(Game& g) {
 			{
 
 				// 攻撃発生範囲判定オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(bcc) == true)
+				if ((*ite)->IsHit(cc) == true)
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::ATTACK;
+					_Anime["Coming"] = 0;
 				}
 			}
 		}
 		//武士の追跡中止範囲判定オブジェクトの生成
-		PrivateCollision bccc(_x - _hit_x, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
+		PrivateCollision ccc(_x - _hit_x, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
 		//追跡中止範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -141,10 +187,11 @@ void Bushi::Coming(Game& g) {
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
 				// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(bccc) == false)
+				if ((*ite)->IsHit(ccc) == false)
 				{
 					_Action_Cnt = _Cnt;
 					_State = ENEMYSTATE::PATROL;
+					_Anime["Coming"] = 0;
 				}
 			}
 		}
@@ -161,7 +208,7 @@ void Bushi::Attack(Game& g) {
 		if (frame == STEP_BEGINFRAME) {
 			_x -= ATTACK_STEP;
 		}
-		PrivateCollision bacc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
+		PrivateCollision acc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME|| frame == ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -170,7 +217,7 @@ void Bushi::Attack(Game& g) {
 				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 				{
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
-					if ((*ite)->IsHit(bacc) == false)
+					if ((*ite)->IsHit(acc) == false)
 					{
 						_Anime["Attack"] = 0;
 						_State = ENEMYSTATE::COMING;
@@ -183,7 +230,7 @@ void Bushi::Attack(Game& g) {
 		if (frame == STEP_BEGINFRAME) {
 			_x += ATTACK_STEP;
 		}
-		PrivateCollision bacc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
+		PrivateCollision acc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame==ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -192,7 +239,7 @@ void Bushi::Attack(Game& g) {
 				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 				{
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
-					if ((*ite)->IsHit(bacc) == false)
+					if ((*ite)->IsHit(acc) == false)
 					{
 						_Anime["Attack"] = 0;
 						_State = ENEMYSTATE::COMING;
@@ -228,6 +275,7 @@ void Bushi::Damage(Game& g) {
 	}
 	if (frame == DAMAGE_ALLFRAME) {
 			_State = ENEMYSTATE::COMING;
+			_Anime["Damage"] = 0;
 	}
 }
 /*----------死亡----------*/

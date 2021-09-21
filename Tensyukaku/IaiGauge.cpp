@@ -13,6 +13,7 @@ IaiGauge::~IaiGauge() {
 }
 
 void IaiGauge::Init() {
+	_Sort = 14;
 	_x = 960;
 	_y = 1040;
 }

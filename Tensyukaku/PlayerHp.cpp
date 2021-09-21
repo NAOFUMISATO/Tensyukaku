@@ -14,6 +14,7 @@ PlayerHp::~PlayerHp() {
 }
 
 void PlayerHp::Init() {
+	_Sort = 14;
 	_x = 220+(80*_Life);
 	_y = 1040;
 }

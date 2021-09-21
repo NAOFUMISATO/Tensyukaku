@@ -15,6 +15,7 @@ Stair::~Stair() {
 }
 
 void Stair::Init() {
+	_Sort = 5;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;

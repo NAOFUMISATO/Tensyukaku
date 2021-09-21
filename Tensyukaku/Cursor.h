@@ -9,6 +9,7 @@ public:
 	void Init()override;
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
+	void LoadSound();
 private:
 	enum class CURSOLSTATE { NOHIT, STARTHIT, EXHIT, ENDHIT };
 	CURSOLSTATE _State;		//ƒJ[ƒ\ƒ‹‚Ìó‘Ô•Ï”

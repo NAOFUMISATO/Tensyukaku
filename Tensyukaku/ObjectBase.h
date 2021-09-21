@@ -22,8 +22,8 @@ public:
 		OVERLOGO,OVERRETRY,OVERGOTITLE,OVERBLACK,OVERCURSOR,
 		PLAYER, ENEMY,BOSS, UI, PARTICLE,
 		MIDDLEATTACK, LOWATTACK, KICK, IAI,SPECIAL,
-		PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,KUNAI,SHIELDERATTACK,SHIELD,
-		STAIR,BOSSSTAIR, RESTPOINT,POISONNINJA, POISON,ANDON,FLAME, SPAWNBLOCK, EVENTBLOCK, RECOVERYBLOCK,CPOINTBLOCK,BOSSEVENTBLOCK,FLAMEBLOCK,BOSSSPAWN
+		PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,KUNAI,SHIELDERATTACK,SHIELD, LANCERATTACK,BUSYOATTACK,ZYOUNINATTACK,
+		STAIR,BOSSSTAIR, RESTPOINT,POISONNINJA, POISON,ANDON,FLAME, MUGENANDON,MUGENFLAME,SPAWNBLOCK, EVENTBLOCK, RECOVERYBLOCK,CPOINTBLOCK,BOSSEVENTBLOCK,FLAMEBLOCK,BOSSSPAWN
 	};
 	virtual OBJECTTYPE	GetObjType() = 0;
 
@@ -46,6 +46,8 @@ public:
 	int		GetHitY() { return _hit_y; }
 	int		GetHp() { return _Life; }
 	int		GetGauge() { return _Iai_Gauge; }
+	int		GetSpd() { return _Spd; }
+	int		GetSort() { return _Sort; }
 	bool	GetFlip() { return _isFlip; }
 	HitBox	GetHB() { return { _x,_y,_gx,_gy,_hit_x,_hit_y,_hit_w,_hit_h }; }
 	Vector2 GetPosition() { return _Position; }		//座標の取得
@@ -67,7 +69,6 @@ protected:
 	std::unordered_map<std::string, std::vector<int>> _GrAll;	//全ての画像ハンドルマップ
 	std::unordered_map<std::string, int> _Anime;				//アニメーションマップ
 	std::unordered_map<std::string, int> _Se;					//SEマップ
-	std::unordered_map<std::string, int> _Vpal;					//BGMのボリューム設定マップ
 	int		_x, _y;		// 座標（基準位置）
 	int		_gx, _gy;	// 基準位置から描画時の差分
 	int		_w, _h;		// 大きさ
@@ -92,5 +93,5 @@ protected:
 	int		_Before_y;					//前回のY座標保存変数
 	bool	_BEventA_Flag;				//ボスイベントAフラグ
 	bool	_BEventB_Flag;				//ボスイベントBフラグ
-	
+	int		_Sort;
 };

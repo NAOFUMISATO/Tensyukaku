@@ -23,6 +23,7 @@ void Player::Idle(Game& g) {
 	}
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::SWAY;
+		PlaySoundMem(_Se["Sway"], DX_PLAYTYPE_BACK, true);
 		_Action_Cnt = _Cnt;
 	}
 	if (g.GetTrg() & PAD_INPUT_1) {
@@ -61,6 +62,7 @@ void Player::Move(Game& g) {
 	}
 	else if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::SWAY;
+		PlaySoundMem(_Se["Sway"], DX_PLAYTYPE_BACK, true);
 		_Action_Cnt = _Cnt;
 	}
 	else if (g.GetTrg() & PAD_INPUT_1) {
@@ -92,13 +94,13 @@ void Player::Move(Game& g) {
 #ifdef _DEBUG
 	else if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_5)
 	{
-		_y -= _Spd;
+		_y -= _Spd+10;
 		_isFlip = true;
 
 	}
 	else if (g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_5)
 	{
-		_y += _Spd;
+		_y += _Spd + 10;
 		_isFlip = true;
 
 	}
@@ -262,7 +264,7 @@ void Player::Iai(Game& g) {
 		_Anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
 	}
 	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME - 15 >= frame) {
-		_Iai_Flag = true;
+		_noHit_Flag = true;
 		if (_isFlip == false) {
 			_x -= IAI_MOVEMENT;
 			g.GetChip()->IsHit(*this, -1, 0);
@@ -272,7 +274,7 @@ void Player::Iai(Game& g) {
 			g.GetChip()->IsHit(*this, 1, 0);
 		}
 	}
-	else { _Iai_Flag = false; }
+	else { _noHit_Flag = false; }
 	if (frame == IAI_BEGINFRAME - 6) {
 		if (_isFlip == false) {
 			//パーティクル発生
@@ -349,6 +351,20 @@ void Player::Sway(Game& g){
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Sway"][_Anime["Sway"]];
 	_Anime["Sway"] = ((frame) / ANIMESPEED_SWAY) % SWAY_ANIMEMAX;
+	//スウェイ時の無敵フレーム
+	if (frame >= SWAY_NOHITBEGINFRAME && SWAY_NOHITENDFRAME > frame) {
+		_noHit_Flag = true;
+	}
+	else { _noHit_Flag = false; }
+	if (frame == 1) {
+		for (int i = 0; i < SWAY_PARTICLE_QTY; i++)
+		{
+			std::pair<int, int> xy = std::make_pair(_x, _y);
+			std::pair<double, double> dxy = std::make_pair(((rand() % SWAY_PARTICLE_RANDOMX1) - SWAY_PARTICLE_RANDOMX2) / SWAY_PARTICLE_RANDOMX3, ((rand() % -SWAY_PARTICLE_RANDOMY1) - SWAY_PARTICLE_RANDOMY2) / SWAY_PARTICLE_RANDOMY3);
+			auto sw = new SwayParticle(xy, dxy, true);
+			g.GetOS()->Add(sw);
+		}
+	}
 	if (frame < SWAY_MOVEFRAME) {
 		if (_isFlip == false) {
 			_x += SWAY_MOVEMENT;
@@ -369,16 +385,19 @@ void Player::Damage(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
 	StopSoundMem(_Se["Iai"]);
+	_noHit_Flag = true; 
 	if (frame < DAMAGE_ANIMEFRAME) {
 		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
 	}
 	if (frame == DAMAGE_ALLFRAME) {
 		_Star_Cnt = _Cnt;
+		_noHit_Flag = false;
 		if (_Life > 0) {
 			_Star_Flag = true;
 		}
 		if (_Life <= 0) {
 			_Action_Cnt = _Cnt;
+			PlaySoundMem(_Se["Dead"], DX_PLAYTYPE_BACK, true);
 			_State=PLAYERSTATE::DEAD;
 		}
 		else {
@@ -411,6 +430,7 @@ void Player::Dead(Game& g) {
 void Player::StairMove(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
+	_noHit_Flag = true;
 	if (_StairFlip_Flag == false) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
 			_isFlip = false;
@@ -455,6 +475,7 @@ void Player::StairUp(Game& g) {
 	_y = positionY;
 	auto upheight = _y - _Player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
+		_noHit_Flag = false;
 		_State = PLAYERSTATE::IDLE;
 	}
 }
@@ -463,7 +484,7 @@ void Player::StairUp(Game& g) {
 void Player::BossStairMove(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
-	
+	_noHit_Flag =true;
 	if (_StairFlip_Flag == false) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
 			_isFlip = false;
@@ -498,7 +519,7 @@ void Player::BossStairMove(Game& g) {
 void Player::BossStairUp(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
-	_Vpal["Main"]-=2;
+	g.SetMainVpal(g.GetMainVpal()-1);
 	_Stairup_Spd = BOSSSTAIRUP_SPEED;
 	if (_StairFlip_Flag == false) {
 		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
@@ -516,6 +537,7 @@ void Player::BossStairUp(Game& g) {
 	auto upheight = _y - _Player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
 		StopSoundMem(g.GetBgm()["Main"]);
+		_noHit_Flag = false;
 		_State = PLAYERSTATE::IDLE;
 	}
 }
@@ -542,15 +564,15 @@ void Player::BossEventA(Game& g) {
 void Player::BossEventB(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
 	_Spd = 4;
-	if (frame == 120) {
-		StopSoundMem(g.GetBgm()["Boss"]);
-		StopSoundMem(g.GetBgm()["Flame"]);
-	}
 	if (frame <= 120) {
 		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
 		_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
-		_Vpal["Boss"] -= 2;
-		_Vpal["Flame"] -= 2;
+		g.SetBossVpal(g.GetBossVpal()-1);
+		g.SetFlameVpal(g.GetFlameVpal() - 1);
+	}
+	if (frame == 120) {
+		StopSoundMem(g.GetBgm()["Boss"]);
+		StopSoundMem(g.GetBgm()["Flame"]);
 	}
 	if (frame > 120 && 310 >= frame) {
 		_x += _Spd;

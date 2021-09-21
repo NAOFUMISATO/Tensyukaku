@@ -6,7 +6,7 @@
 class Game;
 class Player : public ObjectBase {
 public:
-	Player(int x,int y);
+	Player( int x,int y);
 	~Player();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::PLAYER; }
 
@@ -48,7 +48,7 @@ private:
 	int		_Move_AnimeSpeed;//移動時のアニメスピード
 	int		_CameraX;			//カメラ位置
 	bool	_UI_Flag;				//UI描画用フラグ
-	bool	_Iai_Flag;			//居合中かどうかのフラグ
+	bool	_noHit_Flag;			//居合中かどうかのフラグ
 
 	//無敵状態管理変数
 	bool	_Star_Flag;		//無敵状態管理フラグ
@@ -178,10 +178,12 @@ namespace PInfo {
 	constexpr auto SWAY_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto SWAY_WIDTHCOUNT = 4;			//横の画像枚数
 	constexpr auto SWAY_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_SWAY = 6;			//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_SWAY =6;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto SWAY_ALLFRAME = 24;			//スウェイ全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto SWAY_NOHITBEGINFRAME = 5;		//スウェイの無敵判定開始フレーム
+	constexpr auto SWAY_NOHITENDFRAME = 20;		//スウェイの無敵判定終了フレーム
 	constexpr auto SWAY_MOVEFRAME = 20;			//スウェイ時の移動フレーム
-	constexpr auto SWAY_MOVEMENT = 15;			//スウェイ時の1フレームあたりの移動量
+	constexpr auto SWAY_MOVEMENT = 12;			//スウェイ時の1フレームあたりの移動量
 	//被ダメ
 	constexpr auto DAMAGE_GRAPHNAME = "res/Samurai/S_Damage.png";	//画像ファイル名
 	constexpr auto DAMAGE_ANIMEMAX = 4;			//全ての画像枚数
@@ -204,12 +206,12 @@ namespace PInfo {
 	constexpr auto DEAD_ALLFRAME = 128;			//死亡全フレーム
 	//特殊攻撃
 	constexpr auto SPECIALATTACK_GRAPHNAME = "res/Samurai/S_Special.png";	//画像ファイル名
-	constexpr auto SPECIALATTACK_ANIMEMAX = 37;	//全ての画像枚数
-	constexpr auto SPECIALATTACK_WIDTHCOUNT = 13;	//横の画像枚数
+	constexpr auto SPECIALATTACK_ANIMEMAX = 48;	//全ての画像枚数
+	constexpr auto SPECIALATTACK_WIDTHCOUNT = 16;	//横の画像枚数
 	constexpr auto SPECIALATTACK_HEIGHTCOUNT = 3;	//縦の画像枚数
-	constexpr auto ANIMESPEED_SPECIALATTACK = 4;	//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_SPECIALATTACK = 5;	//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto SPECIALATTACK_ANIMEFRAME = SPECIALATTACK_ANIMEMAX * ANIMESPEED_SPECIALATTACK; //アニメーションフレーム
-	constexpr auto SPECIALATTACK_ALLFRAME = 185;	//特殊攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto SPECIALATTACK_ALLFRAME = 270;	//特殊攻撃全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	constexpr auto SPECIALATTACK_BEGINFRAME = 40;	//特殊攻撃判定発生フレーム
 	constexpr auto SPECIALATTACK_ENDFRAME = 80;		//特殊攻撃判定終了フレーム(発生してからのフレーム数）
 

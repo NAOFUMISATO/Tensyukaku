@@ -21,7 +21,7 @@ private:
 	void	Attack(Game& g);		//攻撃状態時の処理
 	void	Throw(Game& g);			//クナイ投げ時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
-	void	DamageJudge(Game& g);	//被ダメ判定&押し出しの処理
+	void	HitJudge(Game& g);	//被ダメ判定&押し出しの処理
 	void	LoadActionGraph();		//忍者の画像読み込み関数
 	void	LoadActionSE();			//忍者のSE読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
@@ -40,6 +40,7 @@ namespace NInfo {
 
 	/*----------各モーションの当たり判定関係----------*/
 	constexpr auto PATROL_WIDTH = 800;			//索敵範囲当たり判定横幅
+	constexpr auto PATROL_BACKWIDTH = 600;	//背部索敵範囲当たり判定横幅
 	constexpr auto PATROL_HEIGHT = 100;			//索敵範囲当たり判定縦幅
 	constexpr auto COMING_WIDTH = 150;			//攻撃発生範囲当たり判定横幅
 	constexpr auto COMING_HEIGHT = 100;			//攻撃発生範囲当たり判定縦幅
@@ -97,7 +98,7 @@ namespace NInfo {
 	constexpr auto ATTACK_BEGINFRAME = 20;		//攻撃判定発生フレーム
 	constexpr auto ATTACK_ENDFRAME = 10;		//攻撃判定終了フレーム
 	//クナイ投げ
-	constexpr auto THROW_GRAPHNAME = "res/Ninja/N_Attack.png";	//画像ファイル名
+	constexpr auto THROW_GRAPHNAME = "res/Ninja/N_Throw.png";	//画像ファイル名
 	constexpr auto THROW_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto THROW_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto THROW_HEIGHTCOUNT = 1;		//縦の画像枚数

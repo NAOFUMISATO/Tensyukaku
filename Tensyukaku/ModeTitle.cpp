@@ -101,20 +101,21 @@ bool ModeTitle::Process(Game& g) {
 		}
 		if (frame == TITLE_FADEINENDFRAME) {
 			_Pal = 255;
+			PlaySoundMem(g.GetBgm()["Title"], DX_PLAYTYPE_LOOP, true);
 			auto tl = new TitleLogo();
-			g.GetOS()->BAdd(tl);
+			g.GetOS()->Add(tl);
 		}
 		if (frame == GAMESTART_APPEARFRAME) {
 			auto gs = new GameStart();
-			g.GetOS()->BAdd(gs);
+			g.GetOS()->Add(gs);
 		}
 		if (frame == EXPLAIN_APPEARFRAME) {
 			auto ex = new Explain();
-			g.GetOS()->BAdd(ex);
+			g.GetOS()->Add(ex);
 		}
 		if (frame == GAMEEND_APPEARFRAME) {
 			auto ge = new GameEnd();
-			g.GetOS()->BAdd(ge);
+			g.GetOS()->Add(ge);
 		}
 		break;
 	}

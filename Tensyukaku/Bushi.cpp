@@ -27,6 +27,7 @@ Bushi::~Bushi() {
 };
 
 void Bushi::Init() {
+	_Sort = 6;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
 	_gx = GRAPHPOINT_X;
@@ -61,10 +62,8 @@ void Bushi::Process(Game& g) {
 	case ENEMYSTATE::DEAD:
 		Dead(g);
 		break;
-	default:
-		break;
 	}
-	DamageJudge(g);
+	HitJudge(g);
 }
 
 void Bushi::Draw(Game& g) {	
@@ -80,7 +79,7 @@ void Bushi::Delete(Game& g) {
 }
 
 //被ダメ判定&押し出しの処理
-void Bushi::DamageJudge(Game& g) {
+void Bushi::HitJudge(Game& g) {
 	//敵とプレイヤーのアクションの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
@@ -125,6 +124,7 @@ void Bushi::DamageJudge(Game& g) {
 			break;
 		case ObjectBase::OBJECTTYPE::IAI:
 		case ObjectBase::OBJECTTYPE::FLAME:
+		case ObjectBase::OBJECTTYPE::MUGENFLAME:
 			// 敵とプレイヤーの居合&行燈の炎オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -171,26 +171,32 @@ void Bushi::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		if (_isFlip == false) {
-			PrivateCollision bpc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h,PATROL_WIDTH,PATROL_HEIGHT);
-			bpc.SetColor(std::make_tuple(0, 255, 0));
+			PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h,PATROL_WIDTH,PATROL_HEIGHT);
+			PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
+			pc.SetColor(std::make_tuple(0, 255, 0));
+			bpc.SetColor(std::make_tuple(0, 128, 128));
+			pc.Draw(g);
 			bpc.Draw(g);
 		}
 		if (_isFlip == true) {
-			PrivateCollision bpc(_x - _hit_x, _y - _hit_h,PATROL_WIDTH, PATROL_HEIGHT);
-			bpc.SetColor(std::make_tuple(0, 255, 0));
+			PrivateCollision pc(_x - _hit_x, _y - _hit_h,PATROL_WIDTH, PATROL_HEIGHT);
+			PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
+			pc.SetColor(std::make_tuple(0, 255, 0));
+			bpc.SetColor(std::make_tuple(0, 128, 128));
+			pc.Draw(g);
 			bpc.Draw(g);
 		}
 		break;
 	case ENEMYSTATE::COMING:
 		if (_isFlip == false) {
-			PrivateCollision bcc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
-			bcc.SetColor(std::make_tuple(255, 255, 0));
-			bcc.Draw(g);
+			PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			cc.SetColor(std::make_tuple(255, 255, 0));
+			cc.Draw(g);
 		}
 		if (_isFlip == true) {
-			PrivateCollision bcc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
-			bcc.SetColor(std::make_tuple(255, 255, 0));
-			bcc.Draw(g);
+			PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			cc.SetColor(std::make_tuple(255, 255, 0));
+			cc.Draw(g);
 		}
 		break;
 	}

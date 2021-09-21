@@ -3,7 +3,7 @@
 
 class Andon :public ObjectBase {
 public:
-	Andon(int x,int y);
+	Andon( int x,int y);
 	~Andon();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::ANDON; }
 	void Init()override;

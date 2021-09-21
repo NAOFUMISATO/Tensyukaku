@@ -19,7 +19,7 @@ Player::Player(int x,int y) :
 	_Move_AnimeSpeed(0),
 	_Star_Flag(false),
 	_UI_Flag(false),
-	_Iai_Flag(false),
+	_noHit_Flag(false),
 	_StairUp_Flag(false)
 {
 	_x = x;
@@ -36,6 +36,7 @@ Player::~Player()
 void Player::Init()
 {
 	// プレイヤー情報の初期化
+	_Sort = 13;
 	_GrHandle = -1;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
@@ -52,9 +53,6 @@ void Player::Init()
 	_Alpha = FIRST_ALPHA;
 	_Position = { 0,0 };
 	_CameraX = 500;
-	_Vpal["Main"] = 200;
-	_Vpal["Flame"] = 200;
-	_Vpal["Boss"] = 128;
 }
 
 
@@ -142,13 +140,10 @@ void Player::Process(Game& g)
 
 void Player::Draw(Game& g) {
 #ifdef _DEBUG
-	DebugDraw(g);
+	/*DebugDraw(g);*/
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	ObjectBase::Draw(g);
-	ChangeVolumeSoundMem(_Vpal["Main"], g.GetBgm()["Main"]);
-	ChangeVolumeSoundMem(_Vpal["Boss"], g.GetBgm()["Boss"]);
-	ChangeVolumeSoundMem(_Vpal["Flame"], g.GetBgm()["Flame"]);
 }
 
 void Player::Delete(Game& g) {
@@ -181,10 +176,11 @@ void	Player::HitJudge(Game& g) {
 		case ObjectBase::OBJECTTYPE::BUSHIATTACK:
 		case ObjectBase::OBJECTTYPE::NINJAATTACK:
 		case ObjectBase::OBJECTTYPE::SHIELDERATTACK:
+		case ObjectBase::OBJECTTYPE::LANCERATTACK:
 		case ObjectBase::OBJECTTYPE::POISON:
 		case ObjectBase::OBJECTTYPE::KUNAI:
 			// プレイヤーとその攻撃の当たり判定を行う
-			if (IsHit(*(*ite)) == true && _Star_Flag == false&&_Iai_Flag==false)
+			if (IsHit(*(*ite)) == true && _Star_Flag == false&&_noHit_Flag==false)
 			{
 				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
@@ -286,7 +282,9 @@ void Player::LoadActionSE() {
 	_Se["MiddleAttack"]=ResourceServer::LoadSoundMem("se/Player/MiddleAttack1.wav");
 	_Se["LowAttack"] =	ResourceServer::LoadSoundMem("se/Player/LowAttack1.wav");
 	_Se["Kick"] =		ResourceServer::LoadSoundMem("se/Player/Kick.wav");
+	_Se["Sway"] = ResourceServer::LoadSoundMem("se/Player/Sway.wav");
 	_Se["Damage"] =		ResourceServer::LoadSoundMem("se/Player/Damage.wav");
+	_Se["Dead"] = ResourceServer::LoadSoundMem("se/Player/Dead.wav");
 	_Se["Iai"] =		ResourceServer::LoadSoundMem("se/Player/Iai.wav");
 }
 

@@ -26,6 +26,8 @@ public:
 	void Draw(Game& g)override;
 	void Delete(Game& g)override;
 private:
+	enum class POISONSTATE {FALL,LAND};
+	POISONSTATE _State;
 	int _Appear_y;
 };
 
@@ -56,9 +58,14 @@ namespace PoInfo {
 	constexpr auto FALL_ANIMEMAX = 1;			//全ての画像枚数
 	constexpr auto FALL_WIDTHCOUNT = 1;			//横の画像枚数
 	constexpr auto FALL_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_FALL = 90;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto FALL_ANIMEFRAME = FALL_ANIMEMAX * ANIMESPEED_FALL;				//アニメーションフレーム（全ての画像枚数×アニメスピード）
-	constexpr auto FALL_FADEOUTSPEED = 8;		//フェードスピード
-	constexpr auto FALL_ALLFRAME = 120;			//毒液準備の全フレーム
-	constexpr auto FALL_STOPHEIGHT = 650;		//毒液が止まるYの移動量
+	constexpr auto FALL_STOPFRAME = 41;		//落下が止まるフレーム
+	//毒液着地
+	constexpr auto LAND_GRAPHNAME = "res/Gimik/PoisonLand.png";	//画像ファイル名
+	constexpr auto LAND_ANIMEMAX = 3;			//全ての画像枚数
+	constexpr auto LAND_WIDTHCOUNT = 3;			//横の画像枚数
+	constexpr auto LAND_HEIGHTCOUNT = 1;		//縦の画像枚数
+	constexpr auto ANIMESPEED_LAND = 30;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto LAND_ANIMEFRAME = LAND_ANIMEMAX * ANIMESPEED_LAND;				//アニメーションフレーム（全ての画像枚数×アニメスピード）
+	constexpr auto LAND_FADEOUTSPEED = 8;		//フェードスピード
+	constexpr auto LAND_ALLFRAME = 120;		//毒液の全フレーム
 }

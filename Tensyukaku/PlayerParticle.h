@@ -90,7 +90,17 @@ public:
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
 };
+//スウェイ
+class SwayParticle : public ParticleBase {
+public:
+	SwayParticle(std::pair<double, double> xy, std::pair<double, double> vxy, bool flip);
+	~SwayParticle();
 
+	virtual PARTICLETYPE GetParType() { return PARTICLETYPE::SWAY; }
+	void Init()override;
+	void Process(Game& g)override;
+	void Draw(Game& g)override;
+};
 namespace PParInfo {
 	/*----------中段攻撃1----------*/
 	constexpr auto MIDDLEATTACK_PARTICLE1_GRAPH = "res/Particle/MiddleAttack.png";		//画像ファイル名
@@ -257,4 +267,25 @@ namespace PParInfo {
 	constexpr auto IAIG_PARTICLE_RANDOMY1 = 10;											//パーティクルのYランダム値
 	constexpr auto IAIG_PARTICLE_RANDOMY2 = 5.0;										//		〃
 	constexpr auto IAIG_PARTICLE_RANDOMY3 = 4.0;										//		〃
+
+/*----------スウェイ----------*/
+	constexpr auto SWAY_PARTICLE_GRAPH = "res/Particle/Sway.png";						//画像ファイル名
+	constexpr auto SWAY_PARTICLE_POSITIONX = 0.0;										//基準点(足下)から描画点へのX座標差分
+	constexpr auto SWAY_PARTICLE_POSITIONY = -10.0;									//基準点(足下)から描画点へのY座標差分
+	constexpr auto SWAY_PARTICLE_BLENDMODE = DX_BLENDMODE_SUB;							//ブレンドモード設定
+	constexpr auto SWAY_PARTICLE_PAL = 255;												//ブレンド値(0～255)
+	constexpr auto SWAY_PARTICLE_RED = 255;												//赤色値(0～255)
+	constexpr auto SWAY_PARTICLE_GREEN = 255;											//緑色値(0～255)
+	constexpr auto SWAY_PARTICLE_BLUE = 255;											//青色値(0～255)
+	constexpr auto SWAY_PARTICLE_SCALE = 1.0;											//拡縮値(1.0がデフォルト)
+	constexpr auto SWAY_PARTICLE_ANGLE = 0.0;											//描画角度(3.14=180°)
+	constexpr auto SWAY_PARTICLE_CNT = 25;												//パーティクル1個あたりの生存時間
+	constexpr auto SWAY_PARTICLE_QTY = 10;												//1フレーム当たりのパーティクル数
+	//パーティクル1個当たりの移動方向のランダム値調整
+	constexpr auto SWAY_PARTICLE_RANDOMX1 = 25;											//パーティクルのXランダム値
+	constexpr auto SWAY_PARTICLE_RANDOMX2 = 5.0;										//		〃
+	constexpr auto SWAY_PARTICLE_RANDOMX3 = 2.5;										//		〃
+	constexpr auto SWAY_PARTICLE_RANDOMY1 = 20;											//パーティクルのYランダム値
+	constexpr auto SWAY_PARTICLE_RANDOMY2 = 10.0;										//		〃
+	constexpr auto SWAY_PARTICLE_RANDOMY3 = 2.5;										//		〃
 }

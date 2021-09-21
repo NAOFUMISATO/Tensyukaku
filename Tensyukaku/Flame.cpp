@@ -15,6 +15,7 @@ Flame::~Flame() {
 }
 
 void Flame::Init() {
+	_Sort = 7;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;

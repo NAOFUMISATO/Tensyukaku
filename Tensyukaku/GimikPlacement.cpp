@@ -4,6 +4,7 @@
 #include "Stair.h"
 #include "PoisonNinja.h"
 #include "Andon.h"
+#include "MugenAndon.h"
 #include "BossStair.h"
 #include "RestPoint.h"
 
@@ -52,7 +53,6 @@ void GimikPlacement::StairAppear(Game& g) {
 	g.GetOS()->Add(st11);
 }
 
-
 //行燈のインスタンス生成関数
 void GimikPlacement::AndonAppear(Game& g) {
 	auto an6 = new Andon(FLOOR6_ANDON_X, FLOOR6_ANDON_Y);
@@ -61,15 +61,15 @@ void GimikPlacement::AndonAppear(Game& g) {
 	g.GetOS()->Add(an7);
 	auto an10 = new Andon(FLOOR10_ANDON_X, FLOOR10_ANDON_Y);
 	g.GetOS()->Add(an10);
-	auto an11a = new Andon(FLOOR11A_ANDON_X, FLOOR11A_ANDON_Y);
-	g.GetOS()->Add(an11a);
-	auto an11b = new Andon(FLOOR11B_ANDON_X, FLOOR11B_ANDON_Y);
-	g.GetOS()->Add(an11b);
-	auto an11c = new Andon(FLOOR11C_ANDON_X, FLOOR11C_ANDON_Y);
-	g.GetOS()->Add(an11c);
-	auto an11d = new Andon(FLOOR11D_ANDON_X, FLOOR11D_ANDON_Y);
-	g.GetOS()->Add(an11d);
-	auto an12 = new Andon(FLOOR12A_ANDON_X, FLOOR12A_ANDON_Y);
-	g.GetOS()->Add(an12);
+	auto ma11a = new MugenAndon(FLOOR11A_ANDON_X, FLOOR11A_ANDON_Y);
+	g.GetOS()->Add(ma11a);
+	auto ma11b = new  MugenAndon(FLOOR11B_ANDON_X, FLOOR11B_ANDON_Y);
+	g.GetOS()->Add(ma11b);
+	auto ma11c = new MugenAndon(FLOOR11C_ANDON_X, FLOOR11C_ANDON_Y);
+	g.GetOS()->Add(ma11c);
+	auto ma11d = new MugenAndon(FLOOR11D_ANDON_X, FLOOR11D_ANDON_Y);
+	g.GetOS()->Add(ma11d);
+	auto ma12 = new MugenAndon(FLOOR12A_ANDON_X, FLOOR12A_ANDON_Y);
+	g.GetOS()->Add(ma12);
 	
 }

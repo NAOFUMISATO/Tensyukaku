@@ -28,6 +28,7 @@ Ninja::~Ninja() {
 };
 
 void Ninja::Init() {
+	_Sort = 6;
 	_GrHandle = -1;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
@@ -62,7 +63,7 @@ void Ninja::Process(Game& g) {
 		Dead(g);
 		break;
 	}
-	DamageJudge(g);
+	HitJudge(g);
 }
 void Ninja::Draw(Game& g) {
 #ifdef _DEBUG
@@ -76,7 +77,7 @@ void Ninja::Delete(Game& g) {
 }
 
 //被ダメ判定&押し出しの処理
-void Ninja::DamageJudge(Game& g) {
+void Ninja::HitJudge(Game& g) {
 	//敵とプレイヤーのアクションの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
@@ -106,6 +107,7 @@ void Ninja::DamageJudge(Game& g) {
 			break;
 		case ObjectBase::OBJECTTYPE::IAI:
 		case ObjectBase::OBJECTTYPE::FLAME:
+		case ObjectBase::OBJECTTYPE::MUGENFLAME:
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -135,6 +137,8 @@ void Ninja::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(COMING_GRAPHNAME, COMING_ANIMEMAX, COMING_WIDTHCOUNT, COMING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Coming"].data());
 	_GrAll["Attack"].resize(ATTACK_ANIMEMAX);
 	ResourceServer::LoadDivGraph(ATTACK_GRAPHNAME, ATTACK_ANIMEMAX, ATTACK_WIDTHCOUNT, ATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Attack"].data());
+	_GrAll["Throw"].resize(THROW_ANIMEMAX);
+	ResourceServer::LoadDivGraph(THROW_GRAPHNAME, THROW_ANIMEMAX, THROW_WIDTHCOUNT, THROW_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Throw"].data());
 	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
 	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
 }
@@ -149,26 +153,32 @@ void Ninja::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		if (_isFlip == false) {
-			PrivateCollision npc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h,PATROL_WIDTH,PATROL_HEIGHT);
-			npc.SetColor(std::make_tuple(0, 255, 0));
-			npc.Draw(g);
+			PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h,PATROL_WIDTH,PATROL_HEIGHT);
+			PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
+			pc.SetColor(std::make_tuple(0, 255, 0));
+			bpc.SetColor(std::make_tuple(0, 128, 128));
+			pc.Draw(g);
+			bpc.Draw(g);
 		}
 		if (_isFlip == true) {
-			PrivateCollision npc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
-			npc.SetColor(std::make_tuple(0, 255, 0));
-			npc.Draw(g);
+			PrivateCollision pc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
+			PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
+			pc.SetColor(std::make_tuple(0, 255, 0));
+			bpc.SetColor(std::make_tuple(0, 128, 128));
+			pc.Draw(g);
+			bpc.Draw(g);
 		}
 		break;
 	case ENEMYSTATE::COMING:
 		if (_isFlip == false) {
-			PrivateCollision ncc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
-			ncc.SetColor(std::make_tuple(255, 255, 0));
-			ncc.Draw(g);
+			PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			cc.SetColor(std::make_tuple(255, 255, 0));
+			cc.Draw(g);
 		}
 		if (_isFlip == true) {
-			PrivateCollision ncc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
-			ncc.SetColor(std::make_tuple(255, 255, 0));
-			ncc.Draw(g);
+			PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			cc.SetColor(std::make_tuple(255, 255, 0));
+			cc.Draw(g);
 		}
 		break;
 	}

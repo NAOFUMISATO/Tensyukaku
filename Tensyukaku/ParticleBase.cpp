@@ -15,6 +15,7 @@ ParticleBase::ParticleBase() {
 ParticleBase::~ParticleBase() {};
 
 void ParticleBase::Init() {
+	_Sort = 15;
 }
 
 void ParticleBase::Process(Game& g) {

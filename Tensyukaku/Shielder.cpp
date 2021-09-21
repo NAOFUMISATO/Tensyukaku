@@ -36,6 +36,7 @@ Shielder::~Shielder() {
 };
 
 void Shielder::Init() {
+	_Sort = 6;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
 	_gx = GRAPHPOINT_X;
@@ -74,7 +75,7 @@ void Shielder::Process(Game& g) {
 		Dead(g);
 		break;
 	}
-	DamageJudge(g);
+	HitJudge(g);
 }
 void Shielder::Draw(Game& g) {	
 #ifdef _DEBUG
@@ -89,7 +90,7 @@ void Shielder::Delete(Game& g) {
 }
 
 //被ダメ判定&押し出しの処理
-void Shielder::DamageJudge(Game& g) {
+void Shielder::HitJudge(Game& g) {
 	//敵とプレイヤーアクションオブジェクトの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
@@ -137,6 +138,7 @@ void Shielder::DamageJudge(Game& g) {
 			break;
 		case ObjectBase::OBJECTTYPE::IAI:
 		case ObjectBase::OBJECTTYPE::FLAME:
+		case ObjectBase::OBJECTTYPE::MUGENFLAME:
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
@@ -215,6 +217,7 @@ void Shielder::ShieldDraw(Game& g) {
 		}
 		gr = SetDrawBlendMode(DX_BLENDMODE_ALPHA, a);
 		Sh.SetPosition(x, y);
+		Sh.SetFlip(_isFlip);
 		Sh.Draw(g);
 		gr = SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
@@ -247,26 +250,32 @@ void Shielder::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
 		if (_isFlip == false) {
-			PrivateCollision spc(_x + _hit_x -PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
-			spc.SetColor(std::make_tuple(0, 255, 0));
-			spc.Draw(g);
+			PrivateCollision pc(_x + _hit_x -PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
+			PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
+			pc.SetColor(std::make_tuple(0, 255, 0));
+			bpc.SetColor(std::make_tuple(0, 128, 128));
+			pc.Draw(g);
+			bpc.Draw(g);
 		}
 		if (_isFlip == true) {
-			PrivateCollision spc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
-			spc.SetColor(std::make_tuple(0, 255, 0));
-			spc.Draw(g);
+			PrivateCollision pc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
+			PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
+			pc.SetColor(std::make_tuple(0, 255, 0));
+			bpc.SetColor(std::make_tuple(0, 128, 128));
+			pc.Draw(g);
+			bpc.Draw(g);
 		}
 		break;
 	case ENEMYSTATE::COMING:
 		if (_isFlip == false) {
-			PrivateCollision scc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
-			scc.SetColor(std::make_tuple(2555, 255, 0));
-			scc.Draw(g);
+			PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			cc.SetColor(std::make_tuple(2555, 255, 0));
+			cc.Draw(g);
 		}
 		if (_isFlip == true) {
-			PrivateCollision scc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
-			scc.SetColor(std::make_tuple(255, 255, 0));
-			scc.Draw(g);
+			PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
+			cc.SetColor(std::make_tuple(255, 255, 0));
+			cc.Draw(g);
 		}
 		break;
 	}

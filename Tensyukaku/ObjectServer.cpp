@@ -5,12 +5,12 @@
 #include "DxLib.h"
 #include "ObjectServer.h"
 #include "Game.h"
+#include <algorithm>
 
 ObjectServer::ObjectServer()
 {
 	_vObject.clear();
 	_vAdd.clear();
-	_vBAdd.clear();
 	_vDel.clear();
 }
 
@@ -35,11 +35,6 @@ void	ObjectServer::Add(ObjectBase* obj)
 	_vAdd.push_back(obj);
 }
 
-// BAddリストにオブジェクトを登録する
-void	ObjectServer::BAdd(ObjectBase* obj)
-{
-	_vBAdd.push_back(obj);
-}
 // Delリストにオブジェクトを登録する
 void	ObjectServer::Del(ObjectBase* obj)
 {
@@ -49,21 +44,22 @@ void	ObjectServer::Del(ObjectBase* obj)
 // Addリストのオブジェクトを追加する
 void	ObjectServer::AddListObjects()
 {
+
 	for (auto iteAdd = _vAdd.begin(); iteAdd != _vAdd.end(); iteAdd++)
 	{
-		_vObject.push_back((*iteAdd));
+		auto sort = (*iteAdd)->GetSort();
+		auto ret = std::find_if(_vObject.begin(), _vObject.end(),
+			[sort](auto&& obj) { return obj->GetSort()>sort; });
+		if (ret == _vObject.end()) {
+			_vObject.push_back((*iteAdd));
+		}
+		else {
+			_vObject.insert(ret, (*iteAdd));
+		}
 	}
 	_vAdd.clear();
 }
-// BAddリストのオブジェクトを追加する
-void	ObjectServer::BAddListObjects()
-{
-	for (auto iteAdd = _vBAdd.begin(); iteAdd != _vBAdd.end(); iteAdd++)
-	{
-		_vObject.insert(_vObject.begin(),(*iteAdd));
-	}
-	_vBAdd.clear();
-}
+
 // Delリストのオブジェクトを削除する
 void	ObjectServer::DelListObjects()
 {
@@ -89,8 +85,6 @@ void	ObjectServer::DelListObjects()
 // Process()を登録順に回す
 void	ObjectServer::Process(Game& g)
 {
-	//BAddリストにあるオブジェクトをリストに登録する
-	BAddListObjects();
 	// Addリストにあるオブジェクトをリストに登録する
 	AddListObjects();
 

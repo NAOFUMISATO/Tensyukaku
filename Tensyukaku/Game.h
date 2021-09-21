@@ -22,7 +22,7 @@ public:
 	void	Input();		// フレーム処理：入力
 	void	Process();		// フレーム処理：計算
 	void	Draw();		// フレーム処理：描画
-	
+
 
 	//ゲッター関数
 	int		GetKey() { return _gKey; }
@@ -34,7 +34,6 @@ public:
 	int		GetcvX() { return _cvX; }
 	int		GetcvY() { return _cvY; }
 	int		GetCPointFlag() { return _CPoint_Flag; }
-	int		GetVpal() { return _Vpal; }
 	MapChip* GetChip() { return _mapChip; }
 	ModeServer* GetMS() { return _serverMode; }
 	ObjectServer* GetOS() { return &_objServer; }
@@ -47,10 +46,23 @@ public:
 	void	SetmapH(int mapH) { _mapH = mapH; }
 	void	SetChip(MapChip* map) { _mapChip = map; }
 	void	SetCPointFlag(bool cpointflag) { _CPoint_Flag = cpointflag; }
-	void	SetVpal(int vpal) { _Vpal = vpal; }
+
+	//音源ボリューム調整関数
+	int GetTitleVpal() { return _Vpal["Title"]; }
+	void	SetTitleVpal(int vpal) { _Vpal["Title"] = vpal; }
+	int GetMainVpal() { return _Vpal["Main"]; }
+	void	SetMainVpal(int vpal) { _Vpal["Main"] = vpal; }
+	int GetBossVpal() { return _Vpal["Boss"]; }
+	void	SetBossVpal(int vpal) { _Vpal["Boss"] = vpal; }
+	int GetFlameVpal() { return _Vpal["Flame"]; }
+	void	SetFlameVpal(int vpal) { _Vpal["Flame"] = vpal; }
+
+	
 
 private:
-	void	LoadSound();	//音源読み込み
+	void		LoadBgm();	//BGM読み込み
+	void		VolumeInit();//BGMのボリューム初期値
+	void		VolumeChange();//BGMのボリューム変更関数
 
 	int _gKey;			// キー入力の情報
 	int _gTrg;			// キー入力のトリガ情報
@@ -60,8 +72,8 @@ private:
 	int	_cvX, _cvY;		// カメラ
 	int _mapW, _mapH;	// マップ
 	bool _CPoint_Flag;	//チェックポイントフラグ
-	int	_Vpal;			//ボリュームの設定
 	std::unordered_map<std::string, int> _Bgm; //BGMマップ
+	std::unordered_map<std::string, int> _Vpal; //ボリュームマップ
 
 	
 	MapChip* _mapChip;			//マップチップ

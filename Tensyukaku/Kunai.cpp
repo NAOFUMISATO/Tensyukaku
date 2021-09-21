@@ -19,6 +19,7 @@ Kunai::~Kunai() {
 };
 
 void Kunai::Init() {
+	_Sort = 11;
 	_gx = KUNAI_GRAPHPOINT_X;
 	_gy = KUNAI_GRAPHPOINT_Y;
 	_hit_x = KUNAI_POSITION_HITX;

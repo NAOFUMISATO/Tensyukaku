@@ -26,6 +26,7 @@ PoisonNinja::~PoisonNinja() {
 }
 
 void PoisonNinja::Init() {
+	_Sort = 10;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_Alpha = 0;
@@ -92,15 +93,21 @@ void PoisonNinja::Patrol(Game& g) {
 	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
 	_Anime["Patrol"] = (_Cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
 	if (frame == PATROL_TURNFRAME) {
-		_isFlip = true;
+		if (_isFlip == false) {
+			_isFlip = true;
+		}
+		else { _isFlip = false; }
 	}
 	if (frame == PATROL_TURNFRAME * 2) {
-		_isFlip = false;
+		if (_isFlip == false) {
+			_isFlip = true;
+		}
+		else { _isFlip = false; }
 		_Action_Cnt = _Cnt;
 	}
 	if (_isFlip == false) {
-		//毒液忍者の索敵範囲判定オブジェクトの生成
-		PrivateCollision spc(_x + _hit_x - PATROL_WIDTH, _y , PATROL_WIDTH, PATROL_HEIGHT);
+		//索敵範囲判定オブジェクトの生成
+		PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y , PATROL_WIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -108,7 +115,7 @@ void PoisonNinja::Patrol(Game& g) {
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(spc) == true)
+				if ((*ite)->IsHit(pc) == true)
 				{
 					_State = ENEMYSTATE::POISING;
 					_Action_Cnt = _Cnt;
@@ -118,7 +125,7 @@ void PoisonNinja::Patrol(Game& g) {
 	}
 	if (_isFlip == true) {
 		//毒液忍者の索敵範囲判定オブジェクトの生成
-		PrivateCollision spc(_x - _hit_x, _y, PATROL_WIDTH, PATROL_HEIGHT);
+		PrivateCollision pc(_x - _hit_x, _y, PATROL_WIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 		{
@@ -126,7 +133,7 @@ void PoisonNinja::Patrol(Game& g) {
 			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 			{
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
-				if ((*ite)->IsHit(spc) == true)
+				if ((*ite)->IsHit(pc) == true)
 				{
 					_State = ENEMYSTATE::POISING;
 					_Action_Cnt = _Cnt;
@@ -154,7 +161,7 @@ void PoisonNinja::Poising(Game& g) {
 		}
 	}
 	if (_isFlip == false) {
-		PrivateCollision pacc(_x + _hit_x - POISINGCANCEL_WIDTH, _y, POISINGCANCEL_WIDTH, POISINGCANCEL_HEIGHT);
+		PrivateCollision acc(_x + _hit_x - POISINGCANCEL_WIDTH, _y, POISINGCANCEL_WIDTH, POISINGCANCEL_HEIGHT);
 		if (frame == POISING_ALLFRAME) {
 			//毒液垂らし中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -163,7 +170,7 @@ void PoisonNinja::Poising(Game& g) {
 				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 				{
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
-					if ((*ite)->IsHit(pacc) == false)
+					if ((*ite)->IsHit(acc) == false)
 					{
 						_State = ENEMYSTATE::PATROL;
 						_Action_Cnt = _Cnt;
@@ -174,7 +181,7 @@ void PoisonNinja::Poising(Game& g) {
 		}
 	}
 	if (_isFlip == true) {
-		PrivateCollision pacc(_x - _hit_x, _y - _hit_h, POISINGCANCEL_WIDTH, POISINGCANCEL_HEIGHT);
+		PrivateCollision acc(_x - _hit_x, _y - _hit_h, POISINGCANCEL_WIDTH, POISINGCANCEL_HEIGHT);
 		if (frame == POISING_ALLFRAME) {
 			//毒液垂らし中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -183,7 +190,7 @@ void PoisonNinja::Poising(Game& g) {
 				if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 				{
 					// 毒液垂らし中止範囲オブジェクトとプレイヤーの当たり判定を行う
-					if ((*ite)->IsHit(pacc) == false)
+					if ((*ite)->IsHit(acc) == false)
 					{
 						_State = ENEMYSTATE::PATROL;
 						_Action_Cnt = _Cnt;

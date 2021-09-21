@@ -5,7 +5,7 @@
 */
 class Shielder :public EnemyBase {
 public:
-	Shielder(int x, int y, bool flip);
+	Shielder( int x, int y, bool flip);
 	~Shielder();
 	virtual ENEMYTYPE	GetEneType() { return ENEMYTYPE::SHIELDER; }
 
@@ -21,7 +21,7 @@ private:
 	void	GuardAttack(Game& g);	//‚‚¿UŒ‚ó‘Ô‚Ìˆ—
 	void	GuardBreak(Game& g);	//‚•ö‚µó‘Ô‚Ìˆ—
 	void	Dead(Game& g);			//€–Só‘Ô‚Ìˆ—
-	void	DamageJudge(Game& g);	//”íƒ_ƒ”»’è&‰Ÿ‚µo‚µ‚Ìˆ—
+	void	HitJudge(Game& g);	//”íƒ_ƒ”»’è&‰Ÿ‚µo‚µ‚Ìˆ—
 	void	ShieldDraw(Game& g);	//‚‚Ì•`‰æŠÖ”
 	void	LoadActionGraph();		//”EÒ‚Ì‰æ‘œ“Ç‚İ‚İŠÖ”
 	void	LoadActionSE();			//”EÒ‚ÌSE“Ç‚İ‚İŠÖ”
@@ -48,6 +48,7 @@ namespace SInfo {
 	
 	/*----------Šeƒ‚[ƒVƒ‡ƒ“‚Ì“–‚½‚è”»’èŠÖŒW----------*/
 	constexpr auto PATROL_WIDTH = 500;			//õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
+	constexpr auto PATROL_BACKWIDTH = 300;	//”w•”õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
 	constexpr auto PATROL_HEIGHT = 100;			//õ“G”ÍˆÍ“–‚½‚è”»’èc•
 	constexpr auto COMING_WIDTH = 250;			//UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’è‰¡•
 	constexpr auto COMING_HEIGHT = 100;			//UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èc•

@@ -14,7 +14,7 @@ public:
 
 	//“G‚ÌŽí—Þ—ñ‹“
 	enum class ENEMYTYPE {
-		BUSHI, NINJA, SHIELDER
+		BUSHI, BUSYO,NINJA,ZYOUNIN, LANCER, SHIELDER
 	};
 	virtual ENEMYTYPE GetEneType() = 0;
 

@@ -10,7 +10,6 @@
 // 起動時に1回だけ実行される
 Game::Game()
 {
-
 	_gKey = 0;
 	_gTrg = 0;
 	_Xbuf = 0;
@@ -20,7 +19,6 @@ Game::Game()
 	_cvY = 0;
 	_mapW = 0;
 	_mapH = 0 ;
-	_Vpal = 255;
 	// モードサーバの初期化
 	_serverMode = new ModeServer(*this);
 	// タイトルモードを生成し、モードサーバに登録する
@@ -28,8 +26,12 @@ Game::Game()
 	_serverMode->Add(modeTitle, 0, "Title");
 	//マップチップ指定
 	_mapChip = new MapChip("res/Map/", "Tensyukaku");
-	//音源読み込み
-	LoadSound();
+	//BGM読み込み
+	LoadBgm();
+	//BGMのボリューム初期値
+	VolumeInit();
+	//BGMの音量調整
+	VolumeChange();
 }
 
 // アプリの解放
@@ -69,11 +71,28 @@ void Game::Draw()
 {
 	_serverMode->DrawInit();
 	_serverMode->Draw();
+	VolumeChange();
 	_serverMode->DrawFinish();
 }
-// 音源読み込み
-void Game::LoadSound() {
-	_Bgm["Main"] = ResourceServer::LoadSoundMem("bgm/MainStage.wav");
+// BGM読み込み
+void Game::LoadBgm() {
+	_Bgm["Title"] = ResourceServer::LoadSoundMem("bgm/Title.wav");
+	_Bgm["Main"] = ResourceServer::LoadSoundMem("bgm/民謡パワフル.wav");
 	_Bgm["Boss"] = ResourceServer::LoadSoundMem("bgm/BossStage.wav");
 	_Bgm["Flame"]= ResourceServer::LoadSoundMem("bgm/Flame.wav");
 }
+//BGMのボリューム初期値
+void	Game::VolumeInit() {
+	_Vpal["Title"] = 255;
+	_Vpal["Main"] = 150;
+	_Vpal["Boss"] = 100;
+	_Vpal["Flame"] = 255;
+}
+
+//BGMのボリューム変更関数
+void	Game::VolumeChange() {
+	ChangeVolumeSoundMem(_Vpal["Title"], _Bgm["Title"]);
+	ChangeVolumeSoundMem(_Vpal["Main"], _Bgm["Main"]);
+	ChangeVolumeSoundMem(_Vpal["Boss"], _Bgm["Boss"]);
+	ChangeVolumeSoundMem(_Vpal["Flame"], _Bgm["Flame"]);
+};

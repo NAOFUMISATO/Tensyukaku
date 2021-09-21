@@ -9,7 +9,7 @@
 namespace {
 	constexpr auto RED = 0;
 	constexpr auto GREEN = 1;
-	constexpr auto Blue = 2;
+	constexpr auto BLUE = 2;
 }
 //ƒ^ƒCƒgƒ‹ƒƒS
 TitleLogo::TitleLogo() {
