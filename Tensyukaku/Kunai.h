@@ -3,7 +3,7 @@
 
 class Kunai :public ObjectBase {
 public:
-	Kunai(int x,int y,bool flip);
+	Kunai(int x,int y,bool flip,int spd);
 	~Kunai();
 
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::KUNAI; }

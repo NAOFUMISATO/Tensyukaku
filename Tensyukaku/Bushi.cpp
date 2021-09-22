@@ -90,7 +90,6 @@ void Bushi::HitJudge(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life -= 3;
 				_Action_Cnt = _Cnt;
 				_State = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
@@ -114,6 +113,18 @@ void Bushi::HitJudge(Game& g) {
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life--;
 				if (_Life <= 0) {
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
 					_State = ENEMYSTATE::DEAD;
 				}
 				else { _State = ENEMYSTATE::DAMAGE; }

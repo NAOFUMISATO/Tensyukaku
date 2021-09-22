@@ -12,7 +12,8 @@
 	武将
 */
 using namespace BsInfo;
-Busyo::Busyo(int x, int y, bool flip)
+Busyo::Busyo(int x, int y, bool flip):
+	_noHit_Flag(false)
 {
 	_x = x;
 	_y = y;
@@ -87,34 +88,48 @@ void Busyo::HitJudge(Game& g) {
 		switch (objType) {
 		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
 			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
+			if (IsHit(*(*ite)) == true&&_noHit_Flag==false)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life -= 3;
 				_Action_Cnt = _Cnt;
-				_State = ENEMYSTATE::DEAD;
-				//居合ゲージの増加
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
-					// iteはプレイヤか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+				if (_Life <= 0) {
+					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 					{
-						auto ig = (*ite)->GetGauge();
-						if (ig < PLAYER_IAI_MAX) {
-							(*ite)->SetGauge(ig += 1);
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
 						}
 					}
-				}
+				}else { _State = ENEMYSTATE::DAMAGE; }
 			}
 			break;
 		case ObjectBase::OBJECTTYPE::LOWATTACK:
 			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
+			if (IsHit(*(*ite)) == true && _noHit_Flag == false)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_Life--;
 				if (_Life <= 0) {
 					_State = ENEMYSTATE::DEAD;
+					//居合ゲージの増加
+					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+					{
+						// iteはプレイヤか？
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+						{
+							auto ig = (*ite)->GetGauge();
+							if (ig < PLAYER_IAI_MAX) {
+								(*ite)->SetGauge(ig += 1);
+							}
+						}
+					}
 				}
 				else { _State = ENEMYSTATE::DAMAGE; }
 				_Action_Cnt = _Cnt;

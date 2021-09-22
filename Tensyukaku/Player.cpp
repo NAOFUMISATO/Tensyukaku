@@ -174,7 +174,9 @@ void	Player::HitJudge(Game& g) {
 		OBJECTTYPE objType = (*ite)->GetObjType();
 		switch (objType) {
 		case ObjectBase::OBJECTTYPE::BUSHIATTACK:
+		case ObjectBase::OBJECTTYPE::BUSYOATTACK:
 		case ObjectBase::OBJECTTYPE::NINJAATTACK:
+		case ObjectBase::OBJECTTYPE::ZYOUNINATTACK:
 		case ObjectBase::OBJECTTYPE::SHIELDERATTACK:
 		case ObjectBase::OBJECTTYPE::LANCERATTACK:
 		case ObjectBase::OBJECTTYPE::POISON:

@@ -6,10 +6,11 @@
 #include "ObjectBase.h"
 
 using namespace NInfo;
-Kunai::Kunai(int x,int y, bool flip):_Repel_Flag(false) {
+Kunai::Kunai(int x,int y, bool flip,int spd):_Repel_Flag(false) {
 	_x = x;
 	_y = y;
 	_isFlip = flip;
+	_Spd = spd;
 	Init();
 	_GrAll["Kunai"].resize(2);
 	ResourceServer::LoadDivGraph(KUNAI_GRAPHNAME, 2, 2, 1, 120, 120, _GrAll["Kunai"].data());
@@ -26,7 +27,6 @@ void Kunai::Init() {
 	_hit_y = KUNAI_POSITION_HITY;
 	_hit_w = KUNAI_COLLISION_WIDTH;
 	_hit_h = KUNAI_COLLISION_HEIGHT;
-	_Spd = KUNAI_SPEED;
 	_Alpha =255;
 	_drg.second = 0.0;
 }

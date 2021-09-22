@@ -63,7 +63,7 @@ namespace ZInfo {
 	constexpr auto GRAPH_WIDTH = 630;			//1枚当たりの画像サイズ（横）
 	constexpr auto GRAPH_HEIGHT = 630;			//1枚当たりの画像サイズ（縦）
 	//出現
-	constexpr auto APPEAR_GRAPHNAME = "res/Ninja/N_Stand.png";	//画像ファイル名
+	constexpr auto APPEAR_GRAPHNAME = "res/Zyounin/Z_Stand.png";	//画像ファイル名
 	constexpr auto APPEAR_ANIMEMAX = 1;			//全ての画像枚数
 	constexpr auto APPEAR_WIDTHCOUNT = 1;		//横の画像枚数
 	constexpr auto APPEAR_HEIGHTCOUNT = 1;		//縦の画像枚数
@@ -71,14 +71,14 @@ namespace ZInfo {
 	constexpr auto FADEIN_SPEED = 4;			//アッパー時のフェードインスピード
 	constexpr auto APPEAR_ALLFRAME = 60;		//出現全フレーム
 	//巡回
-	constexpr auto PATROL_GRAPHNAME = "res/Ninja/N_Stand.png";	//画像ファイル名
+	constexpr auto PATROL_GRAPHNAME = "res/Zyounin/Z_Stand.png";	//画像ファイル名
 	constexpr auto PATROL_ANIMEMAX = 1;			//全ての画像枚数
 	constexpr auto PATROL_WIDTHCOUNT = 1;		//横の画像枚数
 	constexpr auto PATROL_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_PATROL = 5;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto PATROL_TURNFRAME = 120;		//巡回の振り向きフレーム
 	//追跡
-	constexpr auto COMING_GRAPHNAME = "res/Ninja/N_Walk.png";	//画像ファイル名
+	constexpr auto COMING_GRAPHNAME = "res/Zyounin/Z_Walk.png";	//画像ファイル名
 	constexpr auto COMING_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto COMING_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto COMING_HEIGHTCOUNT = 1;		//縦の画像枚数	
@@ -86,9 +86,9 @@ namespace ZInfo {
 	constexpr auto COMING_ALLFRAME = COMING_ANIMEMAX * ANIMESPEED_COMING;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto COMINGSPEED_UPFRAME = 20;	//スピードアップフレーム
 	constexpr auto COMINGSPEED_DOWNFRAME = 30;	//スピードダウンフレーム
-	constexpr auto COMING_UPSPEED = 15;	//スピードの上昇時の値
+	constexpr auto COMING_UPSPEED = 20;	//スピードの上昇時の値
 	//攻撃
-	constexpr auto ATTACK_GRAPHNAME = "res/Ninja/N_Attack.png";	//画像ファイル名
+	constexpr auto ATTACK_GRAPHNAME = "res/Zyounin/Z_Attack.png";	//画像ファイル名
 	constexpr auto ATTACK_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto ATTACK_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto ATTACK_HEIGHTCOUNT = 1;		//縦の画像枚数
@@ -98,16 +98,19 @@ namespace ZInfo {
 	constexpr auto ATTACK_BEGINFRAME = 20;		//攻撃判定発生フレーム
 	constexpr auto ATTACK_ENDFRAME = 10;		//攻撃判定終了フレーム
 	//クナイ投げ
-	constexpr auto THROW_GRAPHNAME = "res/Ninja/N_Throw.png";	//画像ファイル名
+	constexpr auto THROW_GRAPHNAME = "res/Zyounin/Z_Throw.png";	//画像ファイル名
 	constexpr auto THROW_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto THROW_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto THROW_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_THROW = 10;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto THROW_ANIMEFRAME = THROW_ANIMEMAX * ANIMESPEED_THROW;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
-	constexpr auto THROW_ALLFRAME = 160;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
-	constexpr auto KUNAI_RELEASEFRAME = 20;		//攻撃判定発生フレーム
+	constexpr auto THROW_ALLFRAME = 150;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
+	constexpr auto KUNAI_RELEASEFRAME = 20;		//クナイ投げフレーム
+	constexpr auto KUNAI_RELEASE2FRAME = 39;		//クナイ投げフレーム
+	constexpr auto KUNAI_SPEED=11;								//クナイの速さ
+
 	//死亡
-	constexpr auto DEAD_GRAPHNAME = "res/Ninja/N_Dead.png";		//画像ファイル名
+	constexpr auto DEAD_GRAPHNAME = "res/Zyounin/Z_Dead.png";		//画像ファイル名
 	constexpr auto DEAD_ANIMEMAX = 3;			//全ての画像枚数
 	constexpr auto DEAD_WIDTHCOUNT = 3;			//横の画像枚数
 	constexpr auto DEAD_HEIGHTCOUNT = 1;		//縦の画像枚数
@@ -124,11 +127,8 @@ namespace ZInfo {
 	constexpr auto KUNAI_COLLISION_WIDTH = 90;	//当たり判定横幅
 	constexpr auto KUNAI_COLLISION_HEIGHT = 40;	//当たり判定縦幅
 
-	/*----------パラメーター関係----------*/
-	constexpr auto KUNAI_SPEED = 10;			//クナイのスピード
-
 	/*----------画像読み込み&アニメーション関係----------*/
-	constexpr auto KUNAI_GRAPHNAME = "res/Ninja/Kunai.png";	//画像ファイル名
+	constexpr auto KUNAI_GRAPHNAME = "res/Zyounin/Kunai.png";	//画像ファイル名
 	constexpr auto REPEL_FRAME = 60;			//弾かれてから消滅までのフレーム
 	constexpr auto KUNAI_ALPHACHANGE = 4;		//弾かれた後の1フレーム当たりの透明度の減少量
 	constexpr auto KUNAI_ANGLECHANGE = 0.1;		//弾かれた後の1フレーム当たりの角度の変更量

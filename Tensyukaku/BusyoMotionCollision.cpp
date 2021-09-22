@@ -36,7 +36,8 @@ void BusyoAttackCollision::Init() {
 
 void BusyoAttackCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == ATTACK_ENDFRAME) {
+	auto frame = _Cnt - _Action_Cnt;
+	if (frame == ATTACK_ENDFRAME||frame==ATTACK_END2FRAME) {
 		g.GetOS()->Del(this);
 	}
 }

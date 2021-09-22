@@ -43,7 +43,7 @@ void Busyo::Patrol(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 	if (_isFlip == false) {
-		//武士の索敵範囲判定オブジェクトの生成
+		//索敵範囲判定オブジェクトの生成
 		PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 		PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
@@ -79,7 +79,7 @@ void Busyo::Patrol(Game& g) {
 		}
 	}
 	if (_isFlip == true) {
-		//武士の索敵範囲判定オブジェクトの生成
+		//索敵範囲判定オブジェクトの生成
 		PrivateCollision pc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 		PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
@@ -119,10 +119,11 @@ void Busyo::Patrol(Game& g) {
 void Busyo::Coming(Game& g) {
 	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
 	_Anime["Coming"] = (_Cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+	_noHit_Flag = false;
 	if (_isFlip == false) {
 		_x -= _Spd;
 		g.GetChip()->IsHit(*this, -1, 0);
-		//武士の攻撃発生範囲判定オブジェクトの生成
+		//撃発生範囲判定オブジェクトの生成
 		PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -139,7 +140,7 @@ void Busyo::Coming(Game& g) {
 				}
 			}
 		}
-		//武士の追跡中止範囲判定オブジェクトの生成
+		//追跡中止範囲判定オブジェクトの生成
 		PrivateCollision ccc(_x + _hit_x - COMINGCANCEL_WIDTH, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
 		//追跡中止範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -160,7 +161,7 @@ void Busyo::Coming(Game& g) {
 	if (_isFlip == true) {
 		_x += _Spd;
 		g.GetChip()->IsHit(*this, 1, 0);
-		//武士の攻撃発生範囲判定オブジェクトの生成
+		//攻撃発生範囲判定オブジェクトの生成
 		PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -178,7 +179,7 @@ void Busyo::Coming(Game& g) {
 				}
 			}
 		}
-		//武士の追跡中止範囲判定オブジェクトの生成
+		//追跡中止範囲判定オブジェクトの生成
 		PrivateCollision ccc(_x - _hit_x, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
 		//追跡中止範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -205,9 +206,6 @@ void Busyo::Attack(Game& g) {
 		_Anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
 	}
 	if (_isFlip == false) {
-		if (frame == STEP_BEGINFRAME) {
-			_x -= ATTACK_STEP;
-		}
 		PrivateCollision acc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
@@ -227,9 +225,6 @@ void Busyo::Attack(Game& g) {
 		}
 	}
 	if (_isFlip == true) {
-		if (frame == STEP_BEGINFRAME) {
-			_x += ATTACK_STEP;
-		}
 		PrivateCollision acc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
@@ -248,15 +243,17 @@ void Busyo::Attack(Game& g) {
 			}
 		}
 	}
-	if (frame == ATTACK_BEGINFRAME) {
+	if (frame == ATTACK_BEGINFRAME || frame == ATTACK_BEGIN2FRAME) {
 		if (_isFlip == false) {
-			//武士の攻撃判定オブジェクトの生成
+			_x -= ATTACK_STEP;
+			//攻撃判定オブジェクトの生成
 			auto bac = new BusyoAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
 			// オブジェクトサーバ-に武士の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(bac);
 		};
 		if (_isFlip == true) {
-			//武士の攻撃判定オブジェクトの生成
+			_x += ATTACK_STEP;
+			//攻撃判定オブジェクトの生成
 			auto bac = new BusyoAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に武士の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(bac);
@@ -266,6 +263,7 @@ void Busyo::Attack(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 }
+
 /*----------被ダメ----------*/
 void Busyo::Damage(Game& g) {
 	auto frame = _Cnt - _Action_Cnt;
@@ -274,7 +272,8 @@ void Busyo::Damage(Game& g) {
 		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
 	}
 	if (frame == DAMAGE_ALLFRAME) {
-		_State = ENEMYSTATE::COMING;
+		_Action_Cnt = _Cnt;
+		_State = ENEMYSTATE::ATTACK;
 		_Anime["Damage"] = 0;
 	}
 }

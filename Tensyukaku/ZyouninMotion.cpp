@@ -84,7 +84,7 @@ void Zyounin::Patrol(Game& g) {
 	}
 
 	if (_isFlip == true) {
-		//忍者の索敵範囲判定オブジェクトの生成
+		//索敵範囲判定オブジェクトの生成
 		PrivateCollision pc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 		PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 		//索敵範囲オブジェクトはプレイヤーに当たったか？
@@ -143,7 +143,7 @@ void Zyounin::Coming(Game& g) {
 
 		_x -= _Spd;
 		g.GetChip()->IsHit(*this, -1, 0);
-		//忍者の攻撃発生範囲判定オブジェクトの生成
+		//攻撃発生範囲判定オブジェクトの生成
 		PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -160,7 +160,7 @@ void Zyounin::Coming(Game& g) {
 				}
 			}
 		}
-		//忍者の追跡中止範囲判定オブジェクトの生成
+		//追跡中止範囲判定オブジェクトの生成
 		PrivateCollision ccc(_x + _hit_x - COMINGCANCEL_WIDTH, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
 		//追跡中止範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -181,7 +181,7 @@ void Zyounin::Coming(Game& g) {
 	if (_isFlip == true) {
 		_x += _Spd;
 		g.GetChip()->IsHit(*this, 1, 0);
-		//忍者の攻撃発生範囲判定オブジェクトの生成
+		//攻撃発生範囲判定オブジェクトの生成
 		PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 		//攻撃発生範囲判定オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -198,7 +198,7 @@ void Zyounin::Coming(Game& g) {
 				}
 			}
 		}
-		//忍者の追跡中止範囲判定オブジェクトの生成
+		//追跡中止範囲判定オブジェクトの生成
 		PrivateCollision ccc(_x - _hit_x, _y - _hit_h, COMINGCANCEL_WIDTH, COMINGCANCEL_HEIGHT);
 		//追跡中止範囲オブジェクトはプレイヤーに当たったか？
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -271,13 +271,13 @@ void Zyounin::Attack(Game& g) {
 	if (frame == ATTACK_BEGINFRAME) {
 
 		if (_isFlip == false) {
-			//忍者の攻撃判定オブジェクトの生成
+			//攻撃判定オブジェクトの生成
 			auto nac = new ZyouninAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
 			// オブジェクトサーバ-に忍者の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(nac);
 		};
 		if (_isFlip == true) {
-			//忍者の攻撃判定オブジェクトの生成
+			//攻撃判定オブジェクトの生成
 			auto nac = new ZyouninAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に忍者の攻撃判定オブジェクトを追加
 			g.GetOS()->Add(nac);
@@ -296,7 +296,7 @@ void Zyounin::Throw(Game& g) {
 	}
 	if (_isFlip == false) {
 		PrivateCollision acc(_x + _hit_x - THROWCANCEL_WIDTH, _y - _hit_h, THROWCANCEL_WIDTH, THROWCANCEL_HEIGHT);
-		if (frame == THROW_ANIMEFRAME || frame == THROW_ALLFRAME) {
+		if (frame == THROW_ANIMEFRAME|| frame == THROW_ALLFRAME) {
 			if (_Kunai_Stock <= 0) {
 				_Action_Cnt = _Cnt;
 				_Anime["Throw"] = 0;
@@ -348,13 +348,29 @@ void Zyounin::Throw(Game& g) {
 		_Kunai_Stock--;
 		if (_isFlip == false) {
 			//クナイオブジェクトの生成
-			auto ku = new Kunai(_x - 110, _y - 130, false);
+			auto ku = new Kunai(_x - 110, _y - 130, false,KUNAI_SPEED);
 			// オブジェクトサーバ-にクナイオブジェクトを追加
 			g.GetOS()->Add(ku);
 		};
 		if (_isFlip == true) {
 			//クナイオブジェクトの生成
-			auto ku = new Kunai(_x + 110, _y - 130, true);
+			auto ku = new Kunai(_x + 110, _y - 130, true, KUNAI_SPEED);
+			// オブジェクトサーバ-にクナイオブジェクトを追加
+			g.GetOS()->Add(ku);
+
+		}
+	}
+	if (frame == KUNAI_RELEASE2FRAME) {
+		_Kunai_Stock--;
+		if (_isFlip == false) {
+			//クナイオブジェクトの生成
+			auto ku = new Kunai(_x - 110, _y - 130, false, KUNAI_SPEED);
+			// オブジェクトサーバ-にクナイオブジェクトを追加
+			g.GetOS()->Add(ku);
+		};
+		if (_isFlip == true) {
+			//クナイオブジェクトの生成
+			auto ku = new Kunai(_x + 110, _y - 130, true, KUNAI_SPEED);
 			// オブジェクトサーバ-にクナイオブジェクトを追加
 			g.GetOS()->Add(ku);
 

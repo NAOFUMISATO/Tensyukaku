@@ -348,13 +348,13 @@ void Ninja::Throw(Game& g) {
 		_Kunai_Stock--;
 		if (_isFlip == false) {
 			//クナイオブジェクトの生成
-			auto ku = new Kunai(_x -110, _y -130,false);
+			auto ku = new Kunai(_x -110, _y -130,false, KUNAI_SPEED);
 			// オブジェクトサーバ-にクナイオブジェクトを追加
 			g.GetOS()->Add(ku);
 		};
 		if (_isFlip == true) {
 			//クナイオブジェクトの生成
-			auto ku = new Kunai(_x + 110, _y - 130, true);
+			auto ku = new Kunai(_x + 110, _y - 130, true, KUNAI_SPEED);
 			// オブジェクトサーバ-にクナイオブジェクトを追加
 			g.GetOS()->Add(ku);
 

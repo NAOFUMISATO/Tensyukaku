@@ -98,7 +98,7 @@ namespace BInfo {
 	constexpr auto DAMAGE_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_DAMAGE = 15;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto DAMAGE_ANIMEFRAME = DAMAGE_ANIMEMAX * ANIMESPEED_DAMAGE;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
-	constexpr auto DAMAGE_ALLFRAME = 55;		//被ダメ全フレーム
+	constexpr auto DAMAGE_ALLFRAME = 45;		//被ダメ全フレーム
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Bushi/B_Dead.png";		//画像ファイル名
 	constexpr auto DEAD_ANIMEMAX = 3;			//全ての画像枚数

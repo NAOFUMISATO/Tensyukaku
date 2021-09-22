@@ -1,7 +1,9 @@
 #include "SpawnBlock.h"
 #include "Game.h"
 #include "Bushi.h"
+#include "Busyo.h"
 #include "Ninja.h"
+#include "Zyounin.h"
 #include "Shielder.h"
 #include "Lancer.h"
 #include "PoisonNinja.h"
@@ -27,7 +29,7 @@ void Spawn1A::Process(Game& g) {
 		{
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
-				auto bu1 = new Bushi(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
+				auto bu1 = new Busyo(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
 				g.GetOS()->Add(bu1);
 				auto bu2 = new Lancer(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
 				g.GetOS()->Add(bu2);
@@ -55,7 +57,7 @@ void Spawn1A::Process(Game& g) {
 				g.GetOS()->Add(bu15);
 				auto bu16 = new Bushi(SPAWN1A_BUSHI16_X, SPAWN1A_BUSHI16_Y, SPAWN1A_BUSHI16_FLIP);
 				g.GetOS()->Add(bu16);
-				auto ni1 = new Ninja(SPAWN1A_NINJA1_X, SPAWN1A_NINJA1_Y, SPAWN1A_NINJA1_FLIP, SPAWN1A_NINJA1_KUNAI);
+				auto ni1 = new Zyounin(SPAWN1A_NINJA1_X, SPAWN1A_NINJA1_Y, SPAWN1A_NINJA1_FLIP,6/*SPAWN1A_NINJA1_KUNAI*/);
 				g.GetOS()->Add(ni1);
 				auto ni3 = new Ninja(SPAWN1A_NINJA2_X, SPAWN1A_NINJA2_Y, SPAWN1A_NINJA2_FLIP, SPAWN1A_NINJA2_KUNAI);
 				g.GetOS()->Add(ni3);

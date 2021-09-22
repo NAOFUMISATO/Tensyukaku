@@ -38,7 +38,7 @@ public:
 	ModeServer* GetMS() { return _serverMode; }
 	ObjectServer* GetOS() { return &_objServer; }
 	std::unordered_map<std::string, int> GetBgm() { return _Bgm; }
-
+	std::unordered_map<std::string, int> GetVpal() { return _Vpal; }
 	//セッター関数
 	void	SetcvX(int cvX) { _cvX = cvX; }
 	void	SetcvY(int cvY) { _cvY = cvY; }
@@ -46,19 +46,7 @@ public:
 	void	SetmapH(int mapH) { _mapH = mapH; }
 	void	SetChip(MapChip* map) { _mapChip = map; }
 	void	SetCPointFlag(bool cpointflag) { _CPoint_Flag = cpointflag; }
-
-	//音源ボリューム調整関数
-	int GetTitleVpal() { return _Vpal["Title"]; }
-	void	SetTitleVpal(int vpal) { _Vpal["Title"] = vpal; }
-	int GetMainVpal() { return _Vpal["Main"]; }
-	void	SetMainVpal(int vpal) { _Vpal["Main"] = vpal; }
-	int GetBossVpal() { return _Vpal["Boss"]; }
-	void	SetBossVpal(int vpal) { _Vpal["Boss"] = vpal; }
-	int GetFlameVpal() { return _Vpal["Flame"]; }
-	void	SetFlameVpal(int vpal) { _Vpal["Flame"] = vpal; }
-
-	
-
+	void   SetVpal(std::unordered_map<std::string, int> vpal) { _Vpal = vpal; }
 private:
 	void		LoadBgm();	//BGM読み込み
 	void		VolumeInit();//BGMのボリューム初期値

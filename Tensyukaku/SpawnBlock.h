@@ -178,8 +178,8 @@ namespace SpaInfo {
 	constexpr auto  SPAWN1A_SHIEL6_X = 4700;	constexpr auto  SPAWN1A_SHIEL6_Y = 2520;	constexpr auto  SPAWN1A_SHIEL6_FLIP = true;		//èÇï∫6
 	constexpr auto  SPAWN1A_POIJA1_X = 3500;	constexpr auto  SPAWN1A_POIJA1_Y = 6320;	constexpr auto  SPAWN1A_POIJA1_FLIP = true;		//ì≈âtîEé“1
 	constexpr auto  SPAWN1A_POIJA2_X = 3000;	constexpr auto  SPAWN1A_POIJA2_Y = 6320;	constexpr auto  SPAWN1A_POIJA2_FLIP = false;	//ì≈âtîEé“2
-	constexpr auto  SPAWN1A_POIJA3_X = 400;		constexpr auto  SPAWN1A_POIJA3_Y = 5560;	constexpr auto  SPAWN1A_POIJA3_FLIP = true;		//ì≈âtîEé“3
-	constexpr auto  SPAWN1A_POIJA4_X = 700;		constexpr auto  SPAWN1A_POIJA4_Y = 5560;	constexpr auto  SPAWN1A_POIJA4_FLIP = false;	//ì≈âtîEé“4
+	constexpr auto  SPAWN1A_POIJA3_X = 400;	constexpr auto  SPAWN1A_POIJA3_Y = 5560;	constexpr auto  SPAWN1A_POIJA3_FLIP = true;		//ì≈âtîEé“3
+	constexpr auto  SPAWN1A_POIJA4_X = 700;	constexpr auto  SPAWN1A_POIJA4_Y = 5560;	constexpr auto  SPAWN1A_POIJA4_FLIP = false;	//ì≈âtîEé“4
 	constexpr auto  SPAWN1A_POIJA5_X = 1000;	constexpr auto  SPAWN1A_POIJA5_Y = 5560;	constexpr auto  SPAWN1A_POIJA5_FLIP = true;		//ì≈âtîEé“5
 	constexpr auto  SPAWN1A_POIJA6_X = 1300;	constexpr auto  SPAWN1A_POIJA6_Y = 5560;	constexpr auto  SPAWN1A_POIJA6_FLIP = false;	//ì≈âtîEé“6
 	constexpr auto  SPAWN1A_POIJA7_X = 1600;	constexpr auto  SPAWN1A_POIJA7_Y = 5560;	constexpr auto  SPAWN1A_POIJA7_FLIP = true;		//ì≈âtîEé“7

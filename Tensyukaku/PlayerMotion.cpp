@@ -391,12 +391,12 @@ void Player::Damage(Game& g) {
 	}
 	if (frame == DAMAGE_ALLFRAME) {
 		_Star_Cnt = _Cnt;
+		_Action_Cnt = _Cnt;
 		_noHit_Flag = false;
 		if (_Life > 0) {
 			_Star_Flag = true;
 		}
 		if (_Life <= 0) {
-			_Action_Cnt = _Cnt;
 			PlaySoundMem(_Se["Dead"], DX_PLAYTYPE_BACK, true);
 			_State=PLAYERSTATE::DEAD;
 		}
@@ -519,7 +519,9 @@ void Player::BossStairMove(Game& g) {
 void Player::BossStairUp(Game& g) {
 	_GrHandle = _GrAll["Move"][_Anime["Move"]];
 	_Anime["Move"] = (_Cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
-	g.SetMainVpal(g.GetMainVpal()-1);
+	auto vpal = g.GetVpal();
+	vpal["Main"] -= 1;
+	g.SetVpal(vpal);
 	_Stairup_Spd = BOSSSTAIRUP_SPEED;
 	if (_StairFlip_Flag == false) {
 		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
@@ -567,8 +569,10 @@ void Player::BossEventB(Game& g) {
 	if (frame <= 120) {
 		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
 		_Anime["Idle"] = (_Cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
-		g.SetBossVpal(g.GetBossVpal()-1);
-		g.SetFlameVpal(g.GetFlameVpal() - 1);
+		auto vpal = g.GetVpal();
+		vpal["Boss"] -= 1;
+		vpal["Flame"] -= 1;
+		g.SetVpal(vpal);
 	}
 	if (frame == 120) {
 		StopSoundMem(g.GetBgm()["Boss"]);

@@ -30,8 +30,6 @@ Game::Game()
 	LoadBgm();
 	//BGMのボリューム初期値
 	VolumeInit();
-	//BGMの音量調整
-	VolumeChange();
 }
 
 // アプリの解放
@@ -60,6 +58,7 @@ void Game::Input()
 // フレーム処理：計算
 void Game::Process()
 {
+	VolumeChange();
 	_serverMode->ProcessInit();
 	_serverMode->Process();
 	_serverMode->ProcessFinish();
@@ -71,7 +70,6 @@ void Game::Draw()
 {
 	_serverMode->DrawInit();
 	_serverMode->Draw();
-	VolumeChange();
 	_serverMode->DrawFinish();
 }
 // BGM読み込み
@@ -85,7 +83,7 @@ void Game::LoadBgm() {
 void	Game::VolumeInit() {
 	_Vpal["Title"] = 255;
 	_Vpal["Main"] = 150;
-	_Vpal["Boss"] = 100;
+	_Vpal["Boss"] = 150;
 	_Vpal["Flame"] = 255;
 }
 

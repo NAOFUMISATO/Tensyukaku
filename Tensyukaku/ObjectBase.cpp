@@ -64,11 +64,11 @@ void ObjectBase::Draw(Game& g) {
 		DrawRotaGraph(x,y, scale, angle, _GrHandle, true, _isFlip);
 		}
 #ifdef _DEBUG
-		//int& re = std::get<RED>(_Color);
-		//int& gr = std::get<GREEN>(_Color);
-		//int& bl = std::get<BLUE>(_Color);
-		//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
-		//DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
+		int& re = std::get<RED>(_Color);
+		int& gr = std::get<GREEN>(_Color);
+		int& bl = std::get<BLUE>(_Color);
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Dalpha);		// ”¼“§–¾•`‰æw’è
+		DrawBox(x + _hit_x, y + _hit_y, x + _hit_x + _hit_w, y + _hit_y + _hit_h, GetColor(re, gr, bl), _Fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
 #endif
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æw’è
 	
