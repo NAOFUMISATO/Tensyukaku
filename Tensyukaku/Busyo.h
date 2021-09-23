@@ -88,15 +88,15 @@ namespace BsInfo {
 	constexpr auto ATTACK_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto ATTACK_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto ATTACK_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_ATTACK = 15;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_ATTACK = 14;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto ATTACK_ANIMEFRAME = ATTACK_ANIMEMAX * ANIMESPEED_ATTACK*2;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
-	constexpr auto ATTACK_ALLFRAME = 150;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
+	constexpr auto ATTACK_ALLFRAME = 142;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
 	constexpr auto ATTACK_STEP = 60;			//ステップ距離
-	constexpr auto STEP_BEGINFRAME = 15;		//ステップの開始フレーム
-	constexpr auto ATTACK_BEGINFRAME = 15;		//攻撃判定発生フレーム
-	constexpr auto ATTACK_BEGIN2FRAME = 75;		//2段目攻撃判定発生フレーム
-	constexpr auto ATTACK_ENDFRAME = 15;		//攻撃判定終了フレーム
-	constexpr auto ATTACK_END2FRAME = 90;		//2段目攻撃判定終了フレーム
+	constexpr auto STEP_BEGINFRAME = 14;		//ステップの開始フレーム
+	constexpr auto ATTACK_BEGINFRAME = 14;		//攻撃判定発生フレーム
+	constexpr auto ATTACK_BEGIN2FRAME = 70;		//2段目攻撃判定発生フレーム
+	constexpr auto ATTACK_ENDFRAME = 14;		//攻撃判定終了フレーム
+	constexpr auto ATTACK_END2FRAME = 84;		//2段目攻撃判定終了フレーム
 	//被ダメ
 	constexpr auto DAMAGE_GRAPHNAME = "res/Busyo/Bs_Damage.png";	//画像ファイル名
 	constexpr auto DAMAGE_ANIMEMAX = 3;			//全ての画像枚数

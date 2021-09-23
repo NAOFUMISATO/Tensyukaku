@@ -78,9 +78,9 @@ namespace PInfo {
 	constexpr auto CPOINT_POSITION_Y = 4040;	//チェックポイントY座標
 	constexpr auto GRAPHPOINT_X = 0;			//X位置から描画点までの差分
 	constexpr auto GRAPHPOINT_Y = -315;			//Y位置から描画点までの差分
-	constexpr auto POSITION_HITX = -45;			//描画点から当たり判定左上座標までの差分
+	constexpr auto POSITION_HITX = -60;			//描画点から当たり判定左上座標までの差分
 	constexpr auto POSITION_HITY = -135;			//描画点から当たり判定左上座標までの差分
-	constexpr auto COLLISION_WIDTH = 90;		//プレイヤーの当たり判定横幅
+	constexpr auto COLLISION_WIDTH = 120;		//プレイヤーの当たり判定横幅
 	constexpr auto COLLISION_HEIGHT = 450;		//プレイヤーの当たり判定縦幅
 	constexpr auto BACK_CAMERA_X = 50;			//背景をプレイヤ-のカメラを画面の何％に置くか（横軸）
 	constexpr auto BACK_CAMERA_Y = 93;			//背景をプレイヤ-のカメラを画面の何％に置くか（縦軸）

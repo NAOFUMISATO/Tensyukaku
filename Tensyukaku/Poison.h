@@ -64,8 +64,8 @@ namespace PoInfo {
 	constexpr auto LAND_ANIMEMAX = 3;			//全ての画像枚数
 	constexpr auto LAND_WIDTHCOUNT = 3;			//横の画像枚数
 	constexpr auto LAND_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_LAND = 30;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_LAND = 10;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto LAND_ANIMEFRAME = LAND_ANIMEMAX * ANIMESPEED_LAND;				//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto LAND_FADEOUTSPEED = 8;		//フェードスピード
-	constexpr auto LAND_ALLFRAME = 120;		//毒液の全フレーム
+	constexpr auto LAND_ALLFRAME = 60;		//毒液の全フレーム
 }

@@ -117,6 +117,7 @@ void Ninja::Patrol(Game& g) {
 									_isFlip = true;
 								}
 								else { _isFlip = false; }
+								_Action_Cnt = _Cnt;
 								_State = ENEMYSTATE::COMING;
 							}
 						}

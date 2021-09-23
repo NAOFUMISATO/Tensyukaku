@@ -152,18 +152,19 @@ namespace SpaInfo {
 	constexpr auto SPAWN1A_XPOSITION = 4000;	constexpr auto SPAWN1A_YPOSITION = 9360;	//ÉXÉ|Å[ÉìÉuÉçÉbÉN1A
 	constexpr auto  SPAWN1A_BUSHI1_X = 4840;	constexpr auto  SPAWN1A_BUSHI1_Y = 9360;	constexpr auto  SPAWN1A_BUSHI1_FLIP = false;	//ïêém1
 	constexpr auto  SPAWN1A_BUSHI2_X = 5240;	constexpr auto  SPAWN1A_BUSHI2_Y = 9360;	constexpr auto  SPAWN1A_BUSHI2_FLIP = false;	//ïêém2
-	constexpr auto  SPAWN1A_BUSHI5_X = 2300;	constexpr auto  SPAWN1A_BUSHI5_Y = 7080;	constexpr auto  SPAWN1A_BUSHI5_FLIP = false;	//ïêém5
-	constexpr auto  SPAWN1A_BUSHI6_X = 2700;	constexpr auto  SPAWN1A_BUSHI6_Y = 7080;	constexpr auto  SPAWN1A_BUSHI6_FLIP = true;		//ïêém6
-	constexpr auto  SPAWN1A_BUSHI7_X = 2500;	constexpr auto  SPAWN1A_BUSHI7_Y = 7080;	constexpr auto  SPAWN1A_BUSHI7_FLIP = true;		//ïêém7
-	constexpr auto  SPAWN1A_BUSHI8_X = 2000;	constexpr auto  SPAWN1A_BUSHI8_Y = 4040;	constexpr auto  SPAWN1A_BUSHI8_FLIP = false;	//ïêém8
-	constexpr auto  SPAWN1A_BUSHI9_X = 3000;	constexpr auto  SPAWN1A_BUSHI9_Y = 4040;	constexpr auto  SPAWN1A_BUSHI9_FLIP = false;	//ïêém9
-	constexpr auto SPAWN1A_BUSHI10_X = 4400;	constexpr auto SPAWN1A_BUSHI10_Y = 3280;	constexpr auto SPAWN1A_BUSHI10_FLIP = false;	//ïêém10
-	constexpr auto SPAWN1A_BUSHI11_X = 4200;	constexpr auto SPAWN1A_BUSHI11_Y = 3280;	constexpr auto SPAWN1A_BUSHI11_FLIP = false;	//ïêém11
-	constexpr auto SPAWN1A_BUSHI12_X = 800;		constexpr auto SPAWN1A_BUSHI12_Y = 2520;	constexpr auto SPAWN1A_BUSHI12_FLIP = false;	//ïêém12
-	constexpr auto SPAWN1A_BUSHI13_X = 3700;	constexpr auto SPAWN1A_BUSHI13_Y = 2520;	constexpr auto SPAWN1A_BUSHI13_FLIP = true;		//ïêém13
-	constexpr auto SPAWN1A_BUSHI14_X = 4300;	constexpr auto SPAWN1A_BUSHI14_Y = 2520;	constexpr auto SPAWN1A_BUSHI14_FLIP = true;		//ïêém14
-	constexpr auto SPAWN1A_BUSHI15_X = 5000;	constexpr auto SPAWN1A_BUSHI15_Y = 2520;	constexpr auto SPAWN1A_BUSHI15_FLIP = false;	//ïêém15
-	constexpr auto SPAWN1A_BUSHI16_X = 5300;	constexpr auto SPAWN1A_BUSHI16_Y = 2520;	constexpr auto SPAWN1A_BUSHI16_FLIP = false;	//ïêém16
+	constexpr auto  SPAWN1A_BUSHI3_X = 2300;	constexpr auto  SPAWN1A_BUSHI3_Y = 7080;	constexpr auto  SPAWN1A_BUSHI3_FLIP = false;	//ïêém3
+	constexpr auto  SPAWN1A_BUSHI4_X = 2700;	constexpr auto  SPAWN1A_BUSHI4_Y = 7080;	constexpr auto  SPAWN1A_BUSHI4_FLIP = true;		//ïêém4
+	constexpr auto  SPAWN1A_BUSHI5_X = 2500;	constexpr auto  SPAWN1A_BUSHI5_Y = 7080;	constexpr auto  SPAWN1A_BUSHI5_FLIP = true;		//ïêém5
+	constexpr auto  SPAWN1A_BUSHI6_X = 2000;	constexpr auto  SPAWN1A_BUSHI6_Y = 4040;	constexpr auto  SPAWN1A_BUSHI6_FLIP = false;	//ïêém6
+	constexpr auto  SPAWN1A_BUSHI7_X = 3000;	constexpr auto  SPAWN1A_BUSHI7_Y = 4040;	constexpr auto  SPAWN1A_BUSHI7_FLIP = false;	//ïêém7
+	constexpr auto SPAWN1A_BUSHI8_X = 4400;	constexpr auto SPAWN1A_BUSHI8_Y = 3280;	constexpr auto SPAWN1A_BUSHI8_FLIP = false;	//ïêém8
+	constexpr auto SPAWN1A_BUSHI9_X = 4200;	constexpr auto SPAWN1A_BUSHI9_Y = 3280;	constexpr auto SPAWN1A_BUSHI9_FLIP = false;	//ïêém9
+	constexpr auto SPAWN1A_BUSHI10_X = 800;		constexpr auto SPAWN1A_BUSHI10_Y = 2520;	constexpr auto SPAWN1A_BUSHI10_FLIP = false;	//ïêém10
+	constexpr auto SPAWN1A_BUSHI11_X = 3700;	constexpr auto SPAWN1A_BUSHI11_Y = 2520;	constexpr auto SPAWN1A_BUSHI11_FLIP = true;		//ïêém11
+	constexpr auto SPAWN1A_BUSHI12_X = 4300;	constexpr auto SPAWN1A_BUSHI12_Y = 2520;	constexpr auto SPAWN1A_BUSHI12_FLIP = true;		//ïêém12
+	constexpr auto SPAWN1A_BUSHI13_X = 5000;	constexpr auto SPAWN1A_BUSHI13_Y = 2520;	constexpr auto SPAWN1A_BUSHI13_FLIP = false;	//ïêém13
+	constexpr auto SPAWN1A_BUSHI14_X = 5300;	constexpr auto SPAWN1A_BUSHI14_Y = 2520;	constexpr auto SPAWN1A_BUSHI14_FLIP = false;	//ïêém14
+	constexpr auto SPAWN1A_BUSYO1_X = 3500;	constexpr auto SPAWN1A_BUSYO1_Y = 6320;	constexpr auto SPAWN1A_BUSYO1_FLIP = true;	//ïêè´1
 	constexpr auto  SPAWN1A_NINJA1_X = 4500;	constexpr auto  SPAWN1A_NINJA1_Y = 8600;	constexpr auto  SPAWN1A_NINJA1_FLIP = true;		constexpr auto  SPAWN1A_NINJA1_KUNAI = 0;	//îEé“1
 	constexpr auto  SPAWN1A_NINJA2_X = 4100;	constexpr auto  SPAWN1A_NINJA2_Y = 8600;	constexpr auto  SPAWN1A_NINJA2_FLIP = true;		constexpr auto  SPAWN1A_NINJA2_KUNAI = 0;	//îEé“2
 	constexpr auto  SPAWN1A_NINJA3_X = 3500;	constexpr auto  SPAWN1A_NINJA3_Y = 8600;	constexpr auto  SPAWN1A_NINJA3_FLIP = true;		constexpr auto  SPAWN1A_NINJA3_KUNAI = 2;	//îEé“3
@@ -176,14 +177,8 @@ namespace SpaInfo {
 	constexpr auto  SPAWN1A_SHIEL4_X = 3600;	constexpr auto  SPAWN1A_SHIEL4_Y = 3280;	constexpr auto  SPAWN1A_SHIEL4_FLIP = true;		//èÇï∫4
 	constexpr auto  SPAWN1A_SHIEL5_X = 1000;	constexpr auto  SPAWN1A_SHIEL5_Y = 2520;	constexpr auto  SPAWN1A_SHIEL5_FLIP = true;		//èÇï∫5
 	constexpr auto  SPAWN1A_SHIEL6_X = 4700;	constexpr auto  SPAWN1A_SHIEL6_Y = 2520;	constexpr auto  SPAWN1A_SHIEL6_FLIP = true;		//èÇï∫6
-	constexpr auto  SPAWN1A_POIJA1_X = 3500;	constexpr auto  SPAWN1A_POIJA1_Y = 6320;	constexpr auto  SPAWN1A_POIJA1_FLIP = true;		//ì≈âtîEé“1
-	constexpr auto  SPAWN1A_POIJA2_X = 3000;	constexpr auto  SPAWN1A_POIJA2_Y = 6320;	constexpr auto  SPAWN1A_POIJA2_FLIP = false;	//ì≈âtîEé“2
-	constexpr auto  SPAWN1A_POIJA3_X = 400;	constexpr auto  SPAWN1A_POIJA3_Y = 5560;	constexpr auto  SPAWN1A_POIJA3_FLIP = true;		//ì≈âtîEé“3
-	constexpr auto  SPAWN1A_POIJA4_X = 700;	constexpr auto  SPAWN1A_POIJA4_Y = 5560;	constexpr auto  SPAWN1A_POIJA4_FLIP = false;	//ì≈âtîEé“4
-	constexpr auto  SPAWN1A_POIJA5_X = 1000;	constexpr auto  SPAWN1A_POIJA5_Y = 5560;	constexpr auto  SPAWN1A_POIJA5_FLIP = true;		//ì≈âtîEé“5
-	constexpr auto  SPAWN1A_POIJA6_X = 1300;	constexpr auto  SPAWN1A_POIJA6_Y = 5560;	constexpr auto  SPAWN1A_POIJA6_FLIP = false;	//ì≈âtîEé“6
-	constexpr auto  SPAWN1A_POIJA7_X = 1600;	constexpr auto  SPAWN1A_POIJA7_Y = 5560;	constexpr auto  SPAWN1A_POIJA7_FLIP = true;		//ì≈âtîEé“7
-	constexpr auto  SPAWN1A_POIJA8_X = 1900;	constexpr auto  SPAWN1A_POIJA8_Y = 5560;	constexpr auto  SPAWN1A_POIJA8_FLIP = false;	//ì≈âtîEé“8
+	constexpr auto  SPAWN1A_POIJA1_X = 700;	constexpr auto  SPAWN1A_POIJA1_Y = 5560;	constexpr auto  SPAWN1A_POIJA1_FLIP = false;	//ì≈âtîEé“1
+	constexpr auto  SPAWN1A_POIJA2_X = 1300;	constexpr auto  SPAWN1A_POIJA2_Y = 5560;	constexpr auto  SPAWN1A_POIJA2_FLIP = false;	//ì≈âtîEé“2
 	constexpr auto  SPAWN1A_BOSS_X = 4200;		constexpr auto  SPAWN1A_BOSS_Y = 1760;		constexpr auto  SPAWN1A_BOSS_FLIP = true;		//É{ÉX
 	//ÉXÉ|Å[ÉìÉuÉçÉbÉN2A
 	constexpr auto  SPAWN2A_XPOSITION = 3900;	constexpr auto SPAWN2A_YPOSITION = 8600;	//ÉXÉ|Å[ÉìÉuÉçÉbÉN2A
@@ -212,14 +207,12 @@ namespace SpaInfo {
 	constexpr auto  SPAWN7A_SHIEL1_X = 2800;	constexpr auto  SPAWN7A_SHIEL1_Y = 4800;	constexpr auto  SPAWN7A_SHIEL1_FLIP = false;	//èÇï∫1
 	constexpr auto  SPAWN7A_SHIEL2_X = 2900;	constexpr auto  SPAWN7A_SHIEL2_Y = 4800;	constexpr auto  SPAWN7A_SHIEL2_FLIP = false;	//èÇï∫2
 	constexpr auto  SPAWN7A_SHIEL3_X = 3000;	constexpr auto  SPAWN7A_SHIEL3_Y = 4800;	constexpr auto  SPAWN7A_SHIEL3_FLIP = false;	//èÇï∫3
-	constexpr auto  SPAWN7A_SHIEL4_X = 3400;	constexpr auto  SPAWN7A_SHIEL4_Y = 4800;	constexpr auto  SPAWN7A_SHIEL4_FLIP = true;		//èÇï∫4
-	constexpr auto  SPAWN7A_SHIEL5_X = 3600;	constexpr auto  SPAWN7A_SHIEL5_Y = 4800;	constexpr auto  SPAWN7A_SHIEL5_FLIP = true;		//èÇï∫5
-	constexpr auto  SPAWN7A_SHIEL6_X = 3800;	constexpr auto  SPAWN7A_SHIEL6_Y = 4800;	constexpr auto  SPAWN7A_SHIEL6_FLIP = true;		//èÇï∫6
+	constexpr auto  SPAWN7A_SHIEL4_X = 3400;	constexpr auto  SPAWN7A_SHIEL4_Y = 4800;	constexpr auto  SPAWN7A_SHIEL4_FLIP = true;	//èÇï∫4
+	constexpr auto  SPAWN7A_SHIEL5_X = 3600;	constexpr auto  SPAWN7A_SHIEL5_Y = 4800;	constexpr auto  SPAWN7A_SHIEL5_FLIP = true;	//èÇï∫5
+	constexpr auto  SPAWN7A_SHIEL6_X = 3800;	constexpr auto  SPAWN7A_SHIEL6_Y = 4800;	constexpr auto  SPAWN7A_SHIEL6_FLIP = true;	//èÇï∫6
 	//ÉXÉ|Å[ÉìÉuÉçÉbÉN9A
 	constexpr auto  SPAWN9A_XPOSITION = 3400;	constexpr auto SPAWN9A_YPOSITION = 3280;	//ÉXÉ|Å[ÉìÉuÉçÉbÉN9A
-	constexpr auto  SPAWN9A_BUSHI1_X = 3600;	constexpr auto  SPAWN9A_BUSHI1_Y = 3280;	constexpr auto  SPAWN9A_BUSHI1_FLIP = true;		//ïêém1
-	constexpr auto  SPAWN9A_BUSHI2_X = 3900;	constexpr auto  SPAWN9A_BUSHI2_Y = 3280;	constexpr auto  SPAWN9A_BUSHI2_FLIP = true;		//ïêém2
-	constexpr auto  SPAWN9A_BUSHI3_X = 2600;	constexpr auto  SPAWN9A_BUSHI3_Y = 3280;	constexpr auto  SPAWN9A_BUSHI3_FLIP = true;		//ïêém3
+	constexpr auto  SPAWN9A_BUSHI1_X = 2600;	constexpr auto  SPAWN9A_BUSHI1_Y = 3280;	constexpr auto  SPAWN9A_BUSHI1_FLIP = true;		//ïêém1
 	constexpr auto  SPAWN9A_NINJA1_X = 2900;	constexpr auto  SPAWN9A_NINJA1_Y = 3280;	constexpr auto  SPAWN9A_NINJA1_FLIP = true;		constexpr auto  SPAWN9A_NINJA1_KUNAI = 0;	//îEé“1
 	constexpr auto  SPAWN9A_POIJA1_X = 2600;	constexpr auto  SPAWN9A_POIJA1_Y = 3280;	constexpr auto  SPAWN9A_POIJA1_FLIP = true;		//ì≈âtîEé“1
 	//ÉXÉ|Å[ÉìÉuÉçÉbÉN9B
@@ -246,18 +239,18 @@ namespace SpaInfo {
 	//ÉXÉ|Å[ÉìÉuÉçÉbÉN11B
 	constexpr auto  SPAWN11B_XPOSITION = 4000;	constexpr auto SPAWN11B_YPOSITION = 1760;	//ÉXÉ|Å[ÉìÉuÉçÉbÉN11B
 	constexpr auto  SPAWN11B_BUSHI1_X = 3100;	constexpr auto SPAWN11B_BUSHI1_Y = 1760;	constexpr auto SPAWN11B_BUSHI1_FLIP = false;	//ïêém1
-	constexpr auto  SPAWN11B_BUSHI2_X = 2700;	constexpr auto SPAWN11B_BUSHI2_Y = 1760;	constexpr auto SPAWN11B_BUSHI2_FLIP = false;	//ïêém2
-	constexpr auto  SPAWN11B_NINJA1_X = 4600;	constexpr auto  SPAWN11B_NINJA1_Y = 1760;	constexpr auto  SPAWN11B_NINJA1_FLIP = false;	constexpr auto  SPAWN11B_NINJA1_KUNAI = 0;	//îEé“1
-	constexpr auto  SPAWN11B_SHIEL1_X = 3500;	constexpr auto  SPAWN11B_SHIEL1_Y = 1760;	constexpr auto  SPAWN11B_SHIEL1_FLIP = true;	//èÇï∫1
+	constexpr auto  SPAWN11B_BUSHI2_X = 1800;	constexpr auto SPAWN11B_BUSHI2_Y = 1760;	constexpr auto SPAWN11B_BUSHI2_FLIP = false;	//ïêém2
+	constexpr auto  SPAWN11B_BUSHI3_X = 2000;	constexpr auto SPAWN11B_BUSHI3_Y = 1760;	constexpr auto SPAWN11B_BUSHI3_FLIP = false;	//ïêém3
 	constexpr auto  SPAWN11B_POIJA1_X = 3000;	constexpr auto  SPAWN11B_POIJA1_Y = 1000;	constexpr auto  SPAWN11B_POIJA1_FLIP = true;	//ì≈âtîEé“1
 	constexpr auto  SPAWN11B_POIJA2_X = 2500;	constexpr auto  SPAWN11B_POIJA2_Y = 1000;	constexpr auto  SPAWN11B_POIJA2_FLIP = true;	//ì≈âtîEé“2
 	//ÉXÉ|Å[ÉìÉuÉçÉbÉN11C
 	constexpr auto  SPAWN11C_XPOSITION = 1500;	constexpr auto SPAWN11C_YPOSITION = 1760;	//ÉXÉ|Å[ÉìÉuÉçÉbÉN11C
 	constexpr auto  SPAWN11C_BUSHI1_X = 600;	constexpr auto  SPAWN11C_BUSHI1_Y = 1760;	constexpr auto  SPAWN11C_BUSHI1_FLIP = false;	//ïêém1
 	constexpr auto  SPAWN11C_BUSHI2_X = 700;	constexpr auto  SPAWN11C_BUSHI2_Y = 1760;	constexpr auto  SPAWN11C_BUSHI2_FLIP = false;	//ïêém2
-	constexpr auto  SPAWN11C_SHIEL1_X = 2200;	constexpr auto  SPAWN11C_SHIEL1_Y = 1760;	constexpr auto  SPAWN11C_SHIEL1_FLIP = false;	//èÇï∫1
-	constexpr auto  SPAWN11C_SHIEL2_X = 900;	constexpr auto  SPAWN11C_SHIEL2_Y = 1760;	constexpr auto  SPAWN11C_SHIEL2_FLIP = false;	//èÇï∫2
-	constexpr auto  SPAWN11C_SHIEL3_X = 800;	constexpr auto  SPAWN11C_SHIEL3_Y = 1760;	constexpr auto  SPAWN11C_SHIEL3_FLIP = false;	//èÇï∫3
+	constexpr auto  SPAWN11C_BUSHI3_X = 1800;	constexpr auto  SPAWN11C_BUSHI3_Y = 1760;	constexpr auto  SPAWN11C_BUSHI3_FLIP = false;	//ïêém3
+	constexpr auto  SPAWN11C_LANCER1_X = 2100;	constexpr auto  SPAWN11C_LANCER1_Y = 1760;	constexpr auto  SPAWN11C_LANCER1_FLIP = false;	//ëÑï∫1
+	constexpr auto  SPAWN11C_SHIEL1_X = 900;	constexpr auto  SPAWN11C_SHIEL1_Y = 1760;	constexpr auto  SPAWN11C_SHIEL1_FLIP = false;	//èÇï∫1
+	constexpr auto  SPAWN11C_SHIEL2_X = 800;	constexpr auto  SPAWN11C_SHIEL2_Y = 1760;	constexpr auto  SPAWN11C_SHIEL2_FLIP = false;	//èÇï∫2
 	//ÉXÉ|Å[ÉìÉuÉçÉbÉN12A
 	constexpr auto  SPAWN12A_XPOSITION = 1300;	constexpr auto SPAWN12A_YPOSITION = 1000;	//ÉXÉ|Å[ÉìÉuÉçÉbÉN12A
 	constexpr auto  SPAWN12A_BUSHI1_X = 800;	constexpr auto  SPAWN12A_BUSHI1_Y = 1000;	constexpr auto  SPAWN12A_BUSHI1_FLIP = true;	//ïêém1
@@ -270,10 +263,10 @@ namespace SpaInfo {
 	constexpr auto  SPAWN12B_SHIEL1_X = 2700;	constexpr auto  SPAWN12B_SHIEL1_Y = 1000;	constexpr auto  SPAWN12B_SHIEL1_FLIP = false;	//èÇï∫1
 	//ÉXÉ|Å[ÉìÉuÉçÉbÉN12C
 	constexpr auto  SPAWN12C_XPOSITION = 3300;	constexpr auto SPAWN12C_YPOSITION = 1000;	//ÉXÉ|Å[ÉìÉuÉçÉbÉN12C
-	constexpr auto  SPAWN12C_SHIEL1_X = 3700;	constexpr auto  SPAWN12C_SHIEL1_Y = 1000;	constexpr auto  SPAWN12C_SHIEL1_FLIP = false;	//èÇï∫1
-	constexpr auto  SPAWN12C_SHIEL2_X = 3900;	constexpr auto  SPAWN12C_SHIEL2_Y = 1000;	constexpr auto  SPAWN12C_SHIEL2_FLIP = false;	//èÇï∫2
-	constexpr auto  SPAWN12C_BUSHI1_X = 4200;	constexpr auto  SPAWN12C_BUSHI1_Y = 1000;	constexpr auto  SPAWN12C_BUSHI1_FLIP = false;	//ïêém1
+	constexpr auto  SPAWN12C_BUSYO1_X = 4600;	constexpr auto  SPAWN12C_BUSYO1_Y = 1000;	constexpr auto  SPAWN12C_BUSYO1_FLIP = false;	//ïêè´1
 	constexpr auto  SPAWN12C_NINJA1_X = 4500;	constexpr auto  SPAWN12C_NINJA1_Y = 1000;	constexpr auto  SPAWN12C_NINJA1_FLIP = true;	constexpr auto  SPAWN12C_NINJA1_KUNAI = 3;	//îEé“1
+	constexpr auto  SPAWN12C_LANCER1_X = 4200;	constexpr auto  SPAWN12C_LANCER1_Y = 1000;	constexpr auto  SPAWN12C_LANCER1_FLIP = false;	//ëÑï∫1
+	constexpr auto  SPAWN12C_SHIEL1_X = 3700;	constexpr auto  SPAWN12C_SHIEL1_Y = 1000;	constexpr auto  SPAWN12C_SHIEL1_FLIP = false;	//èÇï∫1
 	//É{ÉXÉXÉ|Å[ÉìÉuÉçÉbÉN
 	constexpr auto  BOSSSPAWN_XPOSITION = 300;	constexpr auto BOSSSPAWN_YPOSITION = 1000;	//É{ÉXÉXÉ|Å[ÉìÉuÉçÉbÉN
 	constexpr auto  BOSSSPAWN_BOSS_X = 5050;	constexpr auto  BOSSSPAWN_BOSS_Y = 1000;	constexpr auto  BOSSSPAWN_BOSS_FLIP = false;	//É{ÉX

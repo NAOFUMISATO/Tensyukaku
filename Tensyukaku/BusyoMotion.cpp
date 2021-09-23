@@ -106,6 +106,7 @@ void Busyo::Patrol(Game& g) {
 									_isFlip = true;
 								}
 								else { _isFlip = false; }
+								_Action_Cnt = _Cnt;
 								_State = ENEMYSTATE::COMING;
 							}
 						}
@@ -207,7 +208,7 @@ void Busyo::Attack(Game& g) {
 	}
 	if (_isFlip == false) {
 		PrivateCollision acc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
-		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
+		if ( frame == ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 			{
@@ -226,7 +227,7 @@ void Busyo::Attack(Game& g) {
 	}
 	if (_isFlip == true) {
 		PrivateCollision acc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
-		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
+		if ( frame == ATTACK_ALLFRAME) {
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 			{
@@ -272,6 +273,18 @@ void Busyo::Damage(Game& g) {
 		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
 	}
 	if (frame == DAMAGE_ALLFRAME) {
+		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+		{
+			// iteはプレイヤか？
+			if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+			{
+				auto px=(*ite)->GetX();
+				if (px < _x) {
+					_isFlip = false;
+				}
+				else { _isFlip = true; }
+			}
+		}
 		_Action_Cnt = _Cnt;
 		_State = ENEMYSTATE::ATTACK;
 		_Anime["Damage"] = 0;

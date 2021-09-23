@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "ModeTitle.h"
 #include "MapChip.h"
+#include "Player.h"
 #include "ResourceServer.h"
 
 

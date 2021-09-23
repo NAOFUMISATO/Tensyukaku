@@ -71,7 +71,7 @@ PoisonFall::~PoisonFall() {
 }
 
 void PoisonFall::Init() {
-	_Sort = 9;
+	_Sort =14;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
@@ -96,6 +96,7 @@ void PoisonFall::Process(Game& g) {
 			_y += _Spd;
 		}
 		if (frame==FALL_STOPFRAME) {
+			_Action_Cnt = _Cnt;
 			_State = POISONSTATE::LAND;
 		}
 		break;

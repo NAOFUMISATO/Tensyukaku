@@ -63,7 +63,6 @@ private:
 	std::unordered_map<std::string, int> _Bgm; //BGMマップ
 	std::unordered_map<std::string, int> _Vpal; //ボリュームマップ
 
-	
 	MapChip* _mapChip;			//マップチップ
 	ModeServer* _serverMode;	//モードサーバー
 	ObjectServer _objServer;	//プレイヤーや敵などを登録する

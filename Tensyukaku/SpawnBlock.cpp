@@ -7,6 +7,7 @@
 #include "Shielder.h"
 #include "Lancer.h"
 #include "PoisonNinja.h"
+#include "PoisonZyounin.h"
 #include "Boss.h"
 
 using namespace SpaInfo;
@@ -29,10 +30,20 @@ void Spawn1A::Process(Game& g) {
 		{
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
-				auto bu1 = new Busyo(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
+				auto test1 = new Zyounin(3840, 8600, true, 4);
+				g.GetOS()->Add(test1);
+				auto test2 = new PoisonZyounin(5300, 8600, false);
+				g.GetOS()->Add(test2);
+				auto test3 = new PoisonNinja(5000, 8600,true);
+				g.GetOS()->Add(test3);
+				auto bu1 = new Bushi(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
 				g.GetOS()->Add(bu1);
-				auto bu2 = new Lancer(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
+				auto bu2 = new Bushi(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
 				g.GetOS()->Add(bu2);
+				auto bu3 = new Bushi(SPAWN1A_BUSHI3_X, SPAWN1A_BUSHI3_Y, SPAWN1A_BUSHI3_FLIP);
+				g.GetOS()->Add(bu3);
+				auto bu4 = new Bushi(SPAWN1A_BUSHI4_X, SPAWN1A_BUSHI4_Y, SPAWN1A_BUSHI4_FLIP);
+				g.GetOS()->Add(bu4);
 				auto bu5 = new Bushi(SPAWN1A_BUSHI5_X, SPAWN1A_BUSHI5_Y, SPAWN1A_BUSHI5_FLIP);
 				g.GetOS()->Add(bu5);
 				auto bu6 = new Bushi(SPAWN1A_BUSHI6_X, SPAWN1A_BUSHI6_Y, SPAWN1A_BUSHI6_FLIP);
@@ -53,22 +64,20 @@ void Spawn1A::Process(Game& g) {
 				g.GetOS()->Add(bu13);
 				auto bu14 = new Bushi(SPAWN1A_BUSHI14_X, SPAWN1A_BUSHI14_Y, SPAWN1A_BUSHI14_FLIP);
 				g.GetOS()->Add(bu14);
-				auto bu15 = new Bushi(SPAWN1A_BUSHI15_X, SPAWN1A_BUSHI15_Y, SPAWN1A_BUSHI15_FLIP);
-				g.GetOS()->Add(bu15);
-				auto bu16 = new Bushi(SPAWN1A_BUSHI16_X, SPAWN1A_BUSHI16_Y, SPAWN1A_BUSHI16_FLIP);
-				g.GetOS()->Add(bu16);
-				auto ni1 = new Zyounin(SPAWN1A_NINJA1_X, SPAWN1A_NINJA1_Y, SPAWN1A_NINJA1_FLIP,6/*SPAWN1A_NINJA1_KUNAI*/);
+				auto bs1 = new Busyo(SPAWN1A_BUSYO1_X, SPAWN1A_BUSYO1_Y, SPAWN1A_BUSYO1_FLIP );
+				g.GetOS()->Add(bs1);
+				auto ni1 = new Ninja(SPAWN1A_NINJA1_X, SPAWN1A_NINJA1_Y, SPAWN1A_NINJA1_FLIP, SPAWN1A_NINJA1_KUNAI);
 				g.GetOS()->Add(ni1);
-				auto ni3 = new Ninja(SPAWN1A_NINJA2_X, SPAWN1A_NINJA2_Y, SPAWN1A_NINJA2_FLIP, SPAWN1A_NINJA2_KUNAI);
+				auto ni2 = new Ninja(SPAWN1A_NINJA2_X, SPAWN1A_NINJA2_Y, SPAWN1A_NINJA2_FLIP, SPAWN1A_NINJA2_KUNAI);
+				g.GetOS()->Add(ni2);
+				auto ni3 = new Ninja(SPAWN1A_NINJA3_X, SPAWN1A_NINJA3_Y, SPAWN1A_NINJA3_FLIP, SPAWN1A_NINJA3_KUNAI);
 				g.GetOS()->Add(ni3);
-				auto ni4 = new Ninja(SPAWN1A_NINJA3_X, SPAWN1A_NINJA3_Y, SPAWN1A_NINJA3_FLIP, SPAWN1A_NINJA3_KUNAI);
+				auto ni4 = new Ninja(SPAWN1A_NINJA4_X, SPAWN1A_NINJA4_Y, SPAWN1A_NINJA4_FLIP, SPAWN1A_NINJA4_KUNAI);
 				g.GetOS()->Add(ni4);
-				auto ni5 = new Ninja(SPAWN1A_NINJA4_X, SPAWN1A_NINJA4_Y, SPAWN1A_NINJA4_FLIP, SPAWN1A_NINJA4_KUNAI);
+				auto ni5 = new Ninja(SPAWN1A_NINJA5_X, SPAWN1A_NINJA5_Y, SPAWN1A_NINJA5_FLIP, SPAWN1A_NINJA5_KUNAI);
 				g.GetOS()->Add(ni5);
-				auto ni6 = new Ninja(SPAWN1A_NINJA5_X, SPAWN1A_NINJA5_Y, SPAWN1A_NINJA5_FLIP, SPAWN1A_NINJA5_KUNAI);
+				auto ni6 = new Ninja(SPAWN1A_NINJA6_X, SPAWN1A_NINJA6_Y, SPAWN1A_NINJA6_FLIP, SPAWN1A_NINJA6_KUNAI);
 				g.GetOS()->Add(ni6);
-				auto ni7 = new Ninja(SPAWN1A_NINJA6_X, SPAWN1A_NINJA6_Y, SPAWN1A_NINJA6_FLIP, SPAWN1A_NINJA6_KUNAI);
-				g.GetOS()->Add(ni7);
 				auto sh1 = new Shielder(SPAWN1A_SHIEL1_X, SPAWN1A_SHIEL1_Y, SPAWN1A_SHIEL1_FLIP);
 				g.GetOS()->Add(sh1);
 				auto sh2 = new Shielder(SPAWN1A_SHIEL2_X, SPAWN1A_SHIEL2_Y, SPAWN1A_SHIEL2_FLIP);
@@ -85,14 +94,6 @@ void Spawn1A::Process(Game& g) {
 				g.GetOS()->Add(pn1);
 				auto pn2 = new PoisonNinja(SPAWN1A_POIJA2_X, SPAWN1A_POIJA2_Y, SPAWN1A_POIJA2_FLIP);
 				g.GetOS()->Add(pn2);
-				auto pn3 = new PoisonNinja(SPAWN1A_POIJA3_X, SPAWN1A_POIJA3_Y, SPAWN1A_POIJA3_FLIP);
-				g.GetOS()->Add(pn3);
-				auto pn4 = new PoisonNinja(SPAWN1A_POIJA4_X, SPAWN1A_POIJA4_Y, SPAWN1A_POIJA4_FLIP);
-				g.GetOS()->Add(pn4);
-				auto pn5 = new PoisonNinja(SPAWN1A_POIJA5_X, SPAWN1A_POIJA5_Y, SPAWN1A_POIJA5_FLIP);
-				g.GetOS()->Add(pn5);
-				auto pn6 = new PoisonNinja(SPAWN1A_POIJA6_X, SPAWN1A_POIJA6_Y, SPAWN1A_POIJA6_FLIP);
-				g.GetOS()->Add(pn6);
 				auto boss = new Boss(SPAWN1A_BOSS_X, SPAWN1A_BOSS_Y, SPAWN1A_BOSS_FLIP);
 				g.GetOS()->Add(boss);
 			}
@@ -304,10 +305,6 @@ void Spawn9A::Process(Game& g) {
 				Delete(g);
 				auto bu1 = new Bushi(SPAWN9A_BUSHI1_X, SPAWN9A_BUSHI1_Y, SPAWN9A_BUSHI1_FLIP);
 				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN9A_BUSHI2_X, SPAWN9A_BUSHI2_Y, SPAWN9A_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto bu3 = new Bushi(SPAWN9A_BUSHI3_X, SPAWN9A_BUSHI3_Y, SPAWN9A_BUSHI3_FLIP);
-				g.GetOS()->Add(bu3);
 				auto ni1 = new Ninja(SPAWN9A_NINJA1_X, SPAWN9A_NINJA1_Y, SPAWN9A_NINJA1_Y, SPAWN9A_NINJA1_KUNAI);
 				g.GetOS()->Add(ni1);
 				auto pn1 = new PoisonNinja(SPAWN9A_POIJA1_X, SPAWN9A_POIJA1_Y, SPAWN9A_POIJA1_FLIP);
@@ -468,10 +465,8 @@ void Spawn11B::Process(Game& g) {
 				g.GetOS()->Add(bu1);
 				auto bu2 = new Bushi(SPAWN11B_BUSHI2_X, SPAWN11B_BUSHI2_Y, SPAWN11B_BUSHI2_FLIP);
 				g.GetOS()->Add(bu2);
-				auto ni1 = new Ninja(SPAWN11B_NINJA1_X, SPAWN11B_NINJA1_Y, SPAWN11B_NINJA1_FLIP, SPAWN11B_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
-				auto sh1 = new Shielder(SPAWN11B_SHIEL1_X, SPAWN11B_SHIEL1_Y, SPAWN11B_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
+				auto bu3 = new Bushi(SPAWN11B_BUSHI3_X, SPAWN11B_BUSHI3_Y, SPAWN11B_BUSHI3_FLIP);
+				g.GetOS()->Add(bu3);
 				auto pn1 = new PoisonNinja(SPAWN11B_POIJA1_X, SPAWN11B_POIJA1_Y, SPAWN11B_POIJA1_FLIP);
 				g.GetOS()->Add(pn1);
 				auto pn2 = new PoisonNinja(SPAWN11B_POIJA2_X, SPAWN11B_POIJA2_Y, SPAWN11B_POIJA2_FLIP);
@@ -505,12 +500,16 @@ void Spawn11C::Process(Game& g) {
 				g.GetOS()->Add(bu1);
 				auto bu2 = new Bushi(SPAWN11C_BUSHI2_X, SPAWN11C_BUSHI2_Y, SPAWN11C_BUSHI2_FLIP);
 				g.GetOS()->Add(bu2);
+				auto bu3 = new Bushi(SPAWN11C_BUSHI3_X, SPAWN11C_BUSHI3_Y, SPAWN11C_BUSHI3_FLIP);
+				g.GetOS()->Add(bu3);
+				auto la1 = new Lancer(SPAWN11C_LANCER1_X, SPAWN11C_LANCER1_Y, SPAWN11C_LANCER1_FLIP);
+				g.GetOS()->Add(la1);
 				auto sh1 = new Shielder(SPAWN11C_SHIEL1_X, SPAWN11C_SHIEL1_Y, SPAWN11C_SHIEL1_FLIP);
 				g.GetOS()->Add(sh1);
 				auto sh2 = new Shielder(SPAWN11C_SHIEL2_X, SPAWN11C_SHIEL2_Y, SPAWN11C_SHIEL2_FLIP);
 				g.GetOS()->Add(sh2);
-				auto sh3 = new Shielder(SPAWN11C_SHIEL3_X, SPAWN11C_SHIEL3_Y, SPAWN11C_SHIEL3_FLIP);
-				g.GetOS()->Add(sh3);
+				
+				
 			}
 		}
 	}
@@ -571,8 +570,8 @@ void Spawn12B::Process(Game& g) {
 				g.GetOS()->Add(bu1);
 				auto bu2 = new Bushi(SPAWN12B_BUSHI2_X, SPAWN12B_BUSHI2_Y, SPAWN12B_BUSHI2_FLIP);
 				g.GetOS()->Add(bu2);
-				auto sh3 = new Shielder(SPAWN12B_SHIEL1_X, SPAWN12B_SHIEL1_Y, SPAWN12B_SHIEL1_FLIP);
-				g.GetOS()->Add(sh3);
+				auto sh1= new Shielder(SPAWN12B_SHIEL1_X, SPAWN12B_SHIEL1_Y, SPAWN12B_SHIEL1_FLIP);
+				g.GetOS()->Add(sh1);
 			}
 		}
 	}
@@ -598,14 +597,14 @@ void Spawn12C::Process(Game& g) {
 		{
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
-				auto sh1 = new Shielder(SPAWN12C_SHIEL1_X, SPAWN12C_SHIEL1_Y, SPAWN12C_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
-				auto sh2 = new Shielder(SPAWN12C_SHIEL2_X, SPAWN12C_SHIEL2_Y, SPAWN12C_SHIEL2_FLIP);
-				g.GetOS()->Add(sh2);
-				auto bu1 = new Bushi(SPAWN12C_BUSHI1_X, SPAWN12C_BUSHI1_Y, SPAWN12C_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
+				auto bs1 = new Busyo(SPAWN12C_BUSYO1_X, SPAWN12C_BUSYO1_Y, SPAWN12C_BUSYO1_FLIP);
+				g.GetOS()->Add(bs1);
 				auto ni1 = new Ninja(SPAWN12C_NINJA1_X, SPAWN12C_NINJA1_Y, SPAWN12C_NINJA1_FLIP, SPAWN12C_NINJA1_KUNAI);
 				g.GetOS()->Add(ni1);
+				auto la1 = new Lancer(SPAWN12C_LANCER1_X, SPAWN12C_LANCER1_Y, SPAWN12C_LANCER1_FLIP);
+				g.GetOS()->Add(la1);
+				auto sh1 = new Shielder(SPAWN12C_SHIEL1_X, SPAWN12C_SHIEL1_Y, SPAWN12C_SHIEL1_FLIP);
+				g.GetOS()->Add(sh1);
 			}
 		}
 	}

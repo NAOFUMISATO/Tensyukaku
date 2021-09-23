@@ -180,6 +180,7 @@ void	Player::HitJudge(Game& g) {
 		case ObjectBase::OBJECTTYPE::SHIELDERATTACK:
 		case ObjectBase::OBJECTTYPE::LANCERATTACK:
 		case ObjectBase::OBJECTTYPE::POISON:
+		case ObjectBase::OBJECTTYPE::STRPOISON:
 		case ObjectBase::OBJECTTYPE::KUNAI:
 			// プレイヤーとその攻撃の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _Star_Flag == false&&_noHit_Flag==false)
