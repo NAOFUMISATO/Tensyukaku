@@ -16,8 +16,10 @@ public:
 	void	Delete(Game& g)override;
 private:
 	//プレイヤーの状態列挙
-	enum class PLAYERSTATE { IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD, STAIRUP, STAIRMOVE, BOSSSTAIRMOVE, BOSSSTAIRUP, EVENTA, EVENTB,SPECIALATTACK};
+	enum class PLAYERSTATE { APPEAR,SWORDOUT,IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD, STAIRUP, STAIRMOVE, BOSSSTAIRMOVE, BOSSSTAIRUP, EVENTA, EVENTB,SPECIALATTACK};
 	void	Star(Game& g);			//無敵状態時の処理
+	void	Appear(Game& g);		//出現状態の処理
+	void	Swordout(Game& g);	//抜刀状態の処理
 	void	Idle(Game& g);			//待機状態時の処理
 	void	Move(Game& g);			//移動時の処理
 	void	MidAttack(Game& g);		//中段攻撃時の処理
@@ -118,6 +120,20 @@ namespace PInfo {
 	//共通
 	constexpr auto GRAPH_WIDTH = 1080;			//1枚当たりの画像サイズ（横）
 	constexpr auto GRAPH_HEIGHT = 630;			//1枚当たりの画像サイズ（縦）
+	//出現
+	constexpr auto APPEAR_GRAPHNAME = "res/Samurai/S_Appear.png";	//画像ファイル名
+	constexpr auto APPEAR_ANIMEMAX = 20;			//全ての画像枚数
+	constexpr auto APPEAR_WIDTHCOUNT = 7;		//横の画像枚数
+	constexpr auto APPEAR_HEIGHTCOUNT = 3;		//縦の画像枚数
+	constexpr auto ANIMESPEED_APPEAR = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto APPEAR_ANIMEFRAME = APPEAR_ANIMEMAX * ANIMESPEED_APPEAR; //アニメーションフレーム
+	//抜刀
+	constexpr auto SWORDOUT_GRAPHNAME = "res/Samurai/S_Appear.png";	//画像ファイル名
+	constexpr auto SWORDOUT_ANIMEMAX = 20;			//全ての画像枚数
+	constexpr auto SWORDOUT_WIDTHCOUNT = 7;		//横の画像枚数
+	constexpr auto SWORDOUT_HEIGHTCOUNT = 3;		//縦の画像枚数
+	constexpr auto ANIMESPEED_SWORDOUT = 5;			//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto SWORDOUT_ANIMEFRAME = SWORDOUT_ANIMEMAX * ANIMESPEED_SWORDOUT; //アニメーションフレーム
 	//待機
 	constexpr auto IDLE_GRAPHNAME = "res/Samurai/S_Stand.png";	//画像ファイル名
 	constexpr auto IDLE_ANIMEMAX = 10;			//全ての画像枚数

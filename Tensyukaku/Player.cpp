@@ -8,6 +8,7 @@
 #include "Game.h"
 #include "ObjectBase.h"
 #include "ModeGame.h"
+#include "OverlayFlame.h"
 #include "PlayerHp.h"
 #include "IaiGauge.h"
 #include <vector>
@@ -15,7 +16,7 @@
 
 using namespace PInfo;
 Player::Player(int x,int y) :
-	_State(PLAYERSTATE::IDLE),
+	_State(PLAYERSTATE::APPEAR),
 	_Move_AnimeSpeed(0),
 	_Star_Flag(false),
 	_UI_Flag(false),
@@ -47,6 +48,7 @@ void Player::Init()
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 	_Life = LIFE_MAX;
+	_Action_Cnt = _Cnt;
 	_Spd = 0;
 	_Iai_Gauge = 0;
 	_isFlip = FIRST_FLIP;
@@ -67,6 +69,14 @@ void Player::Process(Game& g)
 		//無敵状態
 		Star(g);
 	switch (_State) {
+		//出現状態
+	case	PLAYERSTATE::APPEAR:
+		Appear(g);
+		break;
+		//抜刀状態
+	case PLAYERSTATE::SWORDOUT:
+		Swordout(g);
+		break;
 		//待機状態
 	case PLAYERSTATE::IDLE:
 		Idle(g);
@@ -247,6 +257,9 @@ void	Player::HitJudge(Game& g) {
 		case ObjectBase::OBJECTTYPE::FLAMEBLOCK:
 			// プレイヤーとその炎演出の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {
+				(*ite)->Delete(g);
+				auto of = new OverlayFlame();
+				g.GetMS()->Add(of, 1, "Flame");
 				PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
 			}
 			break;
@@ -257,6 +270,10 @@ void	Player::HitJudge(Game& g) {
 }
 //プレイヤーの画像読み込み関数
 void Player::LoadActionGraph() {
+	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
+	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
+	_GrAll["Swordout"].resize(SWORDOUT_ANIMEMAX);
+	ResourceServer::LoadDivGraph(SWORDOUT_GRAPHNAME, SWORDOUT_ANIMEMAX, SWORDOUT_WIDTHCOUNT, SWORDOUT_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Swordout"].data());
 	_GrAll["Idle"].resize(IDLE_ANIMEMAX);
 	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Idle"].data());
 	_GrAll["Move"].resize(MOVE_ANIMEMAX);

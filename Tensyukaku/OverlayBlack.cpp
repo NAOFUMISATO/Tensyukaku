@@ -16,7 +16,7 @@ bool OverlayBlack::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
 }
-void OverlayBlack::FadeSetting(int fadeoutframe,int fadeinbeginframe,int fadeinendframe, int fadespeed) {
+void OverlayBlack::SetFade(int fadeoutframe,int fadeinbeginframe,int fadeinendframe, int fadespeed) {
 	_Fadeoutframe= fadeoutframe;
 	_FadeinBeginframe = fadeinbeginframe;
 	_FadeinEndframe = fadeinendframe;

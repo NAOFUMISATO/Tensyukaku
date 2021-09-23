@@ -12,6 +12,28 @@
 using namespace PInfo;
 using namespace PParInfo;
 using namespace StInfo;
+/*----------èoåª----------*/
+void Player::Appear(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
+	_Anime["Appear"] = 0;
+	auto ob = (OverlayBlack*)g.GetMS()->Get("OverlayBlack");
+	auto Pal = ob->GetPal();
+	if (Pal == 150) {
+		_Action_Cnt = _Cnt;
+		_State = PLAYERSTATE::SWORDOUT;
+	}
+}
+/*----------î≤ìÅ----------*/
+void Player::Swordout(Game& g) {
+	auto frame = _Cnt - _Action_Cnt;
+ 	_GrHandle = _GrAll["Swordout"][_Anime["Swordout"]];
+	_Anime["Swordout"] = ((frame) / ANIMESPEED_SWORDOUT) % SWORDOUT_ANIMEMAX;
+	if (frame == SWORDOUT_ANIMEFRAME) {
+		_Action_Cnt = _Cnt;
+		_State = PLAYERSTATE::IDLE;
+	}
+}
 /*----------ë“ã@----------*/
 void Player::Idle(Game& g) {
 	_GrHandle = _GrAll["Idle"] [_Anime["Idle"]];
@@ -494,7 +516,7 @@ void Player::BossStairMove(Game& g) {
 			_isFlip = true;
 			_Position = { static_cast<double>(_x),static_cast<double>(_y) };
 			auto ol = new OverlayBlack();
-			ol->FadeSetting(120, 240, 360, 2);
+			ol->SetFade(120, 240, 360, 2);
 			g.GetMS()->Add(ol, 99999, "OverlayBlack");
 			_State = PLAYERSTATE::BOSSSTAIRUP;
 		}
@@ -508,7 +530,7 @@ void Player::BossStairMove(Game& g) {
 			_isFlip = false;
 			_Position = { static_cast<double>(_x),static_cast<double>(_y) };
 			auto ol = new OverlayBlack();
-			ol->FadeSetting(120, 240, 360, 2);
+			ol->SetFade(120, 240, 360, 2);
 			g.GetMS()->Add(ol, 99999, "OverlayBlack");
 			_State = PLAYERSTATE::BOSSSTAIRUP;
 		}

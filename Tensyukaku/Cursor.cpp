@@ -85,7 +85,7 @@ void Cursor::Process(Game& g) {
 			PlaySoundMem(_Se["GameStart"],DX_PLAYTYPE_BACK, true);
 			StopSoundMem(g.GetBgm()["Title"]);
 			auto ol = new OverlayBlack();
-			ol->FadeSetting(120, 120, 120, 3);
+			ol->SetFade(120, 120, 120, 3);
 			g.GetMS()->Add(ol,1, "OverlayBlack");
 		}
 		if (frame == 120) {

@@ -177,6 +177,7 @@
     <ClCompile Include="ModeGameover.cpp" />
     <ClCompile Include="ModePause.cpp" />
     <ClCompile Include="ModePrologue.cpp" />
+    <ClCompile Include="ModeTutorial.cpp" />
     <ClCompile Include="MugenAndon.cpp" />
     <ClCompile Include="MugenFlame.cpp" />
     <ClCompile Include="OutGameParticle.cpp" />
@@ -223,6 +224,7 @@
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="StrPoison.cpp" />
     <ClCompile Include="TitleSelect.cpp" />
+    <ClCompile Include="TutorialBlock.cpp" />
     <ClCompile Include="Zyounin.cpp" />
     <ClCompile Include="ZyouninMotion.cpp" />
     <ClCompile Include="ZyouninMotionCollision.cpp" />
@@ -255,6 +257,7 @@
     <ClInclude Include="ModeGameover.h" />
     <ClInclude Include="ModePause.h" />
     <ClInclude Include="ModePrologue.h" />
+    <ClInclude Include="ModeTutorial.h" />
     <ClInclude Include="MugenAndon.h" />
     <ClInclude Include="MugenFlame.h" />
     <ClInclude Include="OutGameParticle.h" />
@@ -298,6 +301,7 @@
     <ClInclude Include="Stair.h" />
     <ClInclude Include="StrPoison.h" />
     <ClInclude Include="TitleSelect.h" />
+    <ClInclude Include="TutorialBlock.h" />
     <ClInclude Include="Zyounin.h" />
     <ClInclude Include="ZyouninMotionCollision.h" />
   </ItemGroup>

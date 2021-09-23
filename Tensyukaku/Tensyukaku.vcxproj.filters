@@ -354,6 +354,12 @@
     <ClCompile Include="StrPoison.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
+    <ClCompile Include="ModeTutorial.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialBlock.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -569,8 +575,14 @@
     <ClInclude Include="StrPoison.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
+    <ClInclude Include="ModeTutorial.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialBlock.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>ヘッダー ファイル\Server</Filter>
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

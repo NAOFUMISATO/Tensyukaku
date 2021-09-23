@@ -133,7 +133,7 @@ bool PrologueASkip::Process(Game& g) {
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_Mode_Cnt = _Cnt;
 		auto ol = new OverlayBlack();
-		ol->FadeSetting(fadeoutframe, 120, 180, 5);
+		ol->SetFade(fadeoutframe, 120, 180, 5);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
 	}
 	if (frame == fadeoutframe) {

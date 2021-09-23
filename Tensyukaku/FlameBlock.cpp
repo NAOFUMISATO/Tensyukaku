@@ -1,5 +1,4 @@
 #include "FlameBlock.h"
-#include "OverlayFlame.h"
 #include "Game.h"
 namespace {
 	constexpr auto GRAPHPOINT_X = 0;		//X位置から描画点までの差分
@@ -32,21 +31,6 @@ void FlameBlock::Init() {
 }
 void  FlameBlock::Draw(Game& g) {
 	ObjectBase::Draw(g);
-	//炎演出ブロックとプレイヤーの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			// //炎演出ブロックとプレイヤーの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				Delete(g);
-				auto of = new OverlayFlame();
-				g.GetMS()->Add(of, 1, "Flame");
-			}
-		}
-	}
 }
 
 void FlameBlock::Delete(Game& g) {

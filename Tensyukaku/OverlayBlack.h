@@ -9,7 +9,8 @@ public:
 	virtual bool Terminate(Game& g);
 	virtual bool Process(Game& g);
 	virtual bool Draw(Game& g);
-	void	FadeSetting(int fadeoutframe,int fadeinbeginframe,int fadeinendframe, int fadespeed);
+	void	SetFade(int fadeoutframe,int fadeinbeginframe,int fadeinendframe, int fadespeed);
+	int	GetPal() { return _Pal; }
 private:
 	int	_Fadeoutframe;
 	int	_FadeinBeginframe;
