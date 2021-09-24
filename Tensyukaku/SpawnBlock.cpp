@@ -36,7 +36,7 @@ void Spawn1A::Process(Game& g) {
 				g.GetOS()->Add(test2);
 				auto test3 = new PoisonNinja(5000, 8600,true);
 				g.GetOS()->Add(test3);
-				auto bu1 = new Bushi(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
+				auto bu1 = new Lancer(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
 				g.GetOS()->Add(bu1);
 				auto bu2 = new Bushi(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
 				g.GetOS()->Add(bu2);

@@ -9,7 +9,12 @@ public:
 	virtual bool Process(Game& g);
 	virtual bool Draw(Game& g);
 private:
+	void		LoadSE();
+	void		VolumeInit();
+	void		VolumeChange();
+
 	int		_GraphNo;
+	bool	_Skip_Flag;
 };
 
 class  PrologueASkip :public ModeBase {

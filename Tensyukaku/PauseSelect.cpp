@@ -48,7 +48,7 @@ bool PauseSelect::Process(Game& g) {
 			g.GetMS()->Del(g.GetMS()->Get("PController"));
 			auto mg = (ModeGame*)g.GetMS()->Get("Game");
 			mg->SetStopObjProcess(false);
-			mg->SetPauseFlag(false);
+			mg->SetStopObjFlag(false);
 		}
 		if (g.GetTrg() & PAD_INPUT_RIGHT) {
 			_Type = SELECTTYPE::GOTITLESELECT;
@@ -65,7 +65,7 @@ bool PauseSelect::Process(Game& g) {
 			g.GetMS()->Del(g.GetMS()->Get("Pause"));
 			auto mg = (ModeGame*)g.GetMS()->Get("Game");
 			mg->SetStopObjProcess(false);
-			mg->SetPauseFlag(false);
+			mg->SetStopObjFlag(false);
 			g.GetMS()->Del(g.GetMS()->Get("Game"));
 			auto mt = new ModeTitle();
 			g.GetMS()->Add(mt, 0, "Title");	

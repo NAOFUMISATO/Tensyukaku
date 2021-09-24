@@ -38,13 +38,13 @@ namespace LInfo {
 	constexpr auto PATROL_WIDTH = 500;			//õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
 	constexpr auto PATROL_BACKWIDTH = 300;		//”w•”õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
 	constexpr auto PATROL_HEIGHT = 100;			//õ“G”ÍˆÍ“–‚½‚è”»’èc•
-	constexpr auto COMING_WIDTH = 250;			//UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’è‰¡•
+	constexpr auto COMING_WIDTH = 350;			//UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’è‰¡•
 	constexpr auto COMING_HEIGHT = 100;			//UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’èc•
-	constexpr auto ATTACK_WIDTH = 250;			//UŒ‚“–‚½‚è”»’è‰¡•
+	constexpr auto ATTACK_WIDTH = 350;			//UŒ‚“–‚½‚è”»’è‰¡•
 	constexpr auto ATTACK_HEIGHT = 150;			//UŒ‚“–‚½‚è”»’èc•
 	constexpr auto COMINGCANCEL_WIDTH = 1000;	//’ÇÕ’†Ž~“–‚½‚è”»’è‰¡•
 	constexpr auto COMINGCANCEL_HEIGHT = 100;	//’ÇÕ’†Ž~“–‚½‚è”»’èc•
-	constexpr auto ATTACKCANCEL_WIDTH = 250;	//UŒ‚’†Ž~“–‚½‚è”»’è‰¡•
+	constexpr auto ATTACKCANCEL_WIDTH = 350;	//UŒ‚’†Ž~“–‚½‚è”»’è‰¡•
 	constexpr auto ATTACKCANCEL_HEIGHT = 100;	//UŒ‚’†Ž~“–‚½‚è”»’èc•
 
 	/*----------ƒpƒ‰ƒ[ƒ^[ŠÖŒW----------*/

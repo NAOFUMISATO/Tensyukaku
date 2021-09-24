@@ -12,6 +12,7 @@
 /*
 	ã”E
 */
+
 using namespace ZInfo;
 Zyounin::Zyounin(int x, int y, bool flip, int kunai_stock)
 {

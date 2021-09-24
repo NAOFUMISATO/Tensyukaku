@@ -16,6 +16,7 @@ bool ModePrologue::Initialize(Game& g) {
 	_Mode_Cnt = _Cnt;
 	_GrAll["Prologue"].resize(BG_ANIMEMAX);
 	ResourceServer::LoadDivGraph(BG_GRAPHNAME,BG_ANIMEMAX,BG_WIDTHCOUNT, BG_HEIGHTCOUNT,BG_GRAPH_WIDTH, BG_GRAPH_HEIGHT,_GrAll["Prologue"].data());
+	PlaySoundMem(g.GetBgm()["Prologue"], DX_PLAYTYPE_LOOP, true);
 	return true;
 }
 
@@ -58,13 +59,14 @@ bool ModePrologue::Process(Game& g) {
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
 	}
 	if (frame == PROLOGUE_FADEOUT_FRAME + fadeoutendframe) {
+		StopSoundMem(g.GetBgm() ["Prologue"]);
 		g.GetMS()->Del(g.GetMS()->Get("Prologue"));
 		g.GetMS()->Del(g.GetMS()->Get("PASkip"));
 		auto mg = new ModeGame();
 		g.GetMS()->Add(mg,0,"Game");
 	}
 	/*----------”wŒiˆÚ“®ŠÖŒW----------*/
-	if (frame >= BG_XMOVE_FRAME && _x < 3840) {
+	if (frame >= BG_XMOVE_FRAME && _x <= 3840) {
 		_x += BG_XMOVE_SPEED;
 	}
 	if (frame >= BG_YMOVE_FRAME && _y < 2160) {

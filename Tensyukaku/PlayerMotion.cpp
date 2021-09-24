@@ -19,7 +19,7 @@ void Player::Appear(Game& g) {
 	_Anime["Appear"] = 0;
 	auto ob = (OverlayBlack*)g.GetMS()->Get("OverlayBlack");
 	auto Pal = ob->GetPal();
-	if (Pal == 150) {
+	if (Pal <= 100) {
 		_Action_Cnt = _Cnt;
 		_State = PLAYERSTATE::SWORDOUT;
 	}
@@ -43,12 +43,12 @@ void Player::Idle(Game& g) {
 		_Action_Cnt = _Cnt;
 		PlaySoundMem(_Se["Iai"], DX_PLAYTYPE_BACK, true);
 	}
-	if (g.GetTrg() & PAD_INPUT_4) {
+	if (g.GetTrg() & PAD_INPUT_5) {
 		_State = PLAYERSTATE::SWAY;
 		PlaySoundMem(_Se["Sway"], DX_PLAYTYPE_BACK, true);
 		_Action_Cnt = _Cnt;
 	}
-	if (g.GetTrg() & PAD_INPUT_1) {
+	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
 		_Action_Cnt = _Cnt;		
 	}
@@ -56,7 +56,7 @@ void Player::Idle(Game& g) {
 		_State = PLAYERSTATE::LOWATTACK;
 		_Action_Cnt = _Cnt;
 	}
-	if (g.GetTrg() & PAD_INPUT_2) {
+	if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::KICK;
 		_Action_Cnt = _Cnt;
 	}
@@ -65,7 +65,7 @@ void Player::Idle(Game& g) {
 		_Action_Cnt = _Cnt;
 	}
 #ifdef _DEBUG
-	if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_5|| g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_5)
+	if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_7|| g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_7)
 	{
 		_State = PLAYERSTATE::MOVE;
 		_Action_Cnt = _Cnt;
@@ -82,12 +82,12 @@ void Player::Move(Game& g) {
 		_Action_Cnt = _Cnt;
 		PlaySoundMem(_Se["Iai"], DX_PLAYTYPE_BACK, true);
 	}
-	else if (g.GetTrg() & PAD_INPUT_4) {
+	else if (g.GetTrg() & PAD_INPUT_5) {
 		_State = PLAYERSTATE::SWAY;
 		PlaySoundMem(_Se["Sway"], DX_PLAYTYPE_BACK, true);
 		_Action_Cnt = _Cnt;
 	}
-	else if (g.GetTrg() & PAD_INPUT_1) {
+	else if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
 		_Action_Cnt = _Cnt;
 	}
@@ -95,7 +95,7 @@ void Player::Move(Game& g) {
 		_State = PLAYERSTATE::LOWATTACK;
 		_Action_Cnt = _Cnt;
 	}
-	else if (g.GetTrg() & PAD_INPUT_2) {
+	else if (g.GetTrg() & PAD_INPUT_1) {
 		_State = PLAYERSTATE::KICK;
 		_Action_Cnt = _Cnt;
 	}
@@ -114,13 +114,13 @@ void Player::Move(Game& g) {
 
 	}
 #ifdef _DEBUG
-	else if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_5)
+	else if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_7)
 	{
 		_y -= _Spd+10;
 		_isFlip = true;
 
 	}
-	else if (g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_5)
+	else if (g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_7)
 	{
 		_y += _Spd + 10;
 		_isFlip = true;

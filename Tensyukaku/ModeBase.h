@@ -30,9 +30,9 @@ protected:
 	std::pair<double, double> _drg;						//DrawRotaGraph用ペア変数（first拡縮率、second角度）
 	std::tuple<int, int, int> _rgb;						//Color用タプル型変数
 	std::unordered_map<std::string, std::vector<int>> _GrAll;		//全ての画像ハンドルマップ
-	std::unordered_map<std::string, int> _Anime;					//アニメーションマップ
-	std::unordered_map<std::string, int> _Se;						//SEマップ
-
+	std::unordered_map<std::string, int> _Anime;							//アニメーションマップ
+	std::unordered_map<std::string, int> _Se;									//SEマップ
+	std::unordered_map<std::string, int> _Vpal;								//ボリュームマップ
 public:
 	int	GetModeCount() { return _cntMode; }			// このモードが始まってからのカウンタ
 	unsigned long GetModeTm() { return _tmMode; }	// このモードが始まってからの時間ms

@@ -11,6 +11,7 @@
 #include "OverlayFlame.h"
 #include "PlayerHp.h"
 #include "IaiGauge.h"
+#include "Button.h"
 #include <vector>
 #include <sstream>
 
@@ -21,6 +22,7 @@ Player::Player(int x,int y) :
 	_Star_Flag(false),
 	_UI_Flag(false),
 	_noHit_Flag(false),
+	_TutorialHit_Flag(false),
 	_StairUp_Flag(false)
 {
 	_x = x;
@@ -150,10 +152,11 @@ void Player::Process(Game& g)
 
 void Player::Draw(Game& g) {
 #ifdef _DEBUG
-	/*DebugDraw(g);*/
+	DebugDraw(g);
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
 	ObjectBase::Draw(g);
+	ButtonDraw(g);
 }
 
 void Player::Delete(Game& g) {
@@ -262,6 +265,11 @@ void	Player::HitJudge(Game& g) {
 				g.GetMS()->Add(of, 1, "Flame");
 				PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
 			}
+		case ObjectBase::OBJECTTYPE::TUTORIALBOARD:
+			// プレイヤーとそのチュートリアルボードの当たり判定を行う
+			if (IsHit(*(*ite)) == true) {
+				_TutorialHit_Flag = true;
+			}
 			break;
 		default:
 			break;
@@ -338,9 +346,17 @@ void Player::UIAppear(Game& g){
 		_UI_Flag = true;
 	}
 }
+//チュートリアルボタン描画関数
+void Player::ButtonDraw(Game& g) {
+	if (_TutorialHit_Flag == true) {
+		Button bt(_x, _y - 500, 2);
+		bt.Process(g);
+		bt.Draw(g);
+		_TutorialHit_Flag = false;
+	}
+}
 //プレイヤー位置からのカメラ位置設定
 void Player::CameraSetting(Game& g) {
-
 	g.SetcvX(_x - (SCREEN_W * _CameraX / 1000));				// 背景の横中央にキャラを置く
 	g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));		// 背景の縦93%にキャラを置く
 	if (g.GetcvX() < 0) { g.SetcvX(0); }

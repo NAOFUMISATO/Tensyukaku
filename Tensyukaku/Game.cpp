@@ -75,6 +75,7 @@ void Game::Draw()
 }
 // BGM読み込み
 void Game::LoadBgm() {
+	_Bgm["Prologue"] = ResourceServer::LoadSoundMem("bgm/雅楽待っている.wav");
 	_Bgm["Title"] = ResourceServer::LoadSoundMem("bgm/Title.wav");
 	_Bgm["Main"] = ResourceServer::LoadSoundMem("bgm/民謡パワフル.wav");
 	_Bgm["Boss"] = ResourceServer::LoadSoundMem("bgm/BossStage.wav");
@@ -82,6 +83,7 @@ void Game::LoadBgm() {
 }
 //BGMのボリューム初期値
 void	Game::VolumeInit() {
+	_Vpal["Prologue"] = 80;
 	_Vpal["Title"] = 255;
 	_Vpal["Main"] = 150;
 	_Vpal["Boss"] = 150;
@@ -90,6 +92,7 @@ void	Game::VolumeInit() {
 
 //BGMのボリューム変更関数
 void	Game::VolumeChange() {
+	ChangeVolumeSoundMem(_Vpal["Prologue"], _Bgm["Prologue"]);
 	ChangeVolumeSoundMem(_Vpal["Title"], _Bgm["Title"]);
 	ChangeVolumeSoundMem(_Vpal["Main"], _Bgm["Main"]);
 	ChangeVolumeSoundMem(_Vpal["Boss"], _Bgm["Boss"]);

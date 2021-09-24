@@ -1,6 +1,8 @@
 #include <DxLib.h>
 #include "ResourceServer.h"
+#include "Game.h"
 #include "ModeTutorial.h"
+#include "ModeGame.h"
 bool ModeTutorial::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
@@ -8,6 +10,7 @@ bool ModeTutorial::Initialize(Game& g) {
 	_Pal = 255;
 	_Mode_Cnt = _Cnt;
 	_Trans_Flag = true;
+	_Return_Flag = false;
 	LoadTextGraph();
 	return true;
 }
@@ -19,6 +22,7 @@ bool ModeTutorial::Terminate(Game& g) {
 
 bool ModeTutorial::Process(Game& g) {
 	base::Process(g);
+	auto frame = _Cnt - _Mode_Cnt;
 	switch (_TutorialNum) {
 	case 1:
 		_GrHandle= _GrAll["Num1"][0];
@@ -37,6 +41,15 @@ bool ModeTutorial::Process(Game& g) {
 		break;
 	default:
 		break;
+	}
+	if (_Return_Flag == true) {
+		g.GetMS()->Del(this);
+		auto mg = (ModeGame*)g.GetMS()->Get("Game");
+		mg->SetStopObjProcess(false);
+		mg->SetStopObjFlag(false);
+	}
+	if (frame >= 10&& g.GetTrg() & PAD_INPUT_2) {
+		_Return_Flag = true;
 	}
 	return true;
 }

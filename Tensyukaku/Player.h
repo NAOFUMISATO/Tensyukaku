@@ -43,6 +43,7 @@ private:
 	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
 	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
+	void	ButtonDraw(Game& g);	//チュートリアルボタン描画関数
 	
 	/*---------メンバ変数----------*/
 	PLAYERSTATE	_State;		//状態遷移変数
@@ -50,7 +51,8 @@ private:
 	int		_Move_AnimeSpeed;//移動時のアニメスピード
 	int		_CameraX;			//カメラ位置
 	bool	_UI_Flag;				//UI描画用フラグ
-	bool	_noHit_Flag;			//居合中かどうかのフラグ
+	bool	_noHit_Flag;			//モーション中に当たり判定を行うかのフラグ
+	bool	_TutorialHit_Flag;	//チュートリアルボードとの当たり判定フラグ
 
 	//無敵状態管理変数
 	bool	_Star_Flag;		//無敵状態管理フラグ

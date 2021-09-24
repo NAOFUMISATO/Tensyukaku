@@ -36,7 +36,7 @@ bool ModeGame::Initialize(Game& g) {
 	//オブジェクト処理を止める
 	_stopObjProcess = false;
 	//ポーズ画面が出現しているか
-	_Pause_Flag = false;
+	_stopObj_Flag = false;
 	return true;
 }
 
@@ -56,9 +56,9 @@ bool ModeGame::Process(Game& g) {
 	{
 		g.GetChip()->Process(g);
 		g.GetOS()->Process(g);
-		if (g.GetTrg() & PAD_INPUT_12 && _Pause_Flag == false) {
+		if (g.GetTrg() & PAD_INPUT_12 && _stopObj_Flag == false) {
 			_stopObjProcess = true;
-			_Pause_Flag = true;
+			_stopObj_Flag = true;
 			auto mp = new ModePause();
 			g.GetMS()->Add(mp, 2, "Pause");
 		}

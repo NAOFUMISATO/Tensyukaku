@@ -106,6 +106,7 @@ void PoisonFall::Process(Game& g) {
 			_Anime["Land"] = ((frame) / ANIMESPEED_LAND) % LAND_ANIMEMAX;
 		}
 		if (frame >= LAND_ANIMEFRAME && LAND_ALLFRAME > frame) {
+			_hit_x = 10000;
 			_Alpha -= LAND_FADEOUTSPEED;
 		}
 		if (frame == LAND_ALLFRAME) {

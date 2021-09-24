@@ -12,4 +12,5 @@ private:
 	void LoadTextGraph();
 
 	int	_TutorialNum;
+	bool	_Return_Flag;
 };
