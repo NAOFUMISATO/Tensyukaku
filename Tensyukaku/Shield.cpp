@@ -37,7 +37,7 @@ void Shield::Draw(Game& g) {
 	_Before_y = _y + _gy;
 	_Dx = x;
 	_Dy = y;
-	DrawRotaGraph(x, y, scale, angle, _GrHandle, true, _isFlip);
+	DrawRotaGraph(x, y, scale, angle, _GrHandle, true, _isflip);
 #ifdef _DEBUG
 	int& re = std::get<0>(_Color);
 	int& gr = std::get<1>(_Color);

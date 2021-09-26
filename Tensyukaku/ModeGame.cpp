@@ -18,7 +18,6 @@ bool ModeGame::Initialize(Game& g) {
 	_gimikplacement = new GimikPlacement(g);
 	_eventhappen = new EventHappen(g);
 	if (g.GetCPointFlag() == false) {
-		PlaySoundMem(g.GetBgm()["Main"], DX_PLAYTYPE_LOOP, true);
 		_Player_x =POSITION_X;
 		_Player_y =POSITION_Y;
 	}

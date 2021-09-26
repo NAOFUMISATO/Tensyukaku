@@ -17,10 +17,11 @@ Busyo::Busyo(int x, int y, bool flip):
 {
 	_x = x;
 	_y = y;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
-	LoadActionGraph();
-	LoadActionSE();
+	LoadPicture();
+	LoadSE();
+	VolumeInit();
 };
 
 Busyo::~Busyo() {
@@ -28,7 +29,7 @@ Busyo::~Busyo() {
 };
 
 void Busyo::Init() {
-	_Sort = 6;
+	_sort = 6;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
 	_gx = GRAPHPOINT_X;
@@ -38,12 +39,13 @@ void Busyo::Init() {
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 	_State = ENEMYSTATE::APPEAR;
-	_Life = LIFE_MAX;
-	_Spd = SPEED;
-	_Alpha = 0;
+	_life = LIFE_MAX;
+	_spd = SPEED;
+	_alpha = 0;
 }
 void Busyo::Process(Game& g) {
 	EnemyBase::Process(g);
+	VolumeChange();
 	switch (_State) {
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
@@ -71,7 +73,7 @@ void Busyo::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	EnemyBase::Draw(g);
 }
 
@@ -91,9 +93,9 @@ void Busyo::HitJudge(Game& g) {
 			if (IsHit(*(*ite)) == true&&_noHit_Flag==false)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life -= 3;
-				_Action_Cnt = _Cnt;
-				if (_Life <= 0) {
+				_life -= 3;
+				_action_cnt = _cnt;
+				if (_life <= 0) {
 					_State = ENEMYSTATE::DEAD;
 					//居合ゲージの増加
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -115,8 +117,8 @@ void Busyo::HitJudge(Game& g) {
 			if (IsHit(*(*ite)) == true && _noHit_Flag == false)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				if (_Life <= 0) {
+				_life--;
+				if (_life <= 0) {
 					_State = ENEMYSTATE::DEAD;
 					//居合ゲージの増加
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -132,7 +134,7 @@ void Busyo::HitJudge(Game& g) {
 					}
 				}
 				else { _State = ENEMYSTATE::DAMAGE; }
-				_Action_Cnt = _Cnt;
+				_action_cnt = _cnt;
 				_Anime["Attack"] = 0;
 
 			}
@@ -143,8 +145,8 @@ void Busyo::HitJudge(Game& g) {
 			// 敵とプレイヤーの居合&行燈の炎オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
-				_Life -= 3;
-				_Action_Cnt = _Cnt;
+				_life -= 3;
+				_action_cnt = _cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
 			break;
@@ -161,7 +163,7 @@ void Busyo::HitJudge(Game& g) {
 }
 
 //画像読み込み関数
-void Busyo::LoadActionGraph() {
+void Busyo::LoadPicture() {
 	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
 	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
 	_GrAll["Patrol"].resize(PATROL_ANIMEMAX);
@@ -177,15 +179,23 @@ void Busyo::LoadActionGraph() {
 }
 
 //SE読み込み関数
-void Busyo::LoadActionSE() {
+void Busyo::LoadSE() {
 	_Se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/BushiAttack.wav");
 }
+//効果音ボリューム初期値設定関数
+void	Busyo::VolumeInit() {
+	_Vpal["Attack"] = 255;
+}
 
+//ボリューム変更関数
+void	Busyo::VolumeChange() {
+	ChangeVolumeSoundMem(_Vpal["Attack"], _Se["Attack"]);
+}
 //デバッグ用関数
 void Busyo::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
-		if (_isFlip == false) {
+		if (_isflip == false) {
 			PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 			PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 			pc.SetColor(std::make_tuple(0, 255, 0));
@@ -193,7 +203,7 @@ void Busyo::DebugDraw(Game& g) {
 			pc.Draw(g);
 			bpc.Draw(g);
 		}
-		if (_isFlip == true) {
+		if (_isflip == true) {
 			PrivateCollision pc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 			PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 			pc.SetColor(std::make_tuple(0, 255, 0));
@@ -203,12 +213,12 @@ void Busyo::DebugDraw(Game& g) {
 		}
 		break;
 	case ENEMYSTATE::COMING:
-		if (_isFlip == false) {
+		if (_isflip == false) {
 			PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 			cc.SetColor(std::make_tuple(255, 255, 0));
 			cc.Draw(g);
 		}
-		if (_isFlip == true) {
+		if (_isflip == true) {
 			PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 			cc.SetColor(std::make_tuple(255, 255, 0));
 			cc.Draw(g);

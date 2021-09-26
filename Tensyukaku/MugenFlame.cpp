@@ -15,31 +15,31 @@ MugenFlame::~MugenFlame() {
 }
 
 void MugenFlame::Init() {
-	_Sort = 7;
+	_sort = 7;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_Alpha = 255;
-	_Action_Cnt = _Cnt;
+	_alpha = 255;
+	_action_cnt = _cnt;
 	_Color = std::make_tuple(0, 0, 255);
 }
 
 void MugenFlame::Process(Game& g) {
 	ObjectBase::Process(g);
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	_GrHandle = _GrAll["Flame"][_Anime["Flame"]];
-	_Anime["Flame"] = (_Cnt / ANIMESPEED_MFLAME) % MFLAME_ANIMEMAX;
+	_Anime["Flame"] = (_cnt / ANIMESPEED_MFLAME) % MFLAME_ANIMEMAX;
 
 	if (frame >= MFLAME_ANIMEFRAME && MFLAME_ALLFLAME > frame) {
-		_Alpha -= MFLAME_FADEOUTSPEED;
+		_alpha -= MFLAME_FADEOUTSPEED;
 	}
 }
 
 void MugenFlame::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
 }
 

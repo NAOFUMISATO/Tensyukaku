@@ -28,11 +28,11 @@ void TitleLogo::Init() {
 	_hit_y = -100;
 	_hit_w = 700;
 	_hit_h = 200;
-	_Action_Cnt = _Cnt;
+	_action_cnt = _cnt;
 }
 void TitleLogo::Process(Game& g) {
 	ObjectBase::Process(g);
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	_GrHandle = _GrAll["TitleLogo"][_Anime["TitleLogo"]];
 	if (frame < 90) {
 		_Anime["TitleLogo"]= ((frame) / 3) % 30;
@@ -65,7 +65,7 @@ void GameStart::Init() {
 	_hit_y = -60;
 	_hit_w = 460;
 	_hit_h = 120;
-	_Alpha = 0;
+	_alpha = 0;
 }
 
 void GameStart::Process(Game& g) {
@@ -73,13 +73,13 @@ void GameStart::Process(Game& g) {
 	if (_x >= 1600) {
 		_x -= 2;
 	}
-	if (_Alpha <= 255) {
-		_Alpha += 2;
+	if (_alpha <= 255) {
+		_alpha += 2;
 	}
 }
 
 void GameStart::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
 #ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
@@ -105,20 +105,20 @@ void Explain::Init() {
 	_hit_y = -60;
 	_hit_w = 400;
 	_hit_h = 120;
-	_Alpha = 0;
+	_alpha = 0;
 }
 void Explain::Process(Game& g) {
 	ObjectBase::Process(g);
 	if (_x >= 1620) {
 		_x -= 2;
 	}
-	if (_Alpha <= 255) {
-		_Alpha += 2;
+	if (_alpha <= 255) {
+		_alpha += 2;
 	}
 }
 
 void Explain::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
 #ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
@@ -144,7 +144,7 @@ void GameEnd::Init() {
 	_hit_y = -60;
 	_hit_w = 400;
 	_hit_h = 120;
-	_Alpha = 0;
+	_alpha = 0;
 }
 
 void GameEnd::Process(Game& g) {
@@ -152,13 +152,13 @@ void GameEnd::Process(Game& g) {
 	if (_x >= 1620) {
 		_x -= 2;
 	}
-	if (_Alpha <= 255) {
-		_Alpha +=2 ;
+	if (_alpha <= 255) {
+		_alpha +=2 ;
 	}
 }
 
 void GameEnd::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
 #ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);

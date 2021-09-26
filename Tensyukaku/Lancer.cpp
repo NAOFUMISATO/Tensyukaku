@@ -17,11 +17,11 @@ Lancer::Lancer(int x, int y, bool flip)
 {
 	_x = x;
 	_y = y;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
-	LoadActionGraph();
-	LoadActionSE();
-
+	LoadPicture();
+	LoadSE();
+	VolumeInit();
 };
 
 Lancer::~Lancer() {
@@ -29,7 +29,7 @@ Lancer::~Lancer() {
 };
 
 void Lancer::Init() {
-	_Sort = 6;
+	_sort = 6;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
 	_gx = GRAPHPOINT_X;
@@ -39,12 +39,13 @@ void Lancer::Init() {
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 	_State = ENEMYSTATE::APPEAR;
-	_Life = LIFE_MAX;
-	_Spd = SPEED;
-	_Alpha = 0;
+	_life = LIFE_MAX;
+	_spd = SPEED;
+	_alpha = 0;
 }
 void Lancer::Process(Game& g) {
 	EnemyBase::Process(g);
+	VolumeChange();
 	switch (_State) {
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
@@ -68,7 +69,7 @@ void Lancer::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
 #endif 
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	EnemyBase::Draw(g);
 }
 void Lancer::Delete(Game& g) {
@@ -88,8 +89,8 @@ void Lancer::HitJudge(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
+				_life--;
+				_action_cnt = _cnt;
 				_State = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -111,8 +112,8 @@ void Lancer::HitJudge(Game& g) {
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
-				_Life--;
-				_Action_Cnt = _Cnt;
+				_life--;
+				_action_cnt = _cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
 			break;
@@ -129,7 +130,7 @@ void Lancer::HitJudge(Game& g) {
 }
 
 //盾兵の画像読み込み関数
-void Lancer::LoadActionGraph() {
+void Lancer::LoadPicture() {
 	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
 	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
 	_GrAll["Patrol"].resize(PATROL_ANIMEMAX);
@@ -142,15 +143,27 @@ void Lancer::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
 }
 
-//盾兵のSE読み込み関数
-void Lancer::LoadActionSE() {
+//効果音読み込み関数
+void Lancer::LoadSE() {
+	_Se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/LancerAttack.wav");
 }
+
+//効果音ボリューム初期値設定関数
+void	Lancer::VolumeInit() {
+	_Vpal["Attack"] = 255;
+}
+
+//ボリューム変更関数
+void	Lancer::VolumeChange() {
+	ChangeVolumeSoundMem(_Vpal["Attack"], _Se["Attack"]);
+}
+
 
 //デバッグ用関数
 void Lancer::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
-		if (_isFlip == false) {
+		if (_isflip == false) {
 			PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 			PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 			pc.SetColor(std::make_tuple(0, 255, 0));
@@ -158,7 +171,7 @@ void Lancer::DebugDraw(Game& g) {
 			pc.Draw(g);
 			bpc.Draw(g);
 		}
-		if (_isFlip == true) {
+		if (_isflip == true) {
 			PrivateCollision pc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 			PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 			pc.SetColor(std::make_tuple(0, 255, 0));
@@ -168,12 +181,12 @@ void Lancer::DebugDraw(Game& g) {
 		}
 		break;
 	case ENEMYSTATE::COMING:
-		if (_isFlip == false) {
+		if (_isflip == false) {
 			PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 			cc.SetColor(std::make_tuple(2555, 255, 0));
 			cc.Draw(g);
 		}
-		if (_isFlip == true) {
+		if (_isflip == true) {
 			PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 			cc.SetColor(std::make_tuple(255, 255, 0));
 			cc.Draw(g);

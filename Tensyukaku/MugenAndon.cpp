@@ -19,21 +19,21 @@ MugenAndon::~MugenAndon() {
 };
 
 void MugenAndon::Init() {
-	_Sort = 8;
+	_sort = 8;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_Alpha = 255;
+	_alpha = 255;
 	_drg.second = 0.0;
 	_Flame_y = _y;
 }
 
 void MugenAndon::Process(Game& g) {
 	ObjectBase::Process(g);
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	_GrHandle = _GrAll["Andon"][_Anime["Andon"]];
 	if (_AndonDrop_Flag == true) {
 		if (frame == MANDON_FIREFRAME1) {
@@ -73,7 +73,7 @@ void MugenAndon::Process(Game& g) {
 			}
 		}
 		if (frame > MANDON_DROPFRAME && MANDON_ALLFRAME > frame) {
-			_Alpha -= MANDON_FADEOUTSPEED;
+			_alpha -= MANDON_FADEOUTSPEED;
 		}
 		if (frame == MANDON_ALLFRAME) {
 			Delete(g);
@@ -91,7 +91,7 @@ void MugenAndon::Process(Game& g) {
 				if (IsHit(*(*ite)) == true)
 				{
 					(*ite)->Delete(g);		// (*ite) はキックオブジェクト
-					_Action_Cnt = _Cnt;
+					_action_cnt = _cnt;
 					_AndonDrop_Flag = true;
 					//プレイヤーの向きを参照
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -109,7 +109,7 @@ void MugenAndon::Process(Game& g) {
 }
 
 void MugenAndon::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
 }
 

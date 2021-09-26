@@ -17,18 +17,19 @@ Ninja::Ninja(int x, int y, bool flip,int kunai_stock)
 {
 	_x = x;
 	_y = y;
-	_isFlip = flip;
+	_isflip = flip;
 	_Kunai_Stock = kunai_stock;
 	Init();
-	LoadActionGraph();
-	LoadActionSE();
+	LoadPicture();
+	LoadSE();
+	VolumeInit();
 };
 
 Ninja::~Ninja() {
 };
 
 void Ninja::Init() {
-	_Sort = 6;
+	_sort = 6;
 	_GrHandle = -1;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
@@ -37,12 +38,13 @@ void Ninja::Init() {
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 	_State= ENEMYSTATE::APPEAR;
-	_Life = LIFE_MAX;
-	_Spd = SPEED;
-	_Alpha = 0;
+	_life = LIFE_MAX;
+	_spd = SPEED;
+	_alpha = 0;
 }
 void Ninja::Process(Game& g) {
 	EnemyBase::Process(g);
+	VolumeChange();
 	switch (_State) {
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
@@ -69,7 +71,7 @@ void Ninja::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	EnemyBase::Draw(g);
 }
 void Ninja::Delete(Game& g) {
@@ -88,8 +90,8 @@ void Ninja::HitJudge(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				_Action_Cnt = _Cnt;
+				_life--;
+				_action_cnt = _cnt;
 				_State = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -111,8 +113,8 @@ void Ninja::HitJudge(Game& g) {
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
-				_Life--;
-				_Action_Cnt = _Cnt;
+				_life--;
+				_action_cnt = _cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
 			break;
@@ -128,7 +130,7 @@ void Ninja::HitJudge(Game& g) {
 	}
 }
 //忍者の画像読み込み関数
-void Ninja::LoadActionGraph() {
+void Ninja::LoadPicture() {
 	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
 	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
 	_GrAll["Patrol"].resize(PATROL_ANIMEMAX);
@@ -143,16 +145,28 @@ void Ninja::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
 }
 
-//忍者のSE読み込み関数
-void Ninja::LoadActionSE() {
-	_Se["Attack"] = ResourceServer::LoadSoundMem("bgm/NinjaAttack.wav");
+//効果音読み込み関数
+void Ninja::LoadSE() {
+	_Se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/NinjaAttack.wav");
+	_Se["Kunai"] = ResourceServer::LoadSoundMem("se/Enemy/Kunai.wav");
 }
 
+//効果音ボリューム初期値設定関数
+void	Ninja::VolumeInit() {
+	_Vpal["Attack"] = 255;
+	_Vpal["Kunai"] = 255;
+}
+
+//ボリューム変更関数
+void	Ninja::VolumeChange() {
+	ChangeVolumeSoundMem(_Vpal["Attack"], _Se["Attack"]);
+	ChangeVolumeSoundMem(_Vpal["Kunai"], _Se["Kunai"]);
+}
 //デバッグ用関数
 void Ninja::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
-		if (_isFlip == false) {
+		if (_isflip == false) {
 			PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h,PATROL_WIDTH,PATROL_HEIGHT);
 			PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 			pc.SetColor(std::make_tuple(0, 255, 0));
@@ -160,7 +174,7 @@ void Ninja::DebugDraw(Game& g) {
 			pc.Draw(g);
 			bpc.Draw(g);
 		}
-		if (_isFlip == true) {
+		if (_isflip == true) {
 			PrivateCollision pc(_x - _hit_x, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
 			PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 			pc.SetColor(std::make_tuple(0, 255, 0));
@@ -170,12 +184,12 @@ void Ninja::DebugDraw(Game& g) {
 		}
 		break;
 	case ENEMYSTATE::COMING:
-		if (_isFlip == false) {
+		if (_isflip == false) {
 			PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 			cc.SetColor(std::make_tuple(255, 255, 0));
 			cc.Draw(g);
 		}
-		if (_isFlip == true) {
+		if (_isflip == true) {
 			PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 			cc.SetColor(std::make_tuple(255, 255, 0));
 			cc.Draw(g);

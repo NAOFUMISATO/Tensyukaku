@@ -14,14 +14,14 @@ BossStair::~BossStair() {
 }
 
 void BossStair::Init() {
-	_Sort = 5;
+	_sort = 5;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_isFlip = false;
+	_isflip = false;
 #ifdef _DEBUG
 	_Color = std::make_tuple(0, 0, 255);
 	_Dalpha = 128;

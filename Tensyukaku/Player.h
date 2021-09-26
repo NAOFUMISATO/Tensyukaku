@@ -40,29 +40,33 @@ private:
 	void	CameraSetting(Game& g);	//プレイヤー位置からカメラ座標設定
 	void	UIAppear(Game& g);		//UIインスタンス生成関数
 	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
-	void	LoadActionGraph();		//プレイヤーの画像読み込み関数
-	void	LoadActionSE();			//プレイヤーの効果音読み込み関数
+	void	RestartCheck(Game& g); //再起からの開始かどうか確認する関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
 	void	ButtonDraw(Game& g);	//チュートリアルボタン描画関数
-	
+	void	LoadPicture();		//画像読み込み関数
+	void	LoadSE();			//効果音読み込み関数
+	void	VolumeInit();	//効果音ボリューム初期値設定関数
+	void	VolumeChange();	//ボリューム変更関数
 	/*---------メンバ変数----------*/
 	PLAYERSTATE	_State;		//状態遷移変数
 	
-	int		_Move_AnimeSpeed;//移動時のアニメスピード
+	int		_move_animespeed;//移動時のアニメスピード
 	int		_CameraX;			//カメラ位置
-	bool	_UI_Flag;				//UI描画用フラグ
-	bool	_noHit_Flag;			//モーション中に当たり判定を行うかのフラグ
-	bool	_TutorialHit_Flag;	//チュートリアルボードとの当たり判定フラグ
+	bool	_ui_flag;				//UI描画用フラグ
+	bool	_gaugeup_flag;	//居合ゲージがMAXになったかのフラグ
+	bool	_nohit_flag;			//モーション中に当たり判定を行うかのフラグ
+	bool	_tutorialhit_flag;	//チュートリアルボードとの当たり判定フラグ
+	bool	_restartcheck_flag;	//再起からの開始かどうか確認するフラグ
 
 	//無敵状態管理変数
-	bool	_Star_Flag;		//無敵状態管理フラグ
+	bool	_star_flag;		//無敵状態管理フラグ
 	int		_Star_Cnt;		//無敵状態経過時間記録変数
 	
 	//階段処理変数
 	Vector2 _velocityDir;	//速度方向
 	float	_Stairup_Spd;	//階段上昇速度
 	float	_angle;			//角度
-	bool	_StairUp_Flag;	//階段上昇の受付判定用フラグ
+	bool	_stairup_flag;	//階段上昇の受付判定用フラグ
 	bool	_StairFlip_Flag;//階段の反転判定保存フラグ
 	int		_Stair_x;		//階段のX座標保存変数
 	int		_Player_y;		//階段上昇時のプレイヤーY座標保存変数

@@ -15,26 +15,26 @@ Flame::~Flame() {
 }
 
 void Flame::Init() {
-	_Sort = 7;
+	_sort = 7;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_Alpha = 255;
-	_Action_Cnt = _Cnt;
+	_alpha = 255;
+	_action_cnt = _cnt;
 	_Color = std::make_tuple(0, 0, 255);
 }
 
 void Flame::Process(Game& g) {
 ObjectBase::Process(g);
-	auto frame = _Cnt-_Action_Cnt;
+	auto frame = _cnt-_action_cnt;
 	_GrHandle = _GrAll["Flame"][_Anime["Flame"]];
-	_Anime["Flame"] = (_Cnt / ANIMESPEED_FLAME) % FLAME_ANIMEMAX;
+	_Anime["Flame"] = (_cnt / ANIMESPEED_FLAME) % FLAME_ANIMEMAX;
 	
 	if (frame >= FLAME_ANIMEFRAME && FLAME_ALLFLAME > frame) {
-		_Alpha -= FLAME_FADEOUTSPEED;
+		_alpha -= FLAME_FADEOUTSPEED;
 	}
 	if (frame == FLAME_ALLFLAME) {
 		Delete(g);
@@ -43,7 +43,7 @@ ObjectBase::Process(g);
 }
 
 void Flame::Draw(Game& g) {
-SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 ObjectBase::Draw(g);
 }
 

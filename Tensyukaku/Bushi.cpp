@@ -16,10 +16,11 @@ Bushi::Bushi(int x,int y,bool flip)
 {
 	_x = x;
 	_y = y;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
-	LoadActionGraph();
-	LoadActionSE();
+	LoadPicture();
+	LoadSE();
+	VolumeInit();
 };
 
 Bushi::~Bushi() {
@@ -27,7 +28,7 @@ Bushi::~Bushi() {
 };
 
 void Bushi::Init() {
-	_Sort = 6;
+	_sort = 6;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
 	_gx = GRAPHPOINT_X;
@@ -37,12 +38,13 @@ void Bushi::Init() {
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 	_State=ENEMYSTATE::APPEAR;
-	_Life = LIFE_MAX;
-	_Spd = SPEED;
-	_Alpha = 0;
+	_life = LIFE_MAX;
+	_spd = SPEED;
+	_alpha = 0;
 }
 void Bushi::Process(Game& g) {
 	EnemyBase::Process(g);
+	VolumeChange();
 	switch (_State) {
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
@@ -70,7 +72,7 @@ void Bushi::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA,_Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA,_alpha);
 	EnemyBase::Draw(g);
 }
 
@@ -90,7 +92,7 @@ void Bushi::HitJudge(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Action_Cnt = _Cnt;
+				_action_cnt = _cnt;
 				_State = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -111,8 +113,8 @@ void Bushi::HitJudge(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_Life--;
-				if (_Life <= 0) {
+				_life--;
+				if (_life <= 0) {
 					//居合ゲージの増加
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 					{
@@ -128,7 +130,7 @@ void Bushi::HitJudge(Game& g) {
 					_State = ENEMYSTATE::DEAD;
 				}
 				else { _State = ENEMYSTATE::DAMAGE; }
-				_Action_Cnt = _Cnt;
+				_action_cnt = _cnt;
 				_Anime["Attack"] = 0;
 			
 			}
@@ -139,8 +141,8 @@ void Bushi::HitJudge(Game& g) {
 			// 敵とプレイヤーの居合&行燈の炎オブジェクトの当たり判定を行う
 			if (IsHit(*(*ite)) == true)
 			{
-				_Life -= 3;
-				_Action_Cnt = _Cnt;
+				_life -= 3;
+				_action_cnt = _cnt;
 				_State = ENEMYSTATE::DEAD;
 			}
 			break;
@@ -157,7 +159,7 @@ void Bushi::HitJudge(Game& g) {
 }
 
 //武士の画像読み込み関数
-void Bushi::LoadActionGraph() {
+void Bushi::LoadPicture() {
 	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
 	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
 	_GrAll["Patrol"].resize(PATROL_ANIMEMAX);
@@ -172,16 +174,25 @@ void Bushi::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
 }
 
-//武士のSE読み込み関数
-void Bushi::LoadActionSE() {
+//SE読み込み関数
+void Bushi::LoadSE() {
 	_Se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/BushiAttack.wav");
 }
 
+//効果音ボリューム初期値設定関数
+void	Bushi::VolumeInit() {
+	_Vpal["Attack"] = 255;
+}
+
+//ボリューム変更関数
+void	Bushi::VolumeChange() {
+	ChangeVolumeSoundMem(_Vpal["Attack"], _Se["Attack"]);
+}
 //デバッグ用関数
 void Bushi::DebugDraw(Game& g) {
 	switch (_State) {
 	case ENEMYSTATE::PATROL:
-		if (_isFlip == false) {
+		if (_isflip == false) {
 			PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h,PATROL_WIDTH,PATROL_HEIGHT);
 			PrivateCollision bpc(_x - _hit_x, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 			pc.SetColor(std::make_tuple(0, 255, 0));
@@ -189,7 +200,7 @@ void Bushi::DebugDraw(Game& g) {
 			pc.Draw(g);
 			bpc.Draw(g);
 		}
-		if (_isFlip == true) {
+		if (_isflip == true) {
 			PrivateCollision pc(_x - _hit_x, _y - _hit_h,PATROL_WIDTH, PATROL_HEIGHT);
 			PrivateCollision bpc(_x + _hit_x - PATROL_BACKWIDTH, _y - _hit_h, PATROL_BACKWIDTH, PATROL_HEIGHT);
 			pc.SetColor(std::make_tuple(0, 255, 0));
@@ -199,12 +210,12 @@ void Bushi::DebugDraw(Game& g) {
 		}
 		break;
 	case ENEMYSTATE::COMING:
-		if (_isFlip == false) {
+		if (_isflip == false) {
 			PrivateCollision cc(_x + _hit_x - COMING_WIDTH, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 			cc.SetColor(std::make_tuple(255, 255, 0));
 			cc.Draw(g);
 		}
-		if (_isFlip == true) {
+		if (_isflip == true) {
 			PrivateCollision cc(_x - _hit_x, _y - _hit_h, COMING_WIDTH, COMING_HEIGHT);
 			cc.SetColor(std::make_tuple(255, 255, 0));
 			cc.Draw(g);

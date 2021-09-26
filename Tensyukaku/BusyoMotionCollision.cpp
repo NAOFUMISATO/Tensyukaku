@@ -26,7 +26,7 @@ void BusyoAttackCollision::Init() {
 	_hit_y = 0;
 	_hit_w = ATTACK_WIDTH;
 	_hit_h = ATTACK_HEIGHT;
-	_Action_Cnt = _Cnt;
+	_action_cnt = _cnt;
 #ifdef _DEBUG
 	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
@@ -36,7 +36,7 @@ void BusyoAttackCollision::Init() {
 
 void BusyoAttackCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	if (frame == ATTACK_ENDFRAME||frame==ATTACK_END2FRAME) {
 		g.GetOS()->Del(this);
 	}

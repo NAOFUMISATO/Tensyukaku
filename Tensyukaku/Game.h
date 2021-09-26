@@ -33,7 +33,8 @@ public:
 	int		GetmapW() { return _mapW; }
 	int		GetcvX() { return _cvX; }
 	int		GetcvY() { return _cvY; }
-	int		GetCPointFlag() { return _CPoint_Flag; }
+	bool		GetCPointFlag() { return _CPoint_Flag; }
+	bool		GetRestartFlag() { return _Restart_Flag; }
 	MapChip* GetChip() { return _mapChip; }
 	ModeServer* GetMS() { return _serverMode; }
 	ObjectServer* GetOS() { return &_objServer; }
@@ -46,6 +47,7 @@ public:
 	void	SetmapH(int mapH) { _mapH = mapH; }
 	void	SetChip(MapChip* map) { _mapChip = map; }
 	void	SetCPointFlag(bool cpointflag) { _CPoint_Flag = cpointflag; }
+	void	SetRestartFlag(bool restartflag) { _Restart_Flag = restartflag; }
 	void   SetVpal(std::unordered_map<std::string, int> vpal) { _Vpal = vpal; }
 private:
 	void		LoadBgm();	//BGM読み込み
@@ -60,6 +62,7 @@ private:
 	int	_cvX, _cvY;		// カメラ
 	int _mapW, _mapH;	// マップ
 	bool _CPoint_Flag;	//チェックポイントフラグ
+	bool _Restart_Flag;//再起からの開始かどうかのフラグ
 	std::unordered_map<std::string, int> _Bgm; //BGMマップ
 	std::unordered_map<std::string, int> _Vpal; //ボリュームマップ
 

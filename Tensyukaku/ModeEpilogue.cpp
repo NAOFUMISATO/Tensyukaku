@@ -13,6 +13,7 @@ bool ModeEpilogue::Initialize(Game& g) {
 	_Pal = 0;
 	_Mode_Cnt = _Cnt;
 	_GrHandle=ResourceServer::LoadGraph("res/Mode/Epilogue.png");
+	PlaySoundMem(g.GetBgm()["Epilogue"], DX_PLAYTYPE_LOOP, true);
 	return true;
 }
 

@@ -22,15 +22,16 @@ private:
 	void	Throw(Game& g);			//クナイ投げ時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
 	void	HitJudge(Game& g);	//被ダメ判定&押し出しの処理
-	void	LoadActionGraph();		//忍者の画像読み込み関数
-	void	LoadActionSE();			//忍者のSE読み込み関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
-	
+	void	LoadPicture();		//画像読み込み関数
+	void	LoadSE();			//効果音読み込み関数
+	void	VolumeInit();	//効果音ボリューム初期値設定関数
+	void	VolumeChange();	//ボリューム変更関数
 /*---------メンバ変数--------*/
 	int		_Kunai_Stock;
 };
 namespace NInfo {
-	/*----------忍者の各座標関係----------*/
+	/*----------各座標関係----------*/
 	constexpr auto GRAPHPOINT_X = 0;			//X位置から描画点までの差分
 	constexpr auto GRAPHPOINT_Y = -315;			//Y位置から描画点までの差分
 	constexpr auto POSITION_HITX = -60;			//描画点から当たり判定左上座標までの差分
@@ -132,9 +133,5 @@ namespace NInfo {
 	constexpr auto KUNAI_ANGLECHANGE = 0.1;		//弾かれた後の1フレーム当たりの角度の変更量
 	constexpr auto KUNAI_XCHANGE = 2;			//弾かれた後の1フレーム当たりのX移動量
 	constexpr auto KUNAI_YCHANGE = 4;			//弾かれた後の1フレーム当たりのY移動量
-
-	/*----------SE関係----------*/
-	constexpr auto WALK_SE = "se/Footstep.wav";			//巡回
-	constexpr auto ATTACK_SE = "se/slash3.wav";			//攻撃
 
 }

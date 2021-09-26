@@ -125,13 +125,13 @@ bool PrologueText::Process(Game& g) {
 		}
 	}
 	/*----------ボタン押下によるスキップ----------*/
-	auto fadeoutframe = 60;
+	auto fadeoutframe =120;
 	if (g.GetTrg() & PAD_INPUT_4&&_Skip_Flag==false) {
 		_Mode_Cnt = _Cnt;
 		_Skip_Flag = true;
 		//モードオーバーレイ生成
 		auto ol = new OverlayBlack();
-		ol->SetFade(fadeoutframe, 120, 180, 4);
+		ol->SetFade(fadeoutframe, 480, 600, 3);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
 	}
 	//スキップ時の音源のフェードアウト

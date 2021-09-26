@@ -28,7 +28,7 @@ void CursorParticle1::Init() {
 	_pal =50;
 	_rgb = std::make_tuple(230, 70, 5);
 	_drg = std::make_pair(CURSOR_PARTICLE1_SCALE, CURSOR_PARTICLE1_ANGLE);
-	_Cnt = CURSOR_PARTICLE1_CNT;
+	_cnt = CURSOR_PARTICLE1_CNT;
 }
 
 void CursorParticle1::Process(Game& g) {
@@ -77,7 +77,7 @@ void CursorParticle1::Draw(Game& g) {
 	double angle = _drg.second;
 	auto cx = static_cast<int>(x);
 	auto cy = static_cast<int>(y);
-	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isFlip);
+	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isflip);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	SetDrawBright(255, 255, 255);
 }

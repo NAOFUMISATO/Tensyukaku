@@ -40,7 +40,7 @@ void Button::Init() {
 
 void Button::Process(Game& g) {
 	ObjectBase::Process(g);
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	switch (_ButtonNum) {
 	case	1:
 		_GrHandle = _GrAll["BButton"][_Anime["BButton"]];

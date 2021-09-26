@@ -78,6 +78,7 @@ void Game::LoadBgm() {
 	_Bgm["Prologue"] = ResourceServer::LoadSoundMem("bgm/雅楽待っている.wav");
 	_Bgm["Title"] = ResourceServer::LoadSoundMem("bgm/Title.wav");
 	_Bgm["Main"] = ResourceServer::LoadSoundMem("bgm/民謡パワフル.wav");
+	_Bgm["Epilogue"] = ResourceServer::LoadSoundMem("bgm/雅楽穏やか.wav");
 	_Bgm["Boss"] = ResourceServer::LoadSoundMem("bgm/BossStage.wav");
 	_Bgm["Flame"]= ResourceServer::LoadSoundMem("bgm/Flame.wav");
 }
@@ -85,7 +86,8 @@ void Game::LoadBgm() {
 void	Game::VolumeInit() {
 	_Vpal["Prologue"] = 80;
 	_Vpal["Title"] = 255;
-	_Vpal["Main"] = 150;
+	_Vpal["Main"] = 0;
+	_Vpal["Epilogue"] = 80;
 	_Vpal["Boss"] = 150;
 	_Vpal["Flame"] = 255;
 }
@@ -95,6 +97,7 @@ void	Game::VolumeChange() {
 	ChangeVolumeSoundMem(_Vpal["Prologue"], _Bgm["Prologue"]);
 	ChangeVolumeSoundMem(_Vpal["Title"], _Bgm["Title"]);
 	ChangeVolumeSoundMem(_Vpal["Main"], _Bgm["Main"]);
+	ChangeVolumeSoundMem(_Vpal["Epilogue"], _Bgm["Epilogue"]);
 	ChangeVolumeSoundMem(_Vpal["Boss"], _Bgm["Boss"]);
 	ChangeVolumeSoundMem(_Vpal["Flame"], _Bgm["Flame"]);
 };

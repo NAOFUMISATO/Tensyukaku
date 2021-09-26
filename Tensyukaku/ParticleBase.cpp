@@ -15,14 +15,14 @@ ParticleBase::ParticleBase() {
 ParticleBase::~ParticleBase() {};
 
 void ParticleBase::Init() {
-	_Sort = 15;
+	_sort = 15;
 }
 
 void ParticleBase::Process(Game& g) {
 	_xy.first += _dxy.first;
 	_xy.second += _dxy.second;
-	_Cnt--;
-	if (_Cnt <= 0) {
+	_cnt--;
+	if (_cnt <= 0) {
 		g.GetOS()->Del(this);
 	}
 }
@@ -41,7 +41,7 @@ void ParticleBase::Draw(Game& g) {
 	double angle = _drg.second;
 	auto cx = static_cast<int>(x);
 	auto cy = static_cast<int>(y);
-	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isFlip);
+	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isflip);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	SetDrawBright(255, 255, 255);
 }

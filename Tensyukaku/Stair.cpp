@@ -7,7 +7,7 @@ using namespace StInfo;
 Stair::Stair(int x,int y,bool flip) {
 	_x = x;
 	_y = y;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle=ResourceServer::LoadGraph("res/Gimik/Stair.png");
 }
@@ -15,7 +15,7 @@ Stair::~Stair() {
 }
 
 void Stair::Init() {
-	_Sort = 5;
+	_sort = 5;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;

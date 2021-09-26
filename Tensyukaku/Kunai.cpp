@@ -9,8 +9,8 @@ using namespace NInfo;
 Kunai::Kunai(int x,int y, bool flip,int spd):_Repel_Flag(false) {
 	_x = x;
 	_y = y;
-	_isFlip = flip;
-	_Spd = spd;
+	_isflip = flip;
+	_spd = spd;
 	Init();
 	_GrAll["Kunai"].resize(2);
 	ResourceServer::LoadDivGraph(KUNAI_GRAPHNAME, 2, 2, 1, 120, 120, _GrAll["Kunai"].data());
@@ -20,14 +20,14 @@ Kunai::~Kunai() {
 };
 
 void Kunai::Init() {
-	_Sort = 14;
+	_sort = 14;
 	_gx = KUNAI_GRAPHPOINT_X;
 	_gy = KUNAI_GRAPHPOINT_Y;
 	_hit_x = KUNAI_POSITION_HITX;
 	_hit_y = KUNAI_POSITION_HITY;
 	_hit_w = KUNAI_COLLISION_WIDTH;
 	_hit_h = KUNAI_COLLISION_HEIGHT;
-	_Alpha =255;
+	_alpha =255;
 	_drg.second = 0.0;
 }
 
@@ -35,19 +35,19 @@ void Kunai::Process(Game& g) {
 	ObjectBase::Process(g);
 	_GrHandle=_GrAll["Kunai"][_Anime["Kunai"]];
 	_Anime["Kunai"] = 1;
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	if (_Repel_Flag == true) {
 		_hit_x = 10000;
 		_Anime["Kunai"] = 0;
 		if (frame < REPEL_FRAME) {
-			_Alpha -= KUNAI_ALPHACHANGE;
-			if (_isFlip == false) {
+			_alpha -= KUNAI_ALPHACHANGE;
+			if (_isflip == false) {
 
 				_drg.second += KUNAI_ANGLECHANGE;
 				_x += KUNAI_XCHANGE;
 				_y += KUNAI_YCHANGE;
 			}
-			if (_isFlip == true) {
+			if (_isflip == true) {
 
 				_drg.second -= KUNAI_ANGLECHANGE;
 				_x -= KUNAI_XCHANGE;
@@ -70,22 +70,22 @@ void Kunai::Process(Game& g) {
 				// クナイとプレイヤーの下段攻撃オブジェクトの当たり判定を行う
 				if (IsHit(*(*ite)) == true) {
 					_Repel_Flag = true;
-					_Spd = 0;
-					_Action_Cnt = _Cnt;
+					_spd = 0;
+					_action_cnt = _cnt;
 				}
 			}
 		}
 	}
-	if (_isFlip == false) {
-		_x -= _Spd;
+	if (_isflip == false) {
+		_x -= _spd;
 	}
-	if (_isFlip == true) {
-		_x += _Spd;
+	if (_isflip == true) {
+		_x += _spd;
 	}
 }
 
 void Kunai::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
 }
 

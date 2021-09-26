@@ -22,8 +22,10 @@ private:
 	void	Throw(Game& g);			//クナイ投げ時の処理
 	void	Dead(Game& g);			//死亡状態時の処理
 	void	HitJudge(Game& g);	//被ダメ判定&押し出しの処理
-	void	LoadActionGraph();		//忍者の画像読み込み関数
-	void	LoadActionSE();			//忍者のSE読み込み関数
+	void	LoadPicture();		//画像読み込み関数
+	void	LoadSE();			//SE読み込み関数
+	void	VolumeInit();	//効果音ボリューム初期値設定関数
+	void	VolumeChange();	//ボリューム変更関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
 
 /*---------メンバ変数--------*/

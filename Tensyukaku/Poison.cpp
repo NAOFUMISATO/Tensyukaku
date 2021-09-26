@@ -23,14 +23,14 @@ PoisonReserve::~PoisonReserve() {
 void PoisonReserve::Init() {
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
-	_Alpha = 255;
+	_alpha = 255;
 	_Dalpha = 0;
-	_Action_Cnt = _Cnt;
+	_action_cnt = _cnt;
 }
 
 void PoisonReserve::Process(Game& g) {
 	ObjectBase::Process(g);
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	_GrHandle = _GrAll["Reserve"][_Anime["Reserve"]];
 	if (frame < RESERVE_ANIMEFRAME) {
 		_Anime["Reserve"] = ((frame) / ANIMESPEED_RESERVE) % RESERVE_ANIMEMAX;
@@ -40,7 +40,7 @@ void PoisonReserve::Process(Game& g) {
 		g.GetOS()->Add(pf);
 	}
 	if (frame >= RESERVE_ANIMEFRAME && frame < RESERVE_ALLFRAME) {
-		_Alpha -= RESERVE_FADEOUTSPEED;
+		_alpha -= RESERVE_FADEOUTSPEED;
 	}
 	if (frame == RESERVE_ALLFRAME) {
 		Delete(g);
@@ -48,7 +48,7 @@ void PoisonReserve::Process(Game& g) {
 }
 
 void PoisonReserve::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
 }
 
@@ -71,32 +71,32 @@ PoisonFall::~PoisonFall() {
 }
 
 void PoisonFall::Init() {
-	_Sort =14;
+	_sort =14;
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_Alpha = 255;
-	_Spd =15;
-	_Action_Cnt = _Cnt;
+	_alpha = 255;
+	_spd =15;
+	_action_cnt = _cnt;
 	_Appear_y = _y;
 	_State = POISONSTATE::FALL;
 }
 
 void PoisonFall::Process(Game& g) {
 	ObjectBase::Process(g);
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	switch (_State) {
 	case	POISONSTATE::FALL:
 		_GrHandle = _GrAll["Fall"][_Anime["Fall"]];
 		_Anime["Fall"] = 0;
 		if (frame < FALL_STOPFRAME) {
-			_y += _Spd;
+			_y += _spd;
 		}
 		if (frame==FALL_STOPFRAME) {
-			_Action_Cnt = _Cnt;
+			_action_cnt = _cnt;
 			_State = POISONSTATE::LAND;
 		}
 		break;
@@ -107,7 +107,7 @@ void PoisonFall::Process(Game& g) {
 		}
 		if (frame >= LAND_ANIMEFRAME && LAND_ALLFRAME > frame) {
 			_hit_x = 10000;
-			_Alpha -= LAND_FADEOUTSPEED;
+			_alpha -= LAND_FADEOUTSPEED;
 		}
 		if (frame == LAND_ALLFRAME) {
 			Delete(g);
@@ -120,7 +120,7 @@ void PoisonFall::Process(Game& g) {
 }
 
 void PoisonFall::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
 }
 

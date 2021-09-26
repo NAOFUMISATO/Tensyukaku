@@ -9,7 +9,7 @@ using namespace FParInfo;
 FlamePerform::FlamePerform(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(FLAME_GRAPH);
 }
@@ -22,7 +22,7 @@ void FlamePerform::Init() {
 	_pal = FLAME_PAL;
 	_rgb = std::make_tuple(FLAME_RED, FLAME_GREEN, FLAME_BLUE);
 	_drg = std::make_pair(FLAME_SCALE, FLAME_ANGLE);
-	_Cnt = FLAME_CNT;
+	_cnt = FLAME_CNT;
 }
 
 void FlamePerform::Process(Game& g) {
@@ -42,7 +42,7 @@ void FlamePerform::Draw(Game& g) {
 	double angle = _drg.second;
 	auto cx = static_cast<int>(x);
 	auto cy = static_cast<int>(y);
-	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isFlip);
+	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isflip);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	SetDrawBright(255, 255, 255);
 }

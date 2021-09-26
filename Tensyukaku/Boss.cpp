@@ -8,7 +8,7 @@ using namespace BossInifo;
 Boss::Boss(int x,int y,bool flip) {
 	_x = x;
 	_y = y;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	LoadActionGraph();
 }
@@ -16,7 +16,7 @@ Boss::~Boss() {
 }
 
 void Boss::Init() {
-	_Sort = 12;
+	_sort = 12;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
 	_gx = GRAPHPOINT_X;
@@ -25,7 +25,7 @@ void Boss::Init() {
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_Alpha = 255;
+	_alpha = 255;
 	_State = BOSSSTATE::IDLE;
 }
 
@@ -53,7 +53,7 @@ void Boss::Process(Game& g) {
 
 }
 void Boss::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Alpha);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
 }
 
@@ -63,20 +63,20 @@ void Boss::Idle(Game& g) {
 	_Anime["Idle"] = 0;
 }
 void Boss::BossEventA(Game& g) {
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	if (frame >= 0 && 120 >= frame) {
 		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
 		_Anime["Idle"] = 0;
 	}
 	if (frame == 60) {
-		_isFlip = false;
+		_isflip = false;
 	}
 	if (frame == 120) {
-		_isFlip = true;
+		_isflip = true;
 	}
 	if (frame > 120&&360>frame){
 		_GrHandle = _GrAll["Move"][_Anime["Move"]];
-		_Anime["Move"] = (_Cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
+		_Anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
 		_x -= 4;
 	}
 	if (frame ==360) {
@@ -84,27 +84,27 @@ void Boss::BossEventA(Game& g) {
 	}
 }
 void Boss::BossEventB(Game& g) {
-	auto frame = _Cnt - _Action_Cnt;
-	_Spd = 3;
+	auto frame = _cnt - _action_cnt;
+	_spd = 3;
 	_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
 	_Anime["Idle"] = 0;
 	if (frame == 30) {
-		_isFlip = true;
+		_isflip = true;
 	}
 	if (frame >= 90 && 250 > frame) {
 		_GrHandle = _GrAll["Back"][_Anime["Back"]];
-		_Anime["Back"] = (_Cnt / ANIMESPEED_BACK) % BACK_ANIMEMAX;
-		_x += _Spd;
+		_Anime["Back"] = (_cnt / ANIMESPEED_BACK) % BACK_ANIMEMAX;
+		_x += _spd;
 	}
 	if (frame >= 250) {
 		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
 		_Anime["Idle"] = 0;
 	}
 	if (frame == 270) {
-		_isFlip = false;
+		_isflip = false;
 	}
 	if (frame == 290) {
-		_isFlip = true;
+		_isflip = true;
 	}
 	if (frame > 290) {
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -115,7 +115,7 @@ void Boss::BossEventB(Game& g) {
 				// 敵とプレイヤーの特殊攻撃オブジェクトの当たり判定を行う
 				if (IsHit(*(*ite)) == true) {
 					(*ite)->Delete(g);
-					_Action_Cnt = _Cnt;
+					_action_cnt = _cnt;
 					_State = BOSSSTATE::DAMAGE;
 				}
 			}
@@ -123,23 +123,24 @@ void Boss::BossEventB(Game& g) {
 	}
 }
 void Boss::Damage(Game& g) {
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
 	_Anime["Damage"] = 0;
 	if (frame == DAMAGE_ALLFRAME) {
-		_Action_Cnt = _Cnt;
+		_action_cnt = _cnt;
 		_State = BOSSSTATE::DEAD;
 }
 }
 
 void Boss::Dead(Game& g) {
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
 	if (frame < DEAD_ANIMEFRAME) {
 		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 	}
 	auto modechangeframe = 120;
 	if (frame == DEAD_ALLFRAME) {
+		StopSoundMem(g.GetBgm()["Main"]);//
 		auto ol = new OverlayBlack();
 		ol->SetFade(modechangeframe, 240, 300, 4);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
@@ -155,12 +156,12 @@ void Boss::Dead(Game& g) {
 void Boss::EventChange(Game& g) {
 	if (_BEventA_Flag == true) {
 		_State = BOSSSTATE::EVENTA;
-		_Action_Cnt = _Cnt;
+		_action_cnt = _cnt;
 		_BEventA_Flag = false;
 	}
 	if (_BEventB_Flag == true) {
 		_State = BOSSSTATE::EVENTB;
-		_Action_Cnt = _Cnt;
+		_action_cnt = _cnt;
 		_BEventB_Flag = false;
 	}
 }

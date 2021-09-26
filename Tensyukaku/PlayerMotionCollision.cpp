@@ -28,7 +28,7 @@ void MiddleAttackCollision::Init() {
 	_hit_y = 0;
 	_hit_w = MIDDLEATTACK_WIDTH;
 	_hit_h = MIDDLEATTACK_HEIGHT;
-	_Action_Cnt = _Cnt;
+	_action_cnt = _cnt;
 #ifdef _DEBUG
 	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
@@ -38,7 +38,7 @@ void MiddleAttackCollision::Init() {
 
 void MiddleAttackCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == MIDDLEATTACK_ENDFRAME) {
+	if (_cnt - _action_cnt == MIDDLEATTACK_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }
@@ -67,7 +67,7 @@ void LowAttackCollision::Init() {
 	_hit_y = 0;
 	_hit_w = LOWATTACK_WIDTH;
 	_hit_h = LOWATTACK_HEIGHT;
-	_Action_Cnt = _Cnt;
+	_action_cnt = _cnt;
 #ifdef _DEBUG
 	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
@@ -77,7 +77,7 @@ void LowAttackCollision::Init() {
 
 void LowAttackCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == LOWATTACK_ENDFRAME) {
+	if (_cnt - _action_cnt == LOWATTACK_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }
@@ -106,7 +106,7 @@ void KickCollision::Init() {
 	_hit_y = 0;
 	_hit_w = KICK_WIDTH;
 	_hit_h = KICK_HEIGHT;
-	_Action_Cnt = _Cnt;
+	_action_cnt = _cnt;
 #ifdef _DEBUG
 	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
@@ -116,7 +116,7 @@ void KickCollision::Init() {
 
 void KickCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == KICK_ENDFRAME) {
+	if (_cnt - _action_cnt == KICK_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }
@@ -145,7 +145,7 @@ void IaiCollision::Init() {
 	_hit_y = 0;
 	_hit_w = IAI_WIDTH;
 	_hit_h = IAI_HEIGHT;
-	_Action_Cnt = _Cnt;
+	_action_cnt = _cnt;
 #ifdef _DEBUG
 	_Color = std::make_tuple(255,0, 0);
 	_Dalpha = 128;
@@ -155,7 +155,7 @@ void IaiCollision::Init() {
 
 void IaiCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == IAI_ENDFRAME) {
+	if (_cnt - _action_cnt == IAI_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }
@@ -185,7 +185,7 @@ void SpecialCollision::Init() {
 	_hit_y = 0;
 	_hit_w = SPECIALATTACK_WIDTH;
 	_hit_h = SPECIALATTACK_HEIGHT;
-	_Action_Cnt = _Cnt;
+	_action_cnt = _cnt;
 #ifdef _DEBUG
 	_Color = std::make_tuple(255, 0, 0);
 	_Dalpha = 128;
@@ -195,7 +195,7 @@ void SpecialCollision::Init() {
 
 void SpecialCollision::Process(Game& g) {
 	ObjectBase::Process(g);
-	if (_Cnt - _Action_Cnt == SPECIALATTACK_ENDFRAME) {
+	if (_cnt - _action_cnt == SPECIALATTACK_ENDFRAME) {
 		g.GetOS()->Del(this);
 	}
 }

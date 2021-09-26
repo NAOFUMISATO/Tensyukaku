@@ -9,7 +9,7 @@ using namespace PParInfo;
 MiddleAttackParticle1::MiddleAttackParticle1(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(MIDDLEATTACK_PARTICLE1_GRAPH);
 }
@@ -22,7 +22,7 @@ void MiddleAttackParticle1::Init() {
 	_pal = MIDDLEATTACK_PARTICLE1_PAL;
 	_rgb = std::make_tuple(MIDDLEATTACK_PARTICLE1_RED, MIDDLEATTACK_PARTICLE1_GREEN, MIDDLEATTACK_PARTICLE1_BLUE);
 	_drg = std::make_pair(MIDDLEATTACK_PARTICLE1_SCALE, MIDDLEATTACK_PARTICLE1_ANGLE);
-	_Cnt = MIDDLEATTACK_PARTICLE1_CNT;
+	_cnt = MIDDLEATTACK_PARTICLE1_CNT;
 }
 
 void MiddleAttackParticle1::Process(Game& g) {
@@ -36,7 +36,7 @@ void MiddleAttackParticle1::Draw(Game& g) {
 MiddleAttackParticle2::MiddleAttackParticle2(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(MIDDLEATTACK_PARTICLE2_GRAPH);
 }
@@ -49,7 +49,7 @@ void MiddleAttackParticle2::Init() {
 	_pal = MIDDLEATTACK_PARTICLE2_PAL;
 	_rgb = std::make_tuple(MIDDLEATTACK_PARTICLE2_RED, MIDDLEATTACK_PARTICLE2_GREEN, MIDDLEATTACK_PARTICLE2_BLUE);
 	_drg = std::make_pair(MIDDLEATTACK_PARTICLE2_SCALE, MIDDLEATTACK_PARTICLE2_ANGLE);
-	_Cnt = MIDDLEATTACK_PARTICLE2_CNT;
+	_cnt = MIDDLEATTACK_PARTICLE2_CNT;
 }
 
 void MiddleAttackParticle2::Process(Game& g) {
@@ -63,7 +63,7 @@ void MiddleAttackParticle2::Draw(Game& g) {
 LowAttackParticle1::LowAttackParticle1(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(LOWATTACK_PARTICLE1_GRAPH);
 }
@@ -76,7 +76,7 @@ void LowAttackParticle1::Init() {
 	_pal = LOWATTACK_PARTICLE1_PAL;
 	_rgb = std::make_tuple(LOWATTACK_PARTICLE1_RED, LOWATTACK_PARTICLE1_GREEN, LOWATTACK_PARTICLE1_BLUE);
 	_drg = std::make_pair(LOWATTACK_PARTICLE1_SCALE, LOWATTACK_PARTICLE1_ANGLE);
-	_Cnt = LOWATTACK_PARTICLE1_CNT;
+	_cnt = LOWATTACK_PARTICLE1_CNT;
 }
 
 void LowAttackParticle1::Process(Game& g) {
@@ -90,7 +90,7 @@ void LowAttackParticle1::Draw(Game& g) {
 LowAttackParticle2::LowAttackParticle2(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(LOWATTACK_PARTICLE2_GRAPH);
 }
@@ -103,7 +103,7 @@ void LowAttackParticle2::Init() {
 	_pal = LOWATTACK_PARTICLE2_PAL;
 	_rgb = std::make_tuple(LOWATTACK_PARTICLE2_RED, LOWATTACK_PARTICLE2_GREEN, LOWATTACK_PARTICLE2_BLUE);
 	_drg = std::make_pair(LOWATTACK_PARTICLE2_SCALE, LOWATTACK_PARTICLE2_ANGLE);
-	_Cnt = LOWATTACK_PARTICLE2_CNT;
+	_cnt = LOWATTACK_PARTICLE2_CNT;
 }
 
 void LowAttackParticle2::Process(Game& g) {
@@ -117,7 +117,7 @@ void LowAttackParticle2::Draw(Game& g) {
 IaiParticle1::IaiParticle1(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(IAI_PARTICLE1_GRAPH);
 }
@@ -130,7 +130,7 @@ void IaiParticle1::Init() {
 	_pal = IAI_PARTICLE1_PAL;
 	_rgb = std::make_tuple(IAI_PARTICLE1_RED, IAI_PARTICLE1_GREEN, IAI_PARTICLE1_BLUE);
 	_drg = std::make_pair(IAI_PARTICLE1_SCALE, IAI_PARTICLE1_ANGLE);
-	_Cnt = IAI_PARTICLE1_CNT;
+	_cnt = IAI_PARTICLE1_CNT;
 }
 
 void IaiParticle1::Process(Game& g) {
@@ -144,7 +144,7 @@ void IaiParticle1::Draw(Game& g) {
 IaiParticle2::IaiParticle2(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(IAI_PARTICLE2_GRAPH);
 }
@@ -157,7 +157,7 @@ void IaiParticle2::Init() {
 	_pal = IAI_PARTICLE2_PAL;
 	_rgb = std::make_tuple(IAI_PARTICLE2_RED, IAI_PARTICLE2_GREEN, IAI_PARTICLE2_BLUE);
 	_drg = std::make_pair(IAI_PARTICLE2_SCALE, IAI_PARTICLE2_ANGLE);
-	_Cnt = IAI_PARTICLE2_CNT;
+	_cnt = IAI_PARTICLE2_CNT;
 	
 }
 
@@ -172,7 +172,7 @@ void IaiParticle2::Draw(Game& g) {
 IaiParticle3::IaiParticle3(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(IAI_PARTICLE3_GRAPH);
 }
@@ -185,7 +185,7 @@ void IaiParticle3::Init() {
 	_pal = IAI_PARTICLE3_PAL;
 	_rgb = std::make_tuple(IAI_PARTICLE3_RED, IAI_PARTICLE3_GREEN, IAI_PARTICLE3_BLUE);
 	_drg = std::make_pair(IAI_PARTICLE3_SCALE, IAI_PARTICLE3_ANGLE);
-	_Cnt = IAI_PARTICLE3_CNT;
+	_cnt = IAI_PARTICLE3_CNT;
 }
 
 void IaiParticle3::Process(Game& g) {
@@ -199,7 +199,7 @@ void IaiParticle3::Draw(Game& g) {
 IaiGaugeParticle::IaiGaugeParticle(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(IAIG_PARTICLE_GRAPH);
 }
@@ -212,7 +212,7 @@ void IaiGaugeParticle::Init() {
 	_pal = IAIG_PARTICLE_PAL;
 	_rgb = std::make_tuple(IAIG_PARTICLE_RED, IAIG_PARTICLE_GREEN, IAIG_PARTICLE_BLUE);
 	_drg = std::make_pair(IAIG_PARTICLE_SCALE, IAIG_PARTICLE_ANGLE);
-	_Cnt = IAIG_PARTICLE_CNT;
+	_cnt = IAIG_PARTICLE_CNT;
 }
 
 void IaiGaugeParticle::Process(Game& g) {
@@ -232,7 +232,7 @@ void IaiGaugeParticle::Draw(Game& g) {
 	double angle = _drg.second;
 	auto cx = static_cast<int>(x);
 	auto cy = static_cast<int>(y);
-	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isFlip);
+	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isflip);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	SetDrawBright(255, 255, 255);
 }
@@ -241,7 +241,7 @@ void IaiGaugeParticle::Draw(Game& g) {
 SwayParticle::SwayParticle(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
 	_xy = xy;
 	_dxy = dxy;
-	_isFlip = flip;
+	_isflip = flip;
 	Init();
 	_GrHandle = ResourceServer::LoadGraph(SWAY_PARTICLE_GRAPH);
 }
@@ -254,7 +254,7 @@ void SwayParticle::Init() {
 	_pal = SWAY_PARTICLE_PAL;
 	_rgb = std::make_tuple(SWAY_PARTICLE_RED, SWAY_PARTICLE_GREEN, SWAY_PARTICLE_BLUE);
 	_drg = std::make_pair(SWAY_PARTICLE_SCALE, SWAY_PARTICLE_ANGLE);
-	_Cnt = SWAY_PARTICLE_CNT;
+	_cnt = SWAY_PARTICLE_CNT;
 }
 
 void SwayParticle::Process(Game& g) {

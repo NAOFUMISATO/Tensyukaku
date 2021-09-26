@@ -26,17 +26,17 @@ void Cursor::Init() {
 	_hit_y = -10;
 	_hit_w = 20;
 	_hit_h = 20;
-	_Spd = 3;
-	_Position = { 960,540 };
+	_spd = 3;
+	_position = { 960,540 };
 	_velocityDir = { 0,0 };
 	_colortype = 2;
-	_Cnt = 121;
+	_cnt = 121;
 	_Input_Flag=false;
 }
 
 void Cursor::Process(Game& g) {
 	ObjectBase::Process(g);
-	auto frame = _Cnt - _Action_Cnt;
+	auto frame = _cnt - _action_cnt;
 	switch (_State) {
 	case CURSOLSTATE::NOHIT:
 		_colortype = 0;
@@ -81,7 +81,7 @@ void Cursor::Process(Game& g) {
 		if (g.GetTrg() & PAD_INPUT_1&&_Input_Flag ==false)
 		{
 			_Input_Flag =true;
-			_Action_Cnt = _Cnt;
+			_action_cnt = _cnt;
 			PlaySoundMem(_Se["GameStart"],DX_PLAYTYPE_BACK, true);
 			StopSoundMem(g.GetBgm()["Title"]);
 			auto ol = new OverlayBlack();
@@ -111,7 +111,7 @@ void Cursor::Process(Game& g) {
 	case CURSOLSTATE::EXHIT:
 		if (g.GetTrg() & PAD_INPUT_1)
 		{
-			_Action_Cnt = _Cnt;
+			_action_cnt = _cnt;
 			PlaySoundMem(_Se["OtherSelect"], DX_PLAYTYPE_BACK, true);
 			StopSoundMem(g.GetBgm()["Title"]);
 		}
@@ -192,15 +192,15 @@ void Cursor::Process(Game& g) {
 			_velocityDir = { static_cast<float>(xbuf), static_cast<float>(ybuf) };
 			// レバーの倒し度合いで速度を変える
 			auto len = _velocityDir.Length();
-			auto spd = static_cast<double>(_Spd);
+			auto spd = static_cast<double>(_spd);
 			spd = 3 * len / 1000;
 			// 正規化して単位ベクトルにする
 			_velocityDir.Normalize();
 		}
-		auto vd = _velocityDir * _Spd;
-		auto positionX = static_cast<int>(_Position.x);
-		auto positionY = static_cast<int>(_Position.y);
-		_Position += vd;
+		auto vd = _velocityDir * _spd;
+		auto positionX = static_cast<int>(_position.x);
+		auto positionY = static_cast<int>(_position.y);
+		_position += vd;
 		_x = positionX;
 		_y = positionY;
 	}
