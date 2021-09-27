@@ -9,9 +9,9 @@ bool ExPlain::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
 	_y = 540;
-	_Pal = 255;
-	_Cnt = 6;
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/Black.png");
+	_pal = 255;
+	_cnt = 6;
+	_grhandle = ResourceServer::LoadGraph("res/Mode/Black.png");
 	auto pc = new PController();
 	pc->PositionSetting(960, 540);
 	g.GetMS()->Add(pc, 3, "PController");
@@ -25,9 +25,9 @@ bool ExPlain::Terminate(Game& g) {
 
 bool ExPlain::Process(Game& g) {
 	base::Process(g);
-	auto frame = _Cnt - _Mode_Cnt;
+	auto frame = _cnt - _mode_cnt;
 	if (g.GetTrg() & PAD_INPUT_1) {
-		_Mode_Cnt = _Cnt;
+		_mode_cnt = _cnt;
 	}
 	if (frame == 5) {
 		auto mt = (ModeTitle*)g.GetMS()->Get("Title");

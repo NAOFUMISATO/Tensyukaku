@@ -181,7 +181,7 @@ namespace SpaInfo {
 	constexpr auto  SPAWN1A_POIJA1_X = 4900;	constexpr auto  SPAWN1A_POIJA1_Y = 2520;	constexpr auto  SPAWN1A_POIJA1_FLIP = true;		//毒液忍者1
 	constexpr auto  SPAWN1A_POIJA2_X =	900;	constexpr auto  SPAWN1A_POIJA2_Y = 2520;	constexpr auto  SPAWN1A_POIJA2_FLIP = true;		//毒液忍者2
 	constexpr auto  SPAWN1A_POIJO1_X = 2800;	constexpr auto  SPAWN1A_POIJO1_Y = 5560;	constexpr auto  SPAWN1A_POIJO1_FLIP = false;	//毒液上忍1
-	constexpr auto  SPAWN1A_BOSS_X = 4200;		constexpr auto  SPAWN1A_BOSS_Y = 1760;		constexpr auto  SPAWN1A_BOSS_FLIP = true;		//ボス
+	constexpr auto  SPAWN1A_BOSS_X = 4200;		constexpr auto  SPAWN1A_BOSS_Y = 1760;constexpr auto  SPAWN1A_BOSS_FLIP = false;		//ボス
 	//スポーンブロック2A
 	constexpr auto  SPAWN2A_XPOSITION = 3900;	constexpr auto SPAWN2A_YPOSITION = 8600;	//スポーンブロック2A
 	//スポーンブロック3A

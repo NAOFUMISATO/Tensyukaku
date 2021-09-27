@@ -9,6 +9,7 @@
 #include "OverlayBlack.h"
 #include "ModeGameover.h"
 #include "ModeGame.h"
+#include "ModeBossBefore.h"
 using namespace PInfo;
 using namespace PParInfo;
 using namespace StInfo;
@@ -506,8 +507,8 @@ void Player::StairUp(Game& g) {
 	}
 	_velocityDir = { std::cos(_angle), std::sin(_angle) };
 	auto vd = _velocityDir * _Stairup_Spd;
-	auto positionX = static_cast<int>( _position.x);
-	auto positionY = static_cast<int>( _position.y);
+	auto positionX = static_cast<int>(_position.x);
+	auto positionY = static_cast<int>(_position.y);
 	_position += vd;
 	_x = positionX;
 	_y = positionY;
@@ -522,7 +523,7 @@ void Player::StairUp(Game& g) {
 void Player::BossStairMove(Game& g) {
 	_grhandle = _grall["Move"][_anime["Move"]];
 	_anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
-	_nohit_flag =true;
+	_nohit_flag = true;
 	if (_StairFlip_Flag == false) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
 			_isflip = false;
@@ -532,9 +533,10 @@ void Player::BossStairMove(Game& g) {
 			_isflip = true;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
 			auto ol = new OverlayBlack();
-			ol->SetFade(120, 240, 360, 2);
-			g.GetMS()->Add(ol, 99999, "OverlayBlack");
+			ol->SetFade(90, 270, 360, 3);
+			g.GetMS()->Add(ol, 20, "OverlayBlack");
 			_State = PLAYERSTATE::BOSSSTAIRUP;
+			_action_cnt = _cnt;
 		}
 	}
 	if (_StairFlip_Flag == true) {
@@ -546,15 +548,17 @@ void Player::BossStairMove(Game& g) {
 			_isflip = false;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
 			auto ol = new OverlayBlack();
-			ol->SetFade(120, 240, 360, 2);
-			g.GetMS()->Add(ol, 99999, "OverlayBlack");
+			ol->SetFade(90, 270, 360, 3);
+			g.GetMS()->Add(ol, 20, "OverlayBlack");
 			_State = PLAYERSTATE::BOSSSTAIRUP;
+			_action_cnt = _cnt;
 		}
 	}
 }
 
 /*---------ƒ{ƒXŠK’iã¸------------*/
 void Player::BossStairUp(Game& g) {
+	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Move"][_anime["Move"]];
 	_anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
 	auto vpal = g.GetVpal();
@@ -576,6 +580,10 @@ void Player::BossStairUp(Game& g) {
 	_y = positionY;
 	auto upheight = _y - _Player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
+		auto bb = new ModeBossBefore();
+		g.GetMS()->Add(bb, 5, "BossBefore");
+		auto mg = (ModeGame*)g.GetMS()->Get("Game");
+		mg->SetStopObjProcess(true);
 		StopSoundMem(g.GetBgm()["Main"]);
 		_nohit_flag = false;
 		_State = PLAYERSTATE::IDLE;

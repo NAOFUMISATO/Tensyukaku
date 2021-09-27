@@ -10,12 +10,12 @@ bool OverSelect::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
 	_y = 900;
-	_Pal = 0;
+	_pal = 0;
 	_GraphNo = 0;
 	_Type = SELECTTYPE::NOSELECT;
-	_Trans_Flag = true;
-	_GrAll["PSelect"].resize(3);
-	ResourceServer::LoadDivGraph("res/Mode/OverSelect.png", 3, 3, 1, 1690, 340, _GrAll["PSelect"].data());
+	_trans_flag = true;
+	_grall["PSelect"].resize(3);
+	ResourceServer::LoadDivGraph("res/Mode/OverSelect.png", 3, 3, 1, 1690, 340, _grall["PSelect"].data());
 	return true;
 }
 
@@ -26,14 +26,14 @@ bool OverSelect::Terminate(Game& g) {
 
 bool OverSelect::Process(Game& g) {
 	base::Process(g);
-	_GrHandle = _GrAll["PSelect"][_Anime["PSelect"]];
-	_Anime["PSelect"] = _GraphNo;
-	auto frame = _Cnt - _Mode_Cnt;
+	_grhandle = _grall["PSelect"][_anime["PSelect"]];
+	_anime["PSelect"] = _GraphNo;
+	auto frame = _cnt - _mode_cnt;
 	if (frame < 60) {
-		_Pal += 4;
+		_pal += 4;
 	}
 	if (frame == 60) {
-		_Pal = 255;
+		_pal = 255;
 	}
 	
 	switch (_Type) {
@@ -51,7 +51,7 @@ bool OverSelect::Process(Game& g) {
 	case SELECTTYPE::RETRYSELECT:
 		_GraphNo = 1;
 		if (g.GetTrg() & PAD_INPUT_1) {
-			_Mode_Cnt = _Cnt;
+			_mode_cnt = _cnt;
 			auto ob = new OverlayBlack();
 			ob->SetFade(60, 90, 150, 5);
 			g.GetMS()->Add(ob, 5, "OverlayBlack");
@@ -71,7 +71,7 @@ bool OverSelect::Process(Game& g) {
 	case SELECTTYPE::GOTITLESELECT:
 		_GraphNo = 2;
 		if (g.GetTrg() & PAD_INPUT_1) {
-			_Mode_Cnt = _Cnt;
+			_mode_cnt = _cnt;
 			auto ob =new OverlayBlack();
 			ob->SetFade(60, 70, 70, 4);
 			g.GetMS()->Add(ob, 5, "OverlayBlack");

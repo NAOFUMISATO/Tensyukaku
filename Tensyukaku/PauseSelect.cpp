@@ -11,9 +11,9 @@ bool PauseSelect::Initialize(Game& g) {
 	_y = 900;
 	_GraphNo = 0;
 	_Type = SELECTTYPE::NOSELECT;
-	_Trans_Flag = true;
-	_GrAll["PSelect"].resize(3);
-	ResourceServer::LoadDivGraph("res/Mode/PauseSelect.png",3,3,1,1690,340,_GrAll["PSelect"].data());
+	_trans_flag = true;
+	_grall["PSelect"].resize(3);
+	ResourceServer::LoadDivGraph("res/Mode/PauseSelect.png",3,3,1,1690,340,_grall["PSelect"].data());
 	return true;
 }
 
@@ -24,9 +24,9 @@ bool PauseSelect::Terminate(Game& g) {
 
 bool PauseSelect::Process(Game& g) {
 	base::Process(g);
-	_GrHandle = _GrAll["PSelect"][_Anime["PSelect"]];
-	_Anime["PSelect"] = _GraphNo;
-	auto frame = _Cnt - _Mode_Cnt;
+	_grhandle = _grall["PSelect"][_anime["PSelect"]];
+	_anime["PSelect"] = _GraphNo;
+	auto frame = _cnt - _mode_cnt;
 	switch (_Type) {
 	case SELECTTYPE::NOSELECT:
 		_GraphNo = 0;
@@ -40,7 +40,7 @@ bool PauseSelect::Process(Game& g) {
 	case SELECTTYPE::RETURNSELECT:
 		_GraphNo = 1;
 		if (g.GetTrg() & PAD_INPUT_1) {
-			_Mode_Cnt = _Cnt;
+			_mode_cnt = _cnt;
 		}
 		if (frame == 5) {
 			g.GetMS()->Del(this);
@@ -57,7 +57,7 @@ bool PauseSelect::Process(Game& g) {
 	case SELECTTYPE::GOTITLESELECT:
 		_GraphNo = 2;
 		if (g.GetTrg() & PAD_INPUT_1) {
-			_Mode_Cnt = _Cnt;
+			_mode_cnt = _cnt;
 		}
 		if (frame == 5) {
 			g.GetMS()->Del(this);

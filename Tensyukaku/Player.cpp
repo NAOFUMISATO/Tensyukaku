@@ -336,7 +336,6 @@ void	Player::HitJudge(Game& g) {
 			// プレイヤーとそのチェックポイントの当たり判定を行う
 			if (IsHit(*(*ite)) == true) {
 				(*ite)->Delete(g);
-				PlaySoundMem(g.GetBgm()["Boss"], DX_PLAYTYPE_LOOP, true);
 				g.SetCPointFlag(true);
 			}
 			break;

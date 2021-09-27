@@ -36,8 +36,8 @@ namespace EpiInfo {
 	constexpr auto BG_FADEOUT_SPEED		= 4;
 
 	/*---------テキストの画像描画関係----------*/
-	constexpr auto TEXT_GRAPH_WIDTH = 300;			//1枚当たりの画像サイズ（横）
-	constexpr auto TEXT_GRAPH_HEIGHT = 700;			//1枚当たりの画像サイズ（縦）
+	constexpr auto TEXT_GRAPH_WIDTH = 480;			//1枚当たりの画像サイズ（横）
+	constexpr auto TEXT_GRAPH_HEIGHT = 1040;			//1枚当たりの画像サイズ（縦）
 	constexpr auto TEXT_GRAPHNAME = "res/Mode/AllEText.png";	//画像ファイル名
 	constexpr auto TEXT_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto TEXT_WIDTHCOUNT = 4;			//横の画像枚数

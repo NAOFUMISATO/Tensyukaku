@@ -5,10 +5,10 @@ bool Overlogo::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
 	_y = 350;
-	_Pal = 0;
-	_Mode_Cnt = _Cnt;
-	_Trans_Flag = true;
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/OverLogo.png");
+	_pal = 0;
+	_mode_cnt = _cnt;
+	_trans_flag = true;
+	_grhandle = ResourceServer::LoadGraph("res/Mode/OverLogo.png");
 	return true;
 }
 
@@ -18,12 +18,12 @@ bool Overlogo::Terminate(Game& g) {
 }
 bool Overlogo::Process(Game& g) {
 	base::Process(g);
-	auto frame = _Cnt - _Mode_Cnt;
+	auto frame = _cnt - _mode_cnt;
 	if (frame < 60) {
-		_Pal += 4;
+		_pal += 4;
 	}
 	if (frame == 60) {
-		_Pal = 255;
+		_pal = 255;
 	}
 	return true;
 }

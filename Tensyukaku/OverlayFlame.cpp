@@ -14,10 +14,10 @@ bool OverlayFlame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
 	_y = 540;
-	_Pal = 0;
-	_Mode_Cnt = _Cnt;
-	_Trans_Flag = true;
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/OverFlame.png");
+	_pal = 0;
+	_mode_cnt = _cnt;
+	_trans_flag = true;
+	_grhandle = ResourceServer::LoadGraph("res/Mode/OverFlame.png");
 	return true;
 }
 
@@ -28,8 +28,8 @@ bool OverlayFlame::Terminate(Game& g) {
 
 bool OverlayFlame::Process(Game& g) {
 	base::Process(g);
-	auto frame = _Cnt - _Mode_Cnt;
-	if ((_Cnt /10 %2) == 0) {
+	auto frame = _cnt - _mode_cnt;
+	if ((_cnt /10 %2) == 0) {
 		for (int i = 0; i < FLAME_QTY; i++) {
 			std::pair<int, int> xy = std::make_pair(_x, _y);
 			std::pair<double, double> dxy = std::make_pair(((rand() % FLAME_RANDOMX1) - FLAME_RANDOMX2) / FLAME_RANDOMX3, ((rand() % -FLAME_RANDOMY1) - FLAME_RANDOMY2) / FLAME_RANDOMY3);
@@ -38,10 +38,10 @@ bool OverlayFlame::Process(Game& g) {
 		}
 	}
 	if (frame >= 0 && FADEIN_FRAME > frame) {
-		_Pal += FADE_SPEED;
+		_pal += FADE_SPEED;
 	}
 	if (frame == FADEIN_FRAME) {
-		_Pal = 255;
+		_pal = 255;
 	}
 	return true;
 }

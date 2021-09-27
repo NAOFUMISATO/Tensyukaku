@@ -29,10 +29,10 @@ ModeBase::~ModeBase() {
 
 // ModeServerÇ…ê⁄ë±éûÅAProcess()ÇÃëOÇ…àÍìxÇæÇØåƒÇŒÇÍÇÈ
 bool	ModeBase::Initialize(Game& g) {
-	_GrHandle = -1;
-	_Cnt = 0;
-	_Pal = 255;
-	_Trans_Flag = false;
+	_grhandle = -1;
+	_cnt = 0;
+	_pal = 255;
+	_trans_flag = false;
 	_drg = std::make_pair(1.0, 0.0);
 	_rgb = std::make_tuple(255,255,255);
 	return true;
@@ -50,7 +50,7 @@ bool	ModeBase::Terminate(Game& g) {
 // --------------------------------------------------------------------------
 bool	ModeBase::Process(Game& g)
 {
-	_Cnt++;
+	_cnt++;
 	return	true;
 }
 
@@ -65,8 +65,8 @@ bool	ModeBase::Draw(Game& g)
 	int& gr = std::get<GREEN>(_rgb);
 	int& bl = std::get<BLUE>(_rgb);
 	SetDrawBright(re,gr,bl);
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _Pal);
-	DrawRotaGraph(_x, _y, scale, angle,_GrHandle, _Trans_Flag,FALSE);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _pal);
+	DrawRotaGraph(_x, _y, scale, angle,_grhandle, _trans_flag,FALSE);
 	SetDrawBright(255, 255, 255);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	return	true;

@@ -174,6 +174,7 @@
     <ClCompile Include="Lancer.cpp" />
     <ClCompile Include="LancerMotion.cpp" />
     <ClCompile Include="LancerMotionCollision.cpp" />
+    <ClCompile Include="ModeBossBefore.cpp" />
     <ClCompile Include="ModeEpilogue.cpp" />
     <ClCompile Include="ModeGameover.cpp" />
     <ClCompile Include="ModePause.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="Kunai.h" />
     <ClInclude Include="Lancer.h" />
     <ClInclude Include="LancerMotionCollision.h" />
+    <ClInclude Include="ModeBossBefore.h" />
     <ClInclude Include="ModeEpilogue.h" />
     <ClInclude Include="ModeGameover.h" />
     <ClInclude Include="ModePause.h" />

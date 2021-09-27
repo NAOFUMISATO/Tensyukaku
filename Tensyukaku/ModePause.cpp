@@ -15,9 +15,9 @@ bool ModePause::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
 	_y = 540;
-	_Pal = 200;
-	_Mode_Cnt = _Cnt;
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/Black.png");
+	_pal = 200;
+	_mode_cnt = _cnt;
+	_grhandle = ResourceServer::LoadGraph("res/Mode/Black.png");
 	auto ps = new PauseSelect();
 	g.GetMS()->Add(ps, 3, "PSelect");
 	auto pc = new PController();

@@ -30,16 +30,16 @@ bool ModeTitle::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
 	_y = 540;
-	_Pal = 0;
-	_Mode_Cnt = _Cnt;
+	_pal = 0;
+	_mode_cnt = _cnt;
 	_stopObjProcess = false;
 	_Type = TITLETYPE::AMGLOGO;
-	_GrAll["AmgLogo"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/AmgLogo.png",1,1,1,1920,1080, _GrAll["AmgLogo"].data());
-	_GrAll["TeamLogo"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/TeamLogo.png", 1, 1, 1, 1920, 1080, _GrAll["TeamLogo"].data());
-	_GrAll["TitleBG"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/TitleBG.png", 1, 1, 1, 1920, 1080, _GrAll["TitleBG"].data());
+	_grall["AmgLogo"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/AmgLogo.png",1,1,1,1920,1080, _grall["AmgLogo"].data());
+	_grall["TeamLogo"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/TeamLogo.png", 1, 1, 1, 1920, 1080, _grall["TeamLogo"].data());
+	_grall["TitleBG"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/TitleBG.png", 1, 1, 1, 1920, 1080, _grall["TitleBG"].data());
 	//チェックポイント到達フラグ
 	g.SetCPointFlag(false);
 	//再起かどうかのフラグ
@@ -61,55 +61,55 @@ bool ModeTitle::Terminate(Game& g) {
 
 bool ModeTitle::Process(Game& g) {
 	base::Process(g);
-	auto frame = _Cnt - _Mode_Cnt;
-	auto pal = _Pal;
+	auto frame = _cnt - _mode_cnt;
+	auto pal = _pal;
 	switch (_Type) {
 	case TITLETYPE::AMGLOGO:
-		_GrHandle = _GrAll["AmgLogo"][_Anime["AmgLogo"]];
-		_Anime["AmgLogo"] = 0;
+		_grhandle = _grall["AmgLogo"][_anime["AmgLogo"]];
+		_anime["AmgLogo"] = 0;
 		if (frame < AMG_FADEINFRAME) {
-			_Pal += AMG_FADESPEED;
+			_pal += AMG_FADESPEED;
 		}
 		if (frame == AMG_FADEINFRAME) {
-			_Pal = 255;
+			_pal = 255;
 		}
 		if (frame > AMG_FADEOUTBEGINFRAME && AMG_FADEOUTENDFRAME > frame) {
-			_Pal -= AMG_FADESPEED;
+			_pal -= AMG_FADESPEED;
 		}
 		if (frame == AMG_FADEOUTENDFRAME) {
-			_Pal = 0;
-			_Mode_Cnt = _Cnt;
+			_pal = 0;
+			_mode_cnt = _cnt;
 			_Type = TITLETYPE::TEAMLOGO;
 		}
 		break;
 	case TITLETYPE::TEAMLOGO:
-		_GrHandle = _GrAll["TeamLogo"][_Anime["TeamLogo"]];
-		_Anime["TeamLogo"] = 0;
+		_grhandle = _grall["TeamLogo"][_anime["TeamLogo"]];
+		_anime["TeamLogo"] = 0;
 		if (frame < TEAM_FADEINFRAME) {
-			_Pal += TEAM_FADESPEED;
+			_pal += TEAM_FADESPEED;
 		}
 		if (frame == TEAM_FADEINFRAME) {
-			_Pal = 255;
+			_pal = 255;
 		}
 		if (frame > TEAM_FADEOUTBEGINFRAME && TEAM_FADEOUTENDFRAME > frame) {
-			_Pal -= TEAM_FADESPEED;
+			_pal -= TEAM_FADESPEED;
 		}
 		if (frame == TEAM_FADEOUTENDFRAME) {
-			_Pal = 0;
-			_Mode_Cnt = _Cnt;
+			_pal = 0;
+			_mode_cnt = _cnt;
 			auto cu = new Cursor();
 			g.GetOS()->Add(cu);
 			_Type = TITLETYPE::TITLEBG;
 		}
 		break;
 	case TITLETYPE::TITLEBG:
-		_GrHandle = _GrAll["TitleBG"][_Anime["TitleBG"]];
-		_Anime["TitleBG"] = 0;
+		_grhandle = _grall["TitleBG"][_anime["TitleBG"]];
+		_anime["TitleBG"] = 0;
 		if (frame > TITLE_FADEINBEGINFRAME && TITLE_FADEINENDFRAME > frame) {
-			_Pal += TITLE_FADESPEED;
+			_pal += TITLE_FADESPEED;
 		}
 		if (frame == TITLE_FADEINENDFRAME) {
-			_Pal = 255;
+			_pal = 255;
 			PlaySoundMem(g.GetBgm()["Title"], DX_PLAYTYPE_LOOP, true);
 			auto tl = new TitleLogo();
 			g.GetOS()->Add(tl);

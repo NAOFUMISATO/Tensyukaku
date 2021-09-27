@@ -11,9 +11,9 @@ bool ModeGameover::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
 	_y = 540;
-	_Pal = 0;
-	_Mode_Cnt = _Cnt;
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/Black.png");
+	_pal = 0;
+	_mode_cnt = _cnt;
+	_grhandle = ResourceServer::LoadGraph("res/Mode/Black.png");
 	return true;
 }
 
@@ -24,12 +24,12 @@ bool ModeGameover::Terminate(Game& g) {
 
 bool ModeGameover::Process(Game& g) {
 	base::Process(g);
-	auto frame = _Cnt - _Mode_Cnt;
+	auto frame = _cnt - _mode_cnt;
 	if (frame < 60) {
-		_Pal += 3;
+		_pal += 3;
 	}
 	if (frame == 60) {
-		_Pal = 200;
+		_pal = 200;
 		auto ol = new Overlogo();
 		g.GetMS()->Add(ol, 3, "OverLogo");
 	}

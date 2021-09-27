@@ -19,20 +19,20 @@ public:
 	virtual bool	Draw(Game& g);
 protected:
 
-	int		_GrHandle;									//画像ハンドル
+	int		_grhandle;									//画像ハンドル
 	int		_x;											//描画点X座標
 	int		_y;											//描画点Y座標
-	int		_Cnt;										//動作カウンタ
-	int		_Mode_Cnt;									//経過時間記録変数
-	int		_Pal;										//BlendMode用変数
-	int		_FadeSpeed;									//フェードスピード
-	bool	_Trans_Flag;								//DrawRotaGraphの透明度フラグ
+	int		_cnt;										//動作カウンタ
+	int		_mode_cnt;									//経過時間記録変数
+	int		_pal;										//BlendMode用変数
+	int		_fade_speed;									//フェードスピード
+	bool	_trans_flag;								//DrawRotaGraphの透明度フラグ
 	std::pair<double, double> _drg;						//DrawRotaGraph用ペア変数（first拡縮率、second角度）
 	std::tuple<int, int, int> _rgb;						//Color用タプル型変数
-	std::unordered_map<std::string, std::vector<int>> _GrAll;		//全ての画像ハンドルマップ
-	std::unordered_map<std::string, int> _Anime;							//アニメーションマップ
-	std::unordered_map<std::string, int> _Se;									//SEマップ
-	std::unordered_map<std::string, int> _Vpal;								//ボリュームマップ
+	std::unordered_map<std::string, std::vector<int>> _grall;		//全ての画像ハンドルマップ
+	std::unordered_map<std::string, int> _anime;							//アニメーションマップ
+	std::unordered_map<std::string, int> _se;									//SEマップ
+	std::unordered_map<std::string, int> _vpal;								//ボリュームマップ
 public:
 	int	GetModeCount() { return _cntMode; }			// このモードが始まってからのカウンタ
 	unsigned long GetModeTm() { return _tmMode; }	// このモードが始まってからの時間ms

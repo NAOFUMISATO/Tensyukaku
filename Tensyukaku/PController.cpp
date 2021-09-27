@@ -3,10 +3,10 @@
 #include "PController.h"
 bool PController::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_Pal = 255;
-	_Mode_Cnt = _Cnt;
-	_Trans_Flag = true;
-	_GrHandle=ResourceServer::LoadGraph("res/Mode/Controller.png");
+	_pal = 255;
+	_mode_cnt = _cnt;
+	_trans_flag = true;
+	_grhandle=ResourceServer::LoadGraph("res/Mode/Controller.png");
 	return true;
 }
 
