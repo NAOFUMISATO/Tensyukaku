@@ -82,7 +82,7 @@ void Cursor::Process(Game& g) {
 		{
 			_Input_Flag =true;
 			_action_cnt = _cnt;
-			PlaySoundMem(_Se["GameStart"],DX_PLAYTYPE_BACK, true);
+			PlaySoundMem(_se["GameStart"],DX_PLAYTYPE_BACK, true);
 			StopSoundMem(g.GetBgm()["Title"]);
 			auto ol = new OverlayBlack();
 			ol->SetFade(120, 120, 120, 3);
@@ -112,7 +112,7 @@ void Cursor::Process(Game& g) {
 		if (g.GetTrg() & PAD_INPUT_1)
 		{
 			_action_cnt = _cnt;
-			PlaySoundMem(_Se["OtherSelect"], DX_PLAYTYPE_BACK, true);
+			PlaySoundMem(_se["OtherSelect"], DX_PLAYTYPE_BACK, true);
 			StopSoundMem(g.GetBgm()["Title"]);
 		}
 		if (frame == 5) {
@@ -135,7 +135,7 @@ void Cursor::Process(Game& g) {
 		break;
 	case CURSOLSTATE::ENDHIT:
 		if (g.GetTrg() & PAD_INPUT_1) {
-			PlaySoundMem(_Se["OtherSelect"], DX_PLAYTYPE_BACK, true);
+			PlaySoundMem(_se["OtherSelect"], DX_PLAYTYPE_BACK, true);
 			StopSoundMem(g.GetBgm()["Title"]);
 			DxLib_End();		// ＤＸライブラリ使用の終了処理
 			return;
@@ -211,6 +211,6 @@ void Cursor::Draw(Game& g) {
 }
 
 void Cursor::LoadSound() {
-	_Se["GameStart"] = ResourceServer::LoadSoundMem("se/OutGame/GameStartPush.wav");
-	_Se["OtherSelect"] = ResourceServer::LoadSoundMem("se/OutGame/OtherSelectPush.wav");
+	_se["GameStart"] = ResourceServer::LoadSoundMem("se/OutGame/GameStartPush.wav");
+	_se["OtherSelect"] = ResourceServer::LoadSoundMem("se/OutGame/OtherSelectPush.wav");
 }

@@ -6,7 +6,7 @@ RestPoint::RestPoint(int x,int y) {
 	_x = x;
 	_y = y;
 	Init();
-	_GrHandle=ResourceServer::LoadGraph("res/Gimik/RestPoint.png");
+	_grhandle=ResourceServer::LoadGraph("res/Gimik/RestPoint.png");
 }
 RestPoint::~RestPoint() {
 }

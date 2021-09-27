@@ -11,22 +11,22 @@ using namespace SInfo;
 /*----------出現----------*/
 void Shielder::Appear(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
-	_Anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
+	_grhandle = _grall["Appear"][_anime["Appear"]];
+	_anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
 	if (frame < APPEAR_ALLFRAME) {
 		_alpha += FADEIN_SPEED;
 	}
 	if (frame == APPEAR_ALLFRAME) {
 		_alpha = 255;
 		_action_cnt = _cnt;
-		_State = ENEMYSTATE::PATROL;
+		_state = ENEMYSTATE::PATROL;
 	}
 }
 /*----------巡回----------*/
 void Shielder::Patrol(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
-	_Anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
+	_grhandle = _grall["Patrol"][_anime["Patrol"]];
+	_anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
 	if (frame == PATROL_TURNFRAME) {
 		if (_isflip == false) {
 			_isflip = true;
@@ -53,7 +53,7 @@ void Shielder::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(pc) == true)
 				{
-					_State = ENEMYSTATE::COMING;
+					_state = ENEMYSTATE::COMING;
 				}
 				if ((*ite)->IsHit(bpc) == true)
 				{
@@ -68,7 +68,7 @@ void Shielder::Patrol(Game& g) {
 									_isflip = true;
 								}
 								else { _isflip = false; }
-								_State = ENEMYSTATE::COMING;
+								_state = ENEMYSTATE::COMING;
 							}
 						}
 					}
@@ -89,7 +89,7 @@ void Shielder::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(pc) == true)
 				{
-					_State = ENEMYSTATE::COMING;
+					_state = ENEMYSTATE::COMING;
 				}
 				 if ((*ite)->IsHit(bpc) == true)
 				 {
@@ -104,7 +104,7 @@ void Shielder::Patrol(Game& g) {
 									 _isflip = true;
 								 }
 								 else { _isflip = false; }
-								 _State = ENEMYSTATE::COMING;
+								 _state = ENEMYSTATE::COMING;
 							 }
 						 }
 					 }
@@ -115,8 +115,8 @@ void Shielder::Patrol(Game& g) {
 }
 /*----------追跡----------*/
 void Shielder::Coming(Game& g) {
-	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
-	_Anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+	_grhandle = _grall["Coming"][_anime["Coming"]];
+	_anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
 	if (_isflip == false) {
 		_x -= _spd;
 		g.GetChip()->IsHit(*this, -1, 0);
@@ -134,10 +134,10 @@ void Shielder::Coming(Game& g) {
 				{
 					_action_cnt = _cnt;
 					if (_ShieldAlive_Flag == false) {
-						_State = ENEMYSTATE::ATTACK;
+						_state = ENEMYSTATE::ATTACK;
 					}
 					else {
-						_State = ENEMYSTATE::GUARDATTACK;
+						_state = ENEMYSTATE::GUARDATTACK;
 					}
 				}
 			}
@@ -154,8 +154,8 @@ void Shielder::Coming(Game& g) {
 				if ((*ite)->IsHit(ccc) == false)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::PATROL;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::PATROL;
+					_anime["Coming"] = 0;
 				}
 			}
 		}
@@ -175,12 +175,12 @@ void Shielder::Coming(Game& g) {
 				if ((*ite)->IsHit(cc) == true)
 				{
 					_action_cnt = _cnt;
-					_Anime["Coming"] = 0;
+					_anime["Coming"] = 0;
 					if (_ShieldAlive_Flag == false) {
-						_State = ENEMYSTATE::ATTACK;
+						_state = ENEMYSTATE::ATTACK;
 					}
 					else {
-						_State = ENEMYSTATE::GUARDATTACK;
+						_state = ENEMYSTATE::GUARDATTACK;
 					}
 				}
 			}
@@ -197,7 +197,7 @@ void Shielder::Coming(Game& g) {
 				if ((*ite)->IsHit(ccc) == false)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::PATROL;
+					_state = ENEMYSTATE::PATROL;
 				}
 			}
 		}
@@ -206,9 +206,9 @@ void Shielder::Coming(Game& g) {
 /*----------攻撃----------*/
 void Shielder::Attack(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
+	_grhandle = _grall["Attack"][_anime["Attack"]];
 	if (frame<ATTACK_ANIMEFRAME){
-		_Anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX; 
+		_anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX; 
 	}
 	if (_isflip == false) {
 		if (frame == STEP_BEGINFRAME) {
@@ -225,8 +225,8 @@ void Shielder::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(acc) == false)
 					{
-						_Anime["Attack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["Attack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
@@ -247,15 +247,15 @@ void Shielder::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(acc) == false)
 					{
-						_Anime["Attack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["Attack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
 		}
 	}
 	if (frame == ATTACK_BEGINFRAME) {
-		PlaySoundMem(_Se["Attack"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Attack"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//盾兵の攻撃判定オブジェクトの生成
 			auto sac = new ShielderAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
@@ -278,9 +278,9 @@ void Shielder::Attack(Game& g) {
 /*---------盾持ち攻撃----------*/
 void Shielder::GuardAttack(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["GuardAttack"][_Anime["GuardAttack"]];
+	_grhandle = _grall["GuardAttack"][_anime["GuardAttack"]];
 	if (frame < ATTACK_ANIMEFRAME) {
-		_Anime["GuardAttack"] = ((frame) / ANIMESPEED_GUARDATTACK) % GUARDATTACK_ANIMEMAX;
+		_anime["GuardAttack"] = ((frame) / ANIMESPEED_GUARDATTACK) % GUARDATTACK_ANIMEMAX;
 	}
 	if (_isflip == false) {
 		if (frame == STEP_BEGINFRAME) {
@@ -297,8 +297,8 @@ void Shielder::GuardAttack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(acc) == false)
 					{
-						_Anime["GuardAttack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["GuardAttack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
@@ -319,8 +319,8 @@ void Shielder::GuardAttack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(acc) == false)
 					{
-						_Anime["GuardAttack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["GuardAttack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
@@ -329,7 +329,7 @@ void Shielder::GuardAttack(Game& g) {
 	if (frame == ATTACK_BEGINFRAME) {
 		_ShieldAttack_Flag = true;
 		_Shield_Cnt=_cnt;
-		PlaySoundMem(_Se["Attack"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Attack"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//盾兵の攻撃判定オブジェクトの生成
 			auto sac = new ShielderAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
@@ -352,22 +352,22 @@ void Shielder::GuardAttack(Game& g) {
 /*----------盾崩し----------*/
 void Shielder::GuardBreak(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle =_GrAll["GuardBreak"][_Anime["GuardBreak"]];
+	_grhandle =_grall["GuardBreak"][_anime["GuardBreak"]];
 	if (frame < GUARDBREAK_ANIMEFRAME) {
-		_Anime["GuardBreak"] = ((frame) / ANIMESPEED_GUARDBREAK) % GUARDBREAK_ANIMEMAX;
+		_anime["GuardBreak"] = ((frame) / ANIMESPEED_GUARDBREAK) % GUARDBREAK_ANIMEMAX;
 	}
 	if (frame == GUARDBREAK_ALLFRAME) {
 	_action_cnt = _cnt;
-	_State = ENEMYSTATE::COMING;
+	_state = ENEMYSTATE::COMING;
 	}
 }
 /*----------死亡----------*/
 void Shielder::Dead(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle =_GrAll["Dead"][_Anime["Dead"]];
+	_grhandle =_grall["Dead"][_anime["Dead"]];
 	_hit_x = 10000;
 	if (frame < DEAD_ANIMEFRAME) {
-		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+		_anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 	}
 	if (frame >= DEAD_ANIMEFRAME && DEAD_ALLFRAME > frame) {
 		_alpha -= FADEOUT_SPEED;

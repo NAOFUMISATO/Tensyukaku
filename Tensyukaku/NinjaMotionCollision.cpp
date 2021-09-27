@@ -28,9 +28,9 @@ void NinjaAttackCollision::Init() {
 	_hit_h = ATTACK_HEIGHT;
 	_action_cnt = _cnt;
 #ifdef _DEBUG
-	_Color = std::make_tuple(255, 0, 0);
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_color = std::make_tuple(255, 0, 0);
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }
 

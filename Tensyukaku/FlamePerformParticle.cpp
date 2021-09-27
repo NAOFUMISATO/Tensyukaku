@@ -11,7 +11,7 @@ FlamePerform::FlamePerform(std::pair<double, double> xy, std::pair<double, doubl
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(FLAME_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(FLAME_GRAPH);
 }
 FlamePerform::~FlamePerform() {
 }
@@ -42,7 +42,7 @@ void FlamePerform::Draw(Game& g) {
 	double angle = _drg.second;
 	auto cx = static_cast<int>(x);
 	auto cy = static_cast<int>(y);
-	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isflip);
+	DrawRotaGraph(cx, cy, scale, angle, _grhandle, true, _isflip);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	SetDrawBright(255, 255, 255);
 }

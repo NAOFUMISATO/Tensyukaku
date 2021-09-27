@@ -125,7 +125,7 @@ bool PrologueText::Process(Game& g) {
 		}
 	}
 	/*----------ボタン押下によるスキップ----------*/
-	auto fadeoutframe =120;
+	auto fadeoutframe =85;
 	if (g.GetTrg() & PAD_INPUT_4&&_Skip_Flag==false) {
 		_Mode_Cnt = _Cnt;
 		_Skip_Flag = true;

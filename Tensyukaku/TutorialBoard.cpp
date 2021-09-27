@@ -12,12 +12,12 @@ namespace {
 	constexpr auto COLLISION_WIDTH = 144;	//当たり判定横幅
 	constexpr auto COLLISION_HEIGHT = 360;	//当たり判定縦幅
 }
-TutorialBoard::TutorialBoard(int x, int y,int num) {
+TutorialBoard::TutorialBoard(int x, int y,int num):_tutorialhit_flag(false) {
 	Init();
 	_x = x;
 	_y = y;
 	_TutorialNum = num;
-	_GrHandle = ResourceServer::LoadGraph("res/Gimik/TutorialBoard.png");
+	_grhandle = ResourceServer::LoadGraph("res/Gimik/TutorialBoard.png");
 }
 TutorialBoard::~TutorialBoard() {
 };
@@ -29,12 +29,10 @@ void TutorialBoard::Init() {
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_Appear_Flag = false;
-	_Touch_Flag = false;
 #ifdef _DEBUG
-	_Color = std::make_tuple(255, 100, 5);
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_color = std::make_tuple(255, 100, 5);
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }
 void  TutorialBoard::Process(Game& g) {
@@ -46,38 +44,57 @@ void  TutorialBoard::Process(Game& g) {
 		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
 		{
 			// //チュートリアルブロックとプレイヤーの当たり判定を行う
-			if (IsHit(*(*ite)) == true && g.GetTrg() & PAD_INPUT_2)
+			if (IsHit(*(*ite)) == true&&_tutorialhit_flag==false)
 			{
-				auto mg = (ModeGame*)g.GetMS()->Get("Game");
-				auto stopflag = mg->GetStopObjFlag();
-				if (stopflag == false) {
-					if (_TutorialNum == 1) {
-						auto mb1 = new ModeTutorial();
-						mb1->SetNum(_TutorialNum);
-						g.GetMS()->Add(mb1, 3, "Tutorial1");
-					}
-					else if (_TutorialNum == 2) {
-						auto mb2 = new ModeTutorial();
-						mb2->SetNum(_TutorialNum);
-						g.GetMS()->Add(mb2, 3, "Tutorial2");
-					}
-					else if (_TutorialNum == 3) {
-						auto mb3 = new ModeTutorial();
-						mb3->SetNum(_TutorialNum);
-						g.GetMS()->Add(mb3, 3, "Tutorial3");
-					}
-					else if (_TutorialNum == 4) {
-						auto mb4 = new ModeTutorial();
-						mb4->SetNum(_TutorialNum);
-						g.GetMS()->Add(mb4, 3, "Tutorial4");
-					}
-					else if (_TutorialNum == 5) {
-						auto mb5 = new ModeTutorial();
-						mb5->SetNum(_TutorialNum);
-						g.GetMS()->Add(mb5, 3, "Tutorial5");
-					}
-					mg->SetStopObjProcess(true);
-					mg->SetStopObjFlag(true);
+				_tutorialhit_flag = true;
+				if (_TutorialNum == 1) {
+					auto mb1 = new ModeTutorial();
+					mb1->SetNum(_TutorialNum);
+					g.GetMS()->Add(mb1, 3, "Tutorial1");
+				}
+				else if (_TutorialNum == 2) {
+					auto mb2 = new ModeTutorial();
+					mb2->SetNum(_TutorialNum);
+					g.GetMS()->Add(mb2, 3, "Tutorial2");
+				}
+				else if (_TutorialNum == 3) {
+					auto mb3 = new ModeTutorial();
+					mb3->SetNum(_TutorialNum);
+					g.GetMS()->Add(mb3, 3, "Tutorial3");
+				}
+				else if (_TutorialNum == 4) {
+					auto mb4 = new ModeTutorial();
+					mb4->SetNum(_TutorialNum);
+					g.GetMS()->Add(mb4, 3, "Tutorial4");
+				}
+				else if (_TutorialNum == 5) {
+					auto mb5 = new ModeTutorial();
+					mb5->SetNum(_TutorialNum);
+					g.GetMS()->Add(mb5, 3, "Tutorial5");
+				}
+			}
+			if (IsHit(*(*ite)) == false&&_tutorialhit_flag == true)
+			{
+				_tutorialhit_flag = false;
+				if (_TutorialNum == 1) {
+					g.GetMS()->Del(g.GetMS()->Get("Tutorial1"));
+					g.SetTutorial1Flag(true);
+				}
+				else if (_TutorialNum == 2) {
+					g.GetMS()->Del(g.GetMS()->Get("Tutorial2"));
+					g.SetTutorial2Flag(true);
+				}
+				else if (_TutorialNum == 3) {
+					g.GetMS()->Del(g.GetMS()->Get("Tutorial3"));
+					g.SetTutorial3Flag(true);
+				}
+				else if (_TutorialNum == 4) {
+					g.GetMS()->Del(g.GetMS()->Get("Tutorial4"));
+					g.SetTutorial4Flag(true);
+				}
+				else if (_TutorialNum == 5) {
+					g.GetMS()->Del(g.GetMS()->Get("Tutorial5"));
+					g.SetTutorial5Flag(true);
 				}
 			}
 		}

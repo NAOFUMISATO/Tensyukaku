@@ -35,14 +35,24 @@ void EventHappen::Init(Game& g) {
 }
 //チュートリアルブロック生成
 void EventHappen::TutorialAppear(Game& g) {
-	auto tb1 = new TutorialBoard(TUTORIAL1_X, TUTORIAL1_Y, TUTORIAL1_NUM);
-	g.GetOS()->Add(tb1);
-	auto tb2 = new TutorialBoard(TUTORIAL2_X, TUTORIAL2_Y, TUTORIAL2_NUM);
-	g.GetOS()->Add(tb2);
-	auto tb3 = new TutorialBoard(TUTORIAL3_X, TUTORIAL3_Y, TUTORIAL3_NUM);
-	g.GetOS()->Add(tb3);
-	auto tb4 = new TutorialBoard(TUTORIAL4_X, TUTORIAL4_Y, TUTORIAL4_NUM);
-	g.GetOS()->Add(tb4);
-	auto tb5 = new TutorialBoard(TUTORIAL5_X, TUTORIAL5_Y, TUTORIAL5_NUM);
-	g.GetOS()->Add(tb5);
+	if (g.GetTutorial1Flag() == false || g.GetRestartFlag() == false) {
+		auto tb1 = new TutorialBoard(TUTORIAL1_X, TUTORIAL1_Y, TUTORIAL1_NUM);
+		g.GetOS()->Add(tb1);
+	}
+	if (g.GetTutorial2Flag() == false || g.GetRestartFlag() == false) {
+		auto tb2 = new TutorialBoard(TUTORIAL2_X, TUTORIAL2_Y, TUTORIAL2_NUM);
+		g.GetOS()->Add(tb2);
+	}
+	if (g.GetTutorial3Flag() == false || g.GetRestartFlag() == false) {
+		auto tb3 = new TutorialBoard(TUTORIAL3_X, TUTORIAL3_Y, TUTORIAL3_NUM);
+		g.GetOS()->Add(tb3);
+	}
+	if (g.GetTutorial4Flag() == false || g.GetRestartFlag() == false) {
+		auto tb4 = new TutorialBoard(TUTORIAL4_X, TUTORIAL4_Y, TUTORIAL4_NUM);
+		g.GetOS()->Add(tb4);
+	}
+	if (g.GetTutorial5Flag() == false || g.GetRestartFlag() == false) {
+		auto tb5 = new TutorialBoard(TUTORIAL5_X, TUTORIAL5_Y, TUTORIAL5_NUM);
+		g.GetOS()->Add(tb5);
+	}
 }

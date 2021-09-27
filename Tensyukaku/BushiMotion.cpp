@@ -12,23 +12,23 @@ using namespace BInfo;
 /*----------出現----------*/
 void Bushi::Appear(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
-	_Anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
+	_grhandle = _grall["Appear"][_anime["Appear"]];
+	_anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
 	if (frame < APPEAR_ALLFRAME) {
 		_alpha += FADEIN_SPEED;
 	}
 	if (frame == APPEAR_ALLFRAME) {
 		_alpha = 255;
 		_action_cnt = _cnt;
-		_State=ENEMYSTATE::PATROL;
+		_state=ENEMYSTATE::PATROL;
 	}
 }
 
 /*----------巡回----------*/
 void Bushi::Patrol(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
-	_Anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
+	_grhandle = _grall["Patrol"][_anime["Patrol"]];
+	_anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
 	if (frame == PATROL_TURNFRAME) {
 		if (_isflip == false) {
 			_isflip = true;
@@ -55,7 +55,7 @@ void Bushi::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(pc) == true)
 				{
-					_State = ENEMYSTATE::COMING;
+					_state = ENEMYSTATE::COMING;
 				}
 				if ((*ite)->IsHit(bpc) == true)
 				{
@@ -71,7 +71,7 @@ void Bushi::Patrol(Game& g) {
 								}
 								else { _isflip = false; }
 								_action_cnt = _cnt;
-								_State = ENEMYSTATE::COMING;
+								_state = ENEMYSTATE::COMING;
 							}
 						}
 					}
@@ -92,7 +92,7 @@ void Bushi::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(pc) == true)
 				{
-					_State = ENEMYSTATE::COMING;
+					_state = ENEMYSTATE::COMING;
 				}
 				if ((*ite)->IsHit(bpc) == true)
 				{
@@ -107,7 +107,7 @@ void Bushi::Patrol(Game& g) {
 									_isflip = true;
 								}
 								else { _isflip = false; }
-								_State = ENEMYSTATE::COMING;
+								_state = ENEMYSTATE::COMING;
 							}
 						}
 					}
@@ -118,8 +118,8 @@ void Bushi::Patrol(Game& g) {
 }
 /*----------追跡----------*/
 void Bushi::Coming(Game& g) {
-	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
-	_Anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+	_grhandle = _grall["Coming"][_anime["Coming"]];
+	_anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
 	if (_isflip == false) {
 		_x -= _spd;
 		g.GetChip()->IsHit(*this, -1, 0);
@@ -135,8 +135,8 @@ void Bushi::Coming(Game& g) {
 				if ((*ite)->IsHit(cc) == true)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::ATTACK;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::ATTACK;
+					_anime["Coming"] = 0;
 				}
 			}
 		}
@@ -152,8 +152,8 @@ void Bushi::Coming(Game& g) {
 				if ((*ite)->IsHit(ccc) == false)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::PATROL;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::PATROL;
+					_anime["Coming"] = 0;
 				}
 			}
 		}	
@@ -174,8 +174,8 @@ void Bushi::Coming(Game& g) {
 				if ((*ite)->IsHit(cc) == true)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::ATTACK;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::ATTACK;
+					_anime["Coming"] = 0;
 				}
 			}
 		}
@@ -191,8 +191,8 @@ void Bushi::Coming(Game& g) {
 				if ((*ite)->IsHit(ccc) == false)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::PATROL;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::PATROL;
+					_anime["Coming"] = 0;
 				}
 			}
 		}
@@ -201,9 +201,9 @@ void Bushi::Coming(Game& g) {
 /*----------攻撃----------*/
 void Bushi::Attack(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
+	_grhandle = _grall["Attack"][_anime["Attack"]];
 	if (frame<ATTACK_ANIMEFRAME) {
-		_Anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
+		_anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
 	}
 	if (_isflip == false) {
 		PrivateCollision acc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
@@ -217,8 +217,8 @@ void Bushi::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(acc) == false)
 					{
-						_Anime["Attack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["Attack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
@@ -236,15 +236,15 @@ void Bushi::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(acc) == false)
 					{
-						_Anime["Attack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["Attack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
 		}
 	}
 	if (frame == ATTACK_BEGINFRAME) {
-		PlaySoundMem(_Se["Attack"],DX_PLAYTYPE_BACK,true);
+		PlaySoundMem(_se["Attack"],DX_PLAYTYPE_BACK,true);
 		if (_isflip == false) {
 			_x -= ATTACK_STEP;
 			//武士の攻撃判定オブジェクトの生成
@@ -267,22 +267,22 @@ void Bushi::Attack(Game& g) {
 /*----------被ダメ----------*/
 void Bushi::Damage(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
+	_grhandle = _grall["Damage"][_anime["Damage"]];
 	if (frame < DAMAGE_ANIMEFRAME) {
-		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+		_anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
 	}
 	if (frame == DAMAGE_ALLFRAME) {
-			_State = ENEMYSTATE::COMING;
-			_Anime["Damage"] = 0;
+			_state = ENEMYSTATE::COMING;
+			_anime["Damage"] = 0;
 	}
 }
 /*----------死亡----------*/
 void Bushi::Dead(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];	
+	_grhandle = _grall["Dead"][_anime["Dead"]];	
 	_hit_x = 10000;
 	if (frame < DEAD_ANIMEFRAME) {
-		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+		_anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 	}
 	if (frame >= DEAD_ANIMEFRAME && DEAD_ALLFRAME > frame) {
 		_alpha -= FADEOUT_SPEED;

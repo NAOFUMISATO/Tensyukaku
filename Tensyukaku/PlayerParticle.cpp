@@ -11,7 +11,7 @@ MiddleAttackParticle1::MiddleAttackParticle1(std::pair<double, double> xy, std::
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(MIDDLEATTACK_PARTICLE1_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(MIDDLEATTACK_PARTICLE1_GRAPH);
 }
 MiddleAttackParticle1::~MiddleAttackParticle1() {
 }
@@ -38,7 +38,7 @@ MiddleAttackParticle2::MiddleAttackParticle2(std::pair<double, double> xy, std::
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(MIDDLEATTACK_PARTICLE2_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(MIDDLEATTACK_PARTICLE2_GRAPH);
 }
 MiddleAttackParticle2::~MiddleAttackParticle2() {
 }
@@ -65,7 +65,7 @@ LowAttackParticle1::LowAttackParticle1(std::pair<double, double> xy, std::pair<d
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(LOWATTACK_PARTICLE1_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(LOWATTACK_PARTICLE1_GRAPH);
 }
 LowAttackParticle1::~LowAttackParticle1() {
 }
@@ -92,7 +92,7 @@ LowAttackParticle2::LowAttackParticle2(std::pair<double, double> xy, std::pair<d
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(LOWATTACK_PARTICLE2_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(LOWATTACK_PARTICLE2_GRAPH);
 }
 LowAttackParticle2::~LowAttackParticle2() {
 }
@@ -119,7 +119,7 @@ IaiParticle1::IaiParticle1(std::pair<double, double> xy, std::pair<double, doubl
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(IAI_PARTICLE1_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(IAI_PARTICLE1_GRAPH);
 }
 IaiParticle1::~IaiParticle1() {
 }
@@ -146,7 +146,7 @@ IaiParticle2::IaiParticle2(std::pair<double, double> xy, std::pair<double, doubl
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(IAI_PARTICLE2_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(IAI_PARTICLE2_GRAPH);
 }
 IaiParticle2::~IaiParticle2() {
 }
@@ -174,7 +174,7 @@ IaiParticle3::IaiParticle3(std::pair<double, double> xy, std::pair<double, doubl
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(IAI_PARTICLE3_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(IAI_PARTICLE3_GRAPH);
 }
 IaiParticle3::~IaiParticle3() {
 }
@@ -201,7 +201,7 @@ IaiGaugeParticle::IaiGaugeParticle(std::pair<double, double> xy, std::pair<doubl
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(IAIG_PARTICLE_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(IAIG_PARTICLE_GRAPH);
 }
 IaiGaugeParticle::~IaiGaugeParticle() {
 }
@@ -232,7 +232,7 @@ void IaiGaugeParticle::Draw(Game& g) {
 	double angle = _drg.second;
 	auto cx = static_cast<int>(x);
 	auto cy = static_cast<int>(y);
-	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isflip);
+	DrawRotaGraph(cx, cy, scale, angle, _grhandle, true, _isflip);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	SetDrawBright(255, 255, 255);
 }
@@ -243,7 +243,7 @@ SwayParticle::SwayParticle(std::pair<double, double> xy, std::pair<double, doubl
 	_dxy = dxy;
 	_isflip = flip;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(SWAY_PARTICLE_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(SWAY_PARTICLE_GRAPH);
 }
 SwayParticle::~SwayParticle() {
 }

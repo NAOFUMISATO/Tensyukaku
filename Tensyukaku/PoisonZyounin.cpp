@@ -14,12 +14,12 @@ PoisonZyounin::PoisonZyounin(int x, int y, bool flip) :
 	_y = y;
 	_isflip = flip;
 	Init();
-	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
-	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
-	_GrAll["Patrol"].resize(PATROL_ANIMEMAX);
-	ResourceServer::LoadDivGraph(PATROL_GRAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Patrol"].data());
-	_GrAll["Poising"].resize(POISING_ANIMEMAX);
-	ResourceServer::LoadDivGraph(POISING_GRAPHNAME, POISING_ANIMEMAX, POISING_WIDTHCOUNT, POISING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Poising"].data());
+	_grall["Appear"].resize(APPEAR_ANIMEMAX);
+	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
+	_grall["Patrol"].resize(PATROL_ANIMEMAX);
+	ResourceServer::LoadDivGraph(PATROL_GRAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Patrol"].data());
+	_grall["Poising"].resize(POISING_ANIMEMAX);
+	ResourceServer::LoadDivGraph(POISING_GRAPHNAME, POISING_ANIMEMAX, POISING_WIDTHCOUNT, POISING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Poising"].data());
 }
 
 PoisonZyounin::~PoisonZyounin() {
@@ -75,8 +75,8 @@ void PoisonZyounin::Delete(Game& g) {
 //èoåªèÛë‘éûÇÃèàóù
 void PoisonZyounin::Appear(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
-	_Anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
+	_grhandle = _grall["Appear"][_anime["Appear"]];
+	_anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
 	if (frame < APPEAR_ALLFRAME) {
 		_alpha += FADEIN_SPEED;
 	}
@@ -90,8 +90,8 @@ void PoisonZyounin::Appear(Game& g) {
 //èÑâÒèÛë‘éûÇÃèàóù
 void PoisonZyounin::Patrol(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
-	_Anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
+	_grhandle = _grall["Patrol"][_anime["Patrol"]];
+	_anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
 	if (frame == PATROL_TURNFRAME) {
 		if (_isflip == false) {
 			_isflip = true;
@@ -146,9 +146,9 @@ void PoisonZyounin::Patrol(Game& g) {
 //ì≈âtêÇÇÁÇµèÛë‘ÇÃèàóù
 void PoisonZyounin::Poising(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Poising"][_Anime["Poising"]];
+	_grhandle = _grall["Poising"][_anime["Poising"]];
 	if (frame < POISING_ANIMEFRAME) {
-		_Anime["Poising"] = ((frame) / ANIMESPEED_POISING) % POISING_ANIMEMAX;
+		_anime["Poising"] = ((frame) / ANIMESPEED_POISING) % POISING_ANIMEMAX;
 	}
 	if (frame == POISING_ANIMEFRAME) {
 		if (_isflip == false) {
@@ -174,7 +174,7 @@ void PoisonZyounin::Poising(Game& g) {
 					{
 						_State = ENEMYSTATE::PATROL;
 						_action_cnt = _cnt;
-						_Anime["Poising"] = 0;
+						_anime["Poising"] = 0;
 					}
 				}
 			}
@@ -194,7 +194,7 @@ void PoisonZyounin::Poising(Game& g) {
 					{
 						_State = ENEMYSTATE::PATROL;
 						_action_cnt = _cnt;
-						_Anime["Poising"] = 0;
+						_anime["Poising"] = 0;
 					}
 				}
 			}

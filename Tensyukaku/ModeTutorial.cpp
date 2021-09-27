@@ -42,15 +42,6 @@ bool ModeTutorial::Process(Game& g) {
 	default:
 		break;
 	}
-	if (_Return_Flag == true) {
-		g.GetMS()->Del(this);
-		auto mg = (ModeGame*)g.GetMS()->Get("Game");
-		mg->SetStopObjProcess(false);
-		mg->SetStopObjFlag(false);
-	}
-	if (frame >= 10&& g.GetTrg() & PAD_INPUT_2) {
-		_Return_Flag = true;
-	}
 	return true;
 }
 bool ModeTutorial::Draw(Game& g) {

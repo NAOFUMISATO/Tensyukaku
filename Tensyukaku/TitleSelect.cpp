@@ -14,8 +14,8 @@ namespace {
 //タイトルロゴ
 TitleLogo::TitleLogo() {
 	Init();
-	_GrAll["TitleLogo"].resize(30);
-	ResourceServer::LoadDivGraph("res/Mode/TitleLogo.png",30,7,5,1280,410, _GrAll["TitleLogo"].data());
+	_grall["TitleLogo"].resize(30);
+	ResourceServer::LoadDivGraph("res/Mode/TitleLogo.png",30,7,5,1280,410, _grall["TitleLogo"].data());
 }
 TitleLogo::~TitleLogo() {
 }
@@ -33,14 +33,14 @@ void TitleLogo::Init() {
 void TitleLogo::Process(Game& g) {
 	ObjectBase::Process(g);
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["TitleLogo"][_Anime["TitleLogo"]];
+	_grhandle = _grall["TitleLogo"][_anime["TitleLogo"]];
 	if (frame < 90) {
-		_Anime["TitleLogo"]= ((frame) / 3) % 30;
+		_anime["TitleLogo"]= ((frame) / 3) % 30;
 	}
 }
 
 void TitleLogo::Draw(Game& g) {
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+	DrawRotaGraph(_x, _y, 1.0, 0.0, _grhandle, true, false);
 #ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
 	//int& gr = std::get<GREEN>(_Color);
@@ -53,7 +53,7 @@ void TitleLogo::Draw(Game& g) {
 //ゲームスタート
 GameStart::GameStart() {
 	Init();
-	_GrHandle=ResourceServer::LoadGraph("res/Mode/GameStart.png");
+	_grhandle=ResourceServer::LoadGraph("res/Mode/GameStart.png");
 };
 GameStart::~GameStart() {
 };
@@ -80,7 +80,7 @@ void GameStart::Process(Game& g) {
 
 void GameStart::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+	DrawRotaGraph(_x, _y, 1.0, 0.0, _grhandle, true, false);
 #ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
 	//int& gr = std::get<GREEN>(_Color);
@@ -93,7 +93,7 @@ void GameStart::Draw(Game& g) {
 //説明画面
 Explain::Explain() {
 	Init();
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/Explain.png");
+	_grhandle = ResourceServer::LoadGraph("res/Mode/Explain.png");
 };
 Explain::~Explain() {
 };
@@ -119,7 +119,7 @@ void Explain::Process(Game& g) {
 
 void Explain::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+	DrawRotaGraph(_x, _y, 1.0, 0.0, _grhandle, true, false);
 #ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
 	//int& gr = std::get<GREEN>(_Color);
@@ -132,7 +132,7 @@ void Explain::Draw(Game& g) {
 //ゲーム終了
 GameEnd::GameEnd() {
 	Init();
-	_GrHandle = ResourceServer::LoadGraph("res/Mode/GameEnd.png");
+	_grhandle = ResourceServer::LoadGraph("res/Mode/GameEnd.png");
 };
 GameEnd::~GameEnd() {
 };
@@ -159,7 +159,7 @@ void GameEnd::Process(Game& g) {
 
 void GameEnd::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+	DrawRotaGraph(_x, _y, 1.0, 0.0, _grhandle, true, false);
 #ifdef _DEBUG
 	//int& re = std::get<RED>(_Color);
 	//int& gr = std::get<GREEN>(_Color);

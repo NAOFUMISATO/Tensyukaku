@@ -12,8 +12,8 @@ StrPoisonReserve::StrPoisonReserve(int x, int y) {
 	_x = x;
 	_y = y;
 	Init();
-	_GrAll["Reserve"].resize(RESERVE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(RESERVE_GRAPHNAME, RESERVE_ANIMEMAX, RESERVE_WIDTHCOUNT, RESERVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Reserve"].data());
+	_grall["Reserve"].resize(RESERVE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(RESERVE_GRAPHNAME, RESERVE_ANIMEMAX, RESERVE_WIDTHCOUNT, RESERVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Reserve"].data());
 
 }
 
@@ -24,16 +24,16 @@ void StrPoisonReserve::Init() {
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_alpha = 255;
-	_Dalpha = 0;
+	_debug_alpha = 0;
 	_action_cnt = _cnt;
 }
 
 void StrPoisonReserve::Process(Game& g) {
 	ObjectBase::Process(g);
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Reserve"][_Anime["Reserve"]];
+	_grhandle = _grall["Reserve"][_anime["Reserve"]];
 	if (frame < RESERVE_ANIMEFRAME) {
-		_Anime["Reserve"] = ((frame) / ANIMESPEED_RESERVE) % RESERVE_ANIMEMAX;
+		_anime["Reserve"] = ((frame) / ANIMESPEED_RESERVE) % RESERVE_ANIMEMAX;
 	}
 	if (frame == RESERVE_FALLFRAME) {
 		auto pf = new StrPoisonFall(_x + _gx, _y + _gy);
@@ -61,10 +61,10 @@ StrPoisonFall::StrPoisonFall(int x, int y) {
 	_x = x;
 	_y = y;
 	Init();
-	_GrAll["Fall"].resize(FALL_ANIMEMAX);
-	ResourceServer::LoadDivGraph(FALL_GRAPHNAME, FALL_ANIMEMAX, FALL_WIDTHCOUNT, FALL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Fall"].data());
-	_GrAll["Land"].resize(LAND_ANIMEMAX);
-	ResourceServer::LoadDivGraph(LAND_GRAPHNAME, LAND_ANIMEMAX, LAND_WIDTHCOUNT, LAND_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Land"].data());
+	_grall["Fall"].resize(FALL_ANIMEMAX);
+	ResourceServer::LoadDivGraph(FALL_GRAPHNAME, FALL_ANIMEMAX, FALL_WIDTHCOUNT, FALL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Fall"].data());
+	_grall["Land"].resize(LAND_ANIMEMAX);
+	ResourceServer::LoadDivGraph(LAND_GRAPHNAME, LAND_ANIMEMAX, LAND_WIDTHCOUNT, LAND_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Land"].data());
 }
 
 StrPoisonFall::~StrPoisonFall() {
@@ -90,8 +90,8 @@ void StrPoisonFall::Process(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	switch (_State) {
 	case	POISONSTATE::FALL:
-		_GrHandle = _GrAll["Fall"][_Anime["Fall"]];
-		_Anime["Fall"] = 0;
+		_grhandle = _grall["Fall"][_anime["Fall"]];
+		_anime["Fall"] = 0;
 		if (frame < FALL_STOPFRAME) {
 			_y += _spd;
 		}
@@ -101,9 +101,9 @@ void StrPoisonFall::Process(Game& g) {
 		}
 		break;
 	case POISONSTATE::LAND:
-		_GrHandle = _GrAll["Land"][_Anime["Land"]];
+		_grhandle = _grall["Land"][_anime["Land"]];
 		if (frame < LAND_ANIMEFRAME) {
-			_Anime["Land"] = ((frame) / ANIMESPEED_LAND) % LAND_ANIMEMAX;
+			_anime["Land"] = ((frame) / ANIMESPEED_LAND) % LAND_ANIMEMAX;
 		}
 		if (frame >= LAND_ANIMEFRAME && LAND_ALLFRAME > frame) {
 			_hit_x = 10000;

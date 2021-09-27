@@ -12,6 +12,5 @@ public:
 	void Delete(Game& g)override;
 private:
 	int _TutorialNum;
-	bool _Appear_Flag;
-	bool _Touch_Flag;
+	bool _tutorialhit_flag;
 };

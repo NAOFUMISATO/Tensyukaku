@@ -25,48 +25,64 @@ public:
 
 
 	//ゲッター関数
-	int		GetKey() { return _gKey; }
-	int		GetTrg() { return _gTrg; }
-	int		GetXBuf() { return _Xbuf; }
-	int		GetYBuf() { return _Ybuf; }
-	int		GetmapH() { return _mapH; }
-	int		GetmapW() { return _mapW; }
-	int		GetcvX() { return _cvX; }
-	int		GetcvY() { return _cvY; }
-	bool		GetCPointFlag() { return _CPoint_Flag; }
-	bool		GetRestartFlag() { return _Restart_Flag; }
-	MapChip* GetChip() { return _mapChip; }
-	ModeServer* GetMS() { return _serverMode; }
-	ObjectServer* GetOS() { return &_objServer; }
-	std::unordered_map<std::string, int> GetBgm() { return _Bgm; }
-	std::unordered_map<std::string, int> GetVpal() { return _Vpal; }
+	int		GetKey() { return _gkey; }
+	int		GetTrg() { return _gtrg; }
+	int		GetXBuf() { return _xbuf; }
+	int		GetYBuf() { return _ybuf; }
+	int		GetmapH() { return _map_h; }
+	int		GetmapW() { return _map_w; }
+	int		GetcvX() { return _cv_x; }
+	int		GetcvY() { return _cv_y; }
+	bool		GetCPointFlag() { return _cpoint_flag; }
+	bool		GetRestartFlag() { return _restart_flag; }
+	bool		GetTutorial1Flag() { return _tutorial1_flag; }
+	bool		GetTutorial2Flag() { return _tutorial2_flag; }
+	bool		GetTutorial3Flag() { return _tutorial3_flag; }
+	bool		GetTutorial4Flag() { return _tutorial4_flag; }
+	bool		GetTutorial5Flag() { return _tutorial5_flag; }
+
+	MapChip* GetChip() { return _mapchip; }
+	ModeServer* GetMS() { return _servermode; }
+	ObjectServer* GetOS() { return &_objserver; }
+	std::unordered_map<std::string, int> GetBgm() { return _bgm; }
+	std::unordered_map<std::string, int> GetVpal() { return _vpal; }
 	//セッター関数
-	void	SetcvX(int cvX) { _cvX = cvX; }
-	void	SetcvY(int cvY) { _cvY = cvY; }
-	void	SetmapW(int mapW) { _mapW = mapW; }
-	void	SetmapH(int mapH) { _mapH = mapH; }
-	void	SetChip(MapChip* map) { _mapChip = map; }
-	void	SetCPointFlag(bool cpointflag) { _CPoint_Flag = cpointflag; }
-	void	SetRestartFlag(bool restartflag) { _Restart_Flag = restartflag; }
-	void   SetVpal(std::unordered_map<std::string, int> vpal) { _Vpal = vpal; }
+	void	SetcvX(int cvX) { _cv_x = cvX; }
+	void	SetcvY(int cvY) { _cv_y = cvY; }
+	void	SetmapW(int mapW) { _map_w = mapW; }
+	void	SetmapH(int mapH) { _map_h = mapH; }
+	void	SetChip(MapChip* map) { _mapchip = map; }
+	void	SetCPointFlag(bool cpointflag) { _cpoint_flag = cpointflag; }
+	void	SetRestartFlag(bool restartflag) { _restart_flag = restartflag; }
+	void	SetTutorial1Flag(bool tutorial1flag) { _tutorial1_flag=tutorial1flag; }
+	void	SetTutorial2Flag(bool tutorial2flag) { _tutorial2_flag=tutorial2flag; }
+	void	SetTutorial3Flag(bool tutorial3flag) { _tutorial3_flag=tutorial3flag; }
+	void	SetTutorial4Flag(bool tutorial4flag) { _tutorial4_flag=tutorial4flag; }
+	void	SetTutorial5Flag(bool tutorial5flag) { _tutorial5_flag=tutorial5flag; }
+	void   SetVpal(std::unordered_map<std::string, int> vpal) { _vpal = vpal; }
 private:
 	void		LoadBgm();	//BGM読み込み
 	void		VolumeInit();//BGMのボリューム初期値
 	void		VolumeChange();//BGMのボリューム変更関数
 
-	int _gKey;			// キー入力の情報
-	int _gTrg;			// キー入力のトリガ情報
-	int	_Xbuf;			//左ステッィクX入力量
-	int	_Ybuf;			//左ステッィクY入力量
-	int _gCnt;			// 毎フレーム+1するカウント
-	int	_cvX, _cvY;		// カメラ
-	int _mapW, _mapH;	// マップ
-	bool _CPoint_Flag;	//チェックポイントフラグ
-	bool _Restart_Flag;//再起からの開始かどうかのフラグ
-	std::unordered_map<std::string, int> _Bgm; //BGMマップ
-	std::unordered_map<std::string, int> _Vpal; //ボリュームマップ
+	int _gkey;			// キー入力の情報
+	int _gtrg;			// キー入力のトリガ情報
+	int	_xbuf;			//左ステッィクX入力量
+	int	_ybuf;			//左ステッィクY入力量
+	int _gcnt;			// 毎フレーム+1するカウント
+	int	_cv_x, _cv_y;		// カメラ
+	int _map_w, _map_h;	// マップ
+	bool _cpoint_flag;	//チェックポイントフラグ
+	bool _restart_flag;//再起からの開始かどうかのフラグ
+	bool _tutorial1_flag;//チュートリアル1の出現フラグ
+	bool _tutorial2_flag;//チュートリアル2の出現フラグ
+	bool _tutorial3_flag;//チュートリアル3の出現フラグ
+	bool _tutorial4_flag;//チュートリアル4の出現フラグ
+	bool _tutorial5_flag;//チュートリアル5の出現フラグ
+	std::unordered_map<std::string, int> _bgm; //BGMマップ
+	std::unordered_map<std::string, int> _vpal; //ボリュームマップ
 
-	MapChip* _mapChip;			//マップチップ
-	ModeServer* _serverMode;	//モードサーバー
-	ObjectServer _objServer;	//プレイヤーや敵などを登録する
+	MapChip* _mapchip;			//マップチップ
+	ModeServer* _servermode;	//モードサーバー
+	ObjectServer _objserver;	//プレイヤーや敵などを登録する
 };

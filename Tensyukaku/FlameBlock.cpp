@@ -24,9 +24,9 @@ void FlameBlock::Init() {
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 #ifdef _DEBUG
-	_Color = std::make_tuple(255, 0, 0);
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_color = std::make_tuple(255, 0, 0);
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }
 void  FlameBlock::Draw(Game& g) {

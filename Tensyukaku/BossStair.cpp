@@ -8,7 +8,7 @@ BossStair::BossStair(int x, int y) {
 	_x = x;
 	_y = y;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph("res/Gimik/Stair.png");
+	_grhandle = ResourceServer::LoadGraph("res/Gimik/Stair.png");
 }
 BossStair::~BossStair() {
 }
@@ -23,9 +23,9 @@ void BossStair::Init() {
 	_hit_h = COLLISION_HEIGHT;
 	_isflip = false;
 #ifdef _DEBUG
-	_Color = std::make_tuple(0, 0, 255);
-	_Dalpha = 128;
-	_Fill = false;
+	_debug_color = std::make_tuple(0, 0, 255);
+	_debug_alpha = 128;
+	_debug_fill = false;
 #endif
 }
 

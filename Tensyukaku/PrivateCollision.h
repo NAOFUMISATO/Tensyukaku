@@ -11,5 +11,5 @@ public:
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::PRIVATECOLLISION; }
 
 	void	Init()override;
-	void	SetColor(std::tuple<int, int, int> color) { _Color = color; }
+	void	SetColor(std::tuple<int, int, int> color) { _debug_color = color; }
 };

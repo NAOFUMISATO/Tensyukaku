@@ -11,8 +11,8 @@ Andon::Andon(int x, int y):_AndonDrop_Flag(false) {
 	_x = x;
 	_y = y;
 	Init();
-	_GrAll["Andon"].resize(ANDON_ANIMEMAX);
-	ResourceServer::LoadDivGraph(ANDON_GRAPHNAME, ANDON_ANIMEMAX, ANDON_WIDTHCOUNT, ANDON_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Andon"].data());
+	_grall["Andon"].resize(ANDON_ANIMEMAX);
+	ResourceServer::LoadDivGraph(ANDON_GRAPHNAME, ANDON_ANIMEMAX, ANDON_WIDTHCOUNT, ANDON_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Andon"].data());
 }
 
 Andon::~Andon() {
@@ -34,7 +34,7 @@ void Andon::Init() {
 void Andon::Process(Game& g) {
 	ObjectBase::Process(g);
 	auto frame = _cnt - _action_cnt;
-	_GrHandle=_GrAll["Andon"][_Anime["Andon"]];
+	_grhandle=_grall["Andon"][_anime["Andon"]];
 	if (_AndonDrop_Flag == true) {
 		if (frame == ANDON_FIREFRAME1) {
 			auto lf1 = new Flame(_x - ANDON_FIREWIDTH * 1, _Flame_y);

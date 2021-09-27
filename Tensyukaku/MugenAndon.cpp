@@ -11,8 +11,8 @@ MugenAndon::MugenAndon(int x, int y) :_AndonDrop_Flag(false) {
 	_x = x;
 	_y = y;
 	Init();
-	_GrAll["Andon"].resize(MANDON_ANIMEMAX);
-	ResourceServer::LoadDivGraph(MANDON_GRAPHNAME, MANDON_ANIMEMAX,MANDON_WIDTHCOUNT, MANDON_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Andon"].data());
+	_grall["Andon"].resize(MANDON_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MANDON_GRAPHNAME, MANDON_ANIMEMAX,MANDON_WIDTHCOUNT, MANDON_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Andon"].data());
 }
 
 MugenAndon::~MugenAndon() {
@@ -34,7 +34,7 @@ void MugenAndon::Init() {
 void MugenAndon::Process(Game& g) {
 	ObjectBase::Process(g);
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Andon"][_Anime["Andon"]];
+	_grhandle = _grall["Andon"][_anime["Andon"]];
 	if (_AndonDrop_Flag == true) {
 		if (frame == MANDON_FIREFRAME1) {
 			auto lf1 = new MugenFlame(_x - MANDON_FIREWIDTH * 1, _Flame_y);

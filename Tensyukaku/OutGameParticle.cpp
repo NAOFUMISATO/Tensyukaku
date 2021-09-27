@@ -17,7 +17,7 @@ CursorParticle1::CursorParticle1(std::pair<double, double> xy, std::pair<double,
 	_dxy = dxy;
 	_ColorType = colortype;
 	Init();
-	_GrHandle = ResourceServer::LoadGraph(CURSOR_PARTICLE1_GRAPH);
+	_grhandle = ResourceServer::LoadGraph(CURSOR_PARTICLE1_GRAPH);
 }
 CursorParticle1::~CursorParticle1() {
 }
@@ -77,7 +77,7 @@ void CursorParticle1::Draw(Game& g) {
 	double angle = _drg.second;
 	auto cx = static_cast<int>(x);
 	auto cy = static_cast<int>(y);
-	DrawRotaGraph(cx, cy, scale, angle, _GrHandle, true, _isflip);
+	DrawRotaGraph(cx, cy, scale, angle, _grhandle, true, _isflip);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	SetDrawBright(255, 255, 255);
 }

@@ -59,14 +59,14 @@ void Boss::Draw(Game& g) {
 
 /*---------状態毎の処理----------*/
 void Boss::Idle(Game& g) {
-	_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
-	_Anime["Idle"] = 0;
+	_grhandle = _grall["Idle"][_anime["Idle"]];
+	_anime["Idle"] = 0;
 }
 void Boss::BossEventA(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	if (frame >= 0 && 120 >= frame) {
-		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
-		_Anime["Idle"] = 0;
+		_grhandle = _grall["Idle"][_anime["Idle"]];
+		_anime["Idle"] = 0;
 	}
 	if (frame == 60) {
 		_isflip = false;
@@ -75,8 +75,8 @@ void Boss::BossEventA(Game& g) {
 		_isflip = true;
 	}
 	if (frame > 120&&360>frame){
-		_GrHandle = _GrAll["Move"][_Anime["Move"]];
-		_Anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
+		_grhandle = _grall["Move"][_anime["Move"]];
+		_anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
 		_x -= 4;
 	}
 	if (frame ==360) {
@@ -86,19 +86,19 @@ void Boss::BossEventA(Game& g) {
 void Boss::BossEventB(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_spd = 3;
-	_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
-	_Anime["Idle"] = 0;
+	_grhandle = _grall["Idle"][_anime["Idle"]];
+	_anime["Idle"] = 0;
 	if (frame == 30) {
 		_isflip = true;
 	}
 	if (frame >= 90 && 250 > frame) {
-		_GrHandle = _GrAll["Back"][_Anime["Back"]];
-		_Anime["Back"] = (_cnt / ANIMESPEED_BACK) % BACK_ANIMEMAX;
+		_grhandle = _grall["Back"][_anime["Back"]];
+		_anime["Back"] = (_cnt / ANIMESPEED_BACK) % BACK_ANIMEMAX;
 		_x += _spd;
 	}
 	if (frame >= 250) {
-		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
-		_Anime["Idle"] = 0;
+		_grhandle = _grall["Idle"][_anime["Idle"]];
+		_anime["Idle"] = 0;
 	}
 	if (frame == 270) {
 		_isflip = false;
@@ -124,8 +124,8 @@ void Boss::BossEventB(Game& g) {
 }
 void Boss::Damage(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
-	_Anime["Damage"] = 0;
+	_grhandle = _grall["Damage"][_anime["Damage"]];
+	_anime["Damage"] = 0;
 	if (frame == DAMAGE_ALLFRAME) {
 		_action_cnt = _cnt;
 		_State = BOSSSTATE::DEAD;
@@ -134,9 +134,9 @@ void Boss::Damage(Game& g) {
 
 void Boss::Dead(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
+	_grhandle = _grall["Dead"][_anime["Dead"]];
 	if (frame < DEAD_ANIMEFRAME) {
-		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+		_anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 	}
 	auto modechangeframe = 120;
 	if (frame == DEAD_ALLFRAME) {
@@ -154,29 +154,29 @@ void Boss::Dead(Game& g) {
 }
 //ボスのイベント状態遷移関数
 void Boss::EventChange(Game& g) {
-	if (_BEventA_Flag == true) {
+	if (_bosseventA_flag == true) {
 		_State = BOSSSTATE::EVENTA;
 		_action_cnt = _cnt;
-		_BEventA_Flag = false;
+		_bosseventA_flag = false;
 	}
-	if (_BEventB_Flag == true) {
+	if (_bosseventB_flag == true) {
 		_State = BOSSSTATE::EVENTB;
 		_action_cnt = _cnt;
-		_BEventB_Flag = false;
+		_bosseventB_flag = false;
 	}
 }
 //ボスの画像読み込み関数
 void Boss::LoadActionGraph() {
-	_GrAll["Idle"].resize(IDLE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Idle"].data());
-	_GrAll["Move"].resize(MOVE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Move"].data());
-	_GrAll["Back"].resize(BACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(BACK_GRAPHNAME, BACK_ANIMEMAX, BACK_WIDTHCOUNT, BACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Back"].data());
-	_GrAll["Damage"].resize(DAMAGE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Damage"].data());
-	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
+	_grall["Idle"].resize(IDLE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Idle"].data());
+	_grall["Move"].resize(MOVE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Move"].data());
+	_grall["Back"].resize(BACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(BACK_GRAPHNAME, BACK_ANIMEMAX, BACK_WIDTHCOUNT, BACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Back"].data());
+	_grall["Damage"].resize(DAMAGE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Damage"].data());
+	_grall["Dead"].resize(DEAD_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
 //ボスの効果音読み込み関数
 void Boss::LoadActionSE() {

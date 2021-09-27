@@ -8,8 +8,8 @@ Flame::Flame(int x, int y) {
 	_x = x;
 	_y = y;
 	Init();
-	_GrAll["Flame"].resize(FLAME_ANIMEMAX);
-	ResourceServer::LoadDivGraph(FLAME_GRAPHNAME, FLAME_ANIMEMAX, FLAME_WIDTHCOUNT, FLAME_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Flame"].data());
+	_grall["Flame"].resize(FLAME_ANIMEMAX);
+	ResourceServer::LoadDivGraph(FLAME_GRAPHNAME, FLAME_ANIMEMAX, FLAME_WIDTHCOUNT, FLAME_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Flame"].data());
 }
 Flame::~Flame() {
 }
@@ -24,14 +24,14 @@ void Flame::Init() {
 	_hit_h = COLLISION_HEIGHT;
 	_alpha = 255;
 	_action_cnt = _cnt;
-	_Color = std::make_tuple(0, 0, 255);
+	_debug_color = std::make_tuple(0, 0, 255);
 }
 
 void Flame::Process(Game& g) {
 ObjectBase::Process(g);
 	auto frame = _cnt-_action_cnt;
-	_GrHandle = _GrAll["Flame"][_Anime["Flame"]];
-	_Anime["Flame"] = (_cnt / ANIMESPEED_FLAME) % FLAME_ANIMEMAX;
+	_grhandle = _grall["Flame"][_anime["Flame"]];
+	_anime["Flame"] = (_cnt / ANIMESPEED_FLAME) % FLAME_ANIMEMAX;
 	
 	if (frame >= FLAME_ANIMEFRAME && FLAME_ALLFLAME > frame) {
 		_alpha -= FLAME_FADEOUTSPEED;

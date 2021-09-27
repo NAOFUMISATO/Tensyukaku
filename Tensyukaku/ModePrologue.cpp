@@ -52,7 +52,7 @@ bool ModePrologue::Process(Game& g) {
 	if (frame == BG2_FADEIN_ENDFRAME) {
 		_Pal = 255;
 	}
-	auto fadeoutendframe = 120;
+	auto fadeoutendframe = 85;
 	if (frame == PROLOGUE_FADEOUT_FRAME) {
 		auto ol = new OverlayBlack();
 		ol->SetFade(fadeoutendframe, 480, 600, 3);

@@ -25,6 +25,6 @@ public:
 
 protected:
 	ENEMYTYPE _Type;
-	ENEMYSTATE _State;
+	ENEMYSTATE _state;
 };
 

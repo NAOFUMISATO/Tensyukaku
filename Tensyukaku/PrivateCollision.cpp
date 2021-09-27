@@ -24,7 +24,7 @@ void PrivateCollision::Init() {
 	_hit_x = 0;
 	_hit_y = 0;
 #ifdef _DEBUG
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }

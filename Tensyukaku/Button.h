@@ -10,7 +10,7 @@ public:
 	void Init()override;
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
-
+	void	Delete(Game& g)override;
 private:
 	int	_ButtonNum;
 };

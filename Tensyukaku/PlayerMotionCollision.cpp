@@ -30,9 +30,9 @@ void MiddleAttackCollision::Init() {
 	_hit_h = MIDDLEATTACK_HEIGHT;
 	_action_cnt = _cnt;
 #ifdef _DEBUG
-	_Color = std::make_tuple(255, 0, 0);
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_color = std::make_tuple(255, 0, 0);
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }
 
@@ -69,9 +69,9 @@ void LowAttackCollision::Init() {
 	_hit_h = LOWATTACK_HEIGHT;
 	_action_cnt = _cnt;
 #ifdef _DEBUG
-	_Color = std::make_tuple(255, 0, 0);
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_color = std::make_tuple(255, 0, 0);
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }
 
@@ -108,9 +108,9 @@ void KickCollision::Init() {
 	_hit_h = KICK_HEIGHT;
 	_action_cnt = _cnt;
 #ifdef _DEBUG
-	_Color = std::make_tuple(255, 0, 0);
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_color = std::make_tuple(255, 0, 0);
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }
 
@@ -147,9 +147,9 @@ void IaiCollision::Init() {
 	_hit_h = IAI_HEIGHT;
 	_action_cnt = _cnt;
 #ifdef _DEBUG
-	_Color = std::make_tuple(255,0, 0);
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_color = std::make_tuple(255,0, 0);
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }
 
@@ -187,9 +187,9 @@ void SpecialCollision::Init() {
 	_hit_h = SPECIALATTACK_HEIGHT;
 	_action_cnt = _cnt;
 #ifdef _DEBUG
-	_Color = std::make_tuple(255, 0, 0);
-	_Dalpha = 128;
-	_Fill = true;
+	_debug_color = std::make_tuple(255, 0, 0);
+	_debug_alpha = 128;
+	_debug_fill = true;
 #endif
 }
 

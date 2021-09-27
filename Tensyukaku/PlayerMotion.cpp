@@ -16,10 +16,10 @@ using namespace StInfo;
 /*----------出現----------*/
 void Player::Appear(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
-	_Anime["Appear"] = 0;
+	_grhandle = _grall["Appear"][_anime["Appear"]];
+	_anime["Appear"] = 0;
 	if (frame == 1) {
-		PlaySoundMem(_Se["BStartGame"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["BStartGame"], DX_PLAYTYPE_BACK, true);
 	}
 	auto ob = (OverlayBlack*)g.GetMS()->Get("OverlayBlack");
 	auto Pal = ob->GetPal();
@@ -32,8 +32,8 @@ void Player::Appear(Game& g) {
 /*----------抜刀----------*/
 void Player::Swordout(Game& g) {
 	auto frame = _cnt - _action_cnt;
- 	_GrHandle = _GrAll["Swordout"][_Anime["Swordout"]];
-	_Anime["Swordout"] = ((frame) / ANIMESPEED_SWORDOUT) % SWORDOUT_ANIMEMAX;
+ 	_grhandle = _grall["Swordout"][_anime["Swordout"]];
+	_anime["Swordout"] = ((frame) / ANIMESPEED_SWORDOUT) % SWORDOUT_ANIMEMAX;
 	auto vpal = g.GetVpal();
 	if (frame == 1) {
 		vpal["Main"]=0;
@@ -50,16 +50,16 @@ void Player::Swordout(Game& g) {
 }
 /*----------待機----------*/
 void Player::Idle(Game& g) {
-	_GrHandle = _GrAll["Idle"] [_Anime["Idle"]];
-	_Anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	_grhandle = _grall["Idle"] [_anime["Idle"]];
+	_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 	if (g.GetTrg() & PAD_INPUT_6&&_iai_gauge==IAI_MAX) {
 		_State = PLAYERSTATE::IAI;
 		_action_cnt = _cnt;
-		PlaySoundMem(_Se["Iai"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Iai"], DX_PLAYTYPE_BACK, true);
 	}
 	if (g.GetTrg() & PAD_INPUT_5) {
 		_State = PLAYERSTATE::SWAY;
-		PlaySoundMem(_Se["Sway"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Sway"], DX_PLAYTYPE_BACK, true);
 		_action_cnt = _cnt;
 	}
 	if (g.GetTrg() & PAD_INPUT_4) {
@@ -88,17 +88,17 @@ void Player::Idle(Game& g) {
 }
 /*----------移動----------*/
 void Player::Move(Game& g) {
-	_GrHandle = _GrAll["Move"][_Anime["Move"]];
-	_Anime["Move"] = (_cnt / _move_animespeed) % MOVE_ANIMEMAX;
+	_grhandle = _grall["Move"][_anime["Move"]];
+	_anime["Move"] = (_cnt / _move_animespeed) % MOVE_ANIMEMAX;
 
 	if (g.GetTrg() & PAD_INPUT_6 && _iai_gauge == IAI_MAX) {
 		_State = PLAYERSTATE::IAI;
 		_action_cnt = _cnt;
-		PlaySoundMem(_Se["Iai"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Iai"], DX_PLAYTYPE_BACK, true);
 	}
 	else if (g.GetTrg() & PAD_INPUT_5) {
 		_State = PLAYERSTATE::SWAY;
-		PlaySoundMem(_Se["Sway"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Sway"], DX_PLAYTYPE_BACK, true);
 		_action_cnt = _cnt;
 	}
 	else if (g.GetTrg() & PAD_INPUT_4) {
@@ -148,8 +148,8 @@ void Player::Move(Game& g) {
 /*----------中段攻撃----------*/
 void Player::MidAttack(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["MiddleAttack"][_Anime["MiddleAttack"]];
-	_Anime["MiddleAttack"] = ((frame) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
+	_grhandle = _grall["MiddleAttack"][_anime["MiddleAttack"]];
+	_anime["MiddleAttack"] = ((frame) / ANIMESPEED_MIDDLEATTACK) % MIDDLEATTACK_ANIMEMAX;
 	if (frame < MIDDLEATTACK_BEGINFRAME) {
 		if (_isflip == false) {
 			_x -= 10;
@@ -161,7 +161,7 @@ void Player::MidAttack(Game& g) {
 		}
 	}
 	if (frame == MIDDLEATTACK_BEGINFRAME) {
-		PlaySoundMem(_Se["MiddleAttack"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["MiddleAttack"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//中段攻撃判定オブジェクトの生成
 			auto mac = new MiddleAttackCollision(_x + _hit_x - MIDDLEATTACK_WIDTH, _y - _hit_h);
@@ -213,10 +213,10 @@ void Player::MidAttack(Game& g) {
 /*----------下段攻撃----------*/
 void Player::LowAttack(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["LowAttack"][_Anime["LowAttack"]];
-	_Anime["LowAttack"] = ((frame) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
+	_grhandle = _grall["LowAttack"][_anime["LowAttack"]];
+	_anime["LowAttack"] = ((frame) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
 	if (frame == LOWATTACK_BEGINFRAME) {
-		PlaySoundMem(_Se["LowAttack"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["LowAttack"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//下段攻撃判定オブジェクトの生成
 			auto lac = new LowAttackCollision(_x + _hit_x - LOWATTACK_WIDTH, _y - LOWATTACK_HEIGHT);
@@ -268,11 +268,11 @@ void Player::LowAttack(Game& g) {
 /*----------蹴り----------*/
 void Player::Kick(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Kick"][_Anime["Kick"]];
-	_Anime["Kick"] = ((frame) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
+	_grhandle = _grall["Kick"][_anime["Kick"]];
+	_anime["Kick"] = ((frame) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
 	if (frame == KICK_BEGINFRAME) {
 		
-		PlaySoundMem(_Se["Kick"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Kick"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//蹴り判定オブジェクトの生成
 			auto kic = new KickCollision(_x + _hit_x - KICK_WIDTH, _y - _hit_h / 2);
@@ -295,9 +295,9 @@ void Player::Kick(Game& g) {
 /*----------居合----------*/
 void Player::Iai(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Iai"][_Anime["Iai"]];
+	_grhandle = _grall["Iai"][_anime["Iai"]];
 	if (frame < IAI_ANIMEFRAME) {
-		_Anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
+		_anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
 	}
 	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME - 15 >= frame) {
 		_nohit_flag = true;
@@ -386,8 +386,8 @@ void Player::Iai(Game& g) {
 ///*----------スウェイ----------*/
 void Player::Sway(Game& g){
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Sway"][_Anime["Sway"]];
-	_Anime["Sway"] = ((frame) / ANIMESPEED_SWAY) % SWAY_ANIMEMAX;
+	_grhandle = _grall["Sway"][_anime["Sway"]];
+	_anime["Sway"] = ((frame) / ANIMESPEED_SWAY) % SWAY_ANIMEMAX;
 	//スウェイ時の無敵フレーム
 	if (frame >= SWAY_NOHITBEGINFRAME && SWAY_NOHITENDFRAME > frame) {
 		_nohit_flag = true;
@@ -420,11 +420,11 @@ void Player::Sway(Game& g){
 /*----------被ダメ----------*/
 void Player::Damage(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Damage"][_Anime["Damage"]];
-	StopSoundMem(_Se["Iai"]);
+	_grhandle = _grall["Damage"][_anime["Damage"]];
+	StopSoundMem(_se["Iai"]);
 	_nohit_flag = true; 
 	if (frame < DAMAGE_ANIMEFRAME) {
-		_Anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+		_anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
 	}
 	if (frame == DAMAGE_ALLFRAME) {
 		_Star_Cnt = _cnt;
@@ -434,7 +434,7 @@ void Player::Damage(Game& g) {
 			_star_flag = true;
 		}
 		if (_life <= 0) {
-			PlaySoundMem(_Se["Dead"], DX_PLAYTYPE_BACK, true);
+			PlaySoundMem(_se["Dead"], DX_PLAYTYPE_BACK, true);
 			_State=PLAYERSTATE::DEAD;
 		}
 		else {
@@ -446,10 +446,10 @@ void Player::Damage(Game& g) {
 /*----------死亡----------*/
 void Player::Dead(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
+	_grhandle = _grall["Dead"][_anime["Dead"]];
 	_hit_x = 10000;
 	if (frame < DEAD_ANIMEFRAME){
-	_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX; 
+	_anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX; 
 		}
 	if (frame == DEAD_ALLFRAME) {
 		g.SetRestartFlag(true);
@@ -466,8 +466,8 @@ void Player::Dead(Game& g) {
 
 /*---------階段位置調整---------*/
 void Player::StairMove(Game& g) {
-	_GrHandle = _GrAll["Move"][_Anime["Move"]];
-	_Anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
+	_grhandle = _grall["Move"][_anime["Move"]];
+	_anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
 	_nohit_flag = true;
 	if (_StairFlip_Flag == false) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
@@ -495,8 +495,8 @@ void Player::StairMove(Game& g) {
 
 /*---------階段上昇------------*/
 void Player::StairUp(Game& g) {
-	_GrHandle = _GrAll["Move"][_Anime["Move"]];
-	_Anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
+	_grhandle = _grall["Move"][_anime["Move"]];
+	_anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
 	_Stairup_Spd = STAIRUP_SPEED;
 	if (_StairFlip_Flag == false) {
 		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
@@ -520,8 +520,8 @@ void Player::StairUp(Game& g) {
 
 /*---------ボス階段位置調整---------*/
 void Player::BossStairMove(Game& g) {
-	_GrHandle = _GrAll["Move"][_Anime["Move"]];
-	_Anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
+	_grhandle = _grall["Move"][_anime["Move"]];
+	_anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
 	_nohit_flag =true;
 	if (_StairFlip_Flag == false) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX) {
@@ -555,8 +555,8 @@ void Player::BossStairMove(Game& g) {
 
 /*---------ボス階段上昇------------*/
 void Player::BossStairUp(Game& g) {
-	_GrHandle = _GrAll["Move"][_Anime["Move"]];
-	_Anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
+	_grhandle = _grall["Move"][_anime["Move"]];
+	_anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
 	auto vpal = g.GetVpal();
 	vpal["Main"] -= 1;
 	g.SetVpal(vpal);
@@ -584,8 +584,8 @@ void Player::BossStairUp(Game& g) {
 /*-----イベントAの処理-----*/
 void Player::BossEventA(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
-	_Anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	_grhandle = _grall["Idle"][_anime["Idle"]];
+	_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 	if (frame == 1) {
 		_CameraX = 800;
 	}
@@ -605,8 +605,8 @@ void Player::BossEventB(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_spd = 4;
 	if (frame <= 120) {
-		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
-		_Anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+		_grhandle = _grall["Idle"][_anime["Idle"]];
+		_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 		auto vpal = g.GetVpal();
 		vpal["Boss"] -= 1;
 		vpal["Flame"] -= 1;
@@ -618,12 +618,12 @@ void Player::BossEventB(Game& g) {
 	}
 	if (frame > 120 && 310 >= frame) {
 		_x += _spd;
-		_GrHandle = _GrAll["Move"][_Anime["Move"]];
-		_Anime["Move"] = (_cnt / 10) % MOVE_ANIMEMAX;
+		_grhandle = _grall["Move"][_anime["Move"]];
+		_anime["Move"] = (_cnt / 10) % MOVE_ANIMEMAX;
 	}
 	if (frame > 310) {
-		_GrHandle = _GrAll["Idle"][_Anime["Idle"]];
-		_Anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+		_grhandle = _grall["Idle"][_anime["Idle"]];
+		_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 		if (g.GetTrg() & PAD_INPUT_1) {
 			_State = PLAYERSTATE::SPECIALATTACK;
 			_action_cnt = _cnt;
@@ -633,9 +633,9 @@ void Player::BossEventB(Game& g) {
 /*-----特殊攻撃の処理-----*/
 void Player::SpecialAttack(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Special"][_Anime["Special"]];
+	_grhandle = _grall["Special"][_anime["Special"]];
 	if (frame < SPECIALATTACK_ANIMEFRAME) {
-		_Anime["Special"] = ((frame) / ANIMESPEED_SPECIALATTACK) % SPECIALATTACK_ANIMEMAX;
+		_anime["Special"] = ((frame) / ANIMESPEED_SPECIALATTACK) % SPECIALATTACK_ANIMEMAX;
 	}
 	if (frame == SPECIALATTACK_BEGINFRAME) {
 		//特殊攻撃判定オブジェクトの生成

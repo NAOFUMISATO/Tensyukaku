@@ -44,6 +44,12 @@ bool ModeTitle::Initialize(Game& g) {
 	g.SetCPointFlag(false);
 	//再起かどうかのフラグ
 	g.SetRestartFlag(false);
+	//各チュートリアルの出現フラグ
+	g.SetTutorial1Flag(false);
+	g.SetTutorial2Flag(false);
+	g.SetTutorial3Flag(false);
+	g.SetTutorial4Flag(false);
+	g.SetTutorial5Flag(false);
 	return true;
 }
 

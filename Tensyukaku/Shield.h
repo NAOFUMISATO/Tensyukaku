@@ -10,7 +10,7 @@ public:
 	void	Init()override;
 	void	Process(Game& g)override;
 	void	Draw(Game& g)override;
-	int		GetHandle() { return _GrHandle; }
+	int		GetHandle() { return _grhandle; }
 	double	GetAngle() { return _drg.second; }
 	void	SetAngle(double angle) { _drg.second = angle; }
 };

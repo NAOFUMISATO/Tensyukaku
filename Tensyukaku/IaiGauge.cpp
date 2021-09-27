@@ -6,8 +6,8 @@
 using namespace PParInfo;
 IaiGauge::IaiGauge(){
 	Init();
-	_GrAll["IaiGauge"].resize(6);
-	ResourceServer::LoadDivGraph("res/UI/IaiGauge.png",6,3,2,800,80,_GrAll["IaiGauge"].data());
+	_grall["IaiGauge"].resize(6);
+	ResourceServer::LoadDivGraph("res/UI/IaiGauge.png",6,3,2,800,80,_grall["IaiGauge"].data());
 }
 IaiGauge::~IaiGauge() {
 }
@@ -21,13 +21,13 @@ void IaiGauge::Init() {
 void IaiGauge::Process(Game& g) {
 	ObjectBase::Process(g);
 
-	_GrHandle = _GrAll["IaiGauge"][_Anime["IaiGauge"]];
+	_grhandle = _grall["IaiGauge"][_anime["IaiGauge"]];
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER) {
 			auto ig = (*ite)->GetGauge();
-			_Anime["IaiGauge"] = ig;
+			_anime["IaiGauge"] = ig;
 			if(ig==5){
 				for (int i = 0; i < IAIG_PARTICLE_QTY; i++)
 				{
@@ -41,5 +41,5 @@ void IaiGauge::Process(Game& g) {
 	}
 }
 void IaiGauge::Draw(Game& g) {
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _GrHandle, true, false);
+	DrawRotaGraph(_x, _y, 1.0, 0.0, _grhandle, true, false);
 }

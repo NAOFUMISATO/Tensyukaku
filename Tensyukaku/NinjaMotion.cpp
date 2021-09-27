@@ -11,22 +11,22 @@ using namespace NInfo;
 /*----------出現----------*/
 void Ninja::Appear(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
-	_Anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
+	_grhandle = _grall["Appear"][_anime["Appear"]];
+	_anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
 	if (frame < APPEAR_ALLFRAME) {
 		_alpha += FADEIN_SPEED;
 	}
 	if (frame == APPEAR_ALLFRAME) {
 		_alpha = 255;
 		_action_cnt = _cnt;
-		_State = ENEMYSTATE::PATROL;
+		_state = ENEMYSTATE::PATROL;
 	}
 }
 /*----------巡回---------*/
 void Ninja::Patrol(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
-	_Anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
+	_grhandle = _grall["Patrol"][_anime["Patrol"]];
+	_anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
 	if (frame == PATROL_TURNFRAME) {
 		if (_isflip == false) {
 			_isflip = true;
@@ -55,10 +55,10 @@ void Ninja::Patrol(Game& g) {
 				{
 					_action_cnt = _cnt;
 					if (_Kunai_Stock > 0) {
-						_State = ENEMYSTATE::THROW;
+						_state = ENEMYSTATE::THROW;
 					}
 					else {
-						_State = ENEMYSTATE::COMING;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 				if ((*ite)->IsHit(bpc) == true)
@@ -74,7 +74,7 @@ void Ninja::Patrol(Game& g) {
 									_isflip = true;
 								}
 								else { _isflip = false; }
-								_State = ENEMYSTATE::COMING;
+								_state = ENEMYSTATE::COMING;
 							}
 						}
 					}
@@ -98,10 +98,10 @@ void Ninja::Patrol(Game& g) {
 				{
 					_action_cnt = _cnt;
 					if (_Kunai_Stock > 0) {
-						_State = ENEMYSTATE::THROW;
+						_state = ENEMYSTATE::THROW;
 					}
 					else {
-						_State = ENEMYSTATE::COMING;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 				if ((*ite)->IsHit(bpc) == true)
@@ -118,7 +118,7 @@ void Ninja::Patrol(Game& g) {
 								}
 								else { _isflip = false; }
 								_action_cnt = _cnt;
-								_State = ENEMYSTATE::COMING;
+								_state = ENEMYSTATE::COMING;
 							}
 						}
 					}
@@ -130,9 +130,9 @@ void Ninja::Patrol(Game& g) {
 /*----------追跡----------*/
 void Ninja::Coming(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
+	_grhandle = _grall["Coming"][_anime["Coming"]];
 	if (frame < COMING_ALLFRAME) {
-		_Anime["Coming"] = ((frame) / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+		_anime["Coming"] = ((frame) / ANIMESPEED_COMING) % COMING_ANIMEMAX;
 	}
 	if (frame >COMINGSPEED_UPFRAME && COMINGSPEED_DOWNFRAME >= frame) {
 		_spd = COMING_UPSPEED;
@@ -156,8 +156,8 @@ void Ninja::Coming(Game& g) {
 				if ((*ite)->IsHit(cc) == true)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::ATTACK;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::ATTACK;
+					_anime["Coming"] = 0;
 				}
 			}
 		}
@@ -173,8 +173,8 @@ void Ninja::Coming(Game& g) {
 				if ((*ite)->IsHit(ccc) == false)
 				{
 					_action_cnt=_cnt;
-					_State = ENEMYSTATE::PATROL;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::PATROL;
+					_anime["Coming"] = 0;
 				}
 			}
 		}
@@ -194,8 +194,8 @@ void Ninja::Coming(Game& g) {
 				if ((*ite)->IsHit(cc) == true)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::ATTACK;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::ATTACK;
+					_anime["Coming"] = 0;
 				}
 			}
 		}
@@ -211,23 +211,23 @@ void Ninja::Coming(Game& g) {
 				if ((*ite)->IsHit(ccc) == false)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::PATROL;
-					_Anime["Coming"] = 0;
+					_state = ENEMYSTATE::PATROL;
+					_anime["Coming"] = 0;
 				}
 			}
 		}
 	}
 	if (frame == COMING_ALLFRAME) {
 		_action_cnt = _cnt;
-		_Anime["Coming"] = 0;
+		_anime["Coming"] = 0;
 	}
 }
 /*--------------攻撃---------------*/
 void Ninja::Attack(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
+	_grhandle = _grall["Attack"][_anime["Attack"]];
 	if (frame < ATTACK_ANIMEFRAME) {
-		_Anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
+		_anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
 	}
 	if (_isflip == false) {
 		PrivateCollision acc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
@@ -242,8 +242,8 @@ void Ninja::Attack(Game& g) {
 					if ((*ite)->IsHit(acc) == false)
 					{
 						_action_cnt = _cnt;
-						_Anime["Attack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["Attack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
@@ -262,15 +262,15 @@ void Ninja::Attack(Game& g) {
 					if ((*ite)->IsHit(acc) == false)
 					{
 						_action_cnt = _cnt;
-						_Anime["Attack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["Attack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
 		}
 	}
 	if (frame == ATTACK_BEGINFRAME) {
-		PlaySoundMem(_Se["Attack"],DX_PLAYTYPE_BACK,true);
+		PlaySoundMem(_se["Attack"],DX_PLAYTYPE_BACK,true);
 		if (_isflip == false) {
 			//忍者の攻撃判定オブジェクトの生成
 			auto nac = new NinjaAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
@@ -291,17 +291,17 @@ void Ninja::Attack(Game& g) {
 /*---------クナイ投げ--------*/
 void Ninja::Throw(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Throw"][_Anime["Throw"]];
+	_grhandle = _grall["Throw"][_anime["Throw"]];
 	if (frame < THROW_ANIMEFRAME) {
-		_Anime["Throw"] = ((frame) / ANIMESPEED_THROW) % THROW_ANIMEMAX;
+		_anime["Throw"] = ((frame) / ANIMESPEED_THROW) % THROW_ANIMEMAX;
 	}
 	if (_isflip == false) {
 		PrivateCollision acc(_x + _hit_x - THROWCANCEL_WIDTH, _y - _hit_h, THROWCANCEL_WIDTH, THROWCANCEL_HEIGHT);
 		if (frame == THROW_ANIMEFRAME || frame == THROW_ALLFRAME) {
 			if (_Kunai_Stock <= 0) {
 				_action_cnt = _cnt;
-				_Anime["Throw"] = 0;
-				_State = ENEMYSTATE::COMING;
+				_anime["Throw"] = 0;
+				_state = ENEMYSTATE::COMING;
 			}
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -313,8 +313,8 @@ void Ninja::Throw(Game& g) {
 					if ((*ite)->IsHit(acc) == false)
 					{
 						_action_cnt = _cnt;
-						_Anime["Throw"] = 0;
-						_State = ENEMYSTATE::PATROL;
+						_anime["Throw"] = 0;
+						_state = ENEMYSTATE::PATROL;
 					}
 				}
 			}
@@ -324,9 +324,9 @@ void Ninja::Throw(Game& g) {
 		PrivateCollision acc(_x - _hit_x, _y - _hit_h, THROWCANCEL_WIDTH, THROWCANCEL_HEIGHT);
 		if (frame == THROW_ANIMEFRAME || frame == THROW_ALLFRAME) {
 			if (_Kunai_Stock <= 0) {
-				_Anime["Throw"] = 0;
+				_anime["Throw"] = 0;
 				_action_cnt = _cnt;
-				_State = ENEMYSTATE::COMING;
+				_state = ENEMYSTATE::COMING;
 			}
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -338,8 +338,8 @@ void Ninja::Throw(Game& g) {
 					if ((*ite)->IsHit(acc) == false)
 					{
 						_action_cnt = _cnt;
-						_Anime["Throw"] = 0;
-						_State = ENEMYSTATE::PATROL;
+						_anime["Throw"] = 0;
+						_state = ENEMYSTATE::PATROL;
 					}
 				}
 			}
@@ -347,7 +347,7 @@ void Ninja::Throw(Game& g) {
 	}
 	if (frame == KUNAI_RELEASEFRAME) {
 		_Kunai_Stock--;
-		PlaySoundMem(_Se["Kunai"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Kunai"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//クナイオブジェクトの生成
 			auto ku = new Kunai(_x -110, _y -130,false, KUNAI_SPEED);
@@ -371,10 +371,10 @@ void Ninja::Throw(Game& g) {
 /*---------死亡----------*/
 void Ninja::Dead(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
+	_grhandle = _grall["Dead"][_anime["Dead"]];
 	_hit_x = 10000;
 	if (frame < DEAD_ANIMEFRAME) {
-		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+		_anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 	}
 	if (frame >= DEAD_ANIMEFRAME && DEAD_ALLFRAME > frame) {
 		_alpha -= FADEOUT_SPEED;

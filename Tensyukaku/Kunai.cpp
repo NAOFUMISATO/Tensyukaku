@@ -12,8 +12,8 @@ Kunai::Kunai(int x,int y, bool flip,int spd):_Repel_Flag(false) {
 	_isflip = flip;
 	_spd = spd;
 	Init();
-	_GrAll["Kunai"].resize(2);
-	ResourceServer::LoadDivGraph(KUNAI_GRAPHNAME, 2, 2, 1, 120, 120, _GrAll["Kunai"].data());
+	_grall["Kunai"].resize(2);
+	ResourceServer::LoadDivGraph(KUNAI_GRAPHNAME, 2, 2, 1, 120, 120, _grall["Kunai"].data());
 }
 
 Kunai::~Kunai() {
@@ -33,12 +33,12 @@ void Kunai::Init() {
 
 void Kunai::Process(Game& g) {
 	ObjectBase::Process(g);
-	_GrHandle=_GrAll["Kunai"][_Anime["Kunai"]];
-	_Anime["Kunai"] = 1;
+	_grhandle=_grall["Kunai"][_anime["Kunai"]];
+	_anime["Kunai"] = 1;
 	auto frame = _cnt - _action_cnt;
 	if (_Repel_Flag == true) {
 		_hit_x = 10000;
-		_Anime["Kunai"] = 0;
+		_anime["Kunai"] = 0;
 		if (frame < REPEL_FRAME) {
 			_alpha -= KUNAI_ALPHACHANGE;
 			if (_isflip == false) {

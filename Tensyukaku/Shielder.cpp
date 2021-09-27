@@ -45,7 +45,7 @@ void Shielder::Init() {
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_State = ENEMYSTATE::APPEAR;
+	_state = ENEMYSTATE::APPEAR;
 	_life = LIFE_MAX;
 	_spd = SPEED;
 	_alpha = 0;
@@ -53,7 +53,7 @@ void Shielder::Init() {
 void Shielder::Process(Game& g) {
 	EnemyBase::Process(g);
 	VolumeChange();
-	switch (_State) {
+	switch (_state) {
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
 		break;
@@ -106,7 +106,7 @@ void Shielder::HitJudge(Game& g) {
 				if (_ShieldAlive_Flag == false) {
 					_life--;
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::DEAD;
+					_state = ENEMYSTATE::DEAD;
 					//居合ゲージの増加
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 					{
@@ -128,12 +128,12 @@ void Shielder::HitJudge(Game& g) {
 			{
 				(*ite)->Delete(g);		// (*ite) はキックオブジェクト
 				if (_ShieldAlive_Flag == true) {
-					_Anime["Attack"] = 0;
+					_anime["Attack"] = 0;
 					_ShieldBreak_Flag = true;
 					_ShieldAlive_Flag = false;
 					_Shield_Cnt = _cnt;
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::GUARDBREAK;
+					_state = ENEMYSTATE::GUARDBREAK;
 				}
 			}
 			break;
@@ -147,13 +147,13 @@ void Shielder::HitJudge(Game& g) {
 				_ShieldBreak_Flag = true;
 				_Shield_Cnt = _cnt;
 				_action_cnt = _cnt;
-				_State = ENEMYSTATE::DEAD;
+				_state = ENEMYSTATE::DEAD;
 			}
 			break;
 		case ObjectBase::OBJECTTYPE::PLAYER:
 			// プレイヤーとその敵の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {
-				_x = _Before_x;
+				_x = _before_x;
 			}
 			break;
 		default:
@@ -226,40 +226,40 @@ void Shielder::ShieldDraw(Game& g) {
 
 //画像読み込み関数
 void Shielder::LoadPicture() {
-	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
-	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
-	_GrAll["Patrol"].resize(PATROL_ANIMEMAX);
-	ResourceServer::LoadDivGraph(PATROL_GARAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Patrol"].data());
-	_GrAll["Coming"].resize(COMING_ANIMEMAX);
-	ResourceServer::LoadDivGraph(COMING_GRAPHNAME, COMING_ANIMEMAX, COMING_WIDTHCOUNT, COMING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Coming"].data());
-	_GrAll["Attack"].resize(ATTACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(ATTACK_GRAPHNAME, ATTACK_ANIMEMAX, ATTACK_WIDTHCOUNT, ATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Attack"].data());
-	_GrAll["GuardAttack"].resize(GUARDATTACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(GUARDATTACK_GRAPHNAME, GUARDATTACK_ANIMEMAX, GUARDATTACK_WIDTHCOUNT, GUARDATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["GuardAttack"].data());
-	_GrAll["GuardBreak"].resize(GUARDBREAK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(GUARDBREAK_GRAPHNAME, GUARDBREAK_ANIMEMAX, GUARDBREAK_WIDTHCOUNT, GUARDBREAK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["GuardBreak"].data());
-	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
+	_grall["Appear"].resize(APPEAR_ANIMEMAX);
+	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
+	_grall["Patrol"].resize(PATROL_ANIMEMAX);
+	ResourceServer::LoadDivGraph(PATROL_GARAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Patrol"].data());
+	_grall["Coming"].resize(COMING_ANIMEMAX);
+	ResourceServer::LoadDivGraph(COMING_GRAPHNAME, COMING_ANIMEMAX, COMING_WIDTHCOUNT, COMING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Coming"].data());
+	_grall["Attack"].resize(ATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(ATTACK_GRAPHNAME, ATTACK_ANIMEMAX, ATTACK_WIDTHCOUNT, ATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Attack"].data());
+	_grall["GuardAttack"].resize(GUARDATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(GUARDATTACK_GRAPHNAME, GUARDATTACK_ANIMEMAX, GUARDATTACK_WIDTHCOUNT, GUARDATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["GuardAttack"].data());
+	_grall["GuardBreak"].resize(GUARDBREAK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(GUARDBREAK_GRAPHNAME, GUARDBREAK_ANIMEMAX, GUARDBREAK_WIDTHCOUNT, GUARDBREAK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["GuardBreak"].data());
+	_grall["Dead"].resize(DEAD_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
 
 //効果音読み込み関数
 void Shielder::LoadSE() {
-	_Se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/ShieldAttack.wav");
+	_se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/ShieldAttack.wav");
 }
 
 //効果音ボリューム初期値設定関数
 void	Shielder::VolumeInit() {
-	_Vpal["Attack"] = 255;
+	_vpal["Attack"] = 255;
 }
 
 //ボリューム変更関数
 void	Shielder::VolumeChange() {
-	ChangeVolumeSoundMem(_Vpal["Attack"], _Se["Attack"]);
+	ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
 }
 
 //デバッグ用関数
 void Shielder::DebugDraw(Game& g) {
-	switch (_State) {
+	switch (_state) {
 	case ENEMYSTATE::PATROL:
 		if (_isflip == false) {
 			PrivateCollision pc(_x + _hit_x -PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);

@@ -9,7 +9,7 @@ Stair::Stair(int x,int y,bool flip) {
 	_y = y;
 	_isflip = flip;
 	Init();
-	_GrHandle=ResourceServer::LoadGraph("res/Gimik/Stair.png");
+	_grhandle=ResourceServer::LoadGraph("res/Gimik/Stair.png");
 }
 Stair::~Stair() {
 }
@@ -23,9 +23,9 @@ void Stair::Init() {
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
 #ifdef _DEBUG
-	_Color = std::make_tuple(0, 0, 255);
-	_Dalpha = 128;
-	_Fill = false;
+	_debug_color = std::make_tuple(0, 0, 255);
+	_debug_alpha = 128;
+	_debug_fill = false;
 #endif
 }
 void Stair::Process(Game& g) {

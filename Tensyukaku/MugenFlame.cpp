@@ -8,8 +8,8 @@ MugenFlame::MugenFlame(int x, int y) {
 	_x = x;
 	_y = y;
 	Init();
-	_GrAll["Flame"].resize(MFLAME_ANIMEMAX);
-	ResourceServer::LoadDivGraph(MFLAME_GRAPHNAME, MFLAME_ANIMEMAX, MFLAME_WIDTHCOUNT, MFLAME_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Flame"].data());
+	_grall["Flame"].resize(MFLAME_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MFLAME_GRAPHNAME, MFLAME_ANIMEMAX, MFLAME_WIDTHCOUNT, MFLAME_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Flame"].data());
 }
 MugenFlame::~MugenFlame() {
 }
@@ -24,14 +24,14 @@ void MugenFlame::Init() {
 	_hit_h = COLLISION_HEIGHT;
 	_alpha = 255;
 	_action_cnt = _cnt;
-	_Color = std::make_tuple(0, 0, 255);
+	_debug_color = std::make_tuple(0, 0, 255);
 }
 
 void MugenFlame::Process(Game& g) {
 	ObjectBase::Process(g);
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Flame"][_Anime["Flame"]];
-	_Anime["Flame"] = (_cnt / ANIMESPEED_MFLAME) % MFLAME_ANIMEMAX;
+	_grhandle = _grall["Flame"][_anime["Flame"]];
+	_anime["Flame"] = (_cnt / ANIMESPEED_MFLAME) % MFLAME_ANIMEMAX;
 
 	if (frame >= MFLAME_ANIMEFRAME && MFLAME_ALLFLAME > frame) {
 		_alpha -= MFLAME_FADEOUTSPEED;

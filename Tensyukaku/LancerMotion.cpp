@@ -10,22 +10,22 @@ using namespace LInfo;
 /*----------出現----------*/
 void Lancer::Appear(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Appear"][_Anime["Appear"]];
-	_Anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
+	_grhandle = _grall["Appear"][_anime["Appear"]];
+	_anime["Appear"] = (_cnt / ANIMESPEED_APPEAR) % APPEAR_ANIMEMAX;
 	if (frame < APPEAR_ALLFRAME) {
 		_alpha += FADEIN_SPEED;
 	}
 	if (frame == APPEAR_ALLFRAME) {
 		_alpha = 255;
 		_action_cnt = _cnt;
-		_State = ENEMYSTATE::PATROL;
+		_state = ENEMYSTATE::PATROL;
 	}
 }
 /*----------巡回----------*/
 void Lancer::Patrol(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Patrol"][_Anime["Patrol"]];
-	_Anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
+	_grhandle = _grall["Patrol"][_anime["Patrol"]];
+	_anime["Patrol"] = (_cnt / ANIMESPEED_PATROL) % PATROL_ANIMEMAX;
 	if (frame == PATROL_TURNFRAME) {
 		if (_isflip == false) {
 			_isflip = true;
@@ -52,7 +52,7 @@ void Lancer::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(pc) == true)
 				{
-					_State = ENEMYSTATE::COMING;
+					_state = ENEMYSTATE::COMING;
 				}
 				if ((*ite)->IsHit(bpc) == true)
 				{
@@ -68,7 +68,7 @@ void Lancer::Patrol(Game& g) {
 								}
 								else { _isflip = false; }
 								_action_cnt = _cnt;
-								_State = ENEMYSTATE::COMING;
+								_state = ENEMYSTATE::COMING;
 							}
 						}
 					}
@@ -89,7 +89,7 @@ void Lancer::Patrol(Game& g) {
 				// 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
 				if ((*ite)->IsHit(pc) == true)
 				{
-					_State = ENEMYSTATE::COMING;
+					_state = ENEMYSTATE::COMING;
 				}
 				if ((*ite)->IsHit(bpc) == true)
 				{
@@ -104,7 +104,7 @@ void Lancer::Patrol(Game& g) {
 									_isflip = true;
 								}
 								else { _isflip = false; }
-								_State = ENEMYSTATE::COMING;
+								_state = ENEMYSTATE::COMING;
 							}
 						}
 					}
@@ -115,8 +115,8 @@ void Lancer::Patrol(Game& g) {
 }
 /*----------追跡----------*/
 void Lancer::Coming(Game& g) {
-	_GrHandle = _GrAll["Coming"][_Anime["Coming"]];
-	_Anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
+	_grhandle = _grall["Coming"][_anime["Coming"]];
+	_anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
 	if (_isflip == false) {
 		_x -= _spd;
 		g.GetChip()->IsHit(*this, -1, 0);
@@ -133,7 +133,7 @@ void Lancer::Coming(Game& g) {
 				if ((*ite)->IsHit(cc) == true)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::ATTACK;
+					_state = ENEMYSTATE::ATTACK;
 				}
 			}
 		}
@@ -149,7 +149,7 @@ void Lancer::Coming(Game& g) {
 				if ((*ite)->IsHit(ccc) == false)
 				{
 					_action_cnt;
-					_State = ENEMYSTATE::PATROL;
+					_state = ENEMYSTATE::PATROL;
 				}
 			}
 		}
@@ -169,7 +169,7 @@ void Lancer::Coming(Game& g) {
 				if ((*ite)->IsHit(cc) == true)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::ATTACK;
+					_state = ENEMYSTATE::ATTACK;
 				}
 			}
 		}
@@ -185,7 +185,7 @@ void Lancer::Coming(Game& g) {
 				if ((*ite)->IsHit(ccc) == false)
 				{
 					_action_cnt = _cnt;
-					_State = ENEMYSTATE::PATROL;
+					_state = ENEMYSTATE::PATROL;
 				}
 			}
 		}
@@ -194,9 +194,9 @@ void Lancer::Coming(Game& g) {
 /*----------攻撃----------*/
 void Lancer::Attack(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Attack"][_Anime["Attack"]];
+	_grhandle = _grall["Attack"][_anime["Attack"]];
 	if (frame < ATTACK_ANIMEFRAME) {
-		_Anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
+		_anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
 	}
 	if (_isflip == false) {
 		if (frame == STEP_BEGINFRAME) {
@@ -213,8 +213,8 @@ void Lancer::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(acc) == false)
 					{
-						_Anime["Attack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["Attack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
@@ -235,15 +235,15 @@ void Lancer::Attack(Game& g) {
 					// 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
 					if ((*ite)->IsHit(acc) == false)
 					{
-						_Anime["Attack"] = 0;
-						_State = ENEMYSTATE::COMING;
+						_anime["Attack"] = 0;
+						_state = ENEMYSTATE::COMING;
 					}
 				}
 			}
 		}
 	}
 	if (frame == ATTACK_BEGINFRAME) {
-		PlaySoundMem(_Se["Attack"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Attack"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//攻撃判定オブジェクトの生成
 			auto ac = new LancerAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
@@ -265,10 +265,10 @@ void Lancer::Attack(Game& g) {
 /*----------死亡----------*/
 void Lancer::Dead(Game& g) {
 	auto frame = _cnt - _action_cnt;
-	_GrHandle = _GrAll["Dead"][_Anime["Dead"]];
+	_grhandle = _grall["Dead"][_anime["Dead"]];
 	_hit_x = 10000;
 	if (frame < DEAD_ANIMEFRAME) {
-		_Anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
+		_anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX;
 	}
 	if (frame >= DEAD_ANIMEFRAME && DEAD_ALLFRAME > frame) {
 		_alpha -= FADEOUT_SPEED;

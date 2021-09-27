@@ -43,7 +43,7 @@ void Player::Init()
 	// プレイヤー情報の初期化
 	_sort = 13;
 	_State = PLAYERSTATE::APPEAR;
-	_GrHandle = -1;
+	_grhandle = -1;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
 	_gx = GRAPHPOINT_X;
@@ -76,7 +76,7 @@ void Player::Process(Game& g)
 	}
 	//居合ゲージMAX時のSE発生
 	if (_iai_gauge == 5 && _gaugeup_flag == false) {
-		PlaySoundMem(_Se["Gage"], DX_PLAYTYPE_BACK, true);
+		PlaySoundMem(_se["Gage"], DX_PLAYTYPE_BACK, true);
 		_gaugeup_flag = true;
 	}
 	/*---状態毎の処理---*/
@@ -170,7 +170,6 @@ void Player::Draw(Game& g) {
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
-	ButtonDraw(g);
 }
 
 void Player::Delete(Game& g) {
@@ -179,86 +178,86 @@ void Player::Delete(Game& g) {
 
 //画像読み込み関数
 void Player::LoadPicture() {
-	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
-	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
-	_GrAll["Swordout"].resize(SWORDOUT_ANIMEMAX);
-	ResourceServer::LoadDivGraph(SWORDOUT_GRAPHNAME, SWORDOUT_ANIMEMAX, SWORDOUT_WIDTHCOUNT, SWORDOUT_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Swordout"].data());
-	_GrAll["Idle"].resize(IDLE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Idle"].data());
-	_GrAll["Move"].resize(MOVE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Move"].data());
-	_GrAll["MiddleAttack"].resize(MIDDLEATTACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(MIDDLEATTACK_GRAPHNAME, MIDDLEATTACK_ANIMEMAX, MIDDLEATTACK_WIDTHCOUNT, MIDDLEATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["MiddleAttack"].data());
-	_GrAll["LowAttack"].resize(LOWATTACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(LOWATTACK_GRAPHNAME, LOWATTACK_ANIMEMAX, LOWATTACK_WIDTHCOUNT, LOWATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["LowAttack"].data());
-	_GrAll["Kick"].resize(KICK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(KICK_GRAPHNAME, KICK_ANIMEMAX, KICK_WIDTHCOUNT, KICK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Kick"].data());
-	_GrAll["Iai"].resize(IAI_ANIMEMAX);
-	ResourceServer::LoadDivGraph(IAI_GRAPHNAME, IAI_ANIMEMAX, IAI_WIDTHCOUNT, IAI_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Iai"].data());
-	_GrAll["Sway"].resize(SWAY_ANIMEMAX);
-	ResourceServer::LoadDivGraph(SWAY_GRAPHNAME, SWAY_ANIMEMAX, SWAY_WIDTHCOUNT, SWAY_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Sway"].data());
-	_GrAll["Damage"].resize(DAMAGE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Damage"].data());
-	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
-	_GrAll["Special"].resize(SPECIALATTACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(SPECIALATTACK_GRAPHNAME, SPECIALATTACK_ANIMEMAX, SPECIALATTACK_WIDTHCOUNT, SPECIALATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Special"].data());
+	_grall["Appear"].resize(APPEAR_ANIMEMAX);
+	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
+	_grall["Swordout"].resize(SWORDOUT_ANIMEMAX);
+	ResourceServer::LoadDivGraph(SWORDOUT_GRAPHNAME, SWORDOUT_ANIMEMAX, SWORDOUT_WIDTHCOUNT, SWORDOUT_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Swordout"].data());
+	_grall["Idle"].resize(IDLE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Idle"].data());
+	_grall["Move"].resize(MOVE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MOVE_GRAPHNAME, MOVE_ANIMEMAX, MOVE_WIDTHCOUNT, MOVE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Move"].data());
+	_grall["MiddleAttack"].resize(MIDDLEATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(MIDDLEATTACK_GRAPHNAME, MIDDLEATTACK_ANIMEMAX, MIDDLEATTACK_WIDTHCOUNT, MIDDLEATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["MiddleAttack"].data());
+	_grall["LowAttack"].resize(LOWATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(LOWATTACK_GRAPHNAME, LOWATTACK_ANIMEMAX, LOWATTACK_WIDTHCOUNT, LOWATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["LowAttack"].data());
+	_grall["Kick"].resize(KICK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(KICK_GRAPHNAME, KICK_ANIMEMAX, KICK_WIDTHCOUNT, KICK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Kick"].data());
+	_grall["Iai"].resize(IAI_ANIMEMAX);
+	ResourceServer::LoadDivGraph(IAI_GRAPHNAME, IAI_ANIMEMAX, IAI_WIDTHCOUNT, IAI_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Iai"].data());
+	_grall["Sway"].resize(SWAY_ANIMEMAX);
+	ResourceServer::LoadDivGraph(SWAY_GRAPHNAME, SWAY_ANIMEMAX, SWAY_WIDTHCOUNT, SWAY_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Sway"].data());
+	_grall["Damage"].resize(DAMAGE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Damage"].data());
+	_grall["Dead"].resize(DEAD_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
+	_grall["Special"].resize(SPECIALATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(SPECIALATTACK_GRAPHNAME, SPECIALATTACK_ANIMEMAX, SPECIALATTACK_WIDTHCOUNT, SPECIALATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Special"].data());
 }
 
 //効果音読み込み関数
 void Player::LoadSE() {
-	_Se["BStartGame"] = ResourceServer::LoadSoundMem("se/Player/BStartGame.wav");
-	_Se["Walk"] = ResourceServer::LoadSoundMem("se/Player/Footstep.wav");
-	_Se["MiddleAttack"] = ResourceServer::LoadSoundMem("se/Player/MiddleAttack1.wav");
-	_Se["LowAttack"] = ResourceServer::LoadSoundMem("se/Player/LowAttack.wav");
-	_Se["Kick"] = ResourceServer::LoadSoundMem("se/Player/Kick.wav");
-	_Se["Sway"] = ResourceServer::LoadSoundMem("se/Player/Sway.wav");
-	_Se["Damage"] = ResourceServer::LoadSoundMem("se/Player/Damage.wav");
-	_Se["Dead"] = ResourceServer::LoadSoundMem("se/Player/Dead.wav");
-	_Se["Iai"] = ResourceServer::LoadSoundMem("se/Player/Iai.wav");
-	_Se["Gage"] = ResourceServer::LoadSoundMem("se/Player/Gage.wav");
+	_se["BStartGame"] = ResourceServer::LoadSoundMem("se/Player/BStartGame.wav");
+	_se["Walk"] = ResourceServer::LoadSoundMem("se/Player/Footstep.wav");
+	_se["MiddleAttack"] = ResourceServer::LoadSoundMem("se/Player/MiddleAttack1.wav");
+	_se["LowAttack"] = ResourceServer::LoadSoundMem("se/Player/LowAttack.wav");
+	_se["Kick"] = ResourceServer::LoadSoundMem("se/Player/Kick.wav");
+	_se["Sway"] = ResourceServer::LoadSoundMem("se/Player/Sway.wav");
+	_se["Damage"] = ResourceServer::LoadSoundMem("se/Player/Damage.wav");
+	_se["Dead"] = ResourceServer::LoadSoundMem("se/Player/Dead.wav");
+	_se["Iai"] = ResourceServer::LoadSoundMem("se/Player/Iai.wav");
+	_se["Gage"] = ResourceServer::LoadSoundMem("se/Player/Gage.wav");
 }
 
 //効果音ボリューム初期値設定関数
 void	Player::VolumeInit() {
-	_Vpal["BStartGame"] = 255;
-	_Vpal["Walk"] = 255;
-	_Vpal["MiddleAttack"] = 255;
-	_Vpal["LowAttack"] = 255;
-	_Vpal["Kick"] = 255;
-	_Vpal["Sway"] = 255;
-	_Vpal["Damage"] = 255;
-	_Vpal["Dead"] = 255;
-	_Vpal["Iai"] = 255;
-	_Vpal["Gage"] = 255;
+	_vpal["BStartGame"] = 255;
+	_vpal["Walk"] = 255;
+	_vpal["MiddleAttack"] = 255;
+	_vpal["LowAttack"] = 255;
+	_vpal["Kick"] = 255;
+	_vpal["Sway"] = 255;
+	_vpal["Damage"] = 255;
+	_vpal["Dead"] = 255;
+	_vpal["Iai"] = 255;
+	_vpal["Gage"] = 255;
 
 }
 
 //ボリューム変更関数
 void	Player::VolumeChange() {
-	ChangeVolumeSoundMem(_Vpal["BStartGame"],_Se["BStartGame"]);
-	ChangeVolumeSoundMem(_Vpal["Walk"], _Se["Walk"]);
-	ChangeVolumeSoundMem(_Vpal["MiddleAttack"], _Se["MiddleAttack"]);
-	ChangeVolumeSoundMem(_Vpal["LowAttack"], _Se["LowAttack"]);
-	ChangeVolumeSoundMem(_Vpal["Kick"], _Se["Kick"]);
-	ChangeVolumeSoundMem(_Vpal["Sway"], _Se["Sway"]);
-	ChangeVolumeSoundMem(_Vpal["Damage"], _Se["Damage"]);
-	ChangeVolumeSoundMem(_Vpal["Dead"], _Se["Dead"]);
-	ChangeVolumeSoundMem(_Vpal["Iai"], _Se["Iai"]);
-	ChangeVolumeSoundMem(_Vpal["Gage"], _Se["Gage"]);
+	ChangeVolumeSoundMem(_vpal["BStartGame"],_se["BStartGame"]);
+	ChangeVolumeSoundMem(_vpal["Walk"], _se["Walk"]);
+	ChangeVolumeSoundMem(_vpal["MiddleAttack"], _se["MiddleAttack"]);
+	ChangeVolumeSoundMem(_vpal["LowAttack"], _se["LowAttack"]);
+	ChangeVolumeSoundMem(_vpal["Kick"], _se["Kick"]);
+	ChangeVolumeSoundMem(_vpal["Sway"], _se["Sway"]);
+	ChangeVolumeSoundMem(_vpal["Damage"], _se["Damage"]);
+	ChangeVolumeSoundMem(_vpal["Dead"], _se["Dead"]);
+	ChangeVolumeSoundMem(_vpal["Iai"], _se["Iai"]);
+	ChangeVolumeSoundMem(_vpal["Gage"], _se["Gage"]);
 }
 //プレイヤーの被ダメ&押し出し&各イベントブロック判定の処理
 void	Player::HitJudge(Game& g) {
 	//ボスステージのイベント処理状態遷移用処理
-	if (_BEventA_Flag == true) {
+	if (_bosseventA_flag == true) {
 		_action_cnt = _cnt;
 		_State = PLAYERSTATE::EVENTA;
-		_BEventA_Flag = false;
+		_bosseventA_flag = false;
 	}
-	if (_BEventB_Flag == true) {
+	if (_bosseventB_flag == true) {
 		_action_cnt = _cnt;
 		_State = PLAYERSTATE::EVENTB;
-		_BEventB_Flag = false;
+		_bosseventB_flag = false;
 	}
 	//待機と移動時のみ階段判定を受け付ける処理
 	if (_State == PLAYERSTATE::IDLE || _State == PLAYERSTATE::MOVE) {
@@ -287,7 +286,7 @@ void	Player::HitJudge(Game& g) {
 				_life--;
 				_action_cnt = _cnt;
 				_State = PLAYERSTATE::DAMAGE;
-				PlaySoundMem(_Se["Damage"], DX_PLAYTYPE_BACK, true);
+				PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
 			break;
 		//階段との当たり判定
@@ -321,7 +320,7 @@ void	Player::HitJudge(Game& g) {
 			{
 				// プレイヤーとその敵の当たり判定を行う
 				if (IsHit(*(*ite)) == true) {
-					_x = _Before_x;
+					_x = _before_x;
 
 				}
 			}
@@ -349,10 +348,14 @@ void	Player::HitJudge(Game& g) {
 				g.GetMS()->Add(of, 1, "Flame");
 				PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
 			}
+			break;
 		case ObjectBase::OBJECTTYPE::TUTORIALBOARD:
 			// プレイヤーとそのチュートリアルボードの当たり判定を行う
 			if (IsHit(*(*ite)) == true) {
 				_tutorialhit_flag = true;
+			}
+			if (IsHit(*(*ite)) == false) {
+				_tutorialhit_flag = false;
 			}
 			break;
 		default:
@@ -388,15 +391,6 @@ void Player::UIAppear(Game& g){
 		auto ig = new IaiGauge();
 		g.GetOS()->Add(ig);
 		_ui_flag = true;
-	}
-}
-//チュートリアルボタン描画関数
-void Player::ButtonDraw(Game& g) {
-	if (_tutorialhit_flag == true) {
-		Button bt(_x, _y - 500, 2);
-		bt.Process(g);
-		bt.Draw(g);
-		_tutorialhit_flag = false;
 	}
 }
 //プレイヤー位置からのカメラ位置設定

@@ -15,14 +15,14 @@ Button::Button(int x, int y, int buttonnum) {
 	_y = y;
 	_ButtonNum = buttonnum;
 	Init();
-	_GrAll["BButton"].resize(1);
-	ResourceServer::LoadDivGraph("res/UI/BButton.png", 1, 1, 1, 60, 60, _GrAll["BButton"].data());
-	_GrAll["YButton"].resize(1);
-	ResourceServer::LoadDivGraph("res/UI/YButton.png", 1, 1, 1, 60, 60, _GrAll["YButton"].data());
-	_GrAll["GButton"].resize(1);
-	ResourceServer::LoadDivGraph("res/UI/GButton.png", 1, 1, 1, 60, 60, _GrAll["GButton"].data());
-	_GrAll["RButton"].resize(1);
-	ResourceServer::LoadDivGraph("res/UI/RButton.png", 1, 1, 1, 60, 60, _GrAll["RButton"].data());
+	_grall["BButton"].resize(1);
+	ResourceServer::LoadDivGraph("res/UI/BButton.png", 1, 1, 1, 60, 60, _grall["BButton"].data());
+	_grall["YButton"].resize(1);
+	ResourceServer::LoadDivGraph("res/UI/YButton.png", 1, 1, 1, 60, 60, _grall["YButton"].data());
+	_grall["GButton"].resize(1);
+	ResourceServer::LoadDivGraph("res/UI/GButton.png", 1, 1, 1, 60, 60, _grall["GButton"].data());
+	_grall["RButton"].resize(1);
+	ResourceServer::LoadDivGraph("res/UI/RButton.png", 1, 1, 1, 60, 60, _grall["RButton"].data());
 }
 
 Button::~Button() {
@@ -43,20 +43,24 @@ void Button::Process(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	switch (_ButtonNum) {
 	case	1:
-		_GrHandle = _GrAll["BButton"][_Anime["BButton"]];
+		_grhandle = _grall["BButton"][_anime["BButton"]];
 		break;
 	case	2:
-		_GrHandle = _GrAll["YButton"][_Anime["YButton"]];
+		_grhandle = _grall["YButton"][_anime["YButton"]];
 		break;
 	case 3:
-		_GrHandle = _GrAll["GButton"][_Anime["GButton"]];
+		_grhandle = _grall["GButton"][_anime["GButton"]];
 		break;
 	case 4:
-		_GrHandle = _GrAll["RButton"][_Anime["RButton"]];
+		_grhandle = _grall["RButton"][_anime["RButton"]];
 		break;
 	}
 }
 
 void Button::Draw(Game& g) {
 	ObjectBase::Draw(g);
+}
+
+void Button::Delete(Game& g) {
+	g.GetOS()->Del(this);
 }

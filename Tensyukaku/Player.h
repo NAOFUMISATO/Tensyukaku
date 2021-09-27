@@ -42,7 +42,6 @@ private:
 	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
 	void	RestartCheck(Game& g); //再起からの開始かどうか確認する関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
-	void	ButtonDraw(Game& g);	//チュートリアルボタン描画関数
 	void	LoadPicture();		//画像読み込み関数
 	void	LoadSE();			//効果音読み込み関数
 	void	VolumeInit();	//効果音ボリューム初期値設定関数

@@ -21,30 +21,30 @@ ObjectBase::~ObjectBase()
 
 void ObjectBase::Init()
 {
-	_OState = OBJECTSTATE::ALLIBE;
-	_GrHandle = -1;	
+	_ostate = OBJECTSTATE::ALLIBE;
+	_grhandle = -1;	
 	_cnt = 0;
 	_hit_judge.first = 1;
 	_hit_judge.second = 1;
 	_drg.first = 1.0;
 	_drg.second = 0.0;
-	_Color = std::make_tuple(255,0,255);
-	_Dalpha = 128;
-	_Fill = false;
-	_BEventA_Flag=false;
-	_BEventB_Flag=false;
-	_Draw_Flag = false;
-	_Dx = 0;
-	_Dy = 0;
+	_debug_color = std::make_tuple(255,0,255);
+	_debug_alpha = 128;
+	_debug_fill = false;
+	_bosseventA_flag=false;
+	_bosseventB_flag=false;
+	_draw_flag = false;
+	_dx = 0;
+	_dy = 0;
 }
 
 void ObjectBase::Process(Game& g)
 {
-	if (_Dx > 0-400 && _Dx < SCREEN_W+400 &&_Dy>0-400 && _Dy < SCREEN_H+400) {
-		_Draw_Flag =true;
+	if (_dx > 0-400 && _dx < SCREEN_W+400 &&_dy>0-400 && _dy < SCREEN_H+400) {
+		_draw_flag =true;
 	}
 	else {
-		_Draw_Flag = false;
+		_draw_flag = false;
 	}
 	++_cnt;
 }
@@ -56,12 +56,12 @@ void ObjectBase::Draw(Game& g) {
 		auto y = _y + _gy - GC->GetscrY();
 		auto scale = _drg.first;
 		auto angle = _drg.second;
-		_Before_x = _x + _gx;
-		_Before_y = _y + _gy;
-		_Dx = x;
-		_Dy = y;
-		if (_Draw_Flag == true) {
-		DrawRotaGraph(x,y, scale, angle, _GrHandle, true, _isflip);
+		_before_x = _x + _gx;
+		_before_y = _y + _gy;
+		_dx = x;
+		_dy = y;
+		if (_draw_flag == true) {
+		DrawRotaGraph(x,y, scale, angle, _grhandle, true, _isflip);
 		}
 #ifdef _DEBUG
 		//int& re = std::get<RED>(_Color);

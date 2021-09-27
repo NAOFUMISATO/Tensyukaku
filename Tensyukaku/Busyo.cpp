@@ -38,7 +38,7 @@ void Busyo::Init() {
 	_hit_y = POSITION_HITY;
 	_hit_w = COLLISION_WIDTH;
 	_hit_h = COLLISION_HEIGHT;
-	_State = ENEMYSTATE::APPEAR;
+	_state = ENEMYSTATE::APPEAR;
 	_life = LIFE_MAX;
 	_spd = SPEED;
 	_alpha = 0;
@@ -46,7 +46,7 @@ void Busyo::Init() {
 void Busyo::Process(Game& g) {
 	EnemyBase::Process(g);
 	VolumeChange();
-	switch (_State) {
+	switch (_state) {
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
 		break;
@@ -96,7 +96,7 @@ void Busyo::HitJudge(Game& g) {
 				_life -= 3;
 				_action_cnt = _cnt;
 				if (_life <= 0) {
-					_State = ENEMYSTATE::DEAD;
+					_state = ENEMYSTATE::DEAD;
 					//居合ゲージの増加
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 					{
@@ -109,7 +109,7 @@ void Busyo::HitJudge(Game& g) {
 							}
 						}
 					}
-				}else { _State = ENEMYSTATE::DAMAGE; }
+				}else { _state = ENEMYSTATE::DAMAGE; }
 			}
 			break;
 		case ObjectBase::OBJECTTYPE::LOWATTACK:
@@ -119,7 +119,7 @@ void Busyo::HitJudge(Game& g) {
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_life--;
 				if (_life <= 0) {
-					_State = ENEMYSTATE::DEAD;
+					_state = ENEMYSTATE::DEAD;
 					//居合ゲージの増加
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 					{
@@ -133,9 +133,9 @@ void Busyo::HitJudge(Game& g) {
 						}
 					}
 				}
-				else { _State = ENEMYSTATE::DAMAGE; }
+				else { _state = ENEMYSTATE::DAMAGE; }
 				_action_cnt = _cnt;
-				_Anime["Attack"] = 0;
+				_anime["Attack"] = 0;
 
 			}
 			break;
@@ -147,13 +147,13 @@ void Busyo::HitJudge(Game& g) {
 			{
 				_life -= 3;
 				_action_cnt = _cnt;
-				_State = ENEMYSTATE::DEAD;
+				_state = ENEMYSTATE::DEAD;
 			}
 			break;
 		case ObjectBase::OBJECTTYPE::PLAYER:
 			// プレイヤーとその敵の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {
-				_x = _Before_x;
+				_x = _before_x;
 			}
 			break;
 		default:
@@ -164,36 +164,36 @@ void Busyo::HitJudge(Game& g) {
 
 //画像読み込み関数
 void Busyo::LoadPicture() {
-	_GrAll["Appear"].resize(APPEAR_ANIMEMAX);
-	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Appear"].data());
-	_GrAll["Patrol"].resize(PATROL_ANIMEMAX);
-	ResourceServer::LoadDivGraph(PATROL_GRAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Patrol"].data());
-	_GrAll["Coming"].resize(COMING_ANIMEMAX);
-	ResourceServer::LoadDivGraph(COMING_GRAPHNAME, COMING_ANIMEMAX, COMING_WIDTHCOUNT, COMING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Coming"].data());
-	_GrAll["Attack"].resize(ATTACK_ANIMEMAX);
-	ResourceServer::LoadDivGraph(ATTACK_GRAPHNAME, ATTACK_ANIMEMAX, ATTACK_WIDTHCOUNT, ATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Attack"].data());
-	_GrAll["Damage"].resize(DAMAGE_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Damage"].data());
-	_GrAll["Dead"].resize(DEAD_ANIMEMAX);
-	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _GrAll["Dead"].data());
+	_grall["Appear"].resize(APPEAR_ANIMEMAX);
+	ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
+	_grall["Patrol"].resize(PATROL_ANIMEMAX);
+	ResourceServer::LoadDivGraph(PATROL_GRAPHNAME, PATROL_ANIMEMAX, PATROL_WIDTHCOUNT, PATROL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Patrol"].data());
+	_grall["Coming"].resize(COMING_ANIMEMAX);
+	ResourceServer::LoadDivGraph(COMING_GRAPHNAME, COMING_ANIMEMAX, COMING_WIDTHCOUNT, COMING_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Coming"].data());
+	_grall["Attack"].resize(ATTACK_ANIMEMAX);
+	ResourceServer::LoadDivGraph(ATTACK_GRAPHNAME, ATTACK_ANIMEMAX, ATTACK_WIDTHCOUNT, ATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Attack"].data());
+	_grall["Damage"].resize(DAMAGE_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DAMAGE_GRAPHNAME, DAMAGE_ANIMEMAX, DAMAGE_WIDTHCOUNT, DAMAGE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Damage"].data());
+	_grall["Dead"].resize(DEAD_ANIMEMAX);
+	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
 
 //SE読み込み関数
 void Busyo::LoadSE() {
-	_Se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/BushiAttack.wav");
+	_se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/BushiAttack.wav");
 }
 //効果音ボリューム初期値設定関数
 void	Busyo::VolumeInit() {
-	_Vpal["Attack"] = 255;
+	_vpal["Attack"] = 255;
 }
 
 //ボリューム変更関数
 void	Busyo::VolumeChange() {
-	ChangeVolumeSoundMem(_Vpal["Attack"], _Se["Attack"]);
+	ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
 }
 //デバッグ用関数
 void Busyo::DebugDraw(Game& g) {
-	switch (_State) {
+	switch (_state) {
 	case ENEMYSTATE::PATROL:
 		if (_isflip == false) {
 			PrivateCollision pc(_x + _hit_x - PATROL_WIDTH, _y - _hit_h, PATROL_WIDTH, PATROL_HEIGHT);
