@@ -4,6 +4,7 @@
 #include "EnemyBase.h"
 #include "Lancer.h"
 #include "LancerMotionCollision.h"
+#include "MiddleBlood.h"
 #include "Game.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
@@ -102,6 +103,10 @@ void Lancer::HitJudge(Game& g) {
 						if (ig < PLAYER_IAI_MAX) {
 							(*ite)->SetGauge(ig += 1);
 						}
+						auto flip = (*ite)->GetFlip();
+						auto bloodtype = GetRand(2);
+						auto mb = new MiddleBlood(_x + _gx, _y + _gy, flip, bloodtype);
+						g.GetOS()->Add(mb);
 					}
 				}
 			}

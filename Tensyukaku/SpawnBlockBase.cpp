@@ -15,17 +15,7 @@ SpawnBlockBase::~SpawnBlockBase() {
 }
 
 void SpawnBlockBase::Init() {
-	_gx = GRAPHPOINT_X;
-	_gy = GRAPHPOINT_Y;
-	_hit_x = POSITION_HITX;
-	_hit_y = POSITION_HITY;
-	_hit_w = COLLISION_WIDTH;
-	_hit_h = COLLISION_HEIGHT;
-#ifdef _DEBUG
-	_debug_color = std::make_tuple(255, 0, 255);
-	_debug_alpha = 128;
-	_debug_fill = true;
-#endif
+	
 }
 void SpawnBlockBase::Draw(Game& g) {
 	ObjectBase::Draw(g);

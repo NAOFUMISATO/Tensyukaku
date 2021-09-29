@@ -4,6 +4,7 @@
 #include "EnemyBase.h"
 #include "Busyo.h"
 #include "Game.h"
+#include "MiddleBlood.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "BushiMotionCollision.h"
@@ -107,6 +108,8 @@ void Busyo::HitJudge(Game& g) {
 							if (ig < PLAYER_IAI_MAX) {
 								(*ite)->SetGauge(ig += 1);
 							}
+							auto mb = new MiddleBlood(_x + _gx, _y + _gy, (*ite)->GetFlip(), GetRand(2));
+							g.GetOS()->Add(mb);
 						}
 					}
 				}else { _state = ENEMYSTATE::DAMAGE; }
@@ -130,6 +133,8 @@ void Busyo::HitJudge(Game& g) {
 							if (ig < PLAYER_IAI_MAX) {
 								(*ite)->SetGauge(ig += 1);
 							}
+							auto mb = new MiddleBlood(_x + _gx, _y + _gy, (*ite)->GetFlip(), GetRand(2));
+							g.GetOS()->Add(mb);
 						}
 					}
 				}

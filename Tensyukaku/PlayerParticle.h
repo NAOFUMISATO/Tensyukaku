@@ -211,12 +211,12 @@ namespace PParInfo {
 	constexpr auto IAI_PARTICLE2_POSITIONY = -225.0;									//基準点(足下)から描画点へのY座標差分
 	constexpr auto IAI_PARTICLE2_BLENDMODE = DX_BLENDMODE_SUB;							//ブンドモード設定
 	constexpr auto IAI_PARTICLE2_PAL = 100;												//ブレンド値(0～255)
-	constexpr auto IAI_PARTICLE2_RED = 128;												//赤色値(0～255)
-	constexpr auto IAI_PARTICLE2_GREEN = 128;											//緑色値(0～255)
-	constexpr auto IAI_PARTICLE2_BLUE = 128;											//青色値(0～255)
+	constexpr auto IAI_PARTICLE2_RED = 170;												//赤色値(0～255)
+	constexpr auto IAI_PARTICLE2_GREEN = 170;											//緑色値(0～255)
+	constexpr auto IAI_PARTICLE2_BLUE = 170;											//青色値(0～255)
 	constexpr auto IAI_PARTICLE2_SCALE = 1.0;											//拡縮値(1.0がデフォルト)
 	constexpr auto IAI_PARTICLE2_ANGLE = 0.0;											//描画角度(3.14=180°)
-	constexpr auto IAI_PARTICLE2_CNT = 20;												//パーティクル1個あたりの生存時間
+	constexpr auto IAI_PARTICLE2_CNT = 30;												//パーティクル1個あたりの生存時間
 	constexpr auto IAI_PARTICLE2_QTY = 5;												//1フレーム当たりのパーティクル数
 	//パーティクル1個当たりの移動方向のランダム値調整
 	constexpr auto IAI_PARTICLE2_RANDOMX1 = 20;											//パーティクルのXランダム値
@@ -237,7 +237,7 @@ namespace PParInfo {
 	constexpr auto IAI_PARTICLE3_BLUE = 200;											//青色値(0～255)
 	constexpr auto IAI_PARTICLE3_SCALE = 1.0;											//拡縮値(1.0がデフォルト)
 	constexpr auto IAI_PARTICLE3_ANGLE = 0.0;											//描画角度(3.14=180°)
-	constexpr auto IAI_PARTICLE3_CNT = 20;												//パーティクル1個あたりの生存時間
+	constexpr auto IAI_PARTICLE3_CNT = 30;												//パーティクル1個あたりの生存時間
 	constexpr auto IAI_PARTICLE3_QTY = 5;												//1フレーム当たりのパーティクル数
 	//パーティクル1個当たりの移動方向のランダム値調整
 	constexpr auto IAI_PARTICLE3_RANDOMX1 = 45;											//パーティクルのXランダム値

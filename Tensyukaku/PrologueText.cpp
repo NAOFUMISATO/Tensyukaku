@@ -200,7 +200,7 @@ bool PrologueASkip::Initialize(Game& g) {
 	_x = 1650;
 	_y = 1000;
 	_trans_flag = true;
-	_grhandle=ResourceServer::LoadGraph("res/Mode/ASkip.png");
+	/*_grhandle=*/ResourceServer::LoadGraph("res/Mode/ASkip.png");
 	return true;
 }
 

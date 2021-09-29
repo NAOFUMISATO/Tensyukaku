@@ -40,16 +40,19 @@ bool ModeTitle::Initialize(Game& g) {
 	ResourceServer::LoadDivGraph("res/Mode/TeamLogo.png", 1, 1, 1, 1920, 1080, _grall["TeamLogo"].data());
 	_grall["TitleBG"].resize(1);
 	ResourceServer::LoadDivGraph("res/Mode/TitleBG.png", 1, 1, 1, 1920, 1080, _grall["TitleBG"].data());
-	//チェックポイント到達フラグ
-	g.SetCPointFlag(false);
+	//各チェックポイント到達フラグリセット
+	auto flag = g.GetCPointFlag();
+	flag["2A"] = false;
+	flag["3A"] = false;
+	flag["4A"] = false;
+	flag["5A"] = false;
+	flag["5B"] = false;
+	flag["8A"] = false;
+	flag["11A"] = false;
+	g.SetCPointFlag(flag);
 	//再起かどうかのフラグ
 	g.SetRestartFlag(false);
 	//各チュートリアルの出現フラグ
-	g.SetTutorial1Flag(false);
-	g.SetTutorial2Flag(false);
-	g.SetTutorial3Flag(false);
-	g.SetTutorial4Flag(false);
-	g.SetTutorial5Flag(false);
 	return true;
 }
 

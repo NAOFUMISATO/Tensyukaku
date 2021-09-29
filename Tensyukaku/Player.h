@@ -201,7 +201,7 @@ namespace PInfo {
 	constexpr auto SWAY_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_SWAY =6;			//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto SWAY_ALLFRAME = 24;			//スウェイ全フレーム(全フレームーアニメーションフレーム＝猶予時間)
-	constexpr auto SWAY_NOHITBEGINFRAME = 5;		//スウェイの無敵判定開始フレーム
+	constexpr auto SWAY_NOHITBEGINFRAME = 0;		//スウェイの無敵判定開始フレーム
 	constexpr auto SWAY_NOHITENDFRAME = 20;		//スウェイの無敵判定終了フレーム
 	constexpr auto SWAY_MOVEFRAME = 20;			//スウェイ時の移動フレーム
 	constexpr auto SWAY_MOVEMENT = 12;			//スウェイ時の1フレームあたりの移動量

@@ -3,6 +3,7 @@
 #include "ModeEpilogue.h"
 #include "OverlayBlack.h"
 #include "Boss.h"
+#include "BossBlood.h"
 #include "Game.h"
 using namespace BossInifo;
 Boss::Boss(int x,int y,bool flip) {
@@ -126,10 +127,18 @@ void Boss::Damage(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Damage"][_anime["Damage"]];
 	_anime["Damage"] = 0;
+	if (frame == 1) {
+		auto bloodtype = 0;
+		auto bb = new BossBlood(_x + _gx, _y + _gy, bloodtype);
+		g.GetOS()->Add(bb);
+	}
 	if (frame == DAMAGE_ALLFRAME) {
 		_action_cnt = _cnt;
 		_State = BOSSSTATE::DEAD;
-}
+		auto bloodtype = 1;
+		auto bb = new BossBlood(_x + _gx, _y + _gy, bloodtype);
+		g.GetOS()->Add(bb);
+	}
 }
 
 void Boss::Dead(Game& g) {

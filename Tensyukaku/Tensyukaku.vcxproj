@@ -150,6 +150,7 @@
     <ClCompile Include="Andon.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossBlood.cpp" />
     <ClCompile Include="BossEvent.cpp" />
     <ClCompile Include="BossStair.cpp" />
     <ClCompile Include="Bushi.cpp" />
@@ -160,8 +161,11 @@
     <ClCompile Include="BusyoMotion.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CPointBlock.cpp" />
+    <ClCompile Include="Credit.cpp" />
     <ClCompile Include="Cursor.cpp" />
+    <ClCompile Include="EfectBase.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
+    <ClCompile Include="EnemyParticle.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="EpilogueText.cpp" />
     <ClCompile Include="EventHappen.cpp" />
@@ -174,6 +178,8 @@
     <ClCompile Include="Lancer.cpp" />
     <ClCompile Include="LancerMotion.cpp" />
     <ClCompile Include="LancerMotionCollision.cpp" />
+    <ClCompile Include="LowBlood.cpp" />
+    <ClCompile Include="MiddleBlood.cpp" />
     <ClCompile Include="ModeBossBefore.cpp" />
     <ClCompile Include="ModeEpilogue.cpp" />
     <ClCompile Include="ModeGameover.cpp" />
@@ -235,6 +241,7 @@
     <ClInclude Include="Andon.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossBlood.h" />
     <ClInclude Include="BossEvent.h" />
     <ClInclude Include="BossStair.h" />
     <ClInclude Include="Bushi.h" />
@@ -243,8 +250,11 @@
     <ClInclude Include="BusyoMotionCollision.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CPointBlock.h" />
+    <ClInclude Include="Credit.h" />
     <ClInclude Include="Cursor.h" />
+    <ClInclude Include="EfectBase.h" />
     <ClInclude Include="EnemyBase.h" />
+    <ClInclude Include="EnemyParticle.h" />
     <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="EpilogueText.h" />
     <ClInclude Include="EventHappen.h" />
@@ -256,6 +266,8 @@
     <ClInclude Include="Kunai.h" />
     <ClInclude Include="Lancer.h" />
     <ClInclude Include="LancerMotionCollision.h" />
+    <ClInclude Include="LowBlood.h" />
+    <ClInclude Include="MiddleBlood.h" />
     <ClInclude Include="ModeBossBefore.h" />
     <ClInclude Include="ModeEpilogue.h" />
     <ClInclude Include="ModeGameover.h" />

@@ -332,13 +332,6 @@ void	Player::HitJudge(Game& g) {
 					_life = 3;
 				}
 				break;
-		case ObjectBase::OBJECTTYPE::CPOINTBLOCK:
-			// プレイヤーとそのチェックポイントの当たり判定を行う
-			if (IsHit(*(*ite)) == true) {
-				(*ite)->Delete(g);
-				g.SetCPointFlag(true);
-			}
-			break;
 		case ObjectBase::OBJECTTYPE::FLAMEBLOCK:
 			// プレイヤーとその炎演出の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {

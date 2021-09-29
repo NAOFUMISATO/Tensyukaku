@@ -26,7 +26,7 @@ void Cursor::Init() {
 	_hit_y = -10;
 	_hit_w = 20;
 	_hit_h = 20;
-	_spd = 3;
+	_spd = 6;
 	_position = { 960,540 };
 	_velocityDir = { 0,0 };
 	_colortype = 2;
@@ -165,7 +165,7 @@ void Cursor::Process(Game& g) {
 	auto ybuf = g.GetYBuf();
 	if (_Input_Flag == false) {
 		if (g.GetKey() & PAD_INPUT_RIGHT) {
-			_velocityDir.x = 1;   // (3-3)‰E“ü—Í‚ ‚è
+			_velocityDir.x =1;   // (3-3)‰E“ü—Í‚ ‚è
 		}
 		else if (g.GetKey() & PAD_INPUT_LEFT) {
 			_velocityDir.x = -1;  // (3-4)¶“ü—Í‚ ‚è

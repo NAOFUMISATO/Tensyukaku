@@ -4,6 +4,7 @@
 #include "EnemyBase.h"
 #include "Zyounin.h"
 #include "Game.h"
+#include "LowBlood.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "NinjaMotionCollision.h"
@@ -106,6 +107,10 @@ void Zyounin::HitJudge(Game& g) {
 						if (ig < PLAYER_IAI_MAX) {
 							(*ite)->SetGauge(ig += 1);
 						}
+						auto flip = (*ite)->GetFlip();
+						auto bloodtype = GetRand(2);
+						auto mb = new LowBlood(_x + _gx, _y - 100, flip, bloodtype);
+						g.GetOS()->Add(mb);
 					}
 				}
 			}

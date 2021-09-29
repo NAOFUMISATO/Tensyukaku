@@ -14,14 +14,28 @@ using namespace SpaInfo;
 /*
 	スポーンブロック
 */
-//スポーンブロック1A
-Spawn1A::Spawn1A(Game& g) {
-	_x = SPAWN1A_XPOSITION;
-	_y = SPAWN1A_YPOSITION;
+Spawn::Spawn(std::string spawntype) {
+	_spawn_type = spawntype;
+	Init();
 }
-Spawn1A::~Spawn1A() {
+Spawn::~Spawn() {
 }
-void Spawn1A::Process(Game& g) {
+void Spawn::Init() {
+	_gx = 0;
+	_gy = -50;
+	_hit_x =-50;
+	_hit_y = -50;
+	_hit_w = 100;
+	_hit_h = 100;
+#ifdef _DEBUG
+	_debug_color = std::make_tuple(255, 0, 255);
+	_debug_alpha = 128;
+	_debug_fill = true;
+#endif
+	SpawnPositon();
+}
+void Spawn::Process(Game& g) {
+	ObjectBase::Process(g);
 	//プレイヤーとの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
@@ -30,607 +44,400 @@ void Spawn1A::Process(Game& g) {
 		{
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
-				auto bu1 = new Bushi(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto bu3 = new Bushi(SPAWN1A_BUSHI3_X, SPAWN1A_BUSHI3_Y, SPAWN1A_BUSHI3_FLIP);
-				g.GetOS()->Add(bu3);
-				auto bu4 = new Bushi(SPAWN1A_BUSHI4_X, SPAWN1A_BUSHI4_Y, SPAWN1A_BUSHI4_FLIP);
-				g.GetOS()->Add(bu4);
-				auto bu5 = new Bushi(SPAWN1A_BUSHI5_X, SPAWN1A_BUSHI5_Y, SPAWN1A_BUSHI5_FLIP);
-				g.GetOS()->Add(bu5);
-				auto bu6 = new Bushi(SPAWN1A_BUSHI6_X, SPAWN1A_BUSHI6_Y, SPAWN1A_BUSHI6_FLIP);
-				g.GetOS()->Add(bu6);
-				auto bu7 = new Bushi(SPAWN1A_BUSHI7_X, SPAWN1A_BUSHI7_Y, SPAWN1A_BUSHI7_FLIP);
-				g.GetOS()->Add(bu7);
-				auto bu8 = new Bushi(SPAWN1A_BUSHI8_X, SPAWN1A_BUSHI8_Y, SPAWN1A_BUSHI8_FLIP);
-				g.GetOS()->Add(bu8);
-				auto bu9 = new Bushi(SPAWN1A_BUSHI9_X, SPAWN1A_BUSHI9_Y, SPAWN1A_BUSHI9_FLIP);
-				g.GetOS()->Add(bu9);
-				auto bu10 = new Bushi(SPAWN1A_BUSHI10_X, SPAWN1A_BUSHI10_Y, SPAWN1A_BUSHI10_FLIP);
-				g.GetOS()->Add(bu10);
-				auto bu11 = new Bushi(SPAWN1A_BUSHI11_X, SPAWN1A_BUSHI11_Y, SPAWN1A_BUSHI11_FLIP);
-				g.GetOS()->Add(bu11);
-				auto bu12 = new Bushi(SPAWN1A_BUSHI12_X, SPAWN1A_BUSHI12_Y, SPAWN1A_BUSHI12_FLIP);
-				g.GetOS()->Add(bu12);
-				auto bu13 = new Bushi(SPAWN1A_BUSHI13_X, SPAWN1A_BUSHI13_Y, SPAWN1A_BUSHI13_FLIP);
-				g.GetOS()->Add(bu13);
-				auto bs1 = new Busyo(SPAWN1A_BUSYO1_X, SPAWN1A_BUSYO1_Y, SPAWN1A_BUSYO1_FLIP);
-				g.GetOS()->Add(bs1);
-				auto ni1 = new Ninja(SPAWN1A_NINJA1_X, SPAWN1A_NINJA1_Y, SPAWN1A_NINJA1_FLIP, SPAWN1A_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
-				auto ni2 = new Ninja(SPAWN1A_NINJA2_X, SPAWN1A_NINJA2_Y, SPAWN1A_NINJA2_FLIP, SPAWN1A_NINJA2_KUNAI);
-				g.GetOS()->Add(ni2);
-				auto ni4 = new Ninja(SPAWN1A_NINJA4_X, SPAWN1A_NINJA4_Y, SPAWN1A_NINJA4_FLIP, SPAWN1A_NINJA4_KUNAI);
-				g.GetOS()->Add(ni4);
-				auto ni5 = new Ninja(SPAWN1A_NINJA5_X, SPAWN1A_NINJA5_Y, SPAWN1A_NINJA5_FLIP, SPAWN1A_NINJA5_KUNAI);
-				g.GetOS()->Add(ni5);
-				auto la1 = new Lancer(SPAWN1A_LANCE1_X, SPAWN1A_LANCE1_Y, SPAWN1A_LANCE1_FLIP);
-				g.GetOS()->Add(la1);
-				auto la2 = new Lancer(SPAWN1A_LANCE2_X, SPAWN1A_LANCE2_Y, SPAWN1A_LANCE2_FLIP);
-				g.GetOS()->Add(la2);
-				auto sh1 = new Shielder(SPAWN1A_SHIEL1_X, SPAWN1A_SHIEL1_Y, SPAWN1A_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
-				auto sh2 = new Shielder(SPAWN1A_SHIEL2_X, SPAWN1A_SHIEL2_Y, SPAWN1A_SHIEL2_FLIP);
-				g.GetOS()->Add(sh2);
-				auto sh3 = new Shielder(SPAWN1A_SHIEL3_X, SPAWN1A_SHIEL3_Y, SPAWN1A_SHIEL3_FLIP);
-				g.GetOS()->Add(sh3);
-				auto sh4 = new Shielder(SPAWN1A_SHIEL4_X, SPAWN1A_SHIEL4_Y, SPAWN1A_SHIEL4_FLIP);
-				g.GetOS()->Add(sh4);
-				auto sh5 = new Shielder(SPAWN1A_SHIEL5_X, SPAWN1A_SHIEL5_Y, SPAWN1A_SHIEL5_FLIP);
-				g.GetOS()->Add(sh5);
-				auto sh6 = new Shielder(SPAWN1A_SHIEL6_X, SPAWN1A_SHIEL6_Y, SPAWN1A_SHIEL6_FLIP);
-				g.GetOS()->Add(sh6);
-				auto sh7 = new Shielder(SPAWN1A_SHIEL7_X, SPAWN1A_SHIEL7_Y, SPAWN1A_SHIEL7_FLIP);
-				g.GetOS()->Add(sh7);
-				auto sh8 = new Shielder(SPAWN1A_SHIEL8_X, SPAWN1A_SHIEL8_Y, SPAWN1A_SHIEL8_FLIP);
-				g.GetOS()->Add(sh8);
-				auto pn1= new PoisonNinja(SPAWN1A_POIJA1_X, SPAWN1A_POIJA1_Y, SPAWN1A_POIJA1_FLIP);
-				g.GetOS()->Add(pn1);
-				auto pn2 = new PoisonNinja(SPAWN1A_POIJA2_X, SPAWN1A_POIJA2_Y, SPAWN1A_POIJA2_FLIP);
-				g.GetOS()->Add(pn2);
-				auto pz1 = new PoisonZyounin(SPAWN1A_POIJO1_X, SPAWN1A_POIJO1_Y, SPAWN1A_POIJO1_FLIP);
-				g.GetOS()->Add(pz1);
-				auto boss = new Boss(SPAWN1A_BOSS_X, SPAWN1A_BOSS_Y, SPAWN1A_BOSS_FLIP);
-				g.GetOS()->Add(boss);
+				if (_spawn_type == "1A") {
+					auto bu1 = new Bushi(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto bu2 = new Bushi(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
+					g.GetOS()->Add(bu2);
+					auto bu3 = new Bushi(SPAWN1A_BUSHI3_X, SPAWN1A_BUSHI3_Y, SPAWN1A_BUSHI3_FLIP);
+					g.GetOS()->Add(bu3);
+				}
+				else if (_spawn_type == "1B") {
+					auto bu1 = new Bushi(SPAWN1B_BUSHI1_X, SPAWN1B_BUSHI1_Y, SPAWN1B_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto bu2 = new Bushi(SPAWN1B_BUSHI2_X, SPAWN1B_BUSHI2_Y, SPAWN1B_BUSHI2_FLIP);
+					g.GetOS()->Add(bu2);
+					auto bu3 = new Bushi(SPAWN1B_BUSHI3_X, SPAWN1B_BUSHI3_Y, SPAWN1B_BUSHI3_FLIP);
+					g.GetOS()->Add(bu3);
+					auto bu4 = new Bushi(SPAWN1B_BUSHI4_X, SPAWN1B_BUSHI4_Y, SPAWN1B_BUSHI4_FLIP);
+					g.GetOS()->Add(bu4);
+				}
+				else if (_spawn_type == "2A") {
+					auto ni1 = new Ninja(SPAWN2A_NINJA1_X, SPAWN2A_NINJA1_Y, SPAWN2A_NINJA1_FLIP, SPAWN2A_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+					auto ni2 = new Ninja(SPAWN2A_NINJA2_X, SPAWN2A_NINJA2_Y, SPAWN2A_NINJA2_FLIP, SPAWN2A_NINJA2_KUNAI);
+					g.GetOS()->Add(ni2);
+				}
+				else if (_spawn_type == "2B") {
+					auto ni1 = new Ninja(SPAWN2B_NINJA1_X, SPAWN2B_NINJA1_Y, SPAWN2B_NINJA1_FLIP, SPAWN2B_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+					auto ni2 = new Ninja(SPAWN2B_NINJA2_X, SPAWN2B_NINJA2_Y, SPAWN2B_NINJA2_FLIP, SPAWN2B_NINJA2_KUNAI);
+					g.GetOS()->Add(ni2);
+					auto ni3 = new Ninja(SPAWN2B_NINJA3_X, SPAWN2B_NINJA3_Y, SPAWN2B_NINJA3_FLIP, SPAWN2B_NINJA3_KUNAI);
+					g.GetOS()->Add(ni3);
+					auto ni4 = new Ninja(SPAWN2B_NINJA4_X, SPAWN2B_NINJA4_Y, SPAWN2B_NINJA4_FLIP, SPAWN2B_NINJA4_KUNAI);
+					g.GetOS()->Add(ni4);
+				}
+				else if (_spawn_type == "3A") {
+					auto la1 = new Lancer(SPAWN3A_LANCE1_X, SPAWN3A_LANCE1_Y, SPAWN3A_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+				}
+				else if (_spawn_type == "3B") {
+					auto la1 = new Lancer(SPAWN3B_LANCE1_X, SPAWN3B_LANCE1_Y, SPAWN3B_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+					auto la2 = new Lancer(SPAWN3B_LANCE2_X, SPAWN3B_LANCE2_Y, SPAWN3B_LANCE2_FLIP);
+					g.GetOS()->Add(la2);
+				}
+				else if (_spawn_type == "3C") {
+					auto sh1 = new Shielder(SPAWN3C_SHIEL1_X, SPAWN3C_SHIEL1_Y, SPAWN3C_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto sh2 = new Shielder(SPAWN3C_SHIEL2_X, SPAWN3C_SHIEL2_Y, SPAWN3C_SHIEL2_FLIP);
+					g.GetOS()->Add(sh2);
+				}
+				else if (_spawn_type == "3D") {
+					auto sh1 = new Shielder(SPAWN3D_SHIEL1_X, SPAWN3D_SHIEL1_Y, SPAWN3D_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto la1 = new Lancer(SPAWN3D_LANCE1_X, SPAWN3D_LANCE1_Y, SPAWN3D_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+				}
+				else if (_spawn_type == "3E") {
+					auto la1 = new Lancer(SPAWN3E_LANCE1_X, SPAWN3E_LANCE1_Y, SPAWN3E_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+				}
+				else if (_spawn_type == "4A") {
+					auto sh1 = new Shielder(SPAWN4A_SHIEL1_X, SPAWN4A_SHIEL1_Y, SPAWN4A_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+				}
+				else if (_spawn_type == "4B") {
+					auto bu1 = new Bushi(SPAWN4B_BUSHI1_X, SPAWN4B_BUSHI1_Y, SPAWN4B_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto ni1 = new Ninja(SPAWN4B_NINJA1_X, SPAWN4B_NINJA1_Y, SPAWN4B_NINJA1_FLIP, SPAWN4B_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+				}
+				else if (_spawn_type == "4C") {
+					auto bu1 = new Bushi(SPAWN4C_BUSHI1_X, SPAWN4C_BUSHI1_Y, SPAWN4C_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto la1 = new Lancer(SPAWN4C_LANCE1_X, SPAWN4C_LANCE1_Y, SPAWN4C_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+					auto ni1 = new Ninja(SPAWN4C_NINJA1_X, SPAWN4C_NINJA1_Y, SPAWN4C_NINJA1_FLIP, SPAWN4C_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+				}
+				else if (_spawn_type == "4D") {
+					auto sh1 = new Shielder(SPAWN4D_SHIEL1_X, SPAWN4D_SHIEL1_Y, SPAWN4D_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto la1 = new Lancer(SPAWN4D_LANCE1_X, SPAWN4D_LANCE1_Y, SPAWN4D_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+					auto bu1 = new Bushi(SPAWN4D_BUSHI1_X, SPAWN4D_BUSHI1_Y, SPAWN4D_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+				}
+				else if (_spawn_type == "5A") {
+					auto ni1 = new Ninja(SPAWN5A_NINJA1_X, SPAWN5A_NINJA1_Y, SPAWN5A_NINJA1_FLIP, SPAWN5A_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+					auto ni2 = new Ninja(SPAWN5A_NINJA2_X, SPAWN5A_NINJA2_Y, SPAWN5A_NINJA2_FLIP, SPAWN5A_NINJA2_KUNAI);
+					g.GetOS()->Add(ni2);
+					auto pn1 = new PoisonNinja(SPAWN5A_POIJA1_X, SPAWN5A_POIJA1_Y, SPAWN5A_POIJA1_FLIP);
+					g.GetOS()->Add(pn1);
+					auto pn2 = new PoisonNinja(SPAWN5A_POIJA2_X, SPAWN5A_POIJA2_Y, SPAWN5A_POIJA2_FLIP);
+					g.GetOS()->Add(pn2);
+					auto pn3 = new PoisonNinja(SPAWN5A_POIJA3_X, SPAWN5A_POIJA3_Y, SPAWN5A_POIJA3_FLIP);
+					g.GetOS()->Add(pn3);
+					auto pn4 = new PoisonNinja(SPAWN5A_POIJA4_X, SPAWN5A_POIJA4_Y, SPAWN5A_POIJA4_FLIP);
+					g.GetOS()->Add(pn4);
+					auto pn5 = new PoisonNinja(SPAWN5A_POIJA5_X, SPAWN5A_POIJA5_Y, SPAWN5A_POIJA5_FLIP);
+					g.GetOS()->Add(pn5);
+					auto pn6 = new PoisonNinja(SPAWN5A_POIJA6_X, SPAWN5A_POIJA6_Y, SPAWN5A_POIJA6_FLIP);
+					g.GetOS()->Add(pn6);
+					auto pn7 = new PoisonNinja(SPAWN5A_POIJA7_X, SPAWN5A_POIJA7_Y, SPAWN5A_POIJA7_FLIP);
+					g.GetOS()->Add(pn7);
+					auto pn8 = new PoisonNinja(SPAWN5A_POIJA8_X, SPAWN5A_POIJA8_Y, SPAWN5A_POIJA8_FLIP);
+					g.GetOS()->Add(pn8);
+				}
+				else if (_spawn_type == "5B") {
+					auto sh1 = new Shielder(SPAWN5B_SHIEL1_X, SPAWN5B_SHIEL1_Y, SPAWN5B_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto sh2 = new Shielder(SPAWN5B_SHIEL2_X, SPAWN5B_SHIEL2_Y, SPAWN5B_SHIEL2_FLIP);
+					g.GetOS()->Add(sh2);
+				}
+				else if (_spawn_type == "5C") {
+					auto bu1 = new Bushi(SPAWN5C_BUSHI1_X, SPAWN5C_BUSHI1_Y, SPAWN5C_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto bu2 = new Bushi(SPAWN5C_BUSHI2_X, SPAWN5C_BUSHI2_Y, SPAWN5C_BUSHI2_FLIP);
+					g.GetOS()->Add(bu2);
+					auto bu3 = new Bushi(SPAWN5C_BUSHI3_X, SPAWN5C_BUSHI3_Y, SPAWN5C_BUSHI3_FLIP);
+					g.GetOS()->Add(bu3);
+					auto bs1 = new Busyo(SPAWN5C_BUSYO1_X, SPAWN5C_BUSYO1_Y, SPAWN5C_BUSYO1_FLIP);
+					g.GetOS()->Add(bs1);
+					auto la1 = new Lancer(SPAWN5C_LANCE1_X, SPAWN5C_LANCE1_Y, SPAWN5C_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+					auto ni1 = new Ninja(SPAWN5C_NINJA1_X, SPAWN5C_NINJA1_Y, SPAWN5C_NINJA1_FLIP, SPAWN5C_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+					auto ni2 = new Ninja(SPAWN5C_NINJA2_X, SPAWN5C_NINJA2_Y, SPAWN5C_NINJA2_FLIP, SPAWN5C_NINJA2_KUNAI);
+					g.GetOS()->Add(ni2);
+					auto ni3 = new Ninja(SPAWN5C_NINJA3_X, SPAWN5C_NINJA3_Y, SPAWN5C_NINJA3_FLIP, SPAWN5C_NINJA3_KUNAI);
+					g.GetOS()->Add(ni3);
+					auto zy1 = new Zyounin(SPAWN5C_ZYONI1_X, SPAWN5C_ZYONI1_Y, SPAWN5C_ZYONI1_FLIP, SPAWN5C_ZYONI1_KUNAI);
+					g.GetOS()->Add(zy1);
+				}
+				else if (_spawn_type == "6A") {
+					auto sh1 = new Shielder(SPAWN6A_SHIEL1_X, SPAWN6A_SHIEL1_Y, SPAWN6A_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto sh2 = new Shielder(SPAWN6A_SHIEL2_X, SPAWN6A_SHIEL2_Y, SPAWN6A_SHIEL2_FLIP);
+					g.GetOS()->Add(sh2);
+				}
+				else if (_spawn_type == "8A") {
+					auto bu1 = new Bushi(SPAWN8A_BUSHI1_X, SPAWN8A_BUSHI1_Y, SPAWN8A_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto sh1 = new Shielder(SPAWN8A_SHIEL1_X, SPAWN8A_SHIEL1_Y, SPAWN8A_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto bs1 = new Busyo(SPAWN8A_BUSYO1_X, SPAWN8A_BUSYO1_Y, SPAWN8A_BUSYO1_FLIP);
+					g.GetOS()->Add(bs1);
+				}
+				else if (_spawn_type == "9A") {
+					auto bu1 = new Bushi(SPAWN9A_BUSHI1_X, SPAWN9A_BUSHI1_Y, SPAWN9A_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto la1 = new Lancer(SPAWN9A_LANCE1_X, SPAWN9A_LANCE1_Y, SPAWN9A_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+					auto ni1 = new Ninja(SPAWN9A_NINJA1_X, SPAWN9A_NINJA1_Y, SPAWN9A_NINJA1_FLIP, SPAWN9A_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+				}
+				else if (_spawn_type == "9B") {
+					auto bs1 = new Busyo(SPAWN9B_BUSYO1_X, SPAWN9B_BUSYO1_Y, SPAWN9B_BUSYO1_FLIP);
+					g.GetOS()->Add(bs1);
+					auto la1 = new Lancer(SPAWN9B_LANCE1_X, SPAWN9B_LANCE1_Y, SPAWN9B_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+					auto sh1 = new Shielder(SPAWN9B_SHIEL1_X, SPAWN9B_SHIEL1_Y, SPAWN9B_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto zy1 = new Zyounin(SPAWN9B_ZYONI1_X, SPAWN9B_ZYONI1_Y, SPAWN9B_ZYONI1_FLIP, SPAWN9B_ZYONI1_KUNAI);
+					g.GetOS()->Add(zy1);
+				}
+				else if (_spawn_type == "10A") {
+					auto bu1 = new Bushi(SPAWN10A_BUSHI1_X, SPAWN10A_BUSHI1_Y, SPAWN10A_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto bu2 = new Bushi(SPAWN10A_BUSHI2_X, SPAWN10A_BUSHI2_Y, SPAWN10A_BUSHI2_FLIP);
+					g.GetOS()->Add(bu2);
+					auto bu3 = new Bushi(SPAWN10A_BUSHI3_X, SPAWN10A_BUSHI3_Y, SPAWN10A_BUSHI3_FLIP);
+					g.GetOS()->Add(bu3);
+					auto la1 = new Lancer(SPAWN10A_LANCE1_X, SPAWN10A_LANCE1_Y, SPAWN10A_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+					auto ni1 = new Ninja(SPAWN10A_NINJA1_X, SPAWN10A_NINJA1_Y, SPAWN10A_NINJA1_FLIP, SPAWN10A_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+				}
+				else if (_spawn_type == "10B") {
+					auto bu1 = new Bushi(SPAWN10B_BUSHI1_X, SPAWN10B_BUSHI1_Y, SPAWN10B_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto bu2 = new Bushi(SPAWN10B_BUSHI2_X, SPAWN10B_BUSHI2_Y, SPAWN10B_BUSHI2_FLIP);
+					g.GetOS()->Add(bu2);
+					auto bu3 = new Bushi(SPAWN10B_BUSHI3_X, SPAWN10B_BUSHI3_Y, SPAWN10B_BUSHI3_FLIP);
+					g.GetOS()->Add(bu3);
+					auto sh1 = new Shielder(SPAWN10B_SHIEL1_X, SPAWN10B_SHIEL1_Y, SPAWN10B_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto ni1 = new Ninja(SPAWN10B_NINJA1_X, SPAWN10B_NINJA1_Y, SPAWN10B_NINJA1_FLIP, SPAWN10B_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+					auto zy1 = new Zyounin(SPAWN10B_ZYONI1_X, SPAWN10B_ZYONI1_Y, SPAWN10B_ZYONI1_FLIP, SPAWN10B_ZYONI1_KUNAI);
+					g.GetOS()->Add(zy1);
+				}
+				else if (_spawn_type == "11A") {
+					auto bu1 = new Bushi(SPAWN11A_BUSHI1_X, SPAWN11A_BUSHI1_Y, SPAWN11A_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto ni1 = new Ninja(SPAWN11A_NINJA1_X, SPAWN11A_NINJA1_Y, SPAWN11A_NINJA1_FLIP, SPAWN11A_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+					auto pn1 = new PoisonNinja(SPAWN11A_POIJA1_X, SPAWN11A_POIJA1_Y, SPAWN11A_POIJA1_FLIP);
+					g.GetOS()->Add(pn1);
+					auto pn2 = new PoisonNinja(SPAWN11A_POIJA2_X, SPAWN11A_POIJA2_Y, SPAWN11A_POIJA2_FLIP);
+					g.GetOS()->Add(pn2);
+					auto pn3 = new PoisonNinja(SPAWN11A_POIJA3_X, SPAWN11A_POIJA3_Y, SPAWN11A_POIJA3_FLIP);
+					g.GetOS()->Add(pn3);
+					auto pn4 = new PoisonNinja(SPAWN11A_POIJA4_X, SPAWN11A_POIJA4_Y, SPAWN11A_POIJA4_FLIP);
+					g.GetOS()->Add(pn4);
+				}
+				else if (_spawn_type == "11B") {
+					auto bu1 = new Bushi(SPAWN11B_BUSHI1_X, SPAWN11B_BUSHI1_Y, SPAWN11B_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto sh1 = new Shielder(SPAWN11B_SHIEL1_X, SPAWN11B_SHIEL1_Y, SPAWN11B_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+				}
+				else if (_spawn_type == "11C") {
+					auto zy1 = new Zyounin(SPAWN11C_ZYONI1_X, SPAWN11C_ZYONI1_Y, SPAWN11C_ZYONI1_FLIP, SPAWN11C_ZYONI1_KUNAI);
+					g.GetOS()->Add(zy1);
+				}
+				else if (_spawn_type == "11D") {
+					auto la1 = new Lancer(SPAWN11D_LANCE1_X, SPAWN11D_LANCE1_Y, SPAWN11D_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+					auto sh1 = new Shielder(SPAWN11D_SHIEL1_X, SPAWN11D_SHIEL1_Y, SPAWN11D_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto ni1 = new Ninja(SPAWN11D_NINJA1_X, SPAWN11D_NINJA1_Y, SPAWN11D_NINJA1_FLIP, SPAWN11D_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+				}
+				else if (_spawn_type == "11E") {
+					auto bs1 = new Busyo(SPAWN11E_BUSYO1_X, SPAWN11E_BUSYO1_Y, SPAWN11E_BUSYO1_FLIP);
+					g.GetOS()->Add(bs1);
+					auto bs2 = new Busyo(SPAWN11E_BUSYO2_X, SPAWN11E_BUSYO2_Y, SPAWN11E_BUSYO2_FLIP);
+					g.GetOS()->Add(bs2);
+				}
+				else if (_spawn_type == "11F") {
+					auto bu1 = new Bushi(SPAWN11F_BUSHI1_X, SPAWN11F_BUSHI1_Y, SPAWN11F_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto ni1 = new Ninja(SPAWN11F_NINJA1_X, SPAWN11F_NINJA1_Y, SPAWN11F_NINJA1_FLIP, SPAWN11F_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+				}
+				else if (_spawn_type == "12A") {
+					auto bu1 = new Bushi(SPAWN12A_BUSHI1_X, SPAWN12A_BUSHI1_Y, SPAWN12A_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto bu2 = new Bushi(SPAWN12A_BUSHI2_X, SPAWN12A_BUSHI2_Y, SPAWN12A_BUSHI2_FLIP);
+					g.GetOS()->Add(bu2);
+					auto ni1 = new Ninja(SPAWN12A_NINJA1_X, SPAWN12A_NINJA1_Y, SPAWN12A_NINJA1_FLIP, SPAWN12A_NINJA1_KUNAI);
+					g.GetOS()->Add(ni1);
+					auto zy1 = new Zyounin(SPAWN12A_ZYONI1_X, SPAWN12A_ZYONI1_Y, SPAWN12A_ZYONI1_FLIP, SPAWN12A_ZYONI1_KUNAI);
+					g.GetOS()->Add(zy1);
+					auto sh1 = new Shielder(SPAWN12A_SHIEL1_X, SPAWN12A_SHIEL1_Y, SPAWN12A_SHIEL1_FLIP);
+					g.GetOS()->Add(sh1);
+					auto sh2 = new Shielder(SPAWN12A_SHIEL2_X, SPAWN12A_SHIEL2_Y, SPAWN12A_SHIEL2_FLIP);
+					g.GetOS()->Add(sh2);
+				}
+				else if (_spawn_type == "12B") {
+					auto bu1 = new Bushi(SPAWN12B_BUSHI1_X, SPAWN12B_BUSHI1_Y, SPAWN12B_BUSHI1_FLIP);
+					g.GetOS()->Add(bu1);
+					auto la1 = new Lancer(SPAWN12B_LANCE1_X, SPAWN12B_LANCE1_Y, SPAWN12B_LANCE1_FLIP);
+					g.GetOS()->Add(la1);
+				}
+				else if (_spawn_type == "12C") {
+					auto bs1 = new Busyo(SPAWN12C_BUSYO1_X, SPAWN12C_BUSYO1_Y, SPAWN12C_BUSYO1_FLIP);
+					g.GetOS()->Add(bs1);
+				}
 			}
 		}
 	}
 }
-void Spawn1A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-//スポーンブロック2A
-Spawn2A::Spawn2A() {
-	_x = SPAWN2A_XPOSITION;
-	_y = SPAWN2A_YPOSITION;
-}
-Spawn2A::~Spawn2A() {
-}
-void Spawn2A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-			}
-		}
-	}
-}
-void Spawn2A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-//スポーンブロック3A
-Spawn3A::Spawn3A() {
-	_x = SPAWN3A_XPOSITION;
-	_y = SPAWN3A_YPOSITION;
-}
-Spawn3A::~Spawn3A() {
-}
-void Spawn3A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto pn1 = new PoisonNinja(SPAWN3A_POIJA1_X, SPAWN3A_POIJA1_Y, SPAWN3A_POIJA1_FLIP);
-				g.GetOS()->Add(pn1);
-				auto pn2 = new PoisonNinja(SPAWN3A_POIJA2_X, SPAWN3A_POIJA2_Y, SPAWN3A_POIJA2_FLIP);
-				g.GetOS()->Add(pn2);
-				auto pn3 = new PoisonNinja(SPAWN3A_POIJA3_X, SPAWN3A_POIJA3_Y, SPAWN3A_POIJA3_FLIP);
-				g.GetOS()->Add(pn3);
-				auto pn4 = new PoisonNinja(SPAWN3A_POIJA4_X, SPAWN3A_POIJA4_Y, SPAWN3A_POIJA4_FLIP);
-				g.GetOS()->Add(pn4);
-			}
-		}
-	}
-}
-void Spawn3A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック4A
-Spawn4A::Spawn4A() {
-	_x = SPAWN4A_XPOSITION;
-	_y = SPAWN4A_YPOSITION;
-}
-Spawn4A::~Spawn4A() {
-}
-
-void Spawn4A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN4A_BUSHI1_X, SPAWN4A_BUSHI1_Y, SPAWN4A_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN4A_BUSHI2_X, SPAWN4A_BUSHI2_Y, SPAWN4A_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto ni1 = new Ninja(SPAWN4A_NINJA1_X, SPAWN4A_NINJA1_Y, SPAWN4A_NINJA1_FLIP, SPAWN4A_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
-			}
-		}
-	}
-}
-void Spawn4A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック5A
-Spawn5A::Spawn5A() {
-	_x = SPAWN5A_XPOSITION;
-	_y = SPAWN5A_YPOSITION;
-}
-Spawn5A::~Spawn5A() {
-}
-
-void Spawn5A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto ni1 = new Ninja(SPAWN5A_NINJA1_X, SPAWN5A_NINJA1_Y, SPAWN5A_NINJA1_FLIP, SPAWN5A_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
-			}
-		}
-	}
-}
-void Spawn5A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック5B
-Spawn5B::Spawn5B() {
-	_x = SPAWN5B_XPOSITION;
-	_y = SPAWN5B_YPOSITION;
-}
-Spawn5B::~Spawn5B() {
-}
-
-void Spawn5B::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN5B_BUSHI1_X, SPAWN5B_BUSHI1_Y, SPAWN5B_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN5B_BUSHI2_X, SPAWN5B_BUSHI2_Y, SPAWN5B_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto bu3 = new Bushi(SPAWN5B_BUSHI3_X, SPAWN5B_BUSHI3_Y, SPAWN5B_BUSHI3_FLIP);
-				g.GetOS()->Add(bu3);
-				auto bu4 = new Bushi(SPAWN5B_BUSHI4_X, SPAWN5B_BUSHI4_Y, SPAWN5B_BUSHI4_FLIP);
-				g.GetOS()->Add(bu4);
-				auto la1 = new Lancer(SPAWN5B_LANCE1_X, SPAWN5B_LANCE1_Y, SPAWN5B_LANCE1_FLIP);
-				g.GetOS()->Add(la1);
-				auto sh1 = new Shielder(SPAWN5B_SHIEL1_X, SPAWN5B_SHIEL1_Y, SPAWN5B_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
-				
-
-			}
-		}
-	}
-}
-void Spawn5B::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック7A
-Spawn7A::Spawn7A() {
-	_x = SPAWN7A_XPOSITION;
-	_y = SPAWN7A_YPOSITION;
-}
-Spawn7A::~Spawn7A() {
-}
-
-void Spawn7A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN7A_BUSHI1_X, SPAWN7A_BUSHI1_Y, SPAWN7A_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN7A_BUSHI2_X, SPAWN7A_BUSHI2_Y, SPAWN7A_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto sh1 = new Shielder(SPAWN7A_SHIEL1_X, SPAWN7A_SHIEL1_Y, SPAWN7A_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
-				auto bs1 = new Busyo(SPAWN7A_BUSYO1_X, SPAWN7A_BUSYO1_Y, SPAWN7A_BUSYO1_FLIP);
-				g.GetOS()->Add(bs1);
-
-			}
-		}
-	}
-}
-void Spawn7A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック9A
-Spawn9A::Spawn9A() {
-	_x = SPAWN9A_XPOSITION;
-	_y = SPAWN9A_YPOSITION;
-}
-Spawn9A::~Spawn9A() {
-}
-
-void Spawn9A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto pn1 = new PoisonNinja(SPAWN9A_POIJA1_X, SPAWN9A_POIJA1_Y, SPAWN9A_POIJA1_FLIP);
-				g.GetOS()->Add(pn1);
-			}
-		}
-	}
-}
-void Spawn9A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック9B
-Spawn9B::Spawn9B() {
-	_x = SPAWN9B_XPOSITION;
-	_y = SPAWN9B_YPOSITION;
-}
-Spawn9B::~Spawn9B() {
-}
-
-void Spawn9B::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto zy1 = new Zyounin(SPAWN9B_JONIN1_X, SPAWN9B_JONIN1_Y, SPAWN9B_JONIN1_FLIP, SPAWN9B_JONIN1_KUNAI);
-				g.GetOS()->Add(zy1);
-				auto pn1 = new PoisonNinja(SPAWN9B_POIJA1_X, SPAWN9B_POIJA1_Y, SPAWN9B_POIJA1_FLIP);
-				g.GetOS()->Add(pn1);
-				auto pn2 = new PoisonNinja(SPAWN9B_POIJA2_X, SPAWN9B_POIJA2_Y, SPAWN9B_POIJA2_FLIP);
-				g.GetOS()->Add(pn2);
-				auto pn3 = new PoisonNinja(SPAWN9B_POIJA3_X, SPAWN9B_POIJA3_Y, SPAWN9B_POIJA3_FLIP);
-				g.GetOS()->Add(pn3);
-			}
-		}
-	}
-}
-void Spawn9B::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック10A
-Spawn10A::Spawn10A() {
-	_x = SPAWN10A_XPOSITION;
-	_y = SPAWN10A_YPOSITION;
-}
-Spawn10A::~Spawn10A() {
-}
-
-void Spawn10A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN10A_BUSHI1_X, SPAWN10A_BUSHI1_Y, SPAWN10A_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto ni1 = new Ninja(SPAWN10A_NINJA1_X, SPAWN10A_NINJA1_Y, SPAWN10A_NINJA1_FLIP, SPAWN10A_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
-			}
-		}
-	}
-}
-void Spawn10A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック10B
-Spawn10B::Spawn10B() {
-	_x = SPAWN10B_XPOSITION;
-	_y = SPAWN10B_YPOSITION;
-}
-Spawn10B::~Spawn10B() {
-}
-
-void Spawn10B::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN10B_BUSHI1_X, SPAWN10B_BUSHI1_Y, SPAWN10B_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto ni1 = new Ninja(SPAWN10B_NINJA1_X, SPAWN10B_NINJA1_Y, SPAWN10B_NINJA1_FLIP, SPAWN10B_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
-
-			}
-		}
-	}
-}
-void Spawn10B::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック11A
-Spawn11A::Spawn11A() {
-	_x = SPAWN11A_XPOSITION;
-	_y = SPAWN11A_YPOSITION;
-}
-Spawn11A::~Spawn11A() {
-}
-
-void Spawn11A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN11A_BUSHI1_X, SPAWN11A_BUSHI1_Y, SPAWN11A_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN11A_BUSHI2_X, SPAWN11A_BUSHI2_Y, SPAWN11A_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto bu3 = new Bushi(SPAWN11A_BUSHI3_X, SPAWN11A_BUSHI3_Y, SPAWN11A_BUSHI3_FLIP);
-				g.GetOS()->Add(bu3);
-
-			}
-		}
-	}
-}
-void Spawn11A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック11B
-Spawn11B::Spawn11B() {
-	_x = SPAWN11B_XPOSITION;
-	_y = SPAWN11B_YPOSITION;
-}
-Spawn11B::~Spawn11B() {
-}
-
-void Spawn11B::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN11B_BUSHI1_X, SPAWN11B_BUSHI1_Y, SPAWN11B_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN11B_BUSHI2_X, SPAWN11B_BUSHI2_Y, SPAWN11B_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto bu3 = new Bushi(SPAWN11B_BUSHI3_X, SPAWN11B_BUSHI3_Y, SPAWN11B_BUSHI3_FLIP);
-				g.GetOS()->Add(bu3);
-				auto pn1 = new PoisonNinja(SPAWN11B_POIJA1_X, SPAWN11B_POIJA1_Y, SPAWN11B_POIJA1_FLIP);
-				g.GetOS()->Add(pn1);
-				auto pn2 = new PoisonNinja(SPAWN11B_POIJA2_X, SPAWN11B_POIJA2_Y, SPAWN11B_POIJA2_FLIP);
-				g.GetOS()->Add(pn2);
-			}
-		}
-	}
-}
-void Spawn11B::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック11C
-Spawn11C::Spawn11C() {
-	_x = SPAWN11C_XPOSITION;
-	_y = SPAWN11C_YPOSITION;
-}
-Spawn11C::~Spawn11C() {
-}
-
-void Spawn11C::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN11C_BUSHI1_X, SPAWN11C_BUSHI1_Y, SPAWN11C_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN11C_BUSHI2_X, SPAWN11C_BUSHI2_Y, SPAWN11C_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto bu3 = new Bushi(SPAWN11C_BUSHI3_X, SPAWN11C_BUSHI3_Y, SPAWN11C_BUSHI3_FLIP);
-				g.GetOS()->Add(bu3);
-				auto la1 = new Lancer(SPAWN11C_LANCER1_X, SPAWN11C_LANCER1_Y, SPAWN11C_LANCER1_FLIP);
-				g.GetOS()->Add(la1);
-				auto sh1 = new Shielder(SPAWN11C_SHIEL1_X, SPAWN11C_SHIEL1_Y, SPAWN11C_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
-				auto sh2 = new Shielder(SPAWN11C_SHIEL2_X, SPAWN11C_SHIEL2_Y, SPAWN11C_SHIEL2_FLIP);
-				g.GetOS()->Add(sh2);
-
-
-			}
-		}
-	}
-}
-void Spawn11C::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック12A
-Spawn12A::Spawn12A() {
-	_x = SPAWN12A_XPOSITION;
-	_y = SPAWN12A_YPOSITION;
-}
-Spawn12A::~Spawn12A() {
-}
-
-void Spawn12A::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN12A_BUSHI1_X, SPAWN12A_BUSHI1_Y, SPAWN12A_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto ni1 = new Ninja(SPAWN12A_NINJA1_X, SPAWN12A_NINJA1_Y, SPAWN12A_NINJA1_FLIP, SPAWN12A_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
-				auto sh1 = new Shielder(SPAWN12A_SHIEL1_X, SPAWN12A_SHIEL1_Y, SPAWN12A_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
-			}
-		}
-	}
-}
-void Spawn12A::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック12B
-Spawn12B::Spawn12B() {
-	_x = SPAWN12B_XPOSITION;
-	_y = SPAWN12B_YPOSITION;
-}
-Spawn12B::~Spawn12B() {
-}
-
-void Spawn12B::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bu1 = new Bushi(SPAWN12B_BUSHI1_X, SPAWN12B_BUSHI1_Y, SPAWN12B_BUSHI1_FLIP);
-				g.GetOS()->Add(bu1);
-				auto bu2 = new Bushi(SPAWN12B_BUSHI2_X, SPAWN12B_BUSHI2_Y, SPAWN12B_BUSHI2_FLIP);
-				g.GetOS()->Add(bu2);
-				auto sh1 = new Shielder(SPAWN12B_SHIEL1_X, SPAWN12B_SHIEL1_Y, SPAWN12B_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
-			}
-		}
-	}
-}
-void Spawn12B::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//スポーンブロック12C
-Spawn12C::Spawn12C() {
-	_x = SPAWN12C_XPOSITION;
-	_y = SPAWN12C_YPOSITION;
-}
-Spawn12C::~Spawn12C() {
-}
-
-void Spawn12C::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto bs1 = new Busyo(SPAWN12C_BUSYO1_X, SPAWN12C_BUSYO1_Y, SPAWN12C_BUSYO1_FLIP);
-				g.GetOS()->Add(bs1);
-				auto ni1 = new Ninja(SPAWN12C_NINJA1_X, SPAWN12C_NINJA1_Y, SPAWN12C_NINJA1_FLIP, SPAWN12C_NINJA1_KUNAI);
-				g.GetOS()->Add(ni1);
-				auto la1 = new Lancer(SPAWN12C_LANCER1_X, SPAWN12C_LANCER1_Y, SPAWN12C_LANCER1_FLIP);
-				g.GetOS()->Add(la1);
-				auto sh1 = new Shielder(SPAWN12C_SHIEL1_X, SPAWN12C_SHIEL1_Y, SPAWN12C_SHIEL1_FLIP);
-				g.GetOS()->Add(sh1);
-			}
-		}
-	}
-}
-void Spawn12C::Draw(Game& g) {
-	SpawnBlockBase::Draw(g);
-}
-
-//ボススポーンブロック
-BossSpawn::BossSpawn() {
-	_x = BOSSSPAWN_XPOSITION;
-	_y = BOSSSPAWN_YPOSITION;
-}
-BossSpawn::~BossSpawn() {
-}
-
-void BossSpawn::Process(Game& g) {
-	//プレイヤーとの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
-		// iteはプレイヤーか？
-		if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-		{
-			if (IsHit(*(*ite)) == true) {
-				Delete(g);
-				auto boss = new Boss(BOSSSPAWN_BOSS_X, BOSSSPAWN_BOSS_Y, BOSSSPAWN_BOSS_FLIP);
-				g.GetOS()->Add(boss);
-			}
-		}
-	}
-}
-
-void BossSpawn::Draw(Game& g) {
+void Spawn::Draw(Game& g) {
 	ObjectBase::Draw(g);
+}
+void Spawn::Delete(Game& g) {
+	g.GetOS()->Del(this);
+}
+
+void Spawn::SpawnPositon() {
+	if (_spawn_type == "1A") {
+		_x = SPAWN1A_XPOSITION;
+		_y = SPAWN1A_YPOSITION;
+	}
+	else if (_spawn_type == "1B") {
+		_x = SPAWN1B_XPOSITION;
+		_y = SPAWN1B_YPOSITION;
+	}
+	else if (_spawn_type == "2A") {
+		_x = SPAWN2A_XPOSITION;
+		_y = SPAWN2A_YPOSITION;
+	}
+	else if (_spawn_type == "2B") {
+		_x = SPAWN2B_XPOSITION;
+		_y = SPAWN2B_YPOSITION;
+	}
+	else if (_spawn_type == "3A") {
+		_x = SPAWN3A_XPOSITION;
+		_y = SPAWN3A_YPOSITION;
+	}
+	else if (_spawn_type == "3B") {
+		_x = SPAWN3B_XPOSITION;
+		_y = SPAWN3B_YPOSITION;
+	}
+	else if (_spawn_type == "3C") {
+		_x = SPAWN3C_XPOSITION;
+		_y = SPAWN3C_YPOSITION;
+	}
+	else if (_spawn_type == "3D") {
+		_x = SPAWN3D_XPOSITION;
+		_y = SPAWN3D_YPOSITION;
+	}
+	else if (_spawn_type == "3E") {
+		_x = SPAWN3E_XPOSITION;
+		_y = SPAWN3E_YPOSITION;
+	}
+	else if (_spawn_type == "4A") {
+		_x = SPAWN4A_XPOSITION;
+		_y = SPAWN4A_YPOSITION;
+	}
+	else if (_spawn_type == "4B") {
+		_x = SPAWN4B_XPOSITION;
+		_y = SPAWN4B_YPOSITION;
+	}
+	else if (_spawn_type == "4C") {
+		_x = SPAWN4C_XPOSITION;
+		_y = SPAWN4C_YPOSITION;
+	}
+	else if (_spawn_type == "4D") {
+		_x = SPAWN4D_XPOSITION;
+		_y = SPAWN4D_YPOSITION;
+	}
+	else if (_spawn_type == "5A") {
+		_x = SPAWN5A_XPOSITION;
+		_y = SPAWN5A_YPOSITION;
+	}
+	else if (_spawn_type == "5B") {
+		_x = SPAWN5B_XPOSITION;
+		_y = SPAWN5B_YPOSITION;
+	}
+	else if (_spawn_type == "5C") {
+		_x = SPAWN5C_XPOSITION;
+		_y = SPAWN5C_YPOSITION;
+	}
+	else if (_spawn_type == "6A") {
+		_x = SPAWN6A_XPOSITION;
+		_y = SPAWN6A_YPOSITION;
+	}
+	else if (_spawn_type == "8A") {
+		_x = SPAWN8A_XPOSITION;
+		_y = SPAWN8A_YPOSITION;
+	}
+	else if (_spawn_type == "9A") {
+		_x = SPAWN9A_XPOSITION;
+		_y = SPAWN9A_YPOSITION;
+	}
+	else if (_spawn_type == "9B") {
+		_x = SPAWN9B_XPOSITION;
+		_y = SPAWN9B_YPOSITION;
+	}
+	else if (_spawn_type == "10A") {
+		_x = SPAWN10A_XPOSITION;
+		_y = SPAWN10A_YPOSITION;
+	}
+	else if (_spawn_type == "10B") {
+		_x = SPAWN10B_XPOSITION;
+		_y = SPAWN10B_YPOSITION;
+	}
+	else if (_spawn_type == "11A") {
+		_x = SPAWN11A_XPOSITION;
+		_y = SPAWN11A_YPOSITION;
+	}
+	else if (_spawn_type == "11B") {
+		_x = SPAWN11B_XPOSITION;
+		_y = SPAWN11B_YPOSITION;
+	}
+	else if (_spawn_type == "11C") {
+		_x = SPAWN11C_XPOSITION;
+		_y = SPAWN11C_YPOSITION;
+	}
+	else if (_spawn_type == "11D") {
+		_x = SPAWN11D_XPOSITION;
+		_y = SPAWN11D_YPOSITION;
+	}
+	else if (_spawn_type == "11E") {
+		_x = SPAWN11E_XPOSITION;
+		_y = SPAWN11E_YPOSITION;
+	}
+	else if (_spawn_type == "11F") {
+		_x = SPAWN11F_XPOSITION;
+		_y = SPAWN11F_YPOSITION;
+	}
+	else if (_spawn_type == "12A") {
+		_x = SPAWN12A_XPOSITION;
+		_y = SPAWN12A_YPOSITION;
+	}
+	else if (_spawn_type == "12B") {
+		_x = SPAWN12B_XPOSITION;
+		_y = SPAWN12B_YPOSITION;
+	}
+	else if (_spawn_type == "12C") {
+		_x = SPAWN12C_XPOSITION;
+		_y = SPAWN12C_YPOSITION;
+	}
 }

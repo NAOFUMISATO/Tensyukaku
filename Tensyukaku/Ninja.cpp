@@ -5,6 +5,7 @@
 #include "Ninja.h"
 #include "Game.h"
 #include "ResourceServer.h"
+#include "LowBlood.h"
 #include "ObjectBase.h"
 #include "NinjaMotionCollision.h"
 #include "PrivateCollision.h"
@@ -103,6 +104,10 @@ void Ninja::HitJudge(Game& g) {
 						if (ig < PLAYER_IAI_MAX) {
 							(*ite)->SetGauge(ig += 1);
 						}
+						auto flip = (*ite)->GetFlip();
+						auto bloodtype = GetRand(2);
+						auto mb = new LowBlood(_x + _gx, _y -200, flip, bloodtype);
+						g.GetOS()->Add(mb);
 					}
 				}
 			}

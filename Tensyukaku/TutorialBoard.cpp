@@ -4,6 +4,8 @@
 #include "ModeTutorial.h"
 #include "ModeGame.h"
 #include  "Game.h"
+
+using namespace TBInfo;
 namespace {
 	constexpr auto GRAPHPOINT_X = 0;		//XˆÊ’u‚©‚ç•`‰æ“_‚Ü‚Å‚Ì·•ª
 	constexpr auto GRAPHPOINT_Y = -180;		//YˆÊ’u‚©‚ç•`‰æ“_‚Ü‚Å‚Ì·•ª
@@ -12,17 +14,16 @@ namespace {
 	constexpr auto COLLISION_WIDTH = 144;	//“–‚½‚è”»’è‰¡•
 	constexpr auto COLLISION_HEIGHT = 360;	//“–‚½‚è”»’èc•
 }
-TutorialBoard::TutorialBoard(int x, int y,int num):_tutorialhit_flag(false) {
-	Init();
-	_x = x;
-	_y = y;
-	_TutorialNum = num;
+TutorialBoard::TutorialBoard(std::string tutorialtype):_tutorialhit_flag(false) {
+	_tutorial_type = tutorialtype;
 	_grhandle = ResourceServer::LoadGraph("res/Gimik/TutorialBoard.png");
+	Init();
 }
 TutorialBoard::~TutorialBoard() {
 };
 
 void TutorialBoard::Init() {
+	TutorialPosition();
 	_gx = GRAPHPOINT_X;
 	_gy = GRAPHPOINT_Y;
 	_hit_x = POSITION_HITX;
@@ -47,54 +48,65 @@ void  TutorialBoard::Process(Game& g) {
 			if (IsHit(*(*ite)) == true&&_tutorialhit_flag==false)
 			{
 				_tutorialhit_flag = true;
-				if (_TutorialNum == 1) {
+				if (_tutorial_type == "1A") {
 					auto mb1 = new ModeTutorial();
-					mb1->SetNum(_TutorialNum);
-					g.GetMS()->Add(mb1, 3, "Tutorial1");
+					mb1->SetType("1A");
+					g.GetMS()->Add(mb1, 3, "1A");
 				}
-				else if (_TutorialNum == 2) {
+				else if (_tutorial_type == "1B") {
 					auto mb2 = new ModeTutorial();
-					mb2->SetNum(_TutorialNum);
-					g.GetMS()->Add(mb2, 3, "Tutorial2");
+					mb2->SetType("1B");
+					g.GetMS()->Add(mb2, 3, "1B");
 				}
-				else if (_TutorialNum == 3) {
+				else if (_tutorial_type == "2A") {
 					auto mb3 = new ModeTutorial();
-					mb3->SetNum(_TutorialNum);
-					g.GetMS()->Add(mb3, 3, "Tutorial3");
+					mb3->SetType("2A");
+					g.GetMS()->Add(mb3, 3, "2A");
 				}
-				else if (_TutorialNum == 4) {
+				else if (_tutorial_type == "3A") {
 					auto mb4 = new ModeTutorial();
-					mb4->SetNum(_TutorialNum);
-					g.GetMS()->Add(mb4, 3, "Tutorial4");
+					mb4->SetType("3A");
+					g.GetMS()->Add(mb4, 3, "3A");
 				}
-				else if (_TutorialNum == 5) {
+				else if (_tutorial_type == "3B") {
 					auto mb5 = new ModeTutorial();
-					mb5->SetNum(_TutorialNum);
-					g.GetMS()->Add(mb5, 3, "Tutorial5");
+					mb5->SetType("3B");
+					g.GetMS()->Add(mb5, 3, "3B");
+				}
+				else if (_tutorial_type == "4A") {
+					auto mb6= new ModeTutorial();
+					mb6->SetType("4A");
+					g.GetMS()->Add(mb6, 3, "4A");
+				}
+				else if (_tutorial_type == "5A") {
+					auto mb7 = new ModeTutorial();
+					mb7->SetType("5A");
+					g.GetMS()->Add(mb7, 3, "5A");
 				}
 			}
 			if (IsHit(*(*ite)) == false&&_tutorialhit_flag == true)
 			{
 				_tutorialhit_flag = false;
-				if (_TutorialNum == 1) {
-					g.GetMS()->Del(g.GetMS()->Get("Tutorial1"));
-					g.SetTutorial1Flag(true);
+				if (_tutorial_type == "1A") {
+					g.GetMS()->Del(g.GetMS()->Get("1A"));
 				}
-				else if (_TutorialNum == 2) {
-					g.GetMS()->Del(g.GetMS()->Get("Tutorial2"));
-					g.SetTutorial2Flag(true);
+				else if (_tutorial_type == "1B") {
+					g.GetMS()->Del(g.GetMS()->Get("1B"));
 				}
-				else if (_TutorialNum == 3) {
-					g.GetMS()->Del(g.GetMS()->Get("Tutorial3"));
-					g.SetTutorial3Flag(true);
+				else if (_tutorial_type == "2A") {
+					g.GetMS()->Del(g.GetMS()->Get("2A"));
 				}
-				else if (_TutorialNum == 4) {
-					g.GetMS()->Del(g.GetMS()->Get("Tutorial4"));
-					g.SetTutorial4Flag(true);
+				else if (_tutorial_type == "3A") {
+					g.GetMS()->Del(g.GetMS()->Get("3A"));
 				}
-				else if (_TutorialNum == 5) {
-					g.GetMS()->Del(g.GetMS()->Get("Tutorial5"));
-					g.SetTutorial5Flag(true);
+				else if (_tutorial_type == "3B") {
+					g.GetMS()->Del(g.GetMS()->Get("3B"));
+				}
+				else if (_tutorial_type == "4A") {
+					g.GetMS()->Del(g.GetMS()->Get("4A"));
+				}
+				else if (_tutorial_type == "5A") {
+					g.GetMS()->Del(g.GetMS()->Get("5A"));
 				}
 			}
 		}
@@ -106,4 +118,35 @@ void  TutorialBoard::Draw(Game& g) {
 
 void TutorialBoard::Delete(Game& g) {
 	g.GetOS()->Del(this);
+}
+
+void TutorialBoard::TutorialPosition() {
+	if (_tutorial_type == "1A") {
+		_x = TUTORIAL1A_X;
+		_y = TUTORIAL1A_Y;
+	}
+	else if (_tutorial_type == "1B") {
+		_x = TUTORIAL1B_X;
+		_y = TUTORIAL1B_Y;
+	}
+	else if (_tutorial_type == "2A") {
+		_x = TUTORIAL2A_X;
+		_y = TUTORIAL2A_Y;
+	}
+	else if (_tutorial_type == "3A") {
+		_x = TUTORIAL3A_X;
+		_y = TUTORIAL3A_Y;
+	}
+	else if (_tutorial_type == "3B") {
+		_x = TUTORIAL3B_X;
+		_y = TUTORIAL3B_Y;
+	}
+	else if (_tutorial_type == "4A") {
+		_x = TUTORIAL4A_X;
+		_y = TUTORIAL4A_Y;
+	}
+	else if (_tutorial_type == "5A") {
+		_x = TUTORIAL5A_X;
+		_y = TUTORIAL5A_Y;
+	}
 }

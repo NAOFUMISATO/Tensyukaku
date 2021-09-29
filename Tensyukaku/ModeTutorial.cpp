@@ -10,7 +10,7 @@ bool ModeTutorial::Initialize(Game& g) {
 	_pal = 255;
 	_mode_cnt = _cnt;
 	_trans_flag = true;
-	_Return_Flag = false;
+	_return_flag = false;
 	LoadTextGraph();
 	return true;
 }
@@ -23,24 +23,26 @@ bool ModeTutorial::Terminate(Game& g) {
 bool ModeTutorial::Process(Game& g) {
 	base::Process(g);
 	auto frame = _cnt - _mode_cnt;
-	switch (_TutorialNum) {
-	case 1:
-		_grhandle= _grall["Num1"][0];
-		break;
-	case 2:
-		_grhandle = _grall["Num2"][0];
-		break;
-	case 3:
-		_grhandle = _grall["Num3"][0];
-		break;
-	case 4:
-		_grhandle = _grall["Num4"][0];
-		break;
-	case 5:
-		_grhandle = _grall["Num5"][0];
-		break;
-	default:
-		break;
+	if (_tutorial_type == "1A") {
+		_grhandle = _grall["1A"][0];
+	}
+	else if (_tutorial_type == "1B") {
+		_grhandle = _grall["1B"][0];
+	}
+	else if (_tutorial_type == "2A"){
+		_grhandle = _grall["2A"][0];
+	}
+	else if (_tutorial_type == "3A") {
+		_grhandle = _grall["3A"][0];
+	}
+	else if (_tutorial_type == "3B") {
+		_grhandle = _grall["3B"][0];
+	}
+	else if (_tutorial_type == "4A") {
+		_grhandle = _grall["4A"][0];
+	}
+	else if (_tutorial_type == "5A") {
+		_grhandle = _grall["5A"][0];
 	}
 	return true;
 }
@@ -50,14 +52,18 @@ bool ModeTutorial::Draw(Game& g) {
 }
 
 void  ModeTutorial::LoadTextGraph() {
-	_grall["Num1"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial1.png", 1, 1, 1, 880, 480, _grall["Num1"].data());
-	_grall["Num2"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial2.png", 1, 1, 1, 880, 480, _grall["Num2"].data());
-	_grall["Num3"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial3.png", 1, 1, 1, 880, 480, _grall["Num3"].data());
-	_grall["Num4"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial4.png", 1, 1, 1, 880, 480, _grall["Num4"].data());
-	_grall["Num5"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial5.png", 1, 1, 1, 880, 480, _grall["Num5"].data());
+	_grall["1A"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial1.png", 1, 1, 1, 880, 480, _grall["1A"].data());
+	_grall["1B"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial2.png", 1, 1, 1, 880, 480, _grall["1B"].data());
+	_grall["2A"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial3.png", 1, 1, 1, 880, 480, _grall["2A"].data());
+	_grall["3A"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial4.png", 1, 1, 1, 880, 480, _grall["3A"].data());
+	_grall["3B"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial5.png", 1, 1, 1, 880, 480, _grall["3B"].data());
+	_grall["4A"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial5.png", 1, 1, 1, 880, 480, _grall["4A"].data());
+	_grall["5A"].resize(1);
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial5.png", 1, 1, 1, 880, 480, _grall["5A"].data());
 }

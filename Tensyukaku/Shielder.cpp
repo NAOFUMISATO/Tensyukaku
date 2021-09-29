@@ -6,6 +6,7 @@
 #include "ShielderMotionCollision.h"
 #include "Shield.h"
 #include "Game.h"
+#include "MiddleBlood.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "player.h"
@@ -117,6 +118,10 @@ void Shielder::HitJudge(Game& g) {
 							if (ig < PLAYER_IAI_MAX) {
 								(*ite)->SetGauge(ig += 1);
 							}
+							auto flip = (*ite)->GetFlip();
+							auto bloodtype = GetRand(2);
+							auto mb = new MiddleBlood(_x + _gx, _y + _gy, flip, bloodtype);
+							g.GetOS()->Add(mb);
 						}
 					}
 				}

@@ -37,7 +37,7 @@ namespace LInfo {
 	constexpr auto COLLISION_HEIGHT = 450;		//“–‚½‚è”»’èc•
 
 	/*----------Šeƒ‚[ƒVƒ‡ƒ“‚Ì“–‚½‚è”»’èŠÖŒW----------*/
-	constexpr auto PATROL_WIDTH = 500;			//õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
+	constexpr auto PATROL_WIDTH = 600;			//õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
 	constexpr auto PATROL_BACKWIDTH = 300;		//”w•”õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
 	constexpr auto PATROL_HEIGHT = 100;			//õ“G”ÍˆÍ“–‚½‚è”»’èc•
 	constexpr auto COMING_WIDTH = 350;			//UŒ‚”­¶”ÍˆÍ“–‚½‚è”»’è‰¡•

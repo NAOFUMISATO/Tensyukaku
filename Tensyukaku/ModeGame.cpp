@@ -6,24 +6,46 @@
 #include "MapChip.h"
 #include "ModePause.h"
 #include "ResourceServer.h"
+#include "CPointBlock.h"
+
+using namespace CPInfo;
 namespace {
-	constexpr auto POSITION_X = 4000;			//横軸初期位置（足下が基準）
-	constexpr auto POSITION_Y = 9360;			//縦軸初期位置（足下が基準）
-	constexpr auto CPOINT_POSITION_X = 5600;	//チェックポイントX座標
-	constexpr auto CPOINT_POSITION_Y = 1760;	//チェックポイントY座標
+	constexpr auto FIRST_POSITION_X = 400;			//横軸初期座標（足下が基準）
+	constexpr auto FIRST_POSITION_Y = 9360;			//縦軸初期座標（足下が基準）
 }
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_enemyspawn = new EnemySpawn(g);
 	_gimikplacement = new GimikPlacement(g);
 	_eventhappen = new EventHappen(g);
-	if (g.GetCPointFlag() == false) {
-		_Player_x =POSITION_X;
-		_Player_y =POSITION_Y;
+	/*-----------各チェックポイント通過によるプレイヤー初期座標-------------*/
+	if (g.GetCPointFlag()["11A"] == true) {
+		_Player_x = CPOINT_11A_X;
+		_Player_y = CPOINT_11A_Y;
+	}
+	else if(g.GetCPointFlag()["5B"] == true){
+		_Player_x = CPOINT_5B_X;
+		_Player_y = CPOINT_5B_Y;
+	}
+	else if (g.GetCPointFlag()["5A"] == true) {
+		_Player_x = CPOINT_5A_X;
+		_Player_y = CPOINT_5A_Y;
+	}
+	else if (g.GetCPointFlag()["4A"] == true) {
+		_Player_x = CPOINT_4A_X;
+		_Player_y = CPOINT_4A_Y;
+	}
+	else if (g.GetCPointFlag()["3A"] == true) {
+		_Player_x = CPOINT_3A_X;
+		_Player_y = CPOINT_3A_Y;
+	}
+	else if (g.GetCPointFlag()["2A"] == true) {
+		_Player_x = CPOINT_2A_X;
+		_Player_y = CPOINT_2A_Y;
 	}
 	else {
-		_Player_x = CPOINT_POSITION_X;
-		_Player_y = CPOINT_POSITION_Y;
+		_Player_x = FIRST_POSITION_X;
+		_Player_y = FIRST_POSITION_Y;
 	}
 	auto pl = new Player(_Player_x,_Player_y);
 	g.GetOS()->Add(pl);

@@ -55,8 +55,8 @@ namespace ProInfo {
 	constexpr auto BG_WIDTHCOUNT = 2;				//横の画像枚数
 	constexpr auto BG_HEIGHTCOUNT = 1;				//縦の画像枚数
 
-	constexpr auto TEXT_GRAPH_WIDTH = 480;			//1枚当たりの画像サイズ（横）
-	constexpr auto TEXT_GRAPH_HEIGHT = 1040;			//1枚当たりの画像サイズ（縦）
+	constexpr auto TEXT_GRAPH_WIDTH = 420;			//1枚当たりの画像サイズ（横）
+	constexpr auto TEXT_GRAPH_HEIGHT = 910;			//1枚当たりの画像サイズ（縦）
 	constexpr auto TEXT_GRAPHNAME = "res/Mode/AllPText.png";	//画像ファイル名
 	constexpr auto TEXT_ANIMEMAX = 5;			//全ての画像枚数
 	constexpr auto TEXT_WIDTHCOUNT = 5;			//横の画像枚数

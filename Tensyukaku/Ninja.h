@@ -103,10 +103,10 @@ namespace NInfo {
 	constexpr auto THROW_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto THROW_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto THROW_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_THROW = 10;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_THROW = 20;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto THROW_ANIMEFRAME = THROW_ANIMEMAX * ANIMESPEED_THROW;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto THROW_ALLFRAME = 150;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
-	constexpr auto KUNAI_RELEASEFRAME = 20;		//攻撃判定発生フレーム
+	constexpr auto KUNAI_RELEASEFRAME = 40;		//攻撃判定発生フレーム
 	constexpr auto KUNAI_SPEED=10;							//クナイの速さ
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Ninja/N_Dead.png";		//画像ファイル名

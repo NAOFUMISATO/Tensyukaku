@@ -115,6 +115,12 @@
     <Filter Include="ソース ファイル\Object\Enemy\Shielder">
       <UniqueIdentifier>{4363bffc-dcff-4b1e-9fc6-91ccf89a3f3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Efect">
+      <UniqueIdentifier>{62b45d72-b2d7-4d3c-abda-f7e92585570a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Efect">
+      <UniqueIdentifier>{988fcc6f-fa8c-4afa-9af1-463495a1377a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -324,9 +330,6 @@
     <ClCompile Include="Lancer.cpp">
       <Filter>ソース ファイル\Object\Enemy\Lancer</Filter>
     </ClCompile>
-    <ClCompile Include="LancerMotion.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Lancer</Filter>
-    </ClCompile>
     <ClCompile Include="LancerMotionCollision.cpp">
       <Filter>ソース ファイル\Object\Collision</Filter>
     </ClCompile>
@@ -364,6 +367,27 @@
       <Filter>ソース ファイル\Object\UI</Filter>
     </ClCompile>
     <ClCompile Include="ModeBossBefore.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="EfectBase.cpp">
+      <Filter>ソース ファイル\Object\Efect</Filter>
+    </ClCompile>
+    <ClCompile Include="MiddleBlood.cpp">
+      <Filter>ソース ファイル\Object\Efect</Filter>
+    </ClCompile>
+    <ClCompile Include="LowBlood.cpp">
+      <Filter>ソース ファイル\Object\Efect</Filter>
+    </ClCompile>
+    <ClCompile Include="LancerMotion.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Lancer</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBlood.cpp">
+      <Filter>ソース ファイル\Object\Efect</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Credit.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
   </ItemGroup>
@@ -412,9 +436,6 @@
     </ClInclude>
     <ClInclude Include="NinjaMotionCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectBase.h">
-      <Filter>ヘッダー ファイル\Object</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBase.h">
       <Filter>ヘッダー ファイル\Object\Enemy</Filter>
@@ -594,6 +615,27 @@
       <Filter>ヘッダー ファイル\Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="ModeBossBefore.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="EfectBase.h">
+      <Filter>ヘッダー ファイル\Object\Efect</Filter>
+    </ClInclude>
+    <ClInclude Include="MiddleBlood.h">
+      <Filter>ヘッダー ファイル\Object\Efect</Filter>
+    </ClInclude>
+    <ClInclude Include="LowBlood.h">
+      <Filter>ヘッダー ファイル\Object\Efect</Filter>
+    </ClInclude>
+    <ClInclude Include="BossBlood.h">
+      <Filter>ヘッダー ファイル\Object\Efect</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectBase.h">
+      <Filter>ヘッダー ファイル\Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Credit.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
   </ItemGroup>

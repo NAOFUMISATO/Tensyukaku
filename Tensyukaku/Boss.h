@@ -65,9 +65,9 @@ namespace BossInifo {
 	constexpr auto DAMAGE_ANIMEMAX = 1;	//全ての画像枚数
 	constexpr auto DAMAGE_WIDTHCOUNT = 1;	//横の画像枚数
 	constexpr auto DAMAGE_HEIGHTCOUNT = 1;//縦の画像枚数
-	constexpr auto ANIMESPEED_DAMAGE = 40;	//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_DAMAGE = 60;	//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto DAMAGE_ANIMEFRAME = DAMAGE_ANIMEMAX * ANIMESPEED_DAMAGE; //アニメーションフレーム
-	constexpr auto DAMAGE_ALLFRAME = 60;		//死亡全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto DAMAGE_ALLFRAME = 80;		//死亡全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Boss/BossDead2.png";	//画像ファイル名
 	constexpr auto DEAD_ANIMEMAX = 3;	//全ての画像枚数

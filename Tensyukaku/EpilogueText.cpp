@@ -8,7 +8,7 @@ using namespace EpiInfo;
 bool EpilogueText::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = TEXT_FIRST_XPOSITION;
-	_y = 900;
+	_y = 750;
 	_pal = 0;
 	_GraphNo = 0;
 	_mode_cnt = _cnt;
