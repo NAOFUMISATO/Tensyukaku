@@ -12,10 +12,10 @@ namespace {
 	constexpr auto BLUE = 2;
 }
 using namespace CParInfo;
-CursorParticle1::CursorParticle1(std::pair<double, double> xy, std::pair<double, double> dxy,int colortype){
+CursorParticle1::CursorParticle1(std::pair<double, double> xy, std::pair<double, double> dxy,std::string hittype){
 	_xy = xy;
 	_dxy = dxy;
-	_ColorType = colortype;
+	_hit_type = hittype;
 	Init();
 	_grhandle = ResourceServer::LoadGraph(CURSOR_PARTICLE1_GRAPH);
 }
@@ -23,43 +23,14 @@ CursorParticle1::~CursorParticle1() {
 }
 
 void CursorParticle1::Init() {
+	SetState();
 	_mxy = std::make_pair(CURSOR_PARTICLE1_POSITIONX, CURSOR_PARTICLE1_POSITIONY);
-	_bm = DX_BLENDMODE_PMA_ADD;
+	_bm = CURSOR_PARTICLE1_BLENDMODE;
 	_pal =50;
-	_rgb = std::make_tuple(230, 70, 5);
 	_drg = std::make_pair(CURSOR_PARTICLE1_SCALE, CURSOR_PARTICLE1_ANGLE);
-	_cnt = CURSOR_PARTICLE1_CNT;
 }
-
 void CursorParticle1::Process(Game& g) {
 	ParticleBase::Process(g);
-	switch (_ColorType) {
-	case 0:
-		_bm = DX_BLENDMODE_PMA_ADD;
-		_pal = 50;
-		_rgb = std::make_tuple(240, 70, 5);
-		break;
-	case 1:
-		_bm = DX_BLENDMODE_PMA_ADD;
-		_pal = 50;
-		_rgb = std::make_tuple(5, 70, 240);
-		break;
-	case 2:
-		_bm = DX_BLENDMODE_PMA_SUB;
-		_pal = 240;
-		_rgb = std::make_tuple(240, 70, 5);
-		break;
-	case 3:
-		_bm = DX_BLENDMODE_PMA_SUB;
-		_pal = 240;
-		_rgb = std::make_tuple(5, 70, 240);
-		break;
-	case 4:
-		_bm = DX_BLENDMODE_PMA_SUB;
-		_pal = 240;
-		_rgb = std::make_tuple(7,7,240);
-		break;
-	}
 
 }
 
@@ -82,3 +53,25 @@ void CursorParticle1::Draw(Game& g) {
 	SetDrawBright(255, 255, 255);
 }
 
+void CursorParticle1::SetState() {
+	if (_hit_type == "NOHIT") {
+		_rgb = std::make_tuple(240,70, 5);
+		_cnt =30;
+	}
+	else if (_hit_type == "STARTHIT") {
+		_rgb = std::make_tuple(240, 70, 5);
+		_cnt = 70;
+	}
+	else if (_hit_type == "EXHIT") {
+		_rgb = std::make_tuple(240, 70, 5);
+		_cnt = 70;
+	}
+	else if (_hit_type == "ENDHIT") {
+		_rgb = std::make_tuple(240, 70, 5);
+		_cnt = 70;
+	}
+	else if (_hit_type == "CREDITHIT") {
+		_rgb = std::make_tuple(240, 70, 5);
+		_cnt = 70;
+	}
+};

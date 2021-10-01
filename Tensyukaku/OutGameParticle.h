@@ -6,7 +6,7 @@
 //カーソル
 class CursorParticle1: public ParticleBase {
 public:
-	CursorParticle1(std::pair<double, double> xy, std::pair<double, double> vxy,int colortype);
+	CursorParticle1(std::pair<double, double> xy, std::pair<double, double> vxy, std::string hittype);
 	~CursorParticle1();
 
 	virtual PARTICLETYPE GetParType() { return PARTICLETYPE::CURSOR1; }
@@ -14,7 +14,8 @@ public:
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
 private:
-	int  _ColorType;
+	void SetState();
+	std::string  _hit_type;
 };
 
 namespace CParInfo {
@@ -26,8 +27,6 @@ namespace CParInfo {
 	constexpr auto CURSOR_PARTICLE1_PAL = 50;										//ブレンド値
 	constexpr auto CURSOR_PARTICLE1_SCALE = 1.0;									//拡縮値
 	constexpr auto CURSOR_PARTICLE1_ANGLE = 0.0;									//描画角度(3.14=180°)
-	constexpr auto CURSOR_PARTICLE1_CNT = 35;										//パーティクル1個あたりの生存時間
-	constexpr auto CURSOR_PARTICLE1_QTY = 7;										//1フレーム当たりのパーティクル数
 	//パーティクル1個当たりの移動方向のランダム値調整
 	constexpr auto CURSOR_PARTICLE1_RANDOMX1 = 30;									//パーティクルのXランダム値
 	constexpr auto CURSOR_PARTICLE1_RANDOMX2 = 10.5;								//		〃

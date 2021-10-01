@@ -6,7 +6,8 @@
 #include "ShielderMotionCollision.h"
 #include "ObjectBase.h"
 #include "PrivateCollision.h"
-
+#include "EnemyParticle.h"
+using namespace EPInfo;
 using namespace SInfo;
 /*----------出現----------*/
 void Shielder::Appear(Game& g) {
@@ -211,8 +212,14 @@ void Shielder::Attack(Game& g) {
 		_anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX; 
 	}
 	if (_isflip == false) {
-		if (frame == STEP_BEGINFRAME) {
-			_x -= ATTACK_STEP;
+		if(frame==1){
+			for (int i = 0; i < LRESERVELIGHT_PARTICLE_QTY; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
+				auto rl = new LanceReserveLight(xy, dxy, true);
+				g.GetOS()->Add(rl);
+			}
 		}
 		PrivateCollision acc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
@@ -233,8 +240,14 @@ void Shielder::Attack(Game& g) {
 		}
 	}
 	if (_isflip == true) {
-		if (frame == STEP_BEGINFRAME) {
-			_x += ATTACK_STEP;
+		if (frame == 1) {
+			for (int i = 0; i < LRESERVELIGHT_PARTICLE_QTY; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
+				auto rl = new LanceReserveLight(xy, dxy, false);
+				g.GetOS()->Add(rl);
+			}
 		}
 		PrivateCollision acc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == ATTACK_ANIMEFRAME || frame == ATTACK_ALLFRAME) {
@@ -257,6 +270,7 @@ void Shielder::Attack(Game& g) {
 	if (frame == ATTACK_BEGINFRAME) {
 		PlaySoundMem(_se["Attack"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
+			_x -= ATTACK_STEP;
 			//盾兵の攻撃判定オブジェクトの生成
 			auto sac = new ShielderAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
@@ -264,6 +278,7 @@ void Shielder::Attack(Game& g) {
 
 		};
 		if (_isflip == true) {
+			_x += ATTACK_STEP;
 			//盾兵の攻撃判定オブジェクトの生成
 			auto sac = new ShielderAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
@@ -283,8 +298,14 @@ void Shielder::GuardAttack(Game& g) {
 		_anime["GuardAttack"] = ((frame) / ANIMESPEED_GUARDATTACK) % GUARDATTACK_ANIMEMAX;
 	}
 	if (_isflip == false) {
-		if (frame == STEP_BEGINFRAME) {
-			_x -=ATTACK_STEP;
+		if (frame == 1) {
+			for (int i = 0; i < LRESERVELIGHT_PARTICLE_QTY; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
+				auto rl = new LanceReserveLight(xy, dxy, true);
+				g.GetOS()->Add(rl);
+			}
 		}
 		PrivateCollision acc(_x + _hit_x - ATTACKCANCEL_WIDTH, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == GUARDATTACK_ANIMEFRAME || frame == GUARDATTACK_ALLFRAME) {
@@ -305,8 +326,14 @@ void Shielder::GuardAttack(Game& g) {
 		}
 	}
 	if (_isflip == true) {
-		if (frame == STEP_BEGINFRAME) {
-			_x += ATTACK_STEP;
+		if (frame == 1) {
+			for (int i = 0; i < LRESERVELIGHT_PARTICLE_QTY; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
+				auto rl = new LanceReserveLight(xy, dxy, true);
+				g.GetOS()->Add(rl);
+			}
 		}
 		PrivateCollision acc(_x - _hit_x, _y - _hit_h, ATTACKCANCEL_WIDTH, ATTACKCANCEL_HEIGHT);
 		if (frame == GUARDATTACK_ANIMEFRAME || frame == GUARDATTACK_ALLFRAME) {
@@ -326,11 +353,16 @@ void Shielder::GuardAttack(Game& g) {
 			}
 		}
 	}
-	if (frame == ATTACK_BEGINFRAME) {
+	if (frame == 30) {
 		_ShieldAttack_Flag = true;
-		_Shield_Cnt=_cnt;
+		_Shield_Cnt = _cnt;
+	}
+	if (frame == ATTACK_BEGINFRAME) {
+		
+		
 		PlaySoundMem(_se["Attack"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
+			_x -= ATTACK_STEP;
 			//盾兵の攻撃判定オブジェクトの生成
 			auto sac = new ShielderAttackCollision(_x + _hit_x - ATTACK_WIDTH, _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加
@@ -338,6 +370,7 @@ void Shielder::GuardAttack(Game& g) {
 
 		};
 		if (_isflip == true) {
+			_x += ATTACK_STEP;
 			//盾兵の攻撃判定オブジェクトの生成
 			auto sac = new ShielderAttackCollision(_x - _hit_x, _y - _hit_h);
 			// オブジェクトサーバ-に盾兵の攻撃判定オブジェクトを追加

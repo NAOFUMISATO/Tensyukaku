@@ -57,6 +57,9 @@ void CPointBlock::Process(Game& g) {
 				else if (_cpoint_type == "5B") {
 					flag["5B"] = true;
 				}
+				else if (_cpoint_type == "8A") {
+					flag["8A"] = true;
+				}
 				else if(_cpoint_type == "11A"){
 					flag["11A"] = true;
 				}
@@ -95,6 +98,10 @@ void CPointBlock::CPointPosition() {
 	else if (_cpoint_type == "5B") {
 		_x = CPOINT_5B_X;
 		_y = CPOINT_5B_Y;
+	}
+	else if (_cpoint_type == "8A") {
+		_x = CPOINT_8A_X;
+		_y = CPOINT_8A_Y;
 	}
 	else if (_cpoint_type == "11A") {
 		_x = CPOINT_11A_X;

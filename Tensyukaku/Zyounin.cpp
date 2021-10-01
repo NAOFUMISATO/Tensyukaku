@@ -109,7 +109,7 @@ void Zyounin::HitJudge(Game& g) {
 						}
 						auto flip = (*ite)->GetFlip();
 						auto bloodtype = GetRand(2);
-						auto mb = new LowBlood(_x + _gx, _y - 100, flip, bloodtype);
+						auto mb = new LowBlood(_x + _gx, _y - 200, flip, bloodtype);
 						g.GetOS()->Add(mb);
 					}
 				}

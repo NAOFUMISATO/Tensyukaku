@@ -129,7 +129,7 @@ void Boss::Damage(Game& g) {
 	_anime["Damage"] = 0;
 	if (frame == 1) {
 		auto bloodtype = 0;
-		auto bb = new BossBlood(_x + _gx, _y + _gy, bloodtype);
+		auto bb = new BossBlood(_x + _gx+100, _y + _gy, bloodtype);
 		g.GetOS()->Add(bb);
 	}
 	if (frame == DAMAGE_ALLFRAME) {
@@ -149,7 +149,7 @@ void Boss::Dead(Game& g) {
 	}
 	auto modechangeframe = 120;
 	if (frame == DEAD_ALLFRAME) {
-		StopSoundMem(g.GetBgm()["Main"]);//
+		StopSoundMem(g.GetBgm()["Main"]);
 		auto ol = new OverlayBlack();
 		ol->SetFade(modechangeframe, 240, 300, 4);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");

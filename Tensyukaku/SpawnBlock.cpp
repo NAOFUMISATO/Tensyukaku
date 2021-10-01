@@ -23,7 +23,7 @@ Spawn::~Spawn() {
 void Spawn::Init() {
 	_gx = 0;
 	_gy = -50;
-	_hit_x =-50;
+	_hit_x = -50;
 	_hit_y = -50;
 	_hit_w = 100;
 	_hit_h = 100;
@@ -191,6 +191,8 @@ void Spawn::Process(Game& g) {
 					g.GetOS()->Add(sh1);
 					auto bs1 = new Busyo(SPAWN8A_BUSYO1_X, SPAWN8A_BUSYO1_Y, SPAWN8A_BUSYO1_FLIP);
 					g.GetOS()->Add(bs1);
+					auto boss = new Boss(SPAWN8A_BOSS1_X, SPAWN8A_BOSS1_Y, SPAWN8A_BOSS1_FLIP);
+					g.GetOS()->Add(boss);
 				}
 				else if (_spawn_type == "9A") {
 					auto bu1 = new Bushi(SPAWN9A_BUSHI1_X, SPAWN9A_BUSHI1_Y, SPAWN9A_BUSHI1_FLIP);
@@ -293,6 +295,8 @@ void Spawn::Process(Game& g) {
 					g.GetOS()->Add(sh1);
 					auto sh2 = new Shielder(SPAWN12A_SHIEL2_X, SPAWN12A_SHIEL2_Y, SPAWN12A_SHIEL2_FLIP);
 					g.GetOS()->Add(sh2);
+					auto boss = new Boss(SPAWN12A_BOSS2_X, SPAWN12A_BOSS2_Y, SPAWN12A_BOSS2_FLIP);
+					g.GetOS()->Add(boss);
 				}
 				else if (_spawn_type == "12B") {
 					auto bu1 = new Bushi(SPAWN12B_BUSHI1_X, SPAWN12B_BUSHI1_Y, SPAWN12B_BUSHI1_FLIP);

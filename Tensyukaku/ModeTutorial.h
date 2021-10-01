@@ -11,7 +11,10 @@ public:
 	void SetType(std::string tutorialtype) { _tutorial_type = tutorialtype; }
 private:
 	void LoadTextGraph();
-
 	std::string	_tutorial_type;
-	bool	_return_flag;
 };
+
+namespace TuInfo {
+	constexpr auto GRAPH_WIDTH = 880;
+	constexpr auto GRAPH_HEIGHT = 470;
+}

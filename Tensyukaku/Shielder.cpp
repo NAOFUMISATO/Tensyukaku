@@ -176,14 +176,22 @@ void Shielder::ShieldDraw(Game& g) {
 		auto a = _alpha;
 		auto frame = _cnt - _Shield_Cnt;
 		if (_ShieldAttack_Flag == true) {
-			if (frame >= 0 && frame < 40) {
+			if (frame >= 0 && frame < 15) {
+				if (_isflip == false) {
+					x += 60;
+				}
+				if (_isflip == true) {
+					x -= 60;
+				}
+			}
+			else if (frame >= 15 && frame < 45) {
 				if (_isflip == false) {
 					Sh.SetAngle(-0.5);
-					x -= 40;
+					x -= 70;
 				}
 				if (_isflip == true) {
 					Sh.SetAngle(0.5);
-					x += 40;
+					x += 70;
 				}
 				y += 20;
 			}

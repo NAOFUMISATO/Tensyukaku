@@ -22,6 +22,7 @@ Player::Player(int x,int y) :
 	_ui_flag(false),
 	_nohit_flag(false),
 	_restartcheck_flag(false),
+	_firststart_flag(true),
 	_tutorialhit_flag(false),
 	_stairup_flag(false),
 	_gaugeup_flag(false)
@@ -166,7 +167,7 @@ void Player::Process(Game& g)
 
 void Player::Draw(Game& g) {
 #ifdef _DEBUG
-	DebugDraw(g);
+	//DebugDraw(g);
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
@@ -410,6 +411,11 @@ void Player::RestartCheck(Game& g) {
 			_State = PLAYERSTATE::SWORDOUT;
 		}
 		_restartcheck_flag = true;
+	}
+	if (_firststart_flag == true) {
+		if (g.GetCPointFlag()["2A"] == true) {
+			_firststart_flag = false;
+		}
 	}
 }
 //–³“Gó‘Ô‚Ìˆ—

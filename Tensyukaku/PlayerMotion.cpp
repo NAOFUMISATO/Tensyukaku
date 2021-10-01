@@ -8,6 +8,7 @@
 #include "EnemyBase.h"
 #include "OverlayBlack.h"
 #include "ModeGameover.h"
+#include "ModeIngameText.h"
 #include "ModeGame.h"
 #include "ModeBossBefore.h"
 using namespace PInfo;
@@ -33,27 +34,29 @@ void Player::Appear(Game& g) {
 /*----------î≤ìÅ----------*/
 void Player::Swordout(Game& g) {
 	auto frame = _cnt - _action_cnt;
- 	_grhandle = _grall["Swordout"][_anime["Swordout"]];
-	_anime["Swordout"] = ((frame) / ANIMESPEED_SWORDOUT) % SWORDOUT_ANIMEMAX;
+	_grhandle = _grall["Swordout"][_anime["Swordout"]];
+	if (frame < SWORDOUT_ANIMEFRAME) {
+		_anime["Swordout"] = ((frame) / ANIMESPEED_SWORDOUT) % SWORDOUT_ANIMEMAX;
+	}
 	auto vpal = g.GetVpal();
 	if (frame == 1) {
-		vpal["Main"]=0;
+		vpal["Main"] = 0;
 		PlaySoundMem(g.GetBgm()["Main"], DX_PLAYTYPE_LOOP, true);
 	}
-	if (frame <SWORDOUT_ANIMEFRAME&&vpal["Main"]<120) {
-		vpal["Main"]+=2;
+	if (frame < SWORDOUT_ANIMEFRAME && vpal["Main"] < 120) {
+		vpal["Main"] += 2;
 		g.SetVpal(vpal);
 	}
-	if (frame == SWORDOUT_ANIMEFRAME) {
+	if (frame >= SWORDOUT_ANIMEFRAME) {
 		_action_cnt = _cnt;
 		_State = PLAYERSTATE::IDLE;
 	}
 }
 /*----------ë“ã@----------*/
 void Player::Idle(Game& g) {
-	_grhandle = _grall["Idle"] [_anime["Idle"]];
+	_grhandle = _grall["Idle"][_anime["Idle"]];
 	_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
-	if (g.GetTrg() & PAD_INPUT_6&&_iai_gauge==IAI_MAX) {
+	if (g.GetTrg() & PAD_INPUT_6 && _iai_gauge == IAI_MAX) {
 		_State = PLAYERSTATE::IAI;
 		_action_cnt = _cnt;
 		PlaySoundMem(_se["Iai"], DX_PLAYTYPE_BACK, true);
@@ -65,7 +68,7 @@ void Player::Idle(Game& g) {
 	}
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_State = PLAYERSTATE::MIDDLEATTACK;
-		_action_cnt = _cnt;		
+		_action_cnt = _cnt;
 	}
 	if (g.GetTrg() & PAD_INPUT_3) {
 		_State = PLAYERSTATE::LOWATTACK;
@@ -80,7 +83,7 @@ void Player::Idle(Game& g) {
 		_action_cnt = _cnt;
 	}
 #ifdef _DEBUG
-	if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_7|| g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_7)
+	if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_7 || g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_7)
 	{
 		_State = PLAYERSTATE::MOVE;
 		_action_cnt = _cnt;

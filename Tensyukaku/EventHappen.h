@@ -9,13 +9,15 @@ public:
 	void Init(Game& g);
 private:
 	void TutorialAppear(Game& g);
+	void CPointAppear(Game& g);
+	void BossEventAppear(Game& g);
+	void IngameTextAppear(Game& g);
+	void RecoveryAppear(Game& g);
+	void FlameAppear(Game& g);
 };
 
 namespace EHInfo {
 	/*----------各イベントブロック座標等----------*/
-	//回復ブロック
-	constexpr auto RECOVERY_X = 2700;
-	constexpr auto RECOVERY_Y = 4040;
 	//ボスイベントブロックA
 	constexpr auto BOSSA_X = 5300;
 	constexpr auto BOSSA_Y = 1760;

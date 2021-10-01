@@ -10,9 +10,10 @@
 #include "ExPlain.h"
 #include "OverlayBlack.h"
 using namespace CParInfo;
-Cursor::Cursor():_State(CURSOLSTATE::NOHIT){
+using namespace CuInfo;
+Cursor::Cursor():_state(CURSOLSTATE::NOHIT){
 	Init();
-	LoadSound();
+	LoadSE();
 };
 Cursor::~Cursor() {
 }
@@ -27,143 +28,109 @@ void Cursor::Init() {
 	_hit_w = 20;
 	_hit_h = 20;
 	_spd = 6;
+	_cnt = 0;
 	_position = { 960,540 };
 	_velocityDir = { 0,0 };
-	_colortype = 2;
-	_cnt = 121;
-	_Input_Flag=false;
+	_hit_type = "NOHIT";
+	_par_qty = 7;
+	_input_flag=false;
+	_startpush_flag = false;
+	_endpush_flag = false;
 }
 
 void Cursor::Process(Game& g) {
 	ObjectBase::Process(g);
 	auto frame = _cnt - _action_cnt;
-	switch (_State) {
+	switch (_state) {
 	case CURSOLSTATE::NOHIT:
-		_colortype = 0;
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteはGameStartオブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::GAMESTART)
-			{
-				// カーソルとそのオブジェクトの当たり判定を行う
-				if (IsHit(*(*ite)) == true) {
-					_State = CURSOLSTATE::STARTHIT;
-					_colortype =3;
-				}
-			}
-		}
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteはExplainオブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::EXPLAIN)
-			{
-				// カーソルとそのオブジェクトの当たり判定を行う
-				if (IsHit(*(*ite)) == true) {
-					_State = CURSOLSTATE::EXHIT;
-					_colortype = 4;
-				}
-			}
-		}
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteはGameEndオブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::GAMEEND)
-			{
-				// カーソルとそのオブジェクトの当たり判定を行う
-				if (IsHit(*(*ite)) == true) {
-					_State = CURSOLSTATE::ENDHIT;
-					_colortype =2;
-				}
-			}
-		}
+		_hit_type = "NOHIT";
+		_par_qty = NOHIT_PARQTY;
 		break;
 	case CURSOLSTATE::STARTHIT:
-		if (g.GetTrg() & PAD_INPUT_1&&_Input_Flag ==false)
+		_hit_type = "STARTHIT";
+		_par_qty = HIT_PARQTY;
+		if (g.GetTrg() & PAD_INPUT_3 && _input_flag == false)
 		{
-			_Input_Flag =true;
 			_action_cnt = _cnt;
-			PlaySoundMem(_se["GameStart"],DX_PLAYTYPE_BACK, true);
+			_input_flag = true;
+			_startpush_flag = true;
+			PlaySoundMem(_se["GameStart"], DX_PLAYTYPE_BACK, true);
 			StopSoundMem(g.GetBgm()["Title"]);
 			auto ol = new OverlayBlack();
 			ol->SetFade(120, 120, 120, 3);
-			g.GetMS()->Add(ol,1, "OverlayBlack");
+			g.GetMS()->Add(ol, 1, "OverlayBlack");
 		}
-		if (frame == 120) {
-			_Input_Flag =false;
+		if (frame == 120 && _startpush_flag == true) {
+			_input_flag = false;
 			// タイトルモードを削除
 			g.GetMS()->Del(g.GetMS()->Get("Title"));
 			// プロローグモードを追加
 			auto mp = new ModePrologue();
 			g.GetMS()->Add(mp, 0, "Prologue");
 		}
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteはGameStartオブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::GAMESTART)
-			{
-				// カーソルとそのオブジェクトの当たり判定を行う
-				if (IsHit(*(*ite)) == false) {
-					_State = CURSOLSTATE::NOHIT;
-				}
-			}
-		}
 		break;
 	case CURSOLSTATE::EXHIT:
-		if (g.GetTrg() & PAD_INPUT_1)
+		_hit_type = "EXHIT";
+		_par_qty = HIT_PARQTY;
+		if (g.GetTrg() & PAD_INPUT_3)
 		{
-			_action_cnt = _cnt;
 			PlaySoundMem(_se["OtherSelect"], DX_PLAYTYPE_BACK, true);
-			StopSoundMem(g.GetBgm()["Title"]);
-		}
-		if (frame == 5) {
 			auto ex = new ExPlain();
 			g.GetMS()->Add(ex, 1, "ExPlain");
 			auto mt = (ModeTitle*)g.GetMS()->Get("Title");
 			mt->SetStopObjProcess(true);
 		}
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteはExplainオブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::EXPLAIN)
-			{
-				// カーソルとそのオブジェクトの当たり判定を行う
-				if (IsHit(*(*ite)) == false) {
-					_State = CURSOLSTATE::NOHIT;
-				}
-			}
-		}
 		break;
 	case CURSOLSTATE::ENDHIT:
-		if (g.GetTrg() & PAD_INPUT_1) {
+		_hit_type = "ENDHIT";
+		_par_qty = HIT_PARQTY;
+		if (g.GetTrg() & PAD_INPUT_3 && _input_flag == false) {
+			_action_cnt = _cnt;
+			_input_flag = true;
+			_endpush_flag = true;
 			PlaySoundMem(_se["OtherSelect"], DX_PLAYTYPE_BACK, true);
-			StopSoundMem(g.GetBgm()["Title"]);
+			auto ol = new OverlayBlack();
+			ol->SetFade(120, 120, 120, 3);
+			g.GetMS()->Add(ol, 1, "OverlayBlack");
+		}
+		if (frame == 120 && _endpush_flag == true) {
 			DxLib_End();		// ＤＸライブラリ使用の終了処理
 			return;
 		}
-		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-		{
-			// iteはGameEndオブジェクトか？
-			if ((*ite)->GetObjType() == OBJECTTYPE::GAMEEND)
-			{
-				// カーソルとそのオブジェクトの当たり判定を行う
-				if (IsHit(*(*ite)) == false) {
-					_State = CURSOLSTATE::NOHIT;
-				}
-			}
+		break;
+	case CURSOLSTATE::CREDITHIT:
+		_hit_type = "CREDITHIT";
+		_par_qty = HIT_PARQTY;
+		if (g.GetTrg() & PAD_INPUT_3 && _input_flag == false) {
+			_action_cnt = _cnt;
+			_input_flag = true;
+			_creditpush_flag = true;
+			PlaySoundMem(_se["OtherSelect"], DX_PLAYTYPE_BACK, true);
+			StopSoundMem(g.GetBgm()["Title"]);
+			auto ol = new OverlayBlack();
+			ol->SetFade(120, 120, 120, 3);
+			g.GetMS()->Add(ol, 1, "OverlayBlack");
+		}
+		if (frame == 120 && _creditpush_flag == true) {
+			_input_flag = false;
+			auto ex = new ExPlain();
+			g.GetMS()->Add(ex, 1, "ExPlain");
+			auto mt = (ModeTitle*)g.GetMS()->Get("Title");
+			mt->SetStopObjProcess(true);
 		}
 		break;
 	}
 	//カーソルの座標から炎パーティクル発生
-	for (int i = 0; i < CURSOR_PARTICLE1_QTY; i++)
+	for (int i = 0; i <_par_qty; i++)
 	{
 		std::pair<int, int> xy = std::make_pair(_x, _y);
 		std::pair<double, double> dxy = std::make_pair(((rand() % CURSOR_PARTICLE1_RANDOMX1) - CURSOR_PARTICLE1_RANDOMX2) / CURSOR_PARTICLE1_RANDOMX3, ((rand() % CURSOR_PARTICLE1_RANDOMY1) - CURSOR_PARTICLE1_RANDOMY2) / CURSOR_PARTICLE1_RANDOMY3);
-		auto c1 = new CursorParticle1(xy, dxy, _colortype);
+		auto c1 = new CursorParticle1(xy, dxy, _hit_type);
 		g.GetOS()->Add(c1);
 	}
 	auto xbuf = g.GetXBuf();
 	auto ybuf = g.GetYBuf();
-	if (_Input_Flag == false) {
+	if (_input_flag == false) {
 		if (g.GetKey() & PAD_INPUT_RIGHT) {
 			_velocityDir.x =1;   // (3-3)右入力あり
 		}
@@ -204,13 +171,73 @@ void Cursor::Process(Game& g) {
 		_x = positionX;
 		_y = positionY;
 	}
+	HitJudge(g);
 }
 
 void Cursor::Draw(Game& g) {
 	ObjectBase::Draw(g);
 }
 
-void Cursor::LoadSound() {
+void Cursor::LoadSE() {
 	_se["GameStart"] = ResourceServer::LoadSoundMem("se/OutGame/GameStartPush.wav");
 	_se["OtherSelect"] = ResourceServer::LoadSoundMem("se/OutGame/OtherSelectPush.wav");
+}
+
+void Cursor::HitJudge(Game& g) {
+	//カーソルとセレクトの当たり判定
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+	{
+		OBJECTTYPE objType = (*ite)->GetObjType();
+		switch (objType) {
+		case ObjectBase::OBJECTTYPE::GAMESTART:
+			if (_state == CURSOLSTATE::NOHIT) {
+				if (IsHit(*(*ite)) == true) {
+					_state = CURSOLSTATE::STARTHIT;
+
+				}
+			}
+			if (_state == CURSOLSTATE::STARTHIT) {
+				if (IsHit(*(*ite)) == false) {
+					_state = CURSOLSTATE::NOHIT;
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::EXPLAIN:
+			if (_state == CURSOLSTATE::NOHIT) {
+				if (IsHit(*(*ite)) == true) {
+					_state = CURSOLSTATE::EXHIT;
+				}
+			}
+			if (_state == CURSOLSTATE::EXHIT) {
+				if (IsHit(*(*ite)) == false) {
+					_state = CURSOLSTATE::NOHIT;
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::GAMEEND:
+			if (_state == CURSOLSTATE::NOHIT) {
+				if (IsHit(*(*ite)) == true) {
+					_state = CURSOLSTATE::ENDHIT;
+				}
+			}
+			if (_state == CURSOLSTATE::ENDHIT) {
+				if (IsHit(*(*ite)) == false) {
+					_state = CURSOLSTATE::NOHIT;
+				}
+			}
+			break;
+		case ObjectBase::OBJECTTYPE::CREDIT:
+			if (_state == CURSOLSTATE::NOHIT) {
+				if (IsHit(*(*ite)) == true) {
+					_state = CURSOLSTATE::CREDITHIT;
+				}
+			}
+			if (_state == CURSOLSTATE::CREDITHIT) {
+				if (IsHit(*(*ite)) == false) {
+					_state = CURSOLSTATE::NOHIT;
+				}
+			}
+			break;
+		}
+	}
 }

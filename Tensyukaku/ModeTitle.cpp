@@ -24,7 +24,8 @@ namespace {
 	constexpr auto TITLE_FADESPEED = 3;
 	constexpr auto GAMESTART_APPEARFRAME = 300;
 	constexpr auto EXPLAIN_APPEARFRAME = 315;
-	constexpr auto GAMEEND_APPEARFRAME = 330;
+	constexpr auto GAMEEND_APPEARFRAME = 345;
+	constexpr auto CREDIT_APPEARFRAME = 330;
 }
 bool ModeTitle::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
@@ -33,7 +34,7 @@ bool ModeTitle::Initialize(Game& g) {
 	_pal = 0;
 	_mode_cnt = _cnt;
 	_stopObjProcess = false;
-	_Type = TITLETYPE::AMGLOGO;
+	_type = TITLETYPE::AMGLOGO;
 	_grall["AmgLogo"].resize(1);
 	ResourceServer::LoadDivGraph("res/Mode/AmgLogo.png",1,1,1,1920,1080, _grall["AmgLogo"].data());
 	_grall["TeamLogo"].resize(1);
@@ -66,7 +67,7 @@ bool ModeTitle::Process(Game& g) {
 	base::Process(g);
 	auto frame = _cnt - _mode_cnt;
 	auto pal = _pal;
-	switch (_Type) {
+	switch (_type) {
 	case TITLETYPE::AMGLOGO:
 		_grhandle = _grall["AmgLogo"][_anime["AmgLogo"]];
 		_anime["AmgLogo"] = 0;
@@ -82,7 +83,7 @@ bool ModeTitle::Process(Game& g) {
 		if (frame == AMG_FADEOUTENDFRAME) {
 			_pal = 0;
 			_mode_cnt = _cnt;
-			_Type = TITLETYPE::TEAMLOGO;
+			_type = TITLETYPE::TEAMLOGO;
 		}
 		break;
 	case TITLETYPE::TEAMLOGO:
@@ -100,14 +101,16 @@ bool ModeTitle::Process(Game& g) {
 		if (frame == TEAM_FADEOUTENDFRAME) {
 			_pal = 0;
 			_mode_cnt = _cnt;
-			auto cu = new Cursor();
-			g.GetOS()->Add(cu);
-			_Type = TITLETYPE::TITLEBG;
+			_type = TITLETYPE::TITLEBG;
 		}
 		break;
 	case TITLETYPE::TITLEBG:
 		_grhandle = _grall["TitleBG"][_anime["TitleBG"]];
 		_anime["TitleBG"] = 0;
+		if (frame == 1) {
+			auto cu = new Cursor();
+			g.GetOS()->Add(cu);
+		}
 		if (frame > TITLE_FADEINBEGINFRAME && TITLE_FADEINENDFRAME > frame) {
 			_pal += TITLE_FADESPEED;
 		}
@@ -128,6 +131,10 @@ bool ModeTitle::Process(Game& g) {
 		if (frame == GAMEEND_APPEARFRAME) {
 			auto ge = new GameEnd();
 			g.GetOS()->Add(ge);
+		}
+		if (frame ==CREDIT_APPEARFRAME) {
+			auto cr = new Credit();
+			g.GetOS()->Add(cr);
 		}
 		break;
 	}

@@ -4,8 +4,9 @@
 #include "Game.h"
 #include "LancerMotionCollision.h"
 #include "ObjectBase.h"
+#include "EnemyParticle.h"
 #include "PrivateCollision.h"
-
+using namespace EPInfo;
 using namespace LInfo;
 /*----------èoåª----------*/
 void Lancer::Appear(Game& g) {
@@ -199,6 +200,15 @@ void Lancer::Attack(Game& g) {
 		_anime["Attack"] = ((frame) / ANIMESPEED_ATTACK) % ATTACK_ANIMEMAX;
 	}
 	if (_isflip == false) {
+		if (frame == 1) {
+			for (int i = 0; i < LRESERVELIGHT_PARTICLE_QTY; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
+				auto rl = new LanceReserveLight(xy, dxy, true);
+				g.GetOS()->Add(rl);
+			}
+		}
 		if (frame == STEP_BEGINFRAME) {
 			_x -= ATTACK_STEP;
 		}
@@ -221,6 +231,15 @@ void Lancer::Attack(Game& g) {
 		}
 	}
 	if (_isflip == true) {
+		if (frame == 1) {
+			for (int i = 0; i < LRESERVELIGHT_PARTICLE_QTY; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
+				auto rl = new LanceReserveLight(xy, dxy, false);
+				g.GetOS()->Add(rl);
+			}
+		}
 		if (frame == STEP_BEGINFRAME) {
 			_x += ATTACK_STEP;
 		}

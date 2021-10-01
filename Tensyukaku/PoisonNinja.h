@@ -32,7 +32,7 @@ namespace PNInfo{
 constexpr auto GRAPHPOINT_X = 0;			//XˆÊ’u‚©‚ç•`‰æ“_‚Ü‚Å‚Ì·•ª
 constexpr auto GRAPHPOINT_Y = -315;			//YˆÊ’u‚©‚ç•`‰æ“_‚Ü‚Å‚Ì·•ª
 /*----------Šeƒ‚[ƒVƒ‡ƒ“‚Ì“–‚½‚è”»’èŠÖŒW----------*/
-constexpr auto PATROL_WIDTH = 500;			//õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
+constexpr auto PATROL_WIDTH = 1000;			//õ“G”ÍˆÍ“–‚½‚è”»’è‰¡•
 constexpr auto PATROL_HEIGHT = 500;			//õ“G”ÍˆÍ“–‚½‚è”»’èc•
 constexpr auto POISINGCANCEL_WIDTH = 500;	//“Å‰t‚‚ç‚µ’†Ž~“–‚½‚è”»’è‰¡•
 constexpr auto POISINGCANCEL_HEIGHT = 500;	//“Å‰t‚‚ç‚µ’†Ž~“–‚½‚è”»’èc•

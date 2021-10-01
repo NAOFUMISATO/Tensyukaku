@@ -40,7 +40,7 @@ namespace LInfo {
 	constexpr auto PATROL_WIDTH = 600;			//索敵範囲当たり判定横幅
 	constexpr auto PATROL_BACKWIDTH = 300;		//背部索敵範囲当たり判定横幅
 	constexpr auto PATROL_HEIGHT = 100;			//索敵範囲当たり判定縦幅
-	constexpr auto COMING_WIDTH = 350;			//攻撃発生範囲当たり判定横幅
+	constexpr auto COMING_WIDTH = 450;			//攻撃発生範囲当たり判定横幅
 	constexpr auto COMING_HEIGHT = 100;			//攻撃発生範囲当たり判定縦幅
 	constexpr auto ATTACK_WIDTH = 350;			//攻撃当たり判定横幅
 	constexpr auto ATTACK_HEIGHT = 150;			//攻撃当たり判定縦幅
@@ -83,15 +83,16 @@ namespace LInfo {
 	constexpr auto ANIMESPEED_COMING = 30;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	//攻撃
 	constexpr auto ATTACK_GRAPHNAME = "res/Lancer/L_Attack.png";	//画像ファイル名
-	constexpr auto ATTACK_ANIMEMAX = 4;			//全ての画像枚数
-	constexpr auto ATTACK_WIDTHCOUNT = 4;		//横の画像枚数
+	constexpr auto ATTACK_ANIMEMAX = 6;			//全ての画像枚数
+	constexpr auto ATTACK_WIDTHCOUNT = 6;		//横の画像枚数
 	constexpr auto ATTACK_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_ATTACK = 20;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_ATTACK = 15;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto ATTACK_ANIMEFRAME = ATTACK_ANIMEMAX * ANIMESPEED_ATTACK;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
-	constexpr auto ATTACK_ALLFRAME = 100;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
-	constexpr auto ATTACK_BEGINFRAME = 20;		//攻撃判定発生フレーム
-	constexpr auto ATTACK_ENDFRAME = 20;		//攻撃判定終了フレーム
-	constexpr auto STEP_BEGINFRAME = 20;		//攻撃時の移動開始フレーム
+	constexpr auto ATTACK_ALLFRAME = 110;		//攻撃全フレーム（全フレーム-アニメーションフレーム＝攻撃猶予時間）
+	constexpr auto ATTACK_BEGINFRAME = 45;		//攻撃判定発生フレーム
+	constexpr auto ATTACK_ENDFRAME = 15;		//攻撃判定終了フレーム
+	constexpr auto RESERVE_PARFRAME = 15;	
+	constexpr auto STEP_BEGINFRAME = 45;		//攻撃時の移動開始フレーム
 	constexpr auto ATTACK_STEP = 60;			//攻撃時の移動距離
 	//死亡
 	constexpr auto DEAD_GRAPHNAME = "res/Lancer/L_Dead.png";		//画像ファイル名

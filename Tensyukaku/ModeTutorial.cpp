@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "ModeTutorial.h"
 #include "ModeGame.h"
+using namespace TuInfo;
 bool ModeTutorial::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
@@ -10,7 +11,6 @@ bool ModeTutorial::Initialize(Game& g) {
 	_pal = 255;
 	_mode_cnt = _cnt;
 	_trans_flag = true;
-	_return_flag = false;
 	LoadTextGraph();
 	return true;
 }
@@ -22,7 +22,6 @@ bool ModeTutorial::Terminate(Game& g) {
 
 bool ModeTutorial::Process(Game& g) {
 	base::Process(g);
-	auto frame = _cnt - _mode_cnt;
 	if (_tutorial_type == "1A") {
 		_grhandle = _grall["1A"][0];
 	}
@@ -53,17 +52,17 @@ bool ModeTutorial::Draw(Game& g) {
 
 void  ModeTutorial::LoadTextGraph() {
 	_grall["1A"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial1.png", 1, 1, 1, 880, 480, _grall["1A"].data());
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial1.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["1A"].data());
 	_grall["1B"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial2.png", 1, 1, 1, 880, 480, _grall["1B"].data());
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial2.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["1B"].data());
 	_grall["2A"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial3.png", 1, 1, 1, 880, 480, _grall["2A"].data());
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial3.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["2A"].data());
 	_grall["3A"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial4.png", 1, 1, 1, 880, 480, _grall["3A"].data());
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial4.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["3A"].data());
 	_grall["3B"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial5.png", 1, 1, 1, 880, 480, _grall["3B"].data());
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial5.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["3B"].data());
 	_grall["4A"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial5.png", 1, 1, 1, 880, 480, _grall["4A"].data());
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial6.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["4A"].data());
 	_grall["5A"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/Tutorial5.png", 1, 1, 1, 880, 480, _grall["5A"].data());
+	ResourceServer::LoadDivGraph("res/Mode/Tutorial7.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["5A"].data());
 }

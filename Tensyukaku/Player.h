@@ -56,7 +56,7 @@ private:
 	bool	_nohit_flag;			//モーション中に当たり判定を行うかのフラグ
 	bool	_tutorialhit_flag;	//チュートリアルボードとの当たり判定フラグ
 	bool	_restartcheck_flag;	//再起からの開始かどうか確認するフラグ
-
+	bool	_firststart_flag;			//再起時最初の地点からのスタートかを確認するフラグ
 	//無敵状態管理変数
 	bool	_star_flag;		//無敵状態管理フラグ
 	int		_Star_Cnt;		//無敵状態経過時間記録変数
@@ -212,7 +212,7 @@ namespace PInfo {
 	constexpr auto DAMAGE_HEIGHTCOUNT = 1;		//縦の画像枚数
 	constexpr auto ANIMESPEED_DAMAGE = 5;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto DAMAGE_ANIMEFRAME = DAMAGE_ANIMEMAX * ANIMESPEED_DAMAGE; //アニメーションフレーム
-	constexpr auto DAMAGE_ALLFRAME = 25;		//被ダメ全フレーム
+	constexpr auto DAMAGE_ALLFRAME = 20;		//被ダメ全フレーム
 	//無敵
 	constexpr auto ANIMESPEED_STAR = 8;			//無敵状態時の点滅速度 
 	constexpr auto STAR_ALPHA = 128;			//無敵状態時の透明度

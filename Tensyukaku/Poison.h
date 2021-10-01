@@ -45,11 +45,11 @@ namespace PoInfo {
 	constexpr auto GRAPH_HEIGHT = 90;		//1枚当たりの画像サイズ（縦）
 	//毒液準備
 	constexpr auto RESERVE_GRAPHNAME = "res/Gimik/PoisonReserve.png";	//画像ファイル名
-	constexpr auto RESERVE_ANIMEMAX = 3;		//全ての画像枚数
-	constexpr auto RESERVE_WIDTHCOUNT = 3;		//横の画像枚数
+	constexpr auto RESERVE_ANIMEMAX = 4;		//全ての画像枚数
+	constexpr auto RESERVE_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto RESERVE_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_RESERVE = 40;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto RESERVE_FALLFRAME = 80;			//準備状態から毒液が落ち始めるフレーム
+	constexpr auto ANIMESPEED_RESERVE = 30;		//各状態アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto RESERVE_FALLFRAME = 90;			//準備状態から毒液が落ち始めるフレーム
 	constexpr auto RESERVE_ANIMEFRAME = RESERVE_ANIMEMAX * ANIMESPEED_RESERVE;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto RESERVE_FADEOUTSPEED = 8;		//フェードスピード
 	constexpr auto RESERVE_ALLFRAME = 150;		//毒液準備の全フレーム

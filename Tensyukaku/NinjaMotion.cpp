@@ -305,14 +305,14 @@ void Ninja::Throw(Game& g) {
 				_anime["Throw"] = 0;
 				_state = ENEMYSTATE::COMING;
 			}
-			if (frame == 1) {
-				for (int i = 0; i < RESERVELIGHT_PARTICLE_QTY; i++)
-				{
-					std::pair<int, int> xy = std::make_pair(_x, _y);
-					std::pair<double, double> dxy = std::make_pair(((rand() % RESERVELIGHT_PARTICLE_RANDOMX1) - RESERVELIGHT_PARTICLE_RANDOMX2) / RESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -RESERVELIGHT_PARTICLE_RANDOMY1) - RESERVELIGHT_PARTICLE_RANDOMY2) / RESERVELIGHT_PARTICLE_RANDOMY3);
-					auto rl = new ReserveLight(xy, dxy,true);
-					g.GetOS()->Add(rl);
-				}
+		}
+		if (frame == 1) {
+			for (int i = 0; i < KRESERVELIGHT_PARTICLE_QTY; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % KRESERVELIGHT_PARTICLE_RANDOMX1) - KRESERVELIGHT_PARTICLE_RANDOMX2) / KRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -KRESERVELIGHT_PARTICLE_RANDOMY1) - KRESERVELIGHT_PARTICLE_RANDOMY2) / KRESERVELIGHT_PARTICLE_RANDOMY3);
+				auto rl = new KunaiReserveLight(xy, dxy, true);
+				g.GetOS()->Add(rl);
 			}
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -339,14 +339,14 @@ void Ninja::Throw(Game& g) {
 				_action_cnt = _cnt;
 				_state = ENEMYSTATE::COMING;
 			}
-			if (frame == 1) {
-				for (int i = 0; i < RESERVELIGHT_PARTICLE_QTY; i++)
-				{
-					std::pair<int, int> xy = std::make_pair(_x, _y);
-					std::pair<double, double> dxy = std::make_pair(((rand() % RESERVELIGHT_PARTICLE_RANDOMX1) - RESERVELIGHT_PARTICLE_RANDOMX2) / RESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -RESERVELIGHT_PARTICLE_RANDOMY1) - RESERVELIGHT_PARTICLE_RANDOMY2) / RESERVELIGHT_PARTICLE_RANDOMY3);
-					auto rl = new ReserveLight(xy, dxy, false);
-					g.GetOS()->Add(rl);
-				}
+		}
+		if (frame == 1) {
+			for (int i = 0; i < KRESERVELIGHT_PARTICLE_QTY; i++)
+			{
+				std::pair<int, int> xy = std::make_pair(_x, _y);
+				std::pair<double, double> dxy = std::make_pair(((rand() % KRESERVELIGHT_PARTICLE_RANDOMX1) - KRESERVELIGHT_PARTICLE_RANDOMX2) / KRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -KRESERVELIGHT_PARTICLE_RANDOMY1) - KRESERVELIGHT_PARTICLE_RANDOMY2) / KRESERVELIGHT_PARTICLE_RANDOMY3);
+				auto rl = new KunaiReserveLight(xy, dxy, false);
+				g.GetOS()->Add(rl);
 			}
 			//攻撃中止範囲オブジェクトはプレイヤーに当たったか？
 			for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)

@@ -16,16 +16,18 @@ private:
 };
 //チェックポイント
 namespace CPInfo {
-	constexpr auto CPOINT_2A_X = 2700;
+	constexpr auto CPOINT_2A_X = 3600;
 	constexpr auto CPOINT_2A_Y = 8600;
-	constexpr auto CPOINT_3A_X = 2700;
+	constexpr auto CPOINT_3A_X = 250;
 	constexpr auto CPOINT_3A_Y = 7840;
-	constexpr auto CPOINT_4A_X = 2700;
+	constexpr auto CPOINT_4A_X = 5600;
 	constexpr auto CPOINT_4A_Y = 7080;
-	constexpr auto CPOINT_5A_X = 2700;
-	constexpr auto CPOINT_5A_Y = 6320;
-	constexpr auto CPOINT_5B_X = 2700;
-	constexpr auto CPOINT_5B_Y = 5560;
+	constexpr auto CPOINT_5A_X = 250;
+	constexpr auto CPOINT_5A_Y =	6320;
+	constexpr auto CPOINT_5B_X = 5500;
+	constexpr auto CPOINT_5B_Y = 6320;
+	constexpr auto CPOINT_8A_X = 4800;
+	constexpr auto CPOINT_8A_Y = 4040;
 	constexpr auto CPOINT_11A_X = 5600;
 	constexpr auto CPOINT_11A_Y = 1760;
 }

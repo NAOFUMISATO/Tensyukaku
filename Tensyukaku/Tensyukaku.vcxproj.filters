@@ -387,7 +387,10 @@
     <ClCompile Include="EnemyParticle.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="Credit.cpp">
+    <ClCompile Include="IngameTextBlock.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeIngameText.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
   </ItemGroup>
@@ -629,14 +632,17 @@
     <ClInclude Include="BossBlood.h">
       <Filter>ヘッダー ファイル\Object\Efect</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectBase.h">
-      <Filter>ヘッダー ファイル\Object\UI</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyParticle.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="Credit.h">
+    <ClInclude Include="IngameTextBlock.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeIngameText.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectBase.h">
+      <Filter>ヘッダー ファイル\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

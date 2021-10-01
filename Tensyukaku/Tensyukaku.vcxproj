@@ -161,7 +161,6 @@
     <ClCompile Include="BusyoMotion.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CPointBlock.cpp" />
-    <ClCompile Include="Credit.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="EfectBase.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
@@ -174,6 +173,7 @@
     <ClCompile Include="FlameBlock.cpp" />
     <ClCompile Include="FlamePerformParticle.cpp" />
     <ClCompile Include="IaiGauge.cpp" />
+    <ClCompile Include="IngameTextBlock.cpp" />
     <ClCompile Include="Kunai.cpp" />
     <ClCompile Include="Lancer.cpp" />
     <ClCompile Include="LancerMotion.cpp" />
@@ -183,6 +183,7 @@
     <ClCompile Include="ModeBossBefore.cpp" />
     <ClCompile Include="ModeEpilogue.cpp" />
     <ClCompile Include="ModeGameover.cpp" />
+    <ClCompile Include="ModeIngameText.cpp" />
     <ClCompile Include="ModePause.cpp" />
     <ClCompile Include="ModePrologue.cpp" />
     <ClCompile Include="ModeTutorial.cpp" />
@@ -250,7 +251,6 @@
     <ClInclude Include="BusyoMotionCollision.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CPointBlock.h" />
-    <ClInclude Include="Credit.h" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="EfectBase.h" />
     <ClInclude Include="EnemyBase.h" />
@@ -263,6 +263,8 @@
     <ClInclude Include="FlameBlock.h" />
     <ClInclude Include="FlamePerformParticle.h" />
     <ClInclude Include="IaiGauge.h" />
+    <ClInclude Include="ModeIngameText.h" />
+    <ClInclude Include="IngameTextBlock.h" />
     <ClInclude Include="Kunai.h" />
     <ClInclude Include="Lancer.h" />
     <ClInclude Include="LancerMotionCollision.h" />

@@ -12,6 +12,7 @@ RestPoint::~RestPoint() {
 }
 
 void RestPoint::Init() {
+	_sort = 5;
 	_gx = 0;
 	_gy = 160;
 	_hit_x = -80;

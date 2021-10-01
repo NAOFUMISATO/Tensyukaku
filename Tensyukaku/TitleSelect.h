@@ -38,3 +38,13 @@ public:
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
 };
+
+class Credit :public ObjectBase {
+public:
+	Credit();
+	~Credit();
+	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::CREDIT; }
+	void Init()override;
+	void Process(Game& g)override;
+	void Draw(Game& g)override;
+};

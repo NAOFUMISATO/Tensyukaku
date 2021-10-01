@@ -10,7 +10,7 @@
 
 using namespace CPInfo;
 namespace {
-	constexpr auto FIRST_POSITION_X = 400;			//横軸初期座標（足下が基準）
+	constexpr auto FIRST_POSITION_X = 200;			//横軸初期座標（足下が基準）
 	constexpr auto FIRST_POSITION_Y = 9360;			//縦軸初期座標（足下が基準）
 }
 bool ModeGame::Initialize(Game& g) {
@@ -22,6 +22,10 @@ bool ModeGame::Initialize(Game& g) {
 	if (g.GetCPointFlag()["11A"] == true) {
 		_Player_x = CPOINT_11A_X;
 		_Player_y = CPOINT_11A_Y;
+	}
+	else if (g.GetCPointFlag()["8A"] == true) {
+		_Player_x = CPOINT_8A_X;
+		_Player_y = CPOINT_8A_Y;
 	}
 	else if(g.GetCPointFlag()["5B"] == true){
 		_Player_x = CPOINT_5B_X;

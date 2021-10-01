@@ -30,9 +30,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine
 	// 1フレームループを組む ----------------------------------------------------------
 	while (ProcessMessage() == 0)		// プログラムが終了するまでループ
 	{
+#ifdef _DEBUG
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) {
 			break;
 		}
+#endif
 		g->Input();		// 入力
 		g->Process();	// 計算
 		g->Draw();		// 描画
