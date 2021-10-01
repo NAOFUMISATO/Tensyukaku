@@ -4,7 +4,7 @@
 bool Overlogo::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
-	_y = 350;
+	_y = 450;
 	_pal = 0;
 	_mode_cnt = _cnt;
 	_trans_flag = true;

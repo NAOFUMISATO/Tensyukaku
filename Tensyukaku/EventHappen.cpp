@@ -22,7 +22,8 @@ void EventHappen::Init(Game& g) {
 	CPointAppear(g);
 	BossEventAppear(g);
 	IngameTextAppear(g);
-	FlameAppear(g);
+	FlameAppear(g); 
+	RecoveryAppear(g);
 }
 //チュートリアルブロック生成関数
 void EventHappen::TutorialAppear(Game& g) {

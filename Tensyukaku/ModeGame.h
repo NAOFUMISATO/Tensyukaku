@@ -16,7 +16,7 @@ public:
 	virtual bool Terminate(Game& g);
 	virtual bool Process(Game& g);
 	virtual bool Draw(Game& g);
-	bool	GetStopObjFlag() {return _stopObj_Flag;}
+	bool		GetstopObjProcess() { return _stopObjProcess; }
 	void		SetStopObjProcess(bool stopobjprocess) { _stopObjProcess = stopobjprocess; }
 	void		SetStopObjFlag(bool stopobjflag) { _stopObj_Flag = stopobjflag; }
 	

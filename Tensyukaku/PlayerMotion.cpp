@@ -27,7 +27,7 @@ void Player::Appear(Game& g) {
 	auto Pal = ob->GetPal();
 	if (Pal <= 100) {
 		_action_cnt = _cnt;
-		_State = PLAYERSTATE::SWORDOUT;
+		_state = PLAYERSTATE::SWORDOUT;
 	}
 }
 
@@ -49,43 +49,44 @@ void Player::Swordout(Game& g) {
 	}
 	if (frame >= SWORDOUT_ANIMEFRAME) {
 		_action_cnt = _cnt;
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 /*----------待機----------*/
 void Player::Idle(Game& g) {
 	_grhandle = _grall["Idle"][_anime["Idle"]];
 	_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	_pauseinput_flag = true;
 	if (g.GetTrg() & PAD_INPUT_6 && _iai_gauge == IAI_MAX) {
-		_State = PLAYERSTATE::IAI;
+		_state = PLAYERSTATE::IAI;
 		_action_cnt = _cnt;
 		PlaySoundMem(_se["Iai"], DX_PLAYTYPE_BACK, true);
 	}
 	if (g.GetTrg() & PAD_INPUT_5) {
-		_State = PLAYERSTATE::SWAY;
+		_state = PLAYERSTATE::SWAY;
 		PlaySoundMem(_se["Sway"], DX_PLAYTYPE_BACK, true);
 		_action_cnt = _cnt;
 	}
 	if (g.GetTrg() & PAD_INPUT_4) {
-		_State = PLAYERSTATE::MIDDLEATTACK;
+		_state = PLAYERSTATE::MIDDLEATTACK;
 		_action_cnt = _cnt;
 	}
 	if (g.GetTrg() & PAD_INPUT_3) {
-		_State = PLAYERSTATE::LOWATTACK;
+		_state = PLAYERSTATE::LOWATTACK;
 		_action_cnt = _cnt;
 	}
 	if (g.GetTrg() & PAD_INPUT_1) {
-		_State = PLAYERSTATE::KICK;
+		_state = PLAYERSTATE::KICK;
 		_action_cnt = _cnt;
 	}
 	if (g.GetKey() & PAD_INPUT_LEFT || g.GetKey() & PAD_INPUT_RIGHT) {
-		_State = PLAYERSTATE::MOVE;
+		_state = PLAYERSTATE::MOVE;
 		_action_cnt = _cnt;
 	}
 #ifdef _DEBUG
 	if (g.GetKey() & PAD_INPUT_UP && g.GetKey() & PAD_INPUT_7 || g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_7)
 	{
-		_State = PLAYERSTATE::MOVE;
+		_state = PLAYERSTATE::MOVE;
 		_action_cnt = _cnt;
 	}
 #endif
@@ -96,25 +97,25 @@ void Player::Move(Game& g) {
 	_anime["Move"] = (_cnt / _move_animespeed) % MOVE_ANIMEMAX;
 
 	if (g.GetTrg() & PAD_INPUT_6 && _iai_gauge == IAI_MAX) {
-		_State = PLAYERSTATE::IAI;
+		_state = PLAYERSTATE::IAI;
 		_action_cnt = _cnt;
 		PlaySoundMem(_se["Iai"], DX_PLAYTYPE_BACK, true);
 	}
 	else if (g.GetTrg() & PAD_INPUT_5) {
-		_State = PLAYERSTATE::SWAY;
+		_state = PLAYERSTATE::SWAY;
 		PlaySoundMem(_se["Sway"], DX_PLAYTYPE_BACK, true);
 		_action_cnt = _cnt;
 	}
 	else if (g.GetTrg() & PAD_INPUT_4) {
-		_State = PLAYERSTATE::MIDDLEATTACK;
+		_state = PLAYERSTATE::MIDDLEATTACK;
 		_action_cnt = _cnt;
 	}
 	else if (g.GetTrg() & PAD_INPUT_3) {
-		_State = PLAYERSTATE::LOWATTACK;
+		_state = PLAYERSTATE::LOWATTACK;
 		_action_cnt = _cnt;
 	}
 	else if (g.GetTrg() & PAD_INPUT_1) {
-		_State = PLAYERSTATE::KICK;
+		_state = PLAYERSTATE::KICK;
 		_action_cnt = _cnt;
 	}
 	else if (g.GetKey() & PAD_INPUT_LEFT)
@@ -146,7 +147,7 @@ void Player::Move(Game& g) {
 	}
 #endif
 	else {
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 /*----------中段攻撃----------*/
@@ -210,7 +211,7 @@ void Player::MidAttack(Game& g) {
 		}
 	}
 	if (frame == MIDDLEATTACK_ALLFRAME) {
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 	
 }
@@ -265,7 +266,7 @@ void Player::LowAttack(Game& g) {
 		}
 	}
 	if (frame == LOWATTACK_ALLFRAME) {
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 
@@ -292,7 +293,7 @@ void Player::Kick(Game& g) {
 	}
 	if (frame == KICK_ALLFRAME) {
 		
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 
@@ -384,7 +385,7 @@ void Player::Iai(Game& g) {
 		}
 	}
 	if (frame == IAI_ALLFRAME) {
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 ///*----------スウェイ----------*/
@@ -417,7 +418,7 @@ void Player::Sway(Game& g){
 		}
 	}
 	if (frame == SWAY_ALLFRAME) {
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 
@@ -439,10 +440,10 @@ void Player::Damage(Game& g) {
 		}
 		if (_life <= 0) {
 			PlaySoundMem(_se["Dead"], DX_PLAYTYPE_BACK, true);
-			_State=PLAYERSTATE::DEAD;
+			_state=PLAYERSTATE::DEAD;
 		}
 		else {
-			_State = PLAYERSTATE::IDLE;
+			_state = PLAYERSTATE::IDLE;
 		}
 	}
 }
@@ -481,7 +482,7 @@ void Player::StairMove(Game& g) {
 		if (_x <= _Stair_x + StInfo::POSITION_HITX) {
 			_isflip = true;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
-			_State = PLAYERSTATE::STAIRUP;
+			_state = PLAYERSTATE::STAIRUP;
 		}
 	}
 	if (_StairFlip_Flag == true) {
@@ -492,7 +493,7 @@ void Player::StairMove(Game& g) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX + StInfo::COLLISION_WIDTH) {
 			_isflip = false;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
-			_State = PLAYERSTATE::STAIRUP;
+			_state = PLAYERSTATE::STAIRUP;
 		}
 	}
 }
@@ -518,7 +519,7 @@ void Player::StairUp(Game& g) {
 	auto upheight = _y - _Player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
 		_nohit_flag = false;
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 
@@ -538,7 +539,7 @@ void Player::BossStairMove(Game& g) {
 			auto ol = new OverlayBlack();
 			ol->SetFade(90, 270, 360, 3);
 			g.GetMS()->Add(ol, 20, "OverlayBlack");
-			_State = PLAYERSTATE::BOSSSTAIRUP;
+			_state = PLAYERSTATE::BOSSSTAIRUP;
 			_action_cnt = _cnt;
 		}
 	}
@@ -553,7 +554,7 @@ void Player::BossStairMove(Game& g) {
 			auto ol = new OverlayBlack();
 			ol->SetFade(90, 270, 360, 3);
 			g.GetMS()->Add(ol, 20, "OverlayBlack");
-			_State = PLAYERSTATE::BOSSSTAIRUP;
+			_state = PLAYERSTATE::BOSSSTAIRUP;
 			_action_cnt = _cnt;
 		}
 	}
@@ -589,7 +590,7 @@ void Player::BossStairUp(Game& g) {
 		mg->SetStopObjProcess(true);
 		StopSoundMem(g.GetBgm()["Main"]);
 		_nohit_flag = false;
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 /*-----イベントAの処理-----*/
@@ -608,7 +609,7 @@ void Player::BossEventA(Game& g) {
 	}
 	if (frame == 360) {
 		_CameraX = 500;
-		_State = PLAYERSTATE::IDLE;
+		_state = PLAYERSTATE::IDLE;
 	}
 }
 /*-----イベントBの処理-----*/
@@ -636,7 +637,7 @@ void Player::BossEventB(Game& g) {
 		_grhandle = _grall["Idle"][_anime["Idle"]];
 		_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 		if (g.GetTrg() & PAD_INPUT_1) {
-			_State = PLAYERSTATE::SPECIALATTACK;
+			_state = PLAYERSTATE::SPECIALATTACK;
 			_action_cnt = _cnt;
 		}
 	}

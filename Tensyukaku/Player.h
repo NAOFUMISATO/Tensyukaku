@@ -41,13 +41,14 @@ private:
 	void	UIAppear(Game& g);		//UIインスタンス生成関数
 	void	BufSetting(Game& g);	//左スティックの入力量によるステータス設定
 	void	RestartCheck(Game& g); //再起からの開始かどうか確認する関数
+	void  PauseInput(Game& g);		//ポーズの入力管理関数
 	void	DebugDraw(Game& g);		//デバッグ用関数
 	void	LoadPicture();		//画像読み込み関数
 	void	LoadSE();			//効果音読み込み関数
 	void	VolumeInit();	//効果音ボリューム初期値設定関数
 	void	VolumeChange();	//ボリューム変更関数
 	/*---------メンバ変数----------*/
-	PLAYERSTATE	_State;		//状態遷移変数
+	PLAYERSTATE	_state;		//状態遷移変数
 	
 	int		_move_animespeed;//移動時のアニメスピード
 	int		_CameraX;			//カメラ位置
@@ -57,6 +58,7 @@ private:
 	bool	_tutorialhit_flag;	//チュートリアルボードとの当たり判定フラグ
 	bool	_restartcheck_flag;	//再起からの開始かどうか確認するフラグ
 	bool	_firststart_flag;			//再起時最初の地点からのスタートかを確認するフラグ
+	bool	_pauseinput_flag;		//ポーズの入力を受けつけるかどうかのフラグ
 	//無敵状態管理変数
 	bool	_star_flag;		//無敵状態管理フラグ
 	int		_Star_Cnt;		//無敵状態経過時間記録変数

@@ -303,9 +303,6 @@
     <ClCompile Include="PauseSelect.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
-    <ClCompile Include="PController.cpp">
-      <Filter>ソース ファイル\Mode</Filter>
-    </ClCompile>
     <ClCompile Include="ExPlain.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
@@ -391,6 +388,9 @@
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
     <ClCompile Include="ModeIngameText.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeCredit.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
   </ItemGroup>
@@ -554,9 +554,6 @@
     <ClInclude Include="PauseSelect.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
-    <ClInclude Include="PController.h">
-      <Filter>ヘッダー ファイル\Mode</Filter>
-    </ClInclude>
     <ClInclude Include="ExPlain.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
@@ -643,6 +640,9 @@
     </ClInclude>
     <ClInclude Include="ObjectBase.h">
       <Filter>ヘッダー ファイル\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeCredit.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

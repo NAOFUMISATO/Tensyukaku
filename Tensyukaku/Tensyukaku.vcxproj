@@ -181,6 +181,7 @@
     <ClCompile Include="LowBlood.cpp" />
     <ClCompile Include="MiddleBlood.cpp" />
     <ClCompile Include="ModeBossBefore.cpp" />
+    <ClCompile Include="ModeCredit.cpp" />
     <ClCompile Include="ModeEpilogue.cpp" />
     <ClCompile Include="ModeGameover.cpp" />
     <ClCompile Include="ModeIngameText.cpp" />
@@ -195,7 +196,6 @@
     <ClCompile Include="Overlogo.cpp" />
     <ClCompile Include="OverSelect.cpp" />
     <ClCompile Include="PauseSelect.cpp" />
-    <ClCompile Include="PController.cpp" />
     <ClCompile Include="PlayerParticle.cpp" />
     <ClCompile Include="Poison.cpp" />
     <ClCompile Include="PoisonNinja.cpp" />
@@ -263,6 +263,7 @@
     <ClInclude Include="FlameBlock.h" />
     <ClInclude Include="FlamePerformParticle.h" />
     <ClInclude Include="IaiGauge.h" />
+    <ClInclude Include="ModeCredit.h" />
     <ClInclude Include="ModeIngameText.h" />
     <ClInclude Include="IngameTextBlock.h" />
     <ClInclude Include="Kunai.h" />
@@ -284,7 +285,6 @@
     <ClInclude Include="Overlogo.h" />
     <ClInclude Include="OverSelect.h" />
     <ClInclude Include="PauseSelect.h" />
-    <ClInclude Include="PController.h" />
     <ClInclude Include="PlayerParticle.h" />
     <ClInclude Include="Poison.h" />
     <ClInclude Include="PoisonNinja.h" />

@@ -8,6 +8,7 @@
 #include "Game.h"
 #include "ObjectBase.h"
 #include "ModeGame.h"
+#include "ModePause.h"
 #include "OverlayFlame.h"
 #include "PlayerHp.h"
 #include "IaiGauge.h"
@@ -25,7 +26,8 @@ Player::Player(int x,int y) :
 	_firststart_flag(true),
 	_tutorialhit_flag(false),
 	_stairup_flag(false),
-	_gaugeup_flag(false)
+	_gaugeup_flag(false),
+	_pauseinput_flag(false)
 {
 	_x = x;
 	_y = y;
@@ -43,7 +45,7 @@ void Player::Init()
 {
 	// プレイヤー情報の初期化
 	_sort = 13;
-	_State = PLAYERSTATE::APPEAR;
+	_state = PLAYERSTATE::APPEAR;
 	_grhandle = -1;
 	_w = GRAPH_WIDTH;
 	_h = GRAPH_HEIGHT;
@@ -80,12 +82,14 @@ void Player::Process(Game& g)
 		PlaySoundMem(_se["Gage"], DX_PLAYTYPE_BACK, true);
 		_gaugeup_flag = true;
 	}
+	//ポーズの入力管理関数
+	PauseInput(g);
 	/*---状態毎の処理---*/
 	//再起からのスタートなら、状態を抜刀状態にする
 	RestartCheck(g);
 		//無敵状態
 		Star(g);
-	switch (_State) {
+	switch (_state) {
 		//出現状態
 	case	PLAYERSTATE::APPEAR:
 		Appear(g);
@@ -209,7 +213,7 @@ void Player::LoadPicture() {
 void Player::LoadSE() {
 	_se["BStartGame"] = ResourceServer::LoadSoundMem("se/Player/BStartGame.wav");
 	_se["Walk"] = ResourceServer::LoadSoundMem("se/Player/Footstep.wav");
-	_se["MiddleAttack"] = ResourceServer::LoadSoundMem("se/Player/MiddleAttack1.wav");
+	_se["MiddleAttack"] = ResourceServer::LoadSoundMem("se/Player/MiddleAttack.wav");
 	_se["LowAttack"] = ResourceServer::LoadSoundMem("se/Player/LowAttack.wav");
 	_se["Kick"] = ResourceServer::LoadSoundMem("se/Player/Kick.wav");
 	_se["Sway"] = ResourceServer::LoadSoundMem("se/Player/Sway.wav");
@@ -252,16 +256,16 @@ void	Player::HitJudge(Game& g) {
 	//ボスステージのイベント処理状態遷移用処理
 	if (_bosseventA_flag == true) {
 		_action_cnt = _cnt;
-		_State = PLAYERSTATE::EVENTA;
+		_state = PLAYERSTATE::EVENTA;
 		_bosseventA_flag = false;
 	}
 	if (_bosseventB_flag == true) {
 		_action_cnt = _cnt;
-		_State = PLAYERSTATE::EVENTB;
+		_state = PLAYERSTATE::EVENTB;
 		_bosseventB_flag = false;
 	}
 	//待機と移動時のみ階段判定を受け付ける処理
-	if (_State == PLAYERSTATE::IDLE || _State == PLAYERSTATE::MOVE) {
+	if (_state == PLAYERSTATE::IDLE || _state == PLAYERSTATE::MOVE) {
 		_stairup_flag = true;
 	}
 	else { _stairup_flag = false; }
@@ -286,7 +290,7 @@ void	Player::HitJudge(Game& g) {
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_life--;
 				_action_cnt = _cnt;
-				_State = PLAYERSTATE::DAMAGE;
+				_state = PLAYERSTATE::DAMAGE;
 				PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
 			break;
@@ -299,7 +303,7 @@ void	Player::HitJudge(Game& g) {
 					_Player_y = _y;
 					_Stair_x = (*ite)->GetX();
 					_StairFlip_Flag = (*ite)->GetFlip();
-					_State = PLAYERSTATE::STAIRMOVE;
+					_state = PLAYERSTATE::STAIRMOVE;
 				}
 			}
 			break;
@@ -311,7 +315,7 @@ void	Player::HitJudge(Game& g) {
 					_Player_y = _y;
 					_Stair_x = (*ite)->GetX();
 					_StairFlip_Flag = (*ite)->GetFlip();
-					_State = PLAYERSTATE::BOSSSTAIRMOVE;
+					_state = PLAYERSTATE::BOSSSTAIRMOVE;
 				}
 			}
 			break;
@@ -408,7 +412,7 @@ void Player::CameraSetting(Game& g) {
 void Player::RestartCheck(Game& g) {
 	if (_restartcheck_flag == false) {
 		if (g.GetRestartFlag() == true) {
-			_State = PLAYERSTATE::SWORDOUT;
+			_state = PLAYERSTATE::SWORDOUT;
 		}
 		_restartcheck_flag = true;
 	}
@@ -441,5 +445,18 @@ void Player::BufSetting(Game& g) {
 	if (xbuf >= RUN_XBUF || -RUN_XBUF >= xbuf) {
 		_spd = RUNSPEED;
 		_move_animespeed = ANIMESPEED_RUN;
+	}
+}
+
+void Player::PauseInput(Game& g) {
+	if (_state == PLAYERSTATE::IDLE || _state == PLAYERSTATE::MOVE || _state == PLAYERSTATE::MOVE) {
+		_pauseinput_flag = true;
+	}
+	else { _pauseinput_flag = false; }
+	if (g.GetTrg() & PAD_INPUT_12 && _pauseinput_flag == true) {
+		auto mp = new ModePause();
+		g.GetMS()->Add(mp, 20, "Pause");
+		auto mg = (ModeGame*)g.GetMS()->Get("Game");
+		mg->SetStopObjProcess(true);
 	}
 }

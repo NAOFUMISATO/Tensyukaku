@@ -22,8 +22,6 @@ TitleLogo::~TitleLogo() {
 void TitleLogo::Init() {
 	_x = 1350;
 	_y = 200;
-	_gx = 0;
-	_gy = -60;
 	_hit_x = -400;
 	_hit_y = -100;
 	_hit_w = 700;
@@ -40,7 +38,9 @@ void TitleLogo::Process(Game& g) {
 }
 
 void TitleLogo::Draw(Game& g) {
-	DrawRotaGraph(_x, _y, 1.0, 0.0, _grhandle, true, false);
+	auto scale = _drg.first;
+	auto angle = _drg.second;
+	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, _isflip);
 #ifdef _DEBUG
 	int& re = std::get<RED>(_debug_color);
 	int& gr = std::get<GREEN>(_debug_color);
@@ -48,7 +48,7 @@ void TitleLogo::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _debug_alpha);		// 半透明描画指定
 	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _debug_fill);	// 半透明の赤で当たり判定描画
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 }
 //ゲームスタート
 GameStart::GameStart() {
@@ -91,10 +91,10 @@ void GameStart::Process(Game& g) {
 }
 
 void GameStart::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	auto scale = _drg.first;
 	auto angle = _drg.second;
-	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, false);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
+	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, _isflip);
 #ifdef _DEBUG
 	int& re = std::get<RED>(_debug_color);
 	int& gr = std::get<GREEN>(_debug_color);
@@ -102,7 +102,7 @@ void GameStart::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _debug_alpha);		// 半透明描画指定
 	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _debug_fill);	// 半透明の赤で当たり判定描画
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 }
 //説明画面
 Explain::Explain() {
@@ -145,10 +145,10 @@ void Explain::Process(Game& g) {
 }
 
 void Explain::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	auto scale = _drg.first;
 	auto angle = _drg.second;
-	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, false);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
+	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, _isflip);
 #ifdef _DEBUG
 	int& re = std::get<RED>(_debug_color);
 	int& gr = std::get<GREEN>(_debug_color);
@@ -156,7 +156,7 @@ void Explain::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _debug_alpha);		// 半透明描画指定
 	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _debug_fill);	// 半透明の赤で当たり判定描画
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 }
 //ゲーム終了
 GameEnd::GameEnd() {
@@ -168,7 +168,7 @@ GameEnd::~GameEnd() {
 
 void GameEnd::Init() {
 	_x = 1800;
-	_y = 970;
+	_y =970;
 	_hit_x = -220;
 	_hit_y = -60;
 	_hit_w = 400;
@@ -181,7 +181,8 @@ void GameEnd::Init() {
 void GameEnd::Process(Game& g) {
 	ObjectBase::Process(g);
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{// iteはカーソルか？
+	{
+		// iteはカーソルか？
 		if ((*ite)->GetObjType() == OBJECTTYPE::CURSOR)
 		{
 			if (IsHit(*(*ite)) == true)
@@ -200,18 +201,18 @@ void GameEnd::Process(Game& g) {
 }
 
 void GameEnd::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	auto scale = _drg.first;
 	auto angle = _drg.second;
-	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, false);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
+	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, _isflip);
 #ifdef _DEBUG
 	int& re = std::get<RED>(_debug_color);
-	int& gr = std::get<GREEN>	(_debug_color);
-	int& bl = std::get<BLUE>	(_debug_color);
+	int& gr = std::get<GREEN>(_debug_color);
+	int& bl = std::get<BLUE>(_debug_color);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _debug_alpha);		// 半透明描画指定
 	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _debug_fill);	// 半透明の赤で当たり判定描画
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 }
 
 //クレジット
@@ -224,7 +225,7 @@ Credit::~Credit() {
 
 void Credit::Init() {
 	_x = 1800;
-	_y = 820;
+	_y =820;
 	_hit_x = -220;
 	_hit_y = -60;
 	_hit_w = 400;
@@ -256,10 +257,10 @@ void Credit::Process(Game& g) {
 }
 
 void Credit::Draw(Game& g) {
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	auto scale = _drg.first;
 	auto angle = _drg.second;
-	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, false);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
+	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, _isflip);
 #ifdef _DEBUG
 	int& re = std::get<RED>(_debug_color);
 	int& gr = std::get<GREEN>(_debug_color);
@@ -267,5 +268,5 @@ void Credit::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _debug_alpha);		// 半透明描画指定
 	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _debug_fill);	// 半透明の赤で当たり判定描画
 #endif
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// 不透明描画指定
 }

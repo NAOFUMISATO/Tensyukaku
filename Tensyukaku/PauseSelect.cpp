@@ -8,12 +8,13 @@
 bool PauseSelect::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
-	_y = 900;
+	_y = 850;
 	_GraphNo = 0;
+	_mode_cnt = 2;
 	_Type = SELECTTYPE::NOSELECT;
 	_trans_flag = true;
 	_grall["PSelect"].resize(3);
-	ResourceServer::LoadDivGraph("res/Mode/PauseSelect.png",3,3,1,1690,340,_grall["PSelect"].data());
+	ResourceServer::LoadDivGraph("res/Mode/PauseSelect.png",3,3,1,1230,275,_grall["PSelect"].data());
 	return true;
 }
 
@@ -39,16 +40,15 @@ bool PauseSelect::Process(Game& g) {
 		break;
 	case SELECTTYPE::RETURNSELECT:
 		_GraphNo = 1;
-		if (g.GetTrg() & PAD_INPUT_1) {
+		if (g.GetTrg() & PAD_INPUT_3) {
 			_mode_cnt = _cnt;
 		}
-		if (frame == 5) {
+		if (frame == 1) {
 			g.GetMS()->Del(this);
 			g.GetMS()->Del(g.GetMS()->Get("Pause"));
 			g.GetMS()->Del(g.GetMS()->Get("PController"));
 			auto mg = (ModeGame*)g.GetMS()->Get("Game");
 			mg->SetStopObjProcess(false);
-			mg->SetStopObjFlag(false);
 		}
 		if (g.GetTrg() & PAD_INPUT_RIGHT) {
 			_Type = SELECTTYPE::GOTITLESELECT;
@@ -56,10 +56,10 @@ bool PauseSelect::Process(Game& g) {
 		break;
 	case SELECTTYPE::GOTITLESELECT:
 		_GraphNo = 2;
-		if (g.GetTrg() & PAD_INPUT_1) {
+		if (g.GetTrg() & PAD_INPUT_3) {
 			_mode_cnt = _cnt;
 		}
-		if (frame == 5) {
+		if (frame == 1) {
 			g.GetMS()->Del(this);
 			g.GetMS()->Del(g.GetMS()->Get("PController"));
 			g.GetMS()->Del(g.GetMS()->Get("Pause"));

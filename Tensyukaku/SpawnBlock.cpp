@@ -45,8 +45,6 @@ void Spawn::Process(Game& g) {
 			if (IsHit(*(*ite)) == true) {
 				Delete(g);
 				if (_spawn_type == "1A") {
-					auto bu1 = new Bushi(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
-					g.GetOS()->Add(bu1);
 					auto bu2 = new Bushi(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
 					g.GetOS()->Add(bu2);
 					auto bu3 = new Bushi(SPAWN1A_BUSHI3_X, SPAWN1A_BUSHI3_Y, SPAWN1A_BUSHI3_FLIP);
@@ -125,10 +123,8 @@ void Spawn::Process(Game& g) {
 				else if (_spawn_type == "4D") {
 					auto sh1 = new Shielder(SPAWN4D_SHIEL1_X, SPAWN4D_SHIEL1_Y, SPAWN4D_SHIEL1_FLIP);
 					g.GetOS()->Add(sh1);
-					auto la1 = new Lancer(SPAWN4D_LANCE1_X, SPAWN4D_LANCE1_Y, SPAWN4D_LANCE1_FLIP);
-					g.GetOS()->Add(la1);
-					auto bu1 = new Bushi(SPAWN4D_BUSHI1_X, SPAWN4D_BUSHI1_Y, SPAWN4D_BUSHI1_FLIP);
-					g.GetOS()->Add(bu1);
+					auto sh2 = new Shielder(900, 7080, true);
+					g.GetOS()->Add(sh2);
 				}
 				else if (_spawn_type == "5A") {
 					auto ni1 = new Ninja(SPAWN5A_NINJA1_X, SPAWN5A_NINJA1_Y, SPAWN5A_NINJA1_FLIP, SPAWN5A_NINJA1_KUNAI);

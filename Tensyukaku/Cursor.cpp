@@ -6,6 +6,7 @@
 #include "ObjectBase.h"
 #include "ModePrologue.h"
 #include "ModeTitle.h"
+#include "ModeCredit.h"
 #include "Math.h"
 #include "ExPlain.h"
 #include "OverlayBlack.h"
@@ -113,10 +114,9 @@ void Cursor::Process(Game& g) {
 		}
 		if (frame == 120 && _creditpush_flag == true) {
 			_input_flag = false;
-			auto ex = new ExPlain();
-			g.GetMS()->Add(ex, 1, "ExPlain");
-			auto mt = (ModeTitle*)g.GetMS()->Get("Title");
-			mt->SetStopObjProcess(true);
+			g.GetMS()->Del(g.GetMS()->Get("Title"));
+			auto mc = new ModeCredit();
+			g.GetMS()->Add(mc, 1, "Credit");
 		}
 		break;
 	}

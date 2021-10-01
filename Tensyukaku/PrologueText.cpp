@@ -126,7 +126,7 @@ bool PrologueText::Process(Game& g) {
 	}
 	/*----------ボタン押下によるスキップ----------*/
 	auto fadeoutframe =85;
-	if (g.GetTrg() & PAD_INPUT_4&&_Skip_Flag==false) {
+	if (g.GetTrg() & PAD_INPUT_3&&_Skip_Flag==false) {
 		_mode_cnt = _cnt;
 		_Skip_Flag = true;
 		//モードオーバーレイ生成
@@ -197,10 +197,10 @@ void		PrologueText::VolumeChange() {
 //Aボタンススキップ画像
 bool PrologueASkip::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = 1650;
-	_y = 1000;
+	_x = 1700;
+	_y = 1030;
 	_trans_flag = true;
-	/*_grhandle=*/ResourceServer::LoadGraph("res/Mode/ASkip.png");
+	_grhandle=ResourceServer::LoadGraph("res/Mode/PrologueSkip.png");
 	return true;
 }
 

@@ -34,7 +34,7 @@ bool ModeTitle::Initialize(Game& g) {
 	_pal = 0;
 	_mode_cnt = _cnt;
 	_stopObjProcess = false;
-	_type = TITLETYPE::AMGLOGO;
+	_trans_flag = true;
 	_grall["AmgLogo"].resize(1);
 	ResourceServer::LoadDivGraph("res/Mode/AmgLogo.png",1,1,1,1920,1080, _grall["AmgLogo"].data());
 	_grall["TeamLogo"].resize(1);

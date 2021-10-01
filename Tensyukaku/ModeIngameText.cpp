@@ -61,7 +61,7 @@ bool ModeIngameText::Draw(Game& g) {
 
 void  ModeIngameText::LoadTextGraph() {
 	_grall["TOP"].resize(1);
-	ResourceServer::LoadDivGraph("res/Mode/IngameText03.png", 1, 1, 1,GRAPH_WIDTH,GRAPH_HEIGHT,_grall["TOP"].data());
+	ResourceServer::LoadDivGraph("res/Mode/IngameText04.png", 1, 1, 1,GRAPH_WIDTH,GRAPH_HEIGHT,_grall["TOP"].data());
 	_grall["UPPER"].resize(1);
 	ResourceServer::LoadDivGraph("res/Mode/IngameText03.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["UPPER"].data());
 	_grall["MIDDLE"].resize(1);

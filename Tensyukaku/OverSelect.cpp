@@ -9,13 +9,13 @@
 bool OverSelect::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;
-	_y = 900;
+	_y = 850;
 	_pal = 0;
 	_GraphNo = 0;
 	_Type = SELECTTYPE::NOSELECT;
 	_trans_flag = true;
 	_grall["PSelect"].resize(3);
-	ResourceServer::LoadDivGraph("res/Mode/OverSelect.png", 3, 3, 1, 1690, 340, _grall["PSelect"].data());
+	ResourceServer::LoadDivGraph("res/Mode/OverSelect.png", 3, 3, 1, 1230, 275, _grall["PSelect"].data());
 	return true;
 }
 
@@ -50,7 +50,7 @@ bool OverSelect::Process(Game& g) {
 		break;
 	case SELECTTYPE::RETRYSELECT:
 		_GraphNo = 1;
-		if (g.GetTrg() & PAD_INPUT_1) {
+		if (g.GetTrg() & PAD_INPUT_3) {
 			_mode_cnt = _cnt;
 			auto ob = new OverlayBlack();
 			ob->SetFade(60, 90, 150, 5);
@@ -70,7 +70,7 @@ bool OverSelect::Process(Game& g) {
 		break;
 	case SELECTTYPE::GOTITLESELECT:
 		_GraphNo = 2;
-		if (g.GetTrg() & PAD_INPUT_1) {
+		if (g.GetTrg() & PAD_INPUT_3) {
 			_mode_cnt = _cnt;
 			auto ob =new OverlayBlack();
 			ob->SetFade(60, 70, 70, 4);

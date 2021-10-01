@@ -21,7 +21,6 @@ void PlayerHp::Init() {
 void PlayerHp::Process(Game& g) {
 	ObjectBase::Process(g);
 	_grhandle = _grall["HP"][_anime["HP"]];
-	_anime["HP"] = (_cnt / 3) % 29;
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		// iteはプレイヤーか？
@@ -30,6 +29,7 @@ void PlayerHp::Process(Game& g) {
 			if (hp <= _life) {
 				_anime["HP"] = 30;
 			}
+			else { _anime["HP"] = (_cnt / 3) % 29; }
 		}
 	}
 }
