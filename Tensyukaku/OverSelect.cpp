@@ -81,7 +81,9 @@ bool OverSelect::Process(Game& g) {
 			g.GetMS()->Del(g.GetMS()->Get("OverLogo"));
 			g.GetMS()->Del(g.GetMS()->Get("Gameover"));
 			g.GetMS()->Del(g.GetMS()->Get("Game"));
+			StopSoundMem(g.GetBgm()["Main"]);
 			auto mt = new ModeTitle();
+			mt->SetTitlebg();
 			g.GetMS()->Add(mt, 0, "Title");
 		}
 		if (g.GetTrg() & PAD_INPUT_LEFT) {

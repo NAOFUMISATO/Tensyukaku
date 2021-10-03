@@ -60,18 +60,18 @@ void CursorParticle1::SetState() {
 	}
 	else if (_hit_type == "STARTHIT") {
 		_rgb = std::make_tuple(240, 70, 5);
-		_cnt = 70;
+		_cnt = 50;
 	}
 	else if (_hit_type == "EXHIT") {
 		_rgb = std::make_tuple(240, 70, 5);
-		_cnt = 70;
+		_cnt = 50;
 	}
 	else if (_hit_type == "ENDHIT") {
 		_rgb = std::make_tuple(240, 70, 5);
-		_cnt = 70;
+		_cnt = 50;
 	}
 	else if (_hit_type == "CREDITHIT") {
 		_rgb = std::make_tuple(240, 70, 5);
-		_cnt = 70;
+		_cnt = 50;
 	}
 };

@@ -93,6 +93,7 @@ void Lancer::HitJudge(Game& g) {
 				_life--;
 				_action_cnt = _cnt;
 				_state = ENEMYSTATE::DEAD;
+				PlaySoundMem(_se["DeadV"],DX_PLAYTYPE_BACK,true);
 				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 				{
@@ -151,16 +152,19 @@ void Lancer::LoadPicture() {
 //効果音読み込み関数
 void Lancer::LoadSE() {
 	_se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/LancerAttack.wav");
+	_se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead06.wav");
 }
 
 //効果音ボリューム初期値設定関数
 void	Lancer::VolumeInit() {
 	_vpal["Attack"] = 255;
+	_vpal["DeadV"] = 255;
 }
 
 //ボリューム変更関数
 void	Lancer::VolumeChange() {
 	ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
+	ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
 
 

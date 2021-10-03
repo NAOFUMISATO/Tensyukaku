@@ -331,7 +331,7 @@ void Shielder::GuardAttack(Game& g) {
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
 				std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
-				auto rl = new LanceReserveLight(xy, dxy, true);
+				auto rl = new LanceReserveLight(xy, dxy, false);
 				g.GetOS()->Add(rl);
 			}
 		}

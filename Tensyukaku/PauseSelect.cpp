@@ -68,7 +68,9 @@ bool PauseSelect::Process(Game& g) {
 			mg->SetStopObjFlag(false);
 			g.GetMS()->Del(g.GetMS()->Get("Game"));
 			auto mt = new ModeTitle();
+			mt->SetTitlebg();
 			g.GetMS()->Add(mt, 0, "Title");	
+			StopSoundMem(g.GetBgm()["Main"]);
 		}
 		if(g.GetTrg() & PAD_INPUT_LEFT) {
 			_Type = SELECTTYPE::RETURNSELECT;

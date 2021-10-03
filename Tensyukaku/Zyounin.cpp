@@ -123,6 +123,7 @@ void Zyounin::HitJudge(Game& g) {
 			{
 				_life--;
 				_action_cnt = _cnt;
+				PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 				_state = ENEMYSTATE::DEAD;
 			}
 			break;
@@ -156,16 +157,22 @@ void Zyounin::LoadPicture() {
 //効果音読み込み関数
 void  Zyounin::LoadSE() {
 	_se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/NinjaAttack.wav");
+	_se["Kunai"] = ResourceServer::LoadSoundMem("se/Enemy/Kunai.wav");
+	_se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead05.wav");
 }
 
 //効果音ボリューム初期値設定関数
 void	 Zyounin::VolumeInit() {
 	_vpal["Attack"] = 255;
+	_vpal["Kunai"] = 255;
+	_vpal["DeadV"] = 255;
 }
 
 //ボリューム変更関数
 void	 Zyounin::VolumeChange() {
 	ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
+	ChangeVolumeSoundMem(_vpal["Kunai"], _se["Kunai"]);
+	ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
 
 //デバッグ用関数

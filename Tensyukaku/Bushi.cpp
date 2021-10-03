@@ -94,6 +94,7 @@ void Bushi::HitJudge(Game& g) {
 			{
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_action_cnt = _cnt;
+				PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 				_state = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -134,9 +135,12 @@ void Bushi::HitJudge(Game& g) {
 							g.GetOS()->Add(mb);
 						}
 					}
+					PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 					_state = ENEMYSTATE::DEAD;
 				}
-				else { _state = ENEMYSTATE::DAMAGE; }
+				else {
+					PlaySoundMem(_se["DamageV"], DX_PLAYTYPE_BACK, true);
+					_state = ENEMYSTATE::DAMAGE; }
 				_action_cnt = _cnt;
 				_anime["Attack"] = 0;
 			
@@ -184,16 +188,22 @@ void Bushi::LoadPicture() {
 //SE読み込み関数
 void Bushi::LoadSE() {
 	_se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/BushiAttack.wav");
+	_se["DamageV"] = ResourceServer::LoadSoundMem("se/Voice/Dead01.wav");
+	_se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead04.wav");
 }
 
 //効果音ボリューム初期値設定関数
 void	Bushi::VolumeInit() {
 	_vpal["Attack"] = 255;
+	_vpal["DamageV"] = 255;
+	_vpal["DeadV"] = 255;
 }
 
 //ボリューム変更関数
 void	Bushi::VolumeChange() {
 	ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
+	ChangeVolumeSoundMem(_vpal["DamageV"], _se["DamageV"]);
+	ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
 //デバッグ用関数
 void Bushi::DebugDraw(Game& g) {

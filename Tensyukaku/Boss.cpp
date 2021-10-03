@@ -11,7 +11,9 @@ Boss::Boss(int x,int y,bool flip) {
 	_y = y;
 	_isflip = flip;
 	Init();
-	LoadActionGraph();
+	LoadPicture();
+	LoadSE();
+	VolumeInit();
 }
 Boss::~Boss() {
 }
@@ -33,6 +35,7 @@ void Boss::Init() {
 void Boss::Process(Game& g) {
 	ObjectBase::Process(g);
 	EventChange(g);
+	VolumeChange();
 	/*---状態毎の処理---*/
 	switch (_State) {
 	case BOSSSTATE::IDLE:
@@ -106,6 +109,7 @@ void Boss::BossEventB(Game& g) {
 	}
 	if (frame == 290) {
 		_isflip = true;
+		PlaySoundMem(_se["Dead01V"],DX_PLAYTYPE_BACK,true);
 	}
 	if (frame > 290) {
 		for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -117,6 +121,7 @@ void Boss::BossEventB(Game& g) {
 				if (IsHit(*(*ite)) == true) {
 					(*ite)->Delete(g);
 					_action_cnt = _cnt;
+					PlaySoundMem(_se["Dead03V"], DX_PLAYTYPE_BACK, true);
 					_State = BOSSSTATE::DAMAGE;
 				}
 			}
@@ -134,6 +139,7 @@ void Boss::Damage(Game& g) {
 	}
 	if (frame == DAMAGE_ALLFRAME) {
 		_action_cnt = _cnt;
+		PlaySoundMem(_se["Dead02V"], DX_PLAYTYPE_BACK, true);
 		_State = BOSSSTATE::DEAD;
 		auto bloodtype = 1;
 		auto bb = new BossBlood(_x + _gx, _y + _gy, bloodtype);
@@ -175,7 +181,7 @@ void Boss::EventChange(Game& g) {
 	}
 }
 //ボスの画像読み込み関数
-void Boss::LoadActionGraph() {
+void Boss::LoadPicture() {
 	_grall["Idle"].resize(IDLE_ANIMEMAX);
 	ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Idle"].data());
 	_grall["Move"].resize(MOVE_ANIMEMAX);
@@ -188,6 +194,21 @@ void Boss::LoadActionGraph() {
 	ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
 //ボスの効果音読み込み関数
-void Boss::LoadActionSE() {
+void Boss::LoadSE() {
+	_se["Dead01V"] = ResourceServer::LoadSoundMem("se/Voice/BossDead01.wav");
+	_se["Dead02V"] = ResourceServer::LoadSoundMem("se/Voice/BossDead02.wav");
+	_se["Dead03V"] = ResourceServer::LoadSoundMem("se/Voice/Dead03.wav");
+}
+//効果音ボリューム初期値設定関数
+void	Boss::VolumeInit() {
+	_vpal["Dead01V"] = 255;
+	_vpal["Dead02V"] = 255;
+	_vpal["Dead03V"] = 255;
+}
 
+//ボリューム変更関数
+void	Boss::VolumeChange() {
+	ChangeVolumeSoundMem(_vpal["Dead01V"], _se["Dead01V"]);
+	ChangeVolumeSoundMem(_vpal["Dead02V"], _se["Dead02V"]);
+	ChangeVolumeSoundMem(_vpal["Dead03V"], _se["Dead03V"]);
 }

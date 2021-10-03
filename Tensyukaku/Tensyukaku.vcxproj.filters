@@ -360,9 +360,6 @@
     <ClCompile Include="TutorialBoard.cpp">
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>ソース ファイル\Object\UI</Filter>
-    </ClCompile>
     <ClCompile Include="ModeBossBefore.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
@@ -610,9 +607,6 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>ヘッダー ファイル\Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="ModeBossBefore.h">
       <Filter>ヘッダー ファイル\Mode</Filter>

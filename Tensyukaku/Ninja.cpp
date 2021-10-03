@@ -93,6 +93,7 @@ void Ninja::HitJudge(Game& g) {
 				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
 				_life--;
 				_action_cnt = _cnt;
+				PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 				_state = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
 				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -154,18 +155,21 @@ void Ninja::LoadPicture() {
 void Ninja::LoadSE() {
 	_se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/NinjaAttack.wav");
 	_se["Kunai"] = ResourceServer::LoadSoundMem("se/Enemy/Kunai.wav");
+	_se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead05.wav");
 }
 
 //効果音ボリューム初期値設定関数
 void	Ninja::VolumeInit() {
 	_vpal["Attack"] = 255;
 	_vpal["Kunai"] = 255;
+	_vpal["DeadV"] = 255;
 }
 
 //ボリューム変更関数
 void	Ninja::VolumeChange() {
 	ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
 	ChangeVolumeSoundMem(_vpal["Kunai"], _se["Kunai"]);
+	ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
 //デバッグ用関数
 void Ninja::DebugDraw(Game& g) {

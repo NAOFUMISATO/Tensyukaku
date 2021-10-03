@@ -20,38 +20,46 @@ bool ModeGame::Initialize(Game& g) {
 	_eventhappen = new EventHappen(g);
 	/*-----------各チェックポイント通過によるプレイヤー初期座標-------------*/
 	if (g.GetCPointFlag()["11A"] == true) {
-		_Player_x = CPOINT_11A_X;
-		_Player_y = CPOINT_11A_Y;
+		_player_x = CPOINT_11A_X;
+		_player_y = CPOINT_11A_Y;
+		_player_flip = false;
 	}
 	else if (g.GetCPointFlag()["8A"] == true) {
-		_Player_x = CPOINT_8A_X;
-		_Player_y = CPOINT_8A_Y;
+		_player_x = CPOINT_8A_X;
+		_player_y = CPOINT_8A_Y;
+		_player_flip = true;
 	}
 	else if(g.GetCPointFlag()["5B"] == true){
-		_Player_x = CPOINT_5B_X;
-		_Player_y = CPOINT_5B_Y;
+		_player_x = CPOINT_5B_X;
+		_player_y = CPOINT_5B_Y;
+		_player_flip = true;
 	}
 	else if (g.GetCPointFlag()["5A"] == true) {
-		_Player_x = CPOINT_5A_X;
-		_Player_y = CPOINT_5A_Y;
+		_player_x = CPOINT_5A_X;
+		_player_y = CPOINT_5A_Y;
+		_player_flip = true;
 	}
 	else if (g.GetCPointFlag()["4A"] == true) {
-		_Player_x = CPOINT_4A_X;
-		_Player_y = CPOINT_4A_Y;
+		_player_x = CPOINT_4A_X;
+		_player_y = CPOINT_4A_Y;
+		_player_flip = false;
 	}
 	else if (g.GetCPointFlag()["3A"] == true) {
-		_Player_x = CPOINT_3A_X;
-		_Player_y = CPOINT_3A_Y;
+		_player_x = CPOINT_3A_X;
+		_player_y = CPOINT_3A_Y;
+		_player_flip = true;
 	}
 	else if (g.GetCPointFlag()["2A"] == true) {
-		_Player_x = CPOINT_2A_X;
-		_Player_y = CPOINT_2A_Y;
+		_player_x = CPOINT_2A_X;
+		_player_y = CPOINT_2A_Y;
+		_player_flip = false;
 	}
 	else {
-		_Player_x = FIRST_POSITION_X;
-		_Player_y = FIRST_POSITION_Y;
+		_player_x = FIRST_POSITION_X;
+		_player_y = FIRST_POSITION_Y;
+		_player_flip = true;
 	}
-	auto pl = new Player(_Player_x,_Player_y);
+	auto pl = new Player(_player_x,_player_y,_player_flip);
 	g.GetOS()->Add(pl);
 	// カメラ＆マップ初期化
 	g.SetmapW(5760);

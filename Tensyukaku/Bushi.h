@@ -110,8 +110,4 @@ namespace BInfo {
 	constexpr auto DEAD_ANIMEFRAME = DEAD_ANIMEMAX * ANIMESPEED_DEAD;		//アニメーションフレーム（全ての画像枚数×アニメスピード）
 	constexpr auto DEAD_ALLFRAME = 120 ;		//死亡全フレーム
 	constexpr auto FADEOUT_SPEED = 4;			//フェードアウトスピード
-	/*----------SE関係----------*/
-	constexpr auto WALK_SE = "se/Footstep.wav";			//巡回
-	constexpr auto ATTACK_SE = "se/slash3.wav";			//攻撃	
-
 }

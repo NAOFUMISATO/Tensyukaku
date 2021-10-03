@@ -6,7 +6,7 @@
 class Game;
 class Player : public ObjectBase {
 public:
-	Player( int x,int y);
+	Player( int x,int y,bool flip);
 	~Player();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::PLAYER; }
 

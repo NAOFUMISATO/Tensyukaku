@@ -41,7 +41,12 @@ void Player::Swordout(Game& g) {
 	auto vpal = g.GetVpal();
 	if (frame == 1) {
 		vpal["Main"] = 0;
-		PlaySoundMem(g.GetBgm()["Main"], DX_PLAYTYPE_LOOP, true);
+		if (g.GetCPointFlag()["11A"] == true) {
+			PlaySoundMem(g.GetBgm()["Boss"], DX_PLAYTYPE_LOOP, true);
+		}
+		else {
+			PlaySoundMem(g.GetBgm()["Main"], DX_PLAYTYPE_LOOP, true);
+		}
 	}
 	if (frame < SWORDOUT_ANIMEFRAME && vpal["Main"] < 120) {
 		vpal["Main"] += 2;
@@ -482,6 +487,7 @@ void Player::StairMove(Game& g) {
 		if (_x <= _Stair_x + StInfo::POSITION_HITX) {
 			_isflip = true;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
+			PlaySoundMem(_se["Stair"], DX_PLAYTYPE_BACK, true);
 			_state = PLAYERSTATE::STAIRUP;
 		}
 	}
@@ -493,6 +499,7 @@ void Player::StairMove(Game& g) {
 		if (_x >= _Stair_x + StInfo::POSITION_HITX + StInfo::COLLISION_WIDTH) {
 			_isflip = false;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
+			PlaySoundMem(_se["Stair"], DX_PLAYTYPE_BACK, true);
 			_state = PLAYERSTATE::STAIRUP;
 		}
 	}
@@ -520,6 +527,7 @@ void Player::StairUp(Game& g) {
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
 		_nohit_flag = false;
 		_state = PLAYERSTATE::IDLE;
+		StopSoundMem(_se["Stair"]);
 	}
 }
 
@@ -539,6 +547,7 @@ void Player::BossStairMove(Game& g) {
 			auto ol = new OverlayBlack();
 			ol->SetFade(90, 270, 360, 3);
 			g.GetMS()->Add(ol, 20, "OverlayBlack");
+			PlaySoundMem(_se["Stair"], DX_PLAYTYPE_BACK, true);
 			_state = PLAYERSTATE::BOSSSTAIRUP;
 			_action_cnt = _cnt;
 		}
@@ -554,6 +563,7 @@ void Player::BossStairMove(Game& g) {
 			auto ol = new OverlayBlack();
 			ol->SetFade(90, 270, 360, 3);
 			g.GetMS()->Add(ol, 20, "OverlayBlack");
+			PlaySoundMem(_se["Stair"], DX_PLAYTYPE_BACK, true);
 			_state = PLAYERSTATE::BOSSSTAIRUP;
 			_action_cnt = _cnt;
 		}
@@ -584,6 +594,7 @@ void Player::BossStairUp(Game& g) {
 	_y = positionY;
 	auto upheight = _y - _Player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
+		StopSoundMem(_se["Stair"]);
 		auto bb = new ModeBossBefore();
 		g.GetMS()->Add(bb, 5, "BossBefore");
 		auto mg = (ModeGame*)g.GetMS()->Get("Game");
@@ -636,6 +647,8 @@ void Player::BossEventB(Game& g) {
 	if (frame > 310) {
 		_grhandle = _grall["Idle"][_anime["Idle"]];
 		_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	}
+	if (frame > 420) {
 		if (g.GetTrg() & PAD_INPUT_1) {
 			_state = PLAYERSTATE::SPECIALATTACK;
 			_action_cnt = _cnt;

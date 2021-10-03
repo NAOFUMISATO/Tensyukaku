@@ -26,8 +26,9 @@ private:
 	bool	_stopObj_Flag;		//オブジェクト処理がストップしているかのフラグ
 	// BGM用
 	int		_bgm;
-	int		_Player_x;
-	int		_Player_y;
+	int		_player_x;
+	int		_player_y;
+	bool  _player_flip;
 	BackGround	_bg;
 	GimikPlacement* _gimikplacement;
 	EnemySpawn* _enemyspawn;

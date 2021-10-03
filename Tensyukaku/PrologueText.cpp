@@ -200,6 +200,7 @@ bool PrologueASkip::Initialize(Game& g) {
 	_x = 1700;
 	_y = 1030;
 	_trans_flag = true;
+	_mode_cnt = _cnt;
 	_grhandle=ResourceServer::LoadGraph("res/Mode/PrologueSkip.png");
 	return true;
 }
@@ -211,6 +212,13 @@ bool PrologueASkip::Terminate(Game& g) {
 
 bool PrologueASkip::Process(Game& g) {
 	base::Process(g);
+	auto frame = _cnt - _mode_cnt;
+	if (frame >=550) {
+		_pal -= 5;
+	}
+	if (_pal == 0) {
+		g.GetMS()->Del(this);
+	}
 	return true;
 }
 

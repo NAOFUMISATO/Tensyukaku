@@ -9,9 +9,11 @@ public:
 	void Init()override;
 	void Process(Game& g)override;
 	void Draw(Game& g)override;
-	void LoadSE();
 private:
 	void	HitJudge(Game& g);//各当たり判定の処理
+	void LoadSE();//効果音読み込み関数
+	void	VolumeInit();	//効果音ボリューム初期値設定関数
+	void	VolumeChange();	//ボリューム変更関数
 	
 	enum class CURSOLSTATE { NOHIT, STARTHIT, EXHIT, ENDHIT,CREDITHIT};
 	CURSOLSTATE _state;		//カーソルの状態変数

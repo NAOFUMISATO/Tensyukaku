@@ -18,9 +18,10 @@ private:
 	void Damage(Game& g);			//被ダメ時の処理
 	void Dead(Game& g);				//死亡時の処理
 	void EventChange(Game& g);		//ボスイベントへの状態遷移処理
-	void LoadActionGraph();			//ボスの画像読み込み関数
-	void LoadActionSE();			//ボスの効果音読み込み関数
-
+	void LoadPicture();			//ボスの画像読み込み関数
+	void LoadSE();			//ボスの効果音読み込み関数
+	void VolumeInit();	//効果音ボリューム初期値設定関数
+	void VolumeChange();	//ボリューム変更関数
 	/*----------メンバ変数-----------*/
 	BOSSSTATE _State;
 	int _WalkSpeed;

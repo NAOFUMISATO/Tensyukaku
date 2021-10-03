@@ -38,6 +38,7 @@ bool ModeEpilogue::Process(Game& g) {
 	if (frame == BG_FADEOUT_ENDFRAME) {
 		_pal = 0;
 		g.GetMS()->Del(g.GetMS()->Get("Epilogue"));
+		StopSoundMem(g.GetBgm()["Epilogue"]);
 		auto mt = new ModeTitle();
 		g.GetMS()->Add(mt, 0, "Title");
 	}

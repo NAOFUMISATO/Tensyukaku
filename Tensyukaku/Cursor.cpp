@@ -15,6 +15,7 @@ using namespace CuInfo;
 Cursor::Cursor():_state(CURSOLSTATE::NOHIT){
 	Init();
 	LoadSE();
+	VolumeInit();
 };
 Cursor::~Cursor() {
 }
@@ -41,6 +42,7 @@ void Cursor::Init() {
 
 void Cursor::Process(Game& g) {
 	ObjectBase::Process(g);
+	VolumeChange();
 	auto frame = _cnt - _action_cnt;
 	switch (_state) {
 	case CURSOLSTATE::NOHIT:
@@ -171,16 +173,37 @@ void Cursor::Process(Game& g) {
 		_x = positionX;
 		_y = positionY;
 	}
+	if (_x<= 0||_x>=SCREEN_W) {
+		_x =_before_x;
+	}
+	if (_y <= 0 || _y >= SCREEN_H) {
+		_y = _before_y;
+	}
 	HitJudge(g);
 }
 
 void Cursor::Draw(Game& g) {
 	ObjectBase::Draw(g);
 }
-
+//効果音読み込み関数
 void Cursor::LoadSE() {
 	_se["GameStart"] = ResourceServer::LoadSoundMem("se/OutGame/GameStartPush.wav");
 	_se["OtherSelect"] = ResourceServer::LoadSoundMem("se/OutGame/OtherSelectPush.wav");
+	_se["SelectHit"] = ResourceServer::LoadSoundMem("se/OutGame/SelectHit.wav");
+}
+
+//効果音ボリューム初期値設定関数
+void	Cursor::VolumeInit() {
+	_vpal["GameStart"] = 255;
+	_vpal["OtherSelect"] = 255;
+	_vpal["SelectHit"] = 150;
+}
+
+//ボリューム変更関数
+void	Cursor::VolumeChange() {
+	ChangeVolumeSoundMem(_vpal["GameStart"], _se["GameStart"]);
+	ChangeVolumeSoundMem(_vpal["OtherSelect"], _se["OtherSelect"]);
+	ChangeVolumeSoundMem(_vpal["SelectHit"], _se["SelectHit"]);
 }
 
 void Cursor::HitJudge(Game& g) {
@@ -192,6 +215,7 @@ void Cursor::HitJudge(Game& g) {
 		case ObjectBase::OBJECTTYPE::GAMESTART:
 			if (_state == CURSOLSTATE::NOHIT) {
 				if (IsHit(*(*ite)) == true) {
+					PlaySoundMem(_se["SelectHit"], DX_PLAYTYPE_BACK, true);
 					_state = CURSOLSTATE::STARTHIT;
 
 				}
@@ -205,6 +229,7 @@ void Cursor::HitJudge(Game& g) {
 		case ObjectBase::OBJECTTYPE::EXPLAIN:
 			if (_state == CURSOLSTATE::NOHIT) {
 				if (IsHit(*(*ite)) == true) {
+					PlaySoundMem(_se["SelectHit"], DX_PLAYTYPE_BACK, true);
 					_state = CURSOLSTATE::EXHIT;
 				}
 			}
@@ -217,6 +242,7 @@ void Cursor::HitJudge(Game& g) {
 		case ObjectBase::OBJECTTYPE::GAMEEND:
 			if (_state == CURSOLSTATE::NOHIT) {
 				if (IsHit(*(*ite)) == true) {
+					PlaySoundMem(_se["SelectHit"], DX_PLAYTYPE_BACK, true);
 					_state = CURSOLSTATE::ENDHIT;
 				}
 			}
@@ -229,6 +255,7 @@ void Cursor::HitJudge(Game& g) {
 		case ObjectBase::OBJECTTYPE::CREDIT:
 			if (_state == CURSOLSTATE::NOHIT) {
 				if (IsHit(*(*ite)) == true) {
+					PlaySoundMem(_se["SelectHit"], DX_PLAYTYPE_BACK, true);
 					_state = CURSOLSTATE::CREDITHIT;
 				}
 			}

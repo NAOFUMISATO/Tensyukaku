@@ -12,12 +12,11 @@
 #include "OverlayFlame.h"
 #include "PlayerHp.h"
 #include "IaiGauge.h"
-#include "Button.h"
 #include <vector>
 #include <sstream>
 
 using namespace PInfo;
-Player::Player(int x,int y) :
+Player::Player(int x,int y,bool flip) :
 	_move_animespeed(0),
 	_star_flag(false),
 	_ui_flag(false),
@@ -31,6 +30,7 @@ Player::Player(int x,int y) :
 {
 	_x = x;
 	_y = y;
+	_isflip = flip;
 	Init();
 	LoadPicture();
 	LoadSE();
@@ -59,7 +59,6 @@ void Player::Init()
 	_action_cnt = _cnt;
 	_spd = 0;
 	_iai_gauge = 0;
-	_isflip = FIRST_FLIP;
 	_alpha = FIRST_ALPHA;
 	_position = { 0,0 };
 	_CameraX = 500;
@@ -217,6 +216,7 @@ void Player::LoadSE() {
 	_se["LowAttack"] = ResourceServer::LoadSoundMem("se/Player/LowAttack.wav");
 	_se["Kick"] = ResourceServer::LoadSoundMem("se/Player/Kick.wav");
 	_se["Sway"] = ResourceServer::LoadSoundMem("se/Player/Sway.wav");
+	_se["Stair"] = ResourceServer::LoadSoundMem("se/Player/Stair.wav");
 	_se["Damage"] = ResourceServer::LoadSoundMem("se/Player/Damage.wav");
 	_se["Dead"] = ResourceServer::LoadSoundMem("se/Player/Dead.wav");
 	_se["Iai"] = ResourceServer::LoadSoundMem("se/Player/Iai.wav");
@@ -225,12 +225,13 @@ void Player::LoadSE() {
 
 //å¯â âπÉ{ÉäÉÖÅ[ÉÄèâä˙ílê›íËä÷êî
 void	Player::VolumeInit() {
-	_vpal["BStartGame"] = 255;
+	_vpal["BStartGame"] = 200;
 	_vpal["Walk"] = 255;
 	_vpal["MiddleAttack"] = 255;
 	_vpal["LowAttack"] = 255;
 	_vpal["Kick"] = 255;
 	_vpal["Sway"] = 255;
+	_vpal["Stair"] = 255;
 	_vpal["Damage"] = 255;
 	_vpal["Dead"] = 255;
 	_vpal["Iai"] = 255;
@@ -246,6 +247,7 @@ void	Player::VolumeChange() {
 	ChangeVolumeSoundMem(_vpal["LowAttack"], _se["LowAttack"]);
 	ChangeVolumeSoundMem(_vpal["Kick"], _se["Kick"]);
 	ChangeVolumeSoundMem(_vpal["Sway"], _se["Sway"]);
+	ChangeVolumeSoundMem(_vpal["Stair"], _se["Stair"]);
 	ChangeVolumeSoundMem(_vpal["Damage"], _se["Damage"]);
 	ChangeVolumeSoundMem(_vpal["Dead"], _se["Dead"]);
 	ChangeVolumeSoundMem(_vpal["Iai"], _se["Iai"]);

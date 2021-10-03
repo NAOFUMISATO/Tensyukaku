@@ -108,6 +108,7 @@ void Shielder::HitJudge(Game& g) {
 					_life--;
 					_action_cnt = _cnt;
 					_state = ENEMYSTATE::DEAD;
+					PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 					//居合ゲージの増加
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 					{
@@ -139,6 +140,7 @@ void Shielder::HitJudge(Game& g) {
 					_Shield_Cnt = _cnt;
 					_action_cnt = _cnt;
 					_state = ENEMYSTATE::GUARDBREAK;
+					PlaySoundMem(_se["GuardBreakV"], DX_PLAYTYPE_BACK, true);
 				}
 			}
 			break;
@@ -258,16 +260,22 @@ void Shielder::LoadPicture() {
 //効果音読み込み関数
 void Shielder::LoadSE() {
 	_se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/ShieldAttack.wav");
+	_se["GuardBreakV"] = ResourceServer::LoadSoundMem("se/Voice/Dead02.wav");
+	_se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead06.wav");
 }
 
 //効果音ボリューム初期値設定関数
 void	Shielder::VolumeInit() {
 	_vpal["Attack"] = 255;
+	_vpal["GuardBreakV"] = 255;
+	_vpal["DeadV"] = 255;
 }
 
 //ボリューム変更関数
 void	Shielder::VolumeChange() {
 	ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
+	ChangeVolumeSoundMem(_vpal["GuardBreakV"], _se["GuardBreakV"]);
+	ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
 
 //デバッグ用関数

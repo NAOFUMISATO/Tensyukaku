@@ -16,6 +16,10 @@ bool ModeCredit::Initialize(Game& g) {
 	_start_flag = true;
 	_end_flag = false;
 	_grhandle=ResourceServer::LoadGraph("res/Mode/ModeCredit.png");
+	_se["CreditOpen"] = ResourceServer::LoadSoundMem("se/OutGame/CreditOpen.wav");
+	_se["CreditMove"] = ResourceServer::LoadSoundMem("se/OutGame/CreditMove.wav");
+	_vpal["CreditOpen"] = 200;
+	_vpal["CreditMove"] = 200;
 	return true;
 }
 
@@ -26,7 +30,12 @@ bool ModeCredit::Terminate(Game& g) {
 
 bool ModeCredit::Process(Game& g) {
 	base::Process(g);
+	ChangeVolumeSoundMem(_vpal["CreditOpen"], _se["CreditOpen"]);
+	ChangeVolumeSoundMem(_vpal["CreditMove"], _se["CreditMove"]);
 	auto frame = _cnt - _mode_cnt;
+	if (frame == 1) {
+		PlaySoundMem(_se["CreditOpen"],DX_PLAYTYPE_BACK,true);
+	}
 	if (frame<FADE_FRAME&&_start_flag==true) {
 		_pal += FADE_SPEED;
 	}
@@ -44,9 +53,11 @@ bool ModeCredit::Process(Game& g) {
 		g.GetMS()->Add(mt, 0, "Title");
 	}
 	if (g.GetTrg() & PAD_INPUT_LEFT&&_x==960) {
+		PlaySoundMem(_se["CreditMove"], DX_PLAYTYPE_BACK, true);
 		_leftmove_flag = true;
 	}
 	if (g.GetTrg() & PAD_INPUT_RIGHT && _x == 2880) {
+		PlaySoundMem(_se["CreditMove"], DX_PLAYTYPE_BACK, true);
 		_rightmove_flag = true;
 	}
 	if (g.GetTrg() & PAD_INPUT_4) {
@@ -87,8 +98,8 @@ bool ModeCredit::Draw(Game& g) {
 }
 
 bool Guide::Initialize(Game& g) {
-	_x = 1500;
-	_y = 980;
+	_x = 1800;
+	_y = 100;
 	_pal = 255;
 	_trans_flag = true;
 	_grhandle = ResourceServer::LoadGraph("res/Mode/MoveGuide.png");

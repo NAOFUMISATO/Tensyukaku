@@ -56,8 +56,8 @@ void ObjectBase::Draw(Game& g) {
 		auto y = _y + _gy - GC->GetscrY();
 		auto scale = _drg.first;
 		auto angle = _drg.second;
-		_before_x = _x + _gx;
-		_before_y = _y + _gy;
+		_before_x = _x;
+		_before_y = _y ;
 		_dx = x;
 		_dy = y;
 		if (_draw_flag == true) {
