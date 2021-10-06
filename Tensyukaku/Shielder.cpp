@@ -126,6 +126,9 @@ void Shielder::HitJudge(Game& g) {
 						}
 					}
 				}
+				else {
+					PlaySoundMem(_se["Block"], DX_PLAYTYPE_BACK, true);
+				}
 			}
 			break;
 		case ObjectBase::OBJECTTYPE::KICK:
@@ -260,6 +263,7 @@ void Shielder::LoadPicture() {
 //効果音読み込み関数
 void Shielder::LoadSE() {
 	_se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/ShieldAttack.wav");
+	_se["Block"] = ResourceServer::LoadSoundMem("se/Enemy/ShieldBlock.wav");
 	_se["GuardBreakV"] = ResourceServer::LoadSoundMem("se/Voice/Dead02.wav");
 	_se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead06.wav");
 }
@@ -267,13 +271,15 @@ void Shielder::LoadSE() {
 //効果音ボリューム初期値設定関数
 void	Shielder::VolumeInit() {
 	_vpal["Attack"] = 255;
+	_vpal["Block"] = 255;
 	_vpal["GuardBreakV"] = 255;
-	_vpal["DeadV"] = 255;
+	_vpal["DeadV"] = 180;
 }
 
 //ボリューム変更関数
 void	Shielder::VolumeChange() {
 	ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
+	ChangeVolumeSoundMem(_vpal["Block"], _se["Block"]);
 	ChangeVolumeSoundMem(_vpal["GuardBreakV"], _se["GuardBreakV"]);
 	ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }

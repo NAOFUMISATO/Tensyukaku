@@ -9,6 +9,7 @@
 
 // アプリの初期化
 // 起動時に1回だけ実行される
+
 Game::Game()
 {
 	_gkey = 0;
@@ -91,6 +92,7 @@ void	Game::VolumeInit() {
 	_vpal["Boss"] = 150;
 	_vpal["Flame"] = 255;
 }
+
 
 //BGMのボリューム変更関数
 void	Game::VolumeChange() {

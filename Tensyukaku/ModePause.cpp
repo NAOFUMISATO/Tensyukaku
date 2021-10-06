@@ -17,10 +17,13 @@ bool ModePause::Initialize(Game& g) {
 	_pal = 200;
 	_mode_cnt = _cnt;
 	_grhandle = ResourceServer::LoadGraph("res/Mode/Black.png");
+	_se["Appear"] = ResourceServer::LoadSoundMem("se/OutGame/Pause.wav");
+	_vpal["Appear"] = 255;
 	auto ps = new PauseSelect();
 	g.GetMS()->Add(ps, 25, "PSelect");
 	auto pc = new PController();
 	g.GetMS()->Add(pc, 25, "PController");
+	PlaySoundMem(_se["Appear"],DX_PLAYTYPE_BACK,true);
 	return true;
 }
 
@@ -30,6 +33,7 @@ bool ModePause::Terminate(Game& g) {
 }
 
 bool ModePause::Process(Game& g) {
+	ChangeVolumeSoundMem(_vpal["Appear"], _se["Appear"]);
 	base::Process(g);
 	return true;
 }

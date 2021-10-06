@@ -29,10 +29,10 @@ void Flame::Init() {
 
 void Flame::Process(Game& g) {
 ObjectBase::Process(g);
+     ChangeVolumeSoundMem(_vpal["Flame"], _se["Flame"]);
 	auto frame = _cnt-_action_cnt;
 	_grhandle = _grall["Flame"][_anime["Flame"]];
 	_anime["Flame"] = (_cnt / ANIMESPEED_FLAME) % FLAME_ANIMEMAX;
-	
 	if (frame >= FLAME_ANIMEFRAME && FLAME_ALLFLAME > frame) {
 		_alpha -= FLAME_FADEOUTSPEED;
 	}

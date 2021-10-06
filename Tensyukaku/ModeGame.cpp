@@ -68,8 +68,6 @@ bool ModeGame::Initialize(Game& g) {
 	g.SetcvY(g.GetmapH() - SCREEN_H);
 	//オブジェクト処理を止める
 	_stopObjProcess = false;
-	//ポーズ画面が出現しているか
-	_stopObj_Flag = false;
 	return true;
 }
 

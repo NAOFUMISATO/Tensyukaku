@@ -74,7 +74,12 @@ void Zyounin::Patrol(Game& g) {
 									_isflip = true;
 								}
 								else { _isflip = false; }
-								_state = ENEMYSTATE::COMING;
+								if (_Kunai_Stock > 0) {
+									_state = ENEMYSTATE::THROW;
+								}
+								else {
+									_state = ENEMYSTATE::COMING;
+								}
 							}
 						}
 					}
@@ -118,7 +123,12 @@ void Zyounin::Patrol(Game& g) {
 								}
 								else { _isflip = false; }
 								_action_cnt = _cnt;
-								_state = ENEMYSTATE::COMING;
+								if (_Kunai_Stock > 0) {
+									_state = ENEMYSTATE::THROW;
+								}
+								else {
+									_state = ENEMYSTATE::COMING;
+								}
 							}
 						}
 					}

@@ -50,9 +50,9 @@ public:
 	void	SetRestartFlag(bool restartflag) { _restart_flag = restartflag; }
 	void	SetCPointFlag(std::unordered_map<std::string, bool> cpointflag) { _cpoint_flag = cpointflag; }
 	void   SetVpal(std::unordered_map<std::string, int> vpal) { _vpal = vpal; }
+	void	VolumeInit();//BGMのボリューム初期値
 private:
 	void		LoadBgm();	//BGM読み込み
-	void		VolumeInit();//BGMのボリューム初期値
 	void		VolumeChange();//BGMのボリューム変更関数
 
 	int _gkey;			// キー入力の情報

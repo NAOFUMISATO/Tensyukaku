@@ -14,6 +14,10 @@ bool ModeGameover::Initialize(Game& g) {
 	_pal = 0;
 	_mode_cnt = _cnt;
 	_grhandle = ResourceServer::LoadGraph("res/Mode/Black.png");
+	_se["GameOver"] = ResourceServer::LoadSoundMem("se/OutGame/GameOver.wav");
+	_vpal["GameOver"] = 255;
+	ChangeVolumeSoundMem(_vpal["GameOver"], _se["GameOver"]);
+	PlaySoundMem(_se["GameOver"], DX_PLAYTYPE_BACK, true);
 	return true;
 }
 

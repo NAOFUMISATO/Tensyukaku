@@ -198,12 +198,14 @@ void Boss::LoadSE() {
 	_se["Dead01V"] = ResourceServer::LoadSoundMem("se/Voice/BossDead01.wav");
 	_se["Dead02V"] = ResourceServer::LoadSoundMem("se/Voice/BossDead02.wav");
 	_se["Dead03V"] = ResourceServer::LoadSoundMem("se/Voice/Dead03.wav");
+	
 }
 //効果音ボリューム初期値設定関数
 void	Boss::VolumeInit() {
 	_vpal["Dead01V"] = 255;
 	_vpal["Dead02V"] = 255;
 	_vpal["Dead03V"] = 255;
+
 }
 
 //ボリューム変更関数

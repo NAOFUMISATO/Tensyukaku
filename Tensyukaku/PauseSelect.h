@@ -12,6 +12,7 @@ private:
 	enum class SELECTTYPE {
 	NOSELECT,RETURNSELECT,GOTITLESELECT
 	};
-	SELECTTYPE _Type;
-	int _GraphNo;
+	SELECTTYPE _type;
+	int _graph_no;
+	bool _input_flag;
 };

@@ -55,7 +55,7 @@ bool ModePrologue::Process(Game& g) {
 	auto fadeoutendframe = 85;
 	if (frame == PROLOGUE_FADEOUT_FRAME) {
 		auto ol = new OverlayBlack();
-		ol->SetFade(fadeoutendframe, 480, 600, 3);
+		ol->SetFade(fadeoutendframe, 480, 600, 4);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
 	}
 	if (frame == PROLOGUE_FADEOUT_FRAME + fadeoutendframe) {

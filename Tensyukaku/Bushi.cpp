@@ -196,7 +196,7 @@ void Bushi::LoadSE() {
 void	Bushi::VolumeInit() {
 	_vpal["Attack"] = 255;
 	_vpal["DamageV"] = 255;
-	_vpal["DeadV"] = 255;
+	_vpal["DeadV"] = 180;
 }
 
 //ƒ{ƒŠƒ…[ƒ€•ÏXŠÖ”

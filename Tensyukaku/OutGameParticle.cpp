@@ -67,11 +67,13 @@ void CursorParticle1::SetState() {
 		_cnt = 50;
 	}
 	else if (_hit_type == "ENDHIT") {
-		_rgb = std::make_tuple(240, 70, 5);
+		/*_rgb = std::make_tuple(240, 70, 5);*/
+		_rgb = std::make_tuple(5, 70, 240);
 		_cnt = 50;
 	}
 	else if (_hit_type == "CREDITHIT") {
-		_rgb = std::make_tuple(240, 70, 5);
+		/*_rgb = std::make_tuple(240, 70, 5);*/
+		_rgb = std::make_tuple(5, 70, 240);
 		_cnt = 50;
 	}
 };

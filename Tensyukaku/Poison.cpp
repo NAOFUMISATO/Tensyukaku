@@ -65,6 +65,8 @@ PoisonFall::PoisonFall(int x, int y) {
 	ResourceServer::LoadDivGraph(FALL_GRAPHNAME, FALL_ANIMEMAX, FALL_WIDTHCOUNT, FALL_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Fall"].data());
 	_grall["Land"].resize(LAND_ANIMEMAX);
 	ResourceServer::LoadDivGraph(LAND_GRAPHNAME, LAND_ANIMEMAX, LAND_WIDTHCOUNT, LAND_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Land"].data());
+	_se["Poisonland"] = ResourceServer::LoadSoundMem("se/Gimik/Poisonfall.wav");
+	_vpal["Poisonland"] = 255;
 }
 
 PoisonFall::~PoisonFall() {
@@ -87,6 +89,7 @@ void PoisonFall::Init() {
 
 void PoisonFall::Process(Game& g) {
 	ObjectBase::Process(g);
+	ChangeVolumeSoundMem(_vpal["Poisonland"], _se["Poisonland"]);
 	auto frame = _cnt - _action_cnt;
 	switch (_State) {
 	case	POISONSTATE::FALL:
@@ -95,9 +98,10 @@ void PoisonFall::Process(Game& g) {
 		if (frame < FALL_STOPFRAME) {
 			_y += _spd;
 		}
-		if (frame==FALL_STOPFRAME) {
+		if (frame == FALL_STOPFRAME) {
 			_action_cnt = _cnt;
 			_State = POISONSTATE::LAND;
+			PlaySoundMem(_se["Poisonland"],DX_PLAYTYPE_BACK,true);
 		}
 		break;
 	case POISONSTATE::LAND:
@@ -111,11 +115,8 @@ void PoisonFall::Process(Game& g) {
 		}
 		if (frame == LAND_ALLFRAME) {
 			Delete(g);
+		}
 		break;
-	}
-
-	
-	
 	}
 }
 

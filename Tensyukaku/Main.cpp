@@ -8,6 +8,7 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine, int nCmdShow)
 {
+	SetOutApplicationLogValidFlag(false);
 	// ‰Šú‰» -------------------------------------------------------------------------
 	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
 	SetGraphMode(SCREEN_W, SCREEN_H, SCREEN_DEPTH);

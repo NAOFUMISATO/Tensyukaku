@@ -7,7 +7,6 @@
 #include "Shielder.h"
 #include "Lancer.h"
 #include "PoisonNinja.h"
-#include "PoisonZyounin.h"
 #include "Boss.h"
 
 using namespace SpaInfo;

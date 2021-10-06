@@ -131,7 +131,7 @@ bool PrologueText::Process(Game& g) {
 		_Skip_Flag = true;
 		//モードオーバーレイ生成
 		auto ol = new OverlayBlack();
-		ol->SetFade(fadeoutframe, 480, 600, 3);
+		ol->SetFade(fadeoutframe, 480, 600, 4);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
 	}
 	//スキップ時の音源のフェードアウト

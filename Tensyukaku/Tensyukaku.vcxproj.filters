@@ -348,12 +348,6 @@
     <ClCompile Include="ZyouninMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="PoisonZyounin.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
-    </ClCompile>
-    <ClCompile Include="StrPoison.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
-    </ClCompile>
     <ClCompile Include="ModeTutorial.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
@@ -592,12 +586,6 @@
     </ClInclude>
     <ClInclude Include="ZyouninMotionCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="PoisonZyounin.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
-    </ClInclude>
-    <ClInclude Include="StrPoison.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
     <ClInclude Include="ModeTutorial.h">
       <Filter>ヘッダー ファイル\Mode</Filter>

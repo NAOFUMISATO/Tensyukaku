@@ -14,4 +14,5 @@ private:
 	};
 	SELECTTYPE _Type;
 	int _GraphNo;
+	bool _input_flag;
 };

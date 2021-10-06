@@ -37,6 +37,9 @@ void MugenAndon::Process(Game& g) {
 	_grhandle = _grall["Andon"][_anime["Andon"]];
 	if (_AndonDrop_Flag == true) {
 		if (frame == MANDON_FIREFRAME1) {
+			if (CheckSoundMem(g.GetBgm()["Flame"]) == 0) {
+				PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
+			}
 			auto lf1 = new MugenFlame(_x - MANDON_FIREWIDTH * 1, _Flame_y);
 			g.GetOS()->Add(lf1);
 			auto rf1 = new MugenFlame( _x + MANDON_FIREWIDTH * 1, _Flame_y);

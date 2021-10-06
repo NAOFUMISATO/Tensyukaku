@@ -7,6 +7,7 @@
 #include "OverlayBlack.h"
 using namespace CrInfo;
 bool ModeCredit::Initialize(Game& g) {
+	if (!base::Initialize(g)) { return false; }
 	_x = 2880;
 	_y = 1080;
 	_pal = 0;

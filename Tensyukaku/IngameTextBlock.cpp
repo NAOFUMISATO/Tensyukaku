@@ -1,9 +1,12 @@
 #include "IngameTextBlock.h"
 #include "ModeIngameText.h"
 #include "Game.h"
+#include "ResourceServer.h"
 using namespace ITInfo;
 IngameTextBlock::IngameTextBlock(std::string texttype) {
 	_text_type = texttype;
+	_se["FloorSign"] = ResourceServer::LoadSoundMem("se/Gimik/FloorSign.wav");
+	_vpal["FloorSign"] = 255;
 	Init();
 }
 IngameTextBlock::~IngameTextBlock() {
@@ -35,6 +38,7 @@ void IngameTextBlock::Process(Game& g) {
 			if (IsHit(*(*ite)) == true)
 			{
 				Delete(g);
+				PlaySoundMem(_se["FloorSign"],DX_PLAYTYPE_BACK,true);
 				if (_text_type == "TOP") {
 					auto ittop = new ModeIngameText();
 					ittop->SetType("TOP");

@@ -53,7 +53,8 @@ bool ModeTitle::Initialize(Game& g) {
 	g.SetCPointFlag(flag);
 	//再起かどうかのフラグ
 	g.SetRestartFlag(false);
-	//各チュートリアルの出現フラグ
+	//各BGMの初期化
+	g.VolumeInit();
 	return true;
 }
 

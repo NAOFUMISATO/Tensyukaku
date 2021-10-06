@@ -14,7 +14,9 @@ bool ModeBossBefore::Initialize(Game& g) {
 	_mode_cnt = _cnt;
 	_grhandle = ResourceServer::LoadGraph("res/Mode/BossBefore.png");
 	_se["BossBefore"]=ResourceServer::LoadSoundMem("se/Voice/BossBefore.wav");
+	_se["BossFoot"] = ResourceServer::LoadSoundMem("se/Player/BBossFoot.wav");
 	_vpal["BossBefore"] = 255;
+	_vpal["BossFoot"] = 255;
 	return true;
 }
 
@@ -26,7 +28,11 @@ bool ModeBossBefore::Terminate(Game& g) {
 bool ModeBossBefore::Process(Game& g) {
 	base::Process(g);
 	ChangeVolumeSoundMem(_vpal["BossBefore"], _se["BossBefore"]);
+	ChangeVolumeSoundMem(_vpal["BossFoot"], _se["BossFoot"]);
 	auto frame = _cnt - _mode_cnt;
+	if (frame == FOOT_FRAME) {
+		PlaySoundMem(_se["BossFoot"], DX_PLAYTYPE_BACK, true);
+	}
 	if (frame == VOICE_FRAME) {
 		PlaySoundMem(_se["BossBefore"],DX_PLAYTYPE_BACK,true);
 	}

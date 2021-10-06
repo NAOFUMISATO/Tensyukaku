@@ -13,6 +13,8 @@ Andon::Andon(int x, int y):_AndonDrop_Flag(false) {
 	Init();
 	_grall["Andon"].resize(ANDON_ANIMEMAX);
 	ResourceServer::LoadDivGraph(ANDON_GRAPHNAME, ANDON_ANIMEMAX, ANDON_WIDTHCOUNT, ANDON_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Andon"].data());
+	_se["Andon"] = ResourceServer::LoadSoundMem("se/Gimik/Andon.wav");
+	_vpal["Andon"] = 255;
 }
 
 Andon::~Andon() {
@@ -33,10 +35,12 @@ void Andon::Init() {
 
 void Andon::Process(Game& g) {
 	ObjectBase::Process(g);
+	ChangeVolumeSoundMem(_vpal["Andon"], _vpal["Andon"]);
 	auto frame = _cnt - _action_cnt;
 	_grhandle=_grall["Andon"][_anime["Andon"]];
 	if (_AndonDrop_Flag == true) {
 		if (frame == ANDON_FIREFRAME1) {
+			PlaySoundMem(_se["Andon"], DX_PLAYTYPE_BACK, true);
 			auto lf1 = new Flame(_x - ANDON_FIREWIDTH * 1, _Flame_y);
 			g.GetOS()->Add(lf1);
 			auto rf1 = new Flame(_x + ANDON_FIREWIDTH * 1, _Flame_y);

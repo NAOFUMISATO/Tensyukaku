@@ -32,7 +32,6 @@ void MugenFlame::Process(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Flame"][_anime["Flame"]];
 	_anime["Flame"] = (_cnt / ANIMESPEED_MFLAME) % MFLAME_ANIMEMAX;
-
 	if (frame >= MFLAME_ANIMEFRAME && MFLAME_ALLFLAME > frame) {
 		_alpha -= MFLAME_FADEOUTSPEED;
 	}

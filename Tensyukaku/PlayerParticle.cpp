@@ -264,3 +264,31 @@ void SwayParticle::Process(Game& g) {
 void SwayParticle::Draw(Game& g) {
 	ParticleBase::Draw(g);
 }
+
+//ÉQÅ[ÉWMAXéûÇÃé©ã@î≠åı
+GageMax::GageMax(std::pair<double, double> xy, std::pair<double, double> dxy) {
+	_xy = xy;
+	_dxy = dxy;
+	Init();
+	_grhandle = ResourceServer::LoadGraph(GAGEMAX_PARTICLE_GRAPH);
+}
+GageMax::~GageMax() {
+}
+
+void GageMax::Init() {
+	_mxy = std::make_pair(GAGEMAX_PARTICLE_POSITIONX, GAGEMAX_PARTICLE_POSITIONY);
+	_bm = GAGEMAX_PARTICLE_BLENDMODE;
+	_pal = GAGEMAX_PARTICLE_PAL;
+	_rgb = std::make_tuple(GAGEMAX_PARTICLE_RED, GAGEMAX_PARTICLE_GREEN, GAGEMAX_PARTICLE_BLUE);
+	_drg = std::make_pair(GAGEMAX_PARTICLE_SCALE, GAGEMAX_PARTICLE_ANGLE);
+	_cnt = GAGEMAX_PARTICLE_CNT;
+	_isflip = false;
+}
+
+void GageMax::Process(Game& g) {
+	ParticleBase::Process(g);
+}
+
+void GageMax::Draw(Game& g) {
+	ParticleBase::Draw(g);
+}

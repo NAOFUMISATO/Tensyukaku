@@ -18,12 +18,10 @@ public:
 	virtual bool Draw(Game& g);
 	bool		GetstopObjProcess() { return _stopObjProcess; }
 	void		SetStopObjProcess(bool stopobjprocess) { _stopObjProcess = stopobjprocess; }
-	void		SetStopObjFlag(bool stopobjflag) { _stopObj_Flag = stopobjflag; }
 	
 
 private:
 	bool	_stopObjProcess;	//オブジェクト処理をストップする
-	bool	_stopObj_Flag;		//オブジェクト処理がストップしているかのフラグ
 	// BGM用
 	int		_bgm;
 	int		_player_x;

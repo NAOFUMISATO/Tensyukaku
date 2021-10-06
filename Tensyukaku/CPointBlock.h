@@ -26,7 +26,7 @@ namespace CPInfo {
 	constexpr auto CPOINT_5A_Y =	6320;
 	constexpr auto CPOINT_5B_X = 5500;
 	constexpr auto CPOINT_5B_Y = 6320;
-	constexpr auto CPOINT_8A_X = 4800;
+	constexpr auto CPOINT_8A_X = 5000;
 	constexpr auto CPOINT_8A_Y = 4040;
 	constexpr auto CPOINT_11A_X = 5600;
 	constexpr auto CPOINT_11A_Y = 1760;

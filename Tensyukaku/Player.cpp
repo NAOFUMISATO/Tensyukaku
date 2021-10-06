@@ -1,5 +1,5 @@
 /*
-** プレイヤー
+**	プレイヤー
 */
 
 #include <DxLib.h>
@@ -12,9 +12,10 @@
 #include "OverlayFlame.h"
 #include "PlayerHp.h"
 #include "IaiGauge.h"
+#include "PlayerParticle.h"
 #include <vector>
 #include <sstream>
-
+using namespace PParInfo;
 using namespace PInfo;
 Player::Player(int x,int y,bool flip) :
 	_move_animespeed(0),
@@ -22,28 +23,25 @@ Player::Player(int x,int y,bool flip) :
 	_ui_flag(false),
 	_nohit_flag(false),
 	_restartcheck_flag(false),
-	_firststart_flag(true),
 	_tutorialhit_flag(false),
 	_stairup_flag(false),
-	_gaugeup_flag(false),
+	_gaugemax_flag(false),
 	_pauseinput_flag(false)
 {
 	_x = x;
 	_y = y;
 	_isflip = flip;
-	Init();
-	LoadPicture();
-	LoadSE();
-	VolumeInit();
+	Init();						// 情報の初期化
+	LoadPicture();		//画像読み込み
+	LoadSE();				//効果音読み込み
+	VolumeInit();			//効果音音量初期化
 }
 
-Player::~Player()
-{	
+Player::~Player(){	
 }
-
+//初期化
 void Player::Init()
 {
-	// プレイヤー情報の初期化
 	_sort = 13;
 	_state = PLAYERSTATE::APPEAR;
 	_grhandle = -1;
@@ -61,10 +59,10 @@ void Player::Init()
 	_iai_gauge = 0;
 	_alpha = FIRST_ALPHA;
 	_position = { 0,0 };
-	_CameraX = 500;
+	_camera_x = 500;
 }
 
-
+/*---処理---*/
 void Player::Process(Game& g)
 {
 	ObjectBase::Process(g);
@@ -73,14 +71,8 @@ void Player::Process(Game& g)
 	UIAppear(g);
 	//左スティックの入力量によるステータス設定
 	BufSetting(g);
-	if (g.GetRestartFlag() == true) {
-		PLAYERSTATE::SWORDOUT;
-	}
-	//居合ゲージMAX時のSE発生
-	if (_iai_gauge == 5 && _gaugeup_flag == false) {
-		PlaySoundMem(_se["Gage"], DX_PLAYTYPE_BACK, true);
-		_gaugeup_flag = true;
-	}
+	//ゲージMAX時の自機発光&SE発生
+	GaugeMax(g);
 	//ポーズの入力管理関数
 	PauseInput(g);
 	/*---状態毎の処理---*/
@@ -90,7 +82,7 @@ void Player::Process(Game& g)
 		Star(g);
 	switch (_state) {
 		//出現状態
-	case	PLAYERSTATE::APPEAR:
+	case PLAYERSTATE::APPEAR:
 		Appear(g);
 		break;
 		//抜刀状態
@@ -167,17 +159,13 @@ void Player::Process(Game& g)
 	//プレイヤー位置からのカメラ位置設定
 	CameraSetting(g);
 }
-
+/*---描画---*/
 void Player::Draw(Game& g) {
 #ifdef _DEBUG
-	//DebugDraw(g);
+	DebugDraw(g);
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	ObjectBase::Draw(g);
-}
-
-void Player::Delete(Game& g) {
-		g.GetOS()->Del(this);
 }
 
 //画像読み込み関数
@@ -221,6 +209,7 @@ void Player::LoadSE() {
 	_se["Dead"] = ResourceServer::LoadSoundMem("se/Player/Dead.wav");
 	_se["Iai"] = ResourceServer::LoadSoundMem("se/Player/Iai.wav");
 	_se["Gage"] = ResourceServer::LoadSoundMem("se/Player/Gage.wav");
+	_se["Special"] = ResourceServer::LoadSoundMem("se/Player/SpecialAttack.wav");
 }
 
 //効果音ボリューム初期値設定関数
@@ -236,7 +225,7 @@ void	Player::VolumeInit() {
 	_vpal["Dead"] = 255;
 	_vpal["Iai"] = 255;
 	_vpal["Gage"] = 255;
-
+	_vpal["Special"] = 255;
 }
 
 //ボリューム変更関数
@@ -252,6 +241,7 @@ void	Player::VolumeChange() {
 	ChangeVolumeSoundMem(_vpal["Dead"], _se["Dead"]);
 	ChangeVolumeSoundMem(_vpal["Iai"], _se["Iai"]);
 	ChangeVolumeSoundMem(_vpal["Gage"], _se["Gage"]);
+	ChangeVolumeSoundMem(_vpal["Special"], _se["Special"]);
 }
 //プレイヤーの被ダメ&押し出し&各イベントブロック判定の処理
 void	Player::HitJudge(Game& g) {
@@ -271,11 +261,12 @@ void	Player::HitJudge(Game& g) {
 		_stairup_flag = true;
 	}
 	else { _stairup_flag = false; }
-	//敵の攻撃の当たり判定
+/*----------各当たり判定の処理----------*/
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
 		OBJECTTYPE objType = (*ite)->GetObjType();
 		switch (objType) {
+			//各敵の攻撃
 		case ObjectBase::OBJECTTYPE::BUSHIATTACK:
 		case ObjectBase::OBJECTTYPE::BUSYOATTACK:
 		case ObjectBase::OBJECTTYPE::NINJAATTACK:
@@ -283,73 +274,79 @@ void	Player::HitJudge(Game& g) {
 		case ObjectBase::OBJECTTYPE::SHIELDERATTACK:
 		case ObjectBase::OBJECTTYPE::LANCERATTACK:
 		case ObjectBase::OBJECTTYPE::POISON:
-		case ObjectBase::OBJECTTYPE::STRPOISON:
 		case ObjectBase::OBJECTTYPE::KUNAI:
-			// プレイヤーとその攻撃の当たり判定を行う
+			//敵の攻撃に当たったならダメージ状態へ移行
 			if (IsHit(*(*ite)) == true && _star_flag == false&&_nohit_flag==false)
 			{
-				// プレイヤーの状態遷移と攻撃オブジェクトのダメージ処理
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
-				_life--;
+				(*ite)->Delete(g);
+				_life--;	
 				_action_cnt = _cnt;
 				_state = PLAYERSTATE::DAMAGE;
+				//SE
 				PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
 			}
 			break;
-		//階段との当たり判定
+		//階段
 		case ObjectBase::OBJECTTYPE::STAIR:
-			// プレイヤーとその階段の当たり判定を行う
 			if (IsHit(*(*ite)) == true&&_stairup_flag==true)
 			{
+				//階段に当たっている状態で上入力したなら階段位置調整状態へ移行
 				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
-					_Player_y = _y;
-					_Stair_x = (*ite)->GetX();
-					_StairFlip_Flag = (*ite)->GetFlip();
+					_player_y = _y;
+					_stair_x = (*ite)->GetX();
+					_stairflip_flag = (*ite)->GetFlip();
 					_state = PLAYERSTATE::STAIRMOVE;
 				}
 			}
 			break;
+			//ボス階段
 		case ObjectBase::OBJECTTYPE::BOSSSTAIR:
-			// プレイヤーとその階段の当たり判定を行う
 			if (IsHit(*(*ite)) == true && _stairup_flag == true)
 			{
+				//階段に当たっている状態で上入力したならボス階段位置調整状態へ移行
 				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
-					_Player_y = _y;
-					_Stair_x = (*ite)->GetX();
-					_StairFlip_Flag = (*ite)->GetFlip();
+					_player_y = _y;
+					_stair_x = (*ite)->GetX();
+					_stairflip_flag = (*ite)->GetFlip();
 					_state = PLAYERSTATE::BOSSSTAIRMOVE;
 				}
 			}
 			break;
+			//敵
 		case ObjectBase::OBJECTTYPE::ENEMY:
-			// iteは敵か？
+			//敵に当たっているなら前のX座標にする
 			if ((*ite)->GetObjType() == OBJECTTYPE::ENEMY)
 			{
-				// プレイヤーとその敵の当たり判定を行う
 				if (IsHit(*(*ite)) == true) {
 					_x = _before_x;
 
 				}
 			}
 			break;
+			//回復ブロック
 		case ObjectBase::OBJECTTYPE::RECOVERYBLOCK:
-				// プレイヤーとその回復判定の当たり判定を行う
+			//当たったならプレイヤーの体力を全回復させる
 				if (IsHit(*(*ite)) == true) {
 					(*ite)->Delete(g);
 					_life = 3;
 				}
 				break;
+			//炎演出ブロック
 		case ObjectBase::OBJECTTYPE::FLAMEBLOCK:
-			// プレイヤーとその炎演出の当たり判定を行う
+			//当たったなら炎演出モード生成
 			if (IsHit(*(*ite)) == true) {
 				(*ite)->Delete(g);
 				auto of = new OverlayFlame();
 				g.GetMS()->Add(of, 1, "Flame");
-				PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
+				//炎上SEがなっていないなら炎上SE発生
+				if (CheckSoundMem(g.GetBgm()["Flame"]) == 0) {
+					PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
+				}
 			}
 			break;
+			//チュートリアルボード
 		case ObjectBase::OBJECTTYPE::TUTORIALBOARD:
-			// プレイヤーとそのチュートリアルボードの当たり判定を行う
+			//当たっているときのみチュートリアルヒットフラグをTRUEにする
 			if (IsHit(*(*ite)) == true) {
 				_tutorialhit_flag = true;
 			}
@@ -373,7 +370,7 @@ void Player::DebugDraw(Game& g) {
 	ss <<"左スティック入力量Y="<<g.GetYBuf()<< "\n";
 	ss << "体力=" << _life << "\n";
 	ss << "速さ=" << _spd << "\n";
-	ss << "カメラ割合=" << _CameraX << "\n";
+	ss << "カメラ割合=" << _camera_x << "\n";
 	ss << "フレーム=" << _cnt-_action_cnt << "\n";
 	DrawString(10, 10, ss.str().c_str(), GetColor(255, 0, 0));
 }
@@ -394,7 +391,7 @@ void Player::UIAppear(Game& g){
 }
 //プレイヤー位置からのカメラ位置設定
 void Player::CameraSetting(Game& g) {
-	g.SetcvX(_x - (SCREEN_W * _CameraX / 1000));				// 背景の横中央にキャラを置く
+	g.SetcvX(_x - (SCREEN_W * _camera_x / 1000));				// 背景の横中央にキャラを置く
 	g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));		// 背景の縦93%にキャラを置く
 	if (g.GetcvX() < 0) { g.SetcvX(0); }
 	if (g.GetcvX() > g.GetmapW() - SCREEN_W) { g.SetcvX(g.GetmapW() - SCREEN_W); }
@@ -402,7 +399,7 @@ void Player::CameraSetting(Game& g) {
 	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
 
 	auto GC = g.GetChip();
-	GC->SetscrX(_x - (SCREEN_W * _CameraX / 1000));			// マップチップの横中央にキャラを置く
+	GC->SetscrX(_x - (SCREEN_W * _camera_x / 1000));			// マップチップの横中央にキャラを置く
 	GC->SetscrY(_y - (SCREEN_H * CHIP_CAMERA_Y / 100));		// マップチップの縦93%にキャラを置く
 	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
 	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }
@@ -413,15 +410,14 @@ void Player::CameraSetting(Game& g) {
 //再起からの開始かどうか確認する関数
 void Player::RestartCheck(Game& g) {
 	if (_restartcheck_flag == false) {
+		//再起からの開始ならば抜刀状態から開始
 		if (g.GetRestartFlag() == true) {
 			_state = PLAYERSTATE::SWORDOUT;
 		}
+		else {
+			//SE発生
+			PlaySoundMem(_se["BStartGame"],DX_PLAYTYPE_BACK,true); }
 		_restartcheck_flag = true;
-	}
-	if (_firststart_flag == true) {
-		if (g.GetCPointFlag()["2A"] == true) {
-			_firststart_flag = false;
-		}
 	}
 }
 //無敵状態時の処理
@@ -431,7 +427,7 @@ void Player::Star(Game& g) {
 		if ((_cnt / ANIMESPEED_STAR % 2) == 0) {
 			_alpha = STAR_ALPHA;
 		}
-		if (_cnt - _Star_Cnt == STAR_ALLFRAME) {
+		if (_cnt - _star_cnt == STAR_ALLFRAME) {
 			_alpha = FIRST_ALPHA;
 			_star_flag = false;
 		}
@@ -441,24 +437,44 @@ void Player::Star(Game& g) {
 void Player::BufSetting(Game& g) {
 	auto xbuf = g.GetXBuf();
 	if (xbuf < MAX_BUF - RUN_XBUF && -(MAX_BUF - RUN_XBUF) < xbuf) {
-		_spd = WALKSPEED;
+		_spd = WALKSPEED;	
 		_move_animespeed = ANIMESPEED_WALK;
 	}
+	//左スティック入力値が一定以上なら移動速度&アニメーション速度アップ
 	if (xbuf >= RUN_XBUF || -RUN_XBUF >= xbuf) {
 		_spd = RUNSPEED;
 		_move_animespeed = ANIMESPEED_RUN;
 	}
 }
-
+//ポーズの入力管理関数
 void Player::PauseInput(Game& g) {
-	if (_state == PLAYERSTATE::IDLE || _state == PLAYERSTATE::MOVE || _state == PLAYERSTATE::MOVE) {
+	//プレイヤーが待機状態または移動状態時のみ入力受付
+	if (_state == PLAYERSTATE::IDLE || _state == PLAYERSTATE::MOVE) {
 		_pauseinput_flag = true;
 	}
 	else { _pauseinput_flag = false; }
+	//12ボタン押下でポーズ画面生成&ゲームの処理ストップ
 	if (g.GetTrg() & PAD_INPUT_12 && _pauseinput_flag == true) {
 		auto mp = new ModePause();
 		g.GetMS()->Add(mp, 20, "Pause");
 		auto mg = (ModeGame*)g.GetMS()->Get("Game");
 		mg->SetStopObjProcess(true);
+	}
+}
+
+//ゲージMAX時の自機発光&SE発生
+void Player::GaugeMax(Game& g) {
+	if (_iai_gauge == 5&& _gaugemax_flag ==false) {
+		//自機発光パーティクル
+		for (int i = 0; i < GAGEMAX_PARTICLE_QTY; i++)
+		{
+			std::pair<int, int> xy = std::make_pair(_x, _y);
+			std::pair<double, double> dxy = std::make_pair(((rand() % GAGEMAX_PARTICLE_RANDOMX1) - GAGEMAX_PARTICLE_RANDOMX2) / GAGEMAX_PARTICLE_RANDOMX3, ((rand() % GAGEMAX_PARTICLE_RANDOMY1) - GAGEMAX_PARTICLE_RANDOMY2) / GAGEMAX_PARTICLE_RANDOMY3);
+			auto gm = new GageMax(xy, dxy);
+			g.GetOS()->Add(gm);
+		}
+		//SE
+		PlaySoundMem(_se["Gage"], DX_PLAYTYPE_BACK, true);
+		_gaugemax_flag = true;
 	}
 }

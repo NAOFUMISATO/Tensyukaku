@@ -158,7 +158,7 @@ void Lancer::LoadSE() {
 //効果音ボリューム初期値設定関数
 void	Lancer::VolumeInit() {
 	_vpal["Attack"] = 255;
-	_vpal["DeadV"] = 255;
+	_vpal["DeadV"] = 180;
 }
 
 //ボリューム変更関数

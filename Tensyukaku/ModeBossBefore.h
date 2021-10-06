@@ -11,6 +11,7 @@ public:
 };
 
 namespace BBInfo {
+	constexpr auto FOOT_FRAME = 120;
 	constexpr auto VOICE_FRAME = 180;
 	constexpr auto FADEOUT_FRAME = 540;
 }

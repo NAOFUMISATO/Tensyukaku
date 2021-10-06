@@ -206,7 +206,6 @@
     <ClCompile Include="PlayerParticle.cpp" />
     <ClCompile Include="Poison.cpp" />
     <ClCompile Include="PoisonNinja.cpp" />
-    <ClCompile Include="PoisonZyounin.cpp" />
     <ClCompile Include="PrivateCollision.cpp" />
     <ClCompile Include="PrologueText.cpp" />
     <ClCompile Include="RecoveryBlock.cpp" />
@@ -238,7 +237,6 @@
     <ClCompile Include="ShielderMotion.cpp" />
     <ClCompile Include="ShielderMotionCollision.cpp" />
     <ClCompile Include="Stair.cpp" />
-    <ClCompile Include="StrPoison.cpp" />
     <ClCompile Include="TitleSelect.cpp" />
     <ClCompile Include="TutorialBoard.cpp" />
     <ClCompile Include="Zyounin.cpp" />
@@ -294,7 +292,6 @@
     <ClInclude Include="PlayerParticle.h" />
     <ClInclude Include="Poison.h" />
     <ClInclude Include="PoisonNinja.h" />
-    <ClInclude Include="PoisonZyounin.h" />
     <ClInclude Include="PrivateCollision.h" />
     <ClInclude Include="PrologueText.h" />
     <ClInclude Include="RecoveryBlock.h" />
@@ -323,7 +320,6 @@
     <ClInclude Include="Shielder.h" />
     <ClInclude Include="ShielderMotionCollision.h" />
     <ClInclude Include="Stair.h" />
-    <ClInclude Include="StrPoison.h" />
     <ClInclude Include="TitleSelect.h" />
     <ClInclude Include="TutorialBoard.h" />
     <ClInclude Include="Zyounin.h" />
