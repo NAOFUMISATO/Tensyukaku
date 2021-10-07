@@ -305,9 +305,9 @@ void	Player::HitJudge(Game& g) {
 			{
 				//階段に当たっている状態で上入力したならボス階段位置調整状態へ移行
 				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
-					_player_y = _y;
-					_stair_x = (*ite)->GetX();
-					_stairflip_flag = (*ite)->GetFlip();
+					_player_y = _y;													//現在のプレイヤーのY座標をメンバ変数に保存
+					_stair_x = (*ite)->GetX();									//当たった階段のX座標をメンバ変数に保存
+					_stairflip_flag = (*ite)->GetFlip();					//当たった階段の向きをメンバ変数に保存
 					_state = PLAYERSTATE::BOSSSTAIRMOVE;
 				}
 			}

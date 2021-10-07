@@ -53,8 +53,8 @@ private:
 	int		_move_animespeed;			//移動時のアニメスピード
 	int		_camera_x;								//カメラ位置
 	bool	_ui_flag;									//UI描画用フラグ
-	bool	_gaugemax_flag;						//居合ゲージがMAXになったかのフラグ
-	bool	_nohit_flag;							//モーション中に当たり判定を行うかのフラグ
+	bool	_gaugemax_flag;					//居合ゲージがMAXになったかのフラグ
+	bool	_nohit_flag;							//モーション中に当たり判定を行わないフラグ
 	bool	_tutorialhit_flag;					//チュートリアルボードとの当たり判定フラグ
 	bool	_restartcheck_flag;				//再起からの開始かどうか確認するフラグ
 	bool	_pauseinput_flag;					//ポーズの入力を受けつけるかどうかのフラグ
@@ -206,9 +206,9 @@ namespace PInfo {
 	constexpr auto DAMAGE_ANIMEMAX = 4;			//全ての画像枚数
 	constexpr auto DAMAGE_WIDTHCOUNT = 4;		//横の画像枚数
 	constexpr auto DAMAGE_HEIGHTCOUNT = 1;	//縦の画像枚数
-	constexpr auto ANIMESPEED_DAMAGE = 5;		//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto ANIMESPEED_DAMAGE =7;		//アニメスピード（何フレームごとに画像を切り替えるか）
 	constexpr auto DAMAGE_ANIMEFRAME = DAMAGE_ANIMEMAX * ANIMESPEED_DAMAGE; //アニメーションフレーム
-	constexpr auto DAMAGE_ALLFRAME = 20;			//被ダメ全フレーム
+	constexpr auto DAMAGE_ALLFRAME = 28;			//被ダメ全フレーム
 	//無敵
 	constexpr auto ANIMESPEED_STAR = 8;				//無敵状態時の点滅速度 
 	constexpr auto STAR_ALPHA = 128;						//無敵状態時の透明度

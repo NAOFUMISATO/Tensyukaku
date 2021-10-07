@@ -247,6 +247,7 @@ void Player::LowAttack(Game& g) {
 	_grhandle = _grall["LowAttack"][_anime["LowAttack"]];
 	_anime["LowAttack"] = ((frame) / ANIMESPEED_LOWATTACK) % LOWATTACK_ANIMEMAX;
 	if (frame == LOWATTACK_BEGINFRAME) {
+		//SE
 		PlaySoundMem(_se["LowAttack"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//下段攻撃判定オブジェクトの生成
@@ -305,6 +306,7 @@ void Player::Kick(Game& g) {
 	_grhandle = _grall["Kick"][_anime["Kick"]];
 	_anime["Kick"] = ((frame) / ANIMESPEED_KICK) % KICK_ANIMEMAX;
 	if (frame == KICK_BEGINFRAME) {		
+		//SE
 		PlaySoundMem(_se["Kick"], DX_PLAYTYPE_BACK, true);
 		if (_isflip == false) {
 			//蹴り判定オブジェクトの生成
@@ -333,7 +335,9 @@ void Player::Iai(Game& g) {
 		_anime["Iai"] = ((frame) / ANIMESPEED_IAI) % IAI_ANIMEMAX;
 	}
 	if (frame >= IAI_BEGINFRAME && IAI_ALLFRAME - 15 >= frame) {
+		//特定のモーション中に当たり判定を行わないフラグをTRUEにする
 		_nohit_flag = true;
+		//居合時に向いている方向に前進する処理
 		if (_isflip == false) {
 			_x -= IAI_MOVEMENT;
 			g.GetChip()->IsHit(*this, -1, 0);
@@ -343,10 +347,12 @@ void Player::Iai(Game& g) {
 			g.GetChip()->IsHit(*this, 1, 0);
 		}
 	}
+	//特定のモーション中でないなら当たり判定を行わないフラグをFALSEにする
 	else { _nohit_flag = false; }
-	if (frame == IAI_BEGINFRAME - 6) {
+	//居合時の納刀パーティクル
+	if (frame == IAI_BEGINFRAME - 10) {
 		if (_isflip == false) {
-			//パーティクル発生
+			//パーティクル1
 			for (int i = 0; i < IAI_PARTICLE1_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -356,7 +362,7 @@ void Player::Iai(Game& g) {
 			}
 		}
 		if (_isflip == true) {
-			//パーティクル発生
+			//パーティクル1
 			for (int i = 0; i < IAI_PARTICLE1_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -366,15 +372,18 @@ void Player::Iai(Game& g) {
 			}
 		}
 	}
+	//居合の当たり判定及びパーティクル発生
 	if (frame == IAI_BEGINFRAME) {
+		//居合ゲージリセット
 		_iai_gauge = 0;
+		//居合ゲージのMAXフラグリセット
 		_gaugemax_flag = false;
 		if (_isflip == false) {
 			//居合オブジェクトの生成
 			auto iac = new IaiCollision(_x + _hit_x - IAI_WIDTH, _y - _hit_h / 2);
 			// オブジェクトサーバ-に蹴り判定オブジェクトを追加
 			g.GetOS()->Add(iac);
-			//パーティクル発生
+			//パーティクル2
 			for (int i = 0; i < IAI_PARTICLE2_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -382,6 +391,7 @@ void Player::Iai(Game& g) {
 				auto i2 = new IaiParticle2(xy, dxy, false);
 				g.GetOS()->Add(i2);
 			}
+			//パーティクル3
 			for (int i = 0; i < IAI_PARTICLE3_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -395,7 +405,7 @@ void Player::Iai(Game& g) {
 			auto iac = new IaiCollision(_x - _hit_x, _y - _hit_h / 2);
 			// オブジェクトサーバ-に居合判定オブジェクトを追加
 			g.GetOS()->Add(iac);
-			//パーティクル発生
+			//パーティクル2
 			for (int i = 0; i < IAI_PARTICLE2_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -403,6 +413,7 @@ void Player::Iai(Game& g) {
 				auto i2 = new IaiParticle2(xy, dxy, true);
 				g.GetOS()->Add(i2);
 			}
+			//パーティクル3
 			for (int i = 0; i < IAI_PARTICLE3_QTY; i++)
 			{
 				std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -412,6 +423,7 @@ void Player::Iai(Game& g) {
 			}
 		}
 	}
+	//全フレーム経ったなら待機状態へ移行
 	if (frame == IAI_ALLFRAME) {
 		_state = PLAYERSTATE::IDLE;
 	}
@@ -421,12 +433,14 @@ void Player::Sway(Game& g){
 	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Sway"][_anime["Sway"]];
 	_anime["Sway"] = ((frame) / ANIMESPEED_SWAY) % SWAY_ANIMEMAX;
-	//スウェイ時の無敵フレーム
 	if (frame >= SWAY_NOHITBEGINFRAME && SWAY_NOHITENDFRAME > frame) {
+		//特定のモーション中に当たり判定を行わないフラグをTRUEにする
 		_nohit_flag = true;
 	}
+	//特定のモーション中に当たり判定を行わないフラグをFALSEにする
 	else { _nohit_flag = false; }
 	if (frame == 1) {
+		//パーティクル
 		for (int i = 0; i < SWAY_PARTICLE_QTY; i++)
 		{
 			std::pair<int, int> xy = std::make_pair(_x, _y);
@@ -435,6 +449,7 @@ void Player::Sway(Game& g){
 			g.GetOS()->Add(sw);
 		}
 	}
+	//スウェイ時の移動フレーム
 	if (frame < SWAY_MOVEFRAME) {
 		if (_isflip == false) {
 			_x += SWAY_MOVEMENT;
@@ -445,6 +460,7 @@ void Player::Sway(Game& g){
 			g.GetChip()->IsHit(*this, -1, 0);	
 		}
 	}
+	//全フレーム経ったなら待機状態へ移行
 	if (frame == SWAY_ALLFRAME) {
 		_state = PLAYERSTATE::IDLE;
 	}
@@ -454,24 +470,25 @@ void Player::Sway(Game& g){
 void Player::Damage(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Damage"][_anime["Damage"]];
+	_anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
+	//居合のSEが発生途中なら止める処理
 	StopSoundMem(_se["Iai"]);
+	//特定のモーション中に当たり判定を行わないフラグをTRUEにする
 	_nohit_flag = true; 
-	if (frame < DAMAGE_ANIMEFRAME) {
-		_anime["Damage"] = ((frame) / ANIMESPEED_DAMAGE) % DAMAGE_ANIMEMAX;
-	}
 	if (frame == DAMAGE_ALLFRAME) {
-		_star_cnt = _cnt;
-		_action_cnt = _cnt;
+		//特定のモーション中に当たり判定を行わないフラグをFALSEにする
 		_nohit_flag = false;
 		if (_life > 0) {
+			//体力がゼロでないなら無敵状態へ移行&待機状態へ移行
+			_star_cnt = _cnt;
 			_star_flag = true;
-		}
-		if (_life <= 0) {
-			PlaySoundMem(_se["Dead"], DX_PLAYTYPE_BACK, true);
-			_state=PLAYERSTATE::DEAD;
+			_state = PLAYERSTATE::IDLE;
 		}
 		else {
-			_state = PLAYERSTATE::IDLE;
+			//体力がゼロなら死亡状態へ移行
+			_action_cnt = _cnt;
+			_state = PLAYERSTATE::DEAD;
+			PlaySoundMem(_se["Dead"], DX_PLAYTYPE_BACK, true);
 		}
 	}
 }
@@ -480,20 +497,23 @@ void Player::Damage(Game& g) {
 void Player::Dead(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Dead"][_anime["Dead"]];
+	//当たり判定を削除する
 	_hit_x = 10000;
+	//アニメフレーム以内ならアニメーションさせる
 	if (frame < DEAD_ANIMEFRAME){
 	_anime["Dead"] = ((frame) / ANIMESPEED_DEAD) % DEAD_ANIMEMAX; 
-		}
+	}
+	//死亡全フレーム終了した際の処理
 	if (frame == DEAD_ALLFRAME) {
-		g.SetRestartFlag(true);
+		g.SetRestartFlag(true);													//ゲームのリスタートフラグをTRUEにする
 		auto mg = (ModeGame*)g.GetMS()->Get("Game");
-		mg->SetStopObjProcess(true);
-		g.GetMS()->Del(g.GetMS()->Get("Flame"));
-		StopSoundMem(g.GetBgm()["Main"]);
-		StopSoundMem(g.GetBgm()["Boss"]);
-		StopSoundMem(g.GetBgm()["Flame"]);
+		mg->SetStopObjProcess(true);										//ゲームの処理を止める
+		g.GetMS()->Del(g.GetMS()->Get("Flame"));					//炎演出モードが発生していたなら削除する
+		StopSoundMem(g.GetBgm()["Main"]);							//メインステージのBGMが鳴っていたなら止める
+		StopSoundMem(g.GetBgm()["Boss"]);							//ボスステージのBGMが鳴っていたなら止める
+		StopSoundMem(g.GetBgm()["Flame"]);						//炎演出モードのBGMが鳴っていたなら止める
 		auto mgo = new ModeGameover();
-		g.GetMS()->Add(mgo,1, "Gameover");
+		g.GetMS()->Add(mgo,1, "Gameover");							//ゲームオーバーモード生成
 		
 	}
 }
@@ -502,7 +522,9 @@ void Player::Dead(Game& g) {
 void Player::StairMove(Game& g) {
 	_grhandle = _grall["Move"][_anime["Move"]];
 	_anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
+	//特定のモーション中に当たり判定を行わないフラグをTRUEにする
 	_nohit_flag = true;
+	//当たった階段の向きに応じて階段上昇位置へ自動的に移動する
 	if (_stairflip_flag == false) {
 		if (_x >= _stair_x + StInfo::POSITION_HITX) {
 			_isflip = false;
@@ -511,7 +533,9 @@ void Player::StairMove(Game& g) {
 		if (_x <= _stair_x + StInfo::POSITION_HITX) {
 			_isflip = true;
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
+			//SE
 			PlaySoundMem(_se["Stair"], DX_PLAYTYPE_BACK, true);
+			//階段上昇状態へ移行
 			_state = PLAYERSTATE::STAIRUP;
 		}
 	}
@@ -522,8 +546,11 @@ void Player::StairMove(Game& g) {
 		}
 		if (_x >= _stair_x + StInfo::POSITION_HITX + StInfo::COLLISION_WIDTH) {
 			_isflip = false;
+			//階段上昇の為に一時的にプレイヤー座標をdouble型にキャストする
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
+			//SE
 			PlaySoundMem(_se["Stair"], DX_PLAYTYPE_BACK, true);
+			//階段上昇状態へ移行
 			_state = PLAYERSTATE::STAIRUP;
 		}
 	}
@@ -533,20 +560,24 @@ void Player::StairMove(Game& g) {
 void Player::StairUp(Game& g) {
 	_grhandle = _grall["Move"][_anime["Move"]];
 	_anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
+	//上昇速度の設定
 	_stairup_spd = STAIRUP_SPEED;
+	//階段の向きに応じて上昇する角度を変える
 	if (_stairflip_flag == false) {
-		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
+		_angle = 4.886921905584122f;//280度
 	}
 	if (_stairflip_flag == true) {
-		_angle = 4.53756055185257f;/*Math::ToRadians(260)*/
+		_angle = 4.53756055185257f;//260度
 	}
 	_velocityDir = { std::cos(_angle), std::sin(_angle) };
 	auto vd = _velocityDir * _stairup_spd;
+	//プレイヤー座標をint型にキャストする
 	auto positionX = static_cast<int>(_position.x);
 	auto positionY = static_cast<int>(_position.y);
 	_position += vd;
 	_x = positionX;
 	_y = positionY;
+	//プレイヤーY座標が階段の高さ分上昇したなら待機状態へ移行
 	auto upheight = _y - _player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
 		_nohit_flag = false;
@@ -559,7 +590,9 @@ void Player::StairUp(Game& g) {
 void Player::BossStairMove(Game& g) {
 	_grhandle = _grall["Move"][_anime["Move"]];
 	_anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
+	//特定のモーション中に当たり判定を行わないフラグをTRUEにする
 	_nohit_flag = true;
+	//当たった階段の向きに応じて階段上昇位置へ自動的に移動する
 	if (_stairflip_flag == false) {
 		if (_x >= _stair_x + StInfo::POSITION_HITX) {
 			_isflip = false;
@@ -567,11 +600,14 @@ void Player::BossStairMove(Game& g) {
 		}
 		if (_x <= _stair_x + StInfo::POSITION_HITX) {
 			_isflip = true;
+			//階段上昇の為に一時的にプレイヤー座標をdouble型にキャストする
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
 			auto ol = new OverlayBlack();
 			ol->SetFade(90, 270, 360, 3);
-			g.GetMS()->Add(ol, 20, "OverlayBlack");
+			g.GetMS()->Add(ol, 20, "OverlayBlack");		//イベントの為のオーバレイブラックモード生成
+			//SE
 			PlaySoundMem(_se["Stair"], DX_PLAYTYPE_BACK, true);
+			//ボス階段上昇状態へ移行
 			_state = PLAYERSTATE::BOSSSTAIRUP;
 			_action_cnt = _cnt;
 		}
@@ -583,11 +619,14 @@ void Player::BossStairMove(Game& g) {
 		}
 		if (_x >= _stair_x + StInfo::POSITION_HITX + StInfo::COLLISION_WIDTH) {
 			_isflip = false;
+			//階段上昇の為に一時的にプレイヤー座標をdouble型にキャストする
 			_position = { static_cast<double>(_x),static_cast<double>(_y) };
 			auto ol = new OverlayBlack();
 			ol->SetFade(90, 270, 360, 3);
-			g.GetMS()->Add(ol, 20, "OverlayBlack");
+			g.GetMS()->Add(ol, 20, "OverlayBlack");		//イベントの為のオーバレイブラックモード生成
+			//SE
 			PlaySoundMem(_se["Stair"], DX_PLAYTYPE_BACK, true);
+			//ボス階段上昇状態へ移行
 			_state = PLAYERSTATE::BOSSSTAIRUP;
 			_action_cnt = _cnt;
 		}
@@ -599,31 +638,36 @@ void Player::BossStairUp(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Move"][_anime["Move"]];
 	_anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
+	//メインステージのBGMをフェードアウトさせる
 	auto vpal = g.GetVpal();
 	vpal["Main"] -= 1;
 	g.SetVpal(vpal);
+	//上昇速度の設定
 	_stairup_spd = BOSSSTAIRUP_SPEED;
+	//階段の向きに応じて上昇する角度を変える
 	if (_stairflip_flag == false) {
-		_angle = 4.886921905584122f;/*Math::ToRadians(280)*/
+		_angle = 4.886921905584122f;//280度
 	}
 	if (_stairflip_flag == true) {
-		_angle = 4.53756055185257f;/*Math::ToRadians(260)*/
+		_angle = 4.53756055185257f;//260度
 	}
 	_velocityDir = { std::cos(_angle), std::sin(_angle) };
 	auto vd = _velocityDir * _stairup_spd;
+	//プレイヤー座標をint型にキャストする
 	auto positionX = static_cast<int>(_position.x);
 	auto positionY = static_cast<int>(_position.y);
 	_position += vd;
 	_x = positionX;
 	_y = positionY;
+	//プレイヤーY座標が階段の高さ分上昇したなら待機状態へ移行
 	auto upheight = _y - _player_y;
 	if (upheight == -StInfo::COLLISION_HEIGHT) {
 		StopSoundMem(_se["Stair"]);
 		auto bb = new ModeBossBefore();
-		g.GetMS()->Add(bb, 5, "BossBefore");
+		g.GetMS()->Add(bb, 5, "BossBefore");			//イベントモード生成
 		auto mg = (ModeGame*)g.GetMS()->Get("Game");
-		mg->SetStopObjProcess(true);
-		StopSoundMem(g.GetBgm()["Main"]);
+		mg->SetStopObjProcess(true);						//ゲームの処理を止める
+		StopSoundMem(g.GetBgm()["Main"]);			//メインステージのBGMを止める
 		_nohit_flag = false;
 		_state = PLAYERSTATE::IDLE;
 	}
@@ -633,6 +677,7 @@ void Player::BossEventA(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Idle"][_anime["Idle"]];
 	_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
+	//イベント時のカメラ移動の処理
 	if (frame == 1) {
 		_camera_x = 800;
 	}
@@ -642,6 +687,7 @@ void Player::BossEventA(Game& g) {
 	if (frame >= 240) {
 		_camera_x -=1;
 	}
+	//カメラ位置が元の位置に戻ったなら待機状態へ移行
 	if (frame == 360) {
 		_camera_x = 500;
 		_state = PLAYERSTATE::IDLE;
@@ -651,27 +697,31 @@ void Player::BossEventA(Game& g) {
 void Player::BossEventB(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_spd = 4;
+	//フレームが一定値以下なら待機のアニメーション
 	if (frame <= 120) {
 		_grhandle = _grall["Idle"][_anime["Idle"]];
 		_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 		auto vpal = g.GetVpal();
-		vpal["Boss"] -= 1;
-		vpal["Flame"] -= 1;
+		vpal["Boss"] -= 1;			//ボスステージBGMのフェードアウト
+		vpal["Flame"] -= 1;		//炎演出BGMのフェードアウト
 		g.SetVpal(vpal);
 	}
 	if (frame == 120) {
-		StopSoundMem(g.GetBgm()["Boss"]);
-		StopSoundMem(g.GetBgm()["Flame"]);
+		StopSoundMem(g.GetBgm()["Boss"]);		//ボスステージのBGMを止める
+		StopSoundMem(g.GetBgm()["Flame"]);	//炎演出BGMを止める
 	}
+	//フレームが一定値以内なら移動アニメーション
 	if (frame > 120 && 310 >= frame) {
 		_x += _spd;
 		_grhandle = _grall["Move"][_anime["Move"]];
 		_anime["Move"] = (_cnt / 10) % MOVE_ANIMEMAX;
 	}
+	//フレームが一定値以上なら待機のアニメーション
 	if (frame > 310) {
 		_grhandle = _grall["Idle"][_anime["Idle"]];
 		_anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
 	}
+	//フレームが一定値以上かつ、1～4ボタンのいずれかを押下したなら特殊攻撃状態へ移行
 	if (frame > 420) {
 		if (g.GetTrg() & PAD_INPUT_1|| g.GetTrg() & PAD_INPUT_2|| g.GetTrg() & PAD_INPUT_3|| g.GetTrg() & PAD_INPUT_4) {
 			_state = PLAYERSTATE::SPECIALATTACK;
@@ -683,10 +733,12 @@ void Player::BossEventB(Game& g) {
 void Player::SpecialAttack(Game& g) {
 	auto frame = _cnt - _action_cnt;
 	_grhandle = _grall["Special"][_anime["Special"]];
+	//アニメフレーム以下ならアニメーションさせる
 	if (frame < SPECIALATTACK_ANIMEFRAME) {
 		_anime["Special"] = ((frame) / ANIMESPEED_SPECIALATTACK) % SPECIALATTACK_ANIMEMAX;
 	}
 	if (frame == SPECIALATTACK_BEGINFRAME) {
+		//SE
 		PlaySoundMem(_se["Special"], DX_PLAYTYPE_BACK, true);
 		//特殊攻撃判定オブジェクトの生成
 		auto sc = new SpecialCollision(_x - _hit_x, _y - _hit_h);
