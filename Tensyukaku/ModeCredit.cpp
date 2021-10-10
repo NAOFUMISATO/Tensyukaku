@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   ModeCredit.cpp
+ * \brief  クレジットクラス（モードベースのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ModeCredit.h"
 #include "Game.h"
@@ -5,15 +12,16 @@
 #include "ModeTitle.h"
 #include "ResourceServer.h"
 #include "OverlayBlack.h"
+
 using namespace CrInfo;
 bool ModeCredit::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = 2880;
-	_y = 1080;
-	_pal = 0;
-	_mode_cnt = _cnt;
-	_leftmove_flag = false;
-	_rightmove_flag = false;
+	_x = 2880;							//X座標初期化
+	_y = 1080;							//Y座標初期化
+	_pal = 0;								//フェードインしていくため、透明度0で初期化
+	_mode_cnt = _cnt;			//フレームの初期化
+	_leftmove_flag = false;		//クレジットのページをめくるフラグ（左へ移動用）
+	_rightmove_flag = false;	//クレジットのページをめくるフラグ（右へ移動用）
 	_start_flag = true;
 	_end_flag = false;
 	_grhandle=ResourceServer::LoadGraph("res/Mode/ModeCredit.png");

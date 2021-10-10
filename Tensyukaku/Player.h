@@ -1,120 +1,177 @@
+/*****************************************************************//**
+ * \file   Player.h
+ * \brief プレイヤークラス 
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #pragma once
 #include	"ObjectBase.h"
 #include	<vector>
-
-// プレイヤークラス
 class Game;
 class Player : public ObjectBase {
 public:
+	//プレイヤーのコンストラクタ	:	引数（X座標,Y座標,反転判定）
 	Player( int x,int y,bool flip);
 	~Player();
 	virtual OBJECTTYPE	GetObjType() { return OBJECTTYPE::PLAYER; }
-
-	void	Init()override;								 //初期化
-	void	Process(Game& g)override;		//処理
-	void	Draw(Game& g)override;			//描画
+	//初期化
+	void	Init()override;
+	//更新
+	void	Process(Game& g)override;
+	//描画
+	void	Draw(Game& g)override;
 	
 private:
 	//プレイヤーの状態列挙
-	enum class PLAYERSTATE { APPEAR,SWORDOUT,IDLE, MOVE, MIDDLEATTACK, LOWATTACK, KICK, IAI, SWAY, DAMAGE, DEAD, STAIRUP, STAIRMOVE, BOSSSTAIRMOVE, BOSSSTAIRUP, EVENTA, EVENTB,SPECIALATTACK};
-	void	Star(Game& g);							//無敵状態時の処理
-	void	Appear(Game& g);					//出現状態の処理
-	void	Swordout(Game& g);				//抜刀状態の処理
-	void	Idle(Game& g);							//待機状態時の処理
-	void	Move(Game& g);						//移動時の処理
-	void	MidAttack(Game& g);				//中段攻撃時の処理
-	void	LowAttack(Game& g);				//下段攻撃時の処理
-	void	Kick(Game& g);							//蹴り時の処理
-	void	Iai(Game& g);							//居合時処理
-	void	Sway(Game& g);						//スウェイ時の処理
-	void	Damage(Game& g);					//被ダメ時の処理
-	void	Dead(Game& g);						//死亡時の処理
-	void	StairMove(Game& g);				//階段位置調整の処理
-	void	StairUp(Game& g);					//階段上昇の処理
-	void	BossStairMove(Game& g);		//ボス階段位置調整の処理
-	void	BossStairUp(Game& g);			//ボス階段上昇時の処理
-	void	BossEventA(Game& g);			//ボスイベント処理A
-	void	BossEventB(Game& g);			//ボスイベント処理B
-	void	SpecialAttack(Game& g);		//特殊攻撃の処理
-	void	HitJudge(Game& g);					//各当たり判定の処理
-	void	CameraSetting(Game& g);		//プレイヤー位置からカメラ座標設定
-	void	UIAppear(Game& g);				//UIインスタンス生成関数
-	void	GaugeMax(Game& g);				//居合ゲージMAX時に自機発光&SE発生	
-	void	BufSetting(Game& g);				//左スティックの入力量によるステータス設定
-	void	RestartCheck(Game& g);		//再起からの開始ならば抜刀状態から開始
-	void PauseInput(Game& g);			//ポーズの入力管理関数
-	void	DebugDraw(Game& g);			//デバッグ用関数
-	void	LoadPicture();							//画像読み込み関数
-	void	LoadSE();									//効果音読み込み関数
-	void	VolumeInit();								//効果音ボリューム初期値設定関数
-	void	VolumeChange();						//ボリューム変更関数
+	enum class PLAYERSTATE { 
+		APPEAR,						//出現
+		SWORDOUT,				//抜刀
+		IDLE, 								//待機
+		MOVE, 							//移動
+		MIDDLEATTACK,		//中段攻撃
+		LOWATTACK,				//下段攻撃
+		KICK, 							//蹴り
+		IAI,									//居合
+		SWAY, 							//スウェイ
+		DAMAGE, 						//被ダメ
+		DEAD,							//死亡
+		STAIRMOVE, 				//階段位置調整
+		STAIRUP, 					//階段上昇
+		BOSSSTAIRMOVE,	//ボス階段位置調整
+		BOSSSTAIRUP, 			//ボス階段上昇
+		EVENTA, 						//イベントA
+		EVENTB,						//イベントB
+		SPECIALATTACK		//特殊攻撃
+	};
+	//無敵状態関数
+	void	Star(Game& g);	
+	//出現状態関数
+	void	Appear(Game& g);
+	//抜刀状態関数
+	void	Swordout(Game& g);
+	//待機状態関数
+	void	Idle(Game& g);
+	//移動関数
+	void	Move(Game& g);
+	//中段攻撃関数
+	void	MidAttack(Game& g);
+	//下段攻撃関数
+	void	LowAttack(Game& g);
+	//蹴り関数
+	void	Kick(Game& g);
+	//居合関数
+	void	Iai(Game& g);
+	//スウェイ関数
+	void	Sway(Game& g);
+	//被ダメ関数
+	void	Damage(Game& g);
+	//死亡関数
+	void	Dead(Game& g);
+	//階段位置調整関数
+	void	StairMove(Game& g);
+	//階段上昇関数
+	void	StairUp(Game& g);
+	//ボス階段位置調整関数
+	void	BossStairMove(Game& g);
+	//ボス階段上昇関数
+	void	BossStairUp(Game& g);
+	//ボスイベント関数
+	void	BossEventA(Game& g);
+	//ボスイベント関数
+	void	BossEventB(Game& g);
+	//特殊攻撃関数
+	void	SpecialAttack(Game& g);
+	//各当たり判定関数
+	void	HitJudge(Game& g);
+	//プレイヤー位置からカメラ座標設定関数
+	void	CameraSetting(Game& g);
+	//UIインスタンス生成関数
+	void	UIAppear(Game& g);
+	//居合ゲージMAX時に自機発光&SE発生関数
+	void	GaugeMax(Game& g);	
+	//左スティックの入力量によるステータス設定関数
+	void	BufSetting(Game& g);	
+	//再起からの開始ならば抜刀状態から開始させる関数
+	void	RestartCheck(Game& g);
+	//ポーズの入力管理関数
+	void PauseInput(Game& g);
+	//デバッグ用関数
+	void	DebugDraw(Game& g);
+	//画像読み込み関数
+	void	LoadPicture();
+	//効果音読み込み関数
+	void	LoadSE();
+	//効果音ボリューム初期値設定関数
+	void	VolumeInit();
+	//ボリューム変更関数
+	void	VolumeChange();
+
 	/*---------メンバ変数----------*/
-	PLAYERSTATE	_state;							//状態遷移変数
-	int		_move_animespeed;			//移動時のアニメスピード
-	int		_camera_x;								//カメラ位置
-	bool	_ui_flag;									//UI描画用フラグ
-	bool	_gaugemax_flag;					//居合ゲージがMAXになったかのフラグ
-	bool	_nohit_flag;							//モーション中に当たり判定を行わないフラグ
-	bool	_tutorialhit_flag;					//チュートリアルボードとの当たり判定フラグ
-	bool	_restartcheck_flag;				//再起からの開始かどうか確認するフラグ
-	bool	_pauseinput_flag;					//ポーズの入力を受けつけるかどうかのフラグ
-	//無敵状態管理変数
-	bool	_star_flag;								//無敵状態管理フラグ
-	int		_star_cnt;								//無敵状態経過時間記録変数
-	//階段処理変数
-	Vector2 _velocityDir;						//速度方向
-	float	_stairup_spd;						//階段上昇速度
-	float	_angle;									//角度
+	int		_move_animespeed;				//移動時のアニメスピード
+	int		_camera_x;									//カメラ位置
+	int		_stair_x;										//階段のX座標保存変数
+	int		_player_y;									//階段上昇時のプレイヤーY座標保存変数
+	int		_star_cnt;									//無敵状態経過時間記録変数
+	float	_stairup_spd;							//階段上昇速度
+	float	_angle;											//角度
 	bool	_stairup_flag;							//階段上昇の受付判定用フラグ
-	bool	_stairflip_flag;						//階段の反転判定保存フラグ
-	int		_stair_x;									//階段のX座標保存変数
-	int		_player_y;								//階段上昇時のプレイヤーY座標保存変数
+	bool	_stairflip_flag;							//階段の反転判定保存フラグ
+	bool	_star_flag;									//無敵状態管理フラグ
+	bool	_ui_flag;										//UI描画用フラグ
+	bool	_gaugemax_flag;						//居合ゲージがMAXになったかのフラグ
+	bool	_nohit_flag;								//モーション中に当たり判定を行わないフラグ
+	bool	_tutorialhit_flag;						//チュートリアルボードとの当たり判定フラグ
+	bool	_restartcheck_flag;					//再起からの開始かどうか確認するフラグ
+	bool	_pauseinput_flag;					//ポーズの入力を受けつけるかどうかのフラグ
+	Vector2 _velocity_dir;						//速度方向
+	PLAYERSTATE	_state;						//状態遷移変数
 };
 
 
 namespace PInfo {
 
 	/*----------プレイヤーの各座標関係----------*/
-	constexpr auto POSITION_X = 4000;							//横軸初期位置（足下が基準）
-	constexpr auto POSITION_Y = 7840;							//縦軸初期位置（足下が基準）
-	constexpr auto CPOINT_POSITION_X = 3500;			//チェックポイントX座標
+	constexpr auto POSITION_X = 4000;								//横軸初期位置（足下が基準）
+	constexpr auto POSITION_Y = 7840;								//縦軸初期位置（足下が基準）
+	constexpr auto CPOINT_POSITION_X = 3500;				//チェックポイントX座標
 	constexpr auto CPOINT_POSITION_Y = 4040;				//チェックポイントY座標
-	constexpr auto GRAPHPOINT_X = 0;							//X位置から描画点までの差分
-	constexpr auto GRAPHPOINT_Y = -315;						//Y位置から描画点までの差分
+	constexpr auto GRAPHPOINT_X = 0;								//X位置から描画点までの差分
+	constexpr auto GRAPHPOINT_Y = -315;							//Y位置から描画点までの差分
 	constexpr auto POSITION_HITX = -60;							//描画点から当たり判定左上座標までの差分
-	constexpr auto POSITION_HITY = -135;						//描画点から当たり判定左上座標までの差分
+	constexpr auto POSITION_HITY = -135;							//描画点から当たり判定左上座標までの差分
 	constexpr auto COLLISION_WIDTH = 120;					//プレイヤーの当たり判定横幅
 	constexpr auto COLLISION_HEIGHT = 450;					//プレイヤーの当たり判定縦幅
-	constexpr auto BACK_CAMERA_X = 50;						//背景をプレイヤ-のカメラを画面の何％に置くか（横軸）
-	constexpr auto BACK_CAMERA_Y = 93;						//背景をプレイヤ-のカメラを画面の何％に置くか（縦軸）
+	constexpr auto BACK_CAMERA_X = 50;							//背景をプレイヤーのカメラを画面の何％に置くか（横軸）
+	constexpr auto BACK_CAMERA_Y = 93;							//背景をプレイヤーのカメラを画面の何％に置くか（縦軸）
 	constexpr auto CHIP_CAMERA_X = 50;							//マップチップをプレイヤ-のカメラを画面の何％に置くか（横軸）
 	constexpr auto CHIP_CAMERA_Y = 93;							//マップチップをプレイヤ-のカメラを画面の何％に置くか（縦軸）
 
 	/*----------各モーションの当たり判定関係----------*/
 	constexpr auto MIDDLEATTACK_WIDTH = 275;			//中段攻撃当たり判定横幅
 	constexpr auto MIDDLEATTACK_HEIGHT = 150;			//中段攻撃当たり判定縦幅
-	constexpr auto LOWATTACK_WIDTH = 275;				//下段攻撃当たり判定横幅
+	constexpr auto LOWATTACK_WIDTH = 275;					//下段攻撃当たり判定横幅
 	constexpr auto LOWATTACK_HEIGHT = 200;				//下段攻撃当たり判定縦幅
-	constexpr auto KICK_WIDTH = 225;								//蹴り当たり判定横幅
-	constexpr auto KICK_HEIGHT = 150;							//蹴り当たり判定縦幅
-	constexpr auto IAI_WIDTH = 780;									//居合当たり判定横幅
-	constexpr auto IAI_HEIGHT = 100;								//居合当たり判定縦幅
+	constexpr auto KICK_WIDTH = 225;									//蹴り当たり判定横幅
+	constexpr auto KICK_HEIGHT = 150;								//蹴り当たり判定縦幅
+	constexpr auto IAI_WIDTH = 780;										//居合当たり判定横幅
+	constexpr auto IAI_HEIGHT = 100;									//居合当たり判定縦幅
 	constexpr auto SPECIALATTACK_WIDTH = 300;			//特殊攻撃当たり判定横幅
-	constexpr auto SPECIALATTACK_HEIGHT = 100;			//特殊攻撃当たり判定縦幅
+	constexpr auto SPECIALATTACK_HEIGHT = 100;		//特殊攻撃当たり判定縦幅
 
 	/*----------パラメーター&入力量関係----------*/
-	constexpr auto LIFE_MAX = 3;										//体力
-	constexpr auto WALKSPEED = 5;									//歩き移動速度
-	constexpr auto RUNSPEED = 9;										//走り移動速度
+	constexpr auto LIFE_MAX = 3;											//体力
+	constexpr auto WALKSPEED = 5;										//歩き移動速度
+	constexpr auto RUNSPEED = 9;											//走り移動速度
 	constexpr auto STAIRMOVE_SPEED = 3;						//階段位置調整スピード
 	constexpr auto STAIRUP_SPEED = 5.01f;						//階段上昇速度
 	constexpr auto BOSSSTAIRUP_SPEED = 3.0f;				//ボス階段上昇速度
-	constexpr auto IAI_MAX = 5;											//居合ゲージの最大値
-	constexpr auto MAX_BUF = 1000;									//入力量限界値
+	constexpr auto IAI_MAX = 5;												//居合ゲージの最大値
+	constexpr auto MAX_BUF = 1000;										//入力量限界値
 	constexpr auto RUN_XBUF = 800;									//走り状態になるための必要なX入力量
-	constexpr auto UP_YBUF = 800;									//階段を上がるための必要なY入力量
+	constexpr auto UP_YBUF = 800;										//階段を上がるための必要なY入力量
 	/*----------描画関係初期化値----------*/
-	constexpr auto FIRST_FLIP = true;								//反転
+	constexpr auto FIRST_FLIP = true;									//反転
 	constexpr auto FIRST_ALPHA = 255;								//透明度
 
 	/*----------画像読み込み&アニメーション&判定フレーム関係----------*/
@@ -192,11 +249,11 @@ namespace PInfo {
 	constexpr auto IAI_MOVEMENT = 40;				//居合時の1フレームあたりの移動量
 	//スウェイ
 	constexpr auto SWAY_GRAPHNAME = "res/Samurai/S_Sway.png";		//画像ファイル名
-	constexpr auto SWAY_ANIMEMAX = 4;				//全ての画像枚数
-	constexpr auto SWAY_WIDTHCOUNT = 4;		//横の画像枚数
-	constexpr auto SWAY_HEIGHTCOUNT = 1;		//縦の画像枚数
-	constexpr auto ANIMESPEED_SWAY =6;			//アニメスピード（何フレームごとに画像を切り替えるか）
-	constexpr auto SWAY_ALLFRAME = 24;			//スウェイ全フレーム(全フレームーアニメーションフレーム＝猶予時間)
+	constexpr auto SWAY_ANIMEMAX = 4;					//全ての画像枚数
+	constexpr auto SWAY_WIDTHCOUNT = 4;			//横の画像枚数
+	constexpr auto SWAY_HEIGHTCOUNT = 1;			//縦の画像枚数
+	constexpr auto ANIMESPEED_SWAY =6;				//アニメスピード（何フレームごとに画像を切り替えるか）
+	constexpr auto SWAY_ALLFRAME = 24;				//スウェイ全フレーム(全フレームーアニメーションフレーム＝猶予時間)
 	constexpr auto SWAY_NOHITBEGINFRAME = 0;	//スウェイの無敵判定開始フレーム
 	constexpr auto SWAY_NOHITENDFRAME = 20;	//スウェイの無敵判定終了フレーム
 	constexpr auto SWAY_MOVEFRAME = 20;			//スウェイ時の移動フレーム

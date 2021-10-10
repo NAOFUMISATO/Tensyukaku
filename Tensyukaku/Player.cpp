@@ -1,7 +1,10 @@
-/*
-**	プレイヤー
-*/
-
+/*****************************************************************//**
+ * \file   Player.cpp
+ * \brief  プレイヤークラス
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Player.h"
@@ -15,8 +18,10 @@
 #include "PlayerParticle.h"
 #include <vector>
 #include <sstream>
+
 using namespace PParInfo;
 using namespace PInfo;
+//プレイヤーのコンストラクタ	:	引数（X座標,Y座標,反転判定）
 Player::Player(int x,int y,bool flip) :
 	_move_animespeed(0),
 	_star_flag(false),
@@ -31,15 +36,15 @@ Player::Player(int x,int y,bool flip) :
 	_x = x;
 	_y = y;
 	_isflip = flip;
-	Init();						// 情報の初期化
-	LoadPicture();		//画像読み込み
-	LoadSE();				//効果音読み込み
-	VolumeInit();			//効果音音量初期化
+	Init();
+	LoadPicture();
+	LoadSE();
+	VolumeInit();
 }
 
 Player::~Player(){	
 }
-//初期化
+/*----------初期化----------*/
 void Player::Init()
 {
 	_sort = 13;
@@ -62,10 +67,10 @@ void Player::Init()
 	_camera_x = 500;
 }
 
-/*---処理---*/
-void Player::Process(Game& g)
-{
+/*----------更新----------*/
+void Player::Process(Game& g){
 	ObjectBase::Process(g);
+	//効果音ボリューム変更
 	VolumeChange();
 	//UIのインスタンス生成
 	UIAppear(g);
@@ -159,7 +164,7 @@ void Player::Process(Game& g)
 	//プレイヤー位置からのカメラ位置設定
 	CameraSetting(g);
 }
-/*---描画---*/
+/*----------描画----------*/
 void Player::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
@@ -305,7 +310,7 @@ void	Player::HitJudge(Game& g) {
 			{
 				//階段に当たっている状態で上入力したならボス階段位置調整状態へ移行
 				if (g.GetKey() & PAD_INPUT_UP && g.GetYBuf() < -UP_YBUF) {
-					_player_y = _y;													//現在のプレイヤーのY座標をメンバ変数に保存
+					_player_y = _y;														//現在のプレイヤーのY座標をメンバ変数に保存
 					_stair_x = (*ite)->GetX();									//当たった階段のX座標をメンバ変数に保存
 					_stairflip_flag = (*ite)->GetFlip();					//当たった階段の向きをメンバ変数に保存
 					_state = PLAYERSTATE::BOSSSTAIRMOVE;
@@ -399,7 +404,7 @@ void Player::CameraSetting(Game& g) {
 	if (g.GetcvY() > g.GetmapH() - SCREEN_H) { g.SetcvY(g.GetmapH() - SCREEN_H); }
 
 	auto GC = g.GetChip();
-	GC->SetscrX(_x - (SCREEN_W * _camera_x / 1000));			// マップチップの横中央にキャラを置く
+	GC->SetscrX(_x - (SCREEN_W * _camera_x / 1000));				// マップチップの横中央にキャラを置く
 	GC->SetscrY(_y - (SCREEN_H * CHIP_CAMERA_Y / 100));		// マップチップの縦93%にキャラを置く
 	if (GC->GetscrX() < 0) { GC->SetscrX(0); }
 	if (GC->GetscrX() > GC->GetMSW() * GC->GetCSW() - SCREEN_W) { GC->SetscrX(GC->GetMSW() * GC->GetCSW() - SCREEN_W); }

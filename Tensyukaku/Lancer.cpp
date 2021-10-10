@@ -1,3 +1,6 @@
+/*
+	槍兵
+*/
 #include <DxLib.h>
 #include <vector>
 #include <sstream>
@@ -10,10 +13,8 @@
 #include "ObjectBase.h"
 #include "PrivateCollision.h"
 
-/*
-	槍兵
-*/
 using namespace LInfo;
+//槍兵のコンストラクタ 	:	引数（X座標,Y座標,反転判定）
 Lancer::Lancer(int x, int y, bool flip)
 {
 	_x = x;
@@ -28,7 +29,7 @@ Lancer::Lancer(int x, int y, bool flip)
 Lancer::~Lancer() {
 
 };
-
+/*----------初期化----------*/
 void Lancer::Init() {
 	_sort = 6;
 	_w = GRAPH_WIDTH;
@@ -44,28 +45,38 @@ void Lancer::Init() {
 	_spd = SPEED;
 	_alpha = 0;
 }
+/*----------更新-----------*/
 void Lancer::Process(Game& g) {
 	EnemyBase::Process(g);
+	//効果音ボリューム変更
 	VolumeChange();
+	/*---状態毎の処理---*/
 	switch (_state) {
+		//出現状態
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
 		break;
+		//索敵状態
 	case ENEMYSTATE::PATROL:
 		Patrol(g);
 		break;
+		//追跡状態
 	case ENEMYSTATE::COMING:
 		Coming(g);
 		break;
+		//攻撃状態
 	case ENEMYSTATE::ATTACK:
 		Attack(g);
 		break;
+		//死亡状態
 	case ENEMYSTATE::DEAD:
 		Dead(g);
 		break;
 	}
+	//当たり判定の処理
 	HitJudge(g);
 }
+/*----------描画----------*/
 void Lancer::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
@@ -76,34 +87,32 @@ void Lancer::Draw(Game& g) {
 void Lancer::Delete(Game& g) {
 	g.GetOS()->Del(this);
 }
-
 //被ダメ判定&押し出しの処理
 void Lancer::HitJudge(Game& g) {
 	//敵とプレイヤーアクションオブジェクトの当たり判定
-	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-	{
+	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++){
 		OBJECTTYPE objType = (*ite)->GetObjType();
 		switch (objType) {
+			//プレイヤーの攻撃
 		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
 		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの中段攻撃&下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+			if (IsHit(*(*ite)) == true){
+				(*ite)->Delete(g);
 				_life--;
 				_action_cnt = _cnt;
 				_state = ENEMYSTATE::DEAD;
+				//SE
 				PlaySoundMem(_se["DeadV"],DX_PLAYTYPE_BACK,true);
 				//居合ゲージの増加
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
-					// iteはプレイヤか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-					{
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++){
+					// iteはプレイヤーか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER){
+						//プレイヤーの居合ゲージがMAXでないならプレイヤーの居合ゲージを増加させる
 						auto ig = (*ite)->GetGauge();
 						if (ig < PLAYER_IAI_MAX) {
 							(*ite)->SetGauge(ig += 1);
 						}
+						//エフェクト
 						auto flip = (*ite)->GetFlip();
 						auto bloodtype = GetRand(2);
 						auto mb = new MiddleBlood(_x + _gx, _y + _gy, flip, bloodtype);
@@ -112,17 +121,18 @@ void Lancer::HitJudge(Game& g) {
 				}
 			}
 			break;
+			//居合及び行燈の炎
 		case ObjectBase::OBJECTTYPE::IAI:
 		case ObjectBase::OBJECTTYPE::FLAME:
 		case ObjectBase::OBJECTTYPE::MUGENFLAME:
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
+			if (IsHit(*(*ite)) == true){
 				_life--;
 				_action_cnt = _cnt;
 				_state = ENEMYSTATE::DEAD;
 			}
 			break;
+			//プレイヤー
 		case ObjectBase::OBJECTTYPE::PLAYER:
 			// プレイヤーとその敵の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {

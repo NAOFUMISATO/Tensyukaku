@@ -22,13 +22,13 @@ namespace TBInfo{
 	constexpr auto TUTORIAL1A_Y = 9360;
 	constexpr auto TUTORIAL1B_X = 1200;
 	constexpr auto TUTORIAL1B_Y = 9360;
-	constexpr auto TUTORIAL2A_X = 3400;
+	constexpr auto TUTORIAL2A_X = 3200;
 	constexpr auto TUTORIAL2A_Y = 8600;
 	constexpr auto TUTORIAL3A_X = 1000;
 	constexpr auto TUTORIAL3A_Y = 7840;
 	constexpr auto TUTORIAL3B_X = 2200;
 	constexpr auto TUTORIAL3B_Y = 7840;
-	constexpr auto TUTORIAL4A_X = 5300;
+	constexpr auto TUTORIAL4A_X = 5200;
 	constexpr auto TUTORIAL4A_Y = 7080;
 	constexpr auto TUTORIAL5A_X = 3800;
 	constexpr auto TUTORIAL5A_Y = 6320;

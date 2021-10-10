@@ -42,11 +42,11 @@ void TitleLogo::Draw(Game& g) {
 	auto angle = _drg.second;
 	DrawRotaGraph(_x, _y, scale, angle, _grhandle, true, _isflip);
 #ifdef _DEBUG
-	//int& re = std::get<RED>(_debug_color);
-	//int& gr = std::get<GREEN>(_debug_color);
-	//int& bl = std::get<BLUE>(_debug_color);
-	//SetDrawBlendMode(DX_BLENDMODE_ALPHA, _debug_alpha);		// ”¼“§–¾•`‰æw’è
-	//DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _debug_fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
+	int& re = std::get<RED>(_debug_color);
+	int& gr = std::get<GREEN>(_debug_color);
+	int& bl = std::get<BLUE>(_debug_color);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _debug_alpha);		// ”¼“§–¾•`‰æw’è
+	DrawBox(_x + _hit_x, _y + _hit_y, _x + _hit_x + _hit_w, _y + _hit_y + _hit_h, GetColor(re, gr, bl), _debug_fill);	// ”¼“§–¾‚ÌÔ‚Å“–‚½‚è”»’è•`‰æ
 #endif
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);		// •s“§–¾•`‰æw’è
 }

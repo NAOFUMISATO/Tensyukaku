@@ -1,20 +1,19 @@
+/*
+		プレイヤーのモーション関数
+*/
 #include <DxLib.h>
 #include "Player.h"
 #include "Game.h"
 #include "PlayerMotionCollision.h"
-#include "ObjectBase.h"
 #include "PlayerParticle.h"
-#include "Stair.h"
-#include "EnemyBase.h"
 #include "OverlayBlack.h"
 #include "ModeGameover.h"
-#include "ModeIngameText.h"
 #include "ModeGame.h"
 #include "ModeBossBefore.h"
+
 using namespace PInfo;
 using namespace PParInfo;
 using namespace StInfo;
-
 /*----------出現----------*/
 void Player::Appear(Game& g) {
 	auto frame = _cnt - _action_cnt;
@@ -569,8 +568,8 @@ void Player::StairUp(Game& g) {
 	if (_stairflip_flag == true) {
 		_angle = 4.53756055185257f;//260度
 	}
-	_velocityDir = { std::cos(_angle), std::sin(_angle) };
-	auto vd = _velocityDir * _stairup_spd;
+	_velocity_dir = { std::cos(_angle), std::sin(_angle) };
+	auto vd = _velocity_dir * _stairup_spd;
 	//プレイヤー座標をint型にキャストする
 	auto positionX = static_cast<int>(_position.x);
 	auto positionY = static_cast<int>(_position.y);
@@ -651,8 +650,8 @@ void Player::BossStairUp(Game& g) {
 	if (_stairflip_flag == true) {
 		_angle = 4.53756055185257f;//260度
 	}
-	_velocityDir = { std::cos(_angle), std::sin(_angle) };
-	auto vd = _velocityDir * _stairup_spd;
+	_velocity_dir = { std::cos(_angle), std::sin(_angle) };
+	auto vd = _velocity_dir * _stairup_spd;
 	//プレイヤー座標をint型にキャストする
 	auto positionX = static_cast<int>(_position.x);
 	auto positionY = static_cast<int>(_position.y);

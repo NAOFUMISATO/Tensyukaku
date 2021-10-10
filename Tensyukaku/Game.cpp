@@ -12,6 +12,7 @@
 
 Game::Game()
 {
+	//‰Šú‰»
 	_gkey = 0;
 	_gtrg = 0;
 	_xbuf = 0;

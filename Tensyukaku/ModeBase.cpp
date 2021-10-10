@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   ModeBase.cpp
+ * \brief  モード用ベースクラス
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ModeBase.h"
 
@@ -6,7 +13,9 @@ namespace{
 	constexpr auto GREEN = 1;
 	constexpr auto BLUE = 2;
 }
+
 ModeBase::ModeBase() {
+	//各初期化
 	_szName = "";
 	_uid = 1;
 	_layer = 0;
@@ -18,45 +27,31 @@ ModeBase::ModeBase() {
 	_tmPauseBase = 0;
 	_tmPauseStep = 0;
 	_tmOldFrame = 0;
-
-	SetCallPerFrame(1);
-	SetCallOfCount(1);
 }
 
 ModeBase::~ModeBase() {
 }
 
-
-// ModeServerに接続時、Process()の前に一度だけ呼ばれる
+/*-----初期化-----*/
 bool	ModeBase::Initialize(Game& g) {
-	_grhandle = -1;
-	_cnt = 0;
-	_pal = 255;
-	_trans_flag = false;
-	_drg = std::make_pair(1.0, 0.0);
-	_rgb = std::make_tuple(255,255,255);
+	_grhandle = -1;					//画像ハンドル初期化
+	_cnt = 0;								//動作カウンタ0で初期化
+	_pal = 255;							//透明度の初期化
+	_trans_flag = false;			//背景透過フラグを偽で初期化
+	_drg = std::make_pair(1.0, 0.0);						//DrawRotaGraph用、拡大率及び角度の初期化
+	_rgb = std::make_tuple(255,255,255);		//SetDrawBright用、RGBの初期化
 	return true;
 }
 
-// ModeServerから削除される際、一度だけ呼ばれる
 bool	ModeBase::Terminate(Game& g) {
-
 	return true;
 }
-
-
-// --------------------------------------------------------------------------
-/// @brief 毎フレーム呼ばれる。処理部を記述
-// --------------------------------------------------------------------------
-bool	ModeBase::Process(Game& g)
-{
-	_cnt++;
+/*-----更新-----*/
+bool	ModeBase::Process(Game& g){
+	_cnt++;						//毎フレーム１ずつ増加
 	return	true;
 }
-
-// --------------------------------------------------------------------------
-/// @brief 毎フレーム呼ばれる。描画部を記述
-// --------------------------------------------------------------------------
+/*-----描画-----*/
 bool	ModeBase::Draw(Game& g)
 {
 	auto scale = _drg.first;

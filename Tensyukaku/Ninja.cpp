@@ -1,25 +1,24 @@
+/*
+	忍者
+*/
 #include <DxLib.h>
 #include <vector>
 #include <sstream>
-#include "EnemyBase.h"
 #include "Ninja.h"
 #include "Game.h"
 #include "ResourceServer.h"
 #include "LowBlood.h"
-#include "ObjectBase.h"
 #include "NinjaMotionCollision.h"
 #include "PrivateCollision.h"
 
-/*
-	忍者
-*/
 using namespace NInfo;
+//忍者のコンストラクタ 	:	引数（X座標,Y座標,反転判定,クナイ本数）
 Ninja::Ninja(int x, int y, bool flip,int kunai_stock)
 {
 	_x = x;
 	_y = y;
 	_isflip = flip;
-	_Kunai_Stock = kunai_stock;
+	_kunai_stock = kunai_stock;
 	Init();
 	LoadPicture();
 	LoadSE();
@@ -28,7 +27,7 @@ Ninja::Ninja(int x, int y, bool flip,int kunai_stock)
 
 Ninja::~Ninja() {
 };
-
+/*----------初期化----------*/
 void Ninja::Init() {
 	_sort = 6;
 	_grhandle = -1;
@@ -43,6 +42,7 @@ void Ninja::Init() {
 	_spd = SPEED;
 	_alpha = 0;
 }
+/*----------更新----------*/
 void Ninja::Process(Game& g) {
 	EnemyBase::Process(g);
 	VolumeChange();
@@ -68,6 +68,7 @@ void Ninja::Process(Game& g) {
 	}
 	HitJudge(g);
 }
+/*----------描画----------*/
 void Ninja::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
@@ -75,6 +76,7 @@ void Ninja::Draw(Game& g) {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, _alpha);
 	EnemyBase::Draw(g);
 }
+
 void Ninja::Delete(Game& g) {
 		g.GetOS()->Del(this);
 }
@@ -86,25 +88,25 @@ void Ninja::HitJudge(Game& g) {
 	{
 		OBJECTTYPE objType = (*ite)->GetObjType();
 		switch (objType) {
+			//プレイヤーの下段攻撃
 		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+			if (IsHit(*(*ite)) == true){
+				(*ite)->Delete(g);
 				_life--;
 				_action_cnt = _cnt;
+				//SE
 				PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 				_state = ENEMYSTATE::DEAD;
 				//居合ゲージの増加
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++){
 					// iteはプレイヤーか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-					{
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER){
+						//プレイヤーの居合ゲージがMAXでないならプレイヤーの居合ゲージを増加させる
 						auto ig = (*ite)->GetGauge();
 						if (ig < PLAYER_IAI_MAX) {
 							(*ite)->SetGauge(ig += 1);
 						}
+						//エフェクト
 						auto flip = (*ite)->GetFlip();
 						auto bloodtype = GetRand(2);
 						auto mb = new LowBlood(_x + _gx, _y -200, flip, bloodtype);
@@ -113,17 +115,18 @@ void Ninja::HitJudge(Game& g) {
 				}
 			}
 			break;
+			//居合及び行燈の炎
 		case ObjectBase::OBJECTTYPE::IAI:
 		case ObjectBase::OBJECTTYPE::FLAME:
 		case ObjectBase::OBJECTTYPE::MUGENFLAME:
 			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
+			if (IsHit(*(*ite)) == true){
 				_life--;
 				_action_cnt = _cnt;
 				_state = ENEMYSTATE::DEAD;
 			}
 			break;
+			//プレイヤー
 		case ObjectBase::OBJECTTYPE::PLAYER:
 			// プレイヤーとその敵の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {

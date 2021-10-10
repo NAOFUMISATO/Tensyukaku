@@ -1,3 +1,6 @@
+/*
+	上忍
+*/
 #include <DxLib.h>
 #include <vector>
 #include <sstream>
@@ -10,17 +13,14 @@
 #include "NinjaMotionCollision.h"
 #include "PrivateCollision.h"
 
-/*
-	上忍
-*/
-
 using namespace ZInfo;
+//上忍のコンストラクタ 	:	引数（X座標,Y座標,反転判定,クナイ本数）
 Zyounin::Zyounin(int x, int y, bool flip, int kunai_stock)
 {
 	_x = x;
 	_y = y;
 	_isflip = flip;
-	_Kunai_Stock = kunai_stock;
+	_kunai_stock = kunai_stock;
 	Init();
 	LoadPicture();
 	LoadSE();
@@ -29,7 +29,7 @@ Zyounin::Zyounin(int x, int y, bool flip, int kunai_stock)
 
 Zyounin::~Zyounin() {
 };
-
+/*----------初期化----------*/
 void Zyounin::Init() {
 	_sort = 6;
 	_grhandle = -1;
@@ -44,32 +44,42 @@ void Zyounin::Init() {
 	_spd = SPEED;
 	_alpha = 0;
 }
+/*----------更新----------*/
 void Zyounin::Process(Game& g) {
 	EnemyBase::Process(g);
+	//効果音ボリューム変更
 	VolumeChange();
+	/*---状態毎の処理---*/
 	switch (_state) {
+		//出現状態
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
 		break;
+		//索敵状態
 	case ENEMYSTATE::PATROL:
 		Patrol(g);
 		break;
+		//追跡状態
 	case ENEMYSTATE::COMING:
 		Coming(g);
 		break;
+		//攻撃状態
 	case ENEMYSTATE::ATTACK:
 		Attack(g);
 		break;
+		//被ダメ状態
 	case ENEMYSTATE::THROW:
 		Throw(g);
 		break;
+		//死亡状態
 	case ENEMYSTATE::DEAD:
 		Dead(g);
 		break;
 	}
+	//当たり判定の処理
 	HitJudge(g);
 }
-
+/*----------描画----------*/
 void Zyounin::Draw(Game& g) {
 #ifdef _DEBUG
 	DebugDraw(g);
@@ -89,24 +99,25 @@ void Zyounin::HitJudge(Game& g) {
 	{
 		OBJECTTYPE objType = (*ite)->GetObjType();
 		switch (objType) {
+			//プレイヤーの下段攻撃
 		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+			if (IsHit(*(*ite)) == true){
+				(*ite)->Delete(g);
 				_life--;
 				_action_cnt = _cnt;
 				_state = ENEMYSTATE::DEAD;
+				//SE
+				PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 				//居合ゲージの増加
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++){
 					// iteはプレイヤーか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-					{
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER){
+						//プレイヤーの居合ゲージがMAXでないならプレイヤーの居合ゲージを増加させる
 						auto ig = (*ite)->GetGauge();
 						if (ig < PLAYER_IAI_MAX) {
 							(*ite)->SetGauge(ig += 1);
 						}
+						//エフェクト
 						auto flip = (*ite)->GetFlip();
 						auto bloodtype = GetRand(2);
 						auto mb = new LowBlood(_x + _gx, _y - 200, flip, bloodtype);
@@ -115,18 +126,18 @@ void Zyounin::HitJudge(Game& g) {
 				}
 			}
 			break;
+			//居合及び行燈の炎
 		case ObjectBase::OBJECTTYPE::IAI:
 		case ObjectBase::OBJECTTYPE::FLAME:
 		case ObjectBase::OBJECTTYPE::MUGENFLAME:
-			// 敵とプレイヤーの居合オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
+			// 敵とプレイヤーの居合&行燈の炎オブジェクトの当たり判定を行う
+			if (IsHit(*(*ite)) == true){
 				_life--;
 				_action_cnt = _cnt;
-				PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 				_state = ENEMYSTATE::DEAD;
 			}
 			break;
+			//プレイヤー
 		case ObjectBase::OBJECTTYPE::PLAYER:
 			// プレイヤーとその敵の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {

@@ -57,10 +57,10 @@ namespace SpaInfo {
 	constexpr auto  SPAWN3E_XPOSITION = 4700;	constexpr auto SPAWN3E_YPOSITION = 7840;	//スポーンブロック3E
 	constexpr auto  SPAWN3E_LANCE1_X = 4000;	constexpr auto  SPAWN3E_LANCE1_Y = 7840;	constexpr auto  SPAWN3E_LANCE1_FLIP = true;	//槍兵1
 	//スポーンブロック4A
-	constexpr auto  SPAWN4A_XPOSITION = 5800;	constexpr auto SPAWN4A_YPOSITION = 7080;	//スポーンブロック4A
-	constexpr auto  SPAWN4A_SHIEL1_X = 4800;		constexpr auto  SPAWN4A_SHIEL1_Y = 7080;	constexpr auto  SPAWN4A_SHIEL1_FLIP = true;//盾兵1
+	constexpr auto  SPAWN4A_XPOSITION = 5600;	constexpr auto SPAWN4A_YPOSITION = 7080;	//スポーンブロック4A
+	constexpr auto  SPAWN4A_SHIEL1_X = 4200;		constexpr auto  SPAWN4A_SHIEL1_Y = 7080;	constexpr auto  SPAWN4A_SHIEL1_FLIP = true;//盾兵1
 	//スポーンブロック4B
-	constexpr auto  SPAWN4B_XPOSITION = 4700;	constexpr auto SPAWN4B_YPOSITION = 7080;	//スポーンブロック4B
+	constexpr auto  SPAWN4B_XPOSITION = 5100;	constexpr auto SPAWN4B_YPOSITION = 7080;	//スポーンブロック4B
 	constexpr auto  SPAWN4B_BUSHI1_X = 4000;	constexpr auto  SPAWN4B_BUSHI1_Y = 7080;	constexpr auto  SPAWN4B_BUSHI1_FLIP = true;	//武士1
 	constexpr auto  SPAWN4B_NINJA1_X = 3700;		constexpr auto  SPAWN4B_NINJA1_Y = 7080;		constexpr auto  SPAWN4B_NINJA1_FLIP = true;		constexpr auto  SPAWN4B_NINJA1_KUNAI = 1;	//忍者1
 	//スポーンブロック4C

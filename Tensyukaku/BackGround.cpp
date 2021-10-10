@@ -1,7 +1,10 @@
-/*
-** ”wŒi
-*/
-
+/*****************************************************************//**
+ * \file   BackGround.cpp
+ * \brief  ”wŒiƒNƒ‰ƒX
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "DxLib.h"
 #include "BackGround.h"
 #include "ResourceServer.h"
@@ -9,7 +12,7 @@
 
 BackGround::BackGround()
 {
-	_GrHandle = ResourceServer::LoadGraph("res/Map/Back.png");		// ”wŒi‰æ‘œ‚ğƒ[ƒh‚·‚é
+	_GrHandle = ResourceServer::LoadGraph("res/Map/Back.png");	
 }
 
 BackGround::~BackGround()

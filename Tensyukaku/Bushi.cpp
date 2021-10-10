@@ -1,3 +1,6 @@
+/*
+	武士
+*/
 #include <DxLib.h>
 #include <vector>
 #include <sstream>
@@ -9,10 +12,9 @@
 #include "MiddleBlood.h"
 #include "BushiMotionCollision.h"
 #include "PrivateCollision.h"
-/*
-	武士
-*/
+
 using namespace BInfo;
+//武士のコンストラクタ 	:	引数（X座標,Y座標,反転判定）
 Bushi::Bushi(int x,int y,bool flip)
 {
 	_x = x;
@@ -27,7 +29,7 @@ Bushi::Bushi(int x,int y,bool flip)
 Bushi::~Bushi() {
 	
 };
-
+/*----------初期化----------*/
 void Bushi::Init() {
 	_sort = 6;
 	_w = GRAPH_WIDTH;
@@ -43,32 +45,42 @@ void Bushi::Init() {
 	_spd = SPEED;
 	_alpha = 0;
 }
+/*----------更新-----------*/
 void Bushi::Process(Game& g) {
 	EnemyBase::Process(g);
+	//効果音ボリューム変更
 	VolumeChange();
+	/*---状態毎の処理---*/
 	switch (_state) {
+		//出現状態
 	case ENEMYSTATE::APPEAR:
 		Appear(g);
 		break;
+		//索敵状態
 	case ENEMYSTATE::PATROL:
 		Patrol(g);
 		break;
+		//追跡状態
 	case ENEMYSTATE::COMING:
 		Coming(g);
 		break;
+		//攻撃状態
 	case ENEMYSTATE::ATTACK:
 		Attack(g);
 		break;
+	//被ダメ状態
 	case ENEMYSTATE::DAMAGE:
 		Damage(g);
 		break;
+	//死亡状態
 	case ENEMYSTATE::DEAD:
 		Dead(g);
 		break;
 	}
+	//当たり判定の処理
 	HitJudge(g);
 }
-
+/*----------描画----------*/
 void Bushi::Draw(Game& g) {	
 #ifdef _DEBUG
 	DebugDraw(g);
@@ -86,77 +98,82 @@ void Bushi::HitJudge(Game& g) {
 	//敵とプレイヤーのアクションの当たり判定
 	for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 	{
-		OBJECTTYPE objType = (*ite)->GetObjType();
-		switch (objType) {
+		OBJECTTYPE objtype = (*ite)->GetObjType();
+		switch (objtype) {
+			//プレイヤーの中段攻撃
 		case ObjectBase::OBJECTTYPE::MIDDLEATTACK:
-			// 敵とプレイヤーの中段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+			if (IsHit(*(*ite)) == true){
+				(*ite)->Delete(g);
 				_action_cnt = _cnt;
+				//SE
 				PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 				_state = ENEMYSTATE::DEAD;
-				//居合ゲージの増加
-				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
-				{
-					// iteはプレイヤか？
-					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-					{
+				for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++){
+					// iteはプレイヤーか？
+					if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER){
+						//プレイヤーの居合ゲージがMAXでないならプレイヤーの居合ゲージを増加させる
 						auto ig = (*ite)->GetGauge();
 						if (ig < PLAYER_IAI_MAX) {
 							(*ite)->SetGauge(ig += 1);
 						}
-						auto mb = new MiddleBlood(_x + _gx, _y + _gy, (*ite)->GetFlip(), GetRand(2));
+						//エフェクト
+						auto flip = (*ite)->GetFlip();
+						auto bloodtype = GetRand(2);
+						auto mb = new MiddleBlood(_x + _gx, _y + _gy, flip, bloodtype);
 						g.GetOS()->Add(mb);
 					}
 				}
 			}
 			break;
+			//プレイヤーの下段攻撃
 		case ObjectBase::OBJECTTYPE::LOWATTACK:
-			// 敵とプレイヤーの下段攻撃オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
-				(*ite)->Delete(g);		// (*ite) は攻撃オブジェクト
+			if (IsHit(*(*ite)) == true){
+				(*ite)->Delete(g);
 				_life--;
+				//体力がoなら死亡状態の処理へ、でないなら被ダメの処理へ
 				if (_life <= 0) {
 					//居合ゲージの増加
 					for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
 					{
 						// iteはプレイヤか？
-						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
-						{
+						if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER) {
+							//プレイヤーの居合ゲージがMAXでないならプレイヤーの居合ゲージを増加させる
 							auto ig = (*ite)->GetGauge();
 							if (ig < PLAYER_IAI_MAX) {
 								(*ite)->SetGauge(ig += 1);
 							}
-							auto flip= (*ite)->GetFlip();
+							//エフェクト
+							auto flip = (*ite)->GetFlip();
 							auto bloodtype = GetRand(2);
 							auto mb = new MiddleBlood(_x + _gx, _y + _gy, flip, bloodtype);
 							g.GetOS()->Add(mb);
 						}
 					}
+					//SE
 					PlaySoundMem(_se["DeadV"], DX_PLAYTYPE_BACK, true);
 					_state = ENEMYSTATE::DEAD;
 				}
 				else {
+					//SE
 					PlaySoundMem(_se["DamageV"], DX_PLAYTYPE_BACK, true);
-					_state = ENEMYSTATE::DAMAGE; }
+					_state = ENEMYSTATE::DAMAGE; 
+				}
 				_action_cnt = _cnt;
 				_anime["Attack"] = 0;
-			
 			}
 			break;
+			//居合及び行燈の炎
 		case ObjectBase::OBJECTTYPE::IAI:
 		case ObjectBase::OBJECTTYPE::FLAME:
 		case ObjectBase::OBJECTTYPE::MUGENFLAME:
 			// 敵とプレイヤーの居合&行燈の炎オブジェクトの当たり判定を行う
-			if (IsHit(*(*ite)) == true)
-			{
+			if (IsHit(*(*ite)) == true){
 				_life -= 3;
 				_action_cnt = _cnt;
 				_state = ENEMYSTATE::DEAD;
 			}
 			break;
+			//プレイヤー
 		case ObjectBase::OBJECTTYPE::PLAYER:
 			// プレイヤーとその敵の当たり判定を行う
 			if (IsHit(*(*ite)) == true) {

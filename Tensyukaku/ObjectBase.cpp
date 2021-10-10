@@ -11,15 +11,13 @@ namespace {
 	constexpr auto BLUE = 2;
 	constexpr auto DRAW_LIMIT = 400;
 }
-ObjectBase::ObjectBase()
-{
+ObjectBase::ObjectBase(){
 	Init();
 }
 
-ObjectBase::~ObjectBase()
-{
+ObjectBase::~ObjectBase(){
 }
-//初期化
+/*----------初期化----------*/
 void ObjectBase::Init()
 {
 	_grhandle = -1;	
@@ -37,7 +35,7 @@ void ObjectBase::Init()
 	_dx = 0;
 	_dy = 0;
 }
-//処理
+/*----------更新----------*/
 void ObjectBase::Process(Game& g)
 {
 	//描画座標が画面+DRAW_LIMITの範囲に入っていなければ描画しないフラグの処理
@@ -50,7 +48,7 @@ void ObjectBase::Process(Game& g)
 	//毎フレーム増加するカウンタ
 	++_cnt;
 }
-//描画
+/*----------描画----------*/
 void ObjectBase::Draw(Game& g) {
 	
 	//描画をマップチップの移動分ずらす
