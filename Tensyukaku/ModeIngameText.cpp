@@ -1,20 +1,29 @@
+/*****************************************************************//**
+ * \file   ModeIngameText.cpp
+ * \brief  インゲームでの階層表示クラス（モードベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Game.h"
 #include "ModeIngameText.h"
 #include "ModeGame.h"
+
 using namespace ITInfo;
+/*-----初期化------*/
 bool ModeIngameText::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = 960;
-	_y = 250;
-	_pal = 0;
-	_fadein_frame = FADEIN_FRAME;
-	_fadeout_frame = FADEOUT_FRAME;
-	_fade_speed=FADE_SPEED;
-	_mode_cnt = _cnt;
-	_trans_flag = true;
-	LoadTextGraph();
+	_x = 960;					//X座標初期化
+	_y = 250;					//Y座標初期化
+	_pal = 0;					//フェードインしていくため、透明度０で初期化
+	_fadein_frame = FADEIN_FRAME;				//階層によってフェードインフレームが異なるため、メンバ変数で初期化
+	_fadeout_frame = FADEOUT_FRAME;		//階層によってフェードアウトフレームが異なるため、メンバ変数で初期化
+	_fade_speed=FADE_SPEED;						//階層によってフェードスピードが異なるため、メンバ変数で初期化
+	_mode_cnt = _cnt;				//フレームの初期化
+	_trans_flag = true;				//背景透過フラグを真で初期化
+	LoadTextGraph();					//画像読み込み
 	return true;
 }
 
@@ -22,10 +31,11 @@ bool ModeIngameText::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
 }
-
+/*-----更新------*/
 bool ModeIngameText::Process(Game& g) {
 	base::Process(g);
 	auto frame = _cnt - _mode_cnt;
+	//各階層によって画像&フェード関係の変更
 	if (_text_type == "TOP") {
 		_grhandle = _grall["TOP"][0];
 	}
@@ -40,12 +50,14 @@ bool ModeIngameText::Process(Game& g) {
 		_fadeout_frame = 80;
 		_fade_speed = 6;
 	}
+	//フェードインの処理
 	if (frame < _fadein_frame) {
 		_pal += _fade_speed;
 	}
 	if (frame == _fadein_frame) {
 		_pal = 255;
 	}
+	//フェードアウトの処理
 	if (frame >= _fadeout_frame&&_pal>0) {
 		_pal -= _fade_speed;
 	}
@@ -54,11 +66,12 @@ bool ModeIngameText::Process(Game& g) {
 	}
 	return true;
 }
+/*-----描画------*/
 bool ModeIngameText::Draw(Game& g) {
 	base::Draw(g);
 	return true;
 }
-
+//画像読み込み関数
 void  ModeIngameText::LoadTextGraph() {
 	_grall["TOP"].resize(1);
 	ResourceServer::LoadDivGraph("res/Mode/IngameText04.png", 1, 1, 1,GRAPH_WIDTH,GRAPH_HEIGHT,_grall["TOP"].data());

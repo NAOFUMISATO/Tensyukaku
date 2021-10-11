@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   ModePrologue.cpp
+ * \brief  プロローグクラス（モードベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ModePrologue.h"
 #include "PrologueText.h"
@@ -7,12 +14,13 @@
 #include "ResourceServer.h"
 
 using namespace ProInfo;
+/*-----初期化-----*/
 bool ModePrologue::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = 1920;
-	_y = 1080;
-	_pal = 0;
-	_GraphNo = 0;
+	_x = 1920;																//X座標初期化
+	_y = 1080;																//Y座標の初期化
+	_pal = 0;																	//フェードインしていくため、透明度０で初期化
+	_GraphNo = 0;														
 	_mode_cnt = _cnt;
 	_grall["Prologue"].resize(BG_ANIMEMAX);
 	ResourceServer::LoadDivGraph(BG_GRAPHNAME,BG_ANIMEMAX,BG_WIDTHCOUNT, BG_HEIGHTCOUNT,BG_GRAPH_WIDTH, BG_GRAPH_HEIGHT,_grall["Prologue"].data());
@@ -24,7 +32,7 @@ bool ModePrologue::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
 }
-
+/*-----更新-----*/
 bool ModePrologue::Process(Game& g) {
 	base::Process(g);
 	auto frame = _cnt - _mode_cnt;
@@ -74,7 +82,7 @@ bool ModePrologue::Process(Game& g) {
 	}
 	return true;
 }
-
+/*-----描画-----*/
 bool ModePrologue::Draw(Game& g) {
 	auto posx = _x - 1920;
 	auto posy = _y - 1080;
