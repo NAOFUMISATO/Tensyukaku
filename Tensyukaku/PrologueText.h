@@ -13,8 +13,8 @@ private:
 	void		VolumeInit();
 	void		VolumeChange();
 
-	int		_GraphNo;
-	bool	_Skip_Flag;
+	int		_graph_no;
+	bool	_skip_flag;
 };
 
 class  PrologueASkip :public ModeBase {

@@ -34,7 +34,7 @@ bool ModeCredit::Initialize(Game& g) {
 	_vpal["CreditMove"] = 200;
 	return true;
 }
-
+/*-----終了------*/
 bool ModeCredit::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
@@ -82,10 +82,10 @@ bool ModeCredit::Process(Game& g) {
 	if (g.GetTrg() & PAD_INPUT_4) {
 		_mode_cnt = _cnt;
 		auto ol = new OverlayBlack();												//フェードアウトのためのオーバーレイモード生成
-		ol->SetFade(FADE_FRAME, 120,180, FADE_SPEED);	//フェード時間の設定
+		ol->SetFade(FADE_FRAME, 120,180, FADE_SPEED);		//フェード時間の設定
 		g.GetMS()->Add(ol, 2, "OverlayBlack");	
 		g.GetMS()->Del(g.GetMS()->Get("Guide"));						//左スティックガイド削除
-		g.GetMS()->Del(g.GetMS()->Get("RedReturn"));			//赤ボタンガイド削除
+		g.GetMS()->Del(g.GetMS()->Get("RedReturn"));				//赤ボタンガイド削除
 		_end_flag = true;
 	}
 	if (_leftmove_flag == true) {
@@ -118,11 +118,11 @@ bool ModeCredit::Draw(Game& g) {
 /*-----------左スティックガイドボタンクラス-------------*/
 /*-----初期化------*/
 bool Guide::Initialize(Game& g) {
-	_x = 1800;											//Ｘ座標の初期化
+	_x = 1800;												//Ｘ座標の初期化
 	_y = 100;												//Ｙ座標の初期化
-	_pal = 255;											//透明度の初期化
-	_trans_flag = true;							//背景透過フラグを真で初期化
-	_grhandle = ResourceServer::LoadGraph("res/Mode/MoveGuide.png");	//画像読み込み
+	_pal = 255;												//透明度の初期化
+	_trans_flag = true;									//背景透過フラグを真で初期化
+	_grhandle = ResourceServer::LoadGraph("res/Mode/MoveGuide.png");		//画像読み込み
 	return true;
 }
 
@@ -145,10 +145,10 @@ bool Guide::Draw(Game& g) {
 /*-----------赤ボタンガイドクラス-------------*/
 /*-----初期化------*/
 bool RedReturn::Initialize(Game& g) {
-	_x = 1750;											//Ｘ座標の初期化
+	_x = 1750;												//Ｘ座標の初期化
 	_y = 980;												//Ｙ座標の初期化
-	_pal = 255;											//透明度の初期化
-	_trans_flag = true;							//背景透過フラグを真で初期化
+	_pal = 255;												//透明度の初期化
+	_trans_flag = true;									//背景透過フラグを真で初期化
 	_grhandle = ResourceServer::LoadGraph("res/Mode/RedReturn.png");	//画像読み込み
 	return true;
 }

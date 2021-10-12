@@ -18,13 +18,13 @@ bool ModeEpilogue::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;														//X座標の初期化
 	_y = 540;														//Y座標の初期化
-	_pal = 0;														//フェードインしていくため、透明度0で初期化
-	_mode_cnt = _cnt;									//フレームで初期化
+	_pal = 0;															//フェードインしていくため、透明度0で初期化
+	_mode_cnt = _cnt;										//フレームで初期化
 	_grhandle=ResourceServer::LoadGraph("res/Mode/Epilogue.png");				//画像読み込み
-	PlaySoundMem(g.GetBgm()["Epilogue"], DX_PLAYTYPE_LOOP, true);			//BGM再生
+	PlaySoundMem(g.GetBgm()["Epilogue"], DX_PLAYTYPE_LOOP, true);				//BGM再生
 	return true;
 }
-
+/*-----終了------*/
 bool ModeEpilogue::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
@@ -48,7 +48,7 @@ bool ModeEpilogue::Process(Game& g) {
 	}
 	if (frame == BG_FADEOUT_ENDFRAME) {
 		_pal = 0;
-		g.GetMS()->Del(g.GetMS()->Get("Epilogue"));			//エピローグテキストモードの削除
+		g.GetMS()->Del(g.GetMS()->Get("Epilogue"));					//エピローグテキストモードの削除
 		StopSoundMem(g.GetBgm()["Epilogue"]);
 		auto mt = new ModeTitle();													//タイトルモード生成
 		mt->SetTitlebg();

@@ -20,20 +20,20 @@ MapChip::MapChip(std::string filePath, std::string tiledFileName)
 	TiledJsonLoad(filePath, tiledFileName + ".json");
 
 	// チップ画像をロード
-	_cgChip = new int[CHIPCOUNT];		// マップチップ画像
-	ResourceServer::LoadDivGraph((filePath + _strChipFile).c_str(), CHIPCOUNT, CHIPCOUNT_W, CHIPCOUNT_H, CHIPSIZE_W, CHIPSIZE_H, _cgChip);
+	_cg_chip = new int[_chipcount];		// マップチップ画像
+	ResourceServer::LoadDivGraph((filePath + _strchip_file).c_str(), _chipcount, _chipcount_w, _chipcount_h, _chipsize_w, _chipsize_h, _cg_chip);
 
 	// スクロール値
-	_scrX = 0;
-	_scrY = 0;
+	_scr_x = 0;
+	_scr_y = 0;
 
 }
 
 MapChip::~MapChip()
 {
 	// 確保したメモリを解放する
-	delete[]	_cgChip;
-	delete[]	_mapData;
+	delete[]	_cg_chip;
+	delete[]	_map_data;
 }
 
 // 文字列のファイルをロードする
@@ -85,18 +85,18 @@ int		MapChip::TiledJsonLoad(std::string filePath, std::string strFileName)
 	picojson::object jsRoot = json.get<picojson::object>();
 
 	// パラメータをjsonから取得
-	MAPSIZE_W = (int)jsRoot["width"].get<double>();
-	MAPSIZE_H = (int)jsRoot["height"].get<double>();
+	_mapsize_w = (int)jsRoot["width"].get<double>();
+	_mapsize_h = (int)jsRoot["height"].get<double>();
 
 	// タイルセット取得(1つのみ対応)
 	picojson::array aTileSets = jsRoot["tilesets"].get<picojson::array>();
 	picojson::object jsTile = aTileSets[0].get<picojson::object>();
-	CHIPCOUNT = (int)jsTile["tilecount"].get<double>();
-	CHIPCOUNT_W = (int)jsTile["columns"].get<double>();
-	CHIPCOUNT_H = (CHIPCOUNT / CHIPCOUNT_W);		// 計算で出す
-	CHIPSIZE_W = (int)jsRoot["tilewidth"].get<double>();
-	CHIPSIZE_H = (int)jsRoot["tileheight"].get<double>();
-	_strChipFile = jsTile["image"].get<std::string>();
+	_chipcount = (int)jsTile["tilecount"].get<double>();
+	_chipcount_w = (int)jsTile["columns"].get<double>();
+	_chipcount_h = (_chipcount / _chipcount_w);		// 計算で出す
+	_chipsize_w = (int)jsRoot["tilewidth"].get<double>();
+	_chipsize_h = (int)jsRoot["tileheight"].get<double>();
+	_strchip_file = jsTile["image"].get<std::string>();
 
 	// レイヤー情報の取得
 	picojson::array aLayers = jsRoot["layers"].get<picojson::array>();
@@ -112,10 +112,10 @@ int		MapChip::TiledJsonLoad(std::string filePath, std::string strFileName)
 			layer++;
 		}
 	}
-	MAPSIZE_LAYER = layer;
+	_mapsize_layer = layer;
 
 	// レイヤー内データの取得
-	_mapData = new int[(int)(MAPSIZE_LAYER * MAPSIZE_W * MAPSIZE_H)];
+	_map_data = new int[(int)(_mapsize_layer * _mapsize_w * _mapsize_h)];
 	layer = 0;
 	for (int i = 0; i < aLayers.size(); i++)
 	{
@@ -124,13 +124,13 @@ int		MapChip::TiledJsonLoad(std::string filePath, std::string strFileName)
 		if (jsLayer["type"].get<std::string>() == "tilelayer")
 		{
 			picojson::array aData = jsLayer["data"].get<picojson::array>();			// マップ配列
-			for (int y = 0; y < MAPSIZE_H; y++)
+			for (int y = 0; y < _mapsize_h; y++)
 			{
-				for (int x = 0; x < MAPSIZE_W; x++)
+				for (int x = 0; x < _mapsize_w; x++)
 				{
-					int layerstart = MAPSIZE_W * MAPSIZE_H * layer;
-					int index = y * MAPSIZE_W + x;
-					_mapData[layerstart + index] = (int)aData[index].get<double>();
+					int layerstart = _mapsize_w * _mapsize_h * layer;
+					int index = y * _mapsize_w + x;
+					_map_data[layerstart + index] = (int)aData[index].get<double>();
 
 				}
 			}
@@ -144,34 +144,34 @@ int		MapChip::TiledJsonLoad(std::string filePath, std::string strFileName)
 void	MapChip::Process(Game& g)
 {
 	// カメラがマップデータを超えないようにする
-	if (_scrX < 0) { _scrX = 0; }
-	if (_scrX > MAPSIZE_W * CHIPSIZE_W - SCREEN_W) { _scrX = MAPSIZE_W * CHIPSIZE_W - SCREEN_W; }
-	if (_scrY < 0) { _scrY = 0; }
-	if (_scrY > MAPSIZE_H * CHIPSIZE_H - SCREEN_H) { _scrY = MAPSIZE_H * CHIPSIZE_H - SCREEN_H; }
+	if (_scr_x < 0) { _scr_x = 0; }
+	if (_scr_x > _mapsize_w * _chipsize_w - SCREEN_W) { _scr_x = _mapsize_w * _chipsize_w - SCREEN_W; }
+	if (_scr_y < 0) { _scr_y = 0; }
+	if (_scr_y > _mapsize_h * _chipsize_h - SCREEN_H) { _scr_y = _mapsize_h * _chipsize_h - SCREEN_H; }
 
 }
 void	MapChip::Draw(Game& g)
 {
 	int x, y, layer;
-	for (layer = 0; layer < MAPSIZE_LAYER; layer++)
+	for (layer = 0; layer < _mapsize_layer; layer++)
 	{
-		for (y = _scrY / CHIPSIZE_H; y <= (_scrY + SCREEN_H) / CHIPSIZE_H + 1; y++)
+		for (y = _scr_y / _chipsize_h; y <= (_scr_y + SCREEN_H) / _chipsize_h + 1; y++)
 		{
-			if (y < 0 || MAPSIZE_H <= y) { continue; }
-			for (x =_scrX/CHIPSIZE_W; x <= (_scrX+SCREEN_W)/ CHIPSIZE_W+1; x++)
+			if (y < 0 || _mapsize_h <= y) { continue; }
+			for (x =_scr_x/_chipsize_w; x <= (_scr_x+SCREEN_W)/ _chipsize_w+1; x++)
 			{
-				if (x < 0 || MAPSIZE_W <= x) { continue; }
-				int layerstart = MAPSIZE_W * MAPSIZE_H * layer;
-				int index = y * MAPSIZE_W + x;
-				int pos_x = x * CHIPSIZE_W - _scrX;
-				int pos_y = y * CHIPSIZE_H - _scrY;
-				int chip_no = _mapData[layerstart + index];
+				if (x < 0 || _mapsize_w <= x) { continue; }
+				int layerstart = _mapsize_w * _mapsize_h * layer;
+				int index = y * _mapsize_w + x;
+				int pos_x = x * _chipsize_w - _scr_x;
+				int pos_y = y * _chipsize_h - _scr_y;
+				int chip_no = _map_data[layerstart + index];
 				// .tmxのcsv形式は、透明を0とし、画像のチップは[1]から始まる。
 				// そのため、全体的に数値を-1する。透明は-1となるので、if判定を追加
 				chip_no--;
 				if (chip_no >= 0)
 				{
-					DrawGraph(pos_x, pos_y, _cgChip[chip_no], TRUE);
+					DrawGraph(pos_x, pos_y, _cg_chip[chip_no], TRUE);
 
 					// 開発用：このチップは当たり判定を行うものか？
 					if (CheckHit(x, y) != 0)
@@ -201,12 +201,12 @@ void	MapChip::Draw(Game& g)
 int MapChip::CheckHit(int x, int y)
 {
 	// マップチップ位置はマップデータからはみ出ているか？
-	if (0 <= x && x < MAPSIZE_W && 0 <= y && y < MAPSIZE_H)
+	if (0 <= x && x < _mapsize_w && 0 <= y && y < _mapsize_h)
 	{	// はみでていない
 
 		// マップチップIDが0以外は当たり判定を行う
 		// 現在、レイヤーは考慮されていない
-		int chip_no = _mapData[y * MAPSIZE_W + x];
+		int chip_no = _map_data[y * _mapsize_w + x];
 
 		// 当たるIDかどうかをチェック
 		int idtable[] =
@@ -254,9 +254,9 @@ int MapChip::IsHit(ObjectBase& o, int mx, int my)
 	b = HB._y + HB._gy + HB._hit_y + HB._hit_h - 1;
 
 	// キャラの左上座標～右下座標にあたるマップチップと、当たり判定を行う
-	for (y = t / CHIPSIZE_H; y <= b / CHIPSIZE_H; y++)
+	for (y = t / _chipsize_h; y <= b / _chipsize_h; y++)
 	{
-		for (x = l / CHIPSIZE_W; x <= r / CHIPSIZE_W; x++)
+		for (x = l / _chipsize_w; x <= r / _chipsize_w; x++)
 		{
 			// (x,y)は、マップチップの座標（チップ単位）
 			// この位置のチップは当たるか？
@@ -266,19 +266,19 @@ int MapChip::IsHit(ObjectBase& o, int mx, int my)
 				// X,Yの移動方向を見て、その反対方向に補正するz
 				if (mx < 0)
 				{	// 左に動いていたので、右に補正
-					o.SetX(x * CHIPSIZE_W + CHIPSIZE_W - (HB._hit_x));
+					o.SetX(x * _chipsize_w + _chipsize_w - (HB._hit_x));
 				}
 				if (mx > 0)
 				{	// 右に動いていたので、左に補正
-					o.SetX(x * CHIPSIZE_W  - (HB._hit_x + HB._hit_w));
+					o.SetX(x * _chipsize_w  - (HB._hit_x + HB._hit_w));
 				}
 				if (my > 0)
 				{	// 下に動いていたので、上に補正
-					o.SetY(y * CHIPSIZE_H - (HB._hit_y +HB._hit_h));
+					o.SetY(y * _chipsize_h - (HB._hit_y +HB._hit_h));
 				}
 				if (my < 0)
 				{	// 上に動いていたので、下に補正
-					o.SetY(y * CHIPSIZE_H + CHIPSIZE_H - (HB._hit_y));
+					o.SetY(y * _chipsize_h + _chipsize_h - (HB._hit_y));
 				}
 				// 当たったので戻る
 				return 1;

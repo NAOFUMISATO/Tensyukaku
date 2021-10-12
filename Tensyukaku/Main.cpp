@@ -1,18 +1,25 @@
+/*****************************************************************//**
+ * \file   Main.cpp
+ * \brief  エントリーポイント
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "DxLib.h"
 #include <stdio.h>
 #include <time.h>
 #include "game.h"
 #include "ResourceServer.h"
 
-
-
+//エントリーポイント
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine, int nCmdShow)
 {
+	//ログの出力をしない
 	SetOutApplicationLogValidFlag(false);
 	// 初期化 -------------------------------------------------------------------------
 	// ＤＸライブラリ初期化処理
 	SetGraphMode(SCREEN_W, SCREEN_H, SCREEN_DEPTH);
-	ChangeWindowMode(true);							// ウィンドウモードに指定する
+	ChangeWindowMode(true);					// ウィンドウモードに指定する
 	if (DxLib_Init() == -1)
 	{	// エラーが起きたら直ちに終了
 		return -1;
@@ -31,6 +38,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine
 	// 1フレームループを組む ----------------------------------------------------------
 	while (ProcessMessage() == 0)		// プログラムが終了するまでループ
 	{
+	//ESCキーで抜ける（デバッグ用）
 #ifdef _DEBUG
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) {
 			break;
@@ -47,8 +55,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine
 	delete g;			// ゲームクラスの解放
 
 	DxLib_End();		// ＤＸライブラリ使用の終了処理
-
-	// 終了
 	
 	return 0;
 }

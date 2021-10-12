@@ -16,20 +16,20 @@ using namespace EpiInfo;
 /*-----初期化------*/
 bool EpilogueText::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = TEXT_FIRST_XPOSITION;		//X座標初期化
+	_x = TEXT_FIRST_XPOSITION;				//X座標初期化
 	_y = 750;													//Y座標初期化
-	_pal = 0;													//フェードインしていくため、透明度0で初期化
-	_GraphNo = 0;										//シート番号0で初期化
-	_mode_cnt = _cnt;								//フレームの初期化
-	_trans_flag = true;								//背景透過フラグを真で初期化
+	_pal = 0;														//フェードインしていくため、透明度0で初期化
+	_graph_no = 0;											//シート番号0で初期化
+	_mode_cnt = _cnt;									//フレームの初期化
+	_trans_flag = true;										//背景透過フラグを真で初期化
 	//画像読み込み
 	_grall["EText"].resize(TEXT_ANIMEMAX);
 	ResourceServer::LoadDivGraph(TEXT_GRAPHNAME, TEXT_ANIMEMAX, TEXT_WIDTHCOUNT, TEXT_HEIGHTCOUNT, TEXT_GRAPH_WIDTH, TEXT_GRAPH_HEIGHT, _grall["EText"].data());
 	LoadSE();													//SE読み込み
-	VolumeInit();											//SE音量の初期化
+	VolumeInit();												//SE音量の初期化
 	return true;
 }
-
+/*-----終了------*/
 bool EpilogueText::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
@@ -40,7 +40,7 @@ bool EpilogueText::Process(Game& g) {
 	VolumeChange();					//効果音音量変更
 	auto frame = _cnt - _mode_cnt;
 	_grhandle = _grall["EText"][_anime["EText"]];
-	_anime["EText"] = _GraphNo;
+	_anime["EText"] = _graph_no;
 	/*-----各テキストのフェードイン、フェードアウト、移動フレーム-----*/
 	//テキスト1
 	if (frame == 1) {
@@ -61,7 +61,7 @@ bool EpilogueText::Process(Game& g) {
 	if (frame == TEXT1_FADEOUT_ENDFRAME) {
 		_pal = 0;
 		_x = TEXT_FIRST_XPOSITION;
-		_GraphNo = 1;
+		_graph_no = 1;
 	}
 	//テキスト2
 	if (frame == TEXT2_FADEIN_BEGINFRAME) {
@@ -82,7 +82,7 @@ bool EpilogueText::Process(Game& g) {
 	if (frame == TEXT2_FADEOUT_ENDFRAME) {
 		_pal = 0;
 		_x = TEXT_FIRST_XPOSITION;
-		_GraphNo = 2;
+		_graph_no = 2;
 	}
 	//テキスト3
 	if (frame == TEXT3_FADEIN_BEGINFRAME) {
@@ -103,7 +103,7 @@ bool EpilogueText::Process(Game& g) {
 	if (frame == TEXT3_FADEOUT_ENDFRAME) {
 		_pal = 0;
 		_x = TEXT_FIRST_XPOSITION;
-		_GraphNo = 3;
+		_graph_no = 3;
 	}
 	//テキスト4
 	if (frame == TEXT4_FADEIN_BEGINFRAME) {

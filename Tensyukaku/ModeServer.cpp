@@ -36,7 +36,7 @@ int ModeServer::Add(ModeBase* mode, int layer, const char* name) {
 	mode->_uid = _uid_count;
 	_uid_count++;
 	mode->_layer = layer;
-	mode->_szName = name;
+	mode->_sz_name = name;
 	return mode->_uid;
 }
 
@@ -128,11 +128,11 @@ ModeBase* ModeServer::Get(const char* name) {
 	lstModeBase::iterator ite;
 	ite = _vMode.begin();
 	for (; ite != _vMode.end(); ++ite) {
-		if (!IsDelRegist((*ite)) && (*ite)->_szName == name) { return (*ite); }
+		if (!IsDelRegist((*ite)) && (*ite)->_sz_name == name) { return (*ite); }
 	}
 	ite = _vModeAdd.begin();
 	for (; ite != _vModeAdd.end(); ++ite) {
-		if (!IsDelRegist((*ite)) && (*ite)->_szName == name) { return (*ite); }
+		if (!IsDelRegist((*ite)) && (*ite)->_sz_name == name) { return (*ite); }
 	}
 	return NULL;
 }
@@ -151,7 +151,7 @@ int ModeServer::GetId(const char* name) {
 // –¼‘OŽæ“¾
 const char* ModeServer::GetName(ModeBase* mode) {
 	if (IsAdd(mode)) {
-		return mode->_szName.c_str();
+		return mode->_sz_name.c_str();
 	}
 	return NULL;
 }

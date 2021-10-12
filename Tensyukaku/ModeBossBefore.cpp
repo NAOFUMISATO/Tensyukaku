@@ -28,7 +28,7 @@ bool ModeBossBefore::Initialize(Game& g) {
 	_vpal["BossFoot"] = 255;
 	return true;
 }
-
+/*-----èIóπ------*/
 bool ModeBossBefore::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;

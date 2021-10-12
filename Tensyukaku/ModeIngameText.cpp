@@ -17,16 +17,16 @@ bool ModeIngameText::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;					//X座標初期化
 	_y = 250;					//Y座標初期化
-	_pal = 0;					//フェードインしていくため、透明度０で初期化
+	_pal = 0;						//フェードインしていくため、透明度０で初期化
 	_fadein_frame = FADEIN_FRAME;				//階層によってフェードインフレームが異なるため、メンバ変数で初期化
 	_fadeout_frame = FADEOUT_FRAME;		//階層によってフェードアウトフレームが異なるため、メンバ変数で初期化
 	_fade_speed=FADE_SPEED;						//階層によってフェードスピードが異なるため、メンバ変数で初期化
 	_mode_cnt = _cnt;				//フレームの初期化
-	_trans_flag = true;				//背景透過フラグを真で初期化
+	_trans_flag = true;					//背景透過フラグを真で初期化
 	LoadTextGraph();					//画像読み込み
 	return true;
 }
-
+/*-----終了------*/
 bool ModeIngameText::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;

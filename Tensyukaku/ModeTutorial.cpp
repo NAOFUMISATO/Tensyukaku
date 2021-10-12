@@ -1,27 +1,37 @@
+/*****************************************************************//**
+ * \file   ModeTutorial.cpp
+ * \brief  インゲームでのチュートリアルクラス（モードベースのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Game.h"
 #include "ModeTutorial.h"
 #include "ModeGame.h"
+
 using namespace TuInfo;
+/*-----初期化-----*/
 bool ModeTutorial::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = 960;
-	_y = 250;
-	_pal = 255;
-	_mode_cnt = _cnt;
-	_trans_flag = true;
-	LoadTextGraph();
+	_x = 960;							//X座標の初期化
+	_y = 250;							//Y座標の初期化
+	_pal = 255;							//透明度の初期化
+	_mode_cnt = _cnt;			//フレームの初期化
+	_trans_flag = true;				//背景透過フラグっを真で初期化
+	LoadPicture();					//画像読み込み
 	return true;
 }
-
+/*-----終了------*/
 bool ModeTutorial::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
 }
-
+/*-----更新-----*/
 bool ModeTutorial::Process(Game& g) {
 	base::Process(g);
+	//チュートリアルの種類により、描画する画像の変更
 	if (_tutorial_type == "1A") {
 		_grhandle = _grall["1A"][0];
 	}
@@ -45,12 +55,13 @@ bool ModeTutorial::Process(Game& g) {
 	}
 	return true;
 }
+/*-----描画-----*/
 bool ModeTutorial::Draw(Game& g) {
 	base::Draw(g);
 	return true;
 }
-
-void  ModeTutorial::LoadTextGraph() {
+//画像読み込み関数
+void  ModeTutorial::LoadPicture() {
 	_grall["1A"].resize(1);
 	ResourceServer::LoadDivGraph("res/Mode/Tutorial1.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["1A"].data());
 	_grall["1B"].resize(1);

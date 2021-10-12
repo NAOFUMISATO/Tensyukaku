@@ -15,49 +15,49 @@ public:
 
 	int		CheckHit(int x, int y);
 	int		IsHit(ObjectBase& o, int mx, int my);
-	int		GetscrX() { return _scrX; }
-	int		GetscrY() { return _scrY; }
-	int		GetMSW() { return MAPSIZE_W; }
-	int		GetMSH() { return MAPSIZE_H; }
-	int		GetCC() { return CHIPCOUNT; }
-	int		GetCCW() { return CHIPCOUNT_W; }
-	int		GetCCH() { return CHIPCOUNT_H; }
-	int		GetCSW() { return CHIPSIZE_W; }
-	int		GetCSH() { return CHIPSIZE_H; }
-	void	SetscrX(int scrX) { _scrX = scrX; }
-	void	SetscrY(int scrY) { _scrY = scrY; }
+	int		GetscrX() { return _scr_x; }
+	int		GetscrY() { return _scr_y; }
+	int		GetMSW() { return _mapsize_w; }
+	int		GetMSH() { return _mapsize_h; }
+	int		GetCC() { return _chipcount; }
+	int		GetCCW() { return _chipcount_w; }
+	int		GetCCH() { return _chipcount_h; }
+	int		GetCSW() { return _chipsize_w; }
+	int		GetCSH() { return _chipsize_h; }
+	void		SetscrX(int scrX) { _scr_x = scrX; }
+	void		SetscrY(int scrY) { _scr_y = scrY; }
 
 private:
 
 	// マップのサイズ（チップ数）
-	int MAPSIZE_W;	// width
-	int MAPSIZE_H;	// height
+	int _mapsize_w;	// width
+	int _mapsize_h;	// height
 
 	// チップの個数
-	int CHIPCOUNT;		// tilecount
-	int CHIPCOUNT_W;		// columns
-	int CHIPCOUNT_H;		// 計算で出す
+	int _chipcount;		// tilecount
+	int _chipcount_w;		// columns
+	int _chipcount_h;		// 計算で出す
 
 	// チップのサイズ（pixel数）
-	int CHIPSIZE_W;
-	int CHIPSIZE_H;
+	int _chipsize_w;
+	int _chipsize_h;
 
 	// レイヤー数
-	int MAPSIZE_LAYER;	// 「<layer 」 の数を数える
+	int _mapsize_layer;	// 「<layer 」 の数を数える
 
 	// チップデータのファイル名
-	std::string		_strChipFile;
+	std::string		_strchip_file;
 
 	// スクロール
-	int		_scrX, _scrY;
+	int		_scr_x, _scr_y;
 
 
 
 	std::string StringFileLoad(std::string strFileName);
 	int		TiledJsonLoad(std::string filePath, std::string strFileName);
 
-	int* _cgChip;		// マップチップ画像
+	int* _cg_chip;		// マップチップ画像
 
 	// マップデータ
-	int* _mapData;
+	int* _map_data;
 };

@@ -17,17 +17,17 @@ using namespace ProInfo;
 /*-----初期化-----*/
 bool ModePrologue::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = 1920;																//X座標初期化
-	_y = 1080;																//Y座標の初期化
-	_pal = 0;																	//フェードインしていくため、透明度０で初期化
-	_GraphNo = 0;														
-	_mode_cnt = _cnt;
+	_x = 1920;										//X座標初期化
+	_y = 1080;										//Y座標の初期化
+	_pal = 0;											//フェードインしていくため、透明度０で初期化
+	_GraphNo = 0;								//シート番号の初期化
+	_mode_cnt = _cnt;						//フレームの初期化
 	_grall["Prologue"].resize(BG_ANIMEMAX);
-	ResourceServer::LoadDivGraph(BG_GRAPHNAME,BG_ANIMEMAX,BG_WIDTHCOUNT, BG_HEIGHTCOUNT,BG_GRAPH_WIDTH, BG_GRAPH_HEIGHT,_grall["Prologue"].data());
-	PlaySoundMem(g.GetBgm()["Prologue"], DX_PLAYTYPE_LOOP, true);
+	ResourceServer::LoadDivGraph(BG_GRAPHNAME,BG_ANIMEMAX,BG_WIDTHCOUNT, BG_HEIGHTCOUNT,BG_GRAPH_WIDTH, BG_GRAPH_HEIGHT,_grall["Prologue"].data());		//画像読み込み
+	PlaySoundMem(g.GetBgm()["Prologue"], DX_PLAYTYPE_LOOP, true);				//BGM再生
 	return true;
 }
-
+/*-----終了------*/
 bool ModePrologue::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
@@ -44,7 +44,7 @@ bool ModePrologue::Process(Game& g) {
 	}
 	if (frame == BG1_FADEIN_FRAME) {
 		_pal = 255;
-		auto pt = new PrologueText();
+		auto pt = new PrologueText();				//プロローグテキスト生成
 		g.GetMS()->Add(pt, 1, "PText");
 	}
 	if (frame >= BG1_FADEOUT_BEGINFRAME&& BG1_FADEOUT_ENDFRAME>frame) {
@@ -52,7 +52,7 @@ bool ModePrologue::Process(Game& g) {
 	}
 	if (frame == BG1_FADEOUT_ENDFRAME) {
 		_pal = 0;
-		_GraphNo = 1;
+		_GraphNo = 1;				//シート番号変更
 	}
 	if (frame >= BG2_FADEIN_BEGINFRAME&& BG2_FADEIN_ENDFRAME>frame) {
 		_pal += BG2_FADEIN_SPEED;
@@ -61,19 +61,19 @@ bool ModePrologue::Process(Game& g) {
 		_pal = 255;
 	}
 	auto fadeoutendframe = 85;
+	//プロローグ終了後の処理
 	if (frame == PROLOGUE_FADEOUT_FRAME) {
-		auto ol = new OverlayBlack();
-		ol->SetFade(fadeoutendframe, 480, 600, 4);
-		g.GetMS()->Add(ol, 2, "OverlayBlack");
+		auto ol = new OverlayBlack();								//フェードアウトのための、オーバーレイブラックモード生成
+		ol->SetFade(fadeoutendframe, 480, 600, 4);	//フェード時間の設定
+		g.GetMS()->Add(ol, 2, "OverlayBlack");	
 	}
 	if (frame == PROLOGUE_FADEOUT_FRAME + fadeoutendframe) {
-		StopSoundMem(g.GetBgm() ["Prologue"]);
-		g.GetMS()->Del(g.GetMS()->Get("Prologue"));
-		g.GetMS()->Del(g.GetMS()->Get("PASkip"));
-		auto mg = new ModeGame();
+		StopSoundMem(g.GetBgm() ["Prologue"]);		//BGMがなっているならBGM停止
+		g.GetMS()->Del(g.GetMS()->Get("Prologue"));	//プロローグモード削除
+		auto mg = new ModeGame();								//モードゲーム生成
 		g.GetMS()->Add(mg,0,"Game");
 	}
-	/*----------背景移動関係----------*/
+	//プロローグテキストに合わせ、背景をスクロールさせる
 	if (frame >= BG_XMOVE_FRAME && _x <= 3840) {
 		_x += BG_XMOVE_SPEED;
 	}

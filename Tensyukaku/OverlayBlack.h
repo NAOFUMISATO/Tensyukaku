@@ -15,4 +15,5 @@ private:
 	int	_Fadeoutframe;
 	int	_FadeinBeginframe;
 	int	_FadeinEndframe;
+	int	_fade_speed;
 };

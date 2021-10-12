@@ -18,23 +18,23 @@ namespace {
 	constexpr auto FADEIN_FRAME = 60;						//フェードインフレーム
 	constexpr auto FADEIN_SPEED = 3;							//フェードインスピード
 	constexpr auto OVERLAY_PAL = 200;						//ぼかし処理の透明度
-	constexpr auto OVERSELECT_FRAME = 120;		//セレクト画面の表示フレーム
+	constexpr auto OVERSELECT_FRAME = 120;			//セレクト画面の表示フレーム
 }
 /*-----初期化-----*/
 bool ModeGameover::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;									//X座標初期化
 	_y = 540;									//Y座標初期化
-	_pal = 0;									//フェードインしていくため、透明度０で初期化
-	_mode_cnt = _cnt;				//フレームの初期化
-	_grhandle = ResourceServer::LoadGraph("res/Mode/Black.png");													//画像読み込み（ぼかし処理のための黒背景）
+	_pal = 0;										//フェードインしていくため、透明度０で初期化
+	_mode_cnt = _cnt;					//フレームの初期化
+	_grhandle = ResourceServer::LoadGraph("res/Mode/Black.png");										//画像読み込み（ぼかし処理のための黒背景）
 	_se["GameOver"] = ResourceServer::LoadSoundMem("se/OutGame/GameOver.wav");		//SE読み込み
 	_vpal["GameOver"] = 255;				//SE音量の初期化
 	ChangeVolumeSoundMem(_vpal["GameOver"], _se["GameOver"]);				//SE音量の変更
 	PlaySoundMem(_se["GameOver"], DX_PLAYTYPE_BACK, true);						//SE再生
 	return true;
 }
-
+/*-----終了------*/
 bool ModeGameover::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;

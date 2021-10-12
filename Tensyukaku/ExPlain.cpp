@@ -15,13 +15,13 @@ bool ExPlain::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;												//X座標の初期化
 	_y = 540;												//Y座標の初期化
-	_cnt = 6;												//5フレームでモード削除のため、動作カウンタ6で初期化
+	_cnt = 6;													//5フレームでモード削除のため、動作カウンタ6で初期化
 	_grhandle = ResourceServer::LoadGraph("res/Mode/Black.png");			//ぼかし処理用の黒画像読み込み
-	auto pc = new EXController();						//説明画面用コントローラークラスのインスタンス生成
+	auto pc = new EXController();				//説明画面用コントローラークラスのインスタンス生成
 	g.GetMS()->Add(pc, 3, "EXController");
 	return true;
 }
-
+/*-----終了------*/
 bool ExPlain::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
@@ -55,7 +55,7 @@ bool EXController::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 960;											//Ｘ座標の初期化
 	_y = 540;											//Ｙ座標の初期化
-	_trans_flag = true;						//背景透過フラグを真で初期化
+	_trans_flag = true;								//背景透過フラグを真で初期化
 	_grhandle = ResourceServer::LoadGraph("res/Mode/EXController.png");		//画像読み込み
 	return true;
 }
@@ -74,5 +74,3 @@ bool EXController::Draw(Game& g) {
 	base::Draw(g);
 	return true;
 }
-
-

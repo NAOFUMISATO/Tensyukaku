@@ -13,22 +13,22 @@ namespace{
 	constexpr auto GREEN = 1;
 	constexpr auto BLUE = 2;
 }
-
+//コンストラクタ
 ModeBase::ModeBase() {
-	//各初期化
-	_szName = "";
+	//初期化（モードーサーバー用）
+	_sz_name = "";
 	_uid = 1;
 	_layer = 0;
 
-	_cntMode = 0;
-	_tmMode = 0;
-	_tmStep = 0;
-	_tmModeBase = 0;
-	_tmPauseBase = 0;
-	_tmPauseStep = 0;
-	_tmOldFrame = 0;
+	_cnt_mode = 0;
+	_tm_mode = 0;
+	_tm_step = 0;
+	_tm_mode_base = 0;
+	_tm_pause_base = 0;
+	_tm_pause_step = 0;
+	_tm_old_frame = 0;
 }
-
+//デストラクタ
 ModeBase::~ModeBase() {
 }
 
@@ -39,10 +39,10 @@ bool	ModeBase::Initialize(Game& g) {
 	_pal = 255;							//透明度の初期化
 	_trans_flag = false;			//背景透過フラグを偽で初期化
 	_drg = std::make_pair(1.0, 0.0);						//DrawRotaGraph用、拡大率及び角度の初期化
-	_rgb = std::make_tuple(255,255,255);		//SetDrawBright用、RGBの初期化
+	_rgb = std::make_tuple(255,255,255);			//SetDrawBright用、RGBの初期化
 	return true;
 }
-
+/*-----終了------*/
 bool	ModeBase::Terminate(Game& g) {
 	return true;
 }
@@ -71,21 +71,21 @@ bool	ModeBase::Draw(Game& g)
 // 時間経過をさせる
 void ModeBase::StepTime(unsigned long tmNow) {
 	// 時間経過処理
-	if (_cntMode == 0) {
-		_tmMode = 0;
-		_tmStep = 0;
-		_tmModeBase = tmNow;
-		_tmPauseBase = 0;
-		_tmPauseStep = 0;
+	if (_cnt_mode == 0) {
+		_tm_mode = 0;
+		_tm_step = 0;
+		_tm_mode_base = tmNow;
+		_tm_pause_base = 0;
+		_tm_pause_step = 0;
 	}
 	else {
-		_tmMode = tmNow - _tmModeBase + _tmPauseStep;
-		_tmStep = tmNow - _tmOldFrame;
+		_tm_mode = tmNow - _tm_mode_base + _tm_pause_step;
+		_tm_step = tmNow - _tm_old_frame;
 	}
-	_tmOldFrame = tmNow;
+	_tm_old_frame = tmNow;
 }
 
 // カウントを進める
 void ModeBase::StepCount() {
-	_cntMode++;
+	_cnt_mode++;
 }

@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   PrologueText.cpp
+ * \brief  プロローグテキストクラス（モードベースのサブクラス）、スキップテキストクラス（モードベースのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ModePrologue.h"
 #include "PrologueText.h"
@@ -6,35 +13,36 @@
 #include "OverlayBlack.h"
 #include "ResourceServer.h"
 using namespace ProInfo;
+/*---初期化---*/
 bool PrologueText::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
-	_x = 1600;
-	_y = 540;
-	_pal = 0;
-	_GraphNo = 0;
-	_mode_cnt = _cnt;
-	_trans_flag = true;
-	_Skip_Flag = false;
+	_x = 1600;					//X座標の初期化
+	_y = 540;					//Y座標の初期化
+	_pal = 0;						//フェードインしていくため、透明度０で初期化
+	_graph_no = 0;			//シート番号０で初期化
+	_mode_cnt = _cnt;	//フレームの初期化
+	_trans_flag = true;		//背景透過フラグを真で初期化
+	_skip_flag = false;	   	//スキップボタン押下したかのフラグを偽で初期化
 	_grall["PText"].resize(TEXT_ANIMEMAX);
-	ResourceServer::LoadDivGraph(TEXT_GRAPHNAME, TEXT_ANIMEMAX, TEXT_WIDTHCOUNT, TEXT_HEIGHTCOUNT, TEXT_GRAPH_WIDTH, TEXT_GRAPH_HEIGHT, _grall["PText"].data());
-	LoadSE();
-	VolumeInit();
+	ResourceServer::LoadDivGraph(TEXT_GRAPHNAME, TEXT_ANIMEMAX, TEXT_WIDTHCOUNT, TEXT_HEIGHTCOUNT, TEXT_GRAPH_WIDTH, TEXT_GRAPH_HEIGHT, _grall["PText"].data());	//画像読み込み
+	LoadSE();					//SE読み込み
+	VolumeInit();				//SE音量初期化
 	return true;
 }
-
+/*-----終了------*/
 bool PrologueText::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
 }
-
+/*---更新---*/
 bool PrologueText::Process(Game& g) {
 	base::Process(g);
 	VolumeChange();
 	auto frame = _cnt - _mode_cnt;
 	_grhandle = _grall["PText"][_anime["PText"]];
-	_anime["PText"] = _GraphNo;
+	_anime["PText"] = _graph_no;
 	//テキスト1
-	if (_Skip_Flag == false) {
+	if (_skip_flag == false) {
 		if (frame == 1) {
 			PlaySoundMem(_se["Text1"], DX_PLAYTYPE_BACK, true);
 		}
@@ -51,7 +59,7 @@ bool PrologueText::Process(Game& g) {
 		}
 		if (frame == TEXT1_FADEOUT_ENDFRAME) {
 			_pal = 0;
-			_GraphNo = 1;
+			_graph_no = 1;
 		}
 		//テキスト2
 		if (frame == TEXT2_FADEIN_BEGINFRAME) {
@@ -68,7 +76,7 @@ bool PrologueText::Process(Game& g) {
 		}
 		if (frame == TEXT2_FADEOUT_ENDFRAME) {
 			_pal = 0;
-			_GraphNo = 2;
+			_graph_no = 2;
 		}
 		//テキスト3
 		if (frame == TEXT3_FADEIN_BEGINFRAME) {
@@ -85,7 +93,7 @@ bool PrologueText::Process(Game& g) {
 		}
 		if (frame == TEXT3_FADEOUT_ENDFRAME) {
 			_pal = 0;
-			_GraphNo = 3;
+			_graph_no = 3;
 		}
 		//テキスト4
 		if (frame == TEXT4_FADEIN_BEGINFRAME) {
@@ -104,7 +112,7 @@ bool PrologueText::Process(Game& g) {
 			_pal = 0;
 			_x = 1500;
 			_y = 850;
-			_GraphNo = 4;
+			_graph_no = 4;
 		}
 		//テキスト5
 		if (frame == TEXT5_FADEIN_BEGINFRAME) {
@@ -126,16 +134,16 @@ bool PrologueText::Process(Game& g) {
 	}
 	/*----------ボタン押下によるスキップ----------*/
 	auto fadeoutframe =85;
-	if (g.GetTrg() & PAD_INPUT_3&&_Skip_Flag==false) {
+	if (g.GetTrg() & PAD_INPUT_3&&_skip_flag==false) {
 		_mode_cnt = _cnt;
-		_Skip_Flag = true;
+		_skip_flag = true;
 		//モードオーバーレイ生成
 		auto ol = new OverlayBlack();
 		ol->SetFade(fadeoutframe, 480, 600, 4);
 		g.GetMS()->Add(ol, 2, "OverlayBlack");
 	}
 	//スキップ時の音源のフェードアウト
-	if (frame >= 0 && frame < fadeoutframe && _Skip_Flag == true) {
+	if (frame >= 0 && frame < fadeoutframe && _skip_flag == true) {
 		auto vpal = g.GetVpal();
 		vpal["Prologue"] -= 1;
 		g.SetVpal(vpal);
@@ -146,7 +154,7 @@ bool PrologueText::Process(Game& g) {
 		_vpal["Text5"]-=4;
 	}
 	//押下により一定時間後、流れている音源の停止&モードゲーム生成
-	if (frame == fadeoutframe&& _Skip_Flag == true) {
+	if (frame == fadeoutframe&& _skip_flag == true) {
 		StopSoundMem(_se["Text1"]);
 		StopSoundMem(_se["Text2"]);
 		StopSoundMem(_se["Text3"]);
@@ -161,7 +169,7 @@ bool PrologueText::Process(Game& g) {
 	}
 	return true;
 }
-
+/*---描画---*/
 bool PrologueText::Draw(Game& g) {
 	base::Draw(g);
 	return true;
@@ -194,7 +202,8 @@ void		PrologueText::VolumeChange() {
 }
 
 
-//Aボタンススキップ画像
+/*----スキップテキストクラス-----*/
+/*-----初期化-----*/
 bool PrologueASkip::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_x = 1700;
@@ -209,10 +218,11 @@ bool PrologueASkip::Terminate(Game& g) {
 	base::Terminate(g);
 	return true;
 }
-
+/*-----更新-----*/
 bool PrologueASkip::Process(Game& g) {
 	base::Process(g);
 	auto frame = _cnt - _mode_cnt;
+	//一定フレーム経ったらフェードアウト
 	if (frame >=550) {
 		_pal -= 5;
 	}
@@ -221,7 +231,7 @@ bool PrologueASkip::Process(Game& g) {
 	}
 	return true;
 }
-
+/*-----描画-----*/
 bool PrologueASkip::Draw(Game& g) {
 	base::Draw(g);
 	return true;

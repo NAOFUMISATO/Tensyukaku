@@ -23,7 +23,7 @@ namespace {
 bool ModeGame::Initialize(Game& g) {
 	if (!base::Initialize(g)) { return false; }
 	_enemyspawn = new EnemySpawn(g);								//敵スポーンブロッククラス生成
-	_gimikplacement = new GimikPlacement(g);					//ギミックオブジェクトクラス生成
+	_gimikplacement = new GimikPlacement(g);						//ギミックオブジェクトクラス生成
 	_eventhappen = new EventHappen(g);								//イベントブロッククラス生成
 	/*-----------各チェックポイント通過によるプレイヤー初期座標-------------*/
 	if (g.GetCPointFlag()["11A"] == true) {
@@ -74,10 +74,10 @@ bool ModeGame::Initialize(Game& g) {
 	g.SetcvX(0);
 	g.SetcvY(g.GetmapH() - SCREEN_H);
 	//オブジェクト処理を止めるフラグを偽で初期化
-	_stopObjProcess = false;
+	_stop_obj_process = false;
 	return true;
 }
-
+/*-----終了------*/
 bool ModeGame::Terminate(Game& g) {
 	base::Terminate(g);
 	delete _enemyspawn;
@@ -90,7 +90,7 @@ bool ModeGame::Terminate(Game& g) {
 bool ModeGame::Process(Game& g) {
 	base::Process(g);
 	//オブジェクト処理を止めるフラグが偽ならマップチップ及びオブジェクトの処理を更新する
-	if (_stopObjProcess==false)
+	if (_stop_obj_process==false)
 	{
 		g.GetChip()->Process(g);
 		g.GetOS()->Process(g);
@@ -101,8 +101,8 @@ bool ModeGame::Process(Game& g) {
 bool ModeGame::Draw(Game& g) {
 	base::Draw(g);
 	_bg.Draw(g);								// 背景画像描画
-	g.GetChip()->Draw(g);			//マップチップ描画
-	g.GetOS()->Draw(g);				// オブジェクトの描画
+	g.GetChip()->Draw(g);				//マップチップ描画
+	g.GetOS()->Draw(g);					// オブジェクトの描画
 	return true;
 }
 
