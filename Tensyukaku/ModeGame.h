@@ -32,12 +32,12 @@ public:
 	
 
 private:
-	int		_player_x;					//インスタンス生成されるプレイヤーの初期X座標
-	int		_player_y;					//インスタンス生成されるプレイヤーの初期Y座標
+	int		_player_x;						//インスタンス生成されるプレイヤーの初期X座標
+	int		_player_y;						//インスタンス生成されるプレイヤーの初期Y座標
 	bool		_player_flip;				//インスタンス生成されるプレイヤーの初期反転判定
-	bool		_stop_obj_process;	//オブジェクト処理のストップ判定
-	BackGround			_bg;							//背景クラス
-	GimikPlacement*	_gimikplacement;	//ギミックの配置クラス
-	EnemySpawn*		_enemyspawn;		//敵スポーンブロックの配置クラス
+	bool		_stop_obj_process;			//オブジェクト処理のストップ判定
+	BackGround			_bg;				//背景クラス
+	GimikPlacement*	_gimikplacement;		//ギミックの配置クラス
+	EnemySpawn*		_enemyspawn;			//敵スポーンブロックの配置クラス
 	EventHappen*		_eventhappen;		//イベントブロックの配置クラス
 };
