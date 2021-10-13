@@ -4,11 +4,11 @@ class Game;
 // ”wŒiƒNƒ‰ƒX
 class BackGround {
 public:
-	BackGround();
-	~BackGround();
+   BackGround();
+   ~BackGround();
 
-	void	Draw(Game& g);
+   void   Draw(Game& g);
 
 private:
-	int		_GrHandle;		// ‰æ‘œ
+   int      _GrHandle;      // ‰æ‘œ
 };

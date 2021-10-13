@@ -12,16 +12,16 @@
 
 BackGround::BackGround()
 {
-	_GrHandle = ResourceServer::LoadGraph("res/Map/Back.png");	
+   _GrHandle = ResourceServer::LoadGraph("res/Map/Back.png");   
 }
 
 BackGround::~BackGround()
 {
 }
 
-void	BackGround::Draw(Game& g)
+void   BackGround::Draw(Game& g)
 {
-	// カメラスクロール分から、背景の位置を算出する
+   // カメラスクロール分から、背景の位置を算出する
     int x, y;
     for (y = 0; y < g.GetmapH()+1; y+=9440)
     {

@@ -5,9 +5,9 @@
 #include "DxLib.h"
 #include "ResourceServer.h"
 // 静的メンバ実体
-std::unordered_map<std::string, int>	ResourceServer::_mapGraph;
-std::unordered_map<std::string, ResourceServer::DIVGRAPH>	ResourceServer::_mapDivGraph;
-std::unordered_map<std::string, int>	ResourceServer::_mapSound;
+std::unordered_map<std::string, int>   ResourceServer::_mapGraph;
+std::unordered_map<std::string, ResourceServer::DIVGRAPH>   ResourceServer::_mapDivGraph;
+std::unordered_map<std::string, int>   ResourceServer::_mapSound;
 
 
 void    ResourceServer::Init()
@@ -22,7 +22,7 @@ void    ResourceServer::Release()
     ClearGraph();
 }
 
-void	ResourceServer::ClearGraph()
+void   ResourceServer::ClearGraph()
 {
     // すべてのデータの削除をする
     for (auto itr = _mapGraph.begin(); itr != _mapGraph.end(); itr++)
@@ -49,7 +49,7 @@ void	ResourceServer::ClearGraph()
 }
 
 
-int		ResourceServer::LoadGraph(const TCHAR* FileName)
+int      ResourceServer::LoadGraph(const TCHAR* FileName)
 {
     // キーの検索
     auto itr = _mapGraph.find(FileName);
@@ -66,7 +66,7 @@ int		ResourceServer::LoadGraph(const TCHAR* FileName)
     return cg;
 }
 
-int		ResourceServer::LoadDivGraph(const TCHAR* FileName, int AllNum,
+int      ResourceServer::LoadDivGraph(const TCHAR* FileName, int AllNum,
     int XNum, int YNum,
     int XSize, int YSize, int* HandleBuf)
 {
@@ -101,7 +101,7 @@ int		ResourceServer::LoadDivGraph(const TCHAR* FileName, int AllNum,
 }
 
 
-int		ResourceServer::LoadSoundMem(const TCHAR* FileName) {
+int      ResourceServer::LoadSoundMem(const TCHAR* FileName) {
     // キーの検索
     auto itr = _mapSound.find(FileName);
     if (itr != _mapSound.end())

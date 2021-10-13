@@ -14,47 +14,47 @@
 //エントリーポイント
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine, int nCmdShow)
 {
-	//ログの出力をしない
-	SetOutApplicationLogValidFlag(false);
-	// 初期化 -------------------------------------------------------------------------
-	// ＤＸライブラリ初期化処理
-	SetGraphMode(SCREEN_W, SCREEN_H, SCREEN_DEPTH);
-	ChangeWindowMode(true);					// ウィンドウモードに指定する
-	if (DxLib_Init() == -1)
-	{	// エラーが起きたら直ちに終了
-		return -1;
-	}
-	SetDrawScreen(DX_SCREEN_BACK);		// 描画先画面を裏画面にセット
+   //ログの出力をしない
+   SetOutApplicationLogValidFlag(false);
+   // 初期化 -------------------------------------------------------------------------
+   // ＤＸライブラリ初期化処理
+   SetGraphMode(SCREEN_W, SCREEN_H, SCREEN_DEPTH);
+   ChangeWindowMode(true);               // ウィンドウモードに指定する
+   if (DxLib_Init() == -1)
+   {   // エラーが起きたら直ちに終了
+      return -1;
+   }
+   SetDrawScreen(DX_SCREEN_BACK);      // 描画先画面を裏画面にセット
 
-	// 乱数初期化
-	srand((unsigned int)time(NULL));
+   // 乱数初期化
+   srand((unsigned int)time(NULL));
 
-	// リソースサーバ初期化
-	ResourceServer::Init();
+   // リソースサーバ初期化
+   ResourceServer::Init();
 
-	// ゲームクラス
-	Game* g = new Game();
+   // ゲームクラス
+   Game* g = new Game();
 
-	// 1フレームループを組む ----------------------------------------------------------
-	while (ProcessMessage() == 0)		// プログラムが終了するまでループ
-	{
-	//ESCキーで抜ける（デバッグ用）
+   // 1フレームループを組む ----------------------------------------------------------
+   while (ProcessMessage() == 0)      // プログラムが終了するまでループ
+   {
+   //ESCキーで抜ける（デバッグ用）
 #ifdef _DEBUG
-		if (CheckHitKey(KEY_INPUT_ESCAPE)) {
-			break;
-		}
+      if (CheckHitKey(KEY_INPUT_ESCAPE)) {
+         break;
+      }
 #endif
-		g->Input();		// 入力
-		g->Process();	// 計算
-		g->Draw();		// 描画
-	}
+      g->Input();      // 入力
+      g->Process();   // 計算
+      g->Draw();      // 描画
+   }
 
-	// 解放 ---------------------------------------------------------------------------
-	ResourceServer::Release();	// リソースサーバ解放
+   // 解放 ---------------------------------------------------------------------------
+   ResourceServer::Release();   // リソースサーバ解放
 
-	delete g;			// ゲームクラスの解放
+   delete g;         // ゲームクラスの解放
 
-	DxLib_End();		// ＤＸライブラリ使用の終了処理
-	
-	return 0;
+   DxLib_End();      // ＤＸライブラリ使用の終了処理
+   
+   return 0;
 }

@@ -1,11 +1,22 @@
+/*****************************************************************//**
+ * \file   Overlogo.h
+ * \brief  ゲームオーバーロゴクラス（モードベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #pragma once
 #include "ModeBase.h"
 
 class Overlogo :public ModeBase {
-	typedef ModeBase base;
+   typedef ModeBase base;
 public:
-	virtual bool Initialize(Game& g);
-	virtual bool Terminate(Game& g);
-	virtual bool Process(Game& g);
-	virtual bool Draw(Game& g);
+   //初期化
+   virtual bool Initialize(Game& g);
+   //終了
+   virtual bool Terminate(Game& g);
+   //更新
+   virtual bool Process(Game& g);
+   //描画
+   virtual bool Draw(Game& g);
 };

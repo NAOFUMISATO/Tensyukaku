@@ -1,5 +1,5 @@
 /*
-		“G‚ÌŠî’ê
+      “G‚ÌŠî’ê
 */
 #include "Game.h"
 #include <DxLib.h>
@@ -8,7 +8,7 @@
 
 EnemyBase::EnemyBase()
 {
-	Init();
+   Init();
 }
 EnemyBase::~EnemyBase()
 {
@@ -19,9 +19,9 @@ void EnemyBase::Init()
 }
 /*----------XV----------*/
 void EnemyBase::Process(Game& g) {
-	ObjectBase::Process(g);
+   ObjectBase::Process(g);
 }
 /*----------•`‰æ----------*/
 void EnemyBase::Draw(Game& g) {
-	ObjectBase::Draw(g);
+   ObjectBase::Draw(g);
 }
