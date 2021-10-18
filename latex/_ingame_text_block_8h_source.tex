@@ -1,0 +1,43 @@
+\hypertarget{_ingame_text_block_8h_source}{}\doxysection{Ingame\+Text\+Block.\+h}
+\label{_ingame_text_block_8h_source}\index{Tensyukaku/IngameTextBlock.h@{Tensyukaku/IngameTextBlock.h}}
+\mbox{\hyperlink{_ingame_text_block_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_ingame_text_block}{IngameTextBlock}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{5 \textcolor{keyword}{public}:}
+\DoxyCodeLine{6    \mbox{\hyperlink{class_ingame_text_block_aa2d0f28791377fd426253cf03923fdf6}{IngameTextBlock}}(std::string  texttype);}
+\DoxyCodeLine{7    \mbox{\hyperlink{class_ingame_text_block_a8260334d46b0036f0d5a8beba22b6782}{\string~IngameTextBlock}}();}
+\DoxyCodeLine{8    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}   \mbox{\hyperlink{class_ingame_text_block_a23a5fbf6fa06e9a0654b305cbe7fd918}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dac6719a6de45631bfdda6d67c1f636f45}{OBJECTTYPE::CPOINTBLOCK}}; \}}
+\DoxyCodeLine{9    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ingame_text_block_a5c5eadbed600ebc112a42a2c780b73ee}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{10    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ingame_text_block_ae006ddaf6f2002232a705676a9cb3acc}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{11    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ingame_text_block_abe07100b5f67f4e09d8272742640a4b5}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{12    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ingame_text_block_aed1fa7e7de17f95322181b6277567f6f}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ingame_text_block_a234f3d298d99bcd876084d61e0ad70e7}{TextPosition}}();}
+\DoxyCodeLine{15    std::string  \mbox{\hyperlink{class_ingame_text_block_a5c7cc2b1608e8515b351f28b70fd99dd}{\_text\_type}};}
+\DoxyCodeLine{16 \};}
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_i_t_info}{ITInfo}} \{}
+\DoxyCodeLine{18    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_i_t_info_ab91e0afcc0279c5aaf64d1fcd6e2ba3a}{GRAPHPOINT\_X}} = 0;      \textcolor{comment}{//X位置から描画点までの差分}}
+\DoxyCodeLine{19    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_i_t_info_aa44b3f04c0690e526beebc9c1c343cab}{GRAPHPOINT\_Y}} = -\/50;      \textcolor{comment}{//Y位置から描画点までの差分}}
+\DoxyCodeLine{20    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_i_t_info_a8d3fce1322f636a430ec1f5a4b488daa}{POSITION\_HITX}} = -\/50;      \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{21    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_i_t_info_a16d340707a421ed54a2ba759e6a8e28b}{POSITION\_HITY}} = -\/50;      \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{22    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_i_t_info_af5ccf84b393c04e63be37723f532ab11}{COLLISION\_WIDTH}} = 100;   \textcolor{comment}{//当たり判定横幅}}
+\DoxyCodeLine{23    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_i_t_info_a3177bac042c8e4fa1178bc0bd7f4bea7}{COLLISION\_HEIGHT}} = 100;   \textcolor{comment}{//当たり判定縦幅}}
+\DoxyCodeLine{24    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/各テキストブロック座標-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{25    \textcolor{comment}{//天守}}
+\DoxyCodeLine{26    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}  \mbox{\hyperlink{namespace_i_t_info_a5be0961dac5b2625b6b65d3c123c84e8}{TOP\_TEXT\_X}} =500;}
+\DoxyCodeLine{27    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}  \mbox{\hyperlink{namespace_i_t_info_a76c5dd710255bc2f775126b2286b4744}{TOP\_TEXT\_Y}} = 1000;}
+\DoxyCodeLine{28    \textcolor{comment}{//上層}}
+\DoxyCodeLine{29    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}  \mbox{\hyperlink{namespace_i_t_info_a2f674a60e051ac201b65602f44c0233d}{UPPER\_TEXT\_X}} = 400;}
+\DoxyCodeLine{30    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}  \mbox{\hyperlink{namespace_i_t_info_a4feba9216c1bed9c3a81d275449eb18c}{UPPER\_TEXT\_Y}} = 2520;}
+\DoxyCodeLine{31    \textcolor{comment}{//中層}}
+\DoxyCodeLine{32    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}  \mbox{\hyperlink{namespace_i_t_info_ac43bd7df5acd8cda0c4732f26d8a9e7f}{MIDDLE\_TEXT\_X}} = 5500;}
+\DoxyCodeLine{33    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}  \mbox{\hyperlink{namespace_i_t_info_aabc5cf28004cfebcd74a3ad2091a1b58}{MIDDLE\_TEXT\_Y}} = 5560;}
+\DoxyCodeLine{34    \textcolor{comment}{//下層}}
+\DoxyCodeLine{35    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}  \mbox{\hyperlink{namespace_i_t_info_a490da0283c2e74d4f9929cccace70fa9}{UNDER\_TEXT\_X}} = 350;}
+\DoxyCodeLine{36    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}  \mbox{\hyperlink{namespace_i_t_info_aac3fea3819ac9cba9fc1f2512d88ada9}{UNDER\_TEXT\_Y}} = 9360;}
+\DoxyCodeLine{37 \}}
+
+\end{DoxyCode}

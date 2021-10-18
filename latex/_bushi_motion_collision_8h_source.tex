@@ -1,0 +1,29 @@
+\hypertarget{_bushi_motion_collision_8h_source}{}\doxysection{Bushi\+Motion\+Collision.\+h}
+\label{_bushi_motion_collision_8h_source}\index{Tensyukaku/BushiMotionCollision.h@{Tensyukaku/BushiMotionCollision.h}}
+\mbox{\hyperlink{_bushi_motion_collision_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_bushi_attack_collision}{BushiAttackCollision}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13    \textcolor{comment}{//コンストラクタ : 引数（X座標,Y座標）}}
+\DoxyCodeLine{14    \mbox{\hyperlink{class_bushi_attack_collision_af4c4f97c47bbb6a928982411fa854096}{BushiAttackCollision}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{15    \textcolor{comment}{//デストラクタ}}
+\DoxyCodeLine{16    \mbox{\hyperlink{class_bushi_attack_collision_a81720c5ff611ed1e475221ae4a63fc72}{\string~BushiAttackCollision}}();}
+\DoxyCodeLine{17    \textcolor{comment}{//純粋仮想関数のオーバーライド}}
+\DoxyCodeLine{18    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_bushi_attack_collision_a149ba995daf7faf47b55dda8ee8fd373}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafc6727859eff7b4b65345ff50fd9f4f6}{OBJECTTYPE::BUSHIATTACK}}; \}}
+\DoxyCodeLine{19    \textcolor{comment}{//初期化}}
+\DoxyCodeLine{20    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bushi_attack_collision_a1d3f15bb32ec72ddf6211a5b478d3f76}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{21    \textcolor{comment}{//更新}}
+\DoxyCodeLine{22    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bushi_attack_collision_a00c454bec701fe5bc1a67b6d16f928fb}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{23    \textcolor{comment}{//描画}}
+\DoxyCodeLine{24    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bushi_attack_collision_a4e6f4b91932c24c6774cecbc0150b267}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{25    \textcolor{comment}{//オブジェクトの消去関数}}
+\DoxyCodeLine{26    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bushi_attack_collision_a1e0d2b9d4c385b4a40b67c6ad6447c85}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{27 \};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 }
+
+\end{DoxyCode}

@@ -1,0 +1,132 @@
+\hypertarget{class_andon}{}\doxysection{Andon クラス}
+\label{class_andon}\index{Andon@{Andon}}
+
+
+{\ttfamily \#include $<$Andon.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_object_base}{Object\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_andon_a6bb2da65b58dbd10ac8840452bada714}{Andon}} (int x, int y)
+\item 
+\mbox{\hyperlink{class_andon_a9bd2feb42c9f42515867e245a3aa60da}{$\sim$\+Andon}} ()
+\item 
+virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_andon_a9874bf02d76f5cd606ab5c769556c56b}{Get\+Obj\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_andon_a5b1ae71c8aa77beefcbc0bab814d8884}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_andon_ae4c250896ddf19db63d30165aa138b86}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_andon_a48116d27c1a57dd27ead4911812a671c}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_andon_ac26da1aca73e3f1013f38fba8bff9b6b}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_andon_a480478cb208c72be9f39524015da6f60}{\+\_\+\+Flame\+\_\+y}}
+\item 
+bool \mbox{\hyperlink{class_andon_a990f679344041edeeff40a0ffdfc7ade}{\+\_\+\+Andon\+Drop\+\_\+\+Flag}}
+\item 
+bool \mbox{\hyperlink{class_andon_ac78b34ea620c64393fb57c643a10c08d}{\+\_\+\+Player\+Flip\+\_\+\+Flag}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_andon_a6bb2da65b58dbd10ac8840452bada714}\label{class_andon_a6bb2da65b58dbd10ac8840452bada714}} 
+\index{Andon@{Andon}!Andon@{Andon}}
+\index{Andon@{Andon}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{Andon()}{Andon()}}
+{\footnotesize\ttfamily Andon\+::\+Andon (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_andon_a9bd2feb42c9f42515867e245a3aa60da}\label{class_andon_a9bd2feb42c9f42515867e245a3aa60da}} 
+\index{Andon@{Andon}!````~Andon@{$\sim$Andon}}
+\index{````~Andon@{$\sim$Andon}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{$\sim$Andon()}{~Andon()}}
+{\footnotesize\ttfamily Andon\+::$\sim$\+Andon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_andon_ac26da1aca73e3f1013f38fba8bff9b6b}\label{class_andon_ac26da1aca73e3f1013f38fba8bff9b6b}} 
+\index{Andon@{Andon}!Delete@{Delete}}
+\index{Delete@{Delete}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Andon\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a63d403d783b600faf05648968a3a569e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_andon_a48116d27c1a57dd27ead4911812a671c}\label{class_andon_a48116d27c1a57dd27ead4911812a671c}} 
+\index{Andon@{Andon}!Draw@{Draw}}
+\index{Draw@{Draw}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Andon\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ae10010b1cf932746225bf6121a00d80c}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_andon_a9874bf02d76f5cd606ab5c769556c56b}\label{class_andon_a9874bf02d76f5cd606ab5c769556c56b}} 
+\index{Andon@{Andon}!GetObjType@{GetObjType}}
+\index{GetObjType@{GetObjType}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{GetObjType()}{GetObjType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} Andon\+::\+Get\+Obj\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}{Object\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_andon_a5b1ae71c8aa77beefcbc0bab814d8884}\label{class_andon_a5b1ae71c8aa77beefcbc0bab814d8884}} 
+\index{Andon@{Andon}!Init@{Init}}
+\index{Init@{Init}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Andon\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_andon_ae4c250896ddf19db63d30165aa138b86}\label{class_andon_ae4c250896ddf19db63d30165aa138b86}} 
+\index{Andon@{Andon}!Process@{Process}}
+\index{Process@{Process}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Andon\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}{Object\+Base}}を再実装しています。
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_andon_a990f679344041edeeff40a0ffdfc7ade}\label{class_andon_a990f679344041edeeff40a0ffdfc7ade}} 
+\index{Andon@{Andon}!\_AndonDrop\_Flag@{\_AndonDrop\_Flag}}
+\index{\_AndonDrop\_Flag@{\_AndonDrop\_Flag}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{\_AndonDrop\_Flag}{\_AndonDrop\_Flag}}
+{\footnotesize\ttfamily bool Andon\+::\+\_\+\+Andon\+Drop\+\_\+\+Flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_andon_a480478cb208c72be9f39524015da6f60}\label{class_andon_a480478cb208c72be9f39524015da6f60}} 
+\index{Andon@{Andon}!\_Flame\_y@{\_Flame\_y}}
+\index{\_Flame\_y@{\_Flame\_y}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{\_Flame\_y}{\_Flame\_y}}
+{\footnotesize\ttfamily int Andon\+::\+\_\+\+Flame\+\_\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_andon_ac78b34ea620c64393fb57c643a10c08d}\label{class_andon_ac78b34ea620c64393fb57c643a10c08d}} 
+\index{Andon@{Andon}!\_PlayerFlip\_Flag@{\_PlayerFlip\_Flag}}
+\index{\_PlayerFlip\_Flag@{\_PlayerFlip\_Flag}!Andon@{Andon}}
+\doxysubsubsection{\texorpdfstring{\_PlayerFlip\_Flag}{\_PlayerFlip\_Flag}}
+{\footnotesize\ttfamily bool Andon\+::\+\_\+\+Player\+Flip\+\_\+\+Flag\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_andon_8h}{Andon.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_andon_8cpp}{Andon.\+cpp}}\end{DoxyCompactItemize}

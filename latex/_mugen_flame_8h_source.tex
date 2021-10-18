@@ -1,0 +1,43 @@
+\hypertarget{_mugen_flame_8h_source}{}\doxysection{Mugen\+Flame.\+h}
+\label{_mugen_flame_8h_source}\index{Tensyukaku/MugenFlame.h@{Tensyukaku/MugenFlame.h}}
+\mbox{\hyperlink{_mugen_flame_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_mugen_flame}{MugenFlame}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{5 \textcolor{keyword}{public}:}
+\DoxyCodeLine{6    \mbox{\hyperlink{class_mugen_flame_ace0588d5dd2706a68fb10ead27e98231}{MugenFlame}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{7    \mbox{\hyperlink{class_mugen_flame_a6c9c067a7cff3f4ae0bb7d78b55abb38}{\string~MugenFlame}}();}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}   \mbox{\hyperlink{class_mugen_flame_aadbae8fd2299d235582f39d856cad691}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2f18df05c44f005158ae791c8dbfc634}{OBJECTTYPE::MUGENFLAME}}; \}}
+\DoxyCodeLine{10    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mugen_flame_a1c7b85946a172a47cde2390390004e21}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{11    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mugen_flame_ae0062b2f9fec459883951fe2b093cb30}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{12    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mugen_flame_ac944222dbf2e3eb15974d2a4630056dd}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{13    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mugen_flame_aea7171644022076b47b5c177ba808830}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{14 \};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_m_f_info}{MFInfo}} \{}
+\DoxyCodeLine{17    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/炎の各座標関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{18    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a2937f9eaf9e8ef0b90c548c07bb9f7a6}{GRAPHPOINT\_X}} = 0;      \textcolor{comment}{//X位置から描画点までの差分}}
+\DoxyCodeLine{19    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a2e1b2a3f28e6b52ed069f7590edf68f8}{GRAPHPOINT\_Y}} = -\/150;      \textcolor{comment}{//Y位置から描画点までの差分}}
+\DoxyCodeLine{20    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_acf2b405d835e489a3dbf4e6cecbfb83e}{POSITION\_HITX}} = -\/150;   \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{21    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_ab06e6cf263b383331ca1a79e5927c7dc}{POSITION\_HITY}} = -\/150;   \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{22    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a36dfbf8020342d71e941b0cd48c4c66f}{COLLISION\_WIDTH}} = 300;   \textcolor{comment}{//当たり判定横幅}}
+\DoxyCodeLine{23    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a5e347c7b2faab80e1c897b27e5f1a6c0}{COLLISION\_HEIGHT}} = 300;   \textcolor{comment}{//当たり判定縦幅}}
+\DoxyCodeLine{24    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/画像読み込み\&アニメーション\&判定フレーム関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{25    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a8c21f0b6b13cae97dbbf689db7ab016b}{GRAPH\_WIDTH}} = 300;      \textcolor{comment}{//1枚当たりの画像サイズ（横）}}
+\DoxyCodeLine{26    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a8cb41a83887766ce132642a3f3d4ce3b}{GRAPH\_HEIGHT}} = 300;      \textcolor{comment}{//1枚当たりの画像サイズ（縦）}}
+\DoxyCodeLine{27    \textcolor{comment}{//炎}}
+\DoxyCodeLine{28    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_ace3700271df11c8c51e6df6792971b28}{MFLAME\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Gimik/Flame.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{29    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a57ba7eea40303b3fbe3fb6085a5447c1}{MFLAME\_ANIMEMAX}} = 7;      \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{30    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a434719541fc066c8415ee9b128ee86ff}{MFLAME\_WIDTHCOUNT}} = 7;      \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{31    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a96b1d0e1fcbe49564a5ab424ffbbcb5c}{MFLAME\_HEIGHTCOUNT}} = 1;      \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{32    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_ab48f8f0b6986e1c6c42cba81d8c1e845}{ANIMESPEED\_MFLAME}} = 15;      \textcolor{comment}{//各状態アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{33    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_accf747dc501e9d74c28cc9fb0e321e5d}{MFLAME\_ANIMEFRAME}} = \mbox{\hyperlink{namespace_m_f_info_a57ba7eea40303b3fbe3fb6085a5447c1}{MFLAME\_ANIMEMAX}} * \mbox{\hyperlink{namespace_m_f_info_ab48f8f0b6986e1c6c42cba81d8c1e845}{ANIMESPEED\_MFLAME}};      \textcolor{comment}{//アニメーションフレーム（全ての画像枚数×アニメスピード）}}
+\DoxyCodeLine{34    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_ace393f14605c0b070373c1592818baaf}{MFLAME\_ALLFLAME}} = 135;}
+\DoxyCodeLine{35    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_m_f_info_a3c80c51a15266489b5634b238ee7511a}{MFLAME\_FADEOUTSPEED}} = 4;      \textcolor{comment}{//フェードスピード}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \}}
+
+\end{DoxyCode}

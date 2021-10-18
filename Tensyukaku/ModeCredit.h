@@ -1,57 +1,46 @@
 /*****************************************************************//**
  * \file   ModeCredit.h
- * \brief  クレジットクラス（モードベースのサブクラス）、左スティックガイドボタンクラス（モードベースのサブクラス）、赤ボタンガイドクラス（モードベースのサブクラス）
+ * \brief  クレジットクラス（モードベースのサブクラス）
  * 
  * \author Sato Naofumi
  * \date   October 2021
  *********************************************************************/
 #pragma once
 #include "ModeBase.h"
-/*---クレジットクラス---*/
+/** クレジット */
 class ModeCredit :public ModeBase {
    typedef ModeBase base;
 public:
-   //初期化
+   /**
+     * \brief   初期化関数
+     * \param g ゲームクラスの参照
+     */
    virtual bool Initialize(Game& g);
-   //終了
+   /**
+    * \brief   終了関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Terminate(Game& g);
-   //更新
+   /**
+    * \brief   更新関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Process(Game& g);
-   //描画
+   /**
+    * \brief   描画関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Draw(Game& g);
+
 private:
-   bool _leftmove_flag;  //クレジット画面が左へ移動する入力を受け付けるフラグ
-   bool _rightmove_flag; //クレジット画面が右へ移動する入力を受け付けるフラグ
-   bool _start_flag;     //クレジットの開始フラグ
-   bool _end_flag;       //クレジットの終了フラグ
+   bool _leftmove_flag;  //!< クレジット画面が左へ移動する入力を受け付けるフラグ
+   bool _rightmove_flag; //!< クレジット画面が右へ移動する入力を受け付けるフラグ
+   bool _start_flag;     //!< クレジットの開始フラグ
+   bool _end_flag;       //!< クレジットの終了フラグ
 };
-/*---左スティックガイドボタンクラス---*/
-class Guide:public ModeBase {
-   typedef ModeBase base;
-public:
-   //初期化
-   virtual bool Initialize(Game& g);
-   //終了
-   virtual bool Terminate(Game& g);
-   //更新
-   virtual bool Process(Game& g);
-   //描画
-   virtual bool Draw(Game& g);
-};
-/*---赤ボタンガイドクラス---*/
-class RedReturn :public ModeBase {
-   typedef ModeBase base;
-public:
-   //初期化
-   virtual bool Initialize(Game& g);
-   //終了
-   virtual bool Terminate(Game& g);
-   //更新
-   virtual bool Process(Game& g);
-   //描画
-   virtual bool Draw(Game& g);
-};
+
+/** クレジット、左スティックボタンガイド、赤ボタンガイドクラス用定数 */
 namespace CrInfo {
-   constexpr auto FADE_FRAME = 60;   //フェードフレーム
-   constexpr auto  FADE_SPEED = 5;   //フェードスピード
+   constexpr auto FADE_FRAME = 60;   //!< フェードフレーム
+   constexpr auto  FADE_SPEED = 5;   //!< フェードスピード
 }

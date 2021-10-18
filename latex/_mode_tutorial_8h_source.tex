@@ -1,0 +1,25 @@
+\hypertarget{_mode_tutorial_8h_source}{}\doxysection{Mode\+Tutorial.\+h}
+\label{_mode_tutorial_8h_source}\index{Tensyukaku/ModeTutorial.h@{Tensyukaku/ModeTutorial.h}}
+\mbox{\hyperlink{_mode_tutorial_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_mode_base_8h}{ModeBase.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{keyword}{class  }\mbox{\hyperlink{class_mode_tutorial}{ModeTutorial}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_mode_base}{ModeBase}} \{}
+\DoxyCodeLine{12    \textcolor{keyword}{typedef} \mbox{\hyperlink{class_mode_base}{ModeBase}} \mbox{\hyperlink{class_mode_tutorial_ae545bd80b1f9b2cbbbea2a636a10d2a9}{base}};}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_tutorial_a93fe2e8732263cff01b8d79f097a3677}{Initialize}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{23    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_tutorial_aae05eeeda485a6b353b6ca9498676585}{Terminate}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{28    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_tutorial_aec25df8acffbcc931585e95b63d0ab29}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{33    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_tutorial_a5c0a4fcf0011e8eea7b1988f0a4b1d2e}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{38    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mode_tutorial_ab9b4df66fffffe133de2481caf6592ad}{SetType}}(std::string tutorialtype) \{ \mbox{\hyperlink{class_mode_tutorial_a67bc0f5b7b1219472a7799a71c605ec9}{\_tutorial\_type}} = tutorialtype; \}}
+\DoxyCodeLine{39 \textcolor{keyword}{private}:}
+\DoxyCodeLine{43    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mode_tutorial_ac8907f655cfcb285c0ea702bd6ba4831}{LoadPicture}}();}
+\DoxyCodeLine{44    std::string \mbox{\hyperlink{class_mode_tutorial_a67bc0f5b7b1219472a7799a71c605ec9}{\_tutorial\_type}};   }
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{47 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_tu_info}{TuInfo}} \{}
+\DoxyCodeLine{48    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_tu_info_a72d3fe31760097758b06fc5cd9c4fb60}{GRAPH\_WIDTH}} = 880;    }
+\DoxyCodeLine{49    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_tu_info_a14138e9100ac737250394db10a740b83}{GRAPH\_HEIGHT}} = 470;   }
+\DoxyCodeLine{50 \}}
+
+\end{DoxyCode}

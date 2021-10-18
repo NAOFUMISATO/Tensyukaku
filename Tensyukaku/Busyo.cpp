@@ -10,7 +10,6 @@
 #include "MiddleBlood.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
-#include "BushiMotionCollision.h"
 #include "PrivateCollision.h"
 
 using namespace BsInfo;

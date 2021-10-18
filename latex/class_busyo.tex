@@ -1,0 +1,202 @@
+\hypertarget{class_busyo}{}\doxysection{Busyo クラス}
+\label{class_busyo}\index{Busyo@{Busyo}}
+
+
+{\ttfamily \#include $<$Busyo.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_enemy_base}{Enemy\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_busyo_a35a7334748accdf186f41c1b0f83d65f}{Busyo}} (int x, int y, bool flip)
+\item 
+\mbox{\hyperlink{class_busyo_ac259564505ab4643c19c41f2b94c26e6}{$\sim$\+Busyo}} ()
+\item 
+virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} \mbox{\hyperlink{class_busyo_ad09565ea20180859ef39f1366ab7ccb2}{Get\+Ene\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_busyo_ac61c053d0a10a2dcbe22f68876b3d2f7}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_busyo_a1f5946d50196decdd1399b56f8a078a2}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_busyo_abe5a4a3faa2465de473617b43c9aaecc}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_busyo_a0e1747e6e18623274ba03f1cf502394b}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_busyo_a36a3e8f3b7e5ddd9f530147d95ccd93e}{Appear}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_busyo_a9eff86900d22759aa8fd7899c7068642}{Patrol}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_busyo_a688c0e0a8674baba032dda80e4df89f7}{Coming}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_busyo_aaaec9c0c1fbb31622705059e451d67b1}{Attack}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_busyo_a98c9ca6543effb33b5b1fd57cedc690d}{Damage}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_busyo_a565e08df4a234398808ce3d505c49052}{Dead}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_busyo_a4041f008c9b3dcece06a4050a1020efa}{Hit\+Judge}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_busyo_a45927f375229cf925eac8643207fd4ca}{Load\+Picture}} ()
+\item 
+void \mbox{\hyperlink{class_busyo_af44dd37d302bcd83e73bee09d8202d8c}{Load\+SE}} ()
+\item 
+void \mbox{\hyperlink{class_busyo_a416f7d34d03be5124092cc9ee447dbe2}{Volume\+Init}} ()
+\item 
+void \mbox{\hyperlink{class_busyo_a38a648f88f228295fd5a435a2ef72690}{Volume\+Change}} ()
+\item 
+void \mbox{\hyperlink{class_busyo_a278327c7b802c68bc172a220a6dabefa}{Debug\+Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_busyo_a35a7334748accdf186f41c1b0f83d65f}\label{class_busyo_a35a7334748accdf186f41c1b0f83d65f}} 
+\index{Busyo@{Busyo}!Busyo@{Busyo}}
+\index{Busyo@{Busyo}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Busyo()}{Busyo()}}
+{\footnotesize\ttfamily Busyo\+::\+Busyo (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{flip }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_busyo_ac259564505ab4643c19c41f2b94c26e6}\label{class_busyo_ac259564505ab4643c19c41f2b94c26e6}} 
+\index{Busyo@{Busyo}!````~Busyo@{$\sim$Busyo}}
+\index{````~Busyo@{$\sim$Busyo}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{$\sim$Busyo()}{~Busyo()}}
+{\footnotesize\ttfamily Busyo\+::$\sim$\+Busyo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_busyo_a36a3e8f3b7e5ddd9f530147d95ccd93e}\label{class_busyo_a36a3e8f3b7e5ddd9f530147d95ccd93e}} 
+\index{Busyo@{Busyo}!Appear@{Appear}}
+\index{Appear@{Appear}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Appear()}{Appear()}}
+{\footnotesize\ttfamily void Busyo\+::\+Appear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_aaaec9c0c1fbb31622705059e451d67b1}\label{class_busyo_aaaec9c0c1fbb31622705059e451d67b1}} 
+\index{Busyo@{Busyo}!Attack@{Attack}}
+\index{Attack@{Attack}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Attack()}{Attack()}}
+{\footnotesize\ttfamily void Busyo\+::\+Attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_a688c0e0a8674baba032dda80e4df89f7}\label{class_busyo_a688c0e0a8674baba032dda80e4df89f7}} 
+\index{Busyo@{Busyo}!Coming@{Coming}}
+\index{Coming@{Coming}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Coming()}{Coming()}}
+{\footnotesize\ttfamily void Busyo\+::\+Coming (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_a98c9ca6543effb33b5b1fd57cedc690d}\label{class_busyo_a98c9ca6543effb33b5b1fd57cedc690d}} 
+\index{Busyo@{Busyo}!Damage@{Damage}}
+\index{Damage@{Damage}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Damage()}{Damage()}}
+{\footnotesize\ttfamily void Busyo\+::\+Damage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_a565e08df4a234398808ce3d505c49052}\label{class_busyo_a565e08df4a234398808ce3d505c49052}} 
+\index{Busyo@{Busyo}!Dead@{Dead}}
+\index{Dead@{Dead}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Dead()}{Dead()}}
+{\footnotesize\ttfamily void Busyo\+::\+Dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_a278327c7b802c68bc172a220a6dabefa}\label{class_busyo_a278327c7b802c68bc172a220a6dabefa}} 
+\index{Busyo@{Busyo}!DebugDraw@{DebugDraw}}
+\index{DebugDraw@{DebugDraw}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{DebugDraw()}{DebugDraw()}}
+{\footnotesize\ttfamily void Busyo\+::\+Debug\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_a0e1747e6e18623274ba03f1cf502394b}\label{class_busyo_a0e1747e6e18623274ba03f1cf502394b}} 
+\index{Busyo@{Busyo}!Delete@{Delete}}
+\index{Delete@{Delete}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Busyo\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_afa0d1e9f4705a530990e1c0bb32adf49}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_busyo_abe5a4a3faa2465de473617b43c9aaecc}\label{class_busyo_abe5a4a3faa2465de473617b43c9aaecc}} 
+\index{Busyo@{Busyo}!Draw@{Draw}}
+\index{Draw@{Draw}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Busyo\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_a3c82fb040b7faf93571d2afa31dd07a5}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_busyo_ad09565ea20180859ef39f1366ab7ccb2}\label{class_busyo_ad09565ea20180859ef39f1366ab7ccb2}} 
+\index{Busyo@{Busyo}!GetEneType@{GetEneType}}
+\index{GetEneType@{GetEneType}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{GetEneType()}{GetEneType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} Busyo\+::\+Get\+Ene\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_a0d57f8ec2db46337cc6c01daf37f779b}{Enemy\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_busyo_a4041f008c9b3dcece06a4050a1020efa}\label{class_busyo_a4041f008c9b3dcece06a4050a1020efa}} 
+\index{Busyo@{Busyo}!HitJudge@{HitJudge}}
+\index{HitJudge@{HitJudge}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{HitJudge()}{HitJudge()}}
+{\footnotesize\ttfamily void Busyo\+::\+Hit\+Judge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_ac61c053d0a10a2dcbe22f68876b3d2f7}\label{class_busyo_ac61c053d0a10a2dcbe22f68876b3d2f7}} 
+\index{Busyo@{Busyo}!Init@{Init}}
+\index{Init@{Init}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Busyo\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_af5c90d8abe7e5677336295d1398578b9}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_busyo_a45927f375229cf925eac8643207fd4ca}\label{class_busyo_a45927f375229cf925eac8643207fd4ca}} 
+\index{Busyo@{Busyo}!LoadPicture@{LoadPicture}}
+\index{LoadPicture@{LoadPicture}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{LoadPicture()}{LoadPicture()}}
+{\footnotesize\ttfamily void Busyo\+::\+Load\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_af44dd37d302bcd83e73bee09d8202d8c}\label{class_busyo_af44dd37d302bcd83e73bee09d8202d8c}} 
+\index{Busyo@{Busyo}!LoadSE@{LoadSE}}
+\index{LoadSE@{LoadSE}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{LoadSE()}{LoadSE()}}
+{\footnotesize\ttfamily void Busyo\+::\+Load\+SE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_a9eff86900d22759aa8fd7899c7068642}\label{class_busyo_a9eff86900d22759aa8fd7899c7068642}} 
+\index{Busyo@{Busyo}!Patrol@{Patrol}}
+\index{Patrol@{Patrol}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Patrol()}{Patrol()}}
+{\footnotesize\ttfamily void Busyo\+::\+Patrol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_a1f5946d50196decdd1399b56f8a078a2}\label{class_busyo_a1f5946d50196decdd1399b56f8a078a2}} 
+\index{Busyo@{Busyo}!Process@{Process}}
+\index{Process@{Process}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Busyo\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_add67699620ad91db7ed390a426e75fbf}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_busyo_a38a648f88f228295fd5a435a2ef72690}\label{class_busyo_a38a648f88f228295fd5a435a2ef72690}} 
+\index{Busyo@{Busyo}!VolumeChange@{VolumeChange}}
+\index{VolumeChange@{VolumeChange}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{VolumeChange()}{VolumeChange()}}
+{\footnotesize\ttfamily void Busyo\+::\+Volume\+Change (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_busyo_a416f7d34d03be5124092cc9ee447dbe2}\label{class_busyo_a416f7d34d03be5124092cc9ee447dbe2}} 
+\index{Busyo@{Busyo}!VolumeInit@{VolumeInit}}
+\index{VolumeInit@{VolumeInit}!Busyo@{Busyo}}
+\doxysubsubsection{\texorpdfstring{VolumeInit()}{VolumeInit()}}
+{\footnotesize\ttfamily void Busyo\+::\+Volume\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_busyo_8h}{Busyo.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_busyo_8cpp}{Busyo.\+cpp}}\item 
+Tensyukaku/\mbox{\hyperlink{_busyo_motion_8cpp}{Busyo\+Motion.\+cpp}}\end{DoxyCompactItemize}

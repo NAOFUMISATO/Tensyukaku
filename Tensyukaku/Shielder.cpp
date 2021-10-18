@@ -1,15 +1,9 @@
 #include <DxLib.h>
-#include <vector>
-#include <sstream>
-#include "EnemyBase.h"
 #include "Shielder.h"
-#include "ShielderMotionCollision.h"
 #include "Shield.h"
 #include "Game.h"
 #include "MiddleBlood.h"
 #include "ResourceServer.h"
-#include "ObjectBase.h"
-#include "player.h"
 #include "PrivateCollision.h"
 
 /*
@@ -79,7 +73,7 @@ void Shielder::Process(Game& g) {
    }
    HitJudge(g);
 }
-void Shielder::Draw(Game& g) {   
+void Shielder::Draw(Game& g) {
 #ifdef _DEBUG
    DebugDraw(g);
 #endif 

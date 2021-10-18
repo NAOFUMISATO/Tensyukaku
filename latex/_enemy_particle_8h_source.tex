@@ -1,0 +1,74 @@
+\hypertarget{_enemy_particle_8h_source}{}\doxysection{Enemy\+Particle.\+h}
+\label{_enemy_particle_8h_source}\index{Tensyukaku/EnemyParticle.h@{Tensyukaku/EnemyParticle.h}}
+\mbox{\hyperlink{_enemy_particle_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_base_8h}{ParticleBase.h}}"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{5 \textcolor{comment}{//クナイ投げ予備動作の光}}
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_kunai_reserve_light}{KunaiReserveLight}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{7 \textcolor{keyword}{public}:}
+\DoxyCodeLine{8    \mbox{\hyperlink{class_kunai_reserve_light_ad87c6187bae505d21e49b3746a377f27}{KunaiReserveLight}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{9    \mbox{\hyperlink{class_kunai_reserve_light_a5c3c996c642042126db0fe1153cecfaa}{\string~KunaiReserveLight}}();}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_kunai_reserve_light_a132885126b977e07a074222d2b35c010}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3ad2813ba33e9a3be54a81340ac3d69115}{PARTICLETYPE::KUNAIRESERVELIGHT}}; \}}
+\DoxyCodeLine{12    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_kunai_reserve_light_aec6c27771f3494f85978ecca6afa0fa7}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{13    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_kunai_reserve_light_a89a9fc022424e770098c35715d10cf2e}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{14    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_kunai_reserve_light_ad23750e46f6df15955679c9f9a65b7ef}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{15 \};}
+\DoxyCodeLine{16 \textcolor{comment}{//槍兵予備動作の光}}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_lance_reserve_light}{LanceReserveLight}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19    \mbox{\hyperlink{class_lance_reserve_light_a647c0781394c2fb36c8183dc755c9269}{LanceReserveLight}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{20    \mbox{\hyperlink{class_lance_reserve_light_a1155fc6c4c6aa859ab6904d4c8740f99}{\string~LanceReserveLight}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_lance_reserve_light_adb17e76a0c08e13b16e28cd38a7573e9}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a0087dac6f8f96c5611bef2f8066585ad}{PARTICLETYPE::LANCERESERVELIGHT}}; \}}
+\DoxyCodeLine{23    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lance_reserve_light_ab930fe6a837c61ee4a2874eaa30d9d74}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{24    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lance_reserve_light_a57d30dea7ef87aeca3ddb34744eddccf}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{25    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lance_reserve_light_a50279cd6d34dbbeb1b9761e4be71c118}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_e_p_info}{EPInfo}} \{}
+\DoxyCodeLine{28    \textcolor{comment}{//クナイ投げ予備動作の光}}
+\DoxyCodeLine{29    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_adbf3963136e9f3346d0a6ebeb5562acd}{KRESERVELIGHT\_PARTICLE\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/KunaiReserveLight.png"{}};      \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{30    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a82cd7b61010394b5be9b2f07b6173817}{KRESERVELIGHT\_PARTICLE\_POSITIONX}} = 0.0;                        \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{31    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a2389ad937cb6130e60e7f40782c30cef}{KRESERVELIGHT\_PARTICLE\_POSITIONY}} = -\/100.0;                     \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{32    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_aa7fdd30cc95dac612e883005e5854f99}{KRESERVELIGHT\_PARTICLE\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a2077bbab841d3a8736a990faaca07cc9}{DX\_BLENDMODE\_ADD}};               \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{33    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_adef8590f2ac1195ed0630d3289689a95}{KRESERVELIGHT\_PARTICLE\_PAL}} = 128;                              \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{34    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a91977e82530a2254dd3f8267a8a8a356}{KRESERVELIGHT\_PARTICLE\_RED}} = 128;                           \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{35    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_af760afd77a1737cdde8dceb0ca645cf1}{KRESERVELIGHT\_PARTICLE\_GREEN}} = 128;                           \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{36    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a6d79731b4df4e630d1150b5586897d88}{KRESERVELIGHT\_PARTICLE\_BLUE}} = 128;                           \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{37    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_acc6771b54b222588f45baaba8c424508}{KRESERVELIGHT\_PARTICLE\_SCALE}} = 1.0;                           \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{38    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a8a8c326a978c5862f11ed38a9ad86a1d}{KRESERVELIGHT\_PARTICLE\_ANGLE}} = 0.0;                           \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{39    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a358a861c5b51ca6808b2f31eaab4425a}{KRESERVELIGHT\_PARTICLE\_CNT}} = 20;                              \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{40    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a8560c5cde680a14e7ffed7ae68f9593a}{KRESERVELIGHT\_PARTICLE\_QTY}} = 10;                              \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{41    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{42    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a719d799699c319595b4e14abf125a8fc}{KRESERVELIGHT\_PARTICLE\_RANDOMX1}} = 20;                        \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{43    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a706356b9d5774dd44b188ff05e75842f}{KRESERVELIGHT\_PARTICLE\_RANDOMX2}} = 10.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{44    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_adbe0cfe267135e933f7cddafe9c68c41}{KRESERVELIGHT\_PARTICLE\_RANDOMX3}} = 8.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{45    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a4ee85a0431c7af2de3140ebcb9120fef}{KRESERVELIGHT\_PARTICLE\_RANDOMY1}} = 20;                        \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{46    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a6b1036be0a71783ea9e8f817074a562c}{KRESERVELIGHT\_PARTICLE\_RANDOMY2}} = 10.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{47    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a4a432df570c2ec6654cd1784bc9a40b0}{KRESERVELIGHT\_PARTICLE\_RANDOMY3}} = 8.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{48    \textcolor{comment}{//槍兵予備動作の光}}
+\DoxyCodeLine{49    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_aa3bdb19ef2742beb03d050d2d8502bc4}{LRESERVELIGHT\_PARTICLE\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/LanceReserveLight.png"{}};      \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{50    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_ae7a960a5fb2aba9124ccaba872a70b63}{LRESERVELIGHT\_PARTICLE\_POSITIONX}} = 0.0;                        \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{51    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a350c84b4f308d0eb9c8755e564220a64}{LRESERVELIGHT\_PARTICLE\_POSITIONY}} = -\/250.0;                     \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{52    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a21cdc58835f4fb4afc33785016549652}{LRESERVELIGHT\_PARTICLE\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a2077bbab841d3a8736a990faaca07cc9}{DX\_BLENDMODE\_ADD}};               \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{53    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_abccab5bb031538d244f6bf4f3db69a5d}{LRESERVELIGHT\_PARTICLE\_PAL}} = 128;                              \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{54    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a97b601aa1561317740cb2b5bdafe21cf}{LRESERVELIGHT\_PARTICLE\_RED}} = 128;                           \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{55    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a37d8aea1e6e8001d3a04e0ed31aafc57}{LRESERVELIGHT\_PARTICLE\_GREEN}} = 128;                           \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{56    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_aa8d020302c3e12d6d0e4266175620fc9}{LRESERVELIGHT\_PARTICLE\_BLUE}} = 128;                           \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{57    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_ae0c0fbac6b527eb40bcda5f190f8c475}{LRESERVELIGHT\_PARTICLE\_SCALE}} = 1.0;                           \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{58    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a94258218d45e785e31b220b84eb39285}{LRESERVELIGHT\_PARTICLE\_ANGLE}} = 0.0;                           \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{59    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a0e6112e539cb0c61467caf1c9ffe2e2c}{LRESERVELIGHT\_PARTICLE\_CNT}} = 20;                              \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{60    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_ab5770ea80e694599e7218e741a83ec93}{LRESERVELIGHT\_PARTICLE\_QTY}} = 10;                              \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{61    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{62    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_add5da3e9360bd908a9a00557d820ee0c}{LRESERVELIGHT\_PARTICLE\_RANDOMX1}} = 20;                        \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{63    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_ad8e9b2db7d99bfd53f11d8cc3a0c6f24}{LRESERVELIGHT\_PARTICLE\_RANDOMX2}} = 10.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{64    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a0891858783e778f8916f8f95ddf5c64a}{LRESERVELIGHT\_PARTICLE\_RANDOMX3}} = 8.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{65    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a8aea62be8fe51287d991efff1f3803bf}{LRESERVELIGHT\_PARTICLE\_RANDOMY1}} = 20;                        \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{66    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_a402112f92d71bf488766fd6d8d9e6ea4}{LRESERVELIGHT\_PARTICLE\_RANDOMY2}} = 10.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{67    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_e_p_info_aa068367354a22ee89e26bee2dae2b362}{LRESERVELIGHT\_PARTICLE\_RANDOMY3}} = 8.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{68 \}}
+
+\end{DoxyCode}

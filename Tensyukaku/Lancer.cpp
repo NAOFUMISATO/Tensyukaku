@@ -6,7 +6,6 @@
 #include <sstream>
 #include "EnemyBase.h"
 #include "Lancer.h"
-#include "LancerMotionCollision.h"
 #include "MiddleBlood.h"
 #include "Game.h"
 #include "ResourceServer.h"

@@ -1,0 +1,32 @@
+\hypertarget{_pause_select_8h_source}{}\doxysection{Pause\+Select.\+h}
+\label{_pause_select_8h_source}\index{Tensyukaku/PauseSelect.h@{Tensyukaku/PauseSelect.h}}
+\mbox{\hyperlink{_pause_select_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_mode_base_8h}{ModeBase.h}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_pause_select}{PauseSelect}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_mode_base}{ModeBase}} \{}
+\DoxyCodeLine{12    \textcolor{keyword}{typedef} \mbox{\hyperlink{class_mode_base}{ModeBase}} \mbox{\hyperlink{class_pause_select_ada36de7b12fd3ea28bebd8bff6bfadac}{base}};}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14    \textcolor{comment}{//初期化}}
+\DoxyCodeLine{15    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pause_select_ab7d7bdccc71619d3678e4d6821110b96}{Initialize}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{16    \textcolor{comment}{//終了}}
+\DoxyCodeLine{17    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pause_select_abf544bf320829bb6502836dfc07b9aba}{Terminate}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{18    \textcolor{comment}{//更新}}
+\DoxyCodeLine{19    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pause_select_ab354471146e92e730bb6a6789dfcd99d}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{20    \textcolor{comment}{//描画}}
+\DoxyCodeLine{21    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pause_select_a9b20caf2a7fd006cb8385d88299e9da4}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{23    \textcolor{comment}{//チュートリアルモード削除関数}}
+\DoxyCodeLine{24    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pause_select_ac25b07700bc94e0288b7f914b8ba779c}{TutorialDel}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{25    \textcolor{comment}{//選択状態の列挙}}
+\DoxyCodeLine{26    \textcolor{keyword}{enum class} \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638}{SELECTSTATE}} \{}
+\DoxyCodeLine{27    \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638abde21d5a625d06157dd6db2e2a4cc635}{NOSELECT}},\mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638afd89b4b977599512cd7a87337d460fe9}{RETURNSELECT}},\mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638a3b4e86548843ba23742d0b7ac8e8b85d}{GOTITLESELECT}}}
+\DoxyCodeLine{28    \};}
+\DoxyCodeLine{29    \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638}{SELECTSTATE}} \mbox{\hyperlink{class_pause_select_a1de41845f2b60a551561fc8beb0dedeb}{\_state}}; \textcolor{comment}{//選択状態}}
+\DoxyCodeLine{30    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_pause_select_aa8655919353b22e984b03e3762887626}{\_graph\_no}};      \textcolor{comment}{//シート番号変数}}
+\DoxyCodeLine{31    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pause_select_a24a210d7d026b055493f2cb049f42f32}{\_input\_flag}};   \textcolor{comment}{//入力受付フラグ}}
+\DoxyCodeLine{32 \};}
+
+\end{DoxyCode}

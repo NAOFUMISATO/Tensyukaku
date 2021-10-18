@@ -23,7 +23,7 @@ TutorialBoard::~TutorialBoard() {
 };
 
 void TutorialBoard::Init() {
-   TutorialPosition();
+   PositionSetting();
    _gx = GRAPHPOINT_X;
    _gy = GRAPHPOINT_Y;
    _hit_x = POSITION_HITX;
@@ -120,7 +120,7 @@ void TutorialBoard::Delete(Game& g) {
    g.GetOS()->Del(this);
 }
 
-void TutorialBoard::TutorialPosition() {
+void TutorialBoard::PositionSetting() {
    if (_tutorial_type == "1A") {
       _x = TUTORIAL1A_X;
       _y = TUTORIAL1A_Y;

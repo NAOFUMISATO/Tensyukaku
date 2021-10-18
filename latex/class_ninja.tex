@@ -1,0 +1,216 @@
+\hypertarget{class_ninja}{}\doxysection{Ninja クラス}
+\label{class_ninja}\index{Ninja@{Ninja}}
+
+
+{\ttfamily \#include $<$Ninja.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_enemy_base}{Enemy\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ninja_a4de26cf9adee71ec34fd6eefce6f7e6c}{Ninja}} (int x, int y, bool flip, int kunai\+\_\+stock)
+\item 
+\mbox{\hyperlink{class_ninja_a43c95de6f30e4922045867ac4a099c2a}{$\sim$\+Ninja}} ()
+\item 
+virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} \mbox{\hyperlink{class_ninja_a8c1fa2e5c3f4eed6ec6317cb0dd1277d}{Get\+Ene\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_ninja_a8026d77ce840c97a9c5ccb5edad92058}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_ninja_a35a59e058aa39384eec2e3ac36151c66}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_ninja_abad62c392375345ed3f98f05c875ed92}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_ninja_a02a4e8f561e703c8b7423d9f3ebfd61b}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_ninja_a4ac11fc1059a457a3ff7aa40fa8e2bdf}{Appear}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_ninja_a215b7674e330e1fd809442d81896694f}{Patrol}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_ninja_a2b25d2dea92e4ccd9dd27a46ab2442b0}{Coming}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_ninja_a1e4ff055982e1ff6b3fde8943e710beb}{Attack}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_ninja_a93f2b7fbf3595701b1cea662a5b4f8ee}{Throw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_ninja_ac70b22608881208f89da902d886d57b9}{Dead}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_ninja_aec2ed5752b8df2b9f915cbd9b8eb82a6}{Hit\+Judge}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_ninja_a2e8d7f63e44ae789966cd056dcebf1f1}{Debug\+Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_ninja_a0cde97319c6a8b1e406f970572dddbdd}{Load\+Picture}} ()
+\item 
+void \mbox{\hyperlink{class_ninja_a39d1eb6a911c66c80c3bcb20aed5eed6}{Load\+SE}} ()
+\item 
+void \mbox{\hyperlink{class_ninja_a6d629ad43477f25dd205d3c698716ba5}{Volume\+Init}} ()
+\item 
+void \mbox{\hyperlink{class_ninja_ae897749678917b5eac941d9a4c89725d}{Volume\+Change}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_ninja_a3cb54aac76194b8f3191a137675b4a9e}{\+\_\+kunai\+\_\+stock}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_ninja_a4de26cf9adee71ec34fd6eefce6f7e6c}\label{class_ninja_a4de26cf9adee71ec34fd6eefce6f7e6c}} 
+\index{Ninja@{Ninja}!Ninja@{Ninja}}
+\index{Ninja@{Ninja}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Ninja()}{Ninja()}}
+{\footnotesize\ttfamily Ninja\+::\+Ninja (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{flip,  }\item[{int}]{kunai\+\_\+stock }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ninja_a43c95de6f30e4922045867ac4a099c2a}\label{class_ninja_a43c95de6f30e4922045867ac4a099c2a}} 
+\index{Ninja@{Ninja}!````~Ninja@{$\sim$Ninja}}
+\index{````~Ninja@{$\sim$Ninja}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{$\sim$Ninja()}{~Ninja()}}
+{\footnotesize\ttfamily Ninja\+::$\sim$\+Ninja (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_ninja_a4ac11fc1059a457a3ff7aa40fa8e2bdf}\label{class_ninja_a4ac11fc1059a457a3ff7aa40fa8e2bdf}} 
+\index{Ninja@{Ninja}!Appear@{Appear}}
+\index{Appear@{Appear}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Appear()}{Appear()}}
+{\footnotesize\ttfamily void Ninja\+::\+Appear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a1e4ff055982e1ff6b3fde8943e710beb}\label{class_ninja_a1e4ff055982e1ff6b3fde8943e710beb}} 
+\index{Ninja@{Ninja}!Attack@{Attack}}
+\index{Attack@{Attack}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Attack()}{Attack()}}
+{\footnotesize\ttfamily void Ninja\+::\+Attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a2b25d2dea92e4ccd9dd27a46ab2442b0}\label{class_ninja_a2b25d2dea92e4ccd9dd27a46ab2442b0}} 
+\index{Ninja@{Ninja}!Coming@{Coming}}
+\index{Coming@{Coming}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Coming()}{Coming()}}
+{\footnotesize\ttfamily void Ninja\+::\+Coming (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_ac70b22608881208f89da902d886d57b9}\label{class_ninja_ac70b22608881208f89da902d886d57b9}} 
+\index{Ninja@{Ninja}!Dead@{Dead}}
+\index{Dead@{Dead}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Dead()}{Dead()}}
+{\footnotesize\ttfamily void Ninja\+::\+Dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a2e8d7f63e44ae789966cd056dcebf1f1}\label{class_ninja_a2e8d7f63e44ae789966cd056dcebf1f1}} 
+\index{Ninja@{Ninja}!DebugDraw@{DebugDraw}}
+\index{DebugDraw@{DebugDraw}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{DebugDraw()}{DebugDraw()}}
+{\footnotesize\ttfamily void Ninja\+::\+Debug\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a02a4e8f561e703c8b7423d9f3ebfd61b}\label{class_ninja_a02a4e8f561e703c8b7423d9f3ebfd61b}} 
+\index{Ninja@{Ninja}!Delete@{Delete}}
+\index{Delete@{Delete}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Ninja\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_afa0d1e9f4705a530990e1c0bb32adf49}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_ninja_abad62c392375345ed3f98f05c875ed92}\label{class_ninja_abad62c392375345ed3f98f05c875ed92}} 
+\index{Ninja@{Ninja}!Draw@{Draw}}
+\index{Draw@{Draw}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Ninja\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_a3c82fb040b7faf93571d2afa31dd07a5}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_ninja_a8c1fa2e5c3f4eed6ec6317cb0dd1277d}\label{class_ninja_a8c1fa2e5c3f4eed6ec6317cb0dd1277d}} 
+\index{Ninja@{Ninja}!GetEneType@{GetEneType}}
+\index{GetEneType@{GetEneType}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{GetEneType()}{GetEneType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} Ninja\+::\+Get\+Ene\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_a0d57f8ec2db46337cc6c01daf37f779b}{Enemy\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_ninja_aec2ed5752b8df2b9f915cbd9b8eb82a6}\label{class_ninja_aec2ed5752b8df2b9f915cbd9b8eb82a6}} 
+\index{Ninja@{Ninja}!HitJudge@{HitJudge}}
+\index{HitJudge@{HitJudge}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{HitJudge()}{HitJudge()}}
+{\footnotesize\ttfamily void Ninja\+::\+Hit\+Judge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a8026d77ce840c97a9c5ccb5edad92058}\label{class_ninja_a8026d77ce840c97a9c5ccb5edad92058}} 
+\index{Ninja@{Ninja}!Init@{Init}}
+\index{Init@{Init}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Ninja\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_af5c90d8abe7e5677336295d1398578b9}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_ninja_a0cde97319c6a8b1e406f970572dddbdd}\label{class_ninja_a0cde97319c6a8b1e406f970572dddbdd}} 
+\index{Ninja@{Ninja}!LoadPicture@{LoadPicture}}
+\index{LoadPicture@{LoadPicture}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{LoadPicture()}{LoadPicture()}}
+{\footnotesize\ttfamily void Ninja\+::\+Load\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a39d1eb6a911c66c80c3bcb20aed5eed6}\label{class_ninja_a39d1eb6a911c66c80c3bcb20aed5eed6}} 
+\index{Ninja@{Ninja}!LoadSE@{LoadSE}}
+\index{LoadSE@{LoadSE}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{LoadSE()}{LoadSE()}}
+{\footnotesize\ttfamily void Ninja\+::\+Load\+SE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a215b7674e330e1fd809442d81896694f}\label{class_ninja_a215b7674e330e1fd809442d81896694f}} 
+\index{Ninja@{Ninja}!Patrol@{Patrol}}
+\index{Patrol@{Patrol}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Patrol()}{Patrol()}}
+{\footnotesize\ttfamily void Ninja\+::\+Patrol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a35a59e058aa39384eec2e3ac36151c66}\label{class_ninja_a35a59e058aa39384eec2e3ac36151c66}} 
+\index{Ninja@{Ninja}!Process@{Process}}
+\index{Process@{Process}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Ninja\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_add67699620ad91db7ed390a426e75fbf}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_ninja_a93f2b7fbf3595701b1cea662a5b4f8ee}\label{class_ninja_a93f2b7fbf3595701b1cea662a5b4f8ee}} 
+\index{Ninja@{Ninja}!Throw@{Throw}}
+\index{Throw@{Throw}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{Throw()}{Throw()}}
+{\footnotesize\ttfamily void Ninja\+::\+Throw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_ae897749678917b5eac941d9a4c89725d}\label{class_ninja_ae897749678917b5eac941d9a4c89725d}} 
+\index{Ninja@{Ninja}!VolumeChange@{VolumeChange}}
+\index{VolumeChange@{VolumeChange}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{VolumeChange()}{VolumeChange()}}
+{\footnotesize\ttfamily void Ninja\+::\+Volume\+Change (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_ninja_a6d629ad43477f25dd205d3c698716ba5}\label{class_ninja_a6d629ad43477f25dd205d3c698716ba5}} 
+\index{Ninja@{Ninja}!VolumeInit@{VolumeInit}}
+\index{VolumeInit@{VolumeInit}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{VolumeInit()}{VolumeInit()}}
+{\footnotesize\ttfamily void Ninja\+::\+Volume\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_ninja_a3cb54aac76194b8f3191a137675b4a9e}\label{class_ninja_a3cb54aac76194b8f3191a137675b4a9e}} 
+\index{Ninja@{Ninja}!\_kunai\_stock@{\_kunai\_stock}}
+\index{\_kunai\_stock@{\_kunai\_stock}!Ninja@{Ninja}}
+\doxysubsubsection{\texorpdfstring{\_kunai\_stock}{\_kunai\_stock}}
+{\footnotesize\ttfamily int Ninja\+::\+\_\+kunai\+\_\+stock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_ninja_8h}{Ninja.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_ninja_8cpp}{Ninja.\+cpp}}\item 
+Tensyukaku/\mbox{\hyperlink{_ninja_motion_8cpp}{Ninja\+Motion.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,24 @@
+\hypertarget{_title_cursor_8h_source}{}\doxysection{Title\+Cursor.\+h}
+\label{_title_cursor_8h_source}\index{Tensyukaku/TitleCursor.h@{Tensyukaku/TitleCursor.h}}
+\mbox{\hyperlink{_title_cursor_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_title_cursor}{TitleCursor}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{5 \textcolor{keyword}{public}:}
+\DoxyCodeLine{6     \mbox{\hyperlink{class_title_cursor_a37763dd46ec2e382f974bedfe929ffed}{TitleCursor}}();}
+\DoxyCodeLine{7     \mbox{\hyperlink{class_title_cursor_a18115908080452d067d76e2662ee76e4}{\string~TitleCursor}}();}
+\DoxyCodeLine{8     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}    \mbox{\hyperlink{class_title_cursor_af69e529d1f1ea29090c49053e43d4f13}{GetObjType}}() \{ \textcolor{keywordflow}{return} OBJECTTYPE::TITLECURSOR; \}}
+\DoxyCodeLine{9     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_title_cursor_a9e64f6c951195016952a9add7f54eab9}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{10     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_title_cursor_a60cc9a6fc567e72e5293fd65345e421f}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{11     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_title_cursor_abac0092a14122ff89691600a20a52fee}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{12 \textcolor{keyword}{private}:}
+\DoxyCodeLine{13     \textcolor{keyword}{enum class} \mbox{\hyperlink{class_title_cursor_af51f7e0a16aca0d2ff813dd918c143b5}{CURSOLSTATE}} \{ \mbox{\hyperlink{class_title_cursor_af51f7e0a16aca0d2ff813dd918c143b5a98a0a2299e85802db243e64ef2a6d4bb}{NOHIT}}, \mbox{\hyperlink{class_title_cursor_af51f7e0a16aca0d2ff813dd918c143b5a5739b04d500484976a9660ba0a8c1410}{STARTHIT}}, \mbox{\hyperlink{class_title_cursor_af51f7e0a16aca0d2ff813dd918c143b5a60be9cc0fe545a165448f144c18b60d9}{EXHIT}}, \mbox{\hyperlink{class_title_cursor_af51f7e0a16aca0d2ff813dd918c143b5a967e279a2b179cfae4f6d6b070250276}{ENDHIT}} \};}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_title_cursor_af51f7e0a16aca0d2ff813dd918c143b5}{CURSOLSTATE}} \mbox{\hyperlink{class_title_cursor_ad20904f8cfef3b8e0aa0d48f2c6e0024}{\_State}};        \textcolor{comment}{//カーソルの状態変数}}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_vector2}{Vector2}} \mbox{\hyperlink{class_title_cursor_ac716e52d5515148abf3ef9af33d46a51}{\_velocityDir}};    \textcolor{comment}{//速度方向}}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int}     \mbox{\hyperlink{class_title_cursor_a987af5f4233825b371a10969d8cda411}{\_colortype}};       \textcolor{comment}{//パーティクルの色指定}}
+\DoxyCodeLine{17     \textcolor{keywordtype}{bool}    \mbox{\hyperlink{class_title_cursor_a53e8c9c59d9a9ee18dcdd53859a33875}{\_Input\_Flag}}; \textcolor{comment}{//入力管理フラグ}}
+\DoxyCodeLine{18 \};}
+
+\end{DoxyCode}

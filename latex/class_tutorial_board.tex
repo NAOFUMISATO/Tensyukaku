@@ -1,0 +1,135 @@
+\hypertarget{class_tutorial_board}{}\doxysection{Tutorial\+Board クラス}
+\label{class_tutorial_board}\index{TutorialBoard@{TutorialBoard}}
+
+
+{\ttfamily \#include $<$Tutorial\+Board.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_object_base}{Object\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tutorial_board_af23f0dd343d27bbd24b3dace8b087530}{Tutorial\+Board}} (std\+::string tutorialtype)
+\item 
+\mbox{\hyperlink{class_tutorial_board_a4b74eb76f18e78967812d84628ab9871}{$\sim$\+Tutorial\+Board}} ()
+\item 
+virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_tutorial_board_aca2edc042f58be19d91a500cfce641c4}{Get\+Obj\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_tutorial_board_ab67663efc5cbba482f012b23b803c5e0}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_tutorial_board_a4d032908193938c47c5a447895f21c50}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_tutorial_board_acb2fe8c28dcab857d2382aacadeae7d8}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_tutorial_board_a82a4c7e056cf4789f3f684bc8ca8cdbc}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tutorial_board_aed5ce1a2e39a916f39d22d5dd010d433}{Tutorial\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_tutorial_board_a4c9dd145d7e41e08e4c69d6b7766d6a2}{\+\_\+tutorial\+\_\+type}}
+\item 
+bool \mbox{\hyperlink{class_tutorial_board_ab6d692e389bc056fb89bdac38b1af041}{\+\_\+tutorialhit\+\_\+flag}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_tutorial_board_af23f0dd343d27bbd24b3dace8b087530}\label{class_tutorial_board_af23f0dd343d27bbd24b3dace8b087530}} 
+\index{TutorialBoard@{TutorialBoard}!TutorialBoard@{TutorialBoard}}
+\index{TutorialBoard@{TutorialBoard}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{TutorialBoard()}{TutorialBoard()}}
+{\footnotesize\ttfamily Tutorial\+Board\+::\+Tutorial\+Board (\begin{DoxyParamCaption}\item[{std\+::string}]{tutorialtype }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_tutorial_board_a4b74eb76f18e78967812d84628ab9871}\label{class_tutorial_board_a4b74eb76f18e78967812d84628ab9871}} 
+\index{TutorialBoard@{TutorialBoard}!````~TutorialBoard@{$\sim$TutorialBoard}}
+\index{````~TutorialBoard@{$\sim$TutorialBoard}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{$\sim$TutorialBoard()}{~TutorialBoard()}}
+{\footnotesize\ttfamily Tutorial\+Board\+::$\sim$\+Tutorial\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_tutorial_board_a82a4c7e056cf4789f3f684bc8ca8cdbc}\label{class_tutorial_board_a82a4c7e056cf4789f3f684bc8ca8cdbc}} 
+\index{TutorialBoard@{TutorialBoard}!Delete@{Delete}}
+\index{Delete@{Delete}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Tutorial\+Board\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a63d403d783b600faf05648968a3a569e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_tutorial_board_acb2fe8c28dcab857d2382aacadeae7d8}\label{class_tutorial_board_acb2fe8c28dcab857d2382aacadeae7d8}} 
+\index{TutorialBoard@{TutorialBoard}!Draw@{Draw}}
+\index{Draw@{Draw}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Tutorial\+Board\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ae10010b1cf932746225bf6121a00d80c}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_tutorial_board_aca2edc042f58be19d91a500cfce641c4}\label{class_tutorial_board_aca2edc042f58be19d91a500cfce641c4}} 
+\index{TutorialBoard@{TutorialBoard}!GetObjType@{GetObjType}}
+\index{GetObjType@{GetObjType}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{GetObjType()}{GetObjType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} Tutorial\+Board\+::\+Get\+Obj\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}{Object\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_tutorial_board_ab67663efc5cbba482f012b23b803c5e0}\label{class_tutorial_board_ab67663efc5cbba482f012b23b803c5e0}} 
+\index{TutorialBoard@{TutorialBoard}!Init@{Init}}
+\index{Init@{Init}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Tutorial\+Board\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_tutorial_board_a4d032908193938c47c5a447895f21c50}\label{class_tutorial_board_a4d032908193938c47c5a447895f21c50}} 
+\index{TutorialBoard@{TutorialBoard}!Process@{Process}}
+\index{Process@{Process}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Tutorial\+Board\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_tutorial_board_aed5ce1a2e39a916f39d22d5dd010d433}\label{class_tutorial_board_aed5ce1a2e39a916f39d22d5dd010d433}} 
+\index{TutorialBoard@{TutorialBoard}!TutorialPosition@{TutorialPosition}}
+\index{TutorialPosition@{TutorialPosition}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{TutorialPosition()}{TutorialPosition()}}
+{\footnotesize\ttfamily void Tutorial\+Board\+::\+Tutorial\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_tutorial_board_a4c9dd145d7e41e08e4c69d6b7766d6a2}\label{class_tutorial_board_a4c9dd145d7e41e08e4c69d6b7766d6a2}} 
+\index{TutorialBoard@{TutorialBoard}!\_tutorial\_type@{\_tutorial\_type}}
+\index{\_tutorial\_type@{\_tutorial\_type}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{\_tutorial\_type}{\_tutorial\_type}}
+{\footnotesize\ttfamily std\+::string Tutorial\+Board\+::\+\_\+tutorial\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_tutorial_board_ab6d692e389bc056fb89bdac38b1af041}\label{class_tutorial_board_ab6d692e389bc056fb89bdac38b1af041}} 
+\index{TutorialBoard@{TutorialBoard}!\_tutorialhit\_flag@{\_tutorialhit\_flag}}
+\index{\_tutorialhit\_flag@{\_tutorialhit\_flag}!TutorialBoard@{TutorialBoard}}
+\doxysubsubsection{\texorpdfstring{\_tutorialhit\_flag}{\_tutorialhit\_flag}}
+{\footnotesize\ttfamily bool Tutorial\+Board\+::\+\_\+tutorialhit\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_tutorial_board_8h}{Tutorial\+Board.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_tutorial_board_8cpp}{Tutorial\+Board.\+cpp}}\end{DoxyCompactItemize}

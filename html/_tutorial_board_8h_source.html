@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/TutorialBoard.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">TutorialBoard.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_tutorial_board_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include  &quot;<a class="code" href="_object_base_8h.html">ObjectBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_tutorial_board.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="class_tutorial_board.html">TutorialBoard</a> :<span class="keyword">public</span> <a class="code hl_class" href="class_object_base.html">ObjectBase</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>   <a class="code hl_function" href="class_tutorial_board.html#af23f0dd343d27bbd24b3dace8b087530">TutorialBoard</a>(std::string tutorialtype);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>   <a class="code hl_function" href="class_tutorial_board.html#a4b74eb76f18e78967812d84628ab9871">~TutorialBoard</a>();</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_tutorial_board.html#aca2edc042f58be19d91a500cfce641c4">    8</a></span>   <span class="keyword">virtual</span> <a class="code hl_enumeration" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">OBJECTTYPE</a>   <a class="code hl_function" href="class_tutorial_board.html#aca2edc042f58be19d91a500cfce641c4">GetObjType</a>() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dafecd03058c090502f290b4f57aefc875">OBJECTTYPE::TUTORIALBOARD</a>; }</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_tutorial_board.html#ab67663efc5cbba482f012b23b803c5e0">Init</a>()<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_tutorial_board.html#a4d032908193938c47c5a447895f21c50">Process</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_tutorial_board.html#acb2fe8c28dcab857d2382aacadeae7d8">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_tutorial_board.html#a82a4c7e056cf4789f3f684bc8ca8cdbc">Delete</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_tutorial_board.html#aed5ce1a2e39a916f39d22d5dd010d433">TutorialPosition</a>();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_tutorial_board.html#a4c9dd145d7e41e08e4c69d6b7766d6a2">   16</a></span>   std::string  <a class="code hl_variable" href="class_tutorial_board.html#a4c9dd145d7e41e08e4c69d6b7766d6a2">_tutorial_type</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_tutorial_board.html#ab6d692e389bc056fb89bdac38b1af041">   17</a></span>   <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_tutorial_board.html#ab6d692e389bc056fb89bdac38b1af041">_tutorialhit_flag</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html">   20</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_t_b_info.html">TBInfo</a>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#af7b00d5c3e712e9332f0e1d572ad615d">   21</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#af7b00d5c3e712e9332f0e1d572ad615d">TUTORIAL1A_X</a> = 800;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a4e48ec3fb8f6971fbe1a5e7a6fcaff7f">   22</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a4e48ec3fb8f6971fbe1a5e7a6fcaff7f">TUTORIAL1A_Y</a> = 9360;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a04d2d56a4dcb58ef27cc7e7099ab6525">   23</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a04d2d56a4dcb58ef27cc7e7099ab6525">TUTORIAL1B_X</a> = 1200;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#ac42dd1741735dd08e4bf95b4bf1019f2">   24</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#ac42dd1741735dd08e4bf95b4bf1019f2">TUTORIAL1B_Y</a> = 9360;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a57529ad501862aa083bf9eef9a14fec7">   25</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a57529ad501862aa083bf9eef9a14fec7">TUTORIAL2A_X</a> = 3200;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a7e92e78ff8d413d42c49697a93d40c13">   26</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a7e92e78ff8d413d42c49697a93d40c13">TUTORIAL2A_Y</a> = 8600;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a4618125270bce2443b95548a656d8007">   27</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a4618125270bce2443b95548a656d8007">TUTORIAL3A_X</a> = 500;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a784e1d6bd1e3edd63b3dcc315021a816">   28</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a784e1d6bd1e3edd63b3dcc315021a816">TUTORIAL3A_Y</a> = 7840;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a1861c451e5df77f9ac37a88842fd29b2">   29</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a1861c451e5df77f9ac37a88842fd29b2">TUTORIAL3B_X</a> = 2200;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a9d1884f98b0f7e644f960b5ea74410e9">   30</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a9d1884f98b0f7e644f960b5ea74410e9">TUTORIAL3B_Y</a> = 7840;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#af7eca4f36e036369624c54f91ce0e3c5">   31</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#af7eca4f36e036369624c54f91ce0e3c5">TUTORIAL4A_X</a> = 5200;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a827f7cd0552bac26ac5e7c5ae19f3adc">   32</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a827f7cd0552bac26ac5e7c5ae19f3adc">TUTORIAL4A_Y</a> = 7080;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#aa215f0b9d3cbf6310fd560dce4db0bb9">   33</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#aa215f0b9d3cbf6310fd560dce4db0bb9">TUTORIAL5A_X</a> = 3800;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespace_t_b_info.html#a5a5c8b6f87dffdbc31c54b19c8243278">   34</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_t_b_info.html#a5a5c8b6f87dffdbc31c54b19c8243278">TUTORIAL5A_Y</a> = 6320;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="ttc" id="a_object_base_8h_html"><div class="ttname"><a href="_object_base_8h.html">ObjectBase.h</a></div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html"><div class="ttname"><a href="class_object_base.html">ObjectBase</a></div><div class="ttdef"><b>Definition:</b> ObjectBase.h:12</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1d"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">ObjectBase::OBJECTTYPE</a></div><div class="ttdeci">OBJECTTYPE</div><div class="ttdef"><b>Definition:</b> ObjectBase.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1dafecd03058c090502f290b4f57aefc875"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dafecd03058c090502f290b4f57aefc875">ObjectBase::OBJECTTYPE::TUTORIALBOARD</a></div><div class="ttdeci">@ TUTORIALBOARD</div></div>
+<div class="ttc" id="aclass_tutorial_board_html"><div class="ttname"><a href="class_tutorial_board.html">TutorialBoard</a></div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:4</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_a4b74eb76f18e78967812d84628ab9871"><div class="ttname"><a href="class_tutorial_board.html#a4b74eb76f18e78967812d84628ab9871">TutorialBoard::~TutorialBoard</a></div><div class="ttdeci">~TutorialBoard()</div><div class="ttdef"><b>Definition:</b> TutorialBoard.cpp:22</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_a4c9dd145d7e41e08e4c69d6b7766d6a2"><div class="ttname"><a href="class_tutorial_board.html#a4c9dd145d7e41e08e4c69d6b7766d6a2">TutorialBoard::_tutorial_type</a></div><div class="ttdeci">std::string _tutorial_type</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:16</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_a4d032908193938c47c5a447895f21c50"><div class="ttname"><a href="class_tutorial_board.html#a4d032908193938c47c5a447895f21c50">TutorialBoard::Process</a></div><div class="ttdeci">void Process(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> TutorialBoard.cpp:39</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_a82a4c7e056cf4789f3f684bc8ca8cdbc"><div class="ttname"><a href="class_tutorial_board.html#a82a4c7e056cf4789f3f684bc8ca8cdbc">TutorialBoard::Delete</a></div><div class="ttdeci">void Delete(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> TutorialBoard.cpp:119</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_ab67663efc5cbba482f012b23b803c5e0"><div class="ttname"><a href="class_tutorial_board.html#ab67663efc5cbba482f012b23b803c5e0">TutorialBoard::Init</a></div><div class="ttdeci">void Init() override</div><div class="ttdef"><b>Definition:</b> TutorialBoard.cpp:25</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_ab6d692e389bc056fb89bdac38b1af041"><div class="ttname"><a href="class_tutorial_board.html#ab6d692e389bc056fb89bdac38b1af041">TutorialBoard::_tutorialhit_flag</a></div><div class="ttdeci">bool _tutorialhit_flag</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:17</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_aca2edc042f58be19d91a500cfce641c4"><div class="ttname"><a href="class_tutorial_board.html#aca2edc042f58be19d91a500cfce641c4">TutorialBoard::GetObjType</a></div><div class="ttdeci">virtual OBJECTTYPE GetObjType()</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:8</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_acb2fe8c28dcab857d2382aacadeae7d8"><div class="ttname"><a href="class_tutorial_board.html#acb2fe8c28dcab857d2382aacadeae7d8">TutorialBoard::Draw</a></div><div class="ttdeci">void Draw(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> TutorialBoard.cpp:115</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_aed5ce1a2e39a916f39d22d5dd010d433"><div class="ttname"><a href="class_tutorial_board.html#aed5ce1a2e39a916f39d22d5dd010d433">TutorialBoard::TutorialPosition</a></div><div class="ttdeci">void TutorialPosition()</div><div class="ttdef"><b>Definition:</b> TutorialBoard.cpp:123</div></div>
+<div class="ttc" id="aclass_tutorial_board_html_af23f0dd343d27bbd24b3dace8b087530"><div class="ttname"><a href="class_tutorial_board.html#af23f0dd343d27bbd24b3dace8b087530">TutorialBoard::TutorialBoard</a></div><div class="ttdeci">TutorialBoard(std::string tutorialtype)</div><div class="ttdef"><b>Definition:</b> TutorialBoard.cpp:17</div></div>
+<div class="ttc" id="anamespace_t_b_info_html"><div class="ttname"><a href="namespace_t_b_info.html">TBInfo</a></div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:20</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a04d2d56a4dcb58ef27cc7e7099ab6525"><div class="ttname"><a href="namespace_t_b_info.html#a04d2d56a4dcb58ef27cc7e7099ab6525">TBInfo::TUTORIAL1B_X</a></div><div class="ttdeci">constexpr auto TUTORIAL1B_X</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:23</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a1861c451e5df77f9ac37a88842fd29b2"><div class="ttname"><a href="namespace_t_b_info.html#a1861c451e5df77f9ac37a88842fd29b2">TBInfo::TUTORIAL3B_X</a></div><div class="ttdeci">constexpr auto TUTORIAL3B_X</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:29</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a4618125270bce2443b95548a656d8007"><div class="ttname"><a href="namespace_t_b_info.html#a4618125270bce2443b95548a656d8007">TBInfo::TUTORIAL3A_X</a></div><div class="ttdeci">constexpr auto TUTORIAL3A_X</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:27</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a4e48ec3fb8f6971fbe1a5e7a6fcaff7f"><div class="ttname"><a href="namespace_t_b_info.html#a4e48ec3fb8f6971fbe1a5e7a6fcaff7f">TBInfo::TUTORIAL1A_Y</a></div><div class="ttdeci">constexpr auto TUTORIAL1A_Y</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:22</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a57529ad501862aa083bf9eef9a14fec7"><div class="ttname"><a href="namespace_t_b_info.html#a57529ad501862aa083bf9eef9a14fec7">TBInfo::TUTORIAL2A_X</a></div><div class="ttdeci">constexpr auto TUTORIAL2A_X</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:25</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a5a5c8b6f87dffdbc31c54b19c8243278"><div class="ttname"><a href="namespace_t_b_info.html#a5a5c8b6f87dffdbc31c54b19c8243278">TBInfo::TUTORIAL5A_Y</a></div><div class="ttdeci">constexpr auto TUTORIAL5A_Y</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:34</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a784e1d6bd1e3edd63b3dcc315021a816"><div class="ttname"><a href="namespace_t_b_info.html#a784e1d6bd1e3edd63b3dcc315021a816">TBInfo::TUTORIAL3A_Y</a></div><div class="ttdeci">constexpr auto TUTORIAL3A_Y</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:28</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a7e92e78ff8d413d42c49697a93d40c13"><div class="ttname"><a href="namespace_t_b_info.html#a7e92e78ff8d413d42c49697a93d40c13">TBInfo::TUTORIAL2A_Y</a></div><div class="ttdeci">constexpr auto TUTORIAL2A_Y</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:26</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a827f7cd0552bac26ac5e7c5ae19f3adc"><div class="ttname"><a href="namespace_t_b_info.html#a827f7cd0552bac26ac5e7c5ae19f3adc">TBInfo::TUTORIAL4A_Y</a></div><div class="ttdeci">constexpr auto TUTORIAL4A_Y</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:32</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_a9d1884f98b0f7e644f960b5ea74410e9"><div class="ttname"><a href="namespace_t_b_info.html#a9d1884f98b0f7e644f960b5ea74410e9">TBInfo::TUTORIAL3B_Y</a></div><div class="ttdeci">constexpr auto TUTORIAL3B_Y</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:30</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_aa215f0b9d3cbf6310fd560dce4db0bb9"><div class="ttname"><a href="namespace_t_b_info.html#aa215f0b9d3cbf6310fd560dce4db0bb9">TBInfo::TUTORIAL5A_X</a></div><div class="ttdeci">constexpr auto TUTORIAL5A_X</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:33</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_ac42dd1741735dd08e4bf95b4bf1019f2"><div class="ttname"><a href="namespace_t_b_info.html#ac42dd1741735dd08e4bf95b4bf1019f2">TBInfo::TUTORIAL1B_Y</a></div><div class="ttdeci">constexpr auto TUTORIAL1B_Y</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:24</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_af7b00d5c3e712e9332f0e1d572ad615d"><div class="ttname"><a href="namespace_t_b_info.html#af7b00d5c3e712e9332f0e1d572ad615d">TBInfo::TUTORIAL1A_X</a></div><div class="ttdeci">constexpr auto TUTORIAL1A_X</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:21</div></div>
+<div class="ttc" id="anamespace_t_b_info_html_af7eca4f36e036369624c54f91ce0e3c5"><div class="ttname"><a href="namespace_t_b_info.html#af7eca4f36e036369624c54f91ce0e3c5">TBInfo::TUTORIAL4A_X</a></div><div class="ttdeci">constexpr auto TUTORIAL4A_X</div><div class="ttdef"><b>Definition:</b> TutorialBoard.h:31</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

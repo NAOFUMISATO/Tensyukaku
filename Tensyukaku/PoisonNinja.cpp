@@ -1,14 +1,13 @@
 #include <DxLib.h>
 #include "PoisonNinja.h"
-#include "Poison.h"
+#include "PoisonReserve.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "Game.h"
 #include "PrivateCollision.h"
 
 using namespace PNInfo;
-PoisonNinja::PoisonNinja(int x, int y, bool flip):
-_Keep_Flag(true)
+PoisonNinja::PoisonNinja(int x, int y, bool flip)
 {
    _x = x;
    _y = y;
@@ -30,13 +29,13 @@ void PoisonNinja::Init() {
    _gx = GRAPHPOINT_X;
    _gy = GRAPHPOINT_Y;
    _alpha = 0;
-   _State = ENEMYSTATE::APPEAR;
+   _state = ENEMYSTATE::APPEAR;
 }
 
 void PoisonNinja::Process(Game& g) {
    ObjectBase::Process(g);
    //状態毎の処理
-   switch (_State) {
+   switch (_state) {
    case ENEMYSTATE::APPEAR:
       Appear(g);
       break;
@@ -83,7 +82,7 @@ void PoisonNinja::Appear(Game& g) {
    if (frame == APPEAR_ALLFRAME) {
       _alpha = 255;
       _action_cnt=_cnt;
-      _State = ENEMYSTATE::PATROL;
+      _state = ENEMYSTATE::PATROL;
    }
 }
 
@@ -117,7 +116,7 @@ void PoisonNinja::Patrol(Game& g) {
             // 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
             if ((*ite)->IsHit(pc) == true)
             {
-               _State = ENEMYSTATE::POISING;
+               _state = ENEMYSTATE::POISING;
                _action_cnt = _cnt;
             }
          }
@@ -135,7 +134,7 @@ void PoisonNinja::Patrol(Game& g) {
             // 索敵範囲オブジェクトとプレイヤーの当たり判定を行う
             if ((*ite)->IsHit(pc) == true)
             {
-               _State = ENEMYSTATE::POISING;
+               _state = ENEMYSTATE::POISING;
                _action_cnt = _cnt;
             }
          }
@@ -172,7 +171,7 @@ void PoisonNinja::Poising(Game& g) {
                // 攻撃中止範囲オブジェクトとプレイヤーの当たり判定を行う
                if ((*ite)->IsHit(acc) == false)
                {
-                  _State = ENEMYSTATE::PATROL;
+                  _state = ENEMYSTATE::PATROL;
                   _action_cnt = _cnt;
                   _anime["Poising"] = 0;
                }
@@ -192,7 +191,7 @@ void PoisonNinja::Poising(Game& g) {
                // 毒液垂らし中止範囲オブジェクトとプレイヤーの当たり判定を行う
                if ((*ite)->IsHit(acc) == false)
                {
-                  _State = ENEMYSTATE::PATROL;
+                  _state = ENEMYSTATE::PATROL;
                   _action_cnt = _cnt;
                   _anime["Poising"] = 0;
                }

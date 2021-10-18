@@ -1,0 +1,28 @@
+\hypertarget{_ninja_motion_collision_8h_source}{}\doxysection{Ninja\+Motion\+Collision.\+h}
+\label{_ninja_motion_collision_8h_source}\index{Tensyukaku/NinjaMotionCollision.h@{Tensyukaku/NinjaMotionCollision.h}}
+\mbox{\hyperlink{_ninja_motion_collision_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// 忍者の攻撃当たり判定クラス}}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_ninja_attack_collision}{NinjaAttackCollision}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14    \textcolor{comment}{//コンストラクタ : 引数（X座標,Y座標）}}
+\DoxyCodeLine{15    \mbox{\hyperlink{class_ninja_attack_collision_a269120e6e1c63982483240ddc737cf02}{NinjaAttackCollision}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{16    \textcolor{comment}{//デストラクタ}}
+\DoxyCodeLine{17    \mbox{\hyperlink{class_ninja_attack_collision_a8170b9c92c6709a9cedd3546e256b503}{\string~NinjaAttackCollision}}();}
+\DoxyCodeLine{18    \textcolor{comment}{//純粋仮想関数のオーバーライド}}
+\DoxyCodeLine{19    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}   \mbox{\hyperlink{class_ninja_attack_collision_ad704fac79ae7e9e5ed2239d4d2944c10}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daccf537447ef84e1dc23f11bf9ba6e0ad}{OBJECTTYPE::NINJAATTACK}}; \}}
+\DoxyCodeLine{20    \textcolor{comment}{//初期化}}
+\DoxyCodeLine{21    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ninja_attack_collision_a48962894bdd691c1dcbb48b854e945f1}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{22    \textcolor{comment}{//更新}}
+\DoxyCodeLine{23    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ninja_attack_collision_a03c924f59eb38d279fe82c1e5b18aa8c}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{24    \textcolor{comment}{//描画}}
+\DoxyCodeLine{25    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ninja_attack_collision_afe27e9d8cce54e9ff156d66937f9cb07}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{26    \textcolor{comment}{//オブジェクトの消去関数}}
+\DoxyCodeLine{27    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ninja_attack_collision_a49373bc8beb21a9cb39f238e4be4d1d7}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{28 \};}
+
+\end{DoxyCode}

@@ -4,13 +4,17 @@
 #include <DxLib.h>
 #include "Player.h"
 #include "Game.h"
-#include "PlayerMotionCollision.h"
+#include "MiddleAttackCollision.h"
+#include "LowAttackCollision.h"
+#include "KickCollision.h"
+#include "IaiCollision.h"
+#include "SpecialCollision.h"
 #include "PlayerParticle.h"
 #include "OverlayBlack.h"
 #include "ModeGameover.h"
 #include "ModeGame.h"
 #include "ModeBossBefore.h"
-
+#include "Stair.h"
 using namespace PInfo;
 using namespace PParInfo;
 using namespace StInfo;

@@ -1,0 +1,129 @@
+\hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w}{}\doxysection{Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2W 構造体}
+\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w}\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+
+
+{\ttfamily \#include $<$Dx\+Lib.\+h$>$}
+
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+DWORD\+\_\+\+PTR($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a73b921f5a0095a583aa0ccb39dab39b7}{Open}} )(const wchar\+\_\+t $\ast$Path, int Use\+Cache\+Flag, int Block\+Read\+Flag, int Use\+ASync\+Read\+Flag)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ac7812ae9e0c6f052cd8689fbf477f48e}{Close}} )(DWORD\+\_\+\+PTR Handle)
+\item 
+LONGLONG($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ab3fee02c6b2d5dfce83788a428abd32e}{Tell}} )(DWORD\+\_\+\+PTR Handle)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a00d0fb3c0bf867e417c7426143f67d23}{Seek}} )(DWORD\+\_\+\+PTR Handle, LONGLONG Seek\+Point, int Seek\+Type)
+\item 
+size\+\_\+t($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a40268d7d0eed0302750840bcea137aad}{Read}} )(void $\ast$Buffer, size\+\_\+t Block\+Size, size\+\_\+t Data\+Num, DWORD\+\_\+\+PTR Handle)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a9794106cdcb5e8554eace93fd06f2c66}{Eof}} )(DWORD\+\_\+\+PTR Handle)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a122b8cc52543e49725ee3dd02417189c}{Idle\+Check}} )(DWORD\+\_\+\+PTR Handle)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a938f0cac1061f2be7a888d28e5c95d71}{Is\+DXA}} )(DWORD\+\_\+\+PTR Handle)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a768376dcf0362210a9b685ab51628e9b}{Ch\+Dir}} )(const wchar\+\_\+t $\ast$Path)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a0c0f81a632b9d18c47ef2091446fd7ea}{Get\+Dir}} )(wchar\+\_\+t $\ast$Buffer)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a11ddbe800b820da6dc8a5e5f7b1b19e4}{Get\+DirS}} )(wchar\+\_\+t $\ast$Buffer, size\+\_\+t Buffer\+Size)
+\item 
+DWORD\+\_\+\+PTR($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_aed0b90ff0ae035b3aa187bba1d265245}{Find\+First}} )(const wchar\+\_\+t $\ast$File\+Path, \mbox{\hyperlink{namespace_dx_lib_abc7a08b635dbc4c2c097d807eac1ca83}{FILEINFOW}} $\ast$Buffer)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ad1fb950da765bfa7ee586d40ae8662a4}{Find\+Next}} )(DWORD\+\_\+\+PTR Find\+Handle, \mbox{\hyperlink{namespace_dx_lib_abc7a08b635dbc4c2c097d807eac1ca83}{FILEINFOW}} $\ast$Buffer)
+\item 
+int($\ast$ \mbox{\hyperlink{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a34941ace05a29c51cd8dbfbf8b2b257b}{Find\+Close}} )(DWORD\+\_\+\+PTR Find\+Handle)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a768376dcf0362210a9b685ab51628e9b}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a768376dcf0362210a9b685ab51628e9b}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!ChDir@{ChDir}}
+\index{ChDir@{ChDir}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{ChDir}{ChDir}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Ch\+Dir) (const wchar\+\_\+t $\ast$Path)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ac7812ae9e0c6f052cd8689fbf477f48e}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ac7812ae9e0c6f052cd8689fbf477f48e}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!Close@{Close}}
+\index{Close@{Close}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{Close}{Close}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Close) (DWORD\+\_\+\+PTR Handle)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a9794106cdcb5e8554eace93fd06f2c66}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a9794106cdcb5e8554eace93fd06f2c66}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!Eof@{Eof}}
+\index{Eof@{Eof}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{Eof}{Eof}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Eof) (DWORD\+\_\+\+PTR Handle)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a34941ace05a29c51cd8dbfbf8b2b257b}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a34941ace05a29c51cd8dbfbf8b2b257b}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!FindClose@{FindClose}}
+\index{FindClose@{FindClose}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{FindClose}{FindClose}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Find\+Close) (DWORD\+\_\+\+PTR Find\+Handle)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_aed0b90ff0ae035b3aa187bba1d265245}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_aed0b90ff0ae035b3aa187bba1d265245}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!FindFirst@{FindFirst}}
+\index{FindFirst@{FindFirst}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{FindFirst}{FindFirst}}
+{\footnotesize\ttfamily DWORD\+\_\+\+PTR($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Find\+First) (const wchar\+\_\+t $\ast$File\+Path, \mbox{\hyperlink{namespace_dx_lib_abc7a08b635dbc4c2c097d807eac1ca83}{FILEINFOW}} $\ast$Buffer)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ad1fb950da765bfa7ee586d40ae8662a4}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ad1fb950da765bfa7ee586d40ae8662a4}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!FindNext@{FindNext}}
+\index{FindNext@{FindNext}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{FindNext}{FindNext}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Find\+Next) (DWORD\+\_\+\+PTR Find\+Handle, \mbox{\hyperlink{namespace_dx_lib_abc7a08b635dbc4c2c097d807eac1ca83}{FILEINFOW}} $\ast$Buffer)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a0c0f81a632b9d18c47ef2091446fd7ea}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a0c0f81a632b9d18c47ef2091446fd7ea}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!GetDir@{GetDir}}
+\index{GetDir@{GetDir}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{GetDir}{GetDir}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Get\+Dir) (wchar\+\_\+t $\ast$Buffer)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a11ddbe800b820da6dc8a5e5f7b1b19e4}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a11ddbe800b820da6dc8a5e5f7b1b19e4}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!GetDirS@{GetDirS}}
+\index{GetDirS@{GetDirS}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{GetDirS}{GetDirS}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Get\+DirS) (wchar\+\_\+t $\ast$Buffer, size\+\_\+t Buffer\+Size)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a122b8cc52543e49725ee3dd02417189c}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a122b8cc52543e49725ee3dd02417189c}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!IdleCheck@{IdleCheck}}
+\index{IdleCheck@{IdleCheck}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{IdleCheck}{IdleCheck}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Idle\+Check) (DWORD\+\_\+\+PTR Handle)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a938f0cac1061f2be7a888d28e5c95d71}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a938f0cac1061f2be7a888d28e5c95d71}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!IsDXA@{IsDXA}}
+\index{IsDXA@{IsDXA}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{IsDXA}{IsDXA}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Is\+DXA) (DWORD\+\_\+\+PTR Handle)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a73b921f5a0095a583aa0ccb39dab39b7}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a73b921f5a0095a583aa0ccb39dab39b7}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!Open@{Open}}
+\index{Open@{Open}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{Open}{Open}}
+{\footnotesize\ttfamily DWORD\+\_\+\+PTR($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Open) (const wchar\+\_\+t $\ast$Path, int Use\+Cache\+Flag, int Block\+Read\+Flag, int Use\+ASync\+Read\+Flag)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a40268d7d0eed0302750840bcea137aad}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a40268d7d0eed0302750840bcea137aad}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!Read@{Read}}
+\index{Read@{Read}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{Read}{Read}}
+{\footnotesize\ttfamily size\+\_\+t($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Read) (void $\ast$Buffer, size\+\_\+t Block\+Size, size\+\_\+t Data\+Num, DWORD\+\_\+\+PTR Handle)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a00d0fb3c0bf867e417c7426143f67d23}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_a00d0fb3c0bf867e417c7426143f67d23}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!Seek@{Seek}}
+\index{Seek@{Seek}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{Seek}{Seek}}
+{\footnotesize\ttfamily int($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Seek) (DWORD\+\_\+\+PTR Handle, LONGLONG Seek\+Point, int Seek\+Type)}
+
+\mbox{\Hypertarget{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ab3fee02c6b2d5dfce83788a428abd32e}\label{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w_ab3fee02c6b2d5dfce83788a428abd32e}} 
+\index{DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}!Tell@{Tell}}
+\index{Tell@{Tell}!DxLib::tagSTREAMDATASHREDTYPE2W@{DxLib::tagSTREAMDATASHREDTYPE2W}}
+\doxysubsubsection{\texorpdfstring{Tell}{Tell}}
+{\footnotesize\ttfamily LONGLONG($\ast$ Dx\+Lib\+::tag\+STREAMDATASHREDTYPE2\+W\+::\+Tell) (DWORD\+\_\+\+PTR Handle)}
+
+
+
+この構造体詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Dx\+Lib/\mbox{\hyperlink{_dx_lib_8h}{Dx\+Lib.\+h}}\end{DoxyCompactItemize}

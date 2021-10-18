@@ -10,11 +10,10 @@
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "MiddleBlood.h"
-#include "BushiMotionCollision.h"
 #include "PrivateCollision.h"
 
 using namespace BInfo;
-//武士のコンストラクタ    :   引数（X座標,Y座標,反転判定）
+//武士のコンストラクタ : 引数（X座標,Y座標,反転判定）
 Bushi::Bushi(int x,int y,bool flip)
 {
    _x = x;

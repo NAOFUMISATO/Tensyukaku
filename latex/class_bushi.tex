@@ -1,0 +1,202 @@
+\hypertarget{class_bushi}{}\doxysection{Bushi クラス}
+\label{class_bushi}\index{Bushi@{Bushi}}
+
+
+{\ttfamily \#include $<$Bushi.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_enemy_base}{Enemy\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bushi_ae61760424f7ea6e764606e614f1e17e9}{Bushi}} (int x, int y, bool flip)
+\item 
+\mbox{\hyperlink{class_bushi_a8635c6468f617cd596d13a7c692786b7}{$\sim$\+Bushi}} ()
+\item 
+virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} \mbox{\hyperlink{class_bushi_ae3e2265a9cbd1351c954de7e5fa888a0}{Get\+Ene\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_bushi_ae47819552a3322bcd0775a14c8b4cdf9}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_bushi_a364e5e81cba5b9bf12efad4d6565ebaa}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_bushi_accbf5766b0fe9abb2e862c4890db5ec7}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_bushi_a03c976793fdaa07319ceb9708aef59f6}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_bushi_a568b96153c624538de41af7d740c104f}{Appear}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_bushi_ac86eafa61b4829cf7408d14fac0514ed}{Patrol}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_bushi_a0d245a821686e2d5ec1fab593b6011ac}{Coming}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_bushi_aea752505fac9c5bcc579738dec28a4ff}{Attack}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_bushi_ad078cd917fd537a058a73adcb25373b4}{Damage}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_bushi_a2d09b595d6e7222fb41b93a25b12039a}{Dead}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_bushi_ae6b67591f83f87e2a7e10794e2b1e0bd}{Hit\+Judge}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_bushi_a4590300d2013e396f038a77e8873b7e5}{Load\+Picture}} ()
+\item 
+void \mbox{\hyperlink{class_bushi_ab105e5474fdcb1617bd315496a4c3e28}{Load\+SE}} ()
+\item 
+void \mbox{\hyperlink{class_bushi_aae9a1d4791a6d9ed130e919aba6d4301}{Volume\+Init}} ()
+\item 
+void \mbox{\hyperlink{class_bushi_ab059b2ea36653de3cac606a3226b0858}{Volume\+Change}} ()
+\item 
+void \mbox{\hyperlink{class_bushi_ac2e1dd1cc437dfaa232f0d320f3ed991}{Debug\+Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_bushi_ae61760424f7ea6e764606e614f1e17e9}\label{class_bushi_ae61760424f7ea6e764606e614f1e17e9}} 
+\index{Bushi@{Bushi}!Bushi@{Bushi}}
+\index{Bushi@{Bushi}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Bushi()}{Bushi()}}
+{\footnotesize\ttfamily Bushi\+::\+Bushi (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{flip }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_bushi_a8635c6468f617cd596d13a7c692786b7}\label{class_bushi_a8635c6468f617cd596d13a7c692786b7}} 
+\index{Bushi@{Bushi}!````~Bushi@{$\sim$Bushi}}
+\index{````~Bushi@{$\sim$Bushi}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{$\sim$Bushi()}{~Bushi()}}
+{\footnotesize\ttfamily Bushi\+::$\sim$\+Bushi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_bushi_a568b96153c624538de41af7d740c104f}\label{class_bushi_a568b96153c624538de41af7d740c104f}} 
+\index{Bushi@{Bushi}!Appear@{Appear}}
+\index{Appear@{Appear}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Appear()}{Appear()}}
+{\footnotesize\ttfamily void Bushi\+::\+Appear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_aea752505fac9c5bcc579738dec28a4ff}\label{class_bushi_aea752505fac9c5bcc579738dec28a4ff}} 
+\index{Bushi@{Bushi}!Attack@{Attack}}
+\index{Attack@{Attack}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Attack()}{Attack()}}
+{\footnotesize\ttfamily void Bushi\+::\+Attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_a0d245a821686e2d5ec1fab593b6011ac}\label{class_bushi_a0d245a821686e2d5ec1fab593b6011ac}} 
+\index{Bushi@{Bushi}!Coming@{Coming}}
+\index{Coming@{Coming}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Coming()}{Coming()}}
+{\footnotesize\ttfamily void Bushi\+::\+Coming (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_ad078cd917fd537a058a73adcb25373b4}\label{class_bushi_ad078cd917fd537a058a73adcb25373b4}} 
+\index{Bushi@{Bushi}!Damage@{Damage}}
+\index{Damage@{Damage}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Damage()}{Damage()}}
+{\footnotesize\ttfamily void Bushi\+::\+Damage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_a2d09b595d6e7222fb41b93a25b12039a}\label{class_bushi_a2d09b595d6e7222fb41b93a25b12039a}} 
+\index{Bushi@{Bushi}!Dead@{Dead}}
+\index{Dead@{Dead}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Dead()}{Dead()}}
+{\footnotesize\ttfamily void Bushi\+::\+Dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_ac2e1dd1cc437dfaa232f0d320f3ed991}\label{class_bushi_ac2e1dd1cc437dfaa232f0d320f3ed991}} 
+\index{Bushi@{Bushi}!DebugDraw@{DebugDraw}}
+\index{DebugDraw@{DebugDraw}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{DebugDraw()}{DebugDraw()}}
+{\footnotesize\ttfamily void Bushi\+::\+Debug\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_a03c976793fdaa07319ceb9708aef59f6}\label{class_bushi_a03c976793fdaa07319ceb9708aef59f6}} 
+\index{Bushi@{Bushi}!Delete@{Delete}}
+\index{Delete@{Delete}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Bushi\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_afa0d1e9f4705a530990e1c0bb32adf49}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_bushi_accbf5766b0fe9abb2e862c4890db5ec7}\label{class_bushi_accbf5766b0fe9abb2e862c4890db5ec7}} 
+\index{Bushi@{Bushi}!Draw@{Draw}}
+\index{Draw@{Draw}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Bushi\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_a3c82fb040b7faf93571d2afa31dd07a5}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_bushi_ae3e2265a9cbd1351c954de7e5fa888a0}\label{class_bushi_ae3e2265a9cbd1351c954de7e5fa888a0}} 
+\index{Bushi@{Bushi}!GetEneType@{GetEneType}}
+\index{GetEneType@{GetEneType}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{GetEneType()}{GetEneType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} Bushi\+::\+Get\+Ene\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_a0d57f8ec2db46337cc6c01daf37f779b}{Enemy\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_bushi_ae6b67591f83f87e2a7e10794e2b1e0bd}\label{class_bushi_ae6b67591f83f87e2a7e10794e2b1e0bd}} 
+\index{Bushi@{Bushi}!HitJudge@{HitJudge}}
+\index{HitJudge@{HitJudge}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{HitJudge()}{HitJudge()}}
+{\footnotesize\ttfamily void Bushi\+::\+Hit\+Judge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_ae47819552a3322bcd0775a14c8b4cdf9}\label{class_bushi_ae47819552a3322bcd0775a14c8b4cdf9}} 
+\index{Bushi@{Bushi}!Init@{Init}}
+\index{Init@{Init}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Bushi\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_af5c90d8abe7e5677336295d1398578b9}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_bushi_a4590300d2013e396f038a77e8873b7e5}\label{class_bushi_a4590300d2013e396f038a77e8873b7e5}} 
+\index{Bushi@{Bushi}!LoadPicture@{LoadPicture}}
+\index{LoadPicture@{LoadPicture}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{LoadPicture()}{LoadPicture()}}
+{\footnotesize\ttfamily void Bushi\+::\+Load\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_ab105e5474fdcb1617bd315496a4c3e28}\label{class_bushi_ab105e5474fdcb1617bd315496a4c3e28}} 
+\index{Bushi@{Bushi}!LoadSE@{LoadSE}}
+\index{LoadSE@{LoadSE}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{LoadSE()}{LoadSE()}}
+{\footnotesize\ttfamily void Bushi\+::\+Load\+SE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_ac86eafa61b4829cf7408d14fac0514ed}\label{class_bushi_ac86eafa61b4829cf7408d14fac0514ed}} 
+\index{Bushi@{Bushi}!Patrol@{Patrol}}
+\index{Patrol@{Patrol}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Patrol()}{Patrol()}}
+{\footnotesize\ttfamily void Bushi\+::\+Patrol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_a364e5e81cba5b9bf12efad4d6565ebaa}\label{class_bushi_a364e5e81cba5b9bf12efad4d6565ebaa}} 
+\index{Bushi@{Bushi}!Process@{Process}}
+\index{Process@{Process}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Bushi\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_add67699620ad91db7ed390a426e75fbf}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_bushi_ab059b2ea36653de3cac606a3226b0858}\label{class_bushi_ab059b2ea36653de3cac606a3226b0858}} 
+\index{Bushi@{Bushi}!VolumeChange@{VolumeChange}}
+\index{VolumeChange@{VolumeChange}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{VolumeChange()}{VolumeChange()}}
+{\footnotesize\ttfamily void Bushi\+::\+Volume\+Change (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_bushi_aae9a1d4791a6d9ed130e919aba6d4301}\label{class_bushi_aae9a1d4791a6d9ed130e919aba6d4301}} 
+\index{Bushi@{Bushi}!VolumeInit@{VolumeInit}}
+\index{VolumeInit@{VolumeInit}!Bushi@{Bushi}}
+\doxysubsubsection{\texorpdfstring{VolumeInit()}{VolumeInit()}}
+{\footnotesize\ttfamily void Bushi\+::\+Volume\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_bushi_8h}{Bushi.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_bushi_8cpp}{Bushi.\+cpp}}\item 
+Tensyukaku/\mbox{\hyperlink{_bushi_motion_8cpp}{Bushi\+Motion.\+cpp}}\end{DoxyCompactItemize}

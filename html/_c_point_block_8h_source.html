@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/CPointBlock.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">CPointBlock.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_c_point_block_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_object_base_8h.html">ObjectBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_c_point_block.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="class_c_point_block.html">CPointBlock</a> :<span class="keyword">public</span> <a class="code hl_class" href="class_object_base.html">ObjectBase</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>   <a class="code hl_function" href="class_c_point_block.html#a2f71307f458b48961b31f22f4951b677">CPointBlock</a>(std::string  cpointtype);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>   <a class="code hl_function" href="class_c_point_block.html#a50e70c1eaea031d4e4a92850daa8ef4d">~CPointBlock</a>();</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_c_point_block.html#a1b29ca8ad6b083de75e3e025db1ba90b">    8</a></span>   <span class="keyword">virtual</span> <a class="code hl_enumeration" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">OBJECTTYPE</a>   <a class="code hl_function" href="class_c_point_block.html#a1b29ca8ad6b083de75e3e025db1ba90b">GetObjType</a>() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dac6719a6de45631bfdda6d67c1f636f45">OBJECTTYPE::CPOINTBLOCK</a>; }</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_c_point_block.html#a30344e006aba5bb0eedf41ea279942fb">Init</a>()<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_c_point_block.html#a6d7ed6082b4e7f091821092ffda8b5b7">Process</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_c_point_block.html#a238b72a10bccb735051632e5cd91962e">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_c_point_block.html#a9b93a05f7d2b5af32926429bb63d51d4">Delete</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_c_point_block.html#adcbcf09dc0594f1438dd3cdc73adf900">CPointPosition</a>();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_c_point_block.html#a9adaf4e8dd6b1c877160c00a8c01f250">   15</a></span>   std::string  <a class="code hl_variable" href="class_c_point_block.html#a9adaf4e8dd6b1c877160c00a8c01f250">_cpoint_type</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//チェックポイント</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html">   18</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_c_p_info.html">CPInfo</a> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#a6ef2cb57ab8ca2ab02abee806c828c69">   19</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#a6ef2cb57ab8ca2ab02abee806c828c69">CPOINT_2A_X</a> = 3600;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#aeeab8884ece1e77762c99da1698d2ff2">   20</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#aeeab8884ece1e77762c99da1698d2ff2">CPOINT_2A_Y</a> = 8600;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#a3b8716bd78cf590d7e13da93ccf4491f">   21</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#a3b8716bd78cf590d7e13da93ccf4491f">CPOINT_3A_X</a> = 250;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#a8b834e7fa024d1b76b6f10e7c1b8cf3d">   22</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#a8b834e7fa024d1b76b6f10e7c1b8cf3d">CPOINT_3A_Y</a> = 7840;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#acc36431af209d1f6c699512f19273781">   23</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#acc36431af209d1f6c699512f19273781">CPOINT_4A_X</a> = 5600;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#afa1dc3ece981e99f34960f754d8b45e2">   24</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#afa1dc3ece981e99f34960f754d8b45e2">CPOINT_4A_Y</a> = 7080;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#aa19f49d027195cfbd25197376fa2445a">   25</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#aa19f49d027195cfbd25197376fa2445a">CPOINT_5A_X</a> = 250;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#a0bb1b3e5ce1a756201505186f3ce6138">   26</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#a0bb1b3e5ce1a756201505186f3ce6138">CPOINT_5A_Y</a> =   6320;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#aeeaffa8872844e0c896d38998a18f973">   27</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#aeeaffa8872844e0c896d38998a18f973">CPOINT_5B_X</a> = 5500;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#a819341529903a84e6262a49205af63ed">   28</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#a819341529903a84e6262a49205af63ed">CPOINT_5B_Y</a> = 6320;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#a57b10b7bbb36e7020bec181dc4d9109c">   29</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#a57b10b7bbb36e7020bec181dc4d9109c">CPOINT_8A_X</a> = 5000;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#a7413e881f3b3c9147a821e3d36f78409">   30</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#a7413e881f3b3c9147a821e3d36f78409">CPOINT_8A_Y</a> = 4040;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#ae24cdf6fb9c029c9039d0ad0f5eec377">   31</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#ae24cdf6fb9c029c9039d0ad0f5eec377">CPOINT_11A_X</a> = 5600;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespace_c_p_info.html#a7600958ee357e583d7785b562391666a">   32</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_c_p_info.html#a7600958ee357e583d7785b562391666a">CPOINT_11A_Y</a> = 1760;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="ttc" id="a_object_base_8h_html"><div class="ttname"><a href="_object_base_8h.html">ObjectBase.h</a></div></div>
+<div class="ttc" id="aclass_c_point_block_html"><div class="ttname"><a href="class_c_point_block.html">CPointBlock</a></div><div class="ttdef"><b>Definition:</b> CPointBlock.h:4</div></div>
+<div class="ttc" id="aclass_c_point_block_html_a1b29ca8ad6b083de75e3e025db1ba90b"><div class="ttname"><a href="class_c_point_block.html#a1b29ca8ad6b083de75e3e025db1ba90b">CPointBlock::GetObjType</a></div><div class="ttdeci">virtual OBJECTTYPE GetObjType()</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:8</div></div>
+<div class="ttc" id="aclass_c_point_block_html_a238b72a10bccb735051632e5cd91962e"><div class="ttname"><a href="class_c_point_block.html#a238b72a10bccb735051632e5cd91962e">CPointBlock::Draw</a></div><div class="ttdeci">void Draw(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> CPointBlock.cpp:73</div></div>
+<div class="ttc" id="aclass_c_point_block_html_a2f71307f458b48961b31f22f4951b677"><div class="ttname"><a href="class_c_point_block.html#a2f71307f458b48961b31f22f4951b677">CPointBlock::CPointBlock</a></div><div class="ttdeci">CPointBlock(std::string cpointtype)</div><div class="ttdef"><b>Definition:</b> CPointBlock.cpp:12</div></div>
+<div class="ttc" id="aclass_c_point_block_html_a30344e006aba5bb0eedf41ea279942fb"><div class="ttname"><a href="class_c_point_block.html#a30344e006aba5bb0eedf41ea279942fb">CPointBlock::Init</a></div><div class="ttdeci">void Init() override</div><div class="ttdef"><b>Definition:</b> CPointBlock.cpp:19</div></div>
+<div class="ttc" id="aclass_c_point_block_html_a50e70c1eaea031d4e4a92850daa8ef4d"><div class="ttname"><a href="class_c_point_block.html#a50e70c1eaea031d4e4a92850daa8ef4d">CPointBlock::~CPointBlock</a></div><div class="ttdeci">~CPointBlock()</div><div class="ttdef"><b>Definition:</b> CPointBlock.cpp:16</div></div>
+<div class="ttc" id="aclass_c_point_block_html_a6d7ed6082b4e7f091821092ffda8b5b7"><div class="ttname"><a href="class_c_point_block.html#a6d7ed6082b4e7f091821092ffda8b5b7">CPointBlock::Process</a></div><div class="ttdeci">void Process(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> CPointBlock.cpp:34</div></div>
+<div class="ttc" id="aclass_c_point_block_html_a9adaf4e8dd6b1c877160c00a8c01f250"><div class="ttname"><a href="class_c_point_block.html#a9adaf4e8dd6b1c877160c00a8c01f250">CPointBlock::_cpoint_type</a></div><div class="ttdeci">std::string _cpoint_type</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:15</div></div>
+<div class="ttc" id="aclass_c_point_block_html_a9b93a05f7d2b5af32926429bb63d51d4"><div class="ttname"><a href="class_c_point_block.html#a9b93a05f7d2b5af32926429bb63d51d4">CPointBlock::Delete</a></div><div class="ttdeci">void Delete(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> CPointBlock.cpp:77</div></div>
+<div class="ttc" id="aclass_c_point_block_html_adcbcf09dc0594f1438dd3cdc73adf900"><div class="ttname"><a href="class_c_point_block.html#adcbcf09dc0594f1438dd3cdc73adf900">CPointBlock::CPointPosition</a></div><div class="ttdeci">void CPointPosition()</div><div class="ttdef"><b>Definition:</b> CPointBlock.cpp:81</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html"><div class="ttname"><a href="class_object_base.html">ObjectBase</a></div><div class="ttdef"><b>Definition:</b> ObjectBase.h:12</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1d"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">ObjectBase::OBJECTTYPE</a></div><div class="ttdeci">OBJECTTYPE</div><div class="ttdef"><b>Definition:</b> ObjectBase.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1dac6719a6de45631bfdda6d67c1f636f45"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dac6719a6de45631bfdda6d67c1f636f45">ObjectBase::OBJECTTYPE::CPOINTBLOCK</a></div><div class="ttdeci">@ CPOINTBLOCK</div></div>
+<div class="ttc" id="anamespace_c_p_info_html"><div class="ttname"><a href="namespace_c_p_info.html">CPInfo</a></div><div class="ttdef"><b>Definition:</b> CPointBlock.h:18</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_a0bb1b3e5ce1a756201505186f3ce6138"><div class="ttname"><a href="namespace_c_p_info.html#a0bb1b3e5ce1a756201505186f3ce6138">CPInfo::CPOINT_5A_Y</a></div><div class="ttdeci">constexpr auto CPOINT_5A_Y</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:26</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_a3b8716bd78cf590d7e13da93ccf4491f"><div class="ttname"><a href="namespace_c_p_info.html#a3b8716bd78cf590d7e13da93ccf4491f">CPInfo::CPOINT_3A_X</a></div><div class="ttdeci">constexpr auto CPOINT_3A_X</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:21</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_a57b10b7bbb36e7020bec181dc4d9109c"><div class="ttname"><a href="namespace_c_p_info.html#a57b10b7bbb36e7020bec181dc4d9109c">CPInfo::CPOINT_8A_X</a></div><div class="ttdeci">constexpr auto CPOINT_8A_X</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:29</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_a6ef2cb57ab8ca2ab02abee806c828c69"><div class="ttname"><a href="namespace_c_p_info.html#a6ef2cb57ab8ca2ab02abee806c828c69">CPInfo::CPOINT_2A_X</a></div><div class="ttdeci">constexpr auto CPOINT_2A_X</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:19</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_a7413e881f3b3c9147a821e3d36f78409"><div class="ttname"><a href="namespace_c_p_info.html#a7413e881f3b3c9147a821e3d36f78409">CPInfo::CPOINT_8A_Y</a></div><div class="ttdeci">constexpr auto CPOINT_8A_Y</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:30</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_a7600958ee357e583d7785b562391666a"><div class="ttname"><a href="namespace_c_p_info.html#a7600958ee357e583d7785b562391666a">CPInfo::CPOINT_11A_Y</a></div><div class="ttdeci">constexpr auto CPOINT_11A_Y</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:32</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_a819341529903a84e6262a49205af63ed"><div class="ttname"><a href="namespace_c_p_info.html#a819341529903a84e6262a49205af63ed">CPInfo::CPOINT_5B_Y</a></div><div class="ttdeci">constexpr auto CPOINT_5B_Y</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:28</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_a8b834e7fa024d1b76b6f10e7c1b8cf3d"><div class="ttname"><a href="namespace_c_p_info.html#a8b834e7fa024d1b76b6f10e7c1b8cf3d">CPInfo::CPOINT_3A_Y</a></div><div class="ttdeci">constexpr auto CPOINT_3A_Y</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:22</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_aa19f49d027195cfbd25197376fa2445a"><div class="ttname"><a href="namespace_c_p_info.html#aa19f49d027195cfbd25197376fa2445a">CPInfo::CPOINT_5A_X</a></div><div class="ttdeci">constexpr auto CPOINT_5A_X</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:25</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_acc36431af209d1f6c699512f19273781"><div class="ttname"><a href="namespace_c_p_info.html#acc36431af209d1f6c699512f19273781">CPInfo::CPOINT_4A_X</a></div><div class="ttdeci">constexpr auto CPOINT_4A_X</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:23</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_ae24cdf6fb9c029c9039d0ad0f5eec377"><div class="ttname"><a href="namespace_c_p_info.html#ae24cdf6fb9c029c9039d0ad0f5eec377">CPInfo::CPOINT_11A_X</a></div><div class="ttdeci">constexpr auto CPOINT_11A_X</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:31</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_aeeab8884ece1e77762c99da1698d2ff2"><div class="ttname"><a href="namespace_c_p_info.html#aeeab8884ece1e77762c99da1698d2ff2">CPInfo::CPOINT_2A_Y</a></div><div class="ttdeci">constexpr auto CPOINT_2A_Y</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:20</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_aeeaffa8872844e0c896d38998a18f973"><div class="ttname"><a href="namespace_c_p_info.html#aeeaffa8872844e0c896d38998a18f973">CPInfo::CPOINT_5B_X</a></div><div class="ttdeci">constexpr auto CPOINT_5B_X</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:27</div></div>
+<div class="ttc" id="anamespace_c_p_info_html_afa1dc3ece981e99f34960f754d8b45e2"><div class="ttname"><a href="namespace_c_p_info.html#afa1dc3ece981e99f34960f754d8b45e2">CPInfo::CPOINT_4A_Y</a></div><div class="ttdeci">constexpr auto CPOINT_4A_Y</div><div class="ttdef"><b>Definition:</b> CPointBlock.h:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

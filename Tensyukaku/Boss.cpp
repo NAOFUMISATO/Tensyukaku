@@ -29,7 +29,7 @@ void Boss::Init() {
    _hit_w = COLLISION_WIDTH;
    _hit_h = COLLISION_HEIGHT;
    _alpha = 255;
-   _State = BOSSSTATE::IDLE;
+   _state = BOSSSTATE::IDLE;
 }
 
 void Boss::Process(Game& g) {
@@ -37,7 +37,7 @@ void Boss::Process(Game& g) {
    EventChange(g);
    VolumeChange();
    /*---状態毎の処理---*/
-   switch (_State) {
+   switch (_state) {
    case BOSSSTATE::IDLE:
       Idle(g);
       break;
@@ -124,7 +124,7 @@ void Boss::BossEventB(Game& g) {
                (*ite)->Delete(g);
                _action_cnt = _cnt;
                PlaySoundMem(_se["Dead03V"], DX_PLAYTYPE_BACK, true);
-               _State = BOSSSTATE::DAMAGE;
+               _state = BOSSSTATE::DAMAGE;
             }
          }
       }
@@ -142,7 +142,7 @@ void Boss::Damage(Game& g) {
    if (frame == DAMAGE_ALLFRAME) {
       _action_cnt = _cnt;
       PlaySoundMem(_se["Dead02V"], DX_PLAYTYPE_BACK, true);
-      _State = BOSSSTATE::DEAD;
+      _state = BOSSSTATE::DEAD;
       auto bloodtype = 1;
       auto bb = new BossBlood(_x + _gx, _y + _gy, bloodtype);
       g.GetOS()->Add(bb);
@@ -172,12 +172,12 @@ void Boss::Dead(Game& g) {
 //ボスのイベント状態遷移関数
 void Boss::EventChange(Game& g) {
    if (_bosseventA_flag == true) {
-      _State = BOSSSTATE::EVENTA;
+      _state = BOSSSTATE::EVENTA;
       _action_cnt = _cnt;
       _bosseventA_flag = false;
    }
    if (_bosseventB_flag == true) {
-      _State = BOSSSTATE::EVENTB;
+      _state = BOSSSTATE::EVENTB;
       _action_cnt = _cnt;
       _bosseventB_flag = false;
    }

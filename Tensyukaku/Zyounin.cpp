@@ -10,7 +10,6 @@
 #include "LowBlood.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
-#include "NinjaMotionCollision.h"
 #include "PrivateCollision.h"
 
 using namespace ZInfo;

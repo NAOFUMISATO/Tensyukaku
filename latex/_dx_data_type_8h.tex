@@ -1,0 +1,69 @@
+\hypertarget{_dx_data_type_8h}{}\doxysection{Dx\+Lib/\+Dx\+Data\+Type.h ファイル}
+\label{_dx_data_type_8h}\index{DxLib/DxDataType.h@{DxLib/DxDataType.h}}
+{\ttfamily \#include \char`\"{}Dx\+Compile\+Config.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Dx\+Data\+Type\+Win.\+h\char`\"{}}\newline
+\doxysubsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_dx_lib_1_1_r_g_b_c_o_l_o_r}{Dx\+Lib\+::\+RGBCOLOR}}
+\end{DoxyCompactItemize}
+\doxysubsection*{名前空間}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_dx_lib}{Dx\+Lib}}
+\end{DoxyCompactItemize}
+\doxysubsection*{マクロ定義}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_dx_data_type_8h_a3a94b94d64ecf4209caae976a665f363}{SETRECT}}(Dest,  Left,  Top,  Right,  Bottom)
+\item 
+\#define \mbox{\hyperlink{_dx_data_type_8h_ad2ad2137e210664ec91e8521740da74e}{ULL\+\_\+\+NUM}}(x)~( ( ULONGLONG )x )
+\item 
+\#define \mbox{\hyperlink{_dx_data_type_8h_ac4e52e933f87a78702cfd4255cafac1a}{LL\+\_\+\+NUM}}(x)~(  ( LONGLONG )x )
+\item 
+\#define \mbox{\hyperlink{_dx_data_type_8h_ac92b9c518d1a15eae07b09fb4bbf8f1c}{ULL\+\_\+\+PARAM}}(x)~x
+\item 
+\#define \mbox{\hyperlink{_dx_data_type_8h_a87404a99b74a4443ac8191cc70816c51}{LL\+\_\+\+PARAM}}(x)~x
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{マクロ定義詳解}
+\mbox{\Hypertarget{_dx_data_type_8h_ac4e52e933f87a78702cfd4255cafac1a}\label{_dx_data_type_8h_ac4e52e933f87a78702cfd4255cafac1a}} 
+\index{DxDataType.h@{DxDataType.h}!LL\_NUM@{LL\_NUM}}
+\index{LL\_NUM@{LL\_NUM}!DxDataType.h@{DxDataType.h}}
+\doxysubsubsection{\texorpdfstring{LL\_NUM}{LL\_NUM}}
+{\footnotesize\ttfamily \#define LL\+\_\+\+NUM(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(  ( LONGLONG )x )}
+
+\mbox{\Hypertarget{_dx_data_type_8h_a87404a99b74a4443ac8191cc70816c51}\label{_dx_data_type_8h_a87404a99b74a4443ac8191cc70816c51}} 
+\index{DxDataType.h@{DxDataType.h}!LL\_PARAM@{LL\_PARAM}}
+\index{LL\_PARAM@{LL\_PARAM}!DxDataType.h@{DxDataType.h}}
+\doxysubsubsection{\texorpdfstring{LL\_PARAM}{LL\_PARAM}}
+{\footnotesize\ttfamily \#define LL\+\_\+\+PARAM(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~x}
+
+\mbox{\Hypertarget{_dx_data_type_8h_a3a94b94d64ecf4209caae976a665f363}\label{_dx_data_type_8h_a3a94b94d64ecf4209caae976a665f363}} 
+\index{DxDataType.h@{DxDataType.h}!SETRECT@{SETRECT}}
+\index{SETRECT@{SETRECT}!DxDataType.h@{DxDataType.h}}
+\doxysubsubsection{\texorpdfstring{SETRECT}{SETRECT}}
+{\footnotesize\ttfamily \#define SETRECT(\begin{DoxyParamCaption}\item[{}]{Dest,  }\item[{}]{Left,  }\item[{}]{Top,  }\item[{}]{Right,  }\item[{}]{Bottom }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    ( Dest ).left   = Left ;\(\backslash\)}
+\DoxyCodeLine{    ( Dest ).top    = Top ;\(\backslash\)}
+\DoxyCodeLine{    ( Dest ).right  = Right ;\(\backslash\)}
+\DoxyCodeLine{    ( Dest ).bottom = Bottom ;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_dx_data_type_8h_ad2ad2137e210664ec91e8521740da74e}\label{_dx_data_type_8h_ad2ad2137e210664ec91e8521740da74e}} 
+\index{DxDataType.h@{DxDataType.h}!ULL\_NUM@{ULL\_NUM}}
+\index{ULL\_NUM@{ULL\_NUM}!DxDataType.h@{DxDataType.h}}
+\doxysubsubsection{\texorpdfstring{ULL\_NUM}{ULL\_NUM}}
+{\footnotesize\ttfamily \#define ULL\+\_\+\+NUM(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~( ( ULONGLONG )x )}
+
+\mbox{\Hypertarget{_dx_data_type_8h_ac92b9c518d1a15eae07b09fb4bbf8f1c}\label{_dx_data_type_8h_ac92b9c518d1a15eae07b09fb4bbf8f1c}} 
+\index{DxDataType.h@{DxDataType.h}!ULL\_PARAM@{ULL\_PARAM}}
+\index{ULL\_PARAM@{ULL\_PARAM}!DxDataType.h@{DxDataType.h}}
+\doxysubsubsection{\texorpdfstring{ULL\_PARAM}{ULL\_PARAM}}
+{\footnotesize\ttfamily \#define ULL\+\_\+\+PARAM(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~x}
+

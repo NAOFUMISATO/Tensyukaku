@@ -171,13 +171,10 @@
     <ClCompile Include="EnemyBase.cpp">
       <Filter>ソース ファイル\Object\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMotionCollision.cpp">
+    <ClCompile Include="NinjaAttackCollision.cpp">
       <Filter>ソース ファイル\Object\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="NinjaMotionCollision.cpp">
-      <Filter>ソース ファイル\Object\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="BushiMotionCollision.cpp">
+    <ClCompile Include="BushiAttackCollision.cpp">
       <Filter>ソース ファイル\Object\Collision</Filter>
     </ClCompile>
     <ClCompile Include="ParticleBase.cpp">
@@ -195,7 +192,7 @@
     <ClCompile Include="ShielderMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Shielder</Filter>
     </ClCompile>
-    <ClCompile Include="ShielderMotionCollision.cpp">
+    <ClCompile Include="ShielderAttackCollision.cpp">
       <Filter>ソース ファイル\Object\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Shield.cpp">
@@ -237,13 +234,7 @@
     <ClCompile Include="PoisonNinja.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="Poison.cpp">
-      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
-    </ClCompile>
     <ClCompile Include="Cursor.cpp">
-      <Filter>ソース ファイル\Object\Outgame</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleSelect.cpp">
       <Filter>ソース ファイル\Object\Outgame</Filter>
     </ClCompile>
     <ClCompile Include="OutGameParticle.cpp">
@@ -303,7 +294,7 @@
     <ClCompile Include="PauseSelect.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
-    <ClCompile Include="ExPlain.cpp">
+    <ClCompile Include="ModeExPlain.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
     <ClCompile Include="PlayerParticle.cpp">
@@ -327,7 +318,7 @@
     <ClCompile Include="Lancer.cpp">
       <Filter>ソース ファイル\Object\Enemy\Lancer</Filter>
     </ClCompile>
-    <ClCompile Include="LancerMotionCollision.cpp">
+    <ClCompile Include="LancerAttackCollision.cpp">
       <Filter>ソース ファイル\Object\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Busyo.cpp">
@@ -336,13 +327,13 @@
     <ClCompile Include="BusyoMotion.cpp">
       <Filter>ソース ファイル\Object\Enemy\Bushi</Filter>
     </ClCompile>
-    <ClCompile Include="BusyoMotionCollision.cpp">
+    <ClCompile Include="BusyoAttackCollision.cpp">
       <Filter>ソース ファイル\Object\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Zyounin.cpp">
       <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="ZyouninMotionCollision.cpp">
+    <ClCompile Include="ZyouninAttackCollision.cpp">
       <Filter>ソース ファイル\Object\Collision</Filter>
     </ClCompile>
     <ClCompile Include="ZyouninMotion.cpp">
@@ -375,14 +366,62 @@
     <ClCompile Include="EnemyParticle.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="IngameTextBlock.cpp">
-      <Filter>ソース ファイル\Object\Event</Filter>
-    </ClCompile>
-    <ClCompile Include="ModeIngameText.cpp">
-      <Filter>ソース ファイル\Mode</Filter>
-    </ClCompile>
     <ClCompile Include="ModeCredit.cpp">
       <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditLeftGuide.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditRedReturn.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseController.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PrologueSkip.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="MiddleAttackCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="LowAttackCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="KickCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="IaiCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialCollision.cpp">
+      <Filter>ソース ファイル\Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="PoisonFall.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="PoisonReserve.cpp">
+      <Filter>ソース ファイル\Object\Enemy\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="FloorTextBlock.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeIFloorext.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditSelect.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplainSelect.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEndSelect.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStartSelect.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLogo.cpp">
+      <Filter>ソース ファイル\Object\Outgame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -422,13 +461,10 @@
     <ClInclude Include="PlayerHp.h">
       <Filter>ヘッダー ファイル\Object\UI</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerMotionCollision.h">
+    <ClInclude Include="BushiAttackCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="BushiMotionCollision.h">
-      <Filter>ヘッダー ファイル\Object\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="NinjaMotionCollision.h">
+    <ClInclude Include="NinjaAttackCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBase.h">
@@ -443,7 +479,7 @@
     <ClInclude Include="Shielder.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Shierder</Filter>
     </ClInclude>
-    <ClInclude Include="ShielderMotionCollision.h">
+    <ClInclude Include="ShielderAttackCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Shield.h">
@@ -482,9 +518,6 @@
     <ClInclude Include="Cursor.h">
       <Filter>ヘッダー ファイル\Object\OutGame</Filter>
     </ClInclude>
-    <ClInclude Include="TitleSelect.h">
-      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerParticle.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
@@ -515,7 +548,7 @@
     <ClInclude Include="Boss.h">
       <Filter>ヘッダー ファイル\Object\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="BossEvent.h">
+    <ClInclude Include="BossEventBlock.h">
       <Filter>ヘッダー ファイル\Object\Event</Filter>
     </ClInclude>
     <ClInclude Include="OverlayFlame.h">
@@ -545,7 +578,7 @@
     <ClInclude Include="PauseSelect.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
-    <ClInclude Include="ExPlain.h">
+    <ClInclude Include="ModeExPlain.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
     <ClInclude Include="Overlogo.h">
@@ -566,11 +599,8 @@
     <ClInclude Include="Lancer.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Lancer</Filter>
     </ClInclude>
-    <ClInclude Include="LancerMotionCollision.h">
+    <ClInclude Include="LancerAttackCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="Poison.h">
-      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
     <ClInclude Include="PoisonNinja.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
@@ -578,13 +608,13 @@
     <ClInclude Include="Busyo.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Bushi</Filter>
     </ClInclude>
-    <ClInclude Include="BusyoMotionCollision.h">
+    <ClInclude Include="BusyoAttackCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Zyounin.h">
       <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
     </ClInclude>
-    <ClInclude Include="ZyouninMotionCollision.h">
+    <ClInclude Include="ZyouninAttackCollision.h">
       <Filter>ヘッダー ファイル\Object\Collision</Filter>
     </ClInclude>
     <ClInclude Include="ModeTutorial.h">
@@ -614,17 +644,65 @@
     <ClInclude Include="EnemyParticle.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="IngameTextBlock.h">
-      <Filter>ヘッダー ファイル\Object\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="ModeIngameText.h">
-      <Filter>ヘッダー ファイル\Mode</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectBase.h">
       <Filter>ヘッダー ファイル\Object</Filter>
     </ClInclude>
     <ClInclude Include="ModeCredit.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditLeftGuide.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditRedReturn.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseController.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PrologueSkip.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="MiddleAttackCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="LowAttackCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="KickCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="IaiCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialCollision.h">
+      <Filter>ヘッダー ファイル\Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="PoisonReserve.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="PoisonFall.h">
+      <Filter>ヘッダー ファイル\Object\Enemy\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="FloorTextBlock.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeFloorText.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditSelect.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEndSelect.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStartSelect.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLogo.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplainSelect.h">
+      <Filter>ヘッダー ファイル\Object\OutGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

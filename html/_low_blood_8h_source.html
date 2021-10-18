@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/LowBlood.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">LowBlood.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_low_blood_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_efect_base_8h.html">EfectBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_low_blood.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_low_blood.html">LowBlood</a> :<span class="keyword">public</span> <a class="code hl_class" href="class_efect_base.html">EfectBase</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>   <span class="comment">//コンストラクタ : 引数（X座標,Y座標,血しぶきの種別）</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>   <a class="code hl_function" href="class_low_blood.html#a6c021f0461227dc0f5342d37d3dd072f">LowBlood</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">bool</span> flip, <span class="keywordtype">int</span> bloodtype);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>   <span class="comment">//デストラクタ</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>   <a class="code hl_function" href="class_low_blood.html#a610c35c728eaec4884d867d696591c9b">~LowBlood</a>();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>   <span class="comment">//純粋仮想関数のオーバーライド</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_low_blood.html#a186de986d648549b814f2adaf843f4bd">   18</a></span>   <span class="keyword">virtual</span> <a class="code hl_enumeration" href="class_efect_base.html#a81fd3e6cbf825094d0b2a459b4f7699e">EFECTTYPE</a> <a class="code hl_function" href="class_low_blood.html#a186de986d648549b814f2adaf843f4bd">GetEfeType</a>() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_efect_base.html#a81fd3e6cbf825094d0b2a459b4f7699ead074663ad01e00383ca60915acdbf496">EFECTTYPE::LOWBLOOD</a>; }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>   <span class="comment">//初期化</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_low_blood.html#a8b4a9a34f9e7ad0fe7570dbb56972a6b">Init</a>()<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>   <span class="comment">//更新</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_low_blood.html#a4636ca3ae61dd213c2873164409ca6aa">Process</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>   <span class="comment">//描画</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_low_blood.html#a7341701a14ad02f284f23b86f9697fe7">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>   <span class="comment">//オブジェクトの消去</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_low_blood.html#a0d56e41c05a4c96da21e9dfa238bb6cc">Delete</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_low_blood.html#a8801141e136ff9f9b6cd5c20198c1bcf">   28</a></span>   <span class="keywordtype">int</span>  <a class="code hl_variable" href="class_low_blood.html#a8801141e136ff9f9b6cd5c20198c1bcf">_blood_type</a>;    <span class="comment">//血しぶきの種別変数</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="ttc" id="a_efect_base_8h_html"><div class="ttname"><a href="_efect_base_8h.html">EfectBase.h</a></div><div class="ttdoc">各エフェクトのベースクラス（オブジェクトベースのサブクラス）</div></div>
+<div class="ttc" id="aclass_efect_base_html"><div class="ttname"><a href="class_efect_base.html">EfectBase</a></div><div class="ttdef"><b>Definition:</b> EfectBase.h:11</div></div>
+<div class="ttc" id="aclass_efect_base_html_a81fd3e6cbf825094d0b2a459b4f7699e"><div class="ttname"><a href="class_efect_base.html#a81fd3e6cbf825094d0b2a459b4f7699e">EfectBase::EFECTTYPE</a></div><div class="ttdeci">EFECTTYPE</div><div class="ttdef"><b>Definition:</b> EfectBase.h:20</div></div>
+<div class="ttc" id="aclass_efect_base_html_a81fd3e6cbf825094d0b2a459b4f7699ead074663ad01e00383ca60915acdbf496"><div class="ttname"><a href="class_efect_base.html#a81fd3e6cbf825094d0b2a459b4f7699ead074663ad01e00383ca60915acdbf496">EfectBase::EFECTTYPE::LOWBLOOD</a></div><div class="ttdeci">@ LOWBLOOD</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_low_blood_html"><div class="ttname"><a href="class_low_blood.html">LowBlood</a></div><div class="ttdef"><b>Definition:</b> LowBlood.h:11</div></div>
+<div class="ttc" id="aclass_low_blood_html_a0d56e41c05a4c96da21e9dfa238bb6cc"><div class="ttname"><a href="class_low_blood.html#a0d56e41c05a4c96da21e9dfa238bb6cc">LowBlood::Delete</a></div><div class="ttdeci">void Delete(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> LowBlood.cpp:58</div></div>
+<div class="ttc" id="aclass_low_blood_html_a186de986d648549b814f2adaf843f4bd"><div class="ttname"><a href="class_low_blood.html#a186de986d648549b814f2adaf843f4bd">LowBlood::GetEfeType</a></div><div class="ttdeci">virtual EFECTTYPE GetEfeType()</div><div class="ttdef"><b>Definition:</b> LowBlood.h:18</div></div>
+<div class="ttc" id="aclass_low_blood_html_a4636ca3ae61dd213c2873164409ca6aa"><div class="ttname"><a href="class_low_blood.html#a4636ca3ae61dd213c2873164409ca6aa">LowBlood::Process</a></div><div class="ttdeci">void Process(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> LowBlood.cpp:29</div></div>
+<div class="ttc" id="aclass_low_blood_html_a610c35c728eaec4884d867d696591c9b"><div class="ttname"><a href="class_low_blood.html#a610c35c728eaec4884d867d696591c9b">LowBlood::~LowBlood</a></div><div class="ttdeci">~LowBlood()</div><div class="ttdef"><b>Definition:</b> LowBlood.cpp:21</div></div>
+<div class="ttc" id="aclass_low_blood_html_a6c021f0461227dc0f5342d37d3dd072f"><div class="ttname"><a href="class_low_blood.html#a6c021f0461227dc0f5342d37d3dd072f">LowBlood::LowBlood</a></div><div class="ttdeci">LowBlood(int x, int y, bool flip, int bloodtype)</div><div class="ttdef"><b>Definition:</b> LowBlood.cpp:6</div></div>
+<div class="ttc" id="aclass_low_blood_html_a7341701a14ad02f284f23b86f9697fe7"><div class="ttname"><a href="class_low_blood.html#a7341701a14ad02f284f23b86f9697fe7">LowBlood::Draw</a></div><div class="ttdeci">void Draw(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> LowBlood.cpp:54</div></div>
+<div class="ttc" id="aclass_low_blood_html_a8801141e136ff9f9b6cd5c20198c1bcf"><div class="ttname"><a href="class_low_blood.html#a8801141e136ff9f9b6cd5c20198c1bcf">LowBlood::_blood_type</a></div><div class="ttdeci">int _blood_type</div><div class="ttdef"><b>Definition:</b> LowBlood.h:28</div></div>
+<div class="ttc" id="aclass_low_blood_html_a8b4a9a34f9e7ad0fe7570dbb56972a6b"><div class="ttname"><a href="class_low_blood.html#a8b4a9a34f9e7ad0fe7570dbb56972a6b">LowBlood::Init</a></div><div class="ttdeci">void Init() override</div><div class="ttdef"><b>Definition:</b> LowBlood.cpp:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

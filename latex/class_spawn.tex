@@ -1,0 +1,127 @@
+\hypertarget{class_spawn}{}\doxysection{Spawn クラス}
+\label{class_spawn}\index{Spawn@{Spawn}}
+
+
+{\ttfamily \#include $<$Spawn\+Block.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_object_base}{Object\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_spawn_a98da9b45d6d08f7575d966d8b4e33244}{Spawn}} (std\+::string spawntype)
+\item 
+\mbox{\hyperlink{class_spawn_aea08036b23acdb06fd47eba35dc2a8cf}{$\sim$\+Spawn}} ()
+\item 
+virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_spawn_aef94804b7872f41f10ddab11de08d5d6}{Get\+Obj\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_spawn_af5f264bd7a2b1166df68f5fb90dbf7b9}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_spawn_a2de4d03811df9ba9e5423d902506e603}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_spawn_a1b987f00183652c03ddc01bab5817428}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_spawn_a570bb32190113a8faad02328d144c8a0}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_spawn_a9f20d0224d49a1e1644fb84c926260e4}{Spawn\+Positon}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_spawn_a9d873a880dd922427722aa219b507813}{\+\_\+spawn\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_spawn_a98da9b45d6d08f7575d966d8b4e33244}\label{class_spawn_a98da9b45d6d08f7575d966d8b4e33244}} 
+\index{Spawn@{Spawn}!Spawn@{Spawn}}
+\index{Spawn@{Spawn}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{Spawn()}{Spawn()}}
+{\footnotesize\ttfamily Spawn\+::\+Spawn (\begin{DoxyParamCaption}\item[{std\+::string}]{spawntype }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_spawn_aea08036b23acdb06fd47eba35dc2a8cf}\label{class_spawn_aea08036b23acdb06fd47eba35dc2a8cf}} 
+\index{Spawn@{Spawn}!````~Spawn@{$\sim$Spawn}}
+\index{````~Spawn@{$\sim$Spawn}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{$\sim$Spawn()}{~Spawn()}}
+{\footnotesize\ttfamily Spawn\+::$\sim$\+Spawn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_spawn_a570bb32190113a8faad02328d144c8a0}\label{class_spawn_a570bb32190113a8faad02328d144c8a0}} 
+\index{Spawn@{Spawn}!Delete@{Delete}}
+\index{Delete@{Delete}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Spawn\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a63d403d783b600faf05648968a3a569e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_spawn_a1b987f00183652c03ddc01bab5817428}\label{class_spawn_a1b987f00183652c03ddc01bab5817428}} 
+\index{Spawn@{Spawn}!Draw@{Draw}}
+\index{Draw@{Draw}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Spawn\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ae10010b1cf932746225bf6121a00d80c}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_spawn_aef94804b7872f41f10ddab11de08d5d6}\label{class_spawn_aef94804b7872f41f10ddab11de08d5d6}} 
+\index{Spawn@{Spawn}!GetObjType@{GetObjType}}
+\index{GetObjType@{GetObjType}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{GetObjType()}{GetObjType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} Spawn\+::\+Get\+Obj\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}{Object\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_spawn_af5f264bd7a2b1166df68f5fb90dbf7b9}\label{class_spawn_af5f264bd7a2b1166df68f5fb90dbf7b9}} 
+\index{Spawn@{Spawn}!Init@{Init}}
+\index{Init@{Init}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Spawn\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_spawn_a2de4d03811df9ba9e5423d902506e603}\label{class_spawn_a2de4d03811df9ba9e5423d902506e603}} 
+\index{Spawn@{Spawn}!Process@{Process}}
+\index{Process@{Process}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Spawn\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_spawn_a9f20d0224d49a1e1644fb84c926260e4}\label{class_spawn_a9f20d0224d49a1e1644fb84c926260e4}} 
+\index{Spawn@{Spawn}!SpawnPositon@{SpawnPositon}}
+\index{SpawnPositon@{SpawnPositon}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{SpawnPositon()}{SpawnPositon()}}
+{\footnotesize\ttfamily void Spawn\+::\+Spawn\+Positon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_spawn_a9d873a880dd922427722aa219b507813}\label{class_spawn_a9d873a880dd922427722aa219b507813}} 
+\index{Spawn@{Spawn}!\_spawn\_type@{\_spawn\_type}}
+\index{\_spawn\_type@{\_spawn\_type}!Spawn@{Spawn}}
+\doxysubsubsection{\texorpdfstring{\_spawn\_type}{\_spawn\_type}}
+{\footnotesize\ttfamily std\+::string Spawn\+::\+\_\+spawn\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_spawn_block_8h}{Spawn\+Block.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_spawn_block_8cpp}{Spawn\+Block.\+cpp}}\end{DoxyCompactItemize}

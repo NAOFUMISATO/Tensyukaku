@@ -6,7 +6,7 @@
 #include "ObjectBase.h"
 
 using namespace NInfo;
-Kunai::Kunai(int x,int y, bool flip,int spd):_Repel_Flag(false) {
+Kunai::Kunai(int x,int y, bool flip,int spd):_repel_flag(false) {
    _x = x;
    _y = y;
    _isflip = flip;
@@ -36,7 +36,7 @@ void Kunai::Process(Game& g) {
    _grhandle=_grall["Kunai"][_anime["Kunai"]];
    _anime["Kunai"] = 1;
    auto frame = _cnt - _action_cnt;
-   if (_Repel_Flag == true) {
+   if (_repel_flag == true) {
       _hit_x = 10000;
       _anime["Kunai"] = 0;
       if (frame < REPEL_FRAME) {
@@ -56,11 +56,11 @@ void Kunai::Process(Game& g) {
       }
       if (frame == REPEL_FRAME) {
          Delete(g);
-         _Repel_Flag = false;
+         _repel_flag = false;
       }
    }
    
-   if (_Repel_Flag == false) {
+   if (_repel_flag == false) {
       //クナイとプレイヤーの下段攻撃オブジェクトの当たり判定
       for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
       {
@@ -69,7 +69,7 @@ void Kunai::Process(Game& g) {
          {
             // クナイとプレイヤーの下段攻撃オブジェクトの当たり判定を行う
             if (IsHit(*(*ite)) == true) {
-               _Repel_Flag = true;
+               _repel_flag = true;
                _spd = 0;
                _action_cnt = _cnt;
             }

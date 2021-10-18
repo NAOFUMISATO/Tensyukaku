@@ -1,0 +1,238 @@
+\hypertarget{class_cursor}{}\doxysection{Cursor クラス}
+\label{class_cursor}\index{Cursor@{Cursor}}
+
+
+{\ttfamily \#include $<$Cursor.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_object_base}{Object\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cursor_a126c5677653ce46f555eaee0f3881fae}{Cursor}} ()
+\item 
+\mbox{\hyperlink{class_cursor_a025d505a120236dc61a889bd5b0aef16}{$\sim$\+Cursor}} ()
+\item 
+virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_cursor_ac224bdc5b8678a525ecbc90dbdef4fb8}{Get\+Obj\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_cursor_a13321c5d0dcf35dfce6edbc04dfb9836}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_cursor_a693aebafff15adaa9116d4cc1e9fd448}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_cursor_ac2bfc7e25d5f00a12556c45c6955daac}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62}{CURSOLSTATE}} \{ \newline
+\mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62a98a0a2299e85802db243e64ef2a6d4bb}{NOHIT}}
+, \mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62a5739b04d500484976a9660ba0a8c1410}{STARTHIT}}
+, \mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62a60be9cc0fe545a165448f144c18b60d9}{EXHIT}}
+, \mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62a967e279a2b179cfae4f6d6b070250276}{ENDHIT}}
+, \newline
+\mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62ae6ee65f78b444967184a1c6935c7fcf0}{CREDITHIT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_cursor_a7a938ef21c93c271f76db84fbb2f526c}{Hit\+Judge}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_cursor_af7f2880a8387b1359132e2a8bc4290cc}{Load\+SE}} ()
+\item 
+void \mbox{\hyperlink{class_cursor_a9b7db04a92f81259fa9f6a7b2ca67e2a}{Volume\+Init}} ()
+\item 
+void \mbox{\hyperlink{class_cursor_a2a3847e6cbcfa1e06d49436172035ff7}{Volume\+Change}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62}{CURSOLSTATE}} \mbox{\hyperlink{class_cursor_a7d09e43e2eb1aad703f534e2f5c6dda6}{\+\_\+state}}
+\item 
+\mbox{\hyperlink{class_vector2}{Vector2}} \mbox{\hyperlink{class_cursor_a4dcbee874f48bf28cf57e5ca43339b23}{\+\_\+velocity\+Dir}}
+\item 
+std\+::string \mbox{\hyperlink{class_cursor_aa3d5182b0535ac95cfdf8cee4e0b24b9}{\+\_\+hit\+\_\+type}}
+\item 
+int \mbox{\hyperlink{class_cursor_af14c19f2bef8f5b044558794602a1faf}{\+\_\+par\+\_\+qty}}
+\item 
+bool \mbox{\hyperlink{class_cursor_a06c6ddefaf07783df911e518e8d8993d}{\+\_\+input\+\_\+flag}}
+\item 
+bool \mbox{\hyperlink{class_cursor_ae38963e9bf5073d8e6a3c7849a941c17}{\+\_\+startpush\+\_\+flag}}
+\item 
+bool \mbox{\hyperlink{class_cursor_ac6a1f4d591b3a7774d5b807f5889aedf}{\+\_\+endpush\+\_\+flag}}
+\item 
+bool \mbox{\hyperlink{class_cursor_ac7b5a66f16996265aee759886b6e2acf}{\+\_\+creditpush\+\_\+flag}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{列挙型メンバ詳解}
+\mbox{\Hypertarget{class_cursor_a4002c84fc494509571069f3ed4ba1d62}\label{class_cursor_a4002c84fc494509571069f3ed4ba1d62}} 
+\index{Cursor@{Cursor}!CURSOLSTATE@{CURSOLSTATE}}
+\index{CURSOLSTATE@{CURSOLSTATE}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{CURSOLSTATE}{CURSOLSTATE}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62}{Cursor\+::\+CURSOLSTATE}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOHIT@{NOHIT}!Cursor@{Cursor}}\index{Cursor@{Cursor}!NOHIT@{NOHIT}}}\mbox{\Hypertarget{class_cursor_a4002c84fc494509571069f3ed4ba1d62a98a0a2299e85802db243e64ef2a6d4bb}\label{class_cursor_a4002c84fc494509571069f3ed4ba1d62a98a0a2299e85802db243e64ef2a6d4bb}} 
+NOHIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STARTHIT@{STARTHIT}!Cursor@{Cursor}}\index{Cursor@{Cursor}!STARTHIT@{STARTHIT}}}\mbox{\Hypertarget{class_cursor_a4002c84fc494509571069f3ed4ba1d62a5739b04d500484976a9660ba0a8c1410}\label{class_cursor_a4002c84fc494509571069f3ed4ba1d62a5739b04d500484976a9660ba0a8c1410}} 
+STARTHIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXHIT@{EXHIT}!Cursor@{Cursor}}\index{Cursor@{Cursor}!EXHIT@{EXHIT}}}\mbox{\Hypertarget{class_cursor_a4002c84fc494509571069f3ed4ba1d62a60be9cc0fe545a165448f144c18b60d9}\label{class_cursor_a4002c84fc494509571069f3ed4ba1d62a60be9cc0fe545a165448f144c18b60d9}} 
+EXHIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENDHIT@{ENDHIT}!Cursor@{Cursor}}\index{Cursor@{Cursor}!ENDHIT@{ENDHIT}}}\mbox{\Hypertarget{class_cursor_a4002c84fc494509571069f3ed4ba1d62a967e279a2b179cfae4f6d6b070250276}\label{class_cursor_a4002c84fc494509571069f3ed4ba1d62a967e279a2b179cfae4f6d6b070250276}} 
+ENDHIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CREDITHIT@{CREDITHIT}!Cursor@{Cursor}}\index{Cursor@{Cursor}!CREDITHIT@{CREDITHIT}}}\mbox{\Hypertarget{class_cursor_a4002c84fc494509571069f3ed4ba1d62ae6ee65f78b444967184a1c6935c7fcf0}\label{class_cursor_a4002c84fc494509571069f3ed4ba1d62ae6ee65f78b444967184a1c6935c7fcf0}} 
+CREDITHIT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_cursor_a126c5677653ce46f555eaee0f3881fae}\label{class_cursor_a126c5677653ce46f555eaee0f3881fae}} 
+\index{Cursor@{Cursor}!Cursor@{Cursor}}
+\index{Cursor@{Cursor}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{Cursor()}{Cursor()}}
+{\footnotesize\ttfamily Cursor\+::\+Cursor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cursor_a025d505a120236dc61a889bd5b0aef16}\label{class_cursor_a025d505a120236dc61a889bd5b0aef16}} 
+\index{Cursor@{Cursor}!````~Cursor@{$\sim$Cursor}}
+\index{````~Cursor@{$\sim$Cursor}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{$\sim$Cursor()}{~Cursor()}}
+{\footnotesize\ttfamily Cursor\+::$\sim$\+Cursor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_cursor_ac2bfc7e25d5f00a12556c45c6955daac}\label{class_cursor_ac2bfc7e25d5f00a12556c45c6955daac}} 
+\index{Cursor@{Cursor}!Draw@{Draw}}
+\index{Draw@{Draw}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Cursor\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ae10010b1cf932746225bf6121a00d80c}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_cursor_ac224bdc5b8678a525ecbc90dbdef4fb8}\label{class_cursor_ac224bdc5b8678a525ecbc90dbdef4fb8}} 
+\index{Cursor@{Cursor}!GetObjType@{GetObjType}}
+\index{GetObjType@{GetObjType}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{GetObjType()}{GetObjType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} Cursor\+::\+Get\+Obj\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}{Object\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_cursor_a7a938ef21c93c271f76db84fbb2f526c}\label{class_cursor_a7a938ef21c93c271f76db84fbb2f526c}} 
+\index{Cursor@{Cursor}!HitJudge@{HitJudge}}
+\index{HitJudge@{HitJudge}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{HitJudge()}{HitJudge()}}
+{\footnotesize\ttfamily void Cursor\+::\+Hit\+Judge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_a13321c5d0dcf35dfce6edbc04dfb9836}\label{class_cursor_a13321c5d0dcf35dfce6edbc04dfb9836}} 
+\index{Cursor@{Cursor}!Init@{Init}}
+\index{Init@{Init}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Cursor\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_cursor_af7f2880a8387b1359132e2a8bc4290cc}\label{class_cursor_af7f2880a8387b1359132e2a8bc4290cc}} 
+\index{Cursor@{Cursor}!LoadSE@{LoadSE}}
+\index{LoadSE@{LoadSE}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{LoadSE()}{LoadSE()}}
+{\footnotesize\ttfamily void Cursor\+::\+Load\+SE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_a693aebafff15adaa9116d4cc1e9fd448}\label{class_cursor_a693aebafff15adaa9116d4cc1e9fd448}} 
+\index{Cursor@{Cursor}!Process@{Process}}
+\index{Process@{Process}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Cursor\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_cursor_a2a3847e6cbcfa1e06d49436172035ff7}\label{class_cursor_a2a3847e6cbcfa1e06d49436172035ff7}} 
+\index{Cursor@{Cursor}!VolumeChange@{VolumeChange}}
+\index{VolumeChange@{VolumeChange}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{VolumeChange()}{VolumeChange()}}
+{\footnotesize\ttfamily void Cursor\+::\+Volume\+Change (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_a9b7db04a92f81259fa9f6a7b2ca67e2a}\label{class_cursor_a9b7db04a92f81259fa9f6a7b2ca67e2a}} 
+\index{Cursor@{Cursor}!VolumeInit@{VolumeInit}}
+\index{VolumeInit@{VolumeInit}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{VolumeInit()}{VolumeInit()}}
+{\footnotesize\ttfamily void Cursor\+::\+Volume\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_cursor_ac7b5a66f16996265aee759886b6e2acf}\label{class_cursor_ac7b5a66f16996265aee759886b6e2acf}} 
+\index{Cursor@{Cursor}!\_creditpush\_flag@{\_creditpush\_flag}}
+\index{\_creditpush\_flag@{\_creditpush\_flag}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{\_creditpush\_flag}{\_creditpush\_flag}}
+{\footnotesize\ttfamily bool Cursor\+::\+\_\+creditpush\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_ac6a1f4d591b3a7774d5b807f5889aedf}\label{class_cursor_ac6a1f4d591b3a7774d5b807f5889aedf}} 
+\index{Cursor@{Cursor}!\_endpush\_flag@{\_endpush\_flag}}
+\index{\_endpush\_flag@{\_endpush\_flag}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{\_endpush\_flag}{\_endpush\_flag}}
+{\footnotesize\ttfamily bool Cursor\+::\+\_\+endpush\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_aa3d5182b0535ac95cfdf8cee4e0b24b9}\label{class_cursor_aa3d5182b0535ac95cfdf8cee4e0b24b9}} 
+\index{Cursor@{Cursor}!\_hit\_type@{\_hit\_type}}
+\index{\_hit\_type@{\_hit\_type}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{\_hit\_type}{\_hit\_type}}
+{\footnotesize\ttfamily std\+::string Cursor\+::\+\_\+hit\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_a06c6ddefaf07783df911e518e8d8993d}\label{class_cursor_a06c6ddefaf07783df911e518e8d8993d}} 
+\index{Cursor@{Cursor}!\_input\_flag@{\_input\_flag}}
+\index{\_input\_flag@{\_input\_flag}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{\_input\_flag}{\_input\_flag}}
+{\footnotesize\ttfamily bool Cursor\+::\+\_\+input\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_af14c19f2bef8f5b044558794602a1faf}\label{class_cursor_af14c19f2bef8f5b044558794602a1faf}} 
+\index{Cursor@{Cursor}!\_par\_qty@{\_par\_qty}}
+\index{\_par\_qty@{\_par\_qty}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{\_par\_qty}{\_par\_qty}}
+{\footnotesize\ttfamily int Cursor\+::\+\_\+par\+\_\+qty\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_ae38963e9bf5073d8e6a3c7849a941c17}\label{class_cursor_ae38963e9bf5073d8e6a3c7849a941c17}} 
+\index{Cursor@{Cursor}!\_startpush\_flag@{\_startpush\_flag}}
+\index{\_startpush\_flag@{\_startpush\_flag}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{\_startpush\_flag}{\_startpush\_flag}}
+{\footnotesize\ttfamily bool Cursor\+::\+\_\+startpush\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_a7d09e43e2eb1aad703f534e2f5c6dda6}\label{class_cursor_a7d09e43e2eb1aad703f534e2f5c6dda6}} 
+\index{Cursor@{Cursor}!\_state@{\_state}}
+\index{\_state@{\_state}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{\_state}{\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cursor_a4002c84fc494509571069f3ed4ba1d62}{CURSOLSTATE}} Cursor\+::\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cursor_a4dcbee874f48bf28cf57e5ca43339b23}\label{class_cursor_a4dcbee874f48bf28cf57e5ca43339b23}} 
+\index{Cursor@{Cursor}!\_velocityDir@{\_velocityDir}}
+\index{\_velocityDir@{\_velocityDir}!Cursor@{Cursor}}
+\doxysubsubsection{\texorpdfstring{\_velocityDir}{\_velocityDir}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2}{Vector2}} Cursor\+::\+\_\+velocity\+Dir\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_cursor_8h}{Cursor.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_cursor_8cpp}{Cursor.\+cpp}}\end{DoxyCompactItemize}

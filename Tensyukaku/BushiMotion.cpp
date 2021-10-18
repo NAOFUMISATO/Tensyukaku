@@ -4,7 +4,7 @@
 #include <DxLib.h>
 #include "Bushi.h"
 #include "Game.h"
-#include "BushiMotionCollision.h"
+#include "BushiAttackCollision.h"
 #include "PrivateCollision.h"
 
 using namespace BInfo;

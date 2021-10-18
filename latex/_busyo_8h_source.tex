@@ -1,0 +1,138 @@
+\hypertarget{_busyo_8h_source}{}\doxysection{Busyo.\+h}
+\label{_busyo_8h_source}\index{Tensyukaku/Busyo.h@{Tensyukaku/Busyo.h}}
+\mbox{\hyperlink{_busyo_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_enemy_base_8h}{EnemyBase.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_busyo}{Busyo}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_enemy_base}{EnemyBase}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14    \textcolor{comment}{//コンストラクタ : 引数（X座標,Y座標,反転判定）}}
+\DoxyCodeLine{15    \mbox{\hyperlink{class_busyo_a35a7334748accdf186f41c1b0f83d65f}{Busyo}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{16    \textcolor{comment}{//デストラクタ}}
+\DoxyCodeLine{17    \mbox{\hyperlink{class_busyo_ac259564505ab4643c19c41f2b94c26e6}{\string~Busyo}}();}
+\DoxyCodeLine{18    \textcolor{comment}{//純粋仮想関数のオーバーライド}}
+\DoxyCodeLine{19    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} \mbox{\hyperlink{class_busyo_ad09565ea20180859ef39f1366ab7ccb2}{GetEneType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427aff5fea54ae72d3d06248c6284c05802e}{ENEMYTYPE::BUSYO}}; \}}
+\DoxyCodeLine{20    \textcolor{comment}{//初期化}}
+\DoxyCodeLine{21    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_ac61c053d0a10a2dcbe22f68876b3d2f7}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{22    \textcolor{comment}{//更新}}
+\DoxyCodeLine{23    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a1f5946d50196decdd1399b56f8a078a2}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{24    \textcolor{comment}{//描画}}
+\DoxyCodeLine{25    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_abe5a4a3faa2465de473617b43c9aaecc}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{26    \textcolor{comment}{//オブジェクトの消去}}
+\DoxyCodeLine{27    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a0e1747e6e18623274ba03f1cf502394b}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{30    \textcolor{comment}{//出現状態関数}}
+\DoxyCodeLine{31    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a36a3e8f3b7e5ddd9f530147d95ccd93e}{Appear}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{32    \textcolor{comment}{//巡回状態関数}}
+\DoxyCodeLine{33    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a9eff86900d22759aa8fd7899c7068642}{Patrol}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{34    \textcolor{comment}{//追跡状態関数}}
+\DoxyCodeLine{35    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a688c0e0a8674baba032dda80e4df89f7}{Coming}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{36    \textcolor{comment}{//攻撃状態関数}}
+\DoxyCodeLine{37    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_aaaec9c0c1fbb31622705059e451d67b1}{Attack}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{38    \textcolor{comment}{//被ダメ状態関数}}
+\DoxyCodeLine{39    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a98c9ca6543effb33b5b1fd57cedc690d}{Damage}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{40    \textcolor{comment}{//死亡状態時関数}}
+\DoxyCodeLine{41    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a565e08df4a234398808ce3d505c49052}{Dead}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{42    \textcolor{comment}{//被ダメ判定\&押し出し処理関数}}
+\DoxyCodeLine{43    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a4041f008c9b3dcece06a4050a1020efa}{HitJudge}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{44    \textcolor{comment}{//画像読み込み関数}}
+\DoxyCodeLine{45    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a45927f375229cf925eac8643207fd4ca}{LoadPicture}}();}
+\DoxyCodeLine{46    \textcolor{comment}{//SE読み込み関数}}
+\DoxyCodeLine{47    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_af44dd37d302bcd83e73bee09d8202d8c}{LoadSE}}();}
+\DoxyCodeLine{48    \textcolor{comment}{//効果音ボリューム初期値設定関数}}
+\DoxyCodeLine{49    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a416f7d34d03be5124092cc9ee447dbe2}{VolumeInit}}();}
+\DoxyCodeLine{50    \textcolor{comment}{//ボリューム変更関数}}
+\DoxyCodeLine{51    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a38a648f88f228295fd5a435a2ef72690}{VolumeChange}}();}
+\DoxyCodeLine{52    \textcolor{comment}{//デバッグ用関数}}
+\DoxyCodeLine{53    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_busyo_a278327c7b802c68bc172a220a6dabefa}{DebugDraw}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_bs_info}{BsInfo}} \{}
+\DoxyCodeLine{57    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/武将の各座標関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{58    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a1b2ad905bcb4941cc6ef747cc6f9a4eb}{GRAPHPOINT\_X}} = 0;          \textcolor{comment}{//X位置から描画点までの差分}}
+\DoxyCodeLine{59    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_aad48e7de1115f217a3c95a58e4712910}{GRAPHPOINT\_Y}} = -\/315;       \textcolor{comment}{//Y位置から描画点までの差分}}
+\DoxyCodeLine{60    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a26f6d71d7fb66f139c79f5620463b5ce}{POSITION\_HITX}} = -\/45;       \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{61    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a3395f29e58b6cc29af6faa40c9027371}{POSITION\_HITY}} = -\/135;      \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{62    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a079a56581ac0508ccb2ba364ef939cd2}{COLLISION\_WIDTH}} = 90;      \textcolor{comment}{//当たり判定横幅}}
+\DoxyCodeLine{63    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_aa08b92d680c2f4c4a81f38191da7efc3}{COLLISION\_HEIGHT}} = 450;    \textcolor{comment}{//当たり判定縦幅}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/各モーションの当たり判定関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{66    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a250dd6024acdf5b7886512d04dc9ffad}{PATROL\_WIDTH}} = 500;        \textcolor{comment}{//索敵範囲当たり判定横幅}}
+\DoxyCodeLine{67    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto}   \mbox{\hyperlink{namespace_bs_info_a327795c2db81ea28992c0695cb58d0d0}{PATROL\_BACKWIDTH}} = 250;  \textcolor{comment}{//背部索敵範囲当たり判定横幅}}
+\DoxyCodeLine{68    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_afbf34ea432db3ffb24f8d068ce567fc8}{PATROL\_HEIGHT}} = 100;       \textcolor{comment}{//索敵範囲当たり判定縦幅}}
+\DoxyCodeLine{69    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a672a1ad35888424b1c76cf858fec2b36}{COMING\_WIDTH}} = 300;        \textcolor{comment}{//攻撃発生範囲当たり判定横幅}}
+\DoxyCodeLine{70    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ad577da8c81f1bee79795b1f745b2d89e}{COMING\_HEIGHT}} = 100;       \textcolor{comment}{//攻撃発生範囲当たり判定縦幅}}
+\DoxyCodeLine{71    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a1874e335ba5d5682fffdc68eee069269}{ATTACK\_WIDTH}} = 200;        \textcolor{comment}{//攻撃当たり判定横幅}}
+\DoxyCodeLine{72    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a5976d2c6675693dc8e4d6a3d2d55d1ad}{ATTACK\_HEIGHT}} = 150;       \textcolor{comment}{//攻撃当たり判定縦幅}}
+\DoxyCodeLine{73    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_aab4bd353132771b4716d6de81d2cebf0}{COMINGCANCEL\_WIDTH}} = 1000; \textcolor{comment}{//追跡中止当たり判定横幅}}
+\DoxyCodeLine{74    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ac88fdf287f78cda7beba27499c678c0e}{COMINGCANCEL\_HEIGHT}} = 100; \textcolor{comment}{//追跡中止当たり判定縦幅}}
+\DoxyCodeLine{75    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a3e086ff5851d586ccefd967f1fdc5865}{ATTACKCANCEL\_WIDTH}} = 200;  \textcolor{comment}{//攻撃中止当たり判定横幅}}
+\DoxyCodeLine{76    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a63766a93c1fee22ade01605d7a2db571}{ATTACKCANCEL\_HEIGHT}} = 100; \textcolor{comment}{//攻撃中止当たり判定縦幅}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/パラメーター関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{79    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_aaf9be0fb0ec462eca345ea68c1123985}{LIFE\_MAX}} = 4;              \textcolor{comment}{//体力}}
+\DoxyCodeLine{80    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a4768e97d5138fb9c5b7a0dad0aa970f6}{SPEED}} = 2;                 \textcolor{comment}{//移動速度}}
+\DoxyCodeLine{81    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a02dcc10cac8d33845e629088c27d2c13}{PLAYER\_IAI\_MAX}} = 5;        \textcolor{comment}{//プレイヤーの居合最大値}}
+\DoxyCodeLine{82    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/画像読み込み\&アニメーション\&判定フレーム関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{83    \textcolor{comment}{//共通}}
+\DoxyCodeLine{84    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a08baf652960dc8434c83f648bc3e7eaa}{GRAPH\_WIDTH}} = 810;         \textcolor{comment}{//1枚当たりの画像サイズ（横）}}
+\DoxyCodeLine{85    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_aa2302196570b153870c74b281f9c5582}{GRAPH\_HEIGHT}} = 630;        \textcolor{comment}{//1枚当たりの画像サイズ（縦）}}
+\DoxyCodeLine{86    \textcolor{comment}{//出現}}
+\DoxyCodeLine{87    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a0ba256c8365db552b857d68d6f1f79e3}{APPEAR\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Busyo/Bs\_Stand.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{88    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ad26ee5fb2b055f90ecd5eaea8c1e10e8}{APPEAR\_ANIMEMAX}} = 1;       \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{89    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ac262e0b5bd4f69f7fc03e043ed772ce9}{APPEAR\_WIDTHCOUNT}} = 1;     \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{90    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a3febe33232ec201165394a3c0127ff1b}{APPEAR\_HEIGHTCOUNT}} = 1;    \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{91    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_aff4f56f32243815ee2e3a1d41dd6d291}{ANIMESPEED\_APPEAR}} = 60;    \textcolor{comment}{//アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{92    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_abfd8e3413cbfdace0ab6972a87504774}{FADEIN\_SPEED}} = 4;          \textcolor{comment}{//アッパー時のフェードインスピード}}
+\DoxyCodeLine{93    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a393a3383a959365a8ce530de91470253}{APPEAR\_ALLFRAME}} = 60;      \textcolor{comment}{//出現全フレーム}}
+\DoxyCodeLine{94    \textcolor{comment}{//巡回}}
+\DoxyCodeLine{95    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a29384a7830a741b04c37be003b4ef0e0}{PATROL\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Busyo/Bs\_Stand.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{96    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_abeb8ba4af8a78ecf812bc7aab8dec0e0}{PATROL\_ANIMEMAX}} = 1;       \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{97    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a990fd613904e2ee59b5129db17c6bfb6}{PATROL\_WIDTHCOUNT}} = 1;     \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{98    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ac2a55284636292ffec7d62149c72de34}{PATROL\_HEIGHTCOUNT}} = 1;    \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{99    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a4c4f53c875e0b68ee4e702a3d9c77120}{ANIMESPEED\_PATROL}} = 180;   \textcolor{comment}{//アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{100    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a79e1cc5804f6edc380d1905e849ec44f}{PATROL\_TURNFRAME}} = 180;    \textcolor{comment}{//巡回の振り向きフレーム}}
+\DoxyCodeLine{101    \textcolor{comment}{//追跡}}
+\DoxyCodeLine{102    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ab885768396c2fa7027dc07a6ad944383}{COMING\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Busyo/Bs\_Walk.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{103    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a8287aebcd8ee58fdb844f8c479a6414c}{COMING\_ANIMEMAX}} = 4;       \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{104    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a026f96b2a06a85e51317f3be80bca48d}{COMING\_WIDTHCOUNT}} = 4;     \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{105    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a614b442c73b003bdb3b99bc34a05c7a7}{COMING\_HEIGHTCOUNT}} = 1;    \textcolor{comment}{//縦の画像枚数   }}
+\DoxyCodeLine{106    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a9b61ea2dbdd9de442690c0f45876743f}{ANIMESPEED\_COMING}} = 30;    \textcolor{comment}{//アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{107    \textcolor{comment}{//攻撃}}
+\DoxyCodeLine{108    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a01fc3e8dcc985f9a81d8571ed0a13b78}{ATTACK\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Busyo/Bs\_Attack.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{109    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a7a10d70f7b5f70c9f9f95ccd5d2a6391}{ATTACK\_ANIMEMAX}} = 4;       \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{110    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a9bc0dec55d57cf3bd5a90feb90951302}{ATTACK\_WIDTHCOUNT}} = 4;     \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{111    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a72bb08f86afb9ccec5f3cc4f674a9482}{ATTACK\_HEIGHTCOUNT}} = 1;    \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{112    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a96ee117f7af2524d52c5211b0b198e34}{ANIMESPEED\_ATTACK}} = 14;    \textcolor{comment}{//アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{113    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a7cebf78f94ef883cc5a2020b556801f9}{ATTACK\_ANIMEFRAME}} = \mbox{\hyperlink{namespace_bs_info_a7a10d70f7b5f70c9f9f95ccd5d2a6391}{ATTACK\_ANIMEMAX}} * \mbox{\hyperlink{namespace_bs_info_a96ee117f7af2524d52c5211b0b198e34}{ANIMESPEED\_ATTACK}} * 2;   \textcolor{comment}{//アニメーションフレーム（全ての画像枚数×アニメスピード）}}
+\DoxyCodeLine{114    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_abd4abe474bbe9d4a5c942482bcdaf5ff}{ATTACK\_ALLFRAME}} = 142;     \textcolor{comment}{//攻撃全フレーム（全フレーム-\/アニメーションフレーム＝攻撃猶予時間）}}
+\DoxyCodeLine{115    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a005e72a49c223e36489f55ffeefeec4b}{ATTACK\_STEP}} = 60;          \textcolor{comment}{//ステップ距離}}
+\DoxyCodeLine{116    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a7f39923be963e22a3f6d7ace1e4ecd4a}{STEP\_BEGINFRAME}} = 14;      \textcolor{comment}{//ステップの開始フレーム}}
+\DoxyCodeLine{117    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a3a80a5514eabd85f808548b567077696}{ATTACK\_BEGINFRAME}} = 14;    \textcolor{comment}{//攻撃判定発生フレーム}}
+\DoxyCodeLine{118    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a67d4c046c93c55255f1aaad37ace4ef6}{ATTACK\_BEGIN2FRAME}} = 70;   \textcolor{comment}{//2段目攻撃判定発生フレーム}}
+\DoxyCodeLine{119    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a347fe175d353f639413cf37c11c80574}{ATTACK\_ENDFRAME}} = 14;      \textcolor{comment}{//攻撃判定終了フレーム}}
+\DoxyCodeLine{120    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ac477286720b066fdf1e701a8e15d9738}{ATTACK\_END2FRAME}} = 84;     \textcolor{comment}{//2段目攻撃判定終了フレーム}}
+\DoxyCodeLine{121    \textcolor{comment}{//被ダメ}}
+\DoxyCodeLine{122    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ac962055119c7845815a743e90597dc02}{DAMAGE\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Busyo/Bs\_Damage.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{123    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a49c641690fc7dab133549afc9bda787a}{DAMAGE\_ANIMEMAX}} = 3;       \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{124    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a4a2278d6a03bbd60ebf7c2c1bfdf20f1}{DAMAGE\_WIDTHCOUNT}} = 3;     \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{125    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a1bd3486901a13e549a288f83d7c1f736}{DAMAGE\_HEIGHTCOUNT}} = 1;    \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{126    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a5fb015e70cbfe705fd5490fabb647280}{ANIMESPEED\_DAMAGE}} = 9;     \textcolor{comment}{//アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{127    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_afd1ae8af1d7d5f0b1ce403d52def7277}{DAMAGE\_ANIMEFRAME}} = \mbox{\hyperlink{namespace_bs_info_a49c641690fc7dab133549afc9bda787a}{DAMAGE\_ANIMEMAX}} * \mbox{\hyperlink{namespace_bs_info_a5fb015e70cbfe705fd5490fabb647280}{ANIMESPEED\_DAMAGE}};   \textcolor{comment}{//アニメーションフレーム（全ての画像枚数×アニメスピード）}}
+\DoxyCodeLine{128    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ac2eadd35a1e15357f1534f811937dcb6}{DAMAGE\_ALLFRAME}} = 27;      \textcolor{comment}{//被ダメ全フレーム}}
+\DoxyCodeLine{129    \textcolor{comment}{//死亡}}
+\DoxyCodeLine{130    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a6e9cf82f75873ef58ee7f0366fbd84f8}{DEAD\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Busyo/Bs\_Dead.png"{}};      \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{131    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_adab19b7c22752615697e7dd5d2e8dd09}{DEAD\_ANIMEMAX}} = 3;         \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{132    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a7ce72feda375571b100d52bfc0507d85}{DEAD\_WIDTHCOUNT}} = 3;       \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{133    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a2eea897c18a47376fa064f6d1294b3e1}{DEAD\_HEIGHTCOUNT}} = 1;      \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{134    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a012f3b731d56ee3069521a07c123713a}{ANIMESPEED\_DEAD}} = 20;      \textcolor{comment}{//アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{135    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_a1f98c642922625c9ca706fe2715fa35a}{DEAD\_ANIMEFRAME}} = \mbox{\hyperlink{namespace_bs_info_adab19b7c22752615697e7dd5d2e8dd09}{DEAD\_ANIMEMAX}} * \mbox{\hyperlink{namespace_bs_info_a012f3b731d56ee3069521a07c123713a}{ANIMESPEED\_DEAD}};   \textcolor{comment}{//アニメーションフレーム（全ての画像枚数×アニメスピード）}}
+\DoxyCodeLine{136    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_aa422bb06f787871c64810bb89970c8b0}{DEAD\_ALLFRAME}} = 120;       \textcolor{comment}{//死亡全フレーム}}
+\DoxyCodeLine{137    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_bs_info_ac996b4ffbcd4ef361971720c49a711e4}{FADEOUT\_SPEED}} = 4;         \textcolor{comment}{//フェードアウトスピード}}
+\DoxyCodeLine{138 \}}
+
+\end{DoxyCode}

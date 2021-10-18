@@ -1,0 +1,41 @@
+\hypertarget{_tutorial_board_8h_source}{}\doxysection{Tutorial\+Board.\+h}
+\label{_tutorial_board_8h_source}\index{Tensyukaku/TutorialBoard.h@{Tensyukaku/TutorialBoard.h}}
+\mbox{\hyperlink{_tutorial_board_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include  "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_tutorial_board}{TutorialBoard}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{5 \textcolor{keyword}{public}:}
+\DoxyCodeLine{6    \mbox{\hyperlink{class_tutorial_board_af23f0dd343d27bbd24b3dace8b087530}{TutorialBoard}}(std::string tutorialtype);}
+\DoxyCodeLine{7    \mbox{\hyperlink{class_tutorial_board_a4b74eb76f18e78967812d84628ab9871}{\string~TutorialBoard}}();}
+\DoxyCodeLine{8    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}   \mbox{\hyperlink{class_tutorial_board_aca2edc042f58be19d91a500cfce641c4}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafecd03058c090502f290b4f57aefc875}{OBJECTTYPE::TUTORIALBOARD}}; \}}
+\DoxyCodeLine{9    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tutorial_board_ab67663efc5cbba482f012b23b803c5e0}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{10    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tutorial_board_a4d032908193938c47c5a447895f21c50}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{11    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tutorial_board_acb2fe8c28dcab857d2382aacadeae7d8}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{12    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tutorial_board_a82a4c7e056cf4789f3f684bc8ca8cdbc}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tutorial_board_aed5ce1a2e39a916f39d22d5dd010d433}{TutorialPosition}}();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16    std::string  \mbox{\hyperlink{class_tutorial_board_a4c9dd145d7e41e08e4c69d6b7766d6a2}{\_tutorial\_type}};}
+\DoxyCodeLine{17    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_tutorial_board_ab6d692e389bc056fb89bdac38b1af041}{\_tutorialhit\_flag}};}
+\DoxyCodeLine{18 \};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_t_b_info}{TBInfo}}\{}
+\DoxyCodeLine{21    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_af7b00d5c3e712e9332f0e1d572ad615d}{TUTORIAL1A\_X}} = 800;}
+\DoxyCodeLine{22    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a4e48ec3fb8f6971fbe1a5e7a6fcaff7f}{TUTORIAL1A\_Y}} = 9360;}
+\DoxyCodeLine{23    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a04d2d56a4dcb58ef27cc7e7099ab6525}{TUTORIAL1B\_X}} = 1200;}
+\DoxyCodeLine{24    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_ac42dd1741735dd08e4bf95b4bf1019f2}{TUTORIAL1B\_Y}} = 9360;}
+\DoxyCodeLine{25    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a57529ad501862aa083bf9eef9a14fec7}{TUTORIAL2A\_X}} = 3200;}
+\DoxyCodeLine{26    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a7e92e78ff8d413d42c49697a93d40c13}{TUTORIAL2A\_Y}} = 8600;}
+\DoxyCodeLine{27    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a4618125270bce2443b95548a656d8007}{TUTORIAL3A\_X}} = 500;}
+\DoxyCodeLine{28    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a784e1d6bd1e3edd63b3dcc315021a816}{TUTORIAL3A\_Y}} = 7840;}
+\DoxyCodeLine{29    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a1861c451e5df77f9ac37a88842fd29b2}{TUTORIAL3B\_X}} = 2200;}
+\DoxyCodeLine{30    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a9d1884f98b0f7e644f960b5ea74410e9}{TUTORIAL3B\_Y}} = 7840;}
+\DoxyCodeLine{31    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_af7eca4f36e036369624c54f91ce0e3c5}{TUTORIAL4A\_X}} = 5200;}
+\DoxyCodeLine{32    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a827f7cd0552bac26ac5e7c5ae19f3adc}{TUTORIAL4A\_Y}} = 7080;}
+\DoxyCodeLine{33    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_aa215f0b9d3cbf6310fd560dce4db0bb9}{TUTORIAL5A\_X}} = 3800;}
+\DoxyCodeLine{34    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_t_b_info_a5a5c8b6f87dffdbc31c54b19c8243278}{TUTORIAL5A\_Y}} = 6320;}
+\DoxyCodeLine{35 \}}
+
+\end{DoxyCode}

@@ -17,7 +17,7 @@ CPointBlock::~CPointBlock() {
 };
 
 void CPointBlock::Init() {
-   CPointPosition();
+   PositionSetting();
    _gx = GRAPHPOINT_X;
    _gy = GRAPHPOINT_Y;
    _hit_x = POSITION_HITX;
@@ -78,7 +78,7 @@ void CPointBlock::Delete(Game& g) {
    g.GetOS()->Del(this);
 }
 
-void CPointBlock::CPointPosition() {
+void CPointBlock::PositionSetting() {
    if (_cpoint_type == "2A") {
       _x = CPOINT_2A_X;
       _y= CPOINT_2A_Y;

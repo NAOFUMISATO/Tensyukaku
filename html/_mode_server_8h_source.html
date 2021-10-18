@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/ModeServer.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ModeServer.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_mode_server_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_mode_base_8h.html">ModeBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">class </span><a class="code hl_class" href="class_game.html">Game</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_mode_server.html">    8</a></span><span class="keyword">class   </span><a class="code hl_class" href="class_mode_server.html">ModeServer</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_mode_server.html#a63c751ef65fa4cb05e5bfb86e2e982c2">   10</a></span>   <span class="keyword">typedef</span>   std::list&lt;ModeBase*&gt;      <a class="code hl_typedef" href="class_mode_server.html#a63c751ef65fa4cb05e5bfb86e2e982c2">lstModeBase</a>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>   <a class="code hl_function" href="class_mode_server.html#a97c62d99e2de09e4c79e12d3eff3e64c">ModeServer</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>   <span class="keyword">virtual</span>   <a class="code hl_function" href="class_mode_server.html#a8d32802b0f3e0ca22fe85f79e5bcc9f1">~ModeServer</a>();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_mode_server.html#a52854c94c54f24c2fdc90d728b7f5e2e">   15</a></span>   <span class="keyword">static</span> <a class="code hl_class" href="class_mode_server.html">ModeServer</a>* <a class="code hl_variable" href="class_mode_server.html#a52854c94c54f24c2fdc90d728b7f5e2e">_lpInstance</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_mode_server.html#a1df8ab8c96038013a1bb1f1c39169d7d">   16</a></span>   <span class="keyword">static</span> <a class="code hl_class" href="class_mode_server.html">ModeServer</a>* <a class="code hl_function" href="class_mode_server.html#a1df8ab8c96038013a1bb1f1c39169d7d">GetInstance</a>() { <span class="keywordflow">return</span> (<a class="code hl_class" href="class_mode_server.html">ModeServer</a>*)<a class="code hl_variable" href="class_mode_server.html#a52854c94c54f24c2fdc90d728b7f5e2e">_lpInstance</a>; }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a47d551064f1a4421cf1277d5993d7390">Add</a>(<a class="code hl_class" href="class_mode_base.html">ModeBase</a>* mode, <span class="keywordtype">int</span> layer, <span class="keyword">const</span> <span class="keywordtype">char</span>* name);      <span class="comment">// 登録はするが、一度メインを回さないといけない</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a9be43c92bf409c90daa1aafa7ce9dd77">Del</a>(<a class="code hl_class" href="class_mode_base.html">ModeBase</a>* mode);      <span class="comment">// 削除予約</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>   <a class="code hl_class" href="class_mode_base.html">ModeBase</a>* <a class="code hl_function" href="class_mode_server.html#a61854d8a23d9a893b76be4fd069df9a1">Get</a>(<span class="keywordtype">int</span> uid);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>   <a class="code hl_class" href="class_mode_base.html">ModeBase</a>* <a class="code hl_function" href="class_mode_server.html#a61854d8a23d9a893b76be4fd069df9a1">Get</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#aecf61d61304e7060cb88ee4c9b311c90">GetId</a>(<a class="code hl_class" href="class_mode_base.html">ModeBase</a>* mode);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#aecf61d61304e7060cb88ee4c9b311c90">GetId</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>   <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="class_mode_server.html#a949e03b6ccad200637fb963e28a796e4">GetName</a>(<a class="code hl_class" href="class_mode_base.html">ModeBase</a>* mode);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>   <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="class_mode_server.html#a949e03b6ccad200637fb963e28a796e4">GetName</a>(<span class="keywordtype">int</span> uid);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_mode_server.html#afb3fbd1aa22713a1e528411c66489cce">Clear</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_mode_server.html#aa53a4415728e119f85e8ac416f7e1eaa">   27</a></span>   <span class="keywordtype">int</span>   <a class="code hl_function" href="class_mode_server.html#aa53a4415728e119f85e8ac416f7e1eaa">LayerTop</a>() { <span class="keywordflow">return</span> INT32_MAX; }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_mode_server.html#a45bc63ba9a49e074518ab789c61e516a">   29</a></span>   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_server.html#a45bc63ba9a49e074518ab789c61e516a">modeSort</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_mode_base.html">ModeBase</a>* x, <span class="keyword">const</span> <a class="code hl_class" href="class_mode_base.html">ModeBase</a>* y) {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>      <span class="keywordflow">return</span> x-&gt;<a class="code hl_variable" href="class_mode_base.html#a4ece94da673a5135f022d0315ab82c2c">_layer</a> &lt; y-&gt;<a class="code hl_variable" href="class_mode_base.html#a4ece94da673a5135f022d0315ab82c2c">_layer</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>   }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a668e16527ce327622279153ade9f0b13">ProcessInit</a>();   <span class="comment">// プロセスを回すための初期化</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a76fe3dfa8156956d99081aef72d87dbb">Process</a>();      <span class="comment">// レイヤーの上の方から処理</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a04696f311df6a8b5713d12e2517063b0">ProcessFinish</a>();      <span class="comment">// プロセスを回した後の後始末</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#ac2bfe5741458a48a0450a07ea7cf0750">DrawInit</a>();      <span class="comment">// 描画を回すための初期化</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a05b90b28adcd4b571ea9c05a2cbfa108">Draw</a>();      <span class="comment">// レイヤーの下の方から処理</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#adc1b25041c2576d7aa82c1c9ee4e05d0">DrawFinish</a>();      <span class="comment">// 描画を回した後の後始末</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a0f1bcd7728f06f96b2c20d1edb254b1a">SkipProcessUnderLayer</a>();      <span class="comment">// 現Processで、今処理しているレイヤーより下のレイヤーは、処理を呼ばない</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a5b5815fe02396fdbd747a3c34e5e2cf9">SkipDrawUnderLayer</a>();         <span class="comment">// 現Processで、今処理しているレイヤーより下のレイヤーは、描画を呼ばない</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a88a39a70af17fc2d0f2353a25715ea83">PauseProcessUnderLayer</a>();      <span class="comment">// 現Processで、今処理しているレイヤーより下のレイヤーは、時間経過を止める</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>   <span class="keywordtype">int</span> <a class="code hl_function" href="class_mode_server.html#a904d9fc603f1c018ca99e441e7480600">Release</a>(<a class="code hl_class" href="class_mode_base.html">ModeBase</a>* mode);      <span class="comment">// 削除＆delete</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>   <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_server.html#ae99f2d964939942b95efaf7e67ac369b">IsDelRegist</a>(<a class="code hl_class" href="class_mode_base.html">ModeBase</a>* mode);   <span class="comment">// 削除予約されているか？</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>   <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_server.html#a391ce0dd36edcb99db6b23753484d66a">IsAdd</a>(<a class="code hl_class" href="class_mode_base.html">ModeBase</a>* mode);      <span class="comment">// リストにあるか？</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_mode_server.html#a975f2cf44001ca42300eb5e477c77e37">   52</a></span>   <a class="code hl_class" href="class_game.html">Game</a>&amp; <a class="code hl_variable" href="class_mode_server.html#a975f2cf44001ca42300eb5e477c77e37">_game</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="class_mode_server.html#a0ef789410a6d3cd21e161bff96dff56b">   56</a></span>   <a class="code hl_typedef" href="class_mode_server.html#a63c751ef65fa4cb05e5bfb86e2e982c2">lstModeBase</a>      <a class="code hl_variable" href="class_mode_server.html#a0ef789410a6d3cd21e161bff96dff56b">_vMode</a>;         <span class="comment">// モードリスト</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_mode_server.html#afcdad3c9b164bb96daf3527dd8b48af2">   57</a></span>   <span class="keywordtype">int</span>            <a class="code hl_variable" href="class_mode_server.html#afcdad3c9b164bb96daf3527dd8b48af2">_uid_count</a>;      <span class="comment">// uidカウンタ</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_mode_server.html#ae81fe9c58c9581954fb13c0451c1d121">   58</a></span>   <a class="code hl_typedef" href="class_mode_server.html#a63c751ef65fa4cb05e5bfb86e2e982c2">lstModeBase</a>      <a class="code hl_variable" href="class_mode_server.html#ae81fe9c58c9581954fb13c0451c1d121">_vModeAdd</a>;      <span class="comment">// 追加予約</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_mode_server.html#a9642b83807af7f63aafcb3dec719d1ce">   59</a></span>   <a class="code hl_typedef" href="class_mode_server.html#a63c751ef65fa4cb05e5bfb86e2e982c2">lstModeBase</a>      <a class="code hl_variable" href="class_mode_server.html#a9642b83807af7f63aafcb3dec719d1ce">_vModeDel</a>;      <span class="comment">// 削除予約</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_mode_server.html#aee54ab73bb82ed064ed6024761f5b385">   61</a></span>   <a class="code hl_class" href="class_mode_base.html">ModeBase</a>* <a class="code hl_variable" href="class_mode_server.html#aee54ab73bb82ed064ed6024761f5b385">_nowMode</a>;      <span class="comment">// 現在呼び出し中のモード</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_mode_server.html#a7662000f380de61530fe4acc820a4749">   62</a></span>   <a class="code hl_class" href="class_mode_base.html">ModeBase</a>* <a class="code hl_variable" href="class_mode_server.html#a7662000f380de61530fe4acc820a4749">_skipProcessMode</a>;   <span class="comment">// このモードより下はProcessを呼ばない</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_mode_server.html#a49ceac8c57cde1d89cb240eb63d4f880">   63</a></span>   <a class="code hl_class" href="class_mode_base.html">ModeBase</a>* <a class="code hl_variable" href="class_mode_server.html#a49ceac8c57cde1d89cb240eb63d4f880">_skipDrawMode</a>;   <span class="comment">// このモードより下はDrawを呼ばない</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_mode_server.html#afbac9750e3b21ef06f6b43a23bd1ac00">   64</a></span>   <a class="code hl_class" href="class_mode_base.html">ModeBase</a>* <a class="code hl_variable" href="class_mode_server.html#afbac9750e3b21ef06f6b43a23bd1ac00">_pauseProcessMode</a>;   <span class="comment">// このモードより下はProcess時に時間経過をさせない</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="ttc" id="a_mode_base_8h_html"><div class="ttname"><a href="_mode_base_8h.html">ModeBase.h</a></div><div class="ttdoc">各モードのベースクラス</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_mode_base_html"><div class="ttname"><a href="class_mode_base.html">ModeBase</a></div><div class="ttdef"><b>Definition:</b> ModeBase.h:18</div></div>
+<div class="ttc" id="aclass_mode_base_html_a4ece94da673a5135f022d0315ab82c2c"><div class="ttname"><a href="class_mode_base.html#a4ece94da673a5135f022d0315ab82c2c">ModeBase::_layer</a></div><div class="ttdeci">int _layer</div><div class="ttdoc">モードサーバー用</div><div class="ttdef"><b>Definition:</b> ModeBase.h:77</div></div>
+<div class="ttc" id="aclass_mode_server_html"><div class="ttname"><a href="class_mode_server.html">ModeServer</a></div><div class="ttdef"><b>Definition:</b> ModeServer.h:9</div></div>
+<div class="ttc" id="aclass_mode_server_html_a04696f311df6a8b5713d12e2517063b0"><div class="ttname"><a href="class_mode_server.html#a04696f311df6a8b5713d12e2517063b0">ModeServer::ProcessFinish</a></div><div class="ttdeci">int ProcessFinish()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:234</div></div>
+<div class="ttc" id="aclass_mode_server_html_a05b90b28adcd4b571ea9c05a2cbfa108"><div class="ttname"><a href="class_mode_server.html#a05b90b28adcd4b571ea9c05a2cbfa108">ModeServer::Draw</a></div><div class="ttdeci">int Draw()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:244</div></div>
+<div class="ttc" id="aclass_mode_server_html_a0ef789410a6d3cd21e161bff96dff56b"><div class="ttname"><a href="class_mode_server.html#a0ef789410a6d3cd21e161bff96dff56b">ModeServer::_vMode</a></div><div class="ttdeci">lstModeBase _vMode</div><div class="ttdef"><b>Definition:</b> ModeServer.h:56</div></div>
+<div class="ttc" id="aclass_mode_server_html_a0f1bcd7728f06f96b2c20d1edb254b1a"><div class="ttname"><a href="class_mode_server.html#a0f1bcd7728f06f96b2c20d1edb254b1a">ModeServer::SkipProcessUnderLayer</a></div><div class="ttdeci">int SkipProcessUnderLayer()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:269</div></div>
+<div class="ttc" id="aclass_mode_server_html_a1df8ab8c96038013a1bb1f1c39169d7d"><div class="ttname"><a href="class_mode_server.html#a1df8ab8c96038013a1bb1f1c39169d7d">ModeServer::GetInstance</a></div><div class="ttdeci">static ModeServer * GetInstance()</div><div class="ttdef"><b>Definition:</b> ModeServer.h:16</div></div>
+<div class="ttc" id="aclass_mode_server_html_a391ce0dd36edcb99db6b23753484d66a"><div class="ttname"><a href="class_mode_server.html#a391ce0dd36edcb99db6b23753484d66a">ModeServer::IsAdd</a></div><div class="ttdeci">bool IsAdd(ModeBase *mode)</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:96</div></div>
+<div class="ttc" id="aclass_mode_server_html_a45bc63ba9a49e074518ab789c61e516a"><div class="ttname"><a href="class_mode_server.html#a45bc63ba9a49e074518ab789c61e516a">ModeServer::modeSort</a></div><div class="ttdeci">static bool modeSort(const ModeBase *x, const ModeBase *y)</div><div class="ttdef"><b>Definition:</b> ModeServer.h:29</div></div>
+<div class="ttc" id="aclass_mode_server_html_a47d551064f1a4421cf1277d5993d7390"><div class="ttname"><a href="class_mode_server.html#a47d551064f1a4421cf1277d5993d7390">ModeServer::Add</a></div><div class="ttdeci">int Add(ModeBase *mode, int layer, const char *name)</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:34</div></div>
+<div class="ttc" id="aclass_mode_server_html_a49ceac8c57cde1d89cb240eb63d4f880"><div class="ttname"><a href="class_mode_server.html#a49ceac8c57cde1d89cb240eb63d4f880">ModeServer::_skipDrawMode</a></div><div class="ttdeci">ModeBase * _skipDrawMode</div><div class="ttdef"><b>Definition:</b> ModeServer.h:63</div></div>
+<div class="ttc" id="aclass_mode_server_html_a52854c94c54f24c2fdc90d728b7f5e2e"><div class="ttname"><a href="class_mode_server.html#a52854c94c54f24c2fdc90d728b7f5e2e">ModeServer::_lpInstance</a></div><div class="ttdeci">static ModeServer * _lpInstance</div><div class="ttdoc">インスタンス</div><div class="ttdef"><b>Definition:</b> ModeServer.h:15</div></div>
+<div class="ttc" id="aclass_mode_server_html_a5b5815fe02396fdbd747a3c34e5e2cf9"><div class="ttname"><a href="class_mode_server.html#a5b5815fe02396fdbd747a3c34e5e2cf9">ModeServer::SkipDrawUnderLayer</a></div><div class="ttdeci">int SkipDrawUnderLayer()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:275</div></div>
+<div class="ttc" id="aclass_mode_server_html_a61854d8a23d9a893b76be4fd069df9a1"><div class="ttname"><a href="class_mode_server.html#a61854d8a23d9a893b76be4fd069df9a1">ModeServer::Get</a></div><div class="ttdeci">ModeBase * Get(int uid)</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:111</div></div>
+<div class="ttc" id="aclass_mode_server_html_a63c751ef65fa4cb05e5bfb86e2e982c2"><div class="ttname"><a href="class_mode_server.html#a63c751ef65fa4cb05e5bfb86e2e982c2">ModeServer::lstModeBase</a></div><div class="ttdeci">std::list&lt; ModeBase * &gt; lstModeBase</div><div class="ttdef"><b>Definition:</b> ModeServer.h:10</div></div>
+<div class="ttc" id="aclass_mode_server_html_a668e16527ce327622279153ade9f0b13"><div class="ttname"><a href="class_mode_server.html#a668e16527ce327622279153ade9f0b13">ModeServer::ProcessInit</a></div><div class="ttdeci">int ProcessInit()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:166</div></div>
+<div class="ttc" id="aclass_mode_server_html_a7662000f380de61530fe4acc820a4749"><div class="ttname"><a href="class_mode_server.html#a7662000f380de61530fe4acc820a4749">ModeServer::_skipProcessMode</a></div><div class="ttdeci">ModeBase * _skipProcessMode</div><div class="ttdef"><b>Definition:</b> ModeServer.h:62</div></div>
+<div class="ttc" id="aclass_mode_server_html_a76fe3dfa8156956d99081aef72d87dbb"><div class="ttname"><a href="class_mode_server.html#a76fe3dfa8156956d99081aef72d87dbb">ModeServer::Process</a></div><div class="ttdeci">int Process()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:195</div></div>
+<div class="ttc" id="aclass_mode_server_html_a88a39a70af17fc2d0f2353a25715ea83"><div class="ttname"><a href="class_mode_server.html#a88a39a70af17fc2d0f2353a25715ea83">ModeServer::PauseProcessUnderLayer</a></div><div class="ttdeci">int PauseProcessUnderLayer()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:282</div></div>
+<div class="ttc" id="aclass_mode_server_html_a8d32802b0f3e0ca22fe85f79e5bcc9f1"><div class="ttname"><a href="class_mode_server.html#a8d32802b0f3e0ca22fe85f79e5bcc9f1">ModeServer::~ModeServer</a></div><div class="ttdeci">virtual ~ModeServer()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:26</div></div>
+<div class="ttc" id="aclass_mode_server_html_a904d9fc603f1c018ca99e441e7480600"><div class="ttname"><a href="class_mode_server.html#a904d9fc603f1c018ca99e441e7480600">ModeServer::Release</a></div><div class="ttdeci">int Release(ModeBase *mode)</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:50</div></div>
+<div class="ttc" id="aclass_mode_server_html_a949e03b6ccad200637fb963e28a796e4"><div class="ttname"><a href="class_mode_server.html#a949e03b6ccad200637fb963e28a796e4">ModeServer::GetName</a></div><div class="ttdeci">const char * GetName(ModeBase *mode)</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:152</div></div>
+<div class="ttc" id="aclass_mode_server_html_a9642b83807af7f63aafcb3dec719d1ce"><div class="ttname"><a href="class_mode_server.html#a9642b83807af7f63aafcb3dec719d1ce">ModeServer::_vModeDel</a></div><div class="ttdeci">lstModeBase _vModeDel</div><div class="ttdef"><b>Definition:</b> ModeServer.h:59</div></div>
+<div class="ttc" id="aclass_mode_server_html_a975f2cf44001ca42300eb5e477c77e37"><div class="ttname"><a href="class_mode_server.html#a975f2cf44001ca42300eb5e477c77e37">ModeServer::_game</a></div><div class="ttdeci">Game &amp; _game</div><div class="ttdef"><b>Definition:</b> ModeServer.h:52</div></div>
+<div class="ttc" id="aclass_mode_server_html_a97c62d99e2de09e4c79e12d3eff3e64c"><div class="ttname"><a href="class_mode_server.html#a97c62d99e2de09e4c79e12d3eff3e64c">ModeServer::ModeServer</a></div><div class="ttdeci">ModeServer(Game &amp;g)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:13</div></div>
+<div class="ttc" id="aclass_mode_server_html_a9be43c92bf409c90daa1aafa7ce9dd77"><div class="ttname"><a href="class_mode_server.html#a9be43c92bf409c90daa1aafa7ce9dd77">ModeServer::Del</a></div><div class="ttdeci">int Del(ModeBase *mode)</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:44</div></div>
+<div class="ttc" id="aclass_mode_server_html_aa53a4415728e119f85e8ac416f7e1eaa"><div class="ttname"><a href="class_mode_server.html#aa53a4415728e119f85e8ac416f7e1eaa">ModeServer::LayerTop</a></div><div class="ttdeci">int LayerTop()</div><div class="ttdef"><b>Definition:</b> ModeServer.h:27</div></div>
+<div class="ttc" id="aclass_mode_server_html_ac2bfe5741458a48a0450a07ea7cf0750"><div class="ttname"><a href="class_mode_server.html#ac2bfe5741458a48a0450a07ea7cf0750">ModeServer::DrawInit</a></div><div class="ttdeci">int DrawInit()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:239</div></div>
+<div class="ttc" id="aclass_mode_server_html_adc1b25041c2576d7aa82c1c9ee4e05d0"><div class="ttname"><a href="class_mode_server.html#adc1b25041c2576d7aa82c1c9ee4e05d0">ModeServer::DrawFinish</a></div><div class="ttdeci">int DrawFinish()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:261</div></div>
+<div class="ttc" id="aclass_mode_server_html_ae81fe9c58c9581954fb13c0451c1d121"><div class="ttname"><a href="class_mode_server.html#ae81fe9c58c9581954fb13c0451c1d121">ModeServer::_vModeAdd</a></div><div class="ttdeci">lstModeBase _vModeAdd</div><div class="ttdef"><b>Definition:</b> ModeServer.h:58</div></div>
+<div class="ttc" id="aclass_mode_server_html_ae99f2d964939942b95efaf7e67ac369b"><div class="ttname"><a href="class_mode_server.html#ae99f2d964939942b95efaf7e67ac369b">ModeServer::IsDelRegist</a></div><div class="ttdeci">bool IsDelRegist(ModeBase *mode)</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:85</div></div>
+<div class="ttc" id="aclass_mode_server_html_aecf61d61304e7060cb88ee4c9b311c90"><div class="ttname"><a href="class_mode_server.html#aecf61d61304e7060cb88ee4c9b311c90">ModeServer::GetId</a></div><div class="ttdeci">int GetId(ModeBase *mode)</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:141</div></div>
+<div class="ttc" id="aclass_mode_server_html_aee54ab73bb82ed064ed6024761f5b385"><div class="ttname"><a href="class_mode_server.html#aee54ab73bb82ed064ed6024761f5b385">ModeServer::_nowMode</a></div><div class="ttdeci">ModeBase * _nowMode</div><div class="ttdef"><b>Definition:</b> ModeServer.h:61</div></div>
+<div class="ttc" id="aclass_mode_server_html_afb3fbd1aa22713a1e528411c66489cce"><div class="ttname"><a href="class_mode_server.html#afb3fbd1aa22713a1e528411c66489cce">ModeServer::Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> ModeServer.cpp:66</div></div>
+<div class="ttc" id="aclass_mode_server_html_afbac9750e3b21ef06f6b43a23bd1ac00"><div class="ttname"><a href="class_mode_server.html#afbac9750e3b21ef06f6b43a23bd1ac00">ModeServer::_pauseProcessMode</a></div><div class="ttdeci">ModeBase * _pauseProcessMode</div><div class="ttdef"><b>Definition:</b> ModeServer.h:64</div></div>
+<div class="ttc" id="aclass_mode_server_html_afcdad3c9b164bb96daf3527dd8b48af2"><div class="ttname"><a href="class_mode_server.html#afcdad3c9b164bb96daf3527dd8b48af2">ModeServer::_uid_count</a></div><div class="ttdeci">int _uid_count</div><div class="ttdef"><b>Definition:</b> ModeServer.h:57</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

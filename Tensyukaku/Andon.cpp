@@ -7,7 +7,7 @@
 #include "Flame.h"
 
 using namespace AInfo;
-Andon::Andon(int x, int y):_AndonDrop_Flag(false) {
+Andon::Andon(int x, int y):_andon_drop_flag(false) {
    _x = x;
    _y = y;
    Init();
@@ -30,7 +30,7 @@ void Andon::Init() {
    _hit_h= COLLISION_HEIGHT;
    _alpha = 255;
    _drg.second = 0.0;
-   _Flame_y = _y;
+   _flame_y = _y;
 }
 
 void Andon::Process(Game& g) {
@@ -38,27 +38,27 @@ void Andon::Process(Game& g) {
    ChangeVolumeSoundMem(_vpal["Andon"], _vpal["Andon"]);
    auto frame = _cnt - _action_cnt;
    _grhandle=_grall["Andon"][_anime["Andon"]];
-   if (_AndonDrop_Flag == true) {
+   if (_andon_drop_flag == true) {
       if (frame == ANDON_FIREFRAME1) {
          PlaySoundMem(_se["Andon"], DX_PLAYTYPE_BACK, true);
-         auto lf1 = new Flame(_x - ANDON_FIREWIDTH * 1, _Flame_y);
+         auto lf1 = new Flame(_x - ANDON_FIREWIDTH * 1, _flame_y);
          g.GetOS()->Add(lf1);
-         auto rf1 = new Flame(_x + ANDON_FIREWIDTH * 1, _Flame_y);
+         auto rf1 = new Flame(_x + ANDON_FIREWIDTH * 1, _flame_y);
          g.GetOS()->Add(rf1);
       }
       if (frame == ANDON_FIREFRAME2) {
-         auto lf2 = new Flame(_x - ANDON_FIREWIDTH * 2, _Flame_y);
+         auto lf2 = new Flame(_x - ANDON_FIREWIDTH * 2, _flame_y);
          g.GetOS()->Add(lf2);
-         auto rf2 = new Flame(_x + ANDON_FIREWIDTH * 2, _Flame_y);
+         auto rf2 = new Flame(_x + ANDON_FIREWIDTH * 2, _flame_y);
          g.GetOS()->Add(rf2);
       }
       if (frame == ANDON_FIREFRAME3) {
-         auto lf3 = new Flame(_x - ANDON_FIREWIDTH * 3, _Flame_y);
+         auto lf3 = new Flame(_x - ANDON_FIREWIDTH * 3, _flame_y);
          g.GetOS()->Add(lf3);
-         auto rf3 = new Flame(_x + ANDON_FIREWIDTH * 3, _Flame_y);
+         auto rf3 = new Flame(_x + ANDON_FIREWIDTH * 3, _flame_y);
          g.GetOS()->Add(rf3);
       }
-      if (_PlayerFlip_Flag == false) {
+      if (_player_flip_flag == false) {
          if (frame >= 0 && ANDON_DROPFRAME >= frame) {
             if (_drg.second > -ANDON_DROPANGLEMAX) {
                _drg.second -= ANDON_DROPANGLE;
@@ -67,7 +67,7 @@ void Andon::Process(Game& g) {
             _y += ANDON_DROPMOVEY;
          }
       }
-      if (_PlayerFlip_Flag == true) {
+      if (_player_flip_flag == true) {
          if (frame >= 0 && ANDON_DROPFRAME >= frame) {
             if (_drg.second < ANDON_DROPANGLEMAX) {
                _drg.second += ANDON_DROPANGLE;
@@ -81,10 +81,10 @@ void Andon::Process(Game& g) {
       }
       if (frame == ANDON_ALLFRAME) {
          Delete(g);
-         _AndonDrop_Flag = false;
+         _andon_drop_flag = false;
       }
    }
-   if (_AndonDrop_Flag == false) {
+   if (_andon_drop_flag == false) {
       //行燈とプレイヤーのキックオブジェクトの当たり判定
       for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
       {
@@ -96,14 +96,14 @@ void Andon::Process(Game& g) {
             {
                (*ite)->Delete(g);      // (*ite) はキックオブジェクト
                _action_cnt = _cnt;
-               _AndonDrop_Flag = true;
+               _andon_drop_flag = true;
                //プレイヤーの向きを参照
                for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
                {
                   // iteはプレイヤか？
                   if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
                   {
-                     _PlayerFlip_Flag = (*ite)->GetFlip();
+                     _player_flip_flag = (*ite)->GetFlip();
                   }
                }
             }

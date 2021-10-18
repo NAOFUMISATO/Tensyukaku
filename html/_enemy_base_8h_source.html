@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/EnemyBase.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">EnemyBase.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_enemy_base_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_object_base_8h.html">ObjectBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_enemy_base.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_enemy_base.html">EnemyBase</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_object_base.html">ObjectBase</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>   <span class="comment">//敵の状態列挙</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178">   13</a></span>   <span class="keyword">enum class</span> <a class="code hl_enumeration" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178">ENEMYSTATE</a> { </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a303e9f5a662d8da25ff7e53f22caaa2a">APPEAR</a>,               <span class="comment">//出現</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a5383e862b017e18e1087d61e9f2684d9">PATROL</a>,               <span class="comment">//索敵</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a36c99616234a163b702dd50573edb0bd">COMING</a>,               <span class="comment">//追跡</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178ac6ddd0f72ff2fd344693b9ca8d483871">ATTACK</a>,               <span class="comment">//攻撃</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a6b8fa9a7f26356348c1989956410279d">GUARDATTACK</a>,   <span class="comment">//盾持ち攻撃   (盾兵のみ)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a655474de4674aba7a436a73cd8d9a906">THROW</a>,               <span class="comment">//クナイ投げ   (忍者のみ)</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178aadf60df5077c06f7c7bef82e31ab2a74">GUARDBREAK</a>,      <span class="comment">//盾崩れ         (盾兵のみ)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a806bb06d54f268f1d2ce74bde5b48f34">DAMAGE</a>,               <span class="comment">//被ダメ         (武士、武将のみ)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178abb4784231ff45108ee20bad16e4a2e8c">DEAD</a>                     <span class="comment">//死亡 </span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>   };</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>   <a class="code hl_function" href="class_enemy_base.html#af0e688056ae50b763bb8d8139e7e53c3">EnemyBase</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>   <a class="code hl_function" href="class_enemy_base.html#a73d1ffb3230a2e8b2c0b7cd86cbd7a6c">~EnemyBase</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_enemy_base.html#a17723c2198eb28b17f5abf5d42f476d3">   27</a></span>   <span class="keyword">virtual</span> <a class="code hl_enumeration" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">OBJECTTYPE</a> <a class="code hl_function" href="class_enemy_base.html#a17723c2198eb28b17f5abf5d42f476d3">GetObjType</a>() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1da92b09d1635332c90ae8508618a174244">OBJECTTYPE::ENEMY</a>; }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>   <span class="comment">//敵の種類列挙</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427">   29</a></span>   <span class="keyword">enum class</span> <a class="code hl_enumeration" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427">ENEMYTYPE</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427a29097139e792a1b951582d6383eae0cf">BUSHI</a>,               <span class="comment">//武士</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427aff5fea54ae72d3d06248c6284c05802e">BUSYO</a>,               <span class="comment">//武将</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427ae5581feafd037b1ee151b0f2ba3f3e64">NINJA</a>,               <span class="comment">//忍者</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427af6416bd77a2a2a5a2900fd8cc6bee32d">ZYOUNIN</a>,         <span class="comment">//上忍</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427a782e9a583180a767d5108850d0c9635f">LANCER</a>,            <span class="comment">//槍兵</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      <a class="code hl_enumvalue" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427ae97df666071862ba576690ebe1e6790c">SHIELDER</a>         <span class="comment">//盾兵</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>   };</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>   <span class="comment">//純粋仮想関数</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_enemy_base.html#a0d57f8ec2db46337cc6c01daf37f779b">   38</a></span>   <span class="keyword">virtual</span> <a class="code hl_enumeration" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427">ENEMYTYPE</a> <a class="code hl_function" href="class_enemy_base.html#a0d57f8ec2db46337cc6c01daf37f779b">GetEneType</a>() = 0;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>   <span class="comment">//初期化</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>   <span class="keyword">virtual</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_enemy_base.html#af5c90d8abe7e5677336295d1398578b9">Init</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>   <span class="comment">//更新</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>   <span class="keyword">virtual</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_enemy_base.html#add67699620ad91db7ed390a426e75fbf">Process</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>   <span class="comment">//描画</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>   <span class="keyword">virtual</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_enemy_base.html#a3c82fb040b7faf93571d2afa31dd07a5">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>   <span class="comment">//オブジェクトの消去</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_enemy_base.html#afa0d1e9f4705a530990e1c0bb32adf49">   46</a></span>   <span class="keyword">virtual</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_enemy_base.html#afa0d1e9f4705a530990e1c0bb32adf49">Delete</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g) {};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_enemy_base.html#a6dec1f49467ad7c7e718da07efbf23c6">   49</a></span>   <a class="code hl_enumeration" href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427">ENEMYTYPE</a> <a class="code hl_variable" href="class_enemy_base.html#a6dec1f49467ad7c7e718da07efbf23c6">_type</a>;            <span class="comment">//敵の種類変数</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_enemy_base.html#a7ee5940130d10465fbc004360d406003">   50</a></span>   <a class="code hl_enumeration" href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178">ENEMYSTATE</a> <a class="code hl_variable" href="class_enemy_base.html#a7ee5940130d10465fbc004360d406003">_state</a>;         <span class="comment">//状態遷移変数</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="ttc" id="a_object_base_8h_html"><div class="ttname"><a href="_object_base_8h.html">ObjectBase.h</a></div></div>
+<div class="ttc" id="aclass_enemy_base_html"><div class="ttname"><a href="class_enemy_base.html">EnemyBase</a></div><div class="ttdef"><b>Definition:</b> EnemyBase.h:10</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178">EnemyBase::ENEMYSTATE</a></div><div class="ttdeci">ENEMYSTATE</div><div class="ttdef"><b>Definition:</b> EnemyBase.h:13</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178a303e9f5a662d8da25ff7e53f22caaa2a"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a303e9f5a662d8da25ff7e53f22caaa2a">EnemyBase::ENEMYSTATE::APPEAR</a></div><div class="ttdeci">@ APPEAR</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178a36c99616234a163b702dd50573edb0bd"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a36c99616234a163b702dd50573edb0bd">EnemyBase::ENEMYSTATE::COMING</a></div><div class="ttdeci">@ COMING</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178a5383e862b017e18e1087d61e9f2684d9"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a5383e862b017e18e1087d61e9f2684d9">EnemyBase::ENEMYSTATE::PATROL</a></div><div class="ttdeci">@ PATROL</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178a655474de4674aba7a436a73cd8d9a906"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a655474de4674aba7a436a73cd8d9a906">EnemyBase::ENEMYSTATE::THROW</a></div><div class="ttdeci">@ THROW</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178a6b8fa9a7f26356348c1989956410279d"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a6b8fa9a7f26356348c1989956410279d">EnemyBase::ENEMYSTATE::GUARDATTACK</a></div><div class="ttdeci">@ GUARDATTACK</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178a806bb06d54f268f1d2ce74bde5b48f34"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178a806bb06d54f268f1d2ce74bde5b48f34">EnemyBase::ENEMYSTATE::DAMAGE</a></div><div class="ttdeci">@ DAMAGE</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178aadf60df5077c06f7c7bef82e31ab2a74"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178aadf60df5077c06f7c7bef82e31ab2a74">EnemyBase::ENEMYSTATE::GUARDBREAK</a></div><div class="ttdeci">@ GUARDBREAK</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178abb4784231ff45108ee20bad16e4a2e8c"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178abb4784231ff45108ee20bad16e4a2e8c">EnemyBase::ENEMYSTATE::DEAD</a></div><div class="ttdeci">@ DEAD</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a00b70d696b350856fa0b76c021ff6178ac6ddd0f72ff2fd344693b9ca8d483871"><div class="ttname"><a href="class_enemy_base.html#a00b70d696b350856fa0b76c021ff6178ac6ddd0f72ff2fd344693b9ca8d483871">EnemyBase::ENEMYSTATE::ATTACK</a></div><div class="ttdeci">@ ATTACK</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a0d57f8ec2db46337cc6c01daf37f779b"><div class="ttname"><a href="class_enemy_base.html#a0d57f8ec2db46337cc6c01daf37f779b">EnemyBase::GetEneType</a></div><div class="ttdeci">virtual ENEMYTYPE GetEneType()=0</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a17723c2198eb28b17f5abf5d42f476d3"><div class="ttname"><a href="class_enemy_base.html#a17723c2198eb28b17f5abf5d42f476d3">EnemyBase::GetObjType</a></div><div class="ttdeci">virtual OBJECTTYPE GetObjType()</div><div class="ttdef"><b>Definition:</b> EnemyBase.h:27</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a3c82fb040b7faf93571d2afa31dd07a5"><div class="ttname"><a href="class_enemy_base.html#a3c82fb040b7faf93571d2afa31dd07a5">EnemyBase::Draw</a></div><div class="ttdeci">virtual void Draw(Game &amp;g)</div><div class="ttdef"><b>Definition:</b> EnemyBase.cpp:25</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a5ae6e889eddbfad13ce675608eb05427"><div class="ttname"><a href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427">EnemyBase::ENEMYTYPE</a></div><div class="ttdeci">ENEMYTYPE</div><div class="ttdef"><b>Definition:</b> EnemyBase.h:29</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a5ae6e889eddbfad13ce675608eb05427a29097139e792a1b951582d6383eae0cf"><div class="ttname"><a href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427a29097139e792a1b951582d6383eae0cf">EnemyBase::ENEMYTYPE::BUSHI</a></div><div class="ttdeci">@ BUSHI</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a5ae6e889eddbfad13ce675608eb05427a782e9a583180a767d5108850d0c9635f"><div class="ttname"><a href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427a782e9a583180a767d5108850d0c9635f">EnemyBase::ENEMYTYPE::LANCER</a></div><div class="ttdeci">@ LANCER</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a5ae6e889eddbfad13ce675608eb05427ae5581feafd037b1ee151b0f2ba3f3e64"><div class="ttname"><a href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427ae5581feafd037b1ee151b0f2ba3f3e64">EnemyBase::ENEMYTYPE::NINJA</a></div><div class="ttdeci">@ NINJA</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a5ae6e889eddbfad13ce675608eb05427ae97df666071862ba576690ebe1e6790c"><div class="ttname"><a href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427ae97df666071862ba576690ebe1e6790c">EnemyBase::ENEMYTYPE::SHIELDER</a></div><div class="ttdeci">@ SHIELDER</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a5ae6e889eddbfad13ce675608eb05427af6416bd77a2a2a5a2900fd8cc6bee32d"><div class="ttname"><a href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427af6416bd77a2a2a5a2900fd8cc6bee32d">EnemyBase::ENEMYTYPE::ZYOUNIN</a></div><div class="ttdeci">@ ZYOUNIN</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a5ae6e889eddbfad13ce675608eb05427aff5fea54ae72d3d06248c6284c05802e"><div class="ttname"><a href="class_enemy_base.html#a5ae6e889eddbfad13ce675608eb05427aff5fea54ae72d3d06248c6284c05802e">EnemyBase::ENEMYTYPE::BUSYO</a></div><div class="ttdeci">@ BUSYO</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a6dec1f49467ad7c7e718da07efbf23c6"><div class="ttname"><a href="class_enemy_base.html#a6dec1f49467ad7c7e718da07efbf23c6">EnemyBase::_type</a></div><div class="ttdeci">ENEMYTYPE _type</div><div class="ttdef"><b>Definition:</b> EnemyBase.h:46</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a73d1ffb3230a2e8b2c0b7cd86cbd7a6c"><div class="ttname"><a href="class_enemy_base.html#a73d1ffb3230a2e8b2c0b7cd86cbd7a6c">EnemyBase::~EnemyBase</a></div><div class="ttdeci">~EnemyBase()</div><div class="ttdef"><b>Definition:</b> EnemyBase.cpp:13</div></div>
+<div class="ttc" id="aclass_enemy_base_html_a7ee5940130d10465fbc004360d406003"><div class="ttname"><a href="class_enemy_base.html#a7ee5940130d10465fbc004360d406003">EnemyBase::_state</a></div><div class="ttdeci">ENEMYSTATE _state</div><div class="ttdef"><b>Definition:</b> EnemyBase.h:50</div></div>
+<div class="ttc" id="aclass_enemy_base_html_add67699620ad91db7ed390a426e75fbf"><div class="ttname"><a href="class_enemy_base.html#add67699620ad91db7ed390a426e75fbf">EnemyBase::Process</a></div><div class="ttdeci">virtual void Process(Game &amp;g)</div><div class="ttdef"><b>Definition:</b> EnemyBase.cpp:21</div></div>
+<div class="ttc" id="aclass_enemy_base_html_af0e688056ae50b763bb8d8139e7e53c3"><div class="ttname"><a href="class_enemy_base.html#af0e688056ae50b763bb8d8139e7e53c3">EnemyBase::EnemyBase</a></div><div class="ttdeci">EnemyBase()</div><div class="ttdef"><b>Definition:</b> EnemyBase.cpp:9</div></div>
+<div class="ttc" id="aclass_enemy_base_html_af5c90d8abe7e5677336295d1398578b9"><div class="ttname"><a href="class_enemy_base.html#af5c90d8abe7e5677336295d1398578b9">EnemyBase::Init</a></div><div class="ttdeci">virtual void Init()</div><div class="ttdef"><b>Definition:</b> EnemyBase.cpp:17</div></div>
+<div class="ttc" id="aclass_enemy_base_html_afa0d1e9f4705a530990e1c0bb32adf49"><div class="ttname"><a href="class_enemy_base.html#afa0d1e9f4705a530990e1c0bb32adf49">EnemyBase::Delete</a></div><div class="ttdeci">virtual void Delete(Game &amp;g)</div><div class="ttdef"><b>Definition:</b> EnemyBase.h:46</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html"><div class="ttname"><a href="class_object_base.html">ObjectBase</a></div><div class="ttdef"><b>Definition:</b> ObjectBase.h:12</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1d"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">ObjectBase::OBJECTTYPE</a></div><div class="ttdeci">OBJECTTYPE</div><div class="ttdef"><b>Definition:</b> ObjectBase.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1da92b09d1635332c90ae8508618a174244"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1da92b09d1635332c90ae8508618a174244">ObjectBase::OBJECTTYPE::ENEMY</a></div><div class="ttdeci">@ ENEMY</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

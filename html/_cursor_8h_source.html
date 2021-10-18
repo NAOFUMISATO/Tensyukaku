@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/Cursor.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Cursor.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_cursor_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_object_base_8h.html">ObjectBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_cursor.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="class_cursor.html">Cursor</a> :<span class="keyword">public</span> <a class="code hl_class" href="class_object_base.html">ObjectBase</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>   <a class="code hl_function" href="class_cursor.html#a126c5677653ce46f555eaee0f3881fae">Cursor</a>();</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>   <a class="code hl_function" href="class_cursor.html#a025d505a120236dc61a889bd5b0aef16">~Cursor</a>();</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_cursor.html#ac224bdc5b8678a525ecbc90dbdef4fb8">    8</a></span>   <span class="keyword">virtual</span> <a class="code hl_enumeration" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">OBJECTTYPE</a>   <a class="code hl_function" href="class_cursor.html#ac224bdc5b8678a525ecbc90dbdef4fb8">GetObjType</a>() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dab463a0d9beb14bdcecd3a50d70655963">OBJECTTYPE::CURSOR</a>; }</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_cursor.html#a13321c5d0dcf35dfce6edbc04dfb9836">Init</a>()<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_cursor.html#a693aebafff15adaa9116d4cc1e9fd448">Process</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_cursor.html#ac2bfc7e25d5f00a12556c45c6955daac">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_cursor.html#a7a938ef21c93c271f76db84fbb2f526c">HitJudge</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);<span class="comment">//各当たり判定の処理</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_cursor.html#af7f2880a8387b1359132e2a8bc4290cc">LoadSE</a>();<span class="comment">//効果音読み込み関数</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_cursor.html#a9b7db04a92f81259fa9f6a7b2ca67e2a">VolumeInit</a>();   <span class="comment">//効果音ボリューム初期値設定関数</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_cursor.html#a2a3847e6cbcfa1e06d49436172035ff7">VolumeChange</a>();   <span class="comment">//ボリューム変更関数</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>   </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62">   18</a></span>   <span class="keyword">enum class</span> <a class="code hl_enumeration" href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62">CURSOLSTATE</a> { <a class="code hl_enumvalue" href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62a98a0a2299e85802db243e64ef2a6d4bb">NOHIT</a>, <a class="code hl_enumvalue" href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62a5739b04d500484976a9660ba0a8c1410">STARTHIT</a>, <a class="code hl_enumvalue" href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62a60be9cc0fe545a165448f144c18b60d9">EXHIT</a>, <a class="code hl_enumvalue" href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62a967e279a2b179cfae4f6d6b070250276">ENDHIT</a>,<a class="code hl_enumvalue" href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62ae6ee65f78b444967184a1c6935c7fcf0">CREDITHIT</a>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_cursor.html#a7d09e43e2eb1aad703f534e2f5c6dda6">   19</a></span>   <a class="code hl_enumeration" href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62">CURSOLSTATE</a> <a class="code hl_variable" href="class_cursor.html#a7d09e43e2eb1aad703f534e2f5c6dda6">_state</a>;      <span class="comment">//カーソルの状態変数</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_cursor.html#a4dcbee874f48bf28cf57e5ca43339b23">   20</a></span>   <a class="code hl_class" href="class_vector2.html">Vector2</a> <a class="code hl_variable" href="class_cursor.html#a4dcbee874f48bf28cf57e5ca43339b23">_velocityDir</a>;   <span class="comment">//速度方向</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_cursor.html#aa3d5182b0535ac95cfdf8cee4e0b24b9">   21</a></span>   std::string   <a class="code hl_variable" href="class_cursor.html#aa3d5182b0535ac95cfdf8cee4e0b24b9">_hit_type</a>;      <span class="comment">//パーティクルのタイプ指定</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_cursor.html#af14c19f2bef8f5b044558794602a1faf">   22</a></span>   <span class="keywordtype">int</span>      <a class="code hl_variable" href="class_cursor.html#af14c19f2bef8f5b044558794602a1faf">_par_qty</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_cursor.html#a06c6ddefaf07783df911e518e8d8993d">   23</a></span>   <span class="keywordtype">bool</span>   <a class="code hl_variable" href="class_cursor.html#a06c6ddefaf07783df911e518e8d8993d">_input_flag</a>;   <span class="comment">//入力管理フラグ</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_cursor.html#ae38963e9bf5073d8e6a3c7849a941c17">   24</a></span>   <span class="keywordtype">bool</span>   <a class="code hl_variable" href="class_cursor.html#ae38963e9bf5073d8e6a3c7849a941c17">_startpush_flag</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_cursor.html#ac6a1f4d591b3a7774d5b807f5889aedf">   25</a></span>   <span class="keywordtype">bool</span>   <a class="code hl_variable" href="class_cursor.html#ac6a1f4d591b3a7774d5b807f5889aedf">_endpush_flag</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="class_cursor.html#ac7b5a66f16996265aee759886b6e2acf">   26</a></span>   <span class="keywordtype">bool</span>   <a class="code hl_variable" href="class_cursor.html#ac7b5a66f16996265aee759886b6e2acf">_creditpush_flag</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespace_cu_info.html">   29</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_cu_info.html">CuInfo</a>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespace_cu_info.html#a1ac6d622632cd82d1a21b326ecd4faef">   30</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_cu_info.html#a1ac6d622632cd82d1a21b326ecd4faef">NOHIT_PARQTY</a> = 7;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespace_cu_info.html#af67680964a63d1fbb81a3b2601c4bc83">   31</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_cu_info.html#af67680964a63d1fbb81a3b2601c4bc83">HIT_PARQTY</a> =10;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="ttc" id="a_object_base_8h_html"><div class="ttname"><a href="_object_base_8h.html">ObjectBase.h</a></div></div>
+<div class="ttc" id="aclass_cursor_html"><div class="ttname"><a href="class_cursor.html">Cursor</a></div><div class="ttdef"><b>Definition:</b> Cursor.h:4</div></div>
+<div class="ttc" id="aclass_cursor_html_a025d505a120236dc61a889bd5b0aef16"><div class="ttname"><a href="class_cursor.html#a025d505a120236dc61a889bd5b0aef16">Cursor::~Cursor</a></div><div class="ttdeci">~Cursor()</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:20</div></div>
+<div class="ttc" id="aclass_cursor_html_a06c6ddefaf07783df911e518e8d8993d"><div class="ttname"><a href="class_cursor.html#a06c6ddefaf07783df911e518e8d8993d">Cursor::_input_flag</a></div><div class="ttdeci">bool _input_flag</div><div class="ttdef"><b>Definition:</b> Cursor.h:23</div></div>
+<div class="ttc" id="aclass_cursor_html_a126c5677653ce46f555eaee0f3881fae"><div class="ttname"><a href="class_cursor.html#a126c5677653ce46f555eaee0f3881fae">Cursor::Cursor</a></div><div class="ttdeci">Cursor()</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:15</div></div>
+<div class="ttc" id="aclass_cursor_html_a13321c5d0dcf35dfce6edbc04dfb9836"><div class="ttname"><a href="class_cursor.html#a13321c5d0dcf35dfce6edbc04dfb9836">Cursor::Init</a></div><div class="ttdeci">void Init() override</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:23</div></div>
+<div class="ttc" id="aclass_cursor_html_a2a3847e6cbcfa1e06d49436172035ff7"><div class="ttname"><a href="class_cursor.html#a2a3847e6cbcfa1e06d49436172035ff7">Cursor::VolumeChange</a></div><div class="ttdeci">void VolumeChange()</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:203</div></div>
+<div class="ttc" id="aclass_cursor_html_a4002c84fc494509571069f3ed4ba1d62"><div class="ttname"><a href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62">Cursor::CURSOLSTATE</a></div><div class="ttdeci">CURSOLSTATE</div><div class="ttdef"><b>Definition:</b> Cursor.h:18</div></div>
+<div class="ttc" id="aclass_cursor_html_a4002c84fc494509571069f3ed4ba1d62a5739b04d500484976a9660ba0a8c1410"><div class="ttname"><a href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62a5739b04d500484976a9660ba0a8c1410">Cursor::CURSOLSTATE::STARTHIT</a></div><div class="ttdeci">@ STARTHIT</div></div>
+<div class="ttc" id="aclass_cursor_html_a4002c84fc494509571069f3ed4ba1d62a60be9cc0fe545a165448f144c18b60d9"><div class="ttname"><a href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62a60be9cc0fe545a165448f144c18b60d9">Cursor::CURSOLSTATE::EXHIT</a></div><div class="ttdeci">@ EXHIT</div></div>
+<div class="ttc" id="aclass_cursor_html_a4002c84fc494509571069f3ed4ba1d62a967e279a2b179cfae4f6d6b070250276"><div class="ttname"><a href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62a967e279a2b179cfae4f6d6b070250276">Cursor::CURSOLSTATE::ENDHIT</a></div><div class="ttdeci">@ ENDHIT</div></div>
+<div class="ttc" id="aclass_cursor_html_a4002c84fc494509571069f3ed4ba1d62a98a0a2299e85802db243e64ef2a6d4bb"><div class="ttname"><a href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62a98a0a2299e85802db243e64ef2a6d4bb">Cursor::CURSOLSTATE::NOHIT</a></div><div class="ttdeci">@ NOHIT</div></div>
+<div class="ttc" id="aclass_cursor_html_a4002c84fc494509571069f3ed4ba1d62ae6ee65f78b444967184a1c6935c7fcf0"><div class="ttname"><a href="class_cursor.html#a4002c84fc494509571069f3ed4ba1d62ae6ee65f78b444967184a1c6935c7fcf0">Cursor::CURSOLSTATE::CREDITHIT</a></div><div class="ttdeci">@ CREDITHIT</div></div>
+<div class="ttc" id="aclass_cursor_html_a4dcbee874f48bf28cf57e5ca43339b23"><div class="ttname"><a href="class_cursor.html#a4dcbee874f48bf28cf57e5ca43339b23">Cursor::_velocityDir</a></div><div class="ttdeci">Vector2 _velocityDir</div><div class="ttdef"><b>Definition:</b> Cursor.h:20</div></div>
+<div class="ttc" id="aclass_cursor_html_a693aebafff15adaa9116d4cc1e9fd448"><div class="ttname"><a href="class_cursor.html#a693aebafff15adaa9116d4cc1e9fd448">Cursor::Process</a></div><div class="ttdeci">void Process(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:43</div></div>
+<div class="ttc" id="aclass_cursor_html_a7a938ef21c93c271f76db84fbb2f526c"><div class="ttname"><a href="class_cursor.html#a7a938ef21c93c271f76db84fbb2f526c">Cursor::HitJudge</a></div><div class="ttdeci">void HitJudge(Game &amp;g)</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:209</div></div>
+<div class="ttc" id="aclass_cursor_html_a7d09e43e2eb1aad703f534e2f5c6dda6"><div class="ttname"><a href="class_cursor.html#a7d09e43e2eb1aad703f534e2f5c6dda6">Cursor::_state</a></div><div class="ttdeci">CURSOLSTATE _state</div><div class="ttdef"><b>Definition:</b> Cursor.h:19</div></div>
+<div class="ttc" id="aclass_cursor_html_a9b7db04a92f81259fa9f6a7b2ca67e2a"><div class="ttname"><a href="class_cursor.html#a9b7db04a92f81259fa9f6a7b2ca67e2a">Cursor::VolumeInit</a></div><div class="ttdeci">void VolumeInit()</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:196</div></div>
+<div class="ttc" id="aclass_cursor_html_aa3d5182b0535ac95cfdf8cee4e0b24b9"><div class="ttname"><a href="class_cursor.html#aa3d5182b0535ac95cfdf8cee4e0b24b9">Cursor::_hit_type</a></div><div class="ttdeci">std::string _hit_type</div><div class="ttdef"><b>Definition:</b> Cursor.h:21</div></div>
+<div class="ttc" id="aclass_cursor_html_ac224bdc5b8678a525ecbc90dbdef4fb8"><div class="ttname"><a href="class_cursor.html#ac224bdc5b8678a525ecbc90dbdef4fb8">Cursor::GetObjType</a></div><div class="ttdeci">virtual OBJECTTYPE GetObjType()</div><div class="ttdef"><b>Definition:</b> Cursor.h:8</div></div>
+<div class="ttc" id="aclass_cursor_html_ac2bfc7e25d5f00a12556c45c6955daac"><div class="ttname"><a href="class_cursor.html#ac2bfc7e25d5f00a12556c45c6955daac">Cursor::Draw</a></div><div class="ttdeci">void Draw(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:185</div></div>
+<div class="ttc" id="aclass_cursor_html_ac6a1f4d591b3a7774d5b807f5889aedf"><div class="ttname"><a href="class_cursor.html#ac6a1f4d591b3a7774d5b807f5889aedf">Cursor::_endpush_flag</a></div><div class="ttdeci">bool _endpush_flag</div><div class="ttdef"><b>Definition:</b> Cursor.h:25</div></div>
+<div class="ttc" id="aclass_cursor_html_ac7b5a66f16996265aee759886b6e2acf"><div class="ttname"><a href="class_cursor.html#ac7b5a66f16996265aee759886b6e2acf">Cursor::_creditpush_flag</a></div><div class="ttdeci">bool _creditpush_flag</div><div class="ttdef"><b>Definition:</b> Cursor.h:26</div></div>
+<div class="ttc" id="aclass_cursor_html_ae38963e9bf5073d8e6a3c7849a941c17"><div class="ttname"><a href="class_cursor.html#ae38963e9bf5073d8e6a3c7849a941c17">Cursor::_startpush_flag</a></div><div class="ttdeci">bool _startpush_flag</div><div class="ttdef"><b>Definition:</b> Cursor.h:24</div></div>
+<div class="ttc" id="aclass_cursor_html_af14c19f2bef8f5b044558794602a1faf"><div class="ttname"><a href="class_cursor.html#af14c19f2bef8f5b044558794602a1faf">Cursor::_par_qty</a></div><div class="ttdeci">int _par_qty</div><div class="ttdef"><b>Definition:</b> Cursor.h:22</div></div>
+<div class="ttc" id="aclass_cursor_html_af7f2880a8387b1359132e2a8bc4290cc"><div class="ttname"><a href="class_cursor.html#af7f2880a8387b1359132e2a8bc4290cc">Cursor::LoadSE</a></div><div class="ttdeci">void LoadSE()</div><div class="ttdef"><b>Definition:</b> Cursor.cpp:189</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html"><div class="ttname"><a href="class_object_base.html">ObjectBase</a></div><div class="ttdef"><b>Definition:</b> ObjectBase.h:12</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1d"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">ObjectBase::OBJECTTYPE</a></div><div class="ttdeci">OBJECTTYPE</div><div class="ttdef"><b>Definition:</b> ObjectBase.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1dab463a0d9beb14bdcecd3a50d70655963"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dab463a0d9beb14bdcecd3a50d70655963">ObjectBase::OBJECTTYPE::CURSOR</a></div><div class="ttdeci">@ CURSOR</div></div>
+<div class="ttc" id="aclass_vector2_html"><div class="ttname"><a href="class_vector2.html">Vector2</a></div><div class="ttdef"><b>Definition:</b> Math.h:39</div></div>
+<div class="ttc" id="anamespace_cu_info_html"><div class="ttname"><a href="namespace_cu_info.html">CuInfo</a></div><div class="ttdef"><b>Definition:</b> Cursor.h:29</div></div>
+<div class="ttc" id="anamespace_cu_info_html_a1ac6d622632cd82d1a21b326ecd4faef"><div class="ttname"><a href="namespace_cu_info.html#a1ac6d622632cd82d1a21b326ecd4faef">CuInfo::NOHIT_PARQTY</a></div><div class="ttdeci">constexpr auto NOHIT_PARQTY</div><div class="ttdef"><b>Definition:</b> Cursor.h:30</div></div>
+<div class="ttc" id="anamespace_cu_info_html_af67680964a63d1fbb81a3b2601c4bc83"><div class="ttname"><a href="namespace_cu_info.html#af67680964a63d1fbb81a3b2601c4bc83">CuInfo::HIT_PARQTY</a></div><div class="ttdeci">constexpr auto HIT_PARQTY</div><div class="ttdef"><b>Definition:</b> Cursor.h:31</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

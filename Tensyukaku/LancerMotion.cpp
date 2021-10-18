@@ -1,7 +1,7 @@
 #include <DxLib.h>
 #include "Lancer.h"
 #include "Game.h"
-#include "LancerMotionCollision.h"
+#include "LancerAttackCollision.h"
 #include "EnemyParticle.h"
 #include "PrivateCollision.h"
 

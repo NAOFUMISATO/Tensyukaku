@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   PrivateCollision.cpp
+ * \brief  受け側で判定を取らない当たり判定クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "PrivateCollision.h"
 #include "Game.h"

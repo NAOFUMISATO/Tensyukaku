@@ -1,0 +1,124 @@
+\hypertarget{class_mode_pause}{}\doxysection{Mode\+Pause クラス}
+\label{class_mode_pause}\index{ModePause@{ModePause}}
+
+
+{\ttfamily \#include $<$Mode\+Pause.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_mode_pause_a68d3e1442b393ea9335bd8f5c84e7c6c}{Initialize}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_pause_ad8660a5ff35d2f2e52ef0bc382b4d81e}{Terminate}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 終了関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_pause_a793c3583a56e68e192c7f109888950b0}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 更新関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_pause_a5b27481cd34d5963b6d0800e903729a9}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 描画関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_mode_pause_a6f1c474d29103f79151a88d207977ec6}{base}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{詳解}
+インゲームでのポーズ画面 
+
+\doxysubsection{型定義メンバ詳解}
+\mbox{\Hypertarget{class_mode_pause_a6f1c474d29103f79151a88d207977ec6}\label{class_mode_pause_a6f1c474d29103f79151a88d207977ec6}} 
+\index{ModePause@{ModePause}!base@{base}}
+\index{base@{base}!ModePause@{ModePause}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_mode_pause_a6f1c474d29103f79151a88d207977ec6}{Mode\+Pause\+::base}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_mode_pause_a5b27481cd34d5963b6d0800e903729a9}\label{class_mode_pause_a5b27481cd34d5963b6d0800e903729a9}} 
+\index{ModePause@{ModePause}!Draw@{Draw}}
+\index{Draw@{Draw}!ModePause@{ModePause}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily bool Mode\+Pause\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+描画関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a50776d758456fe540e3aef2f47234a0d}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_pause_a68d3e1442b393ea9335bd8f5c84e7c6c}\label{class_mode_pause_a68d3e1442b393ea9335bd8f5c84e7c6c}} 
+\index{ModePause@{ModePause}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!ModePause@{ModePause}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Mode\+Pause\+::\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a4cb0982318dfa7d2906dcf30c3824ab1}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_pause_a793c3583a56e68e192c7f109888950b0}\label{class_mode_pause_a793c3583a56e68e192c7f109888950b0}} 
+\index{ModePause@{ModePause}!Process@{Process}}
+\index{Process@{Process}!ModePause@{ModePause}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily bool Mode\+Pause\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+更新関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a8b78d63abe0000394a892723b92c7694}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_pause_ad8660a5ff35d2f2e52ef0bc382b4d81e}\label{class_mode_pause_ad8660a5ff35d2f2e52ef0bc382b4d81e}} 
+\index{ModePause@{ModePause}!Terminate@{Terminate}}
+\index{Terminate@{Terminate}!ModePause@{ModePause}}
+\doxysubsubsection{\texorpdfstring{Terminate()}{Terminate()}}
+{\footnotesize\ttfamily bool Mode\+Pause\+::\+Terminate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+終了関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a780d90b676aa9093fef190c6fe6821e2}{Mode\+Base}}を再実装しています。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_mode_pause_8h}{Mode\+Pause.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_mode_pause_8cpp}{Mode\+Pause.\+cpp}}\end{DoxyCompactItemize}

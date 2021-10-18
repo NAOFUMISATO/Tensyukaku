@@ -1,0 +1,690 @@
+  % Handle batch mode
+  % to overcome problems with too many open files
+  \let\mypdfximage\pdfximage\def\pdfximage{\immediate\mypdfximage}
+  % Set document class depending on configuration
+  \documentclass[twoside]{book}
+  %% moved from doxygen.sty due to workaround for LaTex 2019 version and unmaintained tabu package
+  \usepackage{ifthen}
+  \ifx\requestedLaTeXdate\undefined
+    \usepackage{array}
+  \else
+    \usepackage{array}[=2016-10-06]
+  \fi
+  %%
+  % Packages required by doxygen
+  \usepackage{fixltx2e} % for \textsubscript
+  \usepackage{doxygen}
+  \usepackage{graphicx}
+  \usepackage[utf8]{inputenc}
+  \usepackage{makeidx}
+  \PassOptionsToPackage{warn}{textcomp}
+  \usepackage{textcomp}
+  \usepackage[nointegrals]{wasysym}
+  \usepackage{ifxetex}
+  % NLS support packages
+  \usepackage{CJKutf8}
+  % Define default fonts
+  % Font selection
+  % set main and monospaced font
+  \usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\renewcommand{\familydefault}{\sfdefault}
+  \usepackage{sectsty}
+  \allsectionsfont{%
+    \fontseries{bc}\selectfont%
+    \color{darkgray}%
+  }
+  \renewcommand{\DoxyLabelFont}{%
+    \fontseries{bc}\selectfont%
+    \color{darkgray}%
+  }
+  \newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+   % Arguments of doxygenemoji:
+   % 1) ':<text>:' form of the emoji, already LaTeX-escaped
+   % 2) file with the name of the emoji without the .png extension
+   % in case image exist use this otherwise use the ':<text>:' form
+   \newcommand{\doxygenemoji}[2]{%
+     \IfFileExists{./#2.png}{\raisebox{-0.1em}{\includegraphics[height=0.9em]{./#2.png}}}{#1}%
+   }
+  % Page & text layout
+  \usepackage{geometry}
+  \geometry{%
+    a4paper,%
+    top=2.5cm,%
+    bottom=2.5cm,%
+    left=2.5cm,%
+    right=2.5cm%
+  }
+  % Allow a bit of overflow to go unnoticed by other means
+  \tolerance=750
+  \hfuzz=15pt
+  \hbadness=750
+  \setlength{\emergencystretch}{15pt}
+  \setlength{\parindent}{0cm}
+  \newcommand{\doxynormalparskip}{\setlength{\parskip}{3ex plus 2ex minus 2ex}}
+  \newcommand{\doxytocparskip}{\setlength{\parskip}{1ex plus 0ex minus 0ex}}
+  \doxynormalparskip
+  % Redefine paragraph/subparagraph environments, using sectsty fonts
+  \makeatletter
+  \renewcommand{\paragraph}{%
+    \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+      \normalfont\normalsize\bfseries\SS@parafont%
+    }%
+  }
+  \renewcommand{\subparagraph}{%
+    \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+      \normalfont\normalsize\bfseries\SS@subparafont%
+    }%
+  }
+  \makeatother
+  \makeatletter
+  \newcommand\hrulefilll{\leavevmode\leaders\hrule\hskip 0pt plus 1filll\kern\z@}
+  \makeatother
+  % Headers & footers
+  \usepackage{fancyhdr}
+  \pagestyle{fancyplain}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \fancypagestyle{fancyplain}{
+    \fancyhf{}
+    \fancyhead[LE, RO]{\bfseries\thepage}
+    \fancyhead[LO]{\bfseries\rightmark}
+    \fancyhead[RE]{\bfseries\leftmark}
+    \fancyfoot[LO, RE]{\bfseries\scriptsize 構築\+: Doxygen }
+  }
+  \fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[LO, RE]{\bfseries\scriptsize 構築\+: Doxygen }
+    \renewcommand{\headrulewidth}{0pt}
+  }
+  \pagestyle{fancyplain}
+  \renewcommand{\chaptermark}[1]{%
+    \markboth{#1}{}%
+  }
+  \renewcommand{\sectionmark}[1]{%
+    \markright{\thesection\ #1}%
+  }
+  % ToC, LoF, LoT, bibliography, and index
+  % Indices & bibliography
+  \usepackage{natbib}
+  \usepackage[titles]{tocloft}
+  \setcounter{tocdepth}{3}
+  \setcounter{secnumdepth}{5}
+  % creating indexes
+  \makeindex
+  \usepackage{newunicodechar}
+  \newunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \newunicodechar{²}{${}^{2}$}% Superscript two
+  \newunicodechar{³}{${}^{3}$}% Superscript three
+  % Hyperlinks
+    % Hyperlinks (required, but should be loaded last)
+    \ifpdf
+      \usepackage[pdftex,pagebackref=true]{hyperref}
+    \else
+      \ifxetex
+        \usepackage[pagebackref=true]{hyperref}
+      \else
+        \usepackage[ps2pdf,pagebackref=true]{hyperref}
+      \fi
+    \fi
+    \hypersetup{%
+      colorlinks=true,%
+      linkcolor=blue,%
+      citecolor=blue,%
+      unicode%
+    }
+  % Custom commands used by the header
+  % Custom commands
+  \newcommand{\clearemptydoublepage}{%
+    \newpage{\pagestyle{empty}\cleardoublepage}%
+  }
+  % caption style definition
+  \usepackage{caption}
+  \captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
+  % in page table of contents
+  \usepackage{etoc}
+  \etocsettocstyle{\doxytocparskip}{\doxynormalparskip}
+  % prevent numbers overlap the titles in toc
+  \renewcommand{\numberline}[1]{#1~}
+% End of preamble, now comes the document contents
+%===== C O N T E N T S =====
+\begin{document}
+  \raggedbottom
+  \begin{CJK}{UTF8}{min}
+  % Titlepage & ToC
+    % To avoid duplicate page anchors due to reuse of same numbers for
+    % the index (be it as roman numbers)
+    \hypersetup{pageanchor=false,
+                bookmarksnumbered=true,
+                pdfencoding=unicode
+               }
+  \pagenumbering{alph}
+  \begin{titlepage}
+  \vspace*{7cm}
+  \begin{center}%
+  {\Large Tensyukaku}\\
+  \vspace*{1cm}
+  {\large 構築\+: Doxygen 1.9.2}\\
+  \end{center}
+  \end{titlepage}
+  \clearemptydoublepage
+  \pagenumbering{roman}
+  \tableofcontents
+  \clearemptydoublepage
+  \pagenumbering{arabic}
+  % re-enable anchors again
+  \hypersetup{pageanchor=true}
+%--- Begin generated contents ---
+\chapter{名前空間索引}
+\input{namespaces}
+\chapter{階層索引}
+\input{hierarchy}
+\chapter{クラス索引}
+\input{annotated}
+\chapter{ファイル索引}
+\input{files}
+\chapter{名前空間詳解}
+\input{namespace_a_info}
+\input{namespace_b_b_info}
+\input{namespace_b_e_info}
+\input{namespace_b_info}
+\input{namespace_boss_inifo}
+\input{namespace_bs_info}
+\input{namespace_b_s_info}
+\input{namespace_c_par_info}
+\input{namespace_c_p_info}
+\input{namespace_cr_info}
+\input{namespace_cu_info}
+\input{namespace_dx_lib}
+\input{namespace_e_h_info}
+\input{namespace_epi_info}
+\input{namespace_e_p_info}
+\input{namespace_f_info}
+\input{namespace_f_par_info}
+\input{namespace_g_info}
+\input{namespace_i_t_info}
+\input{namespace_l_info}
+\input{namespace_m_a_info}
+\input{namespace_math}
+\input{namespace_m_f_info}
+\input{namespace_m_t_info}
+\input{namespace_n_info}
+\input{namespacepicojson}
+\input{namespace_p_info}
+\input{namespace_p_n_info}
+\input{namespace_po_info}
+\input{namespace_p_par_info}
+\input{namespace_pro_info}
+\input{namespace_s_info}
+\input{namespace_spa_info}
+\input{namespacestd}
+\input{namespace_st_info}
+\input{namespace_t_b_info}
+\input{namespace_tu_info}
+\input{namespace_z_info}
+\chapter{クラス詳解}
+\input{unionpicojson_1_1value_1_1__storage}
+\input{class_andon}
+\input{class_back_ground}
+\input{class_boss}
+\input{class_boss_blood}
+\input{class_boss_event_a}
+\input{class_boss_event_b}
+\input{class_boss_stair}
+\input{class_bushi}
+\input{class_bushi_attack_collision}
+\input{class_busyo}
+\input{class_busyo_attack_collision}
+\input{class_c_point_block}
+\input{class_credit}
+\input{class_credit_left_guide}
+\input{class_credit_red_return}
+\input{class_cursor}
+\input{class_cursor_particle1}
+\input{classpicojson_1_1default__parse__context}
+\input{classpicojson_1_1deny__parse__context}
+\input{struct_resource_server_1_1_d_i_v_g_r_a_p_h}
+\input{structpicojson_1_1null__parse__context_1_1dummy__str}
+\input{class_efect_base}
+\input{class_enemy_base}
+\input{class_enemy_spawn}
+\input{class_epilogue_text}
+\input{class_event_happen}
+\input{class_e_x_controller}
+\input{class_explain}
+\input{class_flame}
+\input{class_flame_block}
+\input{class_flame_perform}
+\input{class_gage_max}
+\input{class_game}
+\input{class_game_end}
+\input{class_game_start}
+\input{class_gimik_placement}
+\input{struct_hit_box}
+\input{class_iai_collision}
+\input{class_iai_gauge}
+\input{class_iai_gauge_particle}
+\input{class_iai_particle1}
+\input{class_iai_particle2}
+\input{class_iai_particle3}
+\input{class_ingame_text_block}
+\input{classpicojson_1_1input}
+\input{class_kick_collision}
+\input{class_kunai}
+\input{class_kunai_reserve_light}
+\input{class_lancer}
+\input{class_lancer_attack_collision}
+\input{class_lance_reserve_light}
+\input{structpicojson_1_1last__error__t}
+\input{class_low_attack_collision}
+\input{class_low_attack_particle1}
+\input{class_low_attack_particle2}
+\input{class_low_blood}
+\input{class_map_chip}
+\input{class_middle_attack_collision}
+\input{class_middle_attack_particle1}
+\input{class_middle_attack_particle2}
+\input{class_middle_blood}
+\input{class_mode_base}
+\input{class_mode_boss_before}
+\input{class_mode_credit}
+\input{class_mode_epilogue}
+\input{class_mode_ex_plain}
+\input{class_mode_game}
+\input{class_mode_gameover}
+\input{class_mode_ingame_text}
+\input{class_mode_pause}
+\input{class_mode_prologue}
+\input{class_mode_server}
+\input{class_mode_title}
+\input{class_mode_tutorial}
+\input{class_mugen_andon}
+\input{class_mugen_flame}
+\input{class_ninja}
+\input{class_ninja_attack_collision}
+\input{structpicojson_1_1null}
+\input{classpicojson_1_1null__parse__context}
+\input{class_object_base}
+\input{class_object_server}
+\input{class_overlay_black}
+\input{class_overlay_flame}
+\input{class_overlogo}
+\input{class_over_select}
+\input{class_particle_base}
+\input{class_pause_select}
+\input{class_p_controller}
+\input{class_player}
+\input{class_player_hp}
+\input{class_poison_fall}
+\input{class_poison_ninja}
+\input{class_poison_reserve}
+\input{class_private_collision}
+\input{class_prologue_a_skip}
+\input{class_prologue_text}
+\input{class_recovery_block}
+\input{class_recovery_particle}
+\input{class_resource_server}
+\input{class_rest_point}
+\input{struct_dx_lib_1_1_r_g_b_c_o_l_o_r}
+\input{structpicojson_1_1serialize__str__char}
+\input{class_shield}
+\input{class_shielder}
+\input{class_shielder_attack_collision}
+\input{class_spawn}
+\input{class_spawn_block_base}
+\input{class_special_collision}
+\input{class_stair}
+\input{class_sway_particle}
+\input{struct_dx_lib_1_1tag_b_a_s_e_i_m_a_g_e}
+\input{struct_dx_lib_1_1tag_c_o_l_o_r___f}
+\input{struct_dx_lib_1_1tag_c_o_l_o_r___u8}
+\input{struct_dx_lib_1_1tag_c_o_l_o_r_d_a_t_a}
+\input{struct_dx_lib_1_1tag_c_o_l_o_r_p_a_l_e_t_t_e_d_a_t_a}
+\input{struct_dx_lib_1_1tag_c_u_b_e_d_a_t_a}
+\input{struct_dx_lib_1_1tag_d_a_t_e_d_a_t_a}
+\input{struct_dx_lib_1_1tag_d_i_n_p_u_t___j_o_y_s_t_a_t_e}
+\input{struct_dx_lib_1_1tag_d_i_s_p_l_a_y_m_o_d_e_d_a_t_a}
+\input{struct_dx_lib_1_1tag_d_o_u_b_l_e4}
+\input{struct_dx_lib_1_1tag_d_r_a_w_c_h_a_r_i_n_f_o}
+\input{struct_dx_lib_1_1tag_f_i_l_e_i_n_f_o}
+\input{struct_dx_lib_1_1tag_f_i_l_e_i_n_f_o_w}
+\input{struct_dx_lib_1_1tag_f_l_o_a_t2}
+\input{struct_dx_lib_1_1tag_f_l_o_a_t4}
+\input{struct_dx_lib_1_1tag_h_i_t_r_e_s_u_l_t___l_i_n_e}
+\input{struct_dx_lib_1_1tag_h_i_t_r_e_s_u_l_t___l_i_n_e___d}
+\input{struct_dx_lib_1_1tag_i_m_a_g_e_f_o_r_m_a_t_d_e_s_c}
+\input{struct_dx_lib_1_1tag_i_m_e_i_n_p_u_t_c_l_a_u_s_e_d_a_t_a}
+\input{struct_dx_lib_1_1tag_i_m_e_i_n_p_u_t_d_a_t_a}
+\input{struct_dx_lib_1_1tag_i_n_t4}
+\input{struct_dx_lib_1_1tag_i_p_d_a_t_a}
+\input{struct_dx_lib_1_1tag_i_p_d_a_t_a___i_pv6}
+\input{struct_dx_lib_1_1tag_l_i_g_h_t_p_a_r_a_m}
+\input{struct_dx_lib_1_1tag_l_i_n_e_d_a_t_a}
+\input{struct_dx_lib_1_1tag_m_a_t_e_r_i_a_l_p_a_r_a_m}
+\input{struct_dx_lib_1_1tag_m_a_t_r_i_x}
+\input{struct_dx_lib_1_1tag_m_a_t_r_i_x___d}
+\input{struct_dx_lib_1_1tag_m_v1___c_o_l_l___r_e_s_u_l_t___p_o_l_y}
+\input{struct_dx_lib_1_1tag_m_v1___c_o_l_l___r_e_s_u_l_t___p_o_l_y___d_i_m}
+\input{struct_dx_lib_1_1tag_m_v1___r_e_f___p_o_l_y_g_o_n}
+\input{struct_dx_lib_1_1tag_m_v1___r_e_f___p_o_l_y_g_o_n_l_i_s_t}
+\input{struct_dx_lib_1_1tag_m_v1___r_e_f___v_e_r_t_e_x}
+\input{struct_dx_lib_1_1tag_p_l_a_n_e___p_o_i_n_t___r_e_s_u_l_t}
+\input{struct_dx_lib_1_1tag_p_l_a_n_e___p_o_i_n_t___r_e_s_u_l_t___d}
+\input{struct_dx_lib_1_1tag_p_o_i_n_t_d_a_t_a}
+\input{struct_dx_lib_1_1tag_s_e_g_m_e_n_t___p_o_i_n_t___r_e_s_u_l_t}
+\input{struct_dx_lib_1_1tag_s_e_g_m_e_n_t___p_o_i_n_t___r_e_s_u_l_t___d}
+\input{struct_dx_lib_1_1tag_s_e_g_m_e_n_t___s_e_g_m_e_n_t___r_e_s_u_l_t}
+\input{struct_dx_lib_1_1tag_s_e_g_m_e_n_t___s_e_g_m_e_n_t___r_e_s_u_l_t___d}
+\input{struct_dx_lib_1_1tag_s_e_g_m_e_n_t___t_r_i_a_n_g_l_e___r_e_s_u_l_t}
+\input{struct_dx_lib_1_1tag_s_e_g_m_e_n_t___t_r_i_a_n_g_l_e___r_e_s_u_l_t___d}
+\input{struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m}
+\input{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a}
+\input{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d}
+\input{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2}
+\input{struct_dx_lib_1_1tag_s_t_r_e_a_m_d_a_t_a_s_h_r_e_d_t_y_p_e2_w}
+\input{struct_dx_lib_1_1tag_t_o_u_c_h_i_n_p_u_t_d_a_t_a}
+\input{struct_dx_lib_1_1tag_t_o_u_c_h_i_n_p_u_t_p_o_i_n_t}
+\input{struct_dx_lib_1_1tag_t_r_i_a_n_g_l_e___p_o_i_n_t___r_e_s_u_l_t}
+\input{struct_dx_lib_1_1tag_t_r_i_a_n_g_l_e___p_o_i_n_t___r_e_s_u_l_t___d}
+\input{struct_dx_lib_1_1tag_v_e_c_t_o_r}
+\input{struct_dx_lib_1_1tag_v_e_c_t_o_r___d}
+\input{struct_dx_lib_1_1tag_v_e_r_t_e_x}
+\input{struct_dx_lib_1_1tag_v_e_r_t_e_x2_d}
+\input{struct_dx_lib_1_1tag_v_e_r_t_e_x2_d_s_h_a_d_e_r}
+\input{struct_dx_lib_1_1tag_v_e_r_t_e_x3_d}
+\input{struct_dx_lib_1_1tag_v_e_r_t_e_x3_d_s_h_a_d_e_r}
+\input{struct_dx_lib_1_1tag_v_e_r_t_e_x__3_d}
+\input{struct_dx_lib_1_1tag_x_i_n_p_u_t___s_t_a_t_e}
+\input{class_title_cursor}
+\input{class_title_logo}
+\input{class_tutorial_board}
+\input{structt_w_a_v_e_f_o_r_m_a_t_e_x}
+\input{classpicojson_1_1value}
+\input{class_vector2}
+\input{structwaveformat__tag}
+\input{class_zyounin}
+\input{class_zyounin_attack_collision}
+\chapter{ファイル詳解}
+\input{_dx_compile_config_8h}
+\input{_dx_compile_config_8h_source}
+\input{_dx_data_type_8h}
+\input{_dx_data_type_8h_source}
+\input{_dx_data_type_win_8h}
+\input{_dx_data_type_win_8h_source}
+\input{_dx_function_win_8h}
+\input{_dx_function_win_8h_source}
+\input{_dx_lib_8h}
+\input{_dx_lib_8h_source}
+\input{_andon_8cpp}
+\input{_andon_8h}
+\input{_andon_8h_source}
+\input{_back_ground_8cpp}
+\input{_back_ground_8h}
+\input{_back_ground_8h_source}
+\input{_boss_8cpp}
+\input{_boss_8h}
+\input{_boss_8h_source}
+\input{_boss_blood_8cpp}
+\input{_boss_blood_8h}
+\input{_boss_blood_8h_source}
+\input{_boss_event_8cpp}
+\input{_boss_event_8h}
+\input{_boss_event_8h_source}
+\input{_boss_stair_8cpp}
+\input{_boss_stair_8h}
+\input{_boss_stair_8h_source}
+\input{_bushi_8cpp}
+\input{_bushi_8h}
+\input{_bushi_8h_source}
+\input{_bushi_motion_8cpp}
+\input{_bushi_motion_collision_8cpp}
+\input{_bushi_motion_collision_8h}
+\input{_bushi_motion_collision_8h_source}
+\input{_busyo_8cpp}
+\input{_busyo_8h}
+\input{_busyo_8h_source}
+\input{_busyo_motion_8cpp}
+\input{_busyo_motion_collision_8cpp}
+\input{_busyo_motion_collision_8h}
+\input{_busyo_motion_collision_8h_source}
+\input{_c_point_block_8cpp}
+\input{_c_point_block_8h}
+\input{_c_point_block_8h_source}
+\input{_credit_left_guide_8cpp}
+\input{_credit_left_guide_8h}
+\input{_credit_left_guide_8h_source}
+\input{_credit_red_return_8cpp}
+\input{_credit_red_return_8h}
+\input{_credit_red_return_8h_source}
+\input{_cursor_8cpp}
+\input{_cursor_8h}
+\input{_cursor_8h_source}
+\input{_efect_base_8cpp}
+\input{_efect_base_8h}
+\input{_efect_base_8h_source}
+\input{_enemy_base_8cpp}
+\input{_enemy_base_8h}
+\input{_enemy_base_8h_source}
+\input{_enemy_particle_8cpp}
+\input{_enemy_particle_8h}
+\input{_enemy_particle_8h_source}
+\input{_enemy_spawn_8cpp}
+\input{_enemy_spawn_8h}
+\input{_enemy_spawn_8h_source}
+\input{_epilogue_text_8cpp}
+\input{_epilogue_text_8h}
+\input{_epilogue_text_8h_source}
+\input{_event_happen_8cpp}
+\input{_event_happen_8h}
+\input{_event_happen_8h_source}
+\input{_flame_8cpp}
+\input{_flame_8h}
+\input{_flame_8h_source}
+\input{_flame_block_8cpp}
+\input{_flame_block_8h}
+\input{_flame_block_8h_source}
+\input{_flame_perform_particle_8cpp}
+\input{_flame_perform_particle_8h}
+\input{_flame_perform_particle_8h_source}
+\input{_game_8cpp}
+\input{_game_8h}
+\input{_game_8h_source}
+\input{_gimik_placement_8cpp}
+\input{_gimik_placement_8h}
+\input{_gimik_placement_8h_source}
+\input{_hit_box_8h}
+\input{_hit_box_8h_source}
+\input{_iai_gauge_8cpp}
+\input{_iai_gauge_8h}
+\input{_iai_gauge_8h_source}
+\input{_ingame_text_block_8cpp}
+\input{_ingame_text_block_8h}
+\input{_ingame_text_block_8h_source}
+\input{_kunai_8cpp}
+\input{_kunai_8h}
+\input{_kunai_8h_source}
+\input{_lancer_8cpp}
+\input{_lancer_8h}
+\input{_lancer_8h_source}
+\input{_lancer_motion_8cpp}
+\input{_lancer_motion_collision_8cpp}
+\input{_lancer_motion_collision_8h}
+\input{_lancer_motion_collision_8h_source}
+\input{_low_blood_8cpp}
+\input{_low_blood_8h}
+\input{_low_blood_8h_source}
+\input{_main_8cpp}
+\input{_map_chip_8cpp}
+\input{_map_chip_8h}
+\input{_map_chip_8h_source}
+\input{_math_8cpp}
+\input{_math_8h}
+\input{_math_8h_source}
+\input{_middle_blood_8cpp}
+\input{_middle_blood_8h}
+\input{_middle_blood_8h_source}
+\input{_mode_base_8cpp}
+\input{_mode_base_8h}
+\input{_mode_base_8h_source}
+\input{_mode_boss_before_8cpp}
+\input{_mode_boss_before_8h}
+\input{_mode_boss_before_8h_source}
+\input{_mode_credit_8cpp}
+\input{_mode_credit_8h}
+\input{_mode_credit_8h_source}
+\input{_mode_epilogue_8cpp}
+\input{_mode_epilogue_8h}
+\input{_mode_epilogue_8h_source}
+\input{_mode_ex_plain_8cpp}
+\input{_mode_ex_plain_8h}
+\input{_mode_ex_plain_8h_source}
+\input{_mode_game_8cpp}
+\input{_mode_game_8h}
+\input{_mode_game_8h_source}
+\input{_mode_gameover_8cpp}
+\input{_mode_gameover_8h}
+\input{_mode_gameover_8h_source}
+\input{_mode_ingame_text_8cpp}
+\input{_mode_ingame_text_8h}
+\input{_mode_ingame_text_8h_source}
+\input{_mode_pause_8cpp}
+\input{_mode_pause_8h}
+\input{_mode_pause_8h_source}
+\input{_mode_prologue_8cpp}
+\input{_mode_prologue_8h}
+\input{_mode_prologue_8h_source}
+\input{_mode_server_8cpp}
+\input{_mode_server_8h}
+\input{_mode_server_8h_source}
+\input{_mode_title_8cpp}
+\input{_mode_title_8h}
+\input{_mode_title_8h_source}
+\input{_mode_tutorial_8cpp}
+\input{_mode_tutorial_8h}
+\input{_mode_tutorial_8h_source}
+\input{_mugen_andon_8cpp}
+\input{_mugen_andon_8h}
+\input{_mugen_andon_8h_source}
+\input{_mugen_flame_8cpp}
+\input{_mugen_flame_8h}
+\input{_mugen_flame_8h_source}
+\input{_ninja_8cpp}
+\input{_ninja_8h}
+\input{_ninja_8h_source}
+\input{_ninja_motion_8cpp}
+\input{_ninja_motion_collision_8cpp}
+\input{_ninja_motion_collision_8h}
+\input{_ninja_motion_collision_8h_source}
+\input{_object_base_8cpp}
+\input{_object_base_8h}
+\input{_object_base_8h_source}
+\input{_object_server_8cpp}
+\input{_object_server_8h}
+\input{_object_server_8h_source}
+\input{_out_game_particle_8cpp}
+\input{_out_game_particle_8h}
+\input{_out_game_particle_8h_source}
+\input{_overlay_black_8cpp}
+\input{_overlay_black_8h}
+\input{_overlay_black_8h_source}
+\input{_overlay_flame_8cpp}
+\input{_overlay_flame_8h}
+\input{_overlay_flame_8h_source}
+\input{_overlogo_8cpp}
+\input{_overlogo_8h}
+\input{_overlogo_8h_source}
+\input{_over_select_8cpp}
+\input{_over_select_8h}
+\input{_over_select_8h_source}
+\input{_particle_base_8cpp}
+\input{_particle_base_8h}
+\input{_particle_base_8h_source}
+\input{_pause_controller_8cpp}
+\input{_pause_controller_8h}
+\input{_pause_controller_8h_source}
+\input{_pause_select_8cpp}
+\input{_pause_select_8h}
+\input{_pause_select_8h_source}
+\input{_tensyukaku_2picojson_2picojson_8h}
+\input{_tensyukaku_2picojson_2picojson_8h_source}
+\input{x64_2_release_2picojson_2picojson_8h}
+\input{x64_2_release_2picojson_2picojson_8h_source}
+\input{_player_8cpp}
+\input{_player_8h}
+\input{_player_8h_source}
+\input{_player_hp_8cpp}
+\input{_player_hp_8h}
+\input{_player_hp_8h_source}
+\input{_player_motion_8cpp}
+\input{_player_motion_collision_8cpp}
+\input{_player_motion_collision_8h}
+\input{_player_motion_collision_8h_source}
+\input{_player_particle_8cpp}
+\input{_player_particle_8h}
+\input{_player_particle_8h_source}
+\input{_poison_8cpp}
+\input{_poison_8h}
+\input{_poison_8h_source}
+\input{_poison_ninja_8cpp}
+\input{_poison_ninja_8h}
+\input{_poison_ninja_8h_source}
+\input{_private_collision_8cpp}
+\input{_private_collision_8h}
+\input{_private_collision_8h_source}
+\input{_prologue_text_8cpp}
+\input{_prologue_text_8h}
+\input{_prologue_text_8h_source}
+\input{_recovery_block_8cpp}
+\input{_recovery_block_8h}
+\input{_recovery_block_8h_source}
+\input{_resource_server_8cpp}
+\input{_resource_server_8h}
+\input{_resource_server_8h_source}
+\input{_rest_point_8cpp}
+\input{_rest_point_8h}
+\input{_rest_point_8h_source}
+\input{_shield_8cpp}
+\input{_shield_8h}
+\input{_shield_8h_source}
+\input{_shielder_8cpp}
+\input{_shielder_8h}
+\input{_shielder_8h_source}
+\input{_shielder_motion_8cpp}
+\input{_shielder_motion_collision_8cpp}
+\input{_shielder_motion_collision_8h}
+\input{_shielder_motion_collision_8h_source}
+\input{_spawn_block_8cpp}
+\input{_spawn_block_8h}
+\input{_spawn_block_8h_source}
+\input{_spawn_block_base_8cpp}
+\input{_spawn_block_base_8h}
+\input{_spawn_block_base_8h_source}
+\input{_stair_8cpp}
+\input{_stair_8h}
+\input{_stair_8h_source}
+\input{_title_cursor_8cpp}
+\input{_title_cursor_8h}
+\input{_title_cursor_8h_source}
+\input{_title_select_8cpp}
+\input{_title_select_8h}
+\input{_title_select_8h_source}
+\input{_tutorial_board_8cpp}
+\input{_tutorial_board_8h}
+\input{_tutorial_board_8h_source}
+\input{_zyounin_8cpp}
+\input{_zyounin_8h}
+\input{_zyounin_8h_source}
+\input{_zyounin_motion_8cpp}
+\input{_zyounin_motion_collision_8cpp}
+\input{_zyounin_motion_collision_8h}
+\input{_zyounin_motion_collision_8h_source}
+%--- End generated contents ---
+% Index
+  \backmatter
+  \newpage
+  \phantomsection
+  \clearemptydoublepage
+  \addcontentsline{toc}{chapter}{\indexname}
+  \printindex
+% Required for some languages (in combination with latexdocumentpre from the header)
+\end{CJK}
+\end{document}

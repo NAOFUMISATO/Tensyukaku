@@ -1,0 +1,638 @@
+\hypertarget{classpicojson_1_1value}{}\doxysection{picojson\+::value クラス}
+\label{classpicojson_1_1value}\index{picojson::value@{picojson::value}}
+
+
+{\ttfamily \#include $<$picojson.\+h$>$}
+
+\doxysubsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionpicojson_1_1value_1_1__storage}{\+\_\+storage}}
+\end{DoxyCompactItemize}
+\doxysubsection*{公開型}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{classpicojson_1_1value}{value}} $>$ \mbox{\hyperlink{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}{array}}
+\item 
+typedef std\+::map$<$ std\+::string, \mbox{\hyperlink{classpicojson_1_1value}{value}} $>$ \mbox{\hyperlink{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}{object}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{classpicojson_1_1value}{value}} $>$ \mbox{\hyperlink{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}{array}}
+\item 
+typedef std\+::map$<$ std\+::string, \mbox{\hyperlink{classpicojson_1_1value}{value}} $>$ \mbox{\hyperlink{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}{object}}
+\end{DoxyCompactItemize}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a445f8d1b335e7bcad6abd6c310b44c75}{value}} ()
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_acd1d55ac7333a3e482e469b3d99fdf6e}{value}} (int type, bool)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a43d8a33c3dbea0c5853bef4577a0d10e}{value}} (bool b)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_af19f6d5889d90e77e76af05aacaba321}{value}} (double n)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_aa4841f2dd8deeaffca7a225075b88da9}{value}} (const std\+::string \&s)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a729e8f01d9bb4686daac82d0d3295afe}{value}} (const \mbox{\hyperlink{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}{array}} \&a)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a2b6beb88edf85e213893b805b354c87e}{value}} (const \mbox{\hyperlink{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}{object}} \&o)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a94f324d88fd16c1338fc9a228ec3dc3c}{value}} (const char $\ast$s)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_ae56da06e2b438f4425300a218150398d}{value}} (const char $\ast$s, size\+\_\+t len)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_aa75329d73af82b8a7daab1905f8609d0}{$\sim$value}} ()
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a89a827eee72398d3678509cdd65c777d}{value}} (const \mbox{\hyperlink{classpicojson_1_1value}{value}} \&x)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_acc5e4506e6a793af5132983573f9da6a}{operator=}} (const \mbox{\hyperlink{classpicojson_1_1value}{value}} \&x)
+\item 
+void \mbox{\hyperlink{classpicojson_1_1value_a6e3ac589ed811603ef9dadc6f91c737d}{swap}} (\mbox{\hyperlink{classpicojson_1_1value}{value}} \&x)  throw ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{classpicojson_1_1value_afd038ffc8a714c5d2f4b59adaaaca4ce}{is}} () const
+\item 
+{\footnotesize template$<$typename T $>$ }\\const T \& \mbox{\hyperlink{classpicojson_1_1value_a13bd312245da5d28a8ae13b3df3d7301}{get}} () const
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classpicojson_1_1value_adc48acc9aac7200d2cb448df9a719b20}{get}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classpicojson_1_1value_a5349fff183e52146f2835d7fa0a10358}{set}} (const T \&)
+\item 
+bool \mbox{\hyperlink{classpicojson_1_1value_a389873791af4898a52edc12b967a543f}{evaluate\+\_\+as\+\_\+boolean}} () const
+\item 
+const \mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_acc8ae9933e893337b3b3613827939942}{get}} (const size\+\_\+t idx) const
+\item 
+const \mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_aafe8fe780ae3b149bb7bd353e39d6f29}{get}} (const std\+::string \&key) const
+\item 
+\mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_a9e1fe86e19d297846f9ea11ec097bd96}{get}} (const size\+\_\+t idx)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_a72f3216a2536e4e088e70b0f1617fc11}{get}} (const std\+::string \&key)
+\item 
+bool \mbox{\hyperlink{classpicojson_1_1value_ab158ecb69f714bbc2741fd5f99ba9b25}{contains}} (const size\+\_\+t idx) const
+\item 
+bool \mbox{\hyperlink{classpicojson_1_1value_a67fed7e1effed5c14fdb7f912f933842}{contains}} (const std\+::string \&key) const
+\item 
+std\+::string \mbox{\hyperlink{classpicojson_1_1value_a005099b2865752cf31b7ced33bd85f59}{to\+\_\+str}} () const
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\void \mbox{\hyperlink{classpicojson_1_1value_a23664084ed4a8ecbfda901484de34bbc}{serialize}} (Iter os, bool prettify=false) const
+\item 
+std\+::string \mbox{\hyperlink{classpicojson_1_1value_ad5fa91c040826e85855678db9258238d}{serialize}} (bool prettify=false) const
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a445f8d1b335e7bcad6abd6c310b44c75}{value}} ()
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_acd1d55ac7333a3e482e469b3d99fdf6e}{value}} (int type, bool)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a43d8a33c3dbea0c5853bef4577a0d10e}{value}} (bool b)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_af19f6d5889d90e77e76af05aacaba321}{value}} (double n)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_aa4841f2dd8deeaffca7a225075b88da9}{value}} (const std\+::string \&s)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a729e8f01d9bb4686daac82d0d3295afe}{value}} (const \mbox{\hyperlink{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}{array}} \&a)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a2b6beb88edf85e213893b805b354c87e}{value}} (const \mbox{\hyperlink{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}{object}} \&o)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a94f324d88fd16c1338fc9a228ec3dc3c}{value}} (const char $\ast$s)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_ae56da06e2b438f4425300a218150398d}{value}} (const char $\ast$s, size\+\_\+t len)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_aa75329d73af82b8a7daab1905f8609d0}{$\sim$value}} ()
+\item 
+\mbox{\hyperlink{classpicojson_1_1value_a89a827eee72398d3678509cdd65c777d}{value}} (const \mbox{\hyperlink{classpicojson_1_1value}{value}} \&x)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_acc5e4506e6a793af5132983573f9da6a}{operator=}} (const \mbox{\hyperlink{classpicojson_1_1value}{value}} \&x)
+\item 
+void \mbox{\hyperlink{classpicojson_1_1value_a6e3ac589ed811603ef9dadc6f91c737d}{swap}} (\mbox{\hyperlink{classpicojson_1_1value}{value}} \&x)  throw ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{classpicojson_1_1value_afd038ffc8a714c5d2f4b59adaaaca4ce}{is}} () const
+\item 
+{\footnotesize template$<$typename T $>$ }\\const T \& \mbox{\hyperlink{classpicojson_1_1value_a13bd312245da5d28a8ae13b3df3d7301}{get}} () const
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classpicojson_1_1value_adc48acc9aac7200d2cb448df9a719b20}{get}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classpicojson_1_1value_a5349fff183e52146f2835d7fa0a10358}{set}} (const T \&)
+\item 
+bool \mbox{\hyperlink{classpicojson_1_1value_a389873791af4898a52edc12b967a543f}{evaluate\+\_\+as\+\_\+boolean}} () const
+\item 
+const \mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_acc8ae9933e893337b3b3613827939942}{get}} (const size\+\_\+t idx) const
+\item 
+const \mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_aafe8fe780ae3b149bb7bd353e39d6f29}{get}} (const std\+::string \&key) const
+\item 
+\mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_a9e1fe86e19d297846f9ea11ec097bd96}{get}} (const size\+\_\+t idx)
+\item 
+\mbox{\hyperlink{classpicojson_1_1value}{value}} \& \mbox{\hyperlink{classpicojson_1_1value_a72f3216a2536e4e088e70b0f1617fc11}{get}} (const std\+::string \&key)
+\item 
+bool \mbox{\hyperlink{classpicojson_1_1value_ab158ecb69f714bbc2741fd5f99ba9b25}{contains}} (const size\+\_\+t idx) const
+\item 
+bool \mbox{\hyperlink{classpicojson_1_1value_a67fed7e1effed5c14fdb7f912f933842}{contains}} (const std\+::string \&key) const
+\item 
+std\+::string \mbox{\hyperlink{classpicojson_1_1value_a005099b2865752cf31b7ced33bd85f59}{to\+\_\+str}} () const
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\void \mbox{\hyperlink{classpicojson_1_1value_a23664084ed4a8ecbfda901484de34bbc}{serialize}} (Iter os, bool prettify=false) const
+\item 
+std\+::string \mbox{\hyperlink{classpicojson_1_1value_ad5fa91c040826e85855678db9258238d}{serialize}} (bool prettify=false) const
+\item 
+template$<$$>$ bool \mbox{\hyperlink{classpicojson_1_1value_a0b3fb432ea49151f8787026e8f8c0801}{is}} () const
+\item 
+template$<$$>$ bool \mbox{\hyperlink{classpicojson_1_1value_a0b3fb432ea49151f8787026e8f8c0801}{is}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classpicojson_1_1value_af77ae4525a20f6fce6ea9ff1c4709312}{type\+\_\+}}
+\item 
+\mbox{\hyperlink{unionpicojson_1_1value_1_1__storage}{\+\_\+storage}} \mbox{\hyperlink{classpicojson_1_1value_aa7948fe10fcbc19ab9c8dee5e5099f77}{u\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classpicojson_1_1value_a70073bc82941e0d7ba30fd01c0c56720}{value}} (const T $\ast$)
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\void \mbox{\hyperlink{classpicojson_1_1value_afb9b2e37050a713bc4756eabb8227780}{\+\_\+serialize}} (Iter os, int indent) const
+\item 
+std\+::string \mbox{\hyperlink{classpicojson_1_1value_accd2fdc154dde2b4d5f56f81d9e4d24f}{\+\_\+serialize}} (int indent) const
+\item 
+void \mbox{\hyperlink{classpicojson_1_1value_a7131a933821181b71855c73665e8b5fd}{clear}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classpicojson_1_1value_a70073bc82941e0d7ba30fd01c0c56720}{value}} (const T $\ast$)
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\void \mbox{\hyperlink{classpicojson_1_1value_afb9b2e37050a713bc4756eabb8227780}{\+\_\+serialize}} (Iter os, int indent) const
+\item 
+std\+::string \mbox{\hyperlink{classpicojson_1_1value_accd2fdc154dde2b4d5f56f81d9e4d24f}{\+\_\+serialize}} (int indent) const
+\item 
+void \mbox{\hyperlink{classpicojson_1_1value_a7131a933821181b71855c73665e8b5fd}{clear}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{静的非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\static void \mbox{\hyperlink{classpicojson_1_1value_a77e7010130044c72b8e9151d4d2d9828}{\+\_\+indent}} (Iter os, int indent)
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\static void \mbox{\hyperlink{classpicojson_1_1value_adabdd5b3960e55566d334ad0078bb13c}{\+\_\+indent}} (Iter os, int indent)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{型定義メンバ詳解}
+\mbox{\Hypertarget{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}\label{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}} 
+\index{picojson::value@{picojson::value}!array@{array}}
+\index{array@{array}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{array}{array}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily typedef std\+::vector$<$\mbox{\hyperlink{classpicojson_1_1value}{value}}$>$ \mbox{\hyperlink{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}{picojson\+::value\+::array}}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}\label{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}} 
+\index{picojson::value@{picojson::value}!array@{array}}
+\index{array@{array}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{array}{array}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily typedef std\+::vector$<$\mbox{\hyperlink{classpicojson_1_1value}{value}}$>$ \mbox{\hyperlink{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}{picojson\+::value\+::array}}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}\label{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}} 
+\index{picojson::value@{picojson::value}!object@{object}}
+\index{object@{object}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{object}{object}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily typedef std\+::map$<$std\+::string, \mbox{\hyperlink{classpicojson_1_1value}{value}}$>$ \mbox{\hyperlink{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}{picojson\+::value\+::object}}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}\label{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}} 
+\index{picojson::value@{picojson::value}!object@{object}}
+\index{object@{object}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{object}{object}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily typedef std\+::map$<$std\+::string, \mbox{\hyperlink{classpicojson_1_1value}{value}}$>$ \mbox{\hyperlink{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}{picojson\+::value\+::object}}}
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classpicojson_1_1value_a445f8d1b335e7bcad6abd6c310b44c75}\label{classpicojson_1_1value_a445f8d1b335e7bcad6abd6c310b44c75}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [1/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_acd1d55ac7333a3e482e469b3d99fdf6e}\label{classpicojson_1_1value_acd1d55ac7333a3e482e469b3d99fdf6e}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [2/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{int}]{type,  }\item[{bool}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a43d8a33c3dbea0c5853bef4577a0d10e}\label{classpicojson_1_1value_a43d8a33c3dbea0c5853bef4577a0d10e}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [3/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_af19f6d5889d90e77e76af05aacaba321}\label{classpicojson_1_1value_af19f6d5889d90e77e76af05aacaba321}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [4/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{double}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_aa4841f2dd8deeaffca7a225075b88da9}\label{classpicojson_1_1value_aa4841f2dd8deeaffca7a225075b88da9}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [5/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a729e8f01d9bb4686daac82d0d3295afe}\label{classpicojson_1_1value_a729e8f01d9bb4686daac82d0d3295afe}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [6/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}{array}} \&}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a2b6beb88edf85e213893b805b354c87e}\label{classpicojson_1_1value_a2b6beb88edf85e213893b805b354c87e}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [7/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}{object}} \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a94f324d88fd16c1338fc9a228ec3dc3c}\label{classpicojson_1_1value_a94f324d88fd16c1338fc9a228ec3dc3c}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [8/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_ae56da06e2b438f4425300a218150398d}\label{classpicojson_1_1value_ae56da06e2b438f4425300a218150398d}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [9/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_aa75329d73af82b8a7daab1905f8609d0}\label{classpicojson_1_1value_aa75329d73af82b8a7daab1905f8609d0}} 
+\index{picojson::value@{picojson::value}!````~value@{$\sim$value}}
+\index{````~value@{$\sim$value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{$\sim$value()}{~value()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily picojson\+::value\+::$\sim$value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a89a827eee72398d3678509cdd65c777d}\label{classpicojson_1_1value_a89a827eee72398d3678509cdd65c777d}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [10/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpicojson_1_1value}{value}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a70073bc82941e0d7ba30fd01c0c56720}\label{classpicojson_1_1value_a70073bc82941e0d7ba30fd01c0c56720}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [11/22]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const T $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a445f8d1b335e7bcad6abd6c310b44c75}\label{classpicojson_1_1value_a445f8d1b335e7bcad6abd6c310b44c75}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [12/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_acd1d55ac7333a3e482e469b3d99fdf6e}\label{classpicojson_1_1value_acd1d55ac7333a3e482e469b3d99fdf6e}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [13/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{int}]{type,  }\item[{bool}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a43d8a33c3dbea0c5853bef4577a0d10e}\label{classpicojson_1_1value_a43d8a33c3dbea0c5853bef4577a0d10e}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [14/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_af19f6d5889d90e77e76af05aacaba321}\label{classpicojson_1_1value_af19f6d5889d90e77e76af05aacaba321}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [15/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{double}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_aa4841f2dd8deeaffca7a225075b88da9}\label{classpicojson_1_1value_aa4841f2dd8deeaffca7a225075b88da9}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [16/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a729e8f01d9bb4686daac82d0d3295afe}\label{classpicojson_1_1value_a729e8f01d9bb4686daac82d0d3295afe}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [17/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpicojson_1_1value_adeff4fdf7ee5675eeb7686bb89233c43}{array}} \&}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a2b6beb88edf85e213893b805b354c87e}\label{classpicojson_1_1value_a2b6beb88edf85e213893b805b354c87e}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [18/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpicojson_1_1value_a7d7da11d54d7b983a902d28367bda9c1}{object}} \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a94f324d88fd16c1338fc9a228ec3dc3c}\label{classpicojson_1_1value_a94f324d88fd16c1338fc9a228ec3dc3c}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [19/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_ae56da06e2b438f4425300a218150398d}\label{classpicojson_1_1value_ae56da06e2b438f4425300a218150398d}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [20/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_aa75329d73af82b8a7daab1905f8609d0}\label{classpicojson_1_1value_aa75329d73af82b8a7daab1905f8609d0}} 
+\index{picojson::value@{picojson::value}!````~value@{$\sim$value}}
+\index{````~value@{$\sim$value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{$\sim$value()}{~value()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily picojson\+::value\+::$\sim$value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a89a827eee72398d3678509cdd65c777d}\label{classpicojson_1_1value_a89a827eee72398d3678509cdd65c777d}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [21/22]}}
+{\footnotesize\ttfamily picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpicojson_1_1value}{value}} \&}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a70073bc82941e0d7ba30fd01c0c56720}\label{classpicojson_1_1value_a70073bc82941e0d7ba30fd01c0c56720}} 
+\index{picojson::value@{picojson::value}!value@{value}}
+\index{value@{value}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [22/22]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+picojson\+::value\+::value (\begin{DoxyParamCaption}\item[{const T $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classpicojson_1_1value_a77e7010130044c72b8e9151d4d2d9828}\label{classpicojson_1_1value_a77e7010130044c72b8e9151d4d2d9828}} 
+\index{picojson::value@{picojson::value}!\_indent@{\_indent}}
+\index{\_indent@{\_indent}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{\_indent()}{\_indent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Iter $>$ \\
+void picojson\+::value\+::\+\_\+indent (\begin{DoxyParamCaption}\item[{Iter}]{os,  }\item[{int}]{indent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_adabdd5b3960e55566d334ad0078bb13c}\label{classpicojson_1_1value_adabdd5b3960e55566d334ad0078bb13c}} 
+\index{picojson::value@{picojson::value}!\_indent@{\_indent}}
+\index{\_indent@{\_indent}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{\_indent()}{\_indent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Iter $>$ \\
+static void picojson\+::value\+::\+\_\+indent (\begin{DoxyParamCaption}\item[{Iter}]{os,  }\item[{int}]{indent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_accd2fdc154dde2b4d5f56f81d9e4d24f}\label{classpicojson_1_1value_accd2fdc154dde2b4d5f56f81d9e4d24f}} 
+\index{picojson::value@{picojson::value}!\_serialize@{\_serialize}}
+\index{\_serialize@{\_serialize}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{\_serialize()}{\_serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily std\+::string picojson\+::value\+::\+\_\+serialize (\begin{DoxyParamCaption}\item[{int}]{indent }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_accd2fdc154dde2b4d5f56f81d9e4d24f}\label{classpicojson_1_1value_accd2fdc154dde2b4d5f56f81d9e4d24f}} 
+\index{picojson::value@{picojson::value}!\_serialize@{\_serialize}}
+\index{\_serialize@{\_serialize}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{\_serialize()}{\_serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily std\+::string picojson\+::value\+::\+\_\+serialize (\begin{DoxyParamCaption}\item[{int}]{indent }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_afb9b2e37050a713bc4756eabb8227780}\label{classpicojson_1_1value_afb9b2e37050a713bc4756eabb8227780}} 
+\index{picojson::value@{picojson::value}!\_serialize@{\_serialize}}
+\index{\_serialize@{\_serialize}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{\_serialize()}{\_serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename Iter $>$ \\
+void picojson\+::value\+::\+\_\+serialize (\begin{DoxyParamCaption}\item[{Iter}]{os,  }\item[{int}]{indent }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_afb9b2e37050a713bc4756eabb8227780}\label{classpicojson_1_1value_afb9b2e37050a713bc4756eabb8227780}} 
+\index{picojson::value@{picojson::value}!\_serialize@{\_serialize}}
+\index{\_serialize@{\_serialize}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{\_serialize()}{\_serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename Iter $>$ \\
+void picojson\+::value\+::\+\_\+serialize (\begin{DoxyParamCaption}\item[{Iter}]{os,  }\item[{int}]{indent }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a7131a933821181b71855c73665e8b5fd}\label{classpicojson_1_1value_a7131a933821181b71855c73665e8b5fd}} 
+\index{picojson::value@{picojson::value}!clear@{clear}}
+\index{clear@{clear}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void picojson\+::value\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a7131a933821181b71855c73665e8b5fd}\label{classpicojson_1_1value_a7131a933821181b71855c73665e8b5fd}} 
+\index{picojson::value@{picojson::value}!clear@{clear}}
+\index{clear@{clear}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void picojson\+::value\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_ab158ecb69f714bbc2741fd5f99ba9b25}\label{classpicojson_1_1value_ab158ecb69f714bbc2741fd5f99ba9b25}} 
+\index{picojson::value@{picojson::value}!contains@{contains}}
+\index{contains@{contains}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily bool picojson\+::value\+::contains (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_ab158ecb69f714bbc2741fd5f99ba9b25}\label{classpicojson_1_1value_ab158ecb69f714bbc2741fd5f99ba9b25}} 
+\index{picojson::value@{picojson::value}!contains@{contains}}
+\index{contains@{contains}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily bool picojson\+::value\+::contains (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a67fed7e1effed5c14fdb7f912f933842}\label{classpicojson_1_1value_a67fed7e1effed5c14fdb7f912f933842}} 
+\index{picojson::value@{picojson::value}!contains@{contains}}
+\index{contains@{contains}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily bool picojson\+::value\+::contains (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a67fed7e1effed5c14fdb7f912f933842}\label{classpicojson_1_1value_a67fed7e1effed5c14fdb7f912f933842}} 
+\index{picojson::value@{picojson::value}!contains@{contains}}
+\index{contains@{contains}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily bool picojson\+::value\+::contains (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a389873791af4898a52edc12b967a543f}\label{classpicojson_1_1value_a389873791af4898a52edc12b967a543f}} 
+\index{picojson::value@{picojson::value}!evaluate\_as\_boolean@{evaluate\_as\_boolean}}
+\index{evaluate\_as\_boolean@{evaluate\_as\_boolean}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{evaluate\_as\_boolean()}{evaluate\_as\_boolean()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool picojson\+::value\+::evaluate\+\_\+as\+\_\+boolean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a389873791af4898a52edc12b967a543f}\label{classpicojson_1_1value_a389873791af4898a52edc12b967a543f}} 
+\index{picojson::value@{picojson::value}!evaluate\_as\_boolean@{evaluate\_as\_boolean}}
+\index{evaluate\_as\_boolean@{evaluate\_as\_boolean}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{evaluate\_as\_boolean()}{evaluate\_as\_boolean()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool picojson\+::value\+::evaluate\+\_\+as\+\_\+boolean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_adc48acc9aac7200d2cb448df9a719b20}\label{classpicojson_1_1value_adc48acc9aac7200d2cb448df9a719b20}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/12]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& picojson\+::value\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_adc48acc9aac7200d2cb448df9a719b20}\label{classpicojson_1_1value_adc48acc9aac7200d2cb448df9a719b20}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/12]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& picojson\+::value\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a13bd312245da5d28a8ae13b3df3d7301}\label{classpicojson_1_1value_a13bd312245da5d28a8ae13b3df3d7301}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [3/12]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const T \& picojson\+::value\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a13bd312245da5d28a8ae13b3df3d7301}\label{classpicojson_1_1value_a13bd312245da5d28a8ae13b3df3d7301}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const T \& picojson\+::value\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a9e1fe86e19d297846f9ea11ec097bd96}\label{classpicojson_1_1value_a9e1fe86e19d297846f9ea11ec097bd96}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [5/12]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::get (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a9e1fe86e19d297846f9ea11ec097bd96}\label{classpicojson_1_1value_a9e1fe86e19d297846f9ea11ec097bd96}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [6/12]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::get (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_acc8ae9933e893337b3b3613827939942}\label{classpicojson_1_1value_acc8ae9933e893337b3b3613827939942}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [7/12]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::get (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_acc8ae9933e893337b3b3613827939942}\label{classpicojson_1_1value_acc8ae9933e893337b3b3613827939942}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [8/12]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::get (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a72f3216a2536e4e088e70b0f1617fc11}\label{classpicojson_1_1value_a72f3216a2536e4e088e70b0f1617fc11}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [9/12]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a72f3216a2536e4e088e70b0f1617fc11}\label{classpicojson_1_1value_a72f3216a2536e4e088e70b0f1617fc11}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [10/12]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_aafe8fe780ae3b149bb7bd353e39d6f29}\label{classpicojson_1_1value_aafe8fe780ae3b149bb7bd353e39d6f29}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_aafe8fe780ae3b149bb7bd353e39d6f29}\label{classpicojson_1_1value_aafe8fe780ae3b149bb7bd353e39d6f29}} 
+\index{picojson::value@{picojson::value}!get@{get}}
+\index{get@{get}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [12/12]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_afd038ffc8a714c5d2f4b59adaaaca4ce}\label{classpicojson_1_1value_afd038ffc8a714c5d2f4b59adaaaca4ce}} 
+\index{picojson::value@{picojson::value}!is@{is}}
+\index{is@{is}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{is()}{is()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool picojson\+::value\+::is (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a0b3fb432ea49151f8787026e8f8c0801}\label{classpicojson_1_1value_a0b3fb432ea49151f8787026e8f8c0801}} 
+\index{picojson::value@{picojson::value}!is@{is}}
+\index{is@{is}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{is()}{is()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+bool picojson\+::value\+::is (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_afd038ffc8a714c5d2f4b59adaaaca4ce}\label{classpicojson_1_1value_afd038ffc8a714c5d2f4b59adaaaca4ce}} 
+\index{picojson::value@{picojson::value}!is@{is}}
+\index{is@{is}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{is()}{is()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool picojson\+::value\+::is (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a0b3fb432ea49151f8787026e8f8c0801}\label{classpicojson_1_1value_a0b3fb432ea49151f8787026e8f8c0801}} 
+\index{picojson::value@{picojson::value}!is@{is}}
+\index{is@{is}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{is()}{is()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+bool picojson\+::value\+::is (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_acc5e4506e6a793af5132983573f9da6a}\label{classpicojson_1_1value_acc5e4506e6a793af5132983573f9da6a}} 
+\index{picojson::value@{picojson::value}!operator=@{operator=}}
+\index{operator=@{operator=}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpicojson_1_1value}{value}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_acc5e4506e6a793af5132983573f9da6a}\label{classpicojson_1_1value_acc5e4506e6a793af5132983573f9da6a}} 
+\index{picojson::value@{picojson::value}!operator=@{operator=}}
+\index{operator=@{operator=}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpicojson_1_1value}{value}} \& picojson\+::value\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classpicojson_1_1value}{value}} \&}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_ad5fa91c040826e85855678db9258238d}\label{classpicojson_1_1value_ad5fa91c040826e85855678db9258238d}} 
+\index{picojson::value@{picojson::value}!serialize@{serialize}}
+\index{serialize@{serialize}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily std\+::string picojson\+::value\+::serialize (\begin{DoxyParamCaption}\item[{bool}]{prettify = {\ttfamily false} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_ad5fa91c040826e85855678db9258238d}\label{classpicojson_1_1value_ad5fa91c040826e85855678db9258238d}} 
+\index{picojson::value@{picojson::value}!serialize@{serialize}}
+\index{serialize@{serialize}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily std\+::string picojson\+::value\+::serialize (\begin{DoxyParamCaption}\item[{bool}]{prettify = {\ttfamily false} }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a23664084ed4a8ecbfda901484de34bbc}\label{classpicojson_1_1value_a23664084ed4a8ecbfda901484de34bbc}} 
+\index{picojson::value@{picojson::value}!serialize@{serialize}}
+\index{serialize@{serialize}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename Iter $>$ \\
+void picojson\+::value\+::serialize (\begin{DoxyParamCaption}\item[{Iter}]{os,  }\item[{bool}]{prettify = {\ttfamily false} }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a23664084ed4a8ecbfda901484de34bbc}\label{classpicojson_1_1value_a23664084ed4a8ecbfda901484de34bbc}} 
+\index{picojson::value@{picojson::value}!serialize@{serialize}}
+\index{serialize@{serialize}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename Iter $>$ \\
+void picojson\+::value\+::serialize (\begin{DoxyParamCaption}\item[{Iter}]{os,  }\item[{bool}]{prettify = {\ttfamily false} }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a5349fff183e52146f2835d7fa0a10358}\label{classpicojson_1_1value_a5349fff183e52146f2835d7fa0a10358}} 
+\index{picojson::value@{picojson::value}!set@{set}}
+\index{set@{set}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void picojson\+::value\+::set (\begin{DoxyParamCaption}\item[{const T \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a5349fff183e52146f2835d7fa0a10358}\label{classpicojson_1_1value_a5349fff183e52146f2835d7fa0a10358}} 
+\index{picojson::value@{picojson::value}!set@{set}}
+\index{set@{set}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void picojson\+::value\+::set (\begin{DoxyParamCaption}\item[{const T \&}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a6e3ac589ed811603ef9dadc6f91c737d}\label{classpicojson_1_1value_a6e3ac589ed811603ef9dadc6f91c737d}} 
+\index{picojson::value@{picojson::value}!swap@{swap}}
+\index{swap@{swap}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void picojson\+::value\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpicojson_1_1value}{value}} \&}]{x }\end{DoxyParamCaption}) throw ( ) \hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a6e3ac589ed811603ef9dadc6f91c737d}\label{classpicojson_1_1value_a6e3ac589ed811603ef9dadc6f91c737d}} 
+\index{picojson::value@{picojson::value}!swap@{swap}}
+\index{swap@{swap}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void picojson\+::value\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpicojson_1_1value}{value}} \&}]{x }\end{DoxyParamCaption}) throw ( ) }
+
+\mbox{\Hypertarget{classpicojson_1_1value_a005099b2865752cf31b7ced33bd85f59}\label{classpicojson_1_1value_a005099b2865752cf31b7ced33bd85f59}} 
+\index{picojson::value@{picojson::value}!to\_str@{to\_str}}
+\index{to\_str@{to\_str}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{to\_str()}{to\_str()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string picojson\+::value\+::to\+\_\+str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_a005099b2865752cf31b7ced33bd85f59}\label{classpicojson_1_1value_a005099b2865752cf31b7ced33bd85f59}} 
+\index{picojson::value@{picojson::value}!to\_str@{to\_str}}
+\index{to\_str@{to\_str}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{to\_str()}{to\_str()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string picojson\+::value\+::to\+\_\+str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classpicojson_1_1value_af77ae4525a20f6fce6ea9ff1c4709312}\label{classpicojson_1_1value_af77ae4525a20f6fce6ea9ff1c4709312}} 
+\index{picojson::value@{picojson::value}!type\_@{type\_}}
+\index{type\_@{type\_}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{type\_}{type\_}}
+{\footnotesize\ttfamily int picojson\+::value\+::type\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpicojson_1_1value_aa7948fe10fcbc19ab9c8dee5e5099f77}\label{classpicojson_1_1value_aa7948fe10fcbc19ab9c8dee5e5099f77}} 
+\index{picojson::value@{picojson::value}!u\_@{u\_}}
+\index{u\_@{u\_}!picojson::value@{picojson::value}}
+\doxysubsubsection{\texorpdfstring{u\_}{u\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionpicojson_1_1value_1_1__storage}{\+\_\+storage}} picojson\+::value\+::u\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/picojson/\mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h}{picojson.\+h}}\item 
+x64/\+Release/picojson/\mbox{\hyperlink{x64_2_release_2picojson_2picojson_8h}{picojson.\+h}}\end{DoxyCompactItemize}

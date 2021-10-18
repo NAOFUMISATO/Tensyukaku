@@ -1,0 +1,25 @@
+var struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m =
+[
+    [ "DecayTime", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#ac8a2dcba228c5b7c0fc1b5febaf4e5c7", null ],
+    [ "Density", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#aa2a75f3b86281e734080693a2505af7a", null ],
+    [ "EarlyDiffusion", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#aaa587b2090d56f37897a3c59f4befc40", null ],
+    [ "HighEQCutoff", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#acc6bc04592ec6b1edf72b256c8f2465a", null ],
+    [ "HighEQGain", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a16915a37f11c3a6be507d0efce5301bc", null ],
+    [ "LateDiffusion", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a298f5f6ca48b7593450c04104bfe1252", null ],
+    [ "LowEQCutoff", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a82c94118bd4eae91b955d13999fa485f", null ],
+    [ "LowEQGain", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a4ab0caabfd9d450cd7b4a4efd2e1f3f2", null ],
+    [ "PositionLeft", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a7b5edd0728efb8069ccd32ff54c98fb8", null ],
+    [ "PositionMatrixLeft", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a0f3faf70394dcb1c180ba6f23a5a7986", null ],
+    [ "PositionMatrixRight", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#ab3804f30951ceedbedec3f8ae9a4d656", null ],
+    [ "PositionRight", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a534d6e9f70ffbf6d48362834508ff048", null ],
+    [ "RearDelay", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#aeb64ffb7ec4584d0ed822f3b5c6f6713", null ],
+    [ "ReflectionsDelay", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#ac3ea420d834a4c8d7f86600b9066f196", null ],
+    [ "ReflectionsGain", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a08b17145f2d1e55c10550a20b4fed13f", null ],
+    [ "ReverbDelay", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#aa6189e16173593b6e265594ac04db6bf", null ],
+    [ "ReverbGain", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#aed72022d0eed7a15c3a8c4db21d6311c", null ],
+    [ "RoomFilterFreq", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a4f6edd74236476f262214448756305ca", null ],
+    [ "RoomFilterHF", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#a06df103966e09da8ba7c02e79464929f", null ],
+    [ "RoomFilterMain", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#ada30139b4e905940d1ac3449e3e7fe6d", null ],
+    [ "RoomSize", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#adae8cbf4ebf9435bebf2a4d21e032135", null ],
+    [ "WetDryMix", "struct_dx_lib_1_1tag_s_o_u_n_d3_d___r_e_v_e_r_b___p_a_r_a_m.html#aa2eb6e457204b0d24d9b157025f11a9c", null ]
+];

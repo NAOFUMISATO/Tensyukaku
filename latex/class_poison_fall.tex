@@ -1,0 +1,142 @@
+\hypertarget{class_poison_fall}{}\doxysection{Poison\+Fall クラス}
+\label{class_poison_fall}\index{PoisonFall@{PoisonFall}}
+
+
+{\ttfamily \#include $<$Poison.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_object_base}{Object\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_poison_fall_a1cbd60336ba3a10cd868f4d15a797c78}{Poison\+Fall}} (int x, int y)
+\item 
+\mbox{\hyperlink{class_poison_fall_a8fcc3a5043350cbb2d70f54a046b6cec}{$\sim$\+Poison\+Fall}} ()
+\item 
+virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_poison_fall_a51b1a44c42730bffc96012350210d6d7}{Get\+Obj\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_poison_fall_a4ed3e6b1123d98cfc40cf7d8f3a644b3}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_poison_fall_a8903c4a84ca15b62a301ccfcf826bfca}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_poison_fall_ad83a6a9590d5d2b99764e551dd04eae0}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_poison_fall_acdd2529b9eb32942cd0975ab4c89232c}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89}{POISONSTATE}} \{ \mbox{\hyperlink{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89a479ab1b75080105c17b10096543dc8c5}{FALL}}
+, \mbox{\hyperlink{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89a479a809c0b6eaaefd3b1df16f976df06}{LAND}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89}{POISONSTATE}} \mbox{\hyperlink{class_poison_fall_addd0e895651f89039600f3ca37a31786}{\+\_\+\+State}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{列挙型メンバ詳解}
+\mbox{\Hypertarget{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89}\label{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89}} 
+\index{PoisonFall@{PoisonFall}!POISONSTATE@{POISONSTATE}}
+\index{POISONSTATE@{POISONSTATE}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{POISONSTATE}{POISONSTATE}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89}{Poison\+Fall\+::\+POISONSTATE}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FALL@{FALL}!PoisonFall@{PoisonFall}}\index{PoisonFall@{PoisonFall}!FALL@{FALL}}}\mbox{\Hypertarget{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89a479ab1b75080105c17b10096543dc8c5}\label{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89a479ab1b75080105c17b10096543dc8c5}} 
+FALL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LAND@{LAND}!PoisonFall@{PoisonFall}}\index{PoisonFall@{PoisonFall}!LAND@{LAND}}}\mbox{\Hypertarget{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89a479a809c0b6eaaefd3b1df16f976df06}\label{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89a479a809c0b6eaaefd3b1df16f976df06}} 
+LAND&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_poison_fall_a1cbd60336ba3a10cd868f4d15a797c78}\label{class_poison_fall_a1cbd60336ba3a10cd868f4d15a797c78}} 
+\index{PoisonFall@{PoisonFall}!PoisonFall@{PoisonFall}}
+\index{PoisonFall@{PoisonFall}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{PoisonFall()}{PoisonFall()}}
+{\footnotesize\ttfamily Poison\+Fall\+::\+Poison\+Fall (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_poison_fall_a8fcc3a5043350cbb2d70f54a046b6cec}\label{class_poison_fall_a8fcc3a5043350cbb2d70f54a046b6cec}} 
+\index{PoisonFall@{PoisonFall}!````~PoisonFall@{$\sim$PoisonFall}}
+\index{````~PoisonFall@{$\sim$PoisonFall}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{$\sim$PoisonFall()}{~PoisonFall()}}
+{\footnotesize\ttfamily Poison\+Fall\+::$\sim$\+Poison\+Fall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_poison_fall_acdd2529b9eb32942cd0975ab4c89232c}\label{class_poison_fall_acdd2529b9eb32942cd0975ab4c89232c}} 
+\index{PoisonFall@{PoisonFall}!Delete@{Delete}}
+\index{Delete@{Delete}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Poison\+Fall\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a63d403d783b600faf05648968a3a569e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_poison_fall_ad83a6a9590d5d2b99764e551dd04eae0}\label{class_poison_fall_ad83a6a9590d5d2b99764e551dd04eae0}} 
+\index{PoisonFall@{PoisonFall}!Draw@{Draw}}
+\index{Draw@{Draw}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Poison\+Fall\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ae10010b1cf932746225bf6121a00d80c}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_poison_fall_a51b1a44c42730bffc96012350210d6d7}\label{class_poison_fall_a51b1a44c42730bffc96012350210d6d7}} 
+\index{PoisonFall@{PoisonFall}!GetObjType@{GetObjType}}
+\index{GetObjType@{GetObjType}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{GetObjType()}{GetObjType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} Poison\+Fall\+::\+Get\+Obj\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}{Object\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_poison_fall_a4ed3e6b1123d98cfc40cf7d8f3a644b3}\label{class_poison_fall_a4ed3e6b1123d98cfc40cf7d8f3a644b3}} 
+\index{PoisonFall@{PoisonFall}!Init@{Init}}
+\index{Init@{Init}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Poison\+Fall\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}{Object\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_poison_fall_a8903c4a84ca15b62a301ccfcf826bfca}\label{class_poison_fall_a8903c4a84ca15b62a301ccfcf826bfca}} 
+\index{PoisonFall@{PoisonFall}!Process@{Process}}
+\index{Process@{Process}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Poison\+Fall\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}{Object\+Base}}を再実装しています。
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_poison_fall_addd0e895651f89039600f3ca37a31786}\label{class_poison_fall_addd0e895651f89039600f3ca37a31786}} 
+\index{PoisonFall@{PoisonFall}!\_State@{\_State}}
+\index{\_State@{\_State}!PoisonFall@{PoisonFall}}
+\doxysubsubsection{\texorpdfstring{\_State}{\_State}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_poison_fall_aa9f461ade7cdaeaf49fcffcc73648b89}{POISONSTATE}} Poison\+Fall\+::\+\_\+\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_poison_8h}{Poison.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_poison_8cpp}{Poison.\+cpp}}\end{DoxyCompactItemize}

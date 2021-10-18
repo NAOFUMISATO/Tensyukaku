@@ -7,24 +7,40 @@
  *********************************************************************/
 #pragma once
 #include "ModeBase.h"
-
+/** ゲームオーバーセレクト */
 class OverSelect :public ModeBase {
    typedef ModeBase base;
 public:
-   //初期化
+   /**
+    * \brief   初期化関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Initialize(Game& g);
-   //終了
+   /**
+    * \brief   終了関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Terminate(Game& g);
-   //更新
+   /**
+    * \brief   更新関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Process(Game& g);
-   //描画
+   /**
+    * \brief   描画関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Draw(Game& g);
+
 private:
-   //選択状態の列挙
+   /** 選択状態の列挙 */
    enum class SELECTSTATE {
-      NOSELECT, RETRYSELECT, GOTITLESELECT
+      NOSELECT,         //!< 何も選択していない
+      RETRYSELECT,      //!< リトライ選択
+      GOTITLESELECT     //!< タイトル選択
    };
-   SELECTSTATE _state; //選択状態
-   int _graph_no;      //シート番号変数
-   bool _input_flag;   //入力を受け付けるフラグ
+
+   SELECTSTATE _state;  //!< 選択状態
+   int _graph_no;       //!< シート番号変数
+   bool _input_flag;    //!< 入力を受付判定フラグ
 };

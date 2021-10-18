@@ -1,9 +1,7 @@
 #include <DxLib.h>
-#include "EnemyBase.h"
 #include "Zyounin.h"
 #include "Game.h"
-#include "ZyouninMotionCollision.h"
-#include "ObjectBase.h"
+#include "ZyouninAttackCollision.h"
 #include "PrivateCollision.h"
 #include "Kunai.h"
 

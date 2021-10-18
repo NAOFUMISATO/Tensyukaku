@@ -1,0 +1,363 @@
+\hypertarget{_player_particle_8h_source}{}\doxysection{Player\+Particle.\+h}
+\label{_player_particle_8h_source}\index{Tensyukaku/PlayerParticle.h@{Tensyukaku/PlayerParticle.h}}
+\mbox{\hyperlink{_player_particle_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_base_8h}{ParticleBase.h}}"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{5 \textcolor{comment}{//中段攻撃1}}
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_middle_attack_particle1}{MiddleAttackParticle1}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{7 \textcolor{keyword}{public}:}
+\DoxyCodeLine{8    \mbox{\hyperlink{class_middle_attack_particle1_af315c20b40248f86dafdd6e3a139964d}{MiddleAttackParticle1}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{9    \mbox{\hyperlink{class_middle_attack_particle1_a65d0bf4fea6f87ea70c12f7782397955}{\string~MiddleAttackParticle1}}();}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_middle_attack_particle1_a005e5ecbe34c37a837f55b22c5a7bc92}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a7df040b737359ae2e0a704972541d639}{PARTICLETYPE::MIDDLEATTACK1}}; \}}
+\DoxyCodeLine{12    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_middle_attack_particle1_a99f44a367c9d1e333fcc52868baa4d8e}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{13    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_middle_attack_particle1_a6375e02c1ad1d9a1197d558c352ba1c2}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{14    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_middle_attack_particle1_af28250954c86ba635b922ce631d937b5}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{15 \};}
+\DoxyCodeLine{16 \textcolor{comment}{//中段攻撃2}}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_middle_attack_particle2}{MiddleAttackParticle2}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19    \mbox{\hyperlink{class_middle_attack_particle2_a4402b66a3851a1f761a6f34a8dad852e}{MiddleAttackParticle2}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{20    \mbox{\hyperlink{class_middle_attack_particle2_a312bd89dc41c4611af7c9acf01bc1071}{\string~MiddleAttackParticle2}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_middle_attack_particle2_a205c4d67f7103cf277d06770a753c459}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a4c2cc4a5f1bed2465a9240b2dfa94854}{PARTICLETYPE::MIDDLEATTACK2}}; \}}
+\DoxyCodeLine{23    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_middle_attack_particle2_a9210e81109050ab07f01e496ad3827e1}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{24    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_middle_attack_particle2_af2c4981549b571b7cb5896d53819e29f}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{25    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_middle_attack_particle2_a2947b8dbca95e1a0eaed6fdae72f3d7b}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 \textcolor{comment}{//下段攻撃1}}
+\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{class_low_attack_particle1}{LowAttackParticle1}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{29 \textcolor{keyword}{public}:}
+\DoxyCodeLine{30    \mbox{\hyperlink{class_low_attack_particle1_abc28b8c3b700422aa904182e62a687f2}{LowAttackParticle1}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{31    \mbox{\hyperlink{class_low_attack_particle1_a1e064e8234786826ce965e8be38fca33}{\string~LowAttackParticle1}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_low_attack_particle1_abaf40fe1e58861d7d82970ef0072b6e5}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a04fd15021f340655cc65702bda3a5c2c}{PARTICLETYPE::LOWATTACK1}}; \}}
+\DoxyCodeLine{34    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_low_attack_particle1_a725beb549a08151602eb71826cd2c88d}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{35    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_low_attack_particle1_aced5ca33d7708d59a55d64879fc6f01a}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{36    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_low_attack_particle1_ac9c708e21e0f7cd3c3e8ee627af81cbd}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 \textcolor{comment}{//下段攻撃2}}
+\DoxyCodeLine{39 \textcolor{keyword}{class }\mbox{\hyperlink{class_low_attack_particle2}{LowAttackParticle2}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{40 \textcolor{keyword}{public}:}
+\DoxyCodeLine{41    \mbox{\hyperlink{class_low_attack_particle2_a74555ce88e5c3cb443cca2bcbb5b093f}{LowAttackParticle2}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{42    \mbox{\hyperlink{class_low_attack_particle2_a20064eaa47dacc5fb78145d71e92e12c}{\string~LowAttackParticle2}}();}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_low_attack_particle2_a40563d265f6ba480d6c41496da78a208}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a7e56a3ef8ff1e564625ceebee0d171e0}{PARTICLETYPE::LOWATTACK2}}; \}}
+\DoxyCodeLine{45    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_low_attack_particle2_a84026568049e93990fe9beeea4e11dae}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{46    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_low_attack_particle2_aba6a6cf83efa01c70aeca02559b1e3c8}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{47    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_low_attack_particle2_a7fd323187eb6a96483491f4a2673d9bf}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{48 \};}
+\DoxyCodeLine{49 \textcolor{comment}{//居合1}}
+\DoxyCodeLine{50 \textcolor{keyword}{class }\mbox{\hyperlink{class_iai_particle1}{IaiParticle1}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{51 \textcolor{keyword}{public}:}
+\DoxyCodeLine{52    \mbox{\hyperlink{class_iai_particle1_a9508ad26b20ea63219f3cb11db068142}{IaiParticle1}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{53    \mbox{\hyperlink{class_iai_particle1_a67a740ff7c7304d619add9dab744628b}{\string~IaiParticle1}}();}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_iai_particle1_acbbb7c2af8d95d817ef6537ad6ccfc01}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a7ae642dfb435038947c9a4f86b72f2a2}{PARTICLETYPE::IAI1}}; \}}
+\DoxyCodeLine{56    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle1_a33508005493ed1e68ef8b09df7d63faa}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{57    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle1_ac54f0a7c73a0888b32a843cbfdef94af}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{58    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle1_a8e8c9a752b5be351a64dc93e4a53f532}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{59 \};}
+\DoxyCodeLine{60 \textcolor{comment}{//居合2}}
+\DoxyCodeLine{61 \textcolor{keyword}{class }\mbox{\hyperlink{class_iai_particle2}{IaiParticle2}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{62 \textcolor{keyword}{public}:}
+\DoxyCodeLine{63    \mbox{\hyperlink{class_iai_particle2_ab973b2264cb6e12a849f2ba44566d9a5}{IaiParticle2}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{64    \mbox{\hyperlink{class_iai_particle2_a80e1648da1cccb587a597471892d3f57}{\string~IaiParticle2}}();}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_iai_particle2_a6a79a0555fd1f9ac20ef5cac3dc08238}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3ad6b1d81a9cfd968c0e0d611eb6bae6b2}{PARTICLETYPE::IAI2}}; \}}
+\DoxyCodeLine{67    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle2_aaaa796ce3d3dbf9917fa77b46d84fe3a}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{68    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle2_a576224260680b991d1d2ce20c2e8a3d7}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{69    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle2_a10de94a4aab59f7ee4417436b706fbba}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{70 \};}
+\DoxyCodeLine{71 \textcolor{comment}{//居合3}}
+\DoxyCodeLine{72 \textcolor{keyword}{class }\mbox{\hyperlink{class_iai_particle3}{IaiParticle3}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{73 \textcolor{keyword}{public}:}
+\DoxyCodeLine{74    \mbox{\hyperlink{class_iai_particle3_a84620273f5ee553af4e3e1252b8fcd1a}{IaiParticle3}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{75    \mbox{\hyperlink{class_iai_particle3_ada0ddfaf4caf545afd09050f27d92295}{\string~IaiParticle3}}();}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_iai_particle3_a241bc0f5cc48412933155dedf549297f}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a926eb3e73c0446e0745071517ec356d9}{PARTICLETYPE::IAI3}}; \}}
+\DoxyCodeLine{78    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle3_aae309d2c19664ee42d49b54a8c48b275}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{79    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle3_aebae66ad0069f3b5aaa44ee88dce4648}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{80    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_particle3_a69bdf116e4b2f676b4e57bc6dc94472e}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 \textcolor{comment}{//居合ゲージ}}
+\DoxyCodeLine{83 \textcolor{keyword}{class }\mbox{\hyperlink{class_iai_gauge_particle}{IaiGaugeParticle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{84 \textcolor{keyword}{public}:}
+\DoxyCodeLine{85    \mbox{\hyperlink{class_iai_gauge_particle_ad13925e4fe1bf65e3b3060f49b27a1dc}{IaiGaugeParticle}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{86    \mbox{\hyperlink{class_iai_gauge_particle_a4bec72782baa0509bdbf1ad1e4138827}{\string~IaiGaugeParticle}}();}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_iai_gauge_particle_a3b72821e580819b5e4c2964af63a4262}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a2dbcb010144ad84ec3e12ab539a7d411}{PARTICLETYPE::IAIGAUGE}}; \}}
+\DoxyCodeLine{89    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_gauge_particle_a5863d981e67eb131ef71d15a1b2adf0d}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{90    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_gauge_particle_a1429c8146070ed6c99f987e1f823fb7c}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{91    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_iai_gauge_particle_a240d9305daa6ac6cbb7609d037d90613}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{92 \};}
+\DoxyCodeLine{93 \textcolor{comment}{//スウェイ}}
+\DoxyCodeLine{94 \textcolor{keyword}{class }\mbox{\hyperlink{class_sway_particle}{SwayParticle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{95 \textcolor{keyword}{public}:}
+\DoxyCodeLine{96    \mbox{\hyperlink{class_sway_particle_a75e31f78f806e68923290eda20721b19}{SwayParticle}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{97    \mbox{\hyperlink{class_sway_particle_a16216cee5181867daa56d853049ed115}{\string~SwayParticle}}();}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_sway_particle_afb264d33fff31c6f2d55bb2f27cbc37e}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a10f877ebd44f8b7da8abc8e93f864989}{PARTICLETYPE::SWAY}}; \}}
+\DoxyCodeLine{100    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sway_particle_a90cc978cae878deae4f1338299bfa620}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{101    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sway_particle_a518d309b280dac179ed4825b38585de8}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{102    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sway_particle_a08259163992d84e06c52cf4394280d49}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{103 \};}
+\DoxyCodeLine{104 \textcolor{comment}{//居合MAX自機発光}}
+\DoxyCodeLine{105 \textcolor{keyword}{class }\mbox{\hyperlink{class_gage_max}{GageMax}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{106 \textcolor{keyword}{public}:}
+\DoxyCodeLine{107    \mbox{\hyperlink{class_gage_max_ab45da8cba52dc8b67346a8d77d28f2f7}{GageMax}}(std::pair<double, double> xy, std::pair<double, double> vxy);}
+\DoxyCodeLine{108    \mbox{\hyperlink{class_gage_max_a3f87e743e4f01c8e61051fab0d54af1b}{\string~GageMax}}();}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_gage_max_abec4b5194fbb7a46579f68b7fa9423f9}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a10f877ebd44f8b7da8abc8e93f864989}{PARTICLETYPE::SWAY}}; \}}
+\DoxyCodeLine{111    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_gage_max_af140e6f5f994c64b18e8607d14917e8b}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{112    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_gage_max_a7b6ecfa8363e53ea589db8c0eabca901}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{113    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_gage_max_afe2e45e474be9afad362278b5aff9c6d}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{114 \};}
+\DoxyCodeLine{115 \textcolor{comment}{//回復の光}}
+\DoxyCodeLine{116 \textcolor{keyword}{class }\mbox{\hyperlink{class_recovery_particle}{RecoveryParticle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{117 \textcolor{keyword}{public}:}
+\DoxyCodeLine{118    \mbox{\hyperlink{class_recovery_particle_ad47b168787f3632333797ac0fd5d3071}{RecoveryParticle}}(std::pair<double, double> xy, std::pair<double, double> vxy);}
+\DoxyCodeLine{119    \mbox{\hyperlink{class_recovery_particle_a4ecacf39f0f4b9dfb6cb3b704835ebf7}{\string~RecoveryParticle}}();}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_recovery_particle_a897256c8890b03c4b820620036964f63}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a9c90eb3f9201a7df861d94e494aa9b0b}{PARTICLETYPE::RECOVERY}}; \}}
+\DoxyCodeLine{122    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_recovery_particle_abe4974e96b356681723f7f9122ca4d9c}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{123    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_recovery_particle_a5f2787a11b2bdfb3cb4fc786280a60c5}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{124    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_recovery_particle_a2783a1755674a8929cd70b9600c2698d}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{125 \};}
+\DoxyCodeLine{126 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_p_par_info}{PParInfo}} \{}
+\DoxyCodeLine{127    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/中段攻撃1-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{128    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab4e07b5872ed05396374e4bdbb5b0a20}{MIDDLEATTACK\_PARTICLE1\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/MiddleAttack.png"{}};      \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{129    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a0f5a0a0fa44976ce1a90408044f00211}{MIDDLEATTACK\_PARTICLE1\_POSITIONX}} = 0.0;                        \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{130    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5a15e913455ec9705427048757be1a30}{MIDDLEATTACK\_PARTICLE1\_POSITIONY}} = -\/325.0;                     \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{131    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a22cc0c4ab8dd0d7e7de7d228c31757e6}{MIDDLEATTACK\_PARTICLE1\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a44d423edcc0e795f7b3ab556f5d35ce7}{DX\_BLENDMODE\_SUB}};               \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{132    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a7c6277ff620c5f3ad331e7af2fde281e}{MIDDLEATTACK\_PARTICLE1\_PAL}} = 64;                              \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{133    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa7f2d255a8534ce86122b22f8fc86ee0}{MIDDLEATTACK\_PARTICLE1\_RED}} = 128;                           \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{134    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ac942a8cd3e13392553d85ecb98db12a2}{MIDDLEATTACK\_PARTICLE1\_GREEN}} = 128;                           \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{135    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a88d2385cd6aeb0b6e1a11ae670ec6bc5}{MIDDLEATTACK\_PARTICLE1\_BLUE}} = 128;                           \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{136    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a277973d1a15c36286dd2f6693f38168c}{MIDDLEATTACK\_PARTICLE1\_SCALE}} = 1.0;                           \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{137    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a15fa91e563182f75b20deda60c6a160b}{MIDDLEATTACK\_PARTICLE1\_ANGLE}} = 0.0;                           \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{138    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a9e5c2ca3e5c5dc8e0dfd5f955b033872}{MIDDLEATTACK\_PARTICLE1\_CNT}} = 20;                              \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{139    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3b299b06d0010e2dfbb73889befc6237}{MIDDLEATTACK\_PARTICLE1\_QTY}} = 10;                              \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{140    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{141    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ac69fd65034b0e309f40df8f4a94416a7}{MIDDLEATTACK\_PARTICLE1\_RANDOMX1}} = 20;                        \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{142    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a22ab9e6c140e53323bd9c2c83fef34cb}{MIDDLEATTACK\_PARTICLE1\_RANDOMX2}} = 10.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{143    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a15d986d2df5def20312f36fb462cae7d}{MIDDLEATTACK\_PARTICLE1\_RANDOMX3}} = 8.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{144    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a81a1d62a60bfd7d6a71180ddb71417b2}{MIDDLEATTACK\_PARTICLE1\_RANDOMY1}} = 20;                        \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{145    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ad116b62d48fd29dcf3bb86f0b24b678b}{MIDDLEATTACK\_PARTICLE1\_RANDOMY2}} = 10.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{146    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a505ba7686abd6d320342c7d3fdf5ceb7}{MIDDLEATTACK\_PARTICLE1\_RANDOMY3}} = 8.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/中段攻撃2-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{149    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a15b1b7cbb7991f3d95934150ae3f90f0}{MIDDLEATTACK\_PARTICLE2\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/MiddleSibuki.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{150    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a2c9d1c09903516cd9427905fd1488618}{MIDDLEATTACK\_PARTICLE2\_POSITIONX}} = 0.0;                        \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{151    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a996070ec2220ec37d06664754f62c93d}{MIDDLEATTACK\_PARTICLE2\_POSITIONY}} = -\/325.0;                     \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{152    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_adea2f81fe730affdd0e468a39fede6a1}{MIDDLEATTACK\_PARTICLE2\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a44d423edcc0e795f7b3ab556f5d35ce7}{DX\_BLENDMODE\_SUB}};               \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{153    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab28c2beda7b22428d372b173c742b423}{MIDDLEATTACK\_PARTICLE2\_PAL}} = 128;                           \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{154    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab949a5ee61d5727c8dec6c6457109582}{MIDDLEATTACK\_PARTICLE2\_RED}} = 200;                           \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{155    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a2aae5fc260d0e919d48e6b44c9a0dd63}{MIDDLEATTACK\_PARTICLE2\_GREEN}} = 200;                           \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{156    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a1f02c42f356013bf8d2a250204781903}{MIDDLEATTACK\_PARTICLE2\_BLUE}} = 200;                           \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{157    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a9f6576d42e7f247d17f46dd6881d7844}{MIDDLEATTACK\_PARTICLE2\_SCALE}} = 1.0;                           \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{158    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa6319287494d873f82abd3761ae9f6fa}{MIDDLEATTACK\_PARTICLE2\_ANGLE}} = 0.0;                           \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{159    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a9fa677e41143591e85b3f9532b34889a}{MIDDLEATTACK\_PARTICLE2\_CNT}} = 20;                              \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{160    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ae635bfd4d8a4a2c42890b52a790512dc}{MIDDLEATTACK\_PARTICLE2\_QTY}} = 5;                              \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{161    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{162    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a4a123d14adf6a393756f3b252d7a28fe}{MIDDLEATTACK\_PARTICLE2\_RANDOMX1}} = 20;                        \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{163    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ae0825b1c0d17e949e6136a4e6e8a1c29}{MIDDLEATTACK\_PARTICLE2\_RANDOMX2}} = 5.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{164    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_abeaf6e9470e7badad72c1dbd06b6fc89}{MIDDLEATTACK\_PARTICLE2\_RANDOMX3}} = 2.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{165    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ad1be6eeb4209cb4a110eff3b079daa37}{MIDDLEATTACK\_PARTICLE2\_RANDOMY1}} = 20;                        \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{166    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a31f175c46606baed5ecdb549074f4414}{MIDDLEATTACK\_PARTICLE2\_RANDOMY2}} = 5.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{167    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a8c58b58de8ad70475e1bb5aec6673a33}{MIDDLEATTACK\_PARTICLE2\_RANDOMY3}} = 2.0;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{168    }
+\DoxyCodeLine{169    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/下段攻撃1-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{170    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aca260d57d879854ba58e7c50f2e7b0a2}{LOWATTACK\_PARTICLE1\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/LowAttack.png"{}};         \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{171    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa286064b1caa16160819a2d806eb294c}{LOWATTACK\_PARTICLE1\_POSITIONX}} = 0.0;                           \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{172    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a40e2e81c506355a2dec4e6bd0f0e2c35}{LOWATTACK\_PARTICLE1\_POSITIONY}} = -\/225.0;                        \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{173    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a1d65f1748fbb3481dddd991a85a715d4}{LOWATTACK\_PARTICLE1\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a44d423edcc0e795f7b3ab556f5d35ce7}{DX\_BLENDMODE\_SUB}};               \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{174    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3eb2ebab971b96ca146e51d4eff01429}{LOWATTACK\_PARTICLE1\_PAL}} = 64;                              \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{175    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3a179f733ca21fb1fd9bf3fe7c8f22ff}{LOWATTACK\_PARTICLE1\_RED}} = 128;                              \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{176    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a61b710fa7db66392ae7ab9a50e69e054}{LOWATTACK\_PARTICLE1\_GREEN}} = 128;                              \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{177    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa23231b5e617c65f9e8f85417ef46f17}{LOWATTACK\_PARTICLE1\_BLUE}} = 128;                              \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{178    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa745fb8a2165a264ee7438d34d47d9be}{LOWATTACK\_PARTICLE1\_SCALE}} = 1.0;                              \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{179    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a0493db2a51b73c2c26a6f87fcc4ae52f}{LOWATTACK\_PARTICLE1\_ANGLE}} = 0.0;                              \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{180    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_af5f2deb4eb66fc30678925713e4f46ba}{LOWATTACK\_PARTICLE1\_CNT}} = 20;                              \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{181    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a0b214cebb5d58e93544f93609b3d7197}{LOWATTACK\_PARTICLE1\_QTY}} = 5;                                 \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{182    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{183    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab38a214daf7ba09dc6ba4efd9ee4d198}{LOWATTACK\_PARTICLE1\_RANDOMX1}} = 20;                           \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{184    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a4c215aa1a09a1c8e3139f9df6d14c725}{LOWATTACK\_PARTICLE1\_RANDOMX2}} = 10.0;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{185    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aae18a0193287e141e199760932e03383}{LOWATTACK\_PARTICLE1\_RANDOMX3}} = 8.0;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{186    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aad6de6adcaf6b5afb2af58812dc6cae3}{LOWATTACK\_PARTICLE1\_RANDOMY1}} = 20;                           \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{187    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a185ed341009043cf7aad81b025f984cd}{LOWATTACK\_PARTICLE1\_RANDOMY2}} = 10.0;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{188    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_abd8f85708e8daf228cef90ab8ae2968a}{LOWATTACK\_PARTICLE1\_RANDOMY3}} = 8.0;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{189    }
+\DoxyCodeLine{190    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/下段攻撃2-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{191    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a949ed56b5d15349b7c010ad0296e7790}{LOWATTACK\_PARTICLE2\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/LowAttackSibuki.png"{}};         \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{192    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3d6e5d147c577ce253443ae8afbbdc5b}{LOWATTACK\_PARTICLE2\_POSITIONX}} = 0.0;                           \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{193    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5ab2b9b3b8340290e2510dfea91f48d9}{LOWATTACK\_PARTICLE2\_POSITIONY}} = -\/225.0;                        \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{194    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5cbe054cbbdde5469d208eca636d52ce}{LOWATTACK\_PARTICLE2\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a44d423edcc0e795f7b3ab556f5d35ce7}{DX\_BLENDMODE\_SUB}};               \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{195    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a10e7083af5608027eeab572f1410e2ba}{LOWATTACK\_PARTICLE2\_PAL}} = 128;                              \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{196    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aca75119722e125e6b66ce5032ea197bb}{LOWATTACK\_PARTICLE2\_RED}} = 200;                              \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{197    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_af6958aeba18024ff4c16a0757466754b}{LOWATTACK\_PARTICLE2\_GREEN}} = 200;                              \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{198    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a35c4f09ce4e086790b7850f06d864010}{LOWATTACK\_PARTICLE2\_BLUE}} = 200;                              \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{199    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a14790865d6db802ad4e43cba256328e8}{LOWATTACK\_PARTICLE2\_SCALE}} = 1.0;                              \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{200    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a6ffb3329e778149eb628bb918fbe3851}{LOWATTACK\_PARTICLE2\_ANGLE}} = 0.0;                              \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{201    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a615cc1094ea6e74008a1c43e3936bb2e}{LOWATTACK\_PARTICLE2\_CNT}} = 20;                              \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{202    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a9549a70c3ba631ceabc734899a8d2d79}{LOWATTACK\_PARTICLE2\_QTY}} = 5;                                 \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{203    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{204    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_af3b922a822a959f8e2a0bce495daa573}{LOWATTACK\_PARTICLE2\_RANDOMX1}} = 20;                           \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{205    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a619751d98547499b9ca33b3756bdb4ec}{LOWATTACK\_PARTICLE2\_RANDOMX2}} = 5.0;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{206    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a1322e429c9d417d1bba59c4fd52488aa}{LOWATTACK\_PARTICLE2\_RANDOMX3}} = 2.0;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{207    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a89163c0520cefe0d8bedf4b082ee196e}{LOWATTACK\_PARTICLE2\_RANDOMY1}} = 20;                           \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{208    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a1d379148133b5cb0b07a0d3de9296b91}{LOWATTACK\_PARTICLE2\_RANDOMY2}} = 5.0;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{209    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5e709698af78ddfcb63d0ad73e44876f}{LOWATTACK\_PARTICLE2\_RANDOMY3}} = 2.0;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/居合1-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{212    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a1c8b51da2eb268307408a93acfebcf07}{IAI\_PARTICLE1\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/IaiLight.png"{}};                  \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{213    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a7012457e6d9bbb630e1e21ae4324b01c}{IAI\_PARTICLE1\_POSITIONX}} = 0.0;                              \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{214    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a29ff4c34770cda80957f08445ed9b57b}{IAI\_PARTICLE1\_POSITIONY}} = -\/225.0;                           \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{215    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a54d12188f2f0dea4949ea66996ad652e}{IAI\_PARTICLE1\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a2077bbab841d3a8736a990faaca07cc9}{DX\_BLENDMODE\_ADD}};                     \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{216    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab98abbdb9b0ed3d3b3da3d2e7650822a}{IAI\_PARTICLE1\_PAL}} = 128;                                    \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{217    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_adcf402ac29ca71ba7fafb3590551fb0c}{IAI\_PARTICLE1\_RED}} = 80;                                    \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{218    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aac0d80fe14ae553bd33ace2c970c06fb}{IAI\_PARTICLE1\_GREEN}} = 80;                                 \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{219    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a0d5083f431fc560c2e3ab562b78a6d9e}{IAI\_PARTICLE1\_BLUE}} = 60;                                    \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{220    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a0d9e17f5de5b0236e6db4bb424100af8}{IAI\_PARTICLE1\_SCALE}} = 0.8;                                 \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{221    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a12c682262aad0381fce099804f173472}{IAI\_PARTICLE1\_ANGLE}} = 0.0;                                 \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{222    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3f86a348af9b2ee8d7d839a3166cf5da}{IAI\_PARTICLE1\_CNT}} = 20;                                    \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{223    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa9837fc91f564bb9862e22936968b833}{IAI\_PARTICLE1\_QTY}} = 5;                                    \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{224    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{225    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a0ad0c4c15605ad6a6d79514c441b475a}{IAI\_PARTICLE1\_RANDOMX1}} = 20;                                 \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{226    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a8298425ca7da35881adf46918327f70b}{IAI\_PARTICLE1\_RANDOMX2}} = 10.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{227    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a7fd1469013072ec72863c2e013a45ec9}{IAI\_PARTICLE1\_RANDOMX3}} = 8.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{228    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a667f4a7263e5c7e9ae501c8046a8767e}{IAI\_PARTICLE1\_RANDOMY1}} = 20;                                 \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{229    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_abade650b4035d2d496379817dc389ad1}{IAI\_PARTICLE1\_RANDOMY2}} = 10.00;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{230    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aad54e41193d98145347ee9ae41eb706f}{IAI\_PARTICLE1\_RANDOMY3}} = 8.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/居合2-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{233    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a50ec6e20e6179f194c56d9dadd20d648}{IAI\_PARTICLE2\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/IaiKiseki2.png"{}};               \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{234    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a6f4a4ea7e7787d502a1522487ea3b718}{IAI\_PARTICLE2\_POSITIONX}} = 0.0;                              \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{235    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a8bb84668e96a8ce5c77cac28c4d9cafa}{IAI\_PARTICLE2\_POSITIONY}} = -\/225.0;                           \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{236    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a96ee49ecc11fc0432305002145c1ac94}{IAI\_PARTICLE2\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a44d423edcc0e795f7b3ab556f5d35ce7}{DX\_BLENDMODE\_SUB}};                     \textcolor{comment}{//ブンドモード設定}}
+\DoxyCodeLine{237    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a2512d65466b971e275aa2f2e99bbda2c}{IAI\_PARTICLE2\_PAL}} = 100;                                    \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{238    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aac2734a49e21585e18a65c32e0da7be3}{IAI\_PARTICLE2\_RED}} = 170;                                    \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{239    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a036abc052548b2b829bcb6dddf13f9f9}{IAI\_PARTICLE2\_GREEN}} = 170;                                 \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{240    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a0921df5de4af6859324e65542ea15b5a}{IAI\_PARTICLE2\_BLUE}} = 170;                                 \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{241    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ac5b1c48d27aeb18e7b1a34054b4b3af1}{IAI\_PARTICLE2\_SCALE}} = 1.0;                                 \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{242    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ad50f58f0d9fbfc8a173992d63ae1e431}{IAI\_PARTICLE2\_ANGLE}} = 0.0;                                 \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{243    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a91bf051b8f97985f2a252bd8907cbfcb}{IAI\_PARTICLE2\_CNT}} = 30;                                    \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{244    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa9da0986192cbdb4588ed8df18358781}{IAI\_PARTICLE2\_QTY}} = 5;                                    \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{245    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{246    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_abf2917e841cb1fb4664f341f189782d3}{IAI\_PARTICLE2\_RANDOMX1}} = 20;                                 \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{247    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a6edca7d91db5607d51fd328665e65c43}{IAI\_PARTICLE2\_RANDOMX2}} = 10.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{248    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a7131fa8a7df27b5ea4b4e937594471dc}{IAI\_PARTICLE2\_RANDOMX3}} = 8.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{249    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ac38c81ba7afc300b9d6c19d0900fc33a}{IAI\_PARTICLE2\_RANDOMY1}} = 20;                                 \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{250    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a2319c5eca5ed42530c4d3d91d062ff1a}{IAI\_PARTICLE2\_RANDOMY2}} = 10.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{251    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a2fee3bc9a13a1d42b6a3142f654f8f5a}{IAI\_PARTICLE2\_RANDOMY3}} = 8.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/居合3-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{254    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab441e16e708f92d2556e0463c4397a15}{IAI\_PARTICLE3\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/IaiSibuki.png"{}};                  \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{255    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa1894b7a468e3d7cde387b82cd9ff1d1}{IAI\_PARTICLE3\_POSITIONX}} = 0.0;                              \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{256    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_abbcb49dff7d60fb6ab655ff10f215cac}{IAI\_PARTICLE3\_POSITIONY}} = -\/225.0;                           \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{257    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aff3dc64b4abb8429f55297085984f9d5}{IAI\_PARTICLE3\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a44d423edcc0e795f7b3ab556f5d35ce7}{DX\_BLENDMODE\_SUB}};                     \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{258    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5d6344235eb59eb12bf32015971568a5}{IAI\_PARTICLE3\_PAL}} = 128;                                    \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{259    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a27ae2e21172e8659e9d613760b0450ba}{IAI\_PARTICLE3\_RED}} = 200;                                    \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{260    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a56d8606776443dfda9108a9be70ea643}{IAI\_PARTICLE3\_GREEN}} = 200;                                 \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{261    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aebba49328ad74549df70198c93676d75}{IAI\_PARTICLE3\_BLUE}} = 200;                                 \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{262    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a2a4c00f8886f5cd7e705867f266091a5}{IAI\_PARTICLE3\_SCALE}} = 1.0;                                 \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{263    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_afdb1157eeeedd33aedb53bcbda3e1fb1}{IAI\_PARTICLE3\_ANGLE}} = 0.0;                                 \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{264    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5eefd5a92444c91862ef2e85724d72fa}{IAI\_PARTICLE3\_CNT}} = 30;                                    \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{265    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ada0bcbb0d6f5ac81259c8b543a9314aa}{IAI\_PARTICLE3\_QTY}} = 5;                                    \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{266    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{267    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_acc259c874aa82bbb04bd8707621e7b6b}{IAI\_PARTICLE3\_RANDOMX1}} = 45;                                 \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{268    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa526122373968c91d329b15e83de7ebd}{IAI\_PARTICLE3\_RANDOMX2}} = 10.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{269    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5db711366d8df99f49c4160d91628ef7}{IAI\_PARTICLE3\_RANDOMX3}} = 2.5;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{270    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aaac521083d3dc8493c508d4e488f31e8}{IAI\_PARTICLE3\_RANDOMY1}} = 45;                                 \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{271    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ad81da9ae1d98fe82ec1c068db6fb1cf7}{IAI\_PARTICLE3\_RANDOMY2}} = 10.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{272    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a29a7a178e266ee894cf9e98d91aff492}{IAI\_PARTICLE3\_RANDOMY3}} = 2.5;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/居合ゲージ-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{275    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a6e257d039a058da23456a507cf8331bf}{IAIG\_PARTICLE\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/IaiGaugeP.png"{}};               \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{276    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab732ab17d79989721834d3442dd04bf9}{IAIG\_PARTICLE\_POSITIONX}} = 0.0;                           \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{277    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa2b12b4b1e2fe5d60016518a2760b296}{IAIG\_PARTICLE\_POSITIONY}} = 0.0;                              \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{278    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a84b43e20b29700faa6554805c5e5e3e0}{IAIG\_PARTICLE\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a2077bbab841d3a8736a990faaca07cc9}{DX\_BLENDMODE\_ADD}};                     \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{279    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a671117bba438c564477b4c880fdb6364}{IAIG\_PARTICLE\_PAL}} = 128;                                    \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{280    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3f5a2b58cc104b48b17933503c44f9f4}{IAIG\_PARTICLE\_RED}} = 230;                                    \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{281    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ae6bf7530743af3a504ccdca6b3414e90}{IAIG\_PARTICLE\_GREEN}} = 70;                                 \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{282    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ae881de0e741476b300d2dc97af47ab1c}{IAIG\_PARTICLE\_BLUE}} = 5;                                    \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{283    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a9a1f6f1f7096936ce78f635302a39ebd}{IAIG\_PARTICLE\_SCALE}} = 1.0;                                 \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{284    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a7a56f77a68dc400a3c343f3f2094f462}{IAIG\_PARTICLE\_ANGLE}} = 0.0;                                 \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{285    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aacfc805cf939be3ad4f68f0c14d1c997}{IAIG\_PARTICLE\_CNT}} = 10;                                    \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{286    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a480420196e4ba00536b0bce37ce55021}{IAIG\_PARTICLE\_QTY}} = 5;                                    \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{287    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{288    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a4ec2d6c1405eef38fc22589295fa49ef}{IAIG\_PARTICLE\_RANDOMX1}} = 10;                                 \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{289    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aecd89f132bf1d50f8d93349dcc24f26d}{IAIG\_PARTICLE\_RANDOMX2}} = 5.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{290    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_acda33fa9c6ba019d15d162067993c704}{IAIG\_PARTICLE\_RANDOMX3}} = 4.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{291    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a9c373764b1bb0b5c7e0e862593863078}{IAIG\_PARTICLE\_RANDOMY1}} = 10;                                 \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{292    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ac2bf000495c2ce238e13f8b9dc71bab5}{IAIG\_PARTICLE\_RANDOMY2}} = 5.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{293    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3208ddade1cce65771c1dd0ec1d29408}{IAIG\_PARTICLE\_RANDOMY3}} = 4.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/スウェイ-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{296    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a9617c2494267acf1515ce0e57de7ead2}{SWAY\_PARTICLE\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/Sway.png"{}};                  \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{297    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab4637731fab3ac286c29d29b9891158f}{SWAY\_PARTICLE\_POSITIONX}} = 0.0;                              \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{298    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a6fd3abb14e1bd5dd98a5a97af4830f04}{SWAY\_PARTICLE\_POSITIONY}} = -\/10.0;                           \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{299    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_adc96877f9ff887c918b71ce289dac8c7}{SWAY\_PARTICLE\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a44d423edcc0e795f7b3ab556f5d35ce7}{DX\_BLENDMODE\_SUB}};                     \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{300    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_addbe6394466481722e093f817ac9e872}{SWAY\_PARTICLE\_PAL}} = 255;                                    \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{301    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab8fe929e6d2461102bd7a40e066bb7dd}{SWAY\_PARTICLE\_RED}} = 255;                                    \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{302    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ae661eda0b6df025bce23a7f1047af823}{SWAY\_PARTICLE\_GREEN}} = 255;                                 \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{303    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_acc905ebbf74e0408c5a07c0ff5f0e9cf}{SWAY\_PARTICLE\_BLUE}} = 255;                                 \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{304    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ad7adc99b423c193eaa21409743f708f7}{SWAY\_PARTICLE\_SCALE}} = 1.0;                                 \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{305    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a0ed2e0cb1593f8dff2d9437b45ab561f}{SWAY\_PARTICLE\_ANGLE}} = 0.0;                                 \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{306    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a057339593c624eed509a6dec26d753f2}{SWAY\_PARTICLE\_CNT}} = 25;                                    \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{307    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a63feb1cf2044b2b43d46a83b455458b8}{SWAY\_PARTICLE\_QTY}} = 10;                                    \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{308    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{309    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa84bba5cd8359594030628a7c38d5f8f}{SWAY\_PARTICLE\_RANDOMX1}} = 25;                                 \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{310    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a9ea7c242d76bdf7358d73816b8348e49}{SWAY\_PARTICLE\_RANDOMX2}} = 5.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{311    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ac46414c92c98ba7004dd4b055dfdd97b}{SWAY\_PARTICLE\_RANDOMX3}} = 2.5;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{312    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a7df7637eba4dbbfc12f0a4f3cd40ebf1}{SWAY\_PARTICLE\_RANDOMY1}} = 20;                                 \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{313    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a947ab8861f889618fd8b41d203f6a046}{SWAY\_PARTICLE\_RANDOMY2}} = 10.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{314    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a8ad975a7bc7045ccb0926f3bbedbba41}{SWAY\_PARTICLE\_RANDOMY3}} = 2.5;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{315    }
+\DoxyCodeLine{316    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ゲージMAX-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{317    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a15dcfa91c223a86dc2ee3e1bba49b417}{GAGEMAX\_PARTICLE\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/GageMax.png"{}};            \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{318    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a7dc2a8ce4061ca79c4df9e9a01455198}{GAGEMAX\_PARTICLE\_POSITIONX}} = 0.0;                              \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{319    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5eda29cfc0cd12bbafc5d303de66deda}{GAGEMAX\_PARTICLE\_POSITIONY}} = -\/220.0;                           \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{320    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3f05c8aba99f6db4924029e70a155e5a}{GAGEMAX\_PARTICLE\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a2077bbab841d3a8736a990faaca07cc9}{DX\_BLENDMODE\_ADD}};                     \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{321    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a1a72aeccb9e88dc7dec2724501b3354a}{GAGEMAX\_PARTICLE\_PAL}} = 150;                                    \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{322    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_abf7c4aa821593a5c974fa5bcef73ff11}{GAGEMAX\_PARTICLE\_RED}} = 240;                                    \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{323    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ae5de5a7fee6980bea38237cd52220174}{GAGEMAX\_PARTICLE\_GREEN}} =70;                                 \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{324    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ad72a2ebe4c40d4893515323fd1887e8c}{GAGEMAX\_PARTICLE\_BLUE}} = 5;                                    \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{325    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a76fdfc26bca46d022211991d8dbfa706}{GAGEMAX\_PARTICLE\_SCALE}} = 1.0;                                 \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{326    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a01e05a20db7cee04562b4c1773da4012}{GAGEMAX\_PARTICLE\_ANGLE}} = 0.0;                                 \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{327    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a09bb26a106216a1004bdba2a70c51cc4}{GAGEMAX\_PARTICLE\_CNT}} = 40;                                    \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{328    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ad8ecdec64a3ebe655175a894d9f169a8}{GAGEMAX\_PARTICLE\_QTY}} = 10;                                    \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{329    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{330    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a3ffd60ec956e259511b4804964b7d986}{GAGEMAX\_PARTICLE\_RANDOMX1}} = 5;                                 \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{331    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a79c72dc309d2e9cbb7e694526df38382}{GAGEMAX\_PARTICLE\_RANDOMX2}} = 5.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{332    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a543b745456d7f6e849bd92d47ffa88d8}{GAGEMAX\_PARTICLE\_RANDOMX3}} =4.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{333    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a247523ab1a8079d7ea62e89b97cc1ca1}{GAGEMAX\_PARTICLE\_RANDOMY1}} = 5;                                 \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{334    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a54a5ed68c29283bd52db0a8904afa3c0}{GAGEMAX\_PARTICLE\_RANDOMY2}} = 5.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{335    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_af1d06aa8cfee6330fa77953c45e29780}{GAGEMAX\_PARTICLE\_RANDOMY3}} = 4.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{336   }
+\DoxyCodeLine{337    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/回復の光-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{338    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_af2a40d859a6d3ca370729dd62f3be5cb}{RECOVERY\_PARTICLE\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/Recovery.png"{}};            \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{339    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a8a112f15770cc6fae665830ef7fca544}{RECOVERY\_PARTICLE\_POSITIONX}} = 0.0;                              \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{340    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a8dc60491919b2f976c03c27d484285b4}{RECOVERY\_PARTICLE\_POSITIONY}} = -\/350.0;                           \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{341    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a7a32cf665f69e63dcde6e909179802f6}{RECOVERY\_PARTICLE\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a2077bbab841d3a8736a990faaca07cc9}{DX\_BLENDMODE\_ADD}};                     \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{342    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_af9372c69a16932623e2fd9530fb87025}{RECOVERY\_PARTICLE\_PAL}} = 150;                                    \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{343    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ac42047f4b333639a92ce6c2ff5b8bfa3}{RECOVERY\_PARTICLE\_RED}} = 30;                                    \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{344    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aa4fdef89c18d77233249a020c9f12e9f}{RECOVERY\_PARTICLE\_GREEN}} = 200;                                 \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{345    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ac3ead082d46e3340337c2b67a8058a13}{RECOVERY\_PARTICLE\_BLUE}} = 30;                                    \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{346    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_af404f81cc1874f8f31ae3ac5b87f4a64}{RECOVERY\_PARTICLE\_SCALE}} = 1.0;                                 \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{347    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_abe7351a4bc4cb7bdc26b59e4837ba912}{RECOVERY\_PARTICLE\_ANGLE}} = 0.0;                                 \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{348    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a624f04cfd3bed05f02daab875bb2a452}{RECOVERY\_PARTICLE\_CNT}} = 30;                                    \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{349    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a54401b5bea1d6ef10e7a41452cdc0f2d}{RECOVERY\_PARTICLE\_QTY}} = 10;                                    \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{350    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{351    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab4487acc6dccff5ef8f8c0ce65a92737}{RECOVERY\_PARTICLE\_RANDOMX1}} = 10;                                 \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{352    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aedb3a77e8103dc74a9eb68bf46ac3340}{RECOVERY\_PARTICLE\_RANDOMX2}} = 5.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{353    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a40c7e61071d218aa4c6e5f554ca03b53}{RECOVERY\_PARTICLE\_RANDOMX3}} = 4.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{354    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_ab0e1e6b044e8efcbc5654fc92d74f4de}{RECOVERY\_PARTICLE\_RANDOMY1}} = 10;                                 \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{355    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_aebde37991224054f871d8ca658a429d0}{RECOVERY\_PARTICLE\_RANDOMY2}} = 5.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{356    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_par_info_a5a49f8f2a0d87e1a649094868bbd0ff1}{RECOVERY\_PARTICLE\_RANDOMY3}} = 4.0;                              \textcolor{comment}{//      〃}}
+\DoxyCodeLine{357 \}}
+
+\end{DoxyCode}

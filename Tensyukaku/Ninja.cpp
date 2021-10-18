@@ -8,7 +8,6 @@
 #include "Game.h"
 #include "ResourceServer.h"
 #include "LowBlood.h"
-#include "NinjaMotionCollision.h"
 #include "PrivateCollision.h"
 
 using namespace NInfo;

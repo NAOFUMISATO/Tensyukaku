@@ -1,45 +1,51 @@
 /*****************************************************************//**
  * \file   PrologueText.h
- * \brief  プロローグテキストクラス（モードベースのサブクラス）、スキップテキストクラス（モードベースのサブクラス）
+ * \brief  プロローグテキストクラス（モードベースのサブクラス）
  * 
  * \author Sato Naofumi
  * \date   October 2021
  *********************************************************************/
 #pragma once
 #include "ModeBase.h"
- /*----プロローグテキストクラス-----*/
+ /** プロローグテキスト */
 class  PrologueText :public ModeBase {
    typedef ModeBase base;
 public:
-   //初期化
+   /**
+    * \brief   初期化関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Initialize(Game& g);
-   //終了
+   /**
+    * \brief   終了関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Terminate(Game& g);
-   //更新
+   /**
+    * \brief   更新関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Process(Game& g);
-   //描画
+   /**
+    * \brief   描画関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Draw(Game& g);
+
 private:
-   //SE読み込み関数
+   /**
+    * \brief SE読み込み関数
+    */
    void LoadSE();
-   //SE音量初期化関数
+   /**
+    * \brief SE音量初期化関数
+    */
    void VolumeInit();
-   //SE音量変更関数
+   /**
+    * \brief SE音量変更関数
+    */
    void VolumeChange();
 
-   int _graph_no;   //シート番号変数
-   bool _skip_flag; //スキップボタンを押下したかのフラグ
-};
-/*----スキップテキストクラス-----*/
-class  PrologueASkip :public ModeBase {
-   typedef ModeBase base;
-public:
-   //初期化
-   virtual bool Initialize(Game& g);
-   //終了
-   virtual bool Terminate(Game& g);
-   //更新
-   virtual bool Process(Game& g);
-   //描画
-   virtual bool Draw(Game& g);
+   int _graph_no;   //!< シート番号変数
+   bool _skip_flag; //!< スキップボタンを押下したかのフラグ
 };

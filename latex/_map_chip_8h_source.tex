@@ -1,0 +1,69 @@
+\hypertarget{_map_chip_8h_source}{}\doxysection{Map\+Chip.\+h}
+\label{_map_chip_8h_source}\index{Tensyukaku/MapChip.h@{Tensyukaku/MapChip.h}}
+\mbox{\hyperlink{_map_chip_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// マップチップクラス}}
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_game}{Game}};}
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_object_base}{ObjectBase}};}
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_map_chip}{MapChip}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{public}:}
+\DoxyCodeLine{10    \mbox{\hyperlink{class_map_chip_ad3cd05f47acc427a1ba7087164ed7d40}{MapChip}}(std::string filePath, std::string tiledFileName);}
+\DoxyCodeLine{11    \mbox{\hyperlink{class_map_chip_a67ef6826c891ff0d8df79a9e737a401a}{\string~MapChip}}();}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_map_chip_a5817e2770006478a6e2e2ae665ec05b6}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{14    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_map_chip_afb22949ea22f52eb210e6a88171c3db8}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_aeca3c5a8cd2cd109dd471ecc25da1aca}{CheckHit}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{17    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a009e66cfed63cae9e3778c45017f650e}{IsHit}}(\mbox{\hyperlink{class_object_base}{ObjectBase}}\& o, \textcolor{keywordtype}{int} mx, \textcolor{keywordtype}{int} my);}
+\DoxyCodeLine{18    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a732af4e5cb0dd0fb59dcf3ad5b383d9c}{GetscrX}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_a8ba4a27d1fd3b6db6d6d410acbcfb814}{\_scr\_x}}; \}}
+\DoxyCodeLine{19    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_ad622e06c45b1bce51b65f703f42c5327}{GetscrY}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_aa7cccb259ab2b7158c0f781ae6bce6be}{\_scr\_y}}; \}}
+\DoxyCodeLine{20    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a3eaef29c64509714163bf43e6e20018b}{GetMSW}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_a117f7ad68d5179c2f4410c7547743977}{\_mapsize\_w}}; \}}
+\DoxyCodeLine{21    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a4ee2b53a8c9de92491c225f58585eae1}{GetMSH}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_ada5786003b2baa2ec6211b9f2ba1af0d}{\_mapsize\_h}}; \}}
+\DoxyCodeLine{22    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a63ea143827d8ee593ea2d3eda47cfa0a}{GetCC}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_ae0a166132037f4b9ce4fe7fbe5c0065f}{\_chipcount}}; \}}
+\DoxyCodeLine{23    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a09d79bf28e56602b0170d0274a905036}{GetCCW}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_a6097f2355b136f8cc9d4e9bc05afd12a}{\_chipcount\_w}}; \}}
+\DoxyCodeLine{24    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a4eb11c979f009eec02ea255317c4174c}{GetCCH}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_aa5203901ce83f5e79560f11ff5632725}{\_chipcount\_h}}; \}}
+\DoxyCodeLine{25    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a39c2ea3455f4a5eeac3913357c0353b5}{GetCSW}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_a8a40b0d28f8560bb0ee8a8be88055677}{\_chipsize\_w}}; \}}
+\DoxyCodeLine{26    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_abcc8669cea016ef0578ad893fc975846}{GetCSH}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_map_chip_a57614dcb6be82e6a95ef78645715c02b}{\_chipsize\_h}}; \}}
+\DoxyCodeLine{27    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_map_chip_a4dd0566d00367757bcc27a31186e3522}{SetscrX}}(\textcolor{keywordtype}{int} scrX) \{ \mbox{\hyperlink{class_map_chip_a8ba4a27d1fd3b6db6d6d410acbcfb814}{\_scr\_x}} = scrX; \}}
+\DoxyCodeLine{28    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_map_chip_a536886bc9f5eb88bf832913843d53929}{SetscrY}}(\textcolor{keywordtype}{int} scrY) \{ \mbox{\hyperlink{class_map_chip_aa7cccb259ab2b7158c0f781ae6bce6be}{\_scr\_y}} = scrY; \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{private}:}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32    \textcolor{comment}{// マップのサイズ（チップ数）}}
+\DoxyCodeLine{33    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a117f7ad68d5179c2f4410c7547743977}{\_mapsize\_w}};   \textcolor{comment}{// width}}
+\DoxyCodeLine{34    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_ada5786003b2baa2ec6211b9f2ba1af0d}{\_mapsize\_h}};   \textcolor{comment}{// height}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36    \textcolor{comment}{// チップの個数}}
+\DoxyCodeLine{37    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_ae0a166132037f4b9ce4fe7fbe5c0065f}{\_chipcount}};      \textcolor{comment}{// tilecount}}
+\DoxyCodeLine{38    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a6097f2355b136f8cc9d4e9bc05afd12a}{\_chipcount\_w}};    \textcolor{comment}{// columns}}
+\DoxyCodeLine{39    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_aa5203901ce83f5e79560f11ff5632725}{\_chipcount\_h}};    \textcolor{comment}{// 計算で出す}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41    \textcolor{comment}{// チップのサイズ（pixel数）}}
+\DoxyCodeLine{42    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a8a40b0d28f8560bb0ee8a8be88055677}{\_chipsize\_w}};}
+\DoxyCodeLine{43    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a57614dcb6be82e6a95ef78645715c02b}{\_chipsize\_h}};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45    \textcolor{comment}{// レイヤー数}}
+\DoxyCodeLine{46    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a65d8fc6be9c2e009b6976c24c4fa17f5}{\_mapsize\_layer}};   \textcolor{comment}{// 「<layer 」 の数を数える}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48    \textcolor{comment}{// チップデータのファイル名}}
+\DoxyCodeLine{49    std::string      \mbox{\hyperlink{class_map_chip_aa9fcb84069861c875c53bad48a7a8c83}{\_strchip\_file}};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51    \textcolor{comment}{// スクロール}}
+\DoxyCodeLine{52    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_map_chip_a8ba4a27d1fd3b6db6d6d410acbcfb814}{\_scr\_x}}, \mbox{\hyperlink{class_map_chip_aa7cccb259ab2b7158c0f781ae6bce6be}{\_scr\_y}};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56    std::string \mbox{\hyperlink{class_map_chip_ad82fca51c1717144e4691e0a392725a5}{StringFileLoad}}(std::string strFileName);}
+\DoxyCodeLine{57    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_map_chip_a8e7ba10b04083c29a79f8ce1559693c6}{TiledJsonLoad}}(std::string filePath, std::string strFileName);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59    \textcolor{keywordtype}{int}* \mbox{\hyperlink{class_map_chip_a97b7804245f0104356b943f60bf5e37d}{\_cg\_chip}};    \textcolor{comment}{// マップチップ画像}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61    \textcolor{comment}{// マップデータ}}
+\DoxyCodeLine{62    \textcolor{keywordtype}{int}* \mbox{\hyperlink{class_map_chip_a528350937984b1bdb9b03beb7f8546bf}{\_map\_data}};}
+\DoxyCodeLine{63 \};}
+
+\end{DoxyCode}

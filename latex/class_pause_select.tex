@@ -1,0 +1,190 @@
+\hypertarget{class_pause_select}{}\doxysection{Pause\+Select クラス}
+\label{class_pause_select}\index{PauseSelect@{PauseSelect}}
+
+
+{\ttfamily \#include $<$Pause\+Select.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_pause_select_ab7d7bdccc71619d3678e4d6821110b96}{Initialize}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_pause_select_abf544bf320829bb6502836dfc07b9aba}{Terminate}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 終了関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_pause_select_ab354471146e92e730bb6a6789dfcd99d}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 更新関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_pause_select_a9b20caf2a7fd006cb8385d88299e9da4}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 描画関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638}{SELECTSTATE}} \{ \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638abde21d5a625d06157dd6db2e2a4cc635}{NOSELECT}}
+, \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638afd89b4b977599512cd7a87337d460fe9}{RETURNSELECT}}
+, \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638a3b4e86548843ba23742d0b7ac8e8b85d}{GOTITLESELECT}}
+ \}
+\item 
+typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_pause_select_ada36de7b12fd3ea28bebd8bff6bfadac}{base}}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pause_select_ac25b07700bc94e0288b7f914b8ba779c}{Tutorial\+Del}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638}{SELECTSTATE}} \mbox{\hyperlink{class_pause_select_a1de41845f2b60a551561fc8beb0dedeb}{\+\_\+state}}
+\item 
+int \mbox{\hyperlink{class_pause_select_aa8655919353b22e984b03e3762887626}{\+\_\+graph\+\_\+no}}
+\item 
+bool \mbox{\hyperlink{class_pause_select_a24a210d7d026b055493f2cb049f42f32}{\+\_\+input\+\_\+flag}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{型定義メンバ詳解}
+\mbox{\Hypertarget{class_pause_select_ada36de7b12fd3ea28bebd8bff6bfadac}\label{class_pause_select_ada36de7b12fd3ea28bebd8bff6bfadac}} 
+\index{PauseSelect@{PauseSelect}!base@{base}}
+\index{base@{base}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_pause_select_ada36de7b12fd3ea28bebd8bff6bfadac}{Pause\+Select\+::base}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{列挙型メンバ詳解}
+\mbox{\Hypertarget{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638}\label{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638}} 
+\index{PauseSelect@{PauseSelect}!SELECTSTATE@{SELECTSTATE}}
+\index{SELECTSTATE@{SELECTSTATE}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{SELECTSTATE}{SELECTSTATE}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638}{Pause\+Select\+::\+SELECTSTATE}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOSELECT@{NOSELECT}!PauseSelect@{PauseSelect}}\index{PauseSelect@{PauseSelect}!NOSELECT@{NOSELECT}}}\mbox{\Hypertarget{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638abde21d5a625d06157dd6db2e2a4cc635}\label{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638abde21d5a625d06157dd6db2e2a4cc635}} 
+NOSELECT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RETURNSELECT@{RETURNSELECT}!PauseSelect@{PauseSelect}}\index{PauseSelect@{PauseSelect}!RETURNSELECT@{RETURNSELECT}}}\mbox{\Hypertarget{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638afd89b4b977599512cd7a87337d460fe9}\label{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638afd89b4b977599512cd7a87337d460fe9}} 
+RETURNSELECT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GOTITLESELECT@{GOTITLESELECT}!PauseSelect@{PauseSelect}}\index{PauseSelect@{PauseSelect}!GOTITLESELECT@{GOTITLESELECT}}}\mbox{\Hypertarget{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638a3b4e86548843ba23742d0b7ac8e8b85d}\label{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638a3b4e86548843ba23742d0b7ac8e8b85d}} 
+GOTITLESELECT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_pause_select_a9b20caf2a7fd006cb8385d88299e9da4}\label{class_pause_select_a9b20caf2a7fd006cb8385d88299e9da4}} 
+\index{PauseSelect@{PauseSelect}!Draw@{Draw}}
+\index{Draw@{Draw}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily bool Pause\+Select\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+描画関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a50776d758456fe540e3aef2f47234a0d}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_pause_select_ab7d7bdccc71619d3678e4d6821110b96}\label{class_pause_select_ab7d7bdccc71619d3678e4d6821110b96}} 
+\index{PauseSelect@{PauseSelect}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Pause\+Select\+::\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a4cb0982318dfa7d2906dcf30c3824ab1}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_pause_select_ab354471146e92e730bb6a6789dfcd99d}\label{class_pause_select_ab354471146e92e730bb6a6789dfcd99d}} 
+\index{PauseSelect@{PauseSelect}!Process@{Process}}
+\index{Process@{Process}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily bool Pause\+Select\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+更新関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a8b78d63abe0000394a892723b92c7694}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_pause_select_abf544bf320829bb6502836dfc07b9aba}\label{class_pause_select_abf544bf320829bb6502836dfc07b9aba}} 
+\index{PauseSelect@{PauseSelect}!Terminate@{Terminate}}
+\index{Terminate@{Terminate}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{Terminate()}{Terminate()}}
+{\footnotesize\ttfamily bool Pause\+Select\+::\+Terminate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+終了関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a780d90b676aa9093fef190c6fe6821e2}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_pause_select_ac25b07700bc94e0288b7f914b8ba779c}\label{class_pause_select_ac25b07700bc94e0288b7f914b8ba779c}} 
+\index{PauseSelect@{PauseSelect}!TutorialDel@{TutorialDel}}
+\index{TutorialDel@{TutorialDel}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{TutorialDel()}{TutorialDel()}}
+{\footnotesize\ttfamily void Pause\+Select\+::\+Tutorial\+Del (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_pause_select_aa8655919353b22e984b03e3762887626}\label{class_pause_select_aa8655919353b22e984b03e3762887626}} 
+\index{PauseSelect@{PauseSelect}!\_graph\_no@{\_graph\_no}}
+\index{\_graph\_no@{\_graph\_no}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{\_graph\_no}{\_graph\_no}}
+{\footnotesize\ttfamily int Pause\+Select\+::\+\_\+graph\+\_\+no\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_pause_select_a24a210d7d026b055493f2cb049f42f32}\label{class_pause_select_a24a210d7d026b055493f2cb049f42f32}} 
+\index{PauseSelect@{PauseSelect}!\_input\_flag@{\_input\_flag}}
+\index{\_input\_flag@{\_input\_flag}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{\_input\_flag}{\_input\_flag}}
+{\footnotesize\ttfamily bool Pause\+Select\+::\+\_\+input\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_pause_select_a1de41845f2b60a551561fc8beb0dedeb}\label{class_pause_select_a1de41845f2b60a551561fc8beb0dedeb}} 
+\index{PauseSelect@{PauseSelect}!\_state@{\_state}}
+\index{\_state@{\_state}!PauseSelect@{PauseSelect}}
+\doxysubsubsection{\texorpdfstring{\_state}{\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pause_select_a87ba13f059e2c6b494bcdfed25c3e638}{SELECTSTATE}} Pause\+Select\+::\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_pause_select_8h}{Pause\+Select.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_pause_select_8cpp}{Pause\+Select.\+cpp}}\end{DoxyCompactItemize}

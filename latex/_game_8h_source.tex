@@ -1,0 +1,79 @@
+\hypertarget{_game_8h_source}{}\doxysection{Game.\+h}
+\label{_game_8h_source}\index{Tensyukaku/Game.h@{Tensyukaku/Game.h}}
+\mbox{\hyperlink{_game_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include   "{}\mbox{\hyperlink{_back_ground_8h}{BackGround.h}}"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include   "{}\mbox{\hyperlink{_map_chip_8h}{MapChip.h}}"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include   "{}\mbox{\hyperlink{_player_8h}{Player.h}}"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include   "{}\mbox{\hyperlink{_object_server_8h}{ObjectServer.h}}"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include   "{}\mbox{\hyperlink{_mode_server_8h}{ModeServer.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include   <unordered\_map>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{// 画面設定}}
+\DoxyCodeLine{10 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{_game_8h_a7015f042c3726da18f21fa9a1c4976ed}{SCREEN\_W}} = 1920;      }
+\DoxyCodeLine{11 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{_game_8h_ab29217f28d40a743a4e060fbdfb23480}{SCREEN\_H}} = 1080;      }
+\DoxyCodeLine{12 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{_game_8h_ad30d7d7f0fb60884c5b6fd4fe67d6c28}{SCREEN\_DEPTH}} = 32;   }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// ゲームクラス}}
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_game}{Game}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19    \mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}}();            \textcolor{comment}{// アプリの初期化}}
+\DoxyCodeLine{20    \mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\string~Game}}();         \textcolor{comment}{// アプリの解放}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a7c682bd3c63bdff1e2afa1d939b676b1}{Input}}();      \textcolor{comment}{// フレーム処理：入力}}
+\DoxyCodeLine{23    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_ae995fef6be42bdba832ee132d9068f4f}{Process}}();      \textcolor{comment}{// フレーム処理：計算}}
+\DoxyCodeLine{24    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_aad2c20e2c5529244095c50c238911e30}{Draw}}();      \textcolor{comment}{// フレーム処理：描画}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27    \textcolor{comment}{//ゲッター関数}}
+\DoxyCodeLine{28    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_game_a40ffcec01a82aa7dc1ef2b3cd2d06deb}{GetKey}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_af718e2a2f514ae7cfb9a62c6919a5008}{\_gkey}}; \}}
+\DoxyCodeLine{29    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_game_aeda8bea7a81ce3e69738414348df9dc8}{GetTrg}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a8c488851082626fb673523d3ed7410df}{\_gtrg}}; \}}
+\DoxyCodeLine{30    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_game_a3327a66b62a63b75a1c47aa63cba4507}{GetXBuf}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_aafecdaef5c7cb8bd3ae224385f5aa239}{\_xbuf}}; \}}
+\DoxyCodeLine{31    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_game_a2b701ab044eb317cb868706dd0ba1c9f}{GetYBuf}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_ac95a43a72f8846111e93ba1ea2deb6b0}{\_ybuf}}; \}}
+\DoxyCodeLine{32    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_game_a41bca66ac8cc3d18ab0c7156818fc5ae}{GetmapH}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a72c50291f1cc85f2adfb7d53767d18ac}{\_map\_h}}; \}}
+\DoxyCodeLine{33    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_game_a73b22e873b857ff509fcc9a2802809af}{GetmapW}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a833382237e5190a4dc3636d0e6ea1550}{\_map\_w}}; \}}
+\DoxyCodeLine{34    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_game_a1eb30d9a037aa0642d2eab649219a087}{GetcvX}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a0c3c233df2160f8b300c78efe0cbfcdd}{\_cv\_x}}; \}}
+\DoxyCodeLine{35    \textcolor{keywordtype}{int}      \mbox{\hyperlink{class_game_ae971dabf34eacf8d53664ffc182dec58}{GetcvY}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a9f53d1906d714609719fc39530313f3e}{\_cv\_y}}; \}}
+\DoxyCodeLine{36    \textcolor{keywordtype}{bool}      \mbox{\hyperlink{class_game_a182ea90186ae8fdefbcb998d03a35241}{GetRestartFlag}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a4dbd3e9f9a84c3cb0a802fde1c306d38}{\_restart\_flag}}; \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38    \mbox{\hyperlink{class_map_chip}{MapChip}}* \mbox{\hyperlink{class_game_a648ffa59c1a07acb41b33e3ff63f1c51}{GetChip}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a6c7ab5cf65fed8958d495bbd66f7ac90}{\_mapchip}}; \}}
+\DoxyCodeLine{39    \mbox{\hyperlink{class_mode_server}{ModeServer}}* \mbox{\hyperlink{class_game_a1ffc2afa4c03161171316d1bf5baf715}{GetMS}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a7da1314c24bfde82575c35a781e37d6e}{\_servermode}}; \}}
+\DoxyCodeLine{40    \mbox{\hyperlink{class_object_server}{ObjectServer}}* \mbox{\hyperlink{class_game_a2c7d84112feeac4a1f208120dba59bd1}{GetOS}}() \{ \textcolor{keywordflow}{return} \&\mbox{\hyperlink{class_game_a967e0343efa495bdd98745cfe12285fb}{\_objserver}}; \}}
+\DoxyCodeLine{41    std::unordered\_map<std::string, int> \mbox{\hyperlink{class_game_a4469a4c432a02bf896ae6b8d35437fe2}{GetBgm}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_a0a8aa66c3783d820e2cba7620e8f2526}{\_bgm}}; \}}
+\DoxyCodeLine{42    std::unordered\_map<std::string, int> \mbox{\hyperlink{class_game_a918997b6dadae9ef0dc4e16ba15a69fe}{GetVpal}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_game_ac76fc598eb59d2c3d741a7e5d279c705}{\_vpal}}; \}}
+\DoxyCodeLine{43    std::unordered\_map<std::string, bool> \mbox{\hyperlink{class_game_a7519c667de7c7939608d34866c180b56}{GetCPointFlag}}() \{ \textcolor{keywordflow}{return}  \mbox{\hyperlink{class_game_a4d44342ac89fc6da938846151ad36496}{\_cpoint\_flag}}; \}}
+\DoxyCodeLine{44    \textcolor{comment}{//セッター関数}}
+\DoxyCodeLine{45    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a3cbd70106b90e0c1f7c2fcfaf5605904}{SetcvX}}(\textcolor{keywordtype}{int} cvX) \{ \mbox{\hyperlink{class_game_a0c3c233df2160f8b300c78efe0cbfcdd}{\_cv\_x}} = cvX; \}}
+\DoxyCodeLine{46    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_af47f355ff21c33f3be6d46338975697f}{SetcvY}}(\textcolor{keywordtype}{int} cvY) \{ \mbox{\hyperlink{class_game_a9f53d1906d714609719fc39530313f3e}{\_cv\_y}} = cvY; \}}
+\DoxyCodeLine{47    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a7b09fb3e92595575beb13cfa6707861c}{SetmapW}}(\textcolor{keywordtype}{int} mapW) \{ \mbox{\hyperlink{class_game_a833382237e5190a4dc3636d0e6ea1550}{\_map\_w}} = mapW; \}}
+\DoxyCodeLine{48    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a89eca209da3a06f588c7b3e53be620eb}{SetmapH}}(\textcolor{keywordtype}{int} mapH) \{ \mbox{\hyperlink{class_game_a72c50291f1cc85f2adfb7d53767d18ac}{\_map\_h}} = mapH; \}}
+\DoxyCodeLine{49    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a10a0b80c26ffe497f1c90c1582fd2c86}{SetChip}}(\mbox{\hyperlink{class_map_chip}{MapChip}}* map) \{ \mbox{\hyperlink{class_game_a6c7ab5cf65fed8958d495bbd66f7ac90}{\_mapchip}} = map; \}}
+\DoxyCodeLine{50    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a0c5bab4e93ed34da70d6ae9670db8442}{SetRestartFlag}}(\textcolor{keywordtype}{bool} restartflag) \{ \mbox{\hyperlink{class_game_a4dbd3e9f9a84c3cb0a802fde1c306d38}{\_restart\_flag}} = restartflag; \}}
+\DoxyCodeLine{51    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a0f79af63287346aee7930c43dd44e6d3}{SetCPointFlag}}(std::unordered\_map<std::string, bool> cpointflag) \{ \mbox{\hyperlink{class_game_a4d44342ac89fc6da938846151ad36496}{\_cpoint\_flag}} = cpointflag; \}}
+\DoxyCodeLine{52    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a8df47d3bd5fc00b7731abc09be50b684}{SetVpal}}(std::unordered\_map<std::string, int> vpal) \{ \mbox{\hyperlink{class_game_ac76fc598eb59d2c3d741a7e5d279c705}{\_vpal}} = vpal; \}}
+\DoxyCodeLine{53    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_game_a203ad12de80b113641402b8311ceb3f6}{VolumeInit}}();\textcolor{comment}{//BGMのボリューム初期値}}
+\DoxyCodeLine{54 \textcolor{keyword}{private}:}
+\DoxyCodeLine{55    \textcolor{keywordtype}{void}      \mbox{\hyperlink{class_game_aad11e42f2271149eeb70e5ffc8736e86}{LoadBgm}}();   \textcolor{comment}{//BGM読み込み}}
+\DoxyCodeLine{56    \textcolor{keywordtype}{void}      \mbox{\hyperlink{class_game_aa4236c247d29291d04ce5b7ebfd7bfa2}{VolumeChange}}();\textcolor{comment}{//BGMのボリューム変更関数}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_game_af718e2a2f514ae7cfb9a62c6919a5008}{\_gkey}};         \textcolor{comment}{// キー入力の情報}}
+\DoxyCodeLine{59    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_game_a8c488851082626fb673523d3ed7410df}{\_gtrg}};         \textcolor{comment}{// キー入力のトリガ情報}}
+\DoxyCodeLine{60    \textcolor{keywordtype}{int}   \mbox{\hyperlink{class_game_aafecdaef5c7cb8bd3ae224385f5aa239}{\_xbuf}};         \textcolor{comment}{//左ステッィクX入力量}}
+\DoxyCodeLine{61    \textcolor{keywordtype}{int}   \mbox{\hyperlink{class_game_ac95a43a72f8846111e93ba1ea2deb6b0}{\_ybuf}};         \textcolor{comment}{//左ステッィクY入力量}}
+\DoxyCodeLine{62    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_game_acef31833f2ce790ffa717e0858b978bb}{\_gcnt}};         \textcolor{comment}{// 毎フレーム+1するカウント}}
+\DoxyCodeLine{63    \textcolor{keywordtype}{int}   \mbox{\hyperlink{class_game_a0c3c233df2160f8b300c78efe0cbfcdd}{\_cv\_x}}, \mbox{\hyperlink{class_game_a9f53d1906d714609719fc39530313f3e}{\_cv\_y}};      \textcolor{comment}{// カメラ}}
+\DoxyCodeLine{64    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_game_a833382237e5190a4dc3636d0e6ea1550}{\_map\_w}}, \mbox{\hyperlink{class_game_a72c50291f1cc85f2adfb7d53767d18ac}{\_map\_h}};   \textcolor{comment}{// マップ}}
+\DoxyCodeLine{65    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_game_a4dbd3e9f9a84c3cb0a802fde1c306d38}{\_restart\_flag}};\textcolor{comment}{//再起からの開始かどうかのフラグ}}
+\DoxyCodeLine{66    std::unordered\_map<std::string, int> \mbox{\hyperlink{class_game_a0a8aa66c3783d820e2cba7620e8f2526}{\_bgm}}; \textcolor{comment}{//BGMマップ}}
+\DoxyCodeLine{67    std::unordered\_map<std::string, int> \mbox{\hyperlink{class_game_ac76fc598eb59d2c3d741a7e5d279c705}{\_vpal}}; \textcolor{comment}{//ボリュームマップ}}
+\DoxyCodeLine{68    std::unordered\_map<std::string, bool> \mbox{\hyperlink{class_game_a4d44342ac89fc6da938846151ad36496}{\_cpoint\_flag}}; \textcolor{comment}{//チェックポイントフラグマップ}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70    \mbox{\hyperlink{class_map_chip}{MapChip}}* \mbox{\hyperlink{class_game_a6c7ab5cf65fed8958d495bbd66f7ac90}{\_mapchip}};         \textcolor{comment}{//マップチップ}}
+\DoxyCodeLine{71    \mbox{\hyperlink{class_mode_server}{ModeServer}}* \mbox{\hyperlink{class_game_a7da1314c24bfde82575c35a781e37d6e}{\_servermode}};   \textcolor{comment}{//モードサーバー}}
+\DoxyCodeLine{72    \mbox{\hyperlink{class_object_server}{ObjectServer}} \mbox{\hyperlink{class_game_a967e0343efa495bdd98745cfe12285fb}{\_objserver}};   \textcolor{comment}{//プレイヤーや敵などを登録する}}
+\DoxyCodeLine{73 \};}
+
+\end{DoxyCode}

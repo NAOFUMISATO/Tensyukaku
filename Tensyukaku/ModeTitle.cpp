@@ -11,7 +11,11 @@
 #include "Game.h"
 #include "ResourceServer.h"
 #include "Cursor.h"
-#include "TitleSelect.h"
+#include "TitleLogo.h"
+#include "GameStartSelect.h"
+#include "GameEndSelect.h"
+#include "CreditSelect.h"
+#include "ExplainSelect.h"
 
 using namespace MTInfo;
 /*-----初期化-----*/
@@ -117,19 +121,19 @@ bool ModeTitle::Process(Game& g) {
          g.GetOS()->Add(tl);
       }
       if (frame == GAMESTART_APPEARFRAME) {
-         auto gs = new GameStart();      //ゲームスタートセレクト生成
+         auto gs = new GameStartSelect();      //ゲームスタートセレクト生成
          g.GetOS()->Add(gs);
       }
       if (frame == EXPLAIN_APPEARFRAME) {
-         auto ex = new Explain();        //説明セレクト生成
+         auto ex = new ExplainSelect();        //説明セレクト生成
          g.GetOS()->Add(ex);
       }
       if (frame == GAMEEND_APPEARFRAME) {
-         auto ge = new GameEnd();        //ゲーム終了セレクト生成
+         auto ge = new GameEndSelect();        //ゲーム終了セレクト生成
          g.GetOS()->Add(ge);
       }
       if (frame ==CREDIT_APPEARFRAME) {
-         auto cr = new Credit();         //クレジットセレクト生成
+         auto cr = new CreditSelect();         //クレジットセレクト生成
          g.GetOS()->Add(cr);
       }
       break;

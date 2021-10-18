@@ -1,0 +1,35 @@
+\hypertarget{_mode_game_8h_source}{}\doxysection{Mode\+Game.\+h}
+\label{_mode_game_8h_source}\index{Tensyukaku/ModeGame.h@{Tensyukaku/ModeGame.h}}
+\mbox{\hyperlink{_mode_game_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_mode_base_8h}{ModeBase.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_back_ground_8h}{BackGround.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_player_8h}{Player.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_gimik_placement_8h}{GimikPlacement.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_enemy_spawn_8h}{EnemySpawn.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_happen_8h}{EventHappen.h}}"{}}}
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_mode_game}{ModeGame}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_mode_base}{ModeBase}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18    \textcolor{keyword}{typedef} \mbox{\hyperlink{class_mode_base}{ModeBase}} \mbox{\hyperlink{class_mode_game_adff4045b117390a821ff204f1e3f71c7}{base}};}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_game_a56d672422949acf0aa55d77962435054}{Initialize}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{29    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_game_af60297f15c46bf0240cbe035a453c413}{Terminate}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{34    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_game_a3c063fbff318e91543527a74b6aa005a}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{39    \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_game_a2601701b5fc12946014768e3cba278db}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{44    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_game_ad7958791f4e20a1bdde5fd4cc7ee62df}{GetstopObjProcess}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_mode_game_a64add1d83339d25069924f8293722685}{\_stop\_obj\_process}}; \}}
+\DoxyCodeLine{49    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mode_game_a7a5111b7ebf34e2746e36ba26c0554b7}{SetStopObjProcess}}(\textcolor{keywordtype}{bool} stopobjprocess) \{ \mbox{\hyperlink{class_mode_game_a64add1d83339d25069924f8293722685}{\_stop\_obj\_process}} = stopobjprocess; \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{private}:}
+\DoxyCodeLine{52    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_mode_game_adfaf7481e7e759f22b265e43ce109fb5}{\_player\_y}};                  }
+\DoxyCodeLine{53    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_mode_game_a1be4883a13ea7c3ab2f7df9506c43d3a}{\_player\_x}};                  }
+\DoxyCodeLine{54    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_game_ae4c6301475973f77668512e65c52ecae}{\_player\_flip}};              }
+\DoxyCodeLine{55    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_mode_game_a64add1d83339d25069924f8293722685}{\_stop\_obj\_process}};         }
+\DoxyCodeLine{56    \mbox{\hyperlink{class_back_ground}{BackGround}} \mbox{\hyperlink{class_mode_game_af9af5e8f2907d58f7fcccec012196c20}{\_bg}};                 }
+\DoxyCodeLine{57    \mbox{\hyperlink{class_gimik_placement}{GimikPlacement}}* \mbox{\hyperlink{class_mode_game_abb1e81889bf746f42c6b289c0fb0f097}{\_gimikplacement}};}
+\DoxyCodeLine{58    \mbox{\hyperlink{class_enemy_spawn}{EnemySpawn}}* \mbox{\hyperlink{class_mode_game_a5843a6536734ef59395de819cf24dac9}{\_enemyspawn}};        }
+\DoxyCodeLine{59    \mbox{\hyperlink{class_event_happen}{EventHappen}}* \mbox{\hyperlink{class_mode_game_a08dac310e4319306c6287715fcf55e28}{\_eventhappen}};      }
+\DoxyCodeLine{60 \};}
+
+\end{DoxyCode}

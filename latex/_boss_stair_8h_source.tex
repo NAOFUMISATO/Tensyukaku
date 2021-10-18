@@ -1,0 +1,27 @@
+\hypertarget{_boss_stair_8h_source}{}\doxysection{Boss\+Stair.\+h}
+\label{_boss_stair_8h_source}\index{Tensyukaku/BossStair.h@{Tensyukaku/BossStair.h}}
+\mbox{\hyperlink{_boss_stair_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_boss_stair}{BossStair}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{5 \textcolor{keyword}{public}:}
+\DoxyCodeLine{6    \mbox{\hyperlink{class_boss_stair_ad8f261ecf3c90aff9de29ec91e0b6540}{BossStair}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{7    \mbox{\hyperlink{class_boss_stair_a81846f4f8af36ada333f00d7337632f6}{\string~BossStair}}();}
+\DoxyCodeLine{8    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}   \mbox{\hyperlink{class_boss_stair_a85645b63e6bb202e2cd019c0d781c017}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dabc4e6c8bceddba26cff15e6ce17f4a40}{OBJECTTYPE::BOSSSTAIR}}; \}}
+\DoxyCodeLine{9    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_boss_stair_a8a352a320b6046b94cc6678f3d57d825}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{10    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_boss_stair_af759d35eb00a125be1e2719b1eb0b0e3}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{11    \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_boss_stair_aab4f1b5751a67d12d8984d1f292ef569}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{12 \};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_b_s_info}{BSInfo}} \{}
+\DoxyCodeLine{15    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_b_s_info_a5c3fc71542df43294e20e8f7645d8d3c}{GRAPHPOINT\_X}} = 0;         \textcolor{comment}{//X位置から描画点までの差分}}
+\DoxyCodeLine{16    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_b_s_info_a2dea3021d4c405fb8478bb0a0104758c}{GRAPHPOINT\_Y}} = -\/400;         \textcolor{comment}{//Y位置から描画点までの差分}}
+\DoxyCodeLine{17    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_b_s_info_aff97b6d7f1f44dd6aa4d519b860c367b}{POSITION\_HITX}} = -\/120;      \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{18    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_b_s_info_ae40286fec87b8616131e89294020ceb9}{POSITION\_HITY}} = -\/360;      \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{19    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_b_s_info_a54e9e0a5afc7d0c50c70402284e2b440}{COLLISION\_WIDTH}} = 240;      \textcolor{comment}{//階段の当たり判定横幅}}
+\DoxyCodeLine{20    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_b_s_info_a67bf74da954d1f2038b3e8df08d674ae}{COLLISION\_HEIGHT}} = 760;      \textcolor{comment}{//階段の当たり判定縦幅}}
+\DoxyCodeLine{21 \}}
+
+\end{DoxyCode}

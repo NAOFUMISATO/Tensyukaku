@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/RecoveryBlock.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">RecoveryBlock.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_recovery_block_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_object_base_8h.html">ObjectBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_recovery_block.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="class_recovery_block.html">RecoveryBlock</a> :<span class="keyword">public</span> <a class="code hl_class" href="class_object_base.html">ObjectBase</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>   <a class="code hl_function" href="class_recovery_block.html#aa14ccc49ba7c767a876ba40a35f1e69a">RecoveryBlock</a>(<span class="keywordtype">int</span> x,<span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>   <a class="code hl_function" href="class_recovery_block.html#a8a741af1d371751b67624afda3c18312">~RecoveryBlock</a>();</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_recovery_block.html#a3b9bba28bdcdfd832154b87114b605b8">    8</a></span>   <span class="keyword">virtual</span> <a class="code hl_enumeration" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">OBJECTTYPE</a>   <a class="code hl_function" href="class_recovery_block.html#a3b9bba28bdcdfd832154b87114b605b8">GetObjType</a>() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dad6570f2d248f76547140f52141ed38b2">OBJECTTYPE::RECOVERYBLOCK</a>; }</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_recovery_block.html#a8a869e1ca57cee6369c14c50ad6204ab">Init</a>()<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_recovery_block.html#a58f2fc2657b38d2866e6d62cacb344b1">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_recovery_block.html#abd6930642d61580480fd3ccd8c129b21">Delete</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
+<div class="ttc" id="a_object_base_8h_html"><div class="ttname"><a href="_object_base_8h.html">ObjectBase.h</a></div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html"><div class="ttname"><a href="class_object_base.html">ObjectBase</a></div><div class="ttdef"><b>Definition:</b> ObjectBase.h:12</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1d"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">ObjectBase::OBJECTTYPE</a></div><div class="ttdeci">OBJECTTYPE</div><div class="ttdef"><b>Definition:</b> ObjectBase.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1dad6570f2d248f76547140f52141ed38b2"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dad6570f2d248f76547140f52141ed38b2">ObjectBase::OBJECTTYPE::RECOVERYBLOCK</a></div><div class="ttdeci">@ RECOVERYBLOCK</div></div>
+<div class="ttc" id="aclass_recovery_block_html"><div class="ttname"><a href="class_recovery_block.html">RecoveryBlock</a></div><div class="ttdef"><b>Definition:</b> RecoveryBlock.h:4</div></div>
+<div class="ttc" id="aclass_recovery_block_html_a3b9bba28bdcdfd832154b87114b605b8"><div class="ttname"><a href="class_recovery_block.html#a3b9bba28bdcdfd832154b87114b605b8">RecoveryBlock::GetObjType</a></div><div class="ttdeci">virtual OBJECTTYPE GetObjType()</div><div class="ttdef"><b>Definition:</b> RecoveryBlock.h:8</div></div>
+<div class="ttc" id="aclass_recovery_block_html_a58f2fc2657b38d2866e6d62cacb344b1"><div class="ttname"><a href="class_recovery_block.html#a58f2fc2657b38d2866e6d62cacb344b1">RecoveryBlock::Draw</a></div><div class="ttdeci">void Draw(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> RecoveryBlock.cpp:32</div></div>
+<div class="ttc" id="aclass_recovery_block_html_a8a741af1d371751b67624afda3c18312"><div class="ttname"><a href="class_recovery_block.html#a8a741af1d371751b67624afda3c18312">RecoveryBlock::~RecoveryBlock</a></div><div class="ttdeci">~RecoveryBlock()</div><div class="ttdef"><b>Definition:</b> RecoveryBlock.cpp:16</div></div>
+<div class="ttc" id="aclass_recovery_block_html_a8a869e1ca57cee6369c14c50ad6204ab"><div class="ttname"><a href="class_recovery_block.html#a8a869e1ca57cee6369c14c50ad6204ab">RecoveryBlock::Init</a></div><div class="ttdeci">void Init() override</div><div class="ttdef"><b>Definition:</b> RecoveryBlock.cpp:19</div></div>
+<div class="ttc" id="aclass_recovery_block_html_aa14ccc49ba7c767a876ba40a35f1e69a"><div class="ttname"><a href="class_recovery_block.html#aa14ccc49ba7c767a876ba40a35f1e69a">RecoveryBlock::RecoveryBlock</a></div><div class="ttdeci">RecoveryBlock(int x, int y)</div><div class="ttdef"><b>Definition:</b> RecoveryBlock.cpp:11</div></div>
+<div class="ttc" id="aclass_recovery_block_html_abd6930642d61580480fd3ccd8c129b21"><div class="ttname"><a href="class_recovery_block.html#abd6930642d61580480fd3ccd8c129b21">RecoveryBlock::Delete</a></div><div class="ttdeci">void Delete(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> RecoveryBlock.cpp:36</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

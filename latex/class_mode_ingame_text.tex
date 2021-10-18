@@ -1,0 +1,210 @@
+\hypertarget{class_mode_ingame_text}{}\doxysection{Mode\+Ingame\+Text クラス}
+\label{class_mode_ingame_text}\index{ModeIngameText@{ModeIngameText}}
+
+
+{\ttfamily \#include $<$Mode\+Ingame\+Text.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_mode_ingame_text_a696f66697c2dbce8621067948ae67294}{Initialize}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_ingame_text_a875305ade15ca3c94f3c7407b907c83c}{Terminate}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_ingame_text_ab29f65ba971fb4bce2d78a235656f7d1}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_ingame_text_ad044b1ed551902a9ba90a89bb215db89}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mode_ingame_text_a003618ba1a21d1a14c1c61145d48e296}{Set\+Type}} (std\+::string texttype)
+\begin{DoxyCompactList}\small\item\em テキストの種類を設定する関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_mode_ingame_text_a8b3994e247c701b662b5793ceb8fe62b}{base}}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_mode_ingame_text_aa7ea96d453cf6a6d8f8ab6123273f098}{Load\+Picture}} ()
+\begin{DoxyCompactList}\small\item\em 画像読み込み関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_mode_ingame_text_ae695a4e4ad004d139b73970dad419c64}{\+\_\+text\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em テキストの種類 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mode_ingame_text_a1a5ccfc005d8c02cdb6b3e810509df3a}{\+\_\+fadein\+\_\+frame}}
+\begin{DoxyCompactList}\small\item\em フェードインするフレームを指定する変数 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mode_ingame_text_af50460e57ef271ec1959cc279eeb41a6}{\+\_\+fadeout\+\_\+frame}}
+\begin{DoxyCompactList}\small\item\em フェードアウトするフレームを指定する変数 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mode_ingame_text_aa242b53ec1c0d178c68c27624eba74a5}{\+\_\+fade\+\_\+speed}}
+\begin{DoxyCompactList}\small\item\em フェードのスピードを指定する変数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{詳解}
+インゲームでの階層表示 
+
+\doxysubsection{型定義メンバ詳解}
+\mbox{\Hypertarget{class_mode_ingame_text_a8b3994e247c701b662b5793ceb8fe62b}\label{class_mode_ingame_text_a8b3994e247c701b662b5793ceb8fe62b}} 
+\index{ModeIngameText@{ModeIngameText}!base@{base}}
+\index{base@{base}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_mode_ingame_text_a8b3994e247c701b662b5793ceb8fe62b}{Mode\+Ingame\+Text\+::base}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_mode_ingame_text_ad044b1ed551902a9ba90a89bb215db89}\label{class_mode_ingame_text_ad044b1ed551902a9ba90a89bb215db89}} 
+\index{ModeIngameText@{ModeIngameText}!Draw@{Draw}}
+\index{Draw@{Draw}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily bool Mode\+Ingame\+Text\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a50776d758456fe540e3aef2f47234a0d}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_ingame_text_a696f66697c2dbce8621067948ae67294}\label{class_mode_ingame_text_a696f66697c2dbce8621067948ae67294}} 
+\index{ModeIngameText@{ModeIngameText}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Mode\+Ingame\+Text\+::\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a4cb0982318dfa7d2906dcf30c3824ab1}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_ingame_text_aa7ea96d453cf6a6d8f8ab6123273f098}\label{class_mode_ingame_text_aa7ea96d453cf6a6d8f8ab6123273f098}} 
+\index{ModeIngameText@{ModeIngameText}!LoadPicture@{LoadPicture}}
+\index{LoadPicture@{LoadPicture}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{LoadPicture()}{LoadPicture()}}
+{\footnotesize\ttfamily void Mode\+Ingame\+Text\+::\+Load\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+画像読み込み関数 
+
+\mbox{\Hypertarget{class_mode_ingame_text_ab29f65ba971fb4bce2d78a235656f7d1}\label{class_mode_ingame_text_ab29f65ba971fb4bce2d78a235656f7d1}} 
+\index{ModeIngameText@{ModeIngameText}!Process@{Process}}
+\index{Process@{Process}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily bool Mode\+Ingame\+Text\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a8b78d63abe0000394a892723b92c7694}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_ingame_text_a003618ba1a21d1a14c1c61145d48e296}\label{class_mode_ingame_text_a003618ba1a21d1a14c1c61145d48e296}} 
+\index{ModeIngameText@{ModeIngameText}!SetType@{SetType}}
+\index{SetType@{SetType}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{SetType()}{SetType()}}
+{\footnotesize\ttfamily void Mode\+Ingame\+Text\+::\+Set\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{texttype }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+テキストの種類を設定する関数 
+
+
+\begin{DoxyParams}{引数}
+{\em texttype} & テキストの種類 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mode_ingame_text_a875305ade15ca3c94f3c7407b907c83c}\label{class_mode_ingame_text_a875305ade15ca3c94f3c7407b907c83c}} 
+\index{ModeIngameText@{ModeIngameText}!Terminate@{Terminate}}
+\index{Terminate@{Terminate}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{Terminate()}{Terminate()}}
+{\footnotesize\ttfamily bool Mode\+Ingame\+Text\+::\+Terminate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a780d90b676aa9093fef190c6fe6821e2}{Mode\+Base}}を再実装しています。
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_mode_ingame_text_aa242b53ec1c0d178c68c27624eba74a5}\label{class_mode_ingame_text_aa242b53ec1c0d178c68c27624eba74a5}} 
+\index{ModeIngameText@{ModeIngameText}!\_fade\_speed@{\_fade\_speed}}
+\index{\_fade\_speed@{\_fade\_speed}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{\_fade\_speed}{\_fade\_speed}}
+{\footnotesize\ttfamily int Mode\+Ingame\+Text\+::\+\_\+fade\+\_\+speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+フェードのスピードを指定する変数 
+
+\mbox{\Hypertarget{class_mode_ingame_text_a1a5ccfc005d8c02cdb6b3e810509df3a}\label{class_mode_ingame_text_a1a5ccfc005d8c02cdb6b3e810509df3a}} 
+\index{ModeIngameText@{ModeIngameText}!\_fadein\_frame@{\_fadein\_frame}}
+\index{\_fadein\_frame@{\_fadein\_frame}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{\_fadein\_frame}{\_fadein\_frame}}
+{\footnotesize\ttfamily int Mode\+Ingame\+Text\+::\+\_\+fadein\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+フェードインするフレームを指定する変数 
+
+\mbox{\Hypertarget{class_mode_ingame_text_af50460e57ef271ec1959cc279eeb41a6}\label{class_mode_ingame_text_af50460e57ef271ec1959cc279eeb41a6}} 
+\index{ModeIngameText@{ModeIngameText}!\_fadeout\_frame@{\_fadeout\_frame}}
+\index{\_fadeout\_frame@{\_fadeout\_frame}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{\_fadeout\_frame}{\_fadeout\_frame}}
+{\footnotesize\ttfamily int Mode\+Ingame\+Text\+::\+\_\+fadeout\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+フェードアウトするフレームを指定する変数 
+
+\mbox{\Hypertarget{class_mode_ingame_text_ae695a4e4ad004d139b73970dad419c64}\label{class_mode_ingame_text_ae695a4e4ad004d139b73970dad419c64}} 
+\index{ModeIngameText@{ModeIngameText}!\_text\_type@{\_text\_type}}
+\index{\_text\_type@{\_text\_type}!ModeIngameText@{ModeIngameText}}
+\doxysubsubsection{\texorpdfstring{\_text\_type}{\_text\_type}}
+{\footnotesize\ttfamily std\+::string Mode\+Ingame\+Text\+::\+\_\+text\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+テキストの種類 
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_mode_ingame_text_8h}{Mode\+Ingame\+Text.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_mode_ingame_text_8cpp}{Mode\+Ingame\+Text.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,258 @@
+\hypertarget{class_mode_game}{}\doxysection{Mode\+Game クラス}
+\label{class_mode_game}\index{ModeGame@{ModeGame}}
+
+
+{\ttfamily \#include $<$Mode\+Game.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_mode_game_a56d672422949acf0aa55d77962435054}{Initialize}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_game_af60297f15c46bf0240cbe035a453c413}{Terminate}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 終了関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_game_a3c063fbff318e91543527a74b6aa005a}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 更新関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_game_a2601701b5fc12946014768e3cba278db}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 描画関数 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mode_game_ad7958791f4e20a1bdde5fd4cc7ee62df}{Getstop\+Obj\+Process}} ()
+\begin{DoxyCompactList}\small\item\em オブジェクト処理のストップ判定を返す関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mode_game_a7a5111b7ebf34e2746e36ba26c0554b7}{Set\+Stop\+Obj\+Process}} (bool stopobjprocess)
+\begin{DoxyCompactList}\small\item\em オブジェクト処理のストップ判定の設定関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_mode_game_adff4045b117390a821ff204f1e3f71c7}{base}}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_mode_game_adfaf7481e7e759f22b265e43ce109fb5}{\+\_\+player\+\_\+y}}
+\begin{DoxyCompactList}\small\item\em インスタンス生成されるプレイヤーの初期\+Y座標 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mode_game_a1be4883a13ea7c3ab2f7df9506c43d3a}{\+\_\+player\+\_\+x}}
+\begin{DoxyCompactList}\small\item\em インスタンス生成されるプレイヤーの初期\+X座標 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mode_game_ae4c6301475973f77668512e65c52ecae}{\+\_\+player\+\_\+flip}}
+\begin{DoxyCompactList}\small\item\em インスタンス生成されるプレイヤーの初期反転判定 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mode_game_a64add1d83339d25069924f8293722685}{\+\_\+stop\+\_\+obj\+\_\+process}}
+\begin{DoxyCompactList}\small\item\em オブジェクト処理のストップ判定 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_back_ground}{Back\+Ground}} \mbox{\hyperlink{class_mode_game_af9af5e8f2907d58f7fcccec012196c20}{\+\_\+bg}}
+\begin{DoxyCompactList}\small\item\em 背景クラス変数 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gimik_placement}{Gimik\+Placement}} $\ast$ \mbox{\hyperlink{class_mode_game_abb1e81889bf746f42c6b289c0fb0f097}{\+\_\+gimikplacement}}
+\begin{DoxyCompactList}\small\item\em ギミックの配置クラス変数 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_enemy_spawn}{Enemy\+Spawn}} $\ast$ \mbox{\hyperlink{class_mode_game_a5843a6536734ef59395de819cf24dac9}{\+\_\+enemyspawn}}
+\begin{DoxyCompactList}\small\item\em 敵スポーンブロックの配置クラス変数 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_event_happen}{Event\+Happen}} $\ast$ \mbox{\hyperlink{class_mode_game_a08dac310e4319306c6287715fcf55e28}{\+\_\+eventhappen}}
+\begin{DoxyCompactList}\small\item\em イベントブロックの配置クラス変数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{詳解}
+モードインゲーム 
+
+\doxysubsection{型定義メンバ詳解}
+\mbox{\Hypertarget{class_mode_game_adff4045b117390a821ff204f1e3f71c7}\label{class_mode_game_adff4045b117390a821ff204f1e3f71c7}} 
+\index{ModeGame@{ModeGame}!base@{base}}
+\index{base@{base}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_mode_game_adff4045b117390a821ff204f1e3f71c7}{Mode\+Game\+::base}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_mode_game_a2601701b5fc12946014768e3cba278db}\label{class_mode_game_a2601701b5fc12946014768e3cba278db}} 
+\index{ModeGame@{ModeGame}!Draw@{Draw}}
+\index{Draw@{Draw}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily bool Mode\+Game\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+描画関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a50776d758456fe540e3aef2f47234a0d}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_game_ad7958791f4e20a1bdde5fd4cc7ee62df}\label{class_mode_game_ad7958791f4e20a1bdde5fd4cc7ee62df}} 
+\index{ModeGame@{ModeGame}!GetstopObjProcess@{GetstopObjProcess}}
+\index{GetstopObjProcess@{GetstopObjProcess}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{GetstopObjProcess()}{GetstopObjProcess()}}
+{\footnotesize\ttfamily bool Mode\+Game\+::\+Getstop\+Obj\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+オブジェクト処理のストップ判定を返す関数 
+
+\begin{DoxyReturn}{戻り値}
+オブジェクト処理のストップ判定 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mode_game_a56d672422949acf0aa55d77962435054}\label{class_mode_game_a56d672422949acf0aa55d77962435054}} 
+\index{ModeGame@{ModeGame}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Mode\+Game\+::\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a4cb0982318dfa7d2906dcf30c3824ab1}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_game_a3c063fbff318e91543527a74b6aa005a}\label{class_mode_game_a3c063fbff318e91543527a74b6aa005a}} 
+\index{ModeGame@{ModeGame}!Process@{Process}}
+\index{Process@{Process}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily bool Mode\+Game\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+更新関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a8b78d63abe0000394a892723b92c7694}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_game_a7a5111b7ebf34e2746e36ba26c0554b7}\label{class_mode_game_a7a5111b7ebf34e2746e36ba26c0554b7}} 
+\index{ModeGame@{ModeGame}!SetStopObjProcess@{SetStopObjProcess}}
+\index{SetStopObjProcess@{SetStopObjProcess}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{SetStopObjProcess()}{SetStopObjProcess()}}
+{\footnotesize\ttfamily void Mode\+Game\+::\+Set\+Stop\+Obj\+Process (\begin{DoxyParamCaption}\item[{bool}]{stopobjprocess }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+オブジェクト処理のストップ判定の設定関数 
+
+
+\begin{DoxyParams}{引数}
+{\em stopobjprocess} & オブジェクト処理のストップ判定 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mode_game_af60297f15c46bf0240cbe035a453c413}\label{class_mode_game_af60297f15c46bf0240cbe035a453c413}} 
+\index{ModeGame@{ModeGame}!Terminate@{Terminate}}
+\index{Terminate@{Terminate}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{Terminate()}{Terminate()}}
+{\footnotesize\ttfamily bool Mode\+Game\+::\+Terminate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+終了関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a780d90b676aa9093fef190c6fe6821e2}{Mode\+Base}}を再実装しています。
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_mode_game_af9af5e8f2907d58f7fcccec012196c20}\label{class_mode_game_af9af5e8f2907d58f7fcccec012196c20}} 
+\index{ModeGame@{ModeGame}!\_bg@{\_bg}}
+\index{\_bg@{\_bg}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{\_bg}{\_bg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_back_ground}{Back\+Ground}} Mode\+Game\+::\+\_\+bg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+背景クラス変数 
+
+\mbox{\Hypertarget{class_mode_game_a5843a6536734ef59395de819cf24dac9}\label{class_mode_game_a5843a6536734ef59395de819cf24dac9}} 
+\index{ModeGame@{ModeGame}!\_enemyspawn@{\_enemyspawn}}
+\index{\_enemyspawn@{\_enemyspawn}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{\_enemyspawn}{\_enemyspawn}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_enemy_spawn}{Enemy\+Spawn}}$\ast$ Mode\+Game\+::\+\_\+enemyspawn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+敵スポーンブロックの配置クラス変数 
+
+\mbox{\Hypertarget{class_mode_game_a08dac310e4319306c6287715fcf55e28}\label{class_mode_game_a08dac310e4319306c6287715fcf55e28}} 
+\index{ModeGame@{ModeGame}!\_eventhappen@{\_eventhappen}}
+\index{\_eventhappen@{\_eventhappen}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{\_eventhappen}{\_eventhappen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event_happen}{Event\+Happen}}$\ast$ Mode\+Game\+::\+\_\+eventhappen\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+イベントブロックの配置クラス変数 
+
+\mbox{\Hypertarget{class_mode_game_abb1e81889bf746f42c6b289c0fb0f097}\label{class_mode_game_abb1e81889bf746f42c6b289c0fb0f097}} 
+\index{ModeGame@{ModeGame}!\_gimikplacement@{\_gimikplacement}}
+\index{\_gimikplacement@{\_gimikplacement}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{\_gimikplacement}{\_gimikplacement}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gimik_placement}{Gimik\+Placement}}$\ast$ Mode\+Game\+::\+\_\+gimikplacement\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ギミックの配置クラス変数 
+
+\mbox{\Hypertarget{class_mode_game_ae4c6301475973f77668512e65c52ecae}\label{class_mode_game_ae4c6301475973f77668512e65c52ecae}} 
+\index{ModeGame@{ModeGame}!\_player\_flip@{\_player\_flip}}
+\index{\_player\_flip@{\_player\_flip}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{\_player\_flip}{\_player\_flip}}
+{\footnotesize\ttfamily bool Mode\+Game\+::\+\_\+player\+\_\+flip\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+インスタンス生成されるプレイヤーの初期反転判定 
+
+\mbox{\Hypertarget{class_mode_game_a1be4883a13ea7c3ab2f7df9506c43d3a}\label{class_mode_game_a1be4883a13ea7c3ab2f7df9506c43d3a}} 
+\index{ModeGame@{ModeGame}!\_player\_x@{\_player\_x}}
+\index{\_player\_x@{\_player\_x}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{\_player\_x}{\_player\_x}}
+{\footnotesize\ttfamily int Mode\+Game\+::\+\_\+player\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+インスタンス生成されるプレイヤーの初期\+X座標 
+
+\mbox{\Hypertarget{class_mode_game_adfaf7481e7e759f22b265e43ce109fb5}\label{class_mode_game_adfaf7481e7e759f22b265e43ce109fb5}} 
+\index{ModeGame@{ModeGame}!\_player\_y@{\_player\_y}}
+\index{\_player\_y@{\_player\_y}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{\_player\_y}{\_player\_y}}
+{\footnotesize\ttfamily int Mode\+Game\+::\+\_\+player\+\_\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+インスタンス生成されるプレイヤーの初期\+Y座標 
+
+\mbox{\Hypertarget{class_mode_game_a64add1d83339d25069924f8293722685}\label{class_mode_game_a64add1d83339d25069924f8293722685}} 
+\index{ModeGame@{ModeGame}!\_stop\_obj\_process@{\_stop\_obj\_process}}
+\index{\_stop\_obj\_process@{\_stop\_obj\_process}!ModeGame@{ModeGame}}
+\doxysubsubsection{\texorpdfstring{\_stop\_obj\_process}{\_stop\_obj\_process}}
+{\footnotesize\ttfamily bool Mode\+Game\+::\+\_\+stop\+\_\+obj\+\_\+process\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+オブジェクト処理のストップ判定 
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_mode_game_8h}{Mode\+Game.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_mode_game_8cpp}{Mode\+Game.\+cpp}}\end{DoxyCompactItemize}

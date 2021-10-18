@@ -1,0 +1,86 @@
+\hypertarget{_poison_ninja_8h_source}{}\doxysection{Poison\+Ninja.\+h}
+\label{_poison_ninja_8h_source}\index{Tensyukaku/PoisonNinja.h@{Tensyukaku/PoisonNinja.h}}
+\mbox{\hyperlink{_poison_ninja_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_poison_ninja}{PoisonNinja}} :\textcolor{keyword}{public}  \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13    \textcolor{comment}{//コンストラクタ : 引数（X座標,Y座標,反転判定）}}
+\DoxyCodeLine{14    \mbox{\hyperlink{class_poison_ninja_a793b8b14db0d4dd216ef9e4086375b1a}{PoisonNinja}}(\textcolor{keywordtype}{int} x,\textcolor{keywordtype}{int} y,\textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{15    \textcolor{comment}{//デストラクタ}}
+\DoxyCodeLine{16    \mbox{\hyperlink{class_poison_ninja_aee4301d0e6747a3005de7679815018b0}{\string~PoisonNinja}}();}
+\DoxyCodeLine{17    \textcolor{comment}{//純粋仮想関数のオーバーライド}}
+\DoxyCodeLine{18    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}   \mbox{\hyperlink{class_poison_ninja_a89f137295d5e423d85b47e2715761415}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daea922a34ac218b8169fc8b99caea75cd}{OBJECTTYPE::POISONNINJA}}; \}}
+\DoxyCodeLine{19    \textcolor{comment}{//初期化}}
+\DoxyCodeLine{20    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_poison_ninja_a0653c9b3f3c1630c626ecd46b49ff766}{Init}}();}
+\DoxyCodeLine{21    \textcolor{comment}{//更新}}
+\DoxyCodeLine{22    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_poison_ninja_ab76bd7130dc24f13e2f1cfb0cc696121}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{23    \textcolor{comment}{//描画}}
+\DoxyCodeLine{24    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_poison_ninja_ade77f45948c5d075968de7d70ad186c7}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{25    \textcolor{comment}{//オブジェクト消去関数}}
+\DoxyCodeLine{26    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_poison_ninja_a30822c1d59a436c6c52e30c747ead07d}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{private}:}
+\DoxyCodeLine{29    \textcolor{comment}{//毒液忍者の状態列挙}}
+\DoxyCodeLine{30    \textcolor{keyword}{enum class} \mbox{\hyperlink{class_poison_ninja_af2b08fd7e229a973a4920ba21d5cf488}{ENEMYSTATE}}\{}
+\DoxyCodeLine{31    \mbox{\hyperlink{class_poison_ninja_af2b08fd7e229a973a4920ba21d5cf488a303e9f5a662d8da25ff7e53f22caaa2a}{APPEAR}},\mbox{\hyperlink{class_poison_ninja_af2b08fd7e229a973a4920ba21d5cf488a5383e862b017e18e1087d61e9f2684d9}{PATROL}},\mbox{\hyperlink{class_poison_ninja_af2b08fd7e229a973a4920ba21d5cf488a99c0307e8856f91d6f36f3e3ae44f0b7}{POISING}}}
+\DoxyCodeLine{32    \};}
+\DoxyCodeLine{33    \textcolor{comment}{//出現状態関数}}
+\DoxyCodeLine{34    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_poison_ninja_a440dcf07dfa7c82ff081d7e04ad93ff7}{Appear}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{35    \textcolor{comment}{//索敵状態関数}}
+\DoxyCodeLine{36    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_poison_ninja_a86aba64d6f368c687f70ea334d2b953f}{Patrol}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{37    \textcolor{comment}{//毒液垂らし状態関数}}
+\DoxyCodeLine{38    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_poison_ninja_a72362b87873635a9dbb148954aa74074}{Poising}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{39 \textcolor{comment}{/*-\/-\/-\/-\/-\/メンバ変数-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{40    \mbox{\hyperlink{class_poison_ninja_af2b08fd7e229a973a4920ba21d5cf488}{ENEMYSTATE}} \mbox{\hyperlink{class_poison_ninja_ae33f7f3c0dea32ce9f6cec20cb3fb3d4}{\_State}};   \textcolor{comment}{//毒液忍者の状態変数}}
+\DoxyCodeLine{41 \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_p_n_info}{PNInfo}}\{}
+\DoxyCodeLine{45 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/毒液忍者の各座標関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{46 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a52b276f3d65e235fb49dd175be159562}{GRAPHPOINT\_X}} = 0;          \textcolor{comment}{//X位置から描画点までの差分}}
+\DoxyCodeLine{47 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_ad2c8c4ab83196e38d53b35fbf5f3e88e}{GRAPHPOINT\_Y}} = -\/315;       \textcolor{comment}{//Y位置から描画点までの差分}}
+\DoxyCodeLine{48 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/各モーションの当たり判定関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{49 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a8dc1fe04827a0c51acf0c33b37ba29a7}{PATROL\_WIDTH}} = 1000;       \textcolor{comment}{//索敵範囲当たり判定横幅}}
+\DoxyCodeLine{50 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_ab6edb62996877846627aebc7b450a01b}{PATROL\_HEIGHT}} = 500;       \textcolor{comment}{//索敵範囲当たり判定縦幅}}
+\DoxyCodeLine{51 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a44cebee93d383d1c3211e819a256d67a}{POISINGCANCEL\_WIDTH}} = 500; \textcolor{comment}{//毒液垂らし中止当たり判定横幅}}
+\DoxyCodeLine{52 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_ab9cfc75ff4f97166f42cb61d09e1a6c0}{POISINGCANCEL\_HEIGHT}} = 500;\textcolor{comment}{//毒液垂らし中止当たり判定縦幅}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/画像読み込み\&アニメーション\&判定フレーム関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{55 \textcolor{comment}{//共通}}
+\DoxyCodeLine{56 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a8867afa3c672e3960576392c04092ebe}{GRAPH\_WIDTH}} = 630;         \textcolor{comment}{//1枚当たりの画像サイズ（横）}}
+\DoxyCodeLine{57 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_af4626e0fc1c5203c3be488ed2579e109}{GRAPH\_HEIGHT}} = 630;        \textcolor{comment}{//1枚当たりの画像サイズ（縦）}}
+\DoxyCodeLine{58 \textcolor{comment}{//出現}}
+\DoxyCodeLine{59 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a0ddfe767d184c5b2733eebd77ce9d78a}{APPEAR\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Gimik/N\_Poison\_Stand.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{60 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a036d33d82fac7754bc66bb2c55574267}{APPEAR\_ANIMEMAX}} = 1;       \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{61 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a245936548379e2f2852335b423fa1e34}{APPEAR\_WIDTHCOUNT}} = 1;     \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{62 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_aa6da5dbcfe56f6b2a4fee3d410b5fee6}{APPEAR\_HEIGHTCOUNT}} = 1;    \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{63 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a7e1f865fd77ea1826a3f01ce11bf39d5}{ANIMESPEED\_APPEAR}} = 60;    \textcolor{comment}{//アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{64 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a59fce939c585283eaf23a504d1d6d166}{FADEIN\_SPEED}} = 4;          \textcolor{comment}{//アッパー時のフェードインスピード}}
+\DoxyCodeLine{65 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a6ce831b5c3785527fce8c8e63ed5453d}{APPEAR\_ALLFRAME}} = 60;      \textcolor{comment}{//出現全フレーム}}
+\DoxyCodeLine{66 \textcolor{comment}{//索敵}}
+\DoxyCodeLine{67 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_af3bff87b58d74e30d2d7ace631d5a353}{PATROL\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Gimik/N\_Poison\_Stand.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{68 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a52092e76002c51436636b2815655bb0b}{PATROL\_ANIMEMAX}} = 1;       \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{69 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_ae2bc7a0ae134ca69621963c88b0df33d}{PATROL\_WIDTHCOUNT}} = 1;     \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{70 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_ada2ecbe58aea43eba87285ae53ddff67}{PATROL\_HEIGHTCOUNT}} = 1;    \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{71 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a1ade8faf7681122569d5845b6b093dda}{ANIMESPEED\_PATROL}} = 60;    \textcolor{comment}{//アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{72 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a6bd5a431f00d34d25eaa328eb613f2ed}{PATROL\_TURNFRAME}} = 120;    \textcolor{comment}{//索敵時の振り向きフレーム}}
+\DoxyCodeLine{73 \textcolor{comment}{//毒液垂らし}}
+\DoxyCodeLine{74 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a9081653a902617cc13f8374814b63f4b}{POISING\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Gimik/N\_Poison.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{75 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_aec23ab0772af9a6b2dc323891822b8d2}{POISING\_ANIMEMAX}} = 2;      \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{76 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_ad3ff5dcebf5543e40d5aa5068affb076}{POISING\_WIDTHCOUNT}} = 2;    \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{77 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a9c6d869edaf8d2d5b1e1bfbbe4621f17}{POISING\_HEIGHTCOUNT}} = 1;   \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{78 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a3ecf2612a90a04adc59aa181837b5237}{ANIMESPEED\_POISING}} = 40;   \textcolor{comment}{//各状態アニメスピード（何フレームごとに画像を切り替えるか）}}
+\DoxyCodeLine{79 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_acd47e38442baebe1d8497f65624cd9c8}{POISING\_ANIMEFRAME}} = \mbox{\hyperlink{namespace_p_n_info_aec23ab0772af9a6b2dc323891822b8d2}{POISING\_ANIMEMAX}} * \mbox{\hyperlink{namespace_p_n_info_a3ecf2612a90a04adc59aa181837b5237}{ANIMESPEED\_POISING}};      \textcolor{comment}{//アニメーションフレーム（全ての画像枚数×アニメスピード）}}
+\DoxyCodeLine{80 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_ac20428d23fd0918215415fcba16535b9}{POISING\_ALLFRAME}} = 230;    \textcolor{comment}{//毒液垂らし全フレーム}}
+\DoxyCodeLine{81 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_aeba08382b29461610e2a0bf0ad9a5540}{POISON\_SPAWN\_X}} = 170;      \textcolor{comment}{//忍者からの毒液が染み込む座標へのX差分}}
+\DoxyCodeLine{82 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a30c397d937c9f8164ff5527a9f3f1234}{POISON\_SPAWN\_Y}} = 80;       \textcolor{comment}{//忍者からの毒液が染み込む座標へのY差分}}
+\DoxyCodeLine{83 \textcolor{comment}{//消去}}
+\DoxyCodeLine{84 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_adbde8c0adc4ebcf73bf5b0a7ddf00bba}{DELETE\_HEIGHT}} = 500;       \textcolor{comment}{//毒液忍者が消えるYの移動量}}
+\DoxyCodeLine{85 \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_p_n_info_a7dead4ecfc30adef80ab8d68b4e5ae8c}{FADEOUT\_SPEED}} = 10;        \textcolor{comment}{//フェードスピード}}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}

@@ -7,7 +7,7 @@
 #include "MugenFlame.h"
 
 using namespace MAInfo;
-MugenAndon::MugenAndon(int x, int y) :_AndonDrop_Flag(false) {
+MugenAndon::MugenAndon(int x, int y) :_andondrop_flag(false) {
    _x = x;
    _y = y;
    Init();
@@ -28,36 +28,36 @@ void MugenAndon::Init() {
    _hit_h = COLLISION_HEIGHT;
    _alpha = 255;
    _drg.second = 0.0;
-   _Flame_y = _y;
+   _flame_y = _y;
 }
 
 void MugenAndon::Process(Game& g) {
    ObjectBase::Process(g);
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Andon"][_anime["Andon"]];
-   if (_AndonDrop_Flag == true) {
+   if (_andondrop_flag == true) {
       if (frame == MANDON_FIREFRAME1) {
          if (CheckSoundMem(g.GetBgm()["Flame"]) == 0) {
             PlaySoundMem(g.GetBgm()["Flame"], DX_PLAYTYPE_LOOP, true);
          }
-         auto lf1 = new MugenFlame(_x - MANDON_FIREWIDTH * 1, _Flame_y);
+         auto lf1 = new MugenFlame(_x - MANDON_FIREWIDTH * 1, _flame_y);
          g.GetOS()->Add(lf1);
-         auto rf1 = new MugenFlame( _x + MANDON_FIREWIDTH * 1, _Flame_y);
+         auto rf1 = new MugenFlame( _x + MANDON_FIREWIDTH * 1, _flame_y);
          g.GetOS()->Add(rf1);
       }
       if (frame == MANDON_FIREFRAME2) {
-         auto lf2 = new MugenFlame(_x - MANDON_FIREWIDTH * 2, _Flame_y);
+         auto lf2 = new MugenFlame(_x - MANDON_FIREWIDTH * 2, _flame_y);
          g.GetOS()->Add(lf2);
-         auto rf2 = new MugenFlame(_x + MANDON_FIREWIDTH * 2, _Flame_y);
+         auto rf2 = new MugenFlame(_x + MANDON_FIREWIDTH * 2, _flame_y);
          g.GetOS()->Add(rf2);
       }
       if (frame == MANDON_FIREFRAME3) {
-         auto lf3 = new MugenFlame(_x - MANDON_FIREWIDTH * 3, _Flame_y);
+         auto lf3 = new MugenFlame(_x - MANDON_FIREWIDTH * 3, _flame_y);
          g.GetOS()->Add(lf3);
-         auto rf3 = new MugenFlame(_x + MANDON_FIREWIDTH * 3, _Flame_y);
+         auto rf3 = new MugenFlame(_x + MANDON_FIREWIDTH * 3, _flame_y);
          g.GetOS()->Add(rf3);
       }
-      if (_PlayerFlip_Flag == false) {
+      if (_playerflip_flag == false) {
          if (frame >= 0 && MANDON_DROPFRAME >= frame) {
             if (_drg.second > -MANDON_DROPANGLEMAX) {
                _drg.second -= MANDON_DROPANGLE;
@@ -66,7 +66,7 @@ void MugenAndon::Process(Game& g) {
             _y += MANDON_DROPMOVEY;
          }
       }
-      if (_PlayerFlip_Flag == true) {
+      if (_playerflip_flag == true) {
          if (frame >= 0 && MANDON_DROPFRAME >= frame) {
             if (_drg.second < MANDON_DROPANGLEMAX) {
                _drg.second += MANDON_DROPANGLE;
@@ -80,10 +80,10 @@ void MugenAndon::Process(Game& g) {
       }
       if (frame == MANDON_ALLFRAME) {
          Delete(g);
-         _AndonDrop_Flag = false;
+         _andondrop_flag = false;
       }
    }
-   if (_AndonDrop_Flag == false) {
+   if (_andondrop_flag == false) {
       //行燈とプレイヤーのキックオブジェクトの当たり判定
       for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
       {
@@ -95,14 +95,14 @@ void MugenAndon::Process(Game& g) {
             {
                (*ite)->Delete(g);      // (*ite) はキックオブジェクト
                _action_cnt = _cnt;
-               _AndonDrop_Flag = true;
+               _andondrop_flag = true;
                //プレイヤーの向きを参照
                for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
                {
                   // iteはプレイヤか？
                   if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
                   {
-                     _PlayerFlip_Flag = (*ite)->GetFlip();
+                     _playerflip_flag = (*ite)->GetFlip();
                   }
                }
             }

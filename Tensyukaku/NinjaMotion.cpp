@@ -2,11 +2,9 @@
       ”EÒ‚Ìƒ‚[ƒVƒ‡ƒ“ŠÖ”
 */
 #include <DxLib.h>
-#include "EnemyBase.h"
 #include "Ninja.h"
 #include "Game.h"
-#include "NinjaMotionCollision.h"
-#include "ObjectBase.h"
+#include "NinjaAttackCollision.h"
 #include "EnemyParticle.h"
 #include "PrivateCollision.h"
 #include "Kunai.h"

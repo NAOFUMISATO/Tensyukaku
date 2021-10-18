@@ -1,0 +1,272 @@
+\hypertarget{class_shielder}{}\doxysection{Shielder クラス}
+\label{class_shielder}\index{Shielder@{Shielder}}
+
+
+{\ttfamily \#include $<$Shielder.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_enemy_base}{Enemy\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_shielder_a7631b3c7b99407709d15c37a3e383c0e}{Shielder}} (int x, int y, bool flip)
+\item 
+\mbox{\hyperlink{class_shielder_aa755f9ce9bcbcbd2aadf2efcd4b3fc39}{$\sim$\+Shielder}} ()
+\item 
+virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} \mbox{\hyperlink{class_shielder_a1307206db75de059c35174a18b12c978}{Get\+Ene\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_shielder_afa46385e61b3dbc879b36d51c934973c}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_shielder_ac18bce46f196200f1eedce62380b6a03}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_shielder_a4d80922c283b0059dd5fa2dfdcf00d30}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_shielder_a40dcabced7c6df4100fcef038431d277}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_shielder_a305731d0f3010aa5fb0c5baab17bb75a}{Appear}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_a0c89c67e8abad884edd534dee0e89eab}{Patrol}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_a9277035dbcab45f732313f39b625b387}{Coming}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_a46b2d153cf16572fcdb4f7441b6efbf1}{Attack}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_a027897344d39c33028d59bd85b5f91b4}{Guard\+Attack}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_ae8c7f84ef591d7a82b1aca65fec88cbc}{Guard\+Break}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_a5164ec80b189930f3a0f86d46b800518}{Dead}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_a968abdf3ad1c345a479f8b0824371547}{Hit\+Judge}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_a8bbed732643b83c66bf417d1c4f72654}{Shield\+Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+void \mbox{\hyperlink{class_shielder_aaeb52b407cebb6ebedb019c2f17dc1ca}{Load\+Picture}} ()
+\item 
+void \mbox{\hyperlink{class_shielder_ae5fc1b59e1e2e928eb44813148cafd93}{Load\+SE}} ()
+\item 
+void \mbox{\hyperlink{class_shielder_a3ce49b9954d91ff6e03c4de967ac21ec}{Volume\+Init}} ()
+\item 
+void \mbox{\hyperlink{class_shielder_a0a676996a2f44b4cc544f5415f725b8a}{Volume\+Change}} ()
+\item 
+void \mbox{\hyperlink{class_shielder_aadf865f27f991bf81a87ddf807a69026}{Debug\+Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_shielder_a19714acee62c8ca7617f8edcea699b25}{\+\_\+\+Shield\+Appear\+\_\+\+Flag}}
+\item 
+bool \mbox{\hyperlink{class_shielder_a5fe92dbe0d5b30dd08a83dfedb07e65f}{\+\_\+\+Shield\+Alive\+\_\+\+Flag}}
+\item 
+bool \mbox{\hyperlink{class_shielder_a54da76cce01af71263c46ccbb7a8840a}{\+\_\+\+Shield\+Attack\+\_\+\+Flag}}
+\item 
+bool \mbox{\hyperlink{class_shielder_a404664fc0df27c2688e91ef6ce779b44}{\+\_\+\+Shield\+Break\+\_\+\+Flag}}
+\item 
+bool \mbox{\hyperlink{class_shielder_a9d41df5643c86e85164ca5f9edaf0b52}{\+\_\+\+Shield\+Draw\+\_\+\+Flag}}
+\item 
+int \mbox{\hyperlink{class_shielder_a43bf9d41bd1e4c96bc2b04090fcbb122}{\+\_\+\+Shield\+\_\+\+Cnt}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_shielder_a7631b3c7b99407709d15c37a3e383c0e}\label{class_shielder_a7631b3c7b99407709d15c37a3e383c0e}} 
+\index{Shielder@{Shielder}!Shielder@{Shielder}}
+\index{Shielder@{Shielder}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Shielder()}{Shielder()}}
+{\footnotesize\ttfamily Shielder\+::\+Shielder (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{flip }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_shielder_aa755f9ce9bcbcbd2aadf2efcd4b3fc39}\label{class_shielder_aa755f9ce9bcbcbd2aadf2efcd4b3fc39}} 
+\index{Shielder@{Shielder}!````~Shielder@{$\sim$Shielder}}
+\index{````~Shielder@{$\sim$Shielder}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{$\sim$Shielder()}{~Shielder()}}
+{\footnotesize\ttfamily Shielder\+::$\sim$\+Shielder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_shielder_a305731d0f3010aa5fb0c5baab17bb75a}\label{class_shielder_a305731d0f3010aa5fb0c5baab17bb75a}} 
+\index{Shielder@{Shielder}!Appear@{Appear}}
+\index{Appear@{Appear}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Appear()}{Appear()}}
+{\footnotesize\ttfamily void Shielder\+::\+Appear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a46b2d153cf16572fcdb4f7441b6efbf1}\label{class_shielder_a46b2d153cf16572fcdb4f7441b6efbf1}} 
+\index{Shielder@{Shielder}!Attack@{Attack}}
+\index{Attack@{Attack}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Attack()}{Attack()}}
+{\footnotesize\ttfamily void Shielder\+::\+Attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a9277035dbcab45f732313f39b625b387}\label{class_shielder_a9277035dbcab45f732313f39b625b387}} 
+\index{Shielder@{Shielder}!Coming@{Coming}}
+\index{Coming@{Coming}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Coming()}{Coming()}}
+{\footnotesize\ttfamily void Shielder\+::\+Coming (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a5164ec80b189930f3a0f86d46b800518}\label{class_shielder_a5164ec80b189930f3a0f86d46b800518}} 
+\index{Shielder@{Shielder}!Dead@{Dead}}
+\index{Dead@{Dead}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Dead()}{Dead()}}
+{\footnotesize\ttfamily void Shielder\+::\+Dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_aadf865f27f991bf81a87ddf807a69026}\label{class_shielder_aadf865f27f991bf81a87ddf807a69026}} 
+\index{Shielder@{Shielder}!DebugDraw@{DebugDraw}}
+\index{DebugDraw@{DebugDraw}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{DebugDraw()}{DebugDraw()}}
+{\footnotesize\ttfamily void Shielder\+::\+Debug\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a40dcabced7c6df4100fcef038431d277}\label{class_shielder_a40dcabced7c6df4100fcef038431d277}} 
+\index{Shielder@{Shielder}!Delete@{Delete}}
+\index{Delete@{Delete}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void Shielder\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_afa0d1e9f4705a530990e1c0bb32adf49}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_shielder_a4d80922c283b0059dd5fa2dfdcf00d30}\label{class_shielder_a4d80922c283b0059dd5fa2dfdcf00d30}} 
+\index{Shielder@{Shielder}!Draw@{Draw}}
+\index{Draw@{Draw}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Shielder\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_a3c82fb040b7faf93571d2afa31dd07a5}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_shielder_a1307206db75de059c35174a18b12c978}\label{class_shielder_a1307206db75de059c35174a18b12c978}} 
+\index{Shielder@{Shielder}!GetEneType@{GetEneType}}
+\index{GetEneType@{GetEneType}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{GetEneType()}{GetEneType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} Shielder\+::\+Get\+Ene\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_a0d57f8ec2db46337cc6c01daf37f779b}{Enemy\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_shielder_a027897344d39c33028d59bd85b5f91b4}\label{class_shielder_a027897344d39c33028d59bd85b5f91b4}} 
+\index{Shielder@{Shielder}!GuardAttack@{GuardAttack}}
+\index{GuardAttack@{GuardAttack}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{GuardAttack()}{GuardAttack()}}
+{\footnotesize\ttfamily void Shielder\+::\+Guard\+Attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_ae8c7f84ef591d7a82b1aca65fec88cbc}\label{class_shielder_ae8c7f84ef591d7a82b1aca65fec88cbc}} 
+\index{Shielder@{Shielder}!GuardBreak@{GuardBreak}}
+\index{GuardBreak@{GuardBreak}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{GuardBreak()}{GuardBreak()}}
+{\footnotesize\ttfamily void Shielder\+::\+Guard\+Break (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a968abdf3ad1c345a479f8b0824371547}\label{class_shielder_a968abdf3ad1c345a479f8b0824371547}} 
+\index{Shielder@{Shielder}!HitJudge@{HitJudge}}
+\index{HitJudge@{HitJudge}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{HitJudge()}{HitJudge()}}
+{\footnotesize\ttfamily void Shielder\+::\+Hit\+Judge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_afa46385e61b3dbc879b36d51c934973c}\label{class_shielder_afa46385e61b3dbc879b36d51c934973c}} 
+\index{Shielder@{Shielder}!Init@{Init}}
+\index{Init@{Init}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Shielder\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_af5c90d8abe7e5677336295d1398578b9}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_shielder_aaeb52b407cebb6ebedb019c2f17dc1ca}\label{class_shielder_aaeb52b407cebb6ebedb019c2f17dc1ca}} 
+\index{Shielder@{Shielder}!LoadPicture@{LoadPicture}}
+\index{LoadPicture@{LoadPicture}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{LoadPicture()}{LoadPicture()}}
+{\footnotesize\ttfamily void Shielder\+::\+Load\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_ae5fc1b59e1e2e928eb44813148cafd93}\label{class_shielder_ae5fc1b59e1e2e928eb44813148cafd93}} 
+\index{Shielder@{Shielder}!LoadSE@{LoadSE}}
+\index{LoadSE@{LoadSE}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{LoadSE()}{LoadSE()}}
+{\footnotesize\ttfamily void Shielder\+::\+Load\+SE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a0c89c67e8abad884edd534dee0e89eab}\label{class_shielder_a0c89c67e8abad884edd534dee0e89eab}} 
+\index{Shielder@{Shielder}!Patrol@{Patrol}}
+\index{Patrol@{Patrol}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Patrol()}{Patrol()}}
+{\footnotesize\ttfamily void Shielder\+::\+Patrol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_ac18bce46f196200f1eedce62380b6a03}\label{class_shielder_ac18bce46f196200f1eedce62380b6a03}} 
+\index{Shielder@{Shielder}!Process@{Process}}
+\index{Process@{Process}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Shielder\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_enemy_base_add67699620ad91db7ed390a426e75fbf}{Enemy\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_shielder_a8bbed732643b83c66bf417d1c4f72654}\label{class_shielder_a8bbed732643b83c66bf417d1c4f72654}} 
+\index{Shielder@{Shielder}!ShieldDraw@{ShieldDraw}}
+\index{ShieldDraw@{ShieldDraw}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{ShieldDraw()}{ShieldDraw()}}
+{\footnotesize\ttfamily void Shielder\+::\+Shield\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a0a676996a2f44b4cc544f5415f725b8a}\label{class_shielder_a0a676996a2f44b4cc544f5415f725b8a}} 
+\index{Shielder@{Shielder}!VolumeChange@{VolumeChange}}
+\index{VolumeChange@{VolumeChange}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{VolumeChange()}{VolumeChange()}}
+{\footnotesize\ttfamily void Shielder\+::\+Volume\+Change (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a3ce49b9954d91ff6e03c4de967ac21ec}\label{class_shielder_a3ce49b9954d91ff6e03c4de967ac21ec}} 
+\index{Shielder@{Shielder}!VolumeInit@{VolumeInit}}
+\index{VolumeInit@{VolumeInit}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{VolumeInit()}{VolumeInit()}}
+{\footnotesize\ttfamily void Shielder\+::\+Volume\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_shielder_a43bf9d41bd1e4c96bc2b04090fcbb122}\label{class_shielder_a43bf9d41bd1e4c96bc2b04090fcbb122}} 
+\index{Shielder@{Shielder}!\_Shield\_Cnt@{\_Shield\_Cnt}}
+\index{\_Shield\_Cnt@{\_Shield\_Cnt}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{\_Shield\_Cnt}{\_Shield\_Cnt}}
+{\footnotesize\ttfamily int Shielder\+::\+\_\+\+Shield\+\_\+\+Cnt\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a5fe92dbe0d5b30dd08a83dfedb07e65f}\label{class_shielder_a5fe92dbe0d5b30dd08a83dfedb07e65f}} 
+\index{Shielder@{Shielder}!\_ShieldAlive\_Flag@{\_ShieldAlive\_Flag}}
+\index{\_ShieldAlive\_Flag@{\_ShieldAlive\_Flag}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{\_ShieldAlive\_Flag}{\_ShieldAlive\_Flag}}
+{\footnotesize\ttfamily bool Shielder\+::\+\_\+\+Shield\+Alive\+\_\+\+Flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a19714acee62c8ca7617f8edcea699b25}\label{class_shielder_a19714acee62c8ca7617f8edcea699b25}} 
+\index{Shielder@{Shielder}!\_ShieldAppear\_Flag@{\_ShieldAppear\_Flag}}
+\index{\_ShieldAppear\_Flag@{\_ShieldAppear\_Flag}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{\_ShieldAppear\_Flag}{\_ShieldAppear\_Flag}}
+{\footnotesize\ttfamily bool Shielder\+::\+\_\+\+Shield\+Appear\+\_\+\+Flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a54da76cce01af71263c46ccbb7a8840a}\label{class_shielder_a54da76cce01af71263c46ccbb7a8840a}} 
+\index{Shielder@{Shielder}!\_ShieldAttack\_Flag@{\_ShieldAttack\_Flag}}
+\index{\_ShieldAttack\_Flag@{\_ShieldAttack\_Flag}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{\_ShieldAttack\_Flag}{\_ShieldAttack\_Flag}}
+{\footnotesize\ttfamily bool Shielder\+::\+\_\+\+Shield\+Attack\+\_\+\+Flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a404664fc0df27c2688e91ef6ce779b44}\label{class_shielder_a404664fc0df27c2688e91ef6ce779b44}} 
+\index{Shielder@{Shielder}!\_ShieldBreak\_Flag@{\_ShieldBreak\_Flag}}
+\index{\_ShieldBreak\_Flag@{\_ShieldBreak\_Flag}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{\_ShieldBreak\_Flag}{\_ShieldBreak\_Flag}}
+{\footnotesize\ttfamily bool Shielder\+::\+\_\+\+Shield\+Break\+\_\+\+Flag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_shielder_a9d41df5643c86e85164ca5f9edaf0b52}\label{class_shielder_a9d41df5643c86e85164ca5f9edaf0b52}} 
+\index{Shielder@{Shielder}!\_ShieldDraw\_Flag@{\_ShieldDraw\_Flag}}
+\index{\_ShieldDraw\_Flag@{\_ShieldDraw\_Flag}!Shielder@{Shielder}}
+\doxysubsubsection{\texorpdfstring{\_ShieldDraw\_Flag}{\_ShieldDraw\_Flag}}
+{\footnotesize\ttfamily bool Shielder\+::\+\_\+\+Shield\+Draw\+\_\+\+Flag\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_shielder_8h}{Shielder.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_shielder_8cpp}{Shielder.\+cpp}}\item 
+Tensyukaku/\mbox{\hyperlink{_shielder_motion_8cpp}{Shielder\+Motion.\+cpp}}\end{DoxyCompactItemize}

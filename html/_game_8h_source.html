@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/Game.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Game.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_game_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include   &quot;<a class="code" href="_back_ground_8h.html">BackGround.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include   &quot;<a class="code" href="_map_chip_8h.html">MapChip.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include   &quot;<a class="code" href="_player_8h.html">Player.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include   &quot;<a class="code" href="_object_server_8h.html">ObjectServer.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include   &quot;<a class="code" href="_mode_server_8h.html">ModeServer.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include   &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// 画面設定</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="_game_8h.html#a7015f042c3726da18f21fa9a1c4976ed">   10</a></span><span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="_game_8h.html#a7015f042c3726da18f21fa9a1c4976ed">SCREEN_W</a> = 1920;      </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="_game_8h.html#ab29217f28d40a743a4e060fbdfb23480">   11</a></span><span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="_game_8h.html#ab29217f28d40a743a4e060fbdfb23480">SCREEN_H</a> = 1080;      </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="_game_8h.html#ad30d7d7f0fb60884c5b6fd4fe67d6c28">   12</a></span><span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="_game_8h.html#ad30d7d7f0fb60884c5b6fd4fe67d6c28">SCREEN_DEPTH</a> = 32;   </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// ゲームクラス</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_game.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="class_game.html">Game</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>   <a class="code hl_function" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>();            <span class="comment">// アプリの初期化</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>   <a class="code hl_function" href="class_game.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a>();         <span class="comment">// アプリの解放</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a7c682bd3c63bdff1e2afa1d939b676b1">Input</a>();      <span class="comment">// フレーム処理：入力</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#ae995fef6be42bdba832ee132d9068f4f">Process</a>();      <span class="comment">// フレーム処理：計算</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#aad2c20e2c5529244095c50c238911e30">Draw</a>();      <span class="comment">// フレーム処理：描画</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>   <span class="comment">//ゲッター関数</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_game.html#a40ffcec01a82aa7dc1ef2b3cd2d06deb">   28</a></span>   <span class="keywordtype">int</span>      <a class="code hl_function" href="class_game.html#a40ffcec01a82aa7dc1ef2b3cd2d06deb">GetKey</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#af718e2a2f514ae7cfb9a62c6919a5008">_gkey</a>; }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_game.html#aeda8bea7a81ce3e69738414348df9dc8">   29</a></span>   <span class="keywordtype">int</span>      <a class="code hl_function" href="class_game.html#aeda8bea7a81ce3e69738414348df9dc8">GetTrg</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a8c488851082626fb673523d3ed7410df">_gtrg</a>; }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_game.html#a3327a66b62a63b75a1c47aa63cba4507">   30</a></span>   <span class="keywordtype">int</span>      <a class="code hl_function" href="class_game.html#a3327a66b62a63b75a1c47aa63cba4507">GetXBuf</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#aafecdaef5c7cb8bd3ae224385f5aa239">_xbuf</a>; }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_game.html#a2b701ab044eb317cb868706dd0ba1c9f">   31</a></span>   <span class="keywordtype">int</span>      <a class="code hl_function" href="class_game.html#a2b701ab044eb317cb868706dd0ba1c9f">GetYBuf</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#ac95a43a72f8846111e93ba1ea2deb6b0">_ybuf</a>; }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_game.html#a41bca66ac8cc3d18ab0c7156818fc5ae">   32</a></span>   <span class="keywordtype">int</span>      <a class="code hl_function" href="class_game.html#a41bca66ac8cc3d18ab0c7156818fc5ae">GetmapH</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a72c50291f1cc85f2adfb7d53767d18ac">_map_h</a>; }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="class_game.html#a73b22e873b857ff509fcc9a2802809af">   33</a></span>   <span class="keywordtype">int</span>      <a class="code hl_function" href="class_game.html#a73b22e873b857ff509fcc9a2802809af">GetmapW</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a833382237e5190a4dc3636d0e6ea1550">_map_w</a>; }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="class_game.html#a1eb30d9a037aa0642d2eab649219a087">   34</a></span>   <span class="keywordtype">int</span>      <a class="code hl_function" href="class_game.html#a1eb30d9a037aa0642d2eab649219a087">GetcvX</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a0c3c233df2160f8b300c78efe0cbfcdd">_cv_x</a>; }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_game.html#ae971dabf34eacf8d53664ffc182dec58">   35</a></span>   <span class="keywordtype">int</span>      <a class="code hl_function" href="class_game.html#ae971dabf34eacf8d53664ffc182dec58">GetcvY</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a9f53d1906d714609719fc39530313f3e">_cv_y</a>; }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_game.html#a182ea90186ae8fdefbcb998d03a35241">   36</a></span>   <span class="keywordtype">bool</span>      <a class="code hl_function" href="class_game.html#a182ea90186ae8fdefbcb998d03a35241">GetRestartFlag</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a4dbd3e9f9a84c3cb0a802fde1c306d38">_restart_flag</a>; }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_game.html#a648ffa59c1a07acb41b33e3ff63f1c51">   38</a></span>   <a class="code hl_class" href="class_map_chip.html">MapChip</a>* <a class="code hl_function" href="class_game.html#a648ffa59c1a07acb41b33e3ff63f1c51">GetChip</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a6c7ab5cf65fed8958d495bbd66f7ac90">_mapchip</a>; }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="class_game.html#a1ffc2afa4c03161171316d1bf5baf715">   39</a></span>   <a class="code hl_class" href="class_mode_server.html">ModeServer</a>* <a class="code hl_function" href="class_game.html#a1ffc2afa4c03161171316d1bf5baf715">GetMS</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a7da1314c24bfde82575c35a781e37d6e">_servermode</a>; }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="class_game.html#a2c7d84112feeac4a1f208120dba59bd1">   40</a></span>   <a class="code hl_class" href="class_object_server.html">ObjectServer</a>* <a class="code hl_function" href="class_game.html#a2c7d84112feeac4a1f208120dba59bd1">GetOS</a>() { <span class="keywordflow">return</span> &amp;<a class="code hl_variable" href="class_game.html#a967e0343efa495bdd98745cfe12285fb">_objserver</a>; }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_game.html#a4469a4c432a02bf896ae6b8d35437fe2">   41</a></span>   std::unordered_map&lt;std::string, int&gt; <a class="code hl_function" href="class_game.html#a4469a4c432a02bf896ae6b8d35437fe2">GetBgm</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#a0a8aa66c3783d820e2cba7620e8f2526">_bgm</a>; }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_game.html#a918997b6dadae9ef0dc4e16ba15a69fe">   42</a></span>   std::unordered_map&lt;std::string, int&gt; <a class="code hl_function" href="class_game.html#a918997b6dadae9ef0dc4e16ba15a69fe">GetVpal</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="class_game.html#ac76fc598eb59d2c3d741a7e5d279c705">_vpal</a>; }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_game.html#a7519c667de7c7939608d34866c180b56">   43</a></span>   std::unordered_map&lt;std::string, bool&gt; <a class="code hl_function" href="class_game.html#a7519c667de7c7939608d34866c180b56">GetCPointFlag</a>() { <span class="keywordflow">return</span>  <a class="code hl_variable" href="class_game.html#a4d44342ac89fc6da938846151ad36496">_cpoint_flag</a>; }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>   <span class="comment">//セッター関数</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_game.html#a3cbd70106b90e0c1f7c2fcfaf5605904">   45</a></span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a3cbd70106b90e0c1f7c2fcfaf5605904">SetcvX</a>(<span class="keywordtype">int</span> cvX) { <a class="code hl_variable" href="class_game.html#a0c3c233df2160f8b300c78efe0cbfcdd">_cv_x</a> = cvX; }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_game.html#af47f355ff21c33f3be6d46338975697f">   46</a></span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#af47f355ff21c33f3be6d46338975697f">SetcvY</a>(<span class="keywordtype">int</span> cvY) { <a class="code hl_variable" href="class_game.html#a9f53d1906d714609719fc39530313f3e">_cv_y</a> = cvY; }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_game.html#a7b09fb3e92595575beb13cfa6707861c">   47</a></span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a7b09fb3e92595575beb13cfa6707861c">SetmapW</a>(<span class="keywordtype">int</span> mapW) { <a class="code hl_variable" href="class_game.html#a833382237e5190a4dc3636d0e6ea1550">_map_w</a> = mapW; }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_game.html#a89eca209da3a06f588c7b3e53be620eb">   48</a></span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a89eca209da3a06f588c7b3e53be620eb">SetmapH</a>(<span class="keywordtype">int</span> mapH) { <a class="code hl_variable" href="class_game.html#a72c50291f1cc85f2adfb7d53767d18ac">_map_h</a> = mapH; }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_game.html#a10a0b80c26ffe497f1c90c1582fd2c86">   49</a></span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a10a0b80c26ffe497f1c90c1582fd2c86">SetChip</a>(<a class="code hl_class" href="class_map_chip.html">MapChip</a>* map) { <a class="code hl_variable" href="class_game.html#a6c7ab5cf65fed8958d495bbd66f7ac90">_mapchip</a> = map; }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_game.html#a0c5bab4e93ed34da70d6ae9670db8442">   50</a></span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a0c5bab4e93ed34da70d6ae9670db8442">SetRestartFlag</a>(<span class="keywordtype">bool</span> restartflag) { <a class="code hl_variable" href="class_game.html#a4dbd3e9f9a84c3cb0a802fde1c306d38">_restart_flag</a> = restartflag; }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_game.html#a0f79af63287346aee7930c43dd44e6d3">   51</a></span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a0f79af63287346aee7930c43dd44e6d3">SetCPointFlag</a>(std::unordered_map&lt;std::string, bool&gt; cpointflag) { <a class="code hl_variable" href="class_game.html#a4d44342ac89fc6da938846151ad36496">_cpoint_flag</a> = cpointflag; }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_game.html#a8df47d3bd5fc00b7731abc09be50b684">   52</a></span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a8df47d3bd5fc00b7731abc09be50b684">SetVpal</a>(std::unordered_map&lt;std::string, int&gt; vpal) { <a class="code hl_variable" href="class_game.html#ac76fc598eb59d2c3d741a7e5d279c705">_vpal</a> = vpal; }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>   <span class="keywordtype">void</span>   <a class="code hl_function" href="class_game.html#a203ad12de80b113641402b8311ceb3f6">VolumeInit</a>();<span class="comment">//BGMのボリューム初期値</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>   <span class="keywordtype">void</span>      <a class="code hl_function" href="class_game.html#aad11e42f2271149eeb70e5ffc8736e86">LoadBgm</a>();   <span class="comment">//BGM読み込み</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>   <span class="keywordtype">void</span>      <a class="code hl_function" href="class_game.html#aa4236c247d29291d04ce5b7ebfd7bfa2">VolumeChange</a>();<span class="comment">//BGMのボリューム変更関数</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_game.html#af718e2a2f514ae7cfb9a62c6919a5008">   58</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_game.html#af718e2a2f514ae7cfb9a62c6919a5008">_gkey</a>;         <span class="comment">// キー入力の情報</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_game.html#a8c488851082626fb673523d3ed7410df">   59</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_game.html#a8c488851082626fb673523d3ed7410df">_gtrg</a>;         <span class="comment">// キー入力のトリガ情報</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_game.html#aafecdaef5c7cb8bd3ae224385f5aa239">   60</a></span>   <span class="keywordtype">int</span>   <a class="code hl_variable" href="class_game.html#aafecdaef5c7cb8bd3ae224385f5aa239">_xbuf</a>;         <span class="comment">//左ステッィクX入力量</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_game.html#ac95a43a72f8846111e93ba1ea2deb6b0">   61</a></span>   <span class="keywordtype">int</span>   <a class="code hl_variable" href="class_game.html#ac95a43a72f8846111e93ba1ea2deb6b0">_ybuf</a>;         <span class="comment">//左ステッィクY入力量</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_game.html#acef31833f2ce790ffa717e0858b978bb">   62</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_game.html#acef31833f2ce790ffa717e0858b978bb">_gcnt</a>;         <span class="comment">// 毎フレーム+1するカウント</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_game.html#a0c3c233df2160f8b300c78efe0cbfcdd">   63</a></span>   <span class="keywordtype">int</span>   <a class="code hl_variable" href="class_game.html#a0c3c233df2160f8b300c78efe0cbfcdd">_cv_x</a>, <a class="code hl_variable" href="class_game.html#a9f53d1906d714609719fc39530313f3e">_cv_y</a>;      <span class="comment">// カメラ</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_game.html#a72c50291f1cc85f2adfb7d53767d18ac">   64</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_game.html#a833382237e5190a4dc3636d0e6ea1550">_map_w</a>, <a class="code hl_variable" href="class_game.html#a72c50291f1cc85f2adfb7d53767d18ac">_map_h</a>;   <span class="comment">// マップ</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_game.html#a4dbd3e9f9a84c3cb0a802fde1c306d38">   65</a></span>   <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_game.html#a4dbd3e9f9a84c3cb0a802fde1c306d38">_restart_flag</a>;<span class="comment">//再起からの開始かどうかのフラグ</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_game.html#a0a8aa66c3783d820e2cba7620e8f2526">   66</a></span>   std::unordered_map&lt;std::string, int&gt; <a class="code hl_variable" href="class_game.html#a0a8aa66c3783d820e2cba7620e8f2526">_bgm</a>; <span class="comment">//BGMマップ</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_game.html#ac76fc598eb59d2c3d741a7e5d279c705">   67</a></span>   std::unordered_map&lt;std::string, int&gt; <a class="code hl_variable" href="class_game.html#ac76fc598eb59d2c3d741a7e5d279c705">_vpal</a>; <span class="comment">//ボリュームマップ</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="class_game.html#a4d44342ac89fc6da938846151ad36496">   68</a></span>   std::unordered_map&lt;std::string, bool&gt; <a class="code hl_variable" href="class_game.html#a4d44342ac89fc6da938846151ad36496">_cpoint_flag</a>; <span class="comment">//チェックポイントフラグマップ</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="class_game.html#a6c7ab5cf65fed8958d495bbd66f7ac90">   70</a></span>   <a class="code hl_class" href="class_map_chip.html">MapChip</a>* <a class="code hl_variable" href="class_game.html#a6c7ab5cf65fed8958d495bbd66f7ac90">_mapchip</a>;         <span class="comment">//マップチップ</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="class_game.html#a7da1314c24bfde82575c35a781e37d6e">   71</a></span>   <a class="code hl_class" href="class_mode_server.html">ModeServer</a>* <a class="code hl_variable" href="class_game.html#a7da1314c24bfde82575c35a781e37d6e">_servermode</a>;   <span class="comment">//モードサーバー</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="class_game.html#a967e0343efa495bdd98745cfe12285fb">   72</a></span>   <a class="code hl_class" href="class_object_server.html">ObjectServer</a> <a class="code hl_variable" href="class_game.html#a967e0343efa495bdd98745cfe12285fb">_objserver</a>;   <span class="comment">//プレイヤーや敵などを登録する</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>};</div>
+<div class="ttc" id="a_back_ground_8h_html"><div class="ttname"><a href="_back_ground_8h.html">BackGround.h</a></div></div>
+<div class="ttc" id="a_game_8h_html_a7015f042c3726da18f21fa9a1c4976ed"><div class="ttname"><a href="_game_8h.html#a7015f042c3726da18f21fa9a1c4976ed">SCREEN_W</a></div><div class="ttdeci">constexpr auto SCREEN_W</div><div class="ttdoc">画面の横解像度</div><div class="ttdef"><b>Definition:</b> Game.h:10</div></div>
+<div class="ttc" id="a_game_8h_html_ab29217f28d40a743a4e060fbdfb23480"><div class="ttname"><a href="_game_8h.html#ab29217f28d40a743a4e060fbdfb23480">SCREEN_H</a></div><div class="ttdeci">constexpr auto SCREEN_H</div><div class="ttdoc">画面の縦解像度</div><div class="ttdef"><b>Definition:</b> Game.h:11</div></div>
+<div class="ttc" id="a_game_8h_html_ad30d7d7f0fb60884c5b6fd4fe67d6c28"><div class="ttname"><a href="_game_8h.html#ad30d7d7f0fb60884c5b6fd4fe67d6c28">SCREEN_DEPTH</a></div><div class="ttdeci">constexpr auto SCREEN_DEPTH</div><div class="ttdoc">１ドットあたりのビット数</div><div class="ttdef"><b>Definition:</b> Game.h:12</div></div>
+<div class="ttc" id="a_map_chip_8h_html"><div class="ttname"><a href="_map_chip_8h.html">MapChip.h</a></div></div>
+<div class="ttc" id="a_mode_server_8h_html"><div class="ttname"><a href="_mode_server_8h.html">ModeServer.h</a></div></div>
+<div class="ttc" id="a_object_server_8h_html"><div class="ttname"><a href="_object_server_8h.html">ObjectServer.h</a></div></div>
+<div class="ttc" id="a_player_8h_html"><div class="ttname"><a href="_player_8h.html">Player.h</a></div><div class="ttdoc">プレイヤークラス</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_game_html_a0a8aa66c3783d820e2cba7620e8f2526"><div class="ttname"><a href="class_game.html#a0a8aa66c3783d820e2cba7620e8f2526">Game::_bgm</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; _bgm</div><div class="ttdef"><b>Definition:</b> Game.h:66</div></div>
+<div class="ttc" id="aclass_game_html_a0c3c233df2160f8b300c78efe0cbfcdd"><div class="ttname"><a href="class_game.html#a0c3c233df2160f8b300c78efe0cbfcdd">Game::_cv_x</a></div><div class="ttdeci">int _cv_x</div><div class="ttdef"><b>Definition:</b> Game.h:63</div></div>
+<div class="ttc" id="aclass_game_html_a0c5bab4e93ed34da70d6ae9670db8442"><div class="ttname"><a href="class_game.html#a0c5bab4e93ed34da70d6ae9670db8442">Game::SetRestartFlag</a></div><div class="ttdeci">void SetRestartFlag(bool restartflag)</div><div class="ttdef"><b>Definition:</b> Game.h:50</div></div>
+<div class="ttc" id="aclass_game_html_a0f79af63287346aee7930c43dd44e6d3"><div class="ttname"><a href="class_game.html#a0f79af63287346aee7930c43dd44e6d3">Game::SetCPointFlag</a></div><div class="ttdeci">void SetCPointFlag(std::unordered_map&lt; std::string, bool &gt; cpointflag)</div><div class="ttdef"><b>Definition:</b> Game.h:51</div></div>
+<div class="ttc" id="aclass_game_html_a10a0b80c26ffe497f1c90c1582fd2c86"><div class="ttname"><a href="class_game.html#a10a0b80c26ffe497f1c90c1582fd2c86">Game::SetChip</a></div><div class="ttdeci">void SetChip(MapChip *map)</div><div class="ttdef"><b>Definition:</b> Game.h:49</div></div>
+<div class="ttc" id="aclass_game_html_a182ea90186ae8fdefbcb998d03a35241"><div class="ttname"><a href="class_game.html#a182ea90186ae8fdefbcb998d03a35241">Game::GetRestartFlag</a></div><div class="ttdeci">bool GetRestartFlag()</div><div class="ttdef"><b>Definition:</b> Game.h:36</div></div>
+<div class="ttc" id="aclass_game_html_a1eb30d9a037aa0642d2eab649219a087"><div class="ttname"><a href="class_game.html#a1eb30d9a037aa0642d2eab649219a087">Game::GetcvX</a></div><div class="ttdeci">int GetcvX()</div><div class="ttdef"><b>Definition:</b> Game.h:34</div></div>
+<div class="ttc" id="aclass_game_html_a1ffc2afa4c03161171316d1bf5baf715"><div class="ttname"><a href="class_game.html#a1ffc2afa4c03161171316d1bf5baf715">Game::GetMS</a></div><div class="ttdeci">ModeServer * GetMS()</div><div class="ttdef"><b>Definition:</b> Game.h:39</div></div>
+<div class="ttc" id="aclass_game_html_a203ad12de80b113641402b8311ceb3f6"><div class="ttname"><a href="class_game.html#a203ad12de80b113641402b8311ceb3f6">Game::VolumeInit</a></div><div class="ttdeci">void VolumeInit()</div><div class="ttdef"><b>Definition:</b> Game.cpp:88</div></div>
+<div class="ttc" id="aclass_game_html_a2b701ab044eb317cb868706dd0ba1c9f"><div class="ttname"><a href="class_game.html#a2b701ab044eb317cb868706dd0ba1c9f">Game::GetYBuf</a></div><div class="ttdeci">int GetYBuf()</div><div class="ttdef"><b>Definition:</b> Game.h:31</div></div>
+<div class="ttc" id="aclass_game_html_a2c7d84112feeac4a1f208120dba59bd1"><div class="ttname"><a href="class_game.html#a2c7d84112feeac4a1f208120dba59bd1">Game::GetOS</a></div><div class="ttdeci">ObjectServer * GetOS()</div><div class="ttdef"><b>Definition:</b> Game.h:40</div></div>
+<div class="ttc" id="aclass_game_html_a3327a66b62a63b75a1c47aa63cba4507"><div class="ttname"><a href="class_game.html#a3327a66b62a63b75a1c47aa63cba4507">Game::GetXBuf</a></div><div class="ttdeci">int GetXBuf()</div><div class="ttdef"><b>Definition:</b> Game.h:30</div></div>
+<div class="ttc" id="aclass_game_html_a3cbd70106b90e0c1f7c2fcfaf5605904"><div class="ttname"><a href="class_game.html#a3cbd70106b90e0c1f7c2fcfaf5605904">Game::SetcvX</a></div><div class="ttdeci">void SetcvX(int cvX)</div><div class="ttdef"><b>Definition:</b> Game.h:45</div></div>
+<div class="ttc" id="aclass_game_html_a40ffcec01a82aa7dc1ef2b3cd2d06deb"><div class="ttname"><a href="class_game.html#a40ffcec01a82aa7dc1ef2b3cd2d06deb">Game::GetKey</a></div><div class="ttdeci">int GetKey()</div><div class="ttdef"><b>Definition:</b> Game.h:28</div></div>
+<div class="ttc" id="aclass_game_html_a41bca66ac8cc3d18ab0c7156818fc5ae"><div class="ttname"><a href="class_game.html#a41bca66ac8cc3d18ab0c7156818fc5ae">Game::GetmapH</a></div><div class="ttdeci">int GetmapH()</div><div class="ttdef"><b>Definition:</b> Game.h:32</div></div>
+<div class="ttc" id="aclass_game_html_a4469a4c432a02bf896ae6b8d35437fe2"><div class="ttname"><a href="class_game.html#a4469a4c432a02bf896ae6b8d35437fe2">Game::GetBgm</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; GetBgm()</div><div class="ttdef"><b>Definition:</b> Game.h:41</div></div>
+<div class="ttc" id="aclass_game_html_a4d44342ac89fc6da938846151ad36496"><div class="ttname"><a href="class_game.html#a4d44342ac89fc6da938846151ad36496">Game::_cpoint_flag</a></div><div class="ttdeci">std::unordered_map&lt; std::string, bool &gt; _cpoint_flag</div><div class="ttdef"><b>Definition:</b> Game.h:68</div></div>
+<div class="ttc" id="aclass_game_html_a4dbd3e9f9a84c3cb0a802fde1c306d38"><div class="ttname"><a href="class_game.html#a4dbd3e9f9a84c3cb0a802fde1c306d38">Game::_restart_flag</a></div><div class="ttdeci">bool _restart_flag</div><div class="ttdef"><b>Definition:</b> Game.h:65</div></div>
+<div class="ttc" id="aclass_game_html_a648ffa59c1a07acb41b33e3ff63f1c51"><div class="ttname"><a href="class_game.html#a648ffa59c1a07acb41b33e3ff63f1c51">Game::GetChip</a></div><div class="ttdeci">MapChip * GetChip()</div><div class="ttdef"><b>Definition:</b> Game.h:38</div></div>
+<div class="ttc" id="aclass_game_html_a6c7ab5cf65fed8958d495bbd66f7ac90"><div class="ttname"><a href="class_game.html#a6c7ab5cf65fed8958d495bbd66f7ac90">Game::_mapchip</a></div><div class="ttdeci">MapChip * _mapchip</div><div class="ttdef"><b>Definition:</b> Game.h:70</div></div>
+<div class="ttc" id="aclass_game_html_a72c50291f1cc85f2adfb7d53767d18ac"><div class="ttname"><a href="class_game.html#a72c50291f1cc85f2adfb7d53767d18ac">Game::_map_h</a></div><div class="ttdeci">int _map_h</div><div class="ttdef"><b>Definition:</b> Game.h:64</div></div>
+<div class="ttc" id="aclass_game_html_a73b22e873b857ff509fcc9a2802809af"><div class="ttname"><a href="class_game.html#a73b22e873b857ff509fcc9a2802809af">Game::GetmapW</a></div><div class="ttdeci">int GetmapW()</div><div class="ttdef"><b>Definition:</b> Game.h:33</div></div>
+<div class="ttc" id="aclass_game_html_a7519c667de7c7939608d34866c180b56"><div class="ttname"><a href="class_game.html#a7519c667de7c7939608d34866c180b56">Game::GetCPointFlag</a></div><div class="ttdeci">std::unordered_map&lt; std::string, bool &gt; GetCPointFlag()</div><div class="ttdef"><b>Definition:</b> Game.h:43</div></div>
+<div class="ttc" id="aclass_game_html_a7b09fb3e92595575beb13cfa6707861c"><div class="ttname"><a href="class_game.html#a7b09fb3e92595575beb13cfa6707861c">Game::SetmapW</a></div><div class="ttdeci">void SetmapW(int mapW)</div><div class="ttdef"><b>Definition:</b> Game.h:47</div></div>
+<div class="ttc" id="aclass_game_html_a7c682bd3c63bdff1e2afa1d939b676b1"><div class="ttname"><a href="class_game.html#a7c682bd3c63bdff1e2afa1d939b676b1">Game::Input</a></div><div class="ttdeci">void Input()</div><div class="ttdef"><b>Definition:</b> Game.cpp:53</div></div>
+<div class="ttc" id="aclass_game_html_a7da1314c24bfde82575c35a781e37d6e"><div class="ttname"><a href="class_game.html#a7da1314c24bfde82575c35a781e37d6e">Game::_servermode</a></div><div class="ttdeci">ModeServer * _servermode</div><div class="ttdef"><b>Definition:</b> Game.h:71</div></div>
+<div class="ttc" id="aclass_game_html_a833382237e5190a4dc3636d0e6ea1550"><div class="ttname"><a href="class_game.html#a833382237e5190a4dc3636d0e6ea1550">Game::_map_w</a></div><div class="ttdeci">int _map_w</div><div class="ttdef"><b>Definition:</b> Game.h:64</div></div>
+<div class="ttc" id="aclass_game_html_a89eca209da3a06f588c7b3e53be620eb"><div class="ttname"><a href="class_game.html#a89eca209da3a06f588c7b3e53be620eb">Game::SetmapH</a></div><div class="ttdeci">void SetmapH(int mapH)</div><div class="ttdef"><b>Definition:</b> Game.h:48</div></div>
+<div class="ttc" id="aclass_game_html_a8c488851082626fb673523d3ed7410df"><div class="ttname"><a href="class_game.html#a8c488851082626fb673523d3ed7410df">Game::_gtrg</a></div><div class="ttdeci">int _gtrg</div><div class="ttdef"><b>Definition:</b> Game.h:59</div></div>
+<div class="ttc" id="aclass_game_html_a8df47d3bd5fc00b7731abc09be50b684"><div class="ttname"><a href="class_game.html#a8df47d3bd5fc00b7731abc09be50b684">Game::SetVpal</a></div><div class="ttdeci">void SetVpal(std::unordered_map&lt; std::string, int &gt; vpal)</div><div class="ttdef"><b>Definition:</b> Game.h:52</div></div>
+<div class="ttc" id="aclass_game_html_a918997b6dadae9ef0dc4e16ba15a69fe"><div class="ttname"><a href="class_game.html#a918997b6dadae9ef0dc4e16ba15a69fe">Game::GetVpal</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; GetVpal()</div><div class="ttdef"><b>Definition:</b> Game.h:42</div></div>
+<div class="ttc" id="aclass_game_html_a967e0343efa495bdd98745cfe12285fb"><div class="ttname"><a href="class_game.html#a967e0343efa495bdd98745cfe12285fb">Game::_objserver</a></div><div class="ttdeci">ObjectServer _objserver</div><div class="ttdef"><b>Definition:</b> Game.h:72</div></div>
+<div class="ttc" id="aclass_game_html_a9f53d1906d714609719fc39530313f3e"><div class="ttname"><a href="class_game.html#a9f53d1906d714609719fc39530313f3e">Game::_cv_y</a></div><div class="ttdeci">int _cv_y</div><div class="ttdef"><b>Definition:</b> Game.h:63</div></div>
+<div class="ttc" id="aclass_game_html_aa4236c247d29291d04ce5b7ebfd7bfa2"><div class="ttname"><a href="class_game.html#aa4236c247d29291d04ce5b7ebfd7bfa2">Game::VolumeChange</a></div><div class="ttdeci">void VolumeChange()</div><div class="ttdef"><b>Definition:</b> Game.cpp:99</div></div>
+<div class="ttc" id="aclass_game_html_aad11e42f2271149eeb70e5ffc8736e86"><div class="ttname"><a href="class_game.html#aad11e42f2271149eeb70e5ffc8736e86">Game::LoadBgm</a></div><div class="ttdeci">void LoadBgm()</div><div class="ttdef"><b>Definition:</b> Game.cpp:79</div></div>
+<div class="ttc" id="aclass_game_html_aad2c20e2c5529244095c50c238911e30"><div class="ttname"><a href="class_game.html#aad2c20e2c5529244095c50c238911e30">Game::Draw</a></div><div class="ttdeci">void Draw()</div><div class="ttdef"><b>Definition:</b> Game.cpp:72</div></div>
+<div class="ttc" id="aclass_game_html_aafecdaef5c7cb8bd3ae224385f5aa239"><div class="ttname"><a href="class_game.html#aafecdaef5c7cb8bd3ae224385f5aa239">Game::_xbuf</a></div><div class="ttdeci">int _xbuf</div><div class="ttdef"><b>Definition:</b> Game.h:60</div></div>
+<div class="ttc" id="aclass_game_html_ac76fc598eb59d2c3d741a7e5d279c705"><div class="ttname"><a href="class_game.html#ac76fc598eb59d2c3d741a7e5d279c705">Game::_vpal</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; _vpal</div><div class="ttdef"><b>Definition:</b> Game.h:67</div></div>
+<div class="ttc" id="aclass_game_html_ac95a43a72f8846111e93ba1ea2deb6b0"><div class="ttname"><a href="class_game.html#ac95a43a72f8846111e93ba1ea2deb6b0">Game::_ybuf</a></div><div class="ttdeci">int _ybuf</div><div class="ttdef"><b>Definition:</b> Game.h:61</div></div>
+<div class="ttc" id="aclass_game_html_acef31833f2ce790ffa717e0858b978bb"><div class="ttname"><a href="class_game.html#acef31833f2ce790ffa717e0858b978bb">Game::_gcnt</a></div><div class="ttdeci">int _gcnt</div><div class="ttdef"><b>Definition:</b> Game.h:62</div></div>
+<div class="ttc" id="aclass_game_html_ad59df6562a58a614fda24622d3715b65"><div class="ttname"><a href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game::Game</a></div><div class="ttdeci">Game()</div><div class="ttdef"><b>Definition:</b> Game.cpp:13</div></div>
+<div class="ttc" id="aclass_game_html_ae3d112ca6e0e55150d2fdbc704474530"><div class="ttname"><a href="class_game.html#ae3d112ca6e0e55150d2fdbc704474530">Game::~Game</a></div><div class="ttdeci">~Game()</div><div class="ttdef"><b>Definition:</b> Game.cpp:40</div></div>
+<div class="ttc" id="aclass_game_html_ae971dabf34eacf8d53664ffc182dec58"><div class="ttname"><a href="class_game.html#ae971dabf34eacf8d53664ffc182dec58">Game::GetcvY</a></div><div class="ttdeci">int GetcvY()</div><div class="ttdef"><b>Definition:</b> Game.h:35</div></div>
+<div class="ttc" id="aclass_game_html_ae995fef6be42bdba832ee132d9068f4f"><div class="ttname"><a href="class_game.html#ae995fef6be42bdba832ee132d9068f4f">Game::Process</a></div><div class="ttdeci">void Process()</div><div class="ttdef"><b>Definition:</b> Game.cpp:62</div></div>
+<div class="ttc" id="aclass_game_html_aeda8bea7a81ce3e69738414348df9dc8"><div class="ttname"><a href="class_game.html#aeda8bea7a81ce3e69738414348df9dc8">Game::GetTrg</a></div><div class="ttdeci">int GetTrg()</div><div class="ttdef"><b>Definition:</b> Game.h:29</div></div>
+<div class="ttc" id="aclass_game_html_af47f355ff21c33f3be6d46338975697f"><div class="ttname"><a href="class_game.html#af47f355ff21c33f3be6d46338975697f">Game::SetcvY</a></div><div class="ttdeci">void SetcvY(int cvY)</div><div class="ttdef"><b>Definition:</b> Game.h:46</div></div>
+<div class="ttc" id="aclass_game_html_af718e2a2f514ae7cfb9a62c6919a5008"><div class="ttname"><a href="class_game.html#af718e2a2f514ae7cfb9a62c6919a5008">Game::_gkey</a></div><div class="ttdeci">int _gkey</div><div class="ttdef"><b>Definition:</b> Game.h:58</div></div>
+<div class="ttc" id="aclass_map_chip_html"><div class="ttname"><a href="class_map_chip.html">MapChip</a></div><div class="ttdef"><b>Definition:</b> MapChip.h:8</div></div>
+<div class="ttc" id="aclass_mode_server_html"><div class="ttname"><a href="class_mode_server.html">ModeServer</a></div><div class="ttdef"><b>Definition:</b> ModeServer.h:9</div></div>
+<div class="ttc" id="aclass_object_server_html"><div class="ttname"><a href="class_object_server.html">ObjectServer</a></div><div class="ttdef"><b>Definition:</b> ObjectServer.h:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

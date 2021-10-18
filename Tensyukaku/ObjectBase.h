@@ -21,7 +21,7 @@ public:
       MIDDLEATTACK, LOWATTACK, KICK, IAI,SPECIAL,                                                                                                                     //プレイヤーの攻撃
       PRIVATECOLLISION,BUSHIATTACK,NINJAATTACK,KUNAI,SHIELDERATTACK,SHIELD, LANCERATTACK,BUSYOATTACK,ZYOUNINATTACK,      //敵の攻撃&索敵範囲等
       STAIR,BOSSSTAIR, RESTPOINT,POISONNINJA,POISON,ANDON,FLAME, MUGENANDON,MUGENFLAME, TUTORIALBOARD,                     //ギミック
-      RECOVERYBLOCK,CPOINTBLOCK,BOSSEVENTBLOCK,FLAMEBLOCK, SPAWNBLOCK, EVENTBLOCK,                                                    //各ギミック用当たり判定
+      RECOVERYBLOCK,CPOINTBLOCK,BOSSEVENTBLOCK,FLAMEBLOCK, SPAWNBLOCK, EVENTBLOCK,FLOORTEXTBLOCK                                                   //各ギミック用当たり判定
    };
    //純粋仮想関数
    virtual OBJECTTYPE   GetObjType() = 0;

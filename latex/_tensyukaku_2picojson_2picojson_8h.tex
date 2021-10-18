@@ -1,0 +1,335 @@
+\hypertarget{_tensyukaku_2picojson_2picojson_8h}{}\doxysection{Tensyukaku/picojson/picojson.h ファイル}
+\label{_tensyukaku_2picojson_2picojson_8h}\index{Tensyukaku/picojson/picojson.h@{Tensyukaku/picojson/picojson.h}}
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+\doxysubsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structpicojson_1_1null}{picojson\+::null}}
+\item 
+class \mbox{\hyperlink{classpicojson_1_1value}{picojson\+::value}}
+\item 
+union \mbox{\hyperlink{unionpicojson_1_1value_1_1__storage}{picojson\+::value\+::\+\_\+storage}}
+\item 
+struct \mbox{\hyperlink{structpicojson_1_1serialize__str__char}{picojson\+::serialize\+\_\+str\+\_\+char$<$ Iter $>$}}
+\item 
+class \mbox{\hyperlink{classpicojson_1_1input}{picojson\+::input$<$ Iter $>$}}
+\item 
+class \mbox{\hyperlink{classpicojson_1_1deny__parse__context}{picojson\+::deny\+\_\+parse\+\_\+context}}
+\item 
+class \mbox{\hyperlink{classpicojson_1_1default__parse__context}{picojson\+::default\+\_\+parse\+\_\+context}}
+\item 
+class \mbox{\hyperlink{classpicojson_1_1null__parse__context}{picojson\+::null\+\_\+parse\+\_\+context}}
+\item 
+struct \mbox{\hyperlink{structpicojson_1_1null__parse__context_1_1dummy__str}{picojson\+::null\+\_\+parse\+\_\+context\+::dummy\+\_\+str}}
+\item 
+struct \mbox{\hyperlink{structpicojson_1_1last__error__t}{picojson\+::last\+\_\+error\+\_\+t$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsection*{名前空間}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacepicojson}{picojson}}
+\item 
+namespace \mbox{\hyperlink{namespacestd}{std}}
+\end{DoxyCompactItemize}
+\doxysubsection*{マクロ定義}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_ade694cad769bf17244011bde5b4cb928}{PICOJSON\+\_\+\+USE\+\_\+\+RVALUE\+\_\+\+REFERENCE}}~0
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_af6a3a9b85d5640d11e7c94ae3c7716d7}{PICOJSON\+\_\+\+USE\+\_\+\+LOCALE}}~1
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a0746b522f9bb442b3c2994dfd63a9d02}{PICOJSON\+\_\+\+ASSERT}}(e)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a770571e12ff9370899184528f4b4626d}{SNPRINTF}}~snprintf
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a0831cc4953114e0949ccd6e2b8478e99}{INIT}}(p,  v)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_ad4d0f823143fdfb63c59633d1603c7f3}{DEINIT}}(p)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a0831cc4953114e0949ccd6e2b8478e99}{INIT}}(p,  v)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a3786a4dad1b9709bb21424781ae17a4e}{IS}}(ctype,  jtype)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a503e08234fb7234faecc7041b404efe7}{GET}}(ctype,  var)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a7b0b8784d785e03ff739e18b6e32316c}{SET}}(ctype,  jtype,  setter)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a339491d48190a5857a36d35499b14c3e}{MAP}}(val,  sym)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a8ab2c07aeb623ac6858c8b6705a5a87a}{MAP}}(sym,  val)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a3e51233ac757c87bf81904f7cf7b3d30}{IS}}(ch,  text,  op)
+\item 
+\#define \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_af6b970af4f337ef1075f08f17784a23a}{PICOJSON\+\_\+\+CMP}}(type)
+\end{DoxyCompactItemize}
+\doxysubsection*{型定義}
+\begin{DoxyCompactItemize}
+\item 
+typedef value\+::array \mbox{\hyperlink{namespacepicojson_ac1e72166adfe3d96dc58cddc7ebd536a}{picojson\+::array}}
+\item 
+typedef value\+::object \mbox{\hyperlink{namespacepicojson_a3e769a5e2dbffd9a9309e1dc2d67975b}{picojson\+::object}}
+\end{DoxyCompactItemize}
+\doxysubsection*{列挙型}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\mbox{\hyperlink{namespacepicojson_afcb511d452a3f6363e9611e3eb415a55a6b41d19695c3119c1588a595794b5334}{picojson\+::null\+\_\+type}}
+, \mbox{\hyperlink{namespacepicojson_afcb511d452a3f6363e9611e3eb415a55ab318435b1cb20a64ce94d8b55fb97c23}{picojson\+::boolean\+\_\+type}}
+, \mbox{\hyperlink{namespacepicojson_afcb511d452a3f6363e9611e3eb415a55a03eb6eb0b9c2adab3b1bba1770a9fb34}{picojson\+::number\+\_\+type}}
+, \mbox{\hyperlink{namespacepicojson_afcb511d452a3f6363e9611e3eb415a55a4c5b5c72d233629beb6255b0314a2a06}{picojson\+::string\+\_\+type}}
+, \newline
+\mbox{\hyperlink{namespacepicojson_afcb511d452a3f6363e9611e3eb415a55a9b267b320c3252d8f5273d69530b458f}{picojson\+::array\+\_\+type}}
+, \mbox{\hyperlink{namespacepicojson_afcb511d452a3f6363e9611e3eb415a55a478916c9c77dc79a842a4ad3460dd6ce}{picojson\+::object\+\_\+type}}
+ \}
+\item 
+enum \{ \mbox{\hyperlink{namespacepicojson_a53a877450005b1ae481be991a1956066aa4d3a795e6ce3bdf199d5e9f9c00bab1}{picojson\+::\+INDENT\+\_\+\+WIDTH}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\void \mbox{\hyperlink{namespacepicojson_abc2111aa71797805957a4296fdf9c66d}{picojson\+::copy}} (const std\+::string \&s, Iter oi)
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\void \mbox{\hyperlink{namespacepicojson_a11130e017d868857aeb016f5e3d29008}{picojson\+::serialize\+\_\+str}} (const std\+::string \&s, Iter oi)
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\int \mbox{\hyperlink{namespacepicojson_a92d4f60542bbdfe8203f10e1fcce9368}{picojson\+::\+\_\+parse\+\_\+quadhex}} (input$<$ Iter $>$ \&in)
+\item 
+{\footnotesize template$<$typename String , typename Iter $>$ }\\bool \mbox{\hyperlink{namespacepicojson_a05316c2614f3e7a4559ce1d1003eb051}{picojson\+::\+\_\+parse\+\_\+codepoint}} (String \&out, input$<$ Iter $>$ \&in)
+\item 
+{\footnotesize template$<$typename String , typename Iter $>$ }\\bool \mbox{\hyperlink{namespacepicojson_a9a1d94feb2718129796225d77c9e8d11}{picojson\+::\+\_\+parse\+\_\+string}} (String \&out, input$<$ Iter $>$ \&in)
+\item 
+{\footnotesize template$<$typename Context , typename Iter $>$ }\\bool \mbox{\hyperlink{namespacepicojson_adcae039b132c6c96d2b2d9e786a04a88}{picojson\+::\+\_\+parse\+\_\+array}} (Context \&ctx, input$<$ Iter $>$ \&in)
+\item 
+{\footnotesize template$<$typename Context , typename Iter $>$ }\\bool \mbox{\hyperlink{namespacepicojson_a480ed5e3461568672197a42e259a44c9}{picojson\+::\+\_\+parse\+\_\+object}} (Context \&ctx, input$<$ Iter $>$ \&in)
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\std\+::string \mbox{\hyperlink{namespacepicojson_a771defe1d981b7091c2156bf4720625c}{picojson\+::\+\_\+parse\+\_\+number}} (input$<$ Iter $>$ \&in)
+\item 
+{\footnotesize template$<$typename Context , typename Iter $>$ }\\bool \mbox{\hyperlink{namespacepicojson_aed024a6a1c8d8982a38c4a7fcefde221}{picojson\+::\+\_\+parse}} (Context \&ctx, input$<$ Iter $>$ \&in)
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\std\+::string \mbox{\hyperlink{namespacepicojson_a3aca598f5855bc130a92a3e08a0c6ebf}{picojson\+::parse}} (value \&out, Iter \&pos, const Iter \&last)
+\item 
+{\footnotesize template$<$typename Context , typename Iter $>$ }\\Iter \mbox{\hyperlink{namespacepicojson_a01c0a3f35d42282ba913375737c8e259}{picojson\+::\+\_\+parse}} (Context \&ctx, const Iter \&first, const Iter \&last, std\+::string $\ast$err)
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\Iter \mbox{\hyperlink{namespacepicojson_a21621c03c9c8c83dcf5bc604d1cafdf6}{picojson\+::parse}} (value \&out, const Iter \&first, const Iter \&last, std\+::string $\ast$err)
+\item 
+std\+::string \mbox{\hyperlink{namespacepicojson_a522ebeba3ce386f1df0aba41ae3b7763}{picojson\+::parse}} (value \&out, const std\+::string \&s)
+\item 
+std\+::string \mbox{\hyperlink{namespacepicojson_a2ed8a3cba445c8ecbe3d6a3a3fbdabd3}{picojson\+::parse}} (value \&out, std\+::istream \&is)
+\item 
+void \mbox{\hyperlink{namespacepicojson_a509585c918611015ec995d4374fee4c9}{picojson\+::set\+\_\+last\+\_\+error}} (const std\+::string \&s)
+\item 
+const std\+::string \& \mbox{\hyperlink{namespacepicojson_a6c06b1390146361a5f1bbf540672e6b7}{picojson\+::get\+\_\+last\+\_\+error}} ()
+\item 
+bool \mbox{\hyperlink{namespacepicojson_a498fde71ce35268547d93068d9a756be}{picojson\+::operator==}} (const value \&x, const value \&y)
+\item 
+bool \mbox{\hyperlink{namespacepicojson_ae46de1e9659b427ea359e7fc00dd3ff1}{picojson\+::operator!=}} (const value \&x, const value \&y)
+\item 
+template$<$$>$ void \mbox{\hyperlink{namespacestd_abb7e41c7063536ff6eeee4bb5f66de6c}{std\+::swap}} (\mbox{\hyperlink{classpicojson_1_1value}{picojson\+::value}} \&x, \mbox{\hyperlink{classpicojson_1_1value}{picojson\+::value}} \&y)
+\item 
+std\+::istream \& \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_a943d5d09c43872f2477c9340d4eb9645}{operator$>$$>$}} (std\+::istream \&is, \mbox{\hyperlink{classpicojson_1_1value}{picojson\+::value}} \&x)
+\item 
+std\+::ostream \& \mbox{\hyperlink{_tensyukaku_2picojson_2picojson_8h_aff57d8c4a4e6df0306c7014e51e9a36f}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classpicojson_1_1value}{picojson\+::value}} \&x)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{マクロ定義詳解}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_ad4d0f823143fdfb63c59633d1603c7f3}\label{_tensyukaku_2picojson_2picojson_8h_ad4d0f823143fdfb63c59633d1603c7f3}} 
+\index{picojson.h@{picojson.h}!DEINIT@{DEINIT}}
+\index{DEINIT@{DEINIT}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{DEINIT}{DEINIT}}
+{\footnotesize\ttfamily \#define DEINIT(\begin{DoxyParamCaption}\item[{}]{p }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keywordflow}{case} p\#\#type:                                                                                                                    \(\backslash\)}
+\DoxyCodeLine{    delete u\_.p;                                                                                                                   \(\backslash\)}
+\DoxyCodeLine{    break}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a503e08234fb7234faecc7041b404efe7}\label{_tensyukaku_2picojson_2picojson_8h_a503e08234fb7234faecc7041b404efe7}} 
+\index{picojson.h@{picojson.h}!GET@{GET}}
+\index{GET@{GET}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{GET}{GET}}
+{\footnotesize\ttfamily \#define GET(\begin{DoxyParamCaption}\item[{}]{ctype,  }\item[{}]{var }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keyword}{template} <> \textcolor{keyword}{inline} \textcolor{keyword}{const} ctype \&value::get<ctype>()\textcolor{keyword}{ const }\{                                                                      \(\backslash\)}
+\DoxyCodeLine{    PICOJSON\_ASSERT(\textcolor{stringliteral}{"{}type mismatch! call is<type>() before get<type>()"{}} \&\& is<ctype>());                                           \(\backslash\)}
+\DoxyCodeLine{    return var;                                                                                                                    \(\backslash\)}
+\DoxyCodeLine{  \}                                                                                                                                \(\backslash\)}
+\DoxyCodeLine{  template <> \textcolor{keyword}{inline} ctype \&value::get<ctype>() \{                                                                                  \(\backslash\)}
+\DoxyCodeLine{    PICOJSON\_ASSERT(\textcolor{stringliteral}{"{}type mismatch! call is<type>() before get<type>()"{}} \&\& is<ctype>());                                           \(\backslash\)}
+\DoxyCodeLine{    return var;                                                                                                                    \(\backslash\)}
+\DoxyCodeLine{  \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a0831cc4953114e0949ccd6e2b8478e99}\label{_tensyukaku_2picojson_2picojson_8h_a0831cc4953114e0949ccd6e2b8478e99}} 
+\index{picojson.h@{picojson.h}!INIT@{INIT}}
+\index{INIT@{INIT}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{INIT}{INIT}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define INIT(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{v }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keywordflow}{case} p\#\#type:                                                                                                                    \(\backslash\)}
+\DoxyCodeLine{    u\_.p = v;                                                                                                                      \(\backslash\)}
+\DoxyCodeLine{    break}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a0831cc4953114e0949ccd6e2b8478e99}\label{_tensyukaku_2picojson_2picojson_8h_a0831cc4953114e0949ccd6e2b8478e99}} 
+\index{picojson.h@{picojson.h}!INIT@{INIT}}
+\index{INIT@{INIT}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{INIT}{INIT}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define INIT(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{v }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keywordflow}{case} p\#\#type:                                                                                                                    \(\backslash\)}
+\DoxyCodeLine{    u\_.p = v;                                                                                                                      \(\backslash\)}
+\DoxyCodeLine{    break}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a3e51233ac757c87bf81904f7cf7b3d30}\label{_tensyukaku_2picojson_2picojson_8h_a3e51233ac757c87bf81904f7cf7b3d30}} 
+\index{picojson.h@{picojson.h}!IS@{IS}}
+\index{IS@{IS}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{IS}{IS}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define IS(\begin{DoxyParamCaption}\item[{}]{ch,  }\item[{}]{text,  }\item[{}]{op }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keywordflow}{case} ch:                                                                                                                         \(\backslash\)}
+\DoxyCodeLine{    if (in.match(text) \&\& op) \{                                                                                                    \(\backslash\)}
+\DoxyCodeLine{      return \textcolor{keyword}{true};                                                                                                                 \(\backslash\)}
+\DoxyCodeLine{    \} \textcolor{keywordflow}{else} \{                                                                                                                       \(\backslash\)}
+\DoxyCodeLine{      return \textcolor{keyword}{false};                                                                                                                \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a3786a4dad1b9709bb21424781ae17a4e}\label{_tensyukaku_2picojson_2picojson_8h_a3786a4dad1b9709bb21424781ae17a4e}} 
+\index{picojson.h@{picojson.h}!IS@{IS}}
+\index{IS@{IS}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{IS}{IS}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define IS(\begin{DoxyParamCaption}\item[{}]{ctype,  }\item[{}]{jtype }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keyword}{template} <> \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} value::is<ctype>()\textcolor{keyword}{ const }\{                                                                               \(\backslash\)}
+\DoxyCodeLine{    return type\_ == jtype\#\#\_type;                                                                                                  \(\backslash\)}
+\DoxyCodeLine{  \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a8ab2c07aeb623ac6858c8b6705a5a87a}\label{_tensyukaku_2picojson_2picojson_8h_a8ab2c07aeb623ac6858c8b6705a5a87a}} 
+\index{picojson.h@{picojson.h}!MAP@{MAP}}
+\index{MAP@{MAP}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{MAP}{MAP}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define MAP(\begin{DoxyParamCaption}\item[{}]{sym,  }\item[{}]{val }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keywordflow}{case} sym:                                                                                                                        \(\backslash\)}
+\DoxyCodeLine{    out.push\_back(val);                                                                                                            \(\backslash\)}
+\DoxyCodeLine{    break}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a339491d48190a5857a36d35499b14c3e}\label{_tensyukaku_2picojson_2picojson_8h_a339491d48190a5857a36d35499b14c3e}} 
+\index{picojson.h@{picojson.h}!MAP@{MAP}}
+\index{MAP@{MAP}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{MAP}{MAP}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define MAP(\begin{DoxyParamCaption}\item[{}]{val,  }\item[{}]{sym }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keywordflow}{case} val:                                                                                                                        \(\backslash\)}
+\DoxyCodeLine{    copy(sym, oi);                                                                                                                 \(\backslash\)}
+\DoxyCodeLine{    break}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a0746b522f9bb442b3c2994dfd63a9d02}\label{_tensyukaku_2picojson_2picojson_8h_a0746b522f9bb442b3c2994dfd63a9d02}} 
+\index{picojson.h@{picojson.h}!PICOJSON\_ASSERT@{PICOJSON\_ASSERT}}
+\index{PICOJSON\_ASSERT@{PICOJSON\_ASSERT}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{PICOJSON\_ASSERT}{PICOJSON\_ASSERT}}
+{\footnotesize\ttfamily \#define PICOJSON\+\_\+\+ASSERT(\begin{DoxyParamCaption}\item[{}]{e }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keywordflow}{do} \{                                                                                                                             \(\backslash\)}
+\DoxyCodeLine{    if (!(e))                                                                                                                      \(\backslash\)}
+\DoxyCodeLine{      throw std::runtime\_error(\#e);                                                                                                \(\backslash\)}
+\DoxyCodeLine{  \} \textcolor{keywordflow}{while} (0)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_af6b970af4f337ef1075f08f17784a23a}\label{_tensyukaku_2picojson_2picojson_8h_af6b970af4f337ef1075f08f17784a23a}} 
+\index{picojson.h@{picojson.h}!PICOJSON\_CMP@{PICOJSON\_CMP}}
+\index{PICOJSON\_CMP@{PICOJSON\_CMP}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{PICOJSON\_CMP}{PICOJSON\_CMP}}
+{\footnotesize\ttfamily \#define PICOJSON\+\_\+\+CMP(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (x.is<type>())                                                                                                                \(\backslash\)}
+\DoxyCodeLine{  return y.is<type>() \&\& x.get<type>() == y.get<type>()}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_af6a3a9b85d5640d11e7c94ae3c7716d7}\label{_tensyukaku_2picojson_2picojson_8h_af6a3a9b85d5640d11e7c94ae3c7716d7}} 
+\index{picojson.h@{picojson.h}!PICOJSON\_USE\_LOCALE@{PICOJSON\_USE\_LOCALE}}
+\index{PICOJSON\_USE\_LOCALE@{PICOJSON\_USE\_LOCALE}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{PICOJSON\_USE\_LOCALE}{PICOJSON\_USE\_LOCALE}}
+{\footnotesize\ttfamily \#define PICOJSON\+\_\+\+USE\+\_\+\+LOCALE~1}
+
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_ade694cad769bf17244011bde5b4cb928}\label{_tensyukaku_2picojson_2picojson_8h_ade694cad769bf17244011bde5b4cb928}} 
+\index{picojson.h@{picojson.h}!PICOJSON\_USE\_RVALUE\_REFERENCE@{PICOJSON\_USE\_RVALUE\_REFERENCE}}
+\index{PICOJSON\_USE\_RVALUE\_REFERENCE@{PICOJSON\_USE\_RVALUE\_REFERENCE}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{PICOJSON\_USE\_RVALUE\_REFERENCE}{PICOJSON\_USE\_RVALUE\_REFERENCE}}
+{\footnotesize\ttfamily \#define PICOJSON\+\_\+\+USE\+\_\+\+RVALUE\+\_\+\+REFERENCE~0}
+
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a7b0b8784d785e03ff739e18b6e32316c}\label{_tensyukaku_2picojson_2picojson_8h_a7b0b8784d785e03ff739e18b6e32316c}} 
+\index{picojson.h@{picojson.h}!SET@{SET}}
+\index{SET@{SET}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{SET}{SET}}
+{\footnotesize\ttfamily \#define SET(\begin{DoxyParamCaption}\item[{}]{ctype,  }\item[{}]{jtype,  }\item[{}]{setter }\end{DoxyParamCaption})}
+
+{\bfseries 値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \textcolor{keyword}{template} <> \textcolor{keyword}{inline} \textcolor{keywordtype}{void} value::set<ctype>(\textcolor{keyword}{const} ctype \&\_val) \{                                                                   \(\backslash\)}
+\DoxyCodeLine{    clear();                                                                                                                       \(\backslash\)}
+\DoxyCodeLine{    type\_ = jtype\#\#\_type;                                                                                                          \(\backslash\)}
+\DoxyCodeLine{    setter                                                                                                                         \(\backslash\)}
+\DoxyCodeLine{  \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a770571e12ff9370899184528f4b4626d}\label{_tensyukaku_2picojson_2picojson_8h_a770571e12ff9370899184528f4b4626d}} 
+\index{picojson.h@{picojson.h}!SNPRINTF@{SNPRINTF}}
+\index{SNPRINTF@{SNPRINTF}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{SNPRINTF}{SNPRINTF}}
+{\footnotesize\ttfamily \#define SNPRINTF~snprintf}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_aff57d8c4a4e6df0306c7014e51e9a36f}\label{_tensyukaku_2picojson_2picojson_8h_aff57d8c4a4e6df0306c7014e51e9a36f}} 
+\index{picojson.h@{picojson.h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classpicojson_1_1value}{picojson\+::value}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{_tensyukaku_2picojson_2picojson_8h_a943d5d09c43872f2477c9340d4eb9645}\label{_tensyukaku_2picojson_2picojson_8h_a943d5d09c43872f2477c9340d4eb9645}} 
+\index{picojson.h@{picojson.h}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!picojson.h@{picojson.h}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}}
+{\footnotesize\ttfamily std\+::istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is,  }\item[{\mbox{\hyperlink{classpicojson_1_1value}{picojson\+::value}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

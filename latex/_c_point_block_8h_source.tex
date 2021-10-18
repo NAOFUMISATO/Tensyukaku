@@ -1,0 +1,39 @@
+\hypertarget{_c_point_block_8h_source}{}\doxysection{CPoint\+Block.\+h}
+\label{_c_point_block_8h_source}\index{Tensyukaku/CPointBlock.h@{Tensyukaku/CPointBlock.h}}
+\mbox{\hyperlink{_c_point_block_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_c_point_block}{CPointBlock}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{5 \textcolor{keyword}{public}:}
+\DoxyCodeLine{6    \mbox{\hyperlink{class_c_point_block_a2f71307f458b48961b31f22f4951b677}{CPointBlock}}(std::string  cpointtype);}
+\DoxyCodeLine{7    \mbox{\hyperlink{class_c_point_block_a50e70c1eaea031d4e4a92850daa8ef4d}{\string~CPointBlock}}();}
+\DoxyCodeLine{8    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}   \mbox{\hyperlink{class_c_point_block_a1b29ca8ad6b083de75e3e025db1ba90b}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dac6719a6de45631bfdda6d67c1f636f45}{OBJECTTYPE::CPOINTBLOCK}}; \}}
+\DoxyCodeLine{9    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_point_block_a30344e006aba5bb0eedf41ea279942fb}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{10    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_point_block_a6d7ed6082b4e7f091821092ffda8b5b7}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{11    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_point_block_a238b72a10bccb735051632e5cd91962e}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{12    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_point_block_a9b93a05f7d2b5af32926429bb63d51d4}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_point_block_adcbcf09dc0594f1438dd3cdc73adf900}{CPointPosition}}();}
+\DoxyCodeLine{15    std::string  \mbox{\hyperlink{class_c_point_block_a9adaf4e8dd6b1c877160c00a8c01f250}{\_cpoint\_type}};}
+\DoxyCodeLine{16 \};}
+\DoxyCodeLine{17 \textcolor{comment}{//チェックポイント}}
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_c_p_info}{CPInfo}} \{}
+\DoxyCodeLine{19    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_a6ef2cb57ab8ca2ab02abee806c828c69}{CPOINT\_2A\_X}} = 3600;}
+\DoxyCodeLine{20    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_aeeab8884ece1e77762c99da1698d2ff2}{CPOINT\_2A\_Y}} = 8600;}
+\DoxyCodeLine{21    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_a3b8716bd78cf590d7e13da93ccf4491f}{CPOINT\_3A\_X}} = 250;}
+\DoxyCodeLine{22    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_a8b834e7fa024d1b76b6f10e7c1b8cf3d}{CPOINT\_3A\_Y}} = 7840;}
+\DoxyCodeLine{23    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_acc36431af209d1f6c699512f19273781}{CPOINT\_4A\_X}} = 5600;}
+\DoxyCodeLine{24    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_afa1dc3ece981e99f34960f754d8b45e2}{CPOINT\_4A\_Y}} = 7080;}
+\DoxyCodeLine{25    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_aa19f49d027195cfbd25197376fa2445a}{CPOINT\_5A\_X}} = 250;}
+\DoxyCodeLine{26    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_a0bb1b3e5ce1a756201505186f3ce6138}{CPOINT\_5A\_Y}} =   6320;}
+\DoxyCodeLine{27    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_aeeaffa8872844e0c896d38998a18f973}{CPOINT\_5B\_X}} = 5500;}
+\DoxyCodeLine{28    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_a819341529903a84e6262a49205af63ed}{CPOINT\_5B\_Y}} = 6320;}
+\DoxyCodeLine{29    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_a57b10b7bbb36e7020bec181dc4d9109c}{CPOINT\_8A\_X}} = 5000;}
+\DoxyCodeLine{30    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_a7413e881f3b3c9147a821e3d36f78409}{CPOINT\_8A\_Y}} = 4040;}
+\DoxyCodeLine{31    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_ae24cdf6fb9c029c9039d0ad0f5eec377}{CPOINT\_11A\_X}} = 5600;}
+\DoxyCodeLine{32    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_p_info_a7600958ee357e583d7785b562391666a}{CPOINT\_11A\_Y}} = 1760;}
+\DoxyCodeLine{33 \}}
+
+\end{DoxyCode}

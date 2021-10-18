@@ -1,0 +1,124 @@
+\hypertarget{class_p_controller}{}\doxysection{PController クラス}
+\label{class_p_controller}\index{PController@{PController}}
+
+
+{\ttfamily \#include $<$Pause\+Controller.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_p_controller_aed94249d4c59dd5dea97e5aadae1de72}{Initialize}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_p_controller_a08d25dc359adb22fc0f5c169b328a155}{Terminate}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 終了関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_p_controller_ac6645dcf0794db19ce5c5635444e6ca2}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 更新関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_p_controller_ad7a7c2443964af55d968a0b8ed0256e7}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 描画関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_p_controller_a3be71ff578d9e74f885117db13c06040}{base}}
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{詳解}
+ポーズコントローラー 
+
+\doxysubsection{型定義メンバ詳解}
+\mbox{\Hypertarget{class_p_controller_a3be71ff578d9e74f885117db13c06040}\label{class_p_controller_a3be71ff578d9e74f885117db13c06040}} 
+\index{PController@{PController}!base@{base}}
+\index{base@{base}!PController@{PController}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_p_controller_a3be71ff578d9e74f885117db13c06040}{PController\+::base}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_p_controller_ad7a7c2443964af55d968a0b8ed0256e7}\label{class_p_controller_ad7a7c2443964af55d968a0b8ed0256e7}} 
+\index{PController@{PController}!Draw@{Draw}}
+\index{Draw@{Draw}!PController@{PController}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily bool PController\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+描画関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a50776d758456fe540e3aef2f47234a0d}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_p_controller_aed94249d4c59dd5dea97e5aadae1de72}\label{class_p_controller_aed94249d4c59dd5dea97e5aadae1de72}} 
+\index{PController@{PController}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!PController@{PController}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool PController\+::\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a4cb0982318dfa7d2906dcf30c3824ab1}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_p_controller_ac6645dcf0794db19ce5c5635444e6ca2}\label{class_p_controller_ac6645dcf0794db19ce5c5635444e6ca2}} 
+\index{PController@{PController}!Process@{Process}}
+\index{Process@{Process}!PController@{PController}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily bool PController\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+更新関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a8b78d63abe0000394a892723b92c7694}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_p_controller_a08d25dc359adb22fc0f5c169b328a155}\label{class_p_controller_a08d25dc359adb22fc0f5c169b328a155}} 
+\index{PController@{PController}!Terminate@{Terminate}}
+\index{Terminate@{Terminate}!PController@{PController}}
+\doxysubsubsection{\texorpdfstring{Terminate()}{Terminate()}}
+{\footnotesize\ttfamily bool PController\+::\+Terminate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+終了関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a780d90b676aa9093fef190c6fe6821e2}{Mode\+Base}}を再実装しています。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_pause_controller_8h}{Pause\+Controller.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_pause_controller_8cpp}{Pause\+Controller.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,90 @@
+\hypertarget{class_sway_particle}{}\doxysection{Sway\+Particle クラス}
+\label{class_sway_particle}\index{SwayParticle@{SwayParticle}}
+
+
+{\ttfamily \#include $<$Player\+Particle.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_particle_base}{Particle\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sway_particle_a75e31f78f806e68923290eda20721b19}{Sway\+Particle}} (std\+::pair$<$ double, double $>$ xy, std\+::pair$<$ double, double $>$ vxy, bool flip)
+\item 
+\mbox{\hyperlink{class_sway_particle_a16216cee5181867daa56d853049ed115}{$\sim$\+Sway\+Particle}} ()
+\item 
+virtual \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_sway_particle_afb264d33fff31c6f2d55bb2f27cbc37e}{Get\+Par\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_sway_particle_a90cc978cae878deae4f1338299bfa620}{Init}} () override
+\item 
+void \mbox{\hyperlink{class_sway_particle_a518d309b280dac179ed4825b38585de8}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\item 
+void \mbox{\hyperlink{class_sway_particle_a08259163992d84e06c52cf4394280d49}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g) override
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_sway_particle_a75e31f78f806e68923290eda20721b19}\label{class_sway_particle_a75e31f78f806e68923290eda20721b19}} 
+\index{SwayParticle@{SwayParticle}!SwayParticle@{SwayParticle}}
+\index{SwayParticle@{SwayParticle}!SwayParticle@{SwayParticle}}
+\doxysubsubsection{\texorpdfstring{SwayParticle()}{SwayParticle()}}
+{\footnotesize\ttfamily Sway\+Particle\+::\+Sway\+Particle (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$}]{xy,  }\item[{std\+::pair$<$ double, double $>$}]{vxy,  }\item[{bool}]{flip }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sway_particle_a16216cee5181867daa56d853049ed115}\label{class_sway_particle_a16216cee5181867daa56d853049ed115}} 
+\index{SwayParticle@{SwayParticle}!````~SwayParticle@{$\sim$SwayParticle}}
+\index{````~SwayParticle@{$\sim$SwayParticle}!SwayParticle@{SwayParticle}}
+\doxysubsubsection{\texorpdfstring{$\sim$SwayParticle()}{~SwayParticle()}}
+{\footnotesize\ttfamily Sway\+Particle\+::$\sim$\+Sway\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_sway_particle_a08259163992d84e06c52cf4394280d49}\label{class_sway_particle_a08259163992d84e06c52cf4394280d49}} 
+\index{SwayParticle@{SwayParticle}!Draw@{Draw}}
+\index{Draw@{Draw}!SwayParticle@{SwayParticle}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Sway\+Particle\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_particle_base_a6b90ad360fb83299596c08897f871eb8}{Particle\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_sway_particle_afb264d33fff31c6f2d55bb2f27cbc37e}\label{class_sway_particle_afb264d33fff31c6f2d55bb2f27cbc37e}} 
+\index{SwayParticle@{SwayParticle}!GetParType@{GetParType}}
+\index{GetParType@{GetParType}!SwayParticle@{SwayParticle}}
+\doxysubsubsection{\texorpdfstring{GetParType()}{GetParType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} Sway\+Particle\+::\+Get\+Par\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_particle_base_aebd644e065316ee8f103fa848b7906ea}{Particle\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_sway_particle_a90cc978cae878deae4f1338299bfa620}\label{class_sway_particle_a90cc978cae878deae4f1338299bfa620}} 
+\index{SwayParticle@{SwayParticle}!Init@{Init}}
+\index{Init@{Init}!SwayParticle@{SwayParticle}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Sway\+Particle\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_particle_base_af67b652ae2f7cb56ed9548117cc7133f}{Particle\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_sway_particle_a518d309b280dac179ed4825b38585de8}\label{class_sway_particle_a518d309b280dac179ed4825b38585de8}} 
+\index{SwayParticle@{SwayParticle}!Process@{Process}}
+\index{Process@{Process}!SwayParticle@{SwayParticle}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Sway\+Particle\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_particle_base_a5a20d94085603c14bff003f810179c21}{Particle\+Base}}を再実装しています。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_player_particle_8h}{Player\+Particle.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_player_particle_8cpp}{Player\+Particle.\+cpp}}\end{DoxyCompactItemize}

@@ -2,14 +2,10 @@
       •«‚Ìƒ‚[ƒVƒ‡ƒ“ŠÖ”
 */
 #include <DxLib.h>
-#include "EnemyBase.h"
 #include "Busyo.h"
 #include "Game.h"
-#include "BusyoMotionCollision.h"
-#include "ObjectBase.h"
+#include "BusyoAttackCollision.h"
 #include "PrivateCollision.h"
-#include <tuple>
-#include <utility>
 
 using namespace BsInfo;
 /*----------oŒ»----------*/

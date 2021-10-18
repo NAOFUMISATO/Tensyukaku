@@ -1,0 +1,44 @@
+\hypertarget{_out_game_particle_8h_source}{}\doxysection{Out\+Game\+Particle.\+h}
+\label{_out_game_particle_8h_source}\index{Tensyukaku/OutGameParticle.h@{Tensyukaku/OutGameParticle.h}}
+\mbox{\hyperlink{_out_game_particle_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_base_8h}{ParticleBase.h}}"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <tuple>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{//カーソル}}
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_cursor_particle1}{CursorParticle1}}: \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{8 \textcolor{keyword}{public}:}
+\DoxyCodeLine{9    \mbox{\hyperlink{class_cursor_particle1_a041bf4e1a69f1add4f85b7b3eb1aa0d3}{CursorParticle1}}(std::pair<double, double> xy, std::pair<double, double> vxy, std::string hittype);}
+\DoxyCodeLine{10    \mbox{\hyperlink{class_cursor_particle1_a8c75e8357fc4c80666a3b8b1caafe67f}{\string~CursorParticle1}}();}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_cursor_particle1_a4abc4aaaec406d4da38e6c34b54ec5a0}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3a032528335a23aac86188365a5b65bd4f}{PARTICLETYPE::CURSOR1}}; \}}
+\DoxyCodeLine{13    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cursor_particle1_af6931dc73218f259bca9c692808e348d}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{14    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cursor_particle1_a9d830755087ab37a6cfb8d5159a24f41}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{15    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cursor_particle1_a51214c7937d18b6a3ad9171aa00704b3}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cursor_particle1_a7a4b74e87deeba1f746a1f9e547a6d3c}{SetState}}();}
+\DoxyCodeLine{18    std::string  \mbox{\hyperlink{class_cursor_particle1_a8cf5a4bbe3074291ff60b8ff16518bba}{\_hit\_type}};}
+\DoxyCodeLine{19 \};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_c_par_info}{CParInfo}} \{}
+\DoxyCodeLine{22    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/カーソル-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{23    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a1be43aa2c41eceb4a3d02795a6c1778d}{CURSOR\_PARTICLE1\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/Cursor.png"{}};            \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{24    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a80a9b80eac40e74e55043f61fd1240e8}{CURSOR\_PARTICLE1\_POSITIONX}} = 0.0;                        \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{25    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a694d0e011b1ea9722d10572415042539}{CURSOR\_PARTICLE1\_POSITIONY}} = -\/10.0;                        \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{26    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_aeae653a5504ebb4d8158a0d7820c5482}{CURSOR\_PARTICLE1\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a49aa82fa276302ff5fda3dedd1a15970}{DX\_BLENDMODE\_PMA\_ADD}};            \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{27    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a24a047a5c63e669d219748cf50d27c8a}{CURSOR\_PARTICLE1\_PAL}} = 50;                              \textcolor{comment}{//ブレンド値}}
+\DoxyCodeLine{28    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_adab68aa637dcfe13e169795c91153622}{CURSOR\_PARTICLE1\_SCALE}} = 1.0;                           \textcolor{comment}{//拡縮値}}
+\DoxyCodeLine{29    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a71715193f7cfe97791faf62a3dc22a60}{CURSOR\_PARTICLE1\_ANGLE}} = 0.0;                           \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{30    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{31    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a2f218ad0a71240b7491717398e4274fc}{CURSOR\_PARTICLE1\_RANDOMX1}} = 30;                           \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{32    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a303557db126a75bb0070f70e1d3a66b6}{CURSOR\_PARTICLE1\_RANDOMX2}} = 10.5;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{33    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a4d63bca099cc12e62be4c768840fb906}{CURSOR\_PARTICLE1\_RANDOMX3}} = 10.5;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{34    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a15ea45b6637d6f3ea2eb87efff5fa604}{CURSOR\_PARTICLE1\_RANDOMY1}} = 17;                           \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{35    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_a8c8a86640f256f5558e9b2b643ae27e8}{CURSOR\_PARTICLE1\_RANDOMY2}} = 19.5;                        \textcolor{comment}{//      〃}}
+\DoxyCodeLine{36    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_c_par_info_af334b772d7fa57cddf28a0d87ab6f3f6}{CURSOR\_PARTICLE1\_RANDOMY3}} = 8.5;                           \textcolor{comment}{//      〃}}
+\DoxyCodeLine{37    }
+\DoxyCodeLine{38 \}}
+
+\end{DoxyCode}

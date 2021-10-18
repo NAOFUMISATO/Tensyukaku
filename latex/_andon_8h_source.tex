@@ -1,0 +1,55 @@
+\hypertarget{_andon_8h_source}{}\doxysection{Andon.\+h}
+\label{_andon_8h_source}\index{Tensyukaku/Andon.h@{Tensyukaku/Andon.h}}
+\mbox{\hyperlink{_andon_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_andon}{Andon}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{5 \textcolor{keyword}{public}:}
+\DoxyCodeLine{6    \mbox{\hyperlink{class_andon_a6bb2da65b58dbd10ac8840452bada714}{Andon}}( \textcolor{keywordtype}{int} x,\textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{7    \mbox{\hyperlink{class_andon_a9bd2feb42c9f42515867e245a3aa60da}{\string~Andon}}();}
+\DoxyCodeLine{8    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}}   \mbox{\hyperlink{class_andon_a9874bf02d76f5cd606ab5c769556c56b}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab6e4c516d92cf0471c9b57cfff228d4a}{OBJECTTYPE::ANDON}}; \}}
+\DoxyCodeLine{9    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_andon_a5b1ae71c8aa77beefcbc0bab814d8884}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{10    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_andon_ae4c250896ddf19db63d30165aa138b86}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{11    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_andon_a48116d27c1a57dd27ead4911812a671c}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{12    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_andon_ac26da1aca73e3f1013f38fba8bff9b6b}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_andon_a480478cb208c72be9f39524015da6f60}{\_Flame\_y}};}
+\DoxyCodeLine{15    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_andon_a990f679344041edeeff40a0ffdfc7ade}{\_AndonDrop\_Flag}};}
+\DoxyCodeLine{16    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_andon_ac78b34ea620c64393fb57c643a10c08d}{\_PlayerFlip\_Flag}};}
+\DoxyCodeLine{17 \};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_a_info}{AInfo}} \{}
+\DoxyCodeLine{20    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/行燈の各座標関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{21    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_aa5c4fc4b08019657f79919818b35ec2a}{GRAPHPOINT\_X}} = 0;         \textcolor{comment}{//X位置から描画点までの差分}}
+\DoxyCodeLine{22    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a8cc8d1edf646941e071df76685be9d19}{GRAPHPOINT\_Y}} = -\/112;         \textcolor{comment}{//Y位置から描画点までの差分}}
+\DoxyCodeLine{23    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a2ebb66a53fac80d56b5f416871572490}{POSITION\_HITX}} = -\/45;         \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{24    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a9a43e0756d358fb2d4c52ee44760e2c4}{POSITION\_HITY}} = -\/113;      \textcolor{comment}{//描画点から当たり判定左上座標までの差分}}
+\DoxyCodeLine{25    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a064ec9b6baa7654d0b9b0846a136d7b1}{COLLISION\_WIDTH}} = 90;      \textcolor{comment}{//プレイヤーの当たり判定横幅}}
+\DoxyCodeLine{26    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a6b292a2df022fbd6f13d02af571c16fd}{COLLISION\_HEIGHT}} = 225;      \textcolor{comment}{//プレイヤーの当たり判定縦幅}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/画像読み込み\&アニメーション\&判定フレーム関係-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{29    \textcolor{comment}{//共通}}
+\DoxyCodeLine{30    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_afd45f11d62b0c7e9f882dfc0804c3a0e}{GRAPH\_WIDTH}} = 90;         \textcolor{comment}{//1枚当たりの画像サイズ（横）}}
+\DoxyCodeLine{31    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a4d0fd7ba26fee43ba63b1d3a94e9b914}{GRAPH\_HEIGHT}} = 225;         \textcolor{comment}{//1枚当たりの画像サイズ（縦）}}
+\DoxyCodeLine{32    }
+\DoxyCodeLine{33    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_afe444cd16aa070b06c641784fe5dcf3b}{ANDON\_GRAPHNAME}} = \textcolor{stringliteral}{"{}res/Gimik/Andon.png"{}};   \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{34    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a97bb45f269cf1ae3a89c65fc4fe776bb}{ANDON\_ANIMEMAX}} = 1;         \textcolor{comment}{//全ての画像枚数}}
+\DoxyCodeLine{35    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a1495412ca91ddcbebb1d112f6380c0f9}{ANDON\_WIDTHCOUNT}} = 1;      \textcolor{comment}{//横の画像枚数}}
+\DoxyCodeLine{36    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a2aa145d6172e401f08480ee33771508e}{ANDON\_HEIGHTCOUNT}} = 1;      \textcolor{comment}{//縦の画像枚数}}
+\DoxyCodeLine{37    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a100aa946c59390420ff24e0a4cdc8dbb}{ANDON\_ALLFRAME}} = 90;         \textcolor{comment}{//行燈が倒れた際の消滅までのフレーム}}
+\DoxyCodeLine{38    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_adbf84a03bc2429df14ac3008e0de7628}{ANDON\_DROPFRAME}} = 30;      \textcolor{comment}{//行燈が倒れきるまでのフレーム}}
+\DoxyCodeLine{39    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a4c0fedeb3e76ba5c881df738cb10a4fb}{ANDON\_DROPANGLE}} = 0.07;      \textcolor{comment}{//1フレーム当たりの行燈が倒れる角度}}
+\DoxyCodeLine{40    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a04520038d1a94baa5c10c2080d73c4f1}{ANDON\_DROPANGLEMAX}} = 1.5;   \textcolor{comment}{//行燈の倒れる角度の最大値}}
+\DoxyCodeLine{41    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_aee979795cc77ea69f36aa79cc52a5e13}{ANDON\_DROPMOVEX}} = 4;      \textcolor{comment}{//行燈が倒れた際のXの移動量}}
+\DoxyCodeLine{42    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_af1c6c09e564b4cbc1529509df7f36fa5}{ANDON\_DROPMOVEY}} = 2;      \textcolor{comment}{//行燈が倒れた際のYの移動量}}
+\DoxyCodeLine{43    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_adff97d63027f642f2305c7b97cf9268f}{ANDON\_FIREWIDTH}} = 100;      \textcolor{comment}{//生成される炎ごとの距離(中心点)}}
+\DoxyCodeLine{44    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a717ba2d4701d7a40bb57b9a428a50788}{ANDON\_FIREFRAME1}} = 40;      \textcolor{comment}{//炎が生成されるフレーム1}}
+\DoxyCodeLine{45    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_acbc4b494e7e4d17be0390cf0a59efb93}{ANDON\_FIREFRAME2}} = 60;      \textcolor{comment}{//炎が生成されるフレーム2}}
+\DoxyCodeLine{46    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a22ff77fd584e63ec736a1cff3b99117b}{ANDON\_FIREFRAME3}} = 80;      \textcolor{comment}{//炎が生成されるフレーム3}}
+\DoxyCodeLine{47    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_a_info_a325ffdbcbc0abe6454f39cf7bbfe37bc}{ANDON\_FADEOUTSPEED}} = 4;      \textcolor{comment}{//フェードアウトスピード}}
+\DoxyCodeLine{48    }
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}

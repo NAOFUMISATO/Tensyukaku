@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/ModeTutorial.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ModeTutorial.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_mode_tutorial_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_mode_base_8h.html">ModeBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_mode_tutorial.html">   11</a></span><span class="keyword">class  </span><a class="code hl_class" href="class_mode_tutorial.html">ModeTutorial</a> :<span class="keyword">public</span> <a class="code hl_class" href="class_mode_base.html">ModeBase</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_mode_tutorial.html#ae545bd80b1f9b2cbbbea2a636a10d2a9">   12</a></span>   <span class="keyword">typedef</span> <a class="code hl_class" href="class_mode_base.html">ModeBase</a> <a class="code hl_typedef" href="class_mode_tutorial.html#ae545bd80b1f9b2cbbbea2a636a10d2a9">base</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_tutorial.html#a93fe2e8732263cff01b8d79f097a3677">Initialize</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_tutorial.html#aae05eeeda485a6b353b6ca9498676585">Terminate</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_tutorial.html#aec25df8acffbcc931585e95b63d0ab29">Process</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_tutorial.html#a5c0a4fcf0011e8eea7b1988f0a4b1d2e">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_mode_tutorial.html#ab9b4df66fffffe133de2481caf6592ad">   38</a></span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_mode_tutorial.html#ab9b4df66fffffe133de2481caf6592ad">SetType</a>(std::string tutorialtype) { <a class="code hl_variable" href="class_mode_tutorial.html#a67bc0f5b7b1219472a7799a71c605ec9">_tutorial_type</a> = tutorialtype; }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_mode_tutorial.html#ac8907f655cfcb285c0ea702bd6ba4831">LoadPicture</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_mode_tutorial.html#a67bc0f5b7b1219472a7799a71c605ec9">   44</a></span>   std::string <a class="code hl_variable" href="class_mode_tutorial.html#a67bc0f5b7b1219472a7799a71c605ec9">_tutorial_type</a>;   </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespace_tu_info.html">   47</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_tu_info.html">TuInfo</a> {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespace_tu_info.html#a72d3fe31760097758b06fc5cd9c4fb60">   48</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_tu_info.html#a72d3fe31760097758b06fc5cd9c4fb60">GRAPH_WIDTH</a> = 880;    </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespace_tu_info.html#a14138e9100ac737250394db10a740b83">   49</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_tu_info.html#a14138e9100ac737250394db10a740b83">GRAPH_HEIGHT</a> = 470;   </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="ttc" id="a_mode_base_8h_html"><div class="ttname"><a href="_mode_base_8h.html">ModeBase.h</a></div><div class="ttdoc">各モードのベースクラス</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_mode_base_html"><div class="ttname"><a href="class_mode_base.html">ModeBase</a></div><div class="ttdef"><b>Definition:</b> ModeBase.h:18</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html"><div class="ttname"><a href="class_mode_tutorial.html">ModeTutorial</a></div><div class="ttdef"><b>Definition:</b> ModeTutorial.h:11</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html_a5c0a4fcf0011e8eea7b1988f0a4b1d2e"><div class="ttname"><a href="class_mode_tutorial.html#a5c0a4fcf0011e8eea7b1988f0a4b1d2e">ModeTutorial::Draw</a></div><div class="ttdeci">virtual bool Draw(Game &amp;g)</div><div class="ttdoc">描画関数</div><div class="ttdef"><b>Definition:</b> ModeTutorial.cpp:59</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html_a67bc0f5b7b1219472a7799a71c605ec9"><div class="ttname"><a href="class_mode_tutorial.html#a67bc0f5b7b1219472a7799a71c605ec9">ModeTutorial::_tutorial_type</a></div><div class="ttdeci">std::string _tutorial_type</div><div class="ttdoc">チュートリアルの種別変数</div><div class="ttdef"><b>Definition:</b> ModeTutorial.h:44</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html_a93fe2e8732263cff01b8d79f097a3677"><div class="ttname"><a href="class_mode_tutorial.html#a93fe2e8732263cff01b8d79f097a3677">ModeTutorial::Initialize</a></div><div class="ttdeci">virtual bool Initialize(Game &amp;g)</div><div class="ttdoc">初期化関数</div><div class="ttdef"><b>Definition:</b> ModeTutorial.cpp:16</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html_aae05eeeda485a6b353b6ca9498676585"><div class="ttname"><a href="class_mode_tutorial.html#aae05eeeda485a6b353b6ca9498676585">ModeTutorial::Terminate</a></div><div class="ttdeci">virtual bool Terminate(Game &amp;g)</div><div class="ttdoc">終了関数</div><div class="ttdef"><b>Definition:</b> ModeTutorial.cpp:27</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html_ab9b4df66fffffe133de2481caf6592ad"><div class="ttname"><a href="class_mode_tutorial.html#ab9b4df66fffffe133de2481caf6592ad">ModeTutorial::SetType</a></div><div class="ttdeci">void SetType(std::string tutorialtype)</div><div class="ttdoc">チュートリアルの種別を設定する関数</div><div class="ttdef"><b>Definition:</b> ModeTutorial.h:38</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html_ac8907f655cfcb285c0ea702bd6ba4831"><div class="ttname"><a href="class_mode_tutorial.html#ac8907f655cfcb285c0ea702bd6ba4831">ModeTutorial::LoadPicture</a></div><div class="ttdeci">void LoadPicture()</div><div class="ttdoc">画像読み込み関数</div><div class="ttdef"><b>Definition:</b> ModeTutorial.cpp:64</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html_ae545bd80b1f9b2cbbbea2a636a10d2a9"><div class="ttname"><a href="class_mode_tutorial.html#ae545bd80b1f9b2cbbbea2a636a10d2a9">ModeTutorial::base</a></div><div class="ttdeci">ModeBase base</div><div class="ttdef"><b>Definition:</b> ModeTutorial.h:12</div></div>
+<div class="ttc" id="aclass_mode_tutorial_html_aec25df8acffbcc931585e95b63d0ab29"><div class="ttname"><a href="class_mode_tutorial.html#aec25df8acffbcc931585e95b63d0ab29">ModeTutorial::Process</a></div><div class="ttdeci">virtual bool Process(Game &amp;g)</div><div class="ttdoc">更新関数</div><div class="ttdef"><b>Definition:</b> ModeTutorial.cpp:32</div></div>
+<div class="ttc" id="anamespace_tu_info_html"><div class="ttname"><a href="namespace_tu_info.html">TuInfo</a></div><div class="ttdef"><b>Definition:</b> ModeTutorial.h:47</div></div>
+<div class="ttc" id="anamespace_tu_info_html_a14138e9100ac737250394db10a740b83"><div class="ttname"><a href="namespace_tu_info.html#a14138e9100ac737250394db10a740b83">TuInfo::GRAPH_HEIGHT</a></div><div class="ttdeci">constexpr auto GRAPH_HEIGHT</div><div class="ttdoc">画像サイズ縦幅</div><div class="ttdef"><b>Definition:</b> ModeTutorial.h:49</div></div>
+<div class="ttc" id="anamespace_tu_info_html_a72d3fe31760097758b06fc5cd9c4fb60"><div class="ttname"><a href="namespace_tu_info.html#a72d3fe31760097758b06fc5cd9c4fb60">TuInfo::GRAPH_WIDTH</a></div><div class="ttdeci">constexpr auto GRAPH_WIDTH</div><div class="ttdoc">画像サイズ横幅</div><div class="ttdef"><b>Definition:</b> ModeTutorial.h:48</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

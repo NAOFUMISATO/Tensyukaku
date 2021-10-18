@@ -1,0 +1,165 @@
+\hypertarget{_bushi_8h}{}\doxysection{Tensyukaku/\+Bushi.h ファイル}
+\label{_bushi_8h}\index{Tensyukaku/Bushi.h@{Tensyukaku/Bushi.h}}
+
+
+武士クラス（エネミーベースクラスのサブクラス）  
+
+
+{\ttfamily \#include \char`\"{}Enemy\+Base.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Object\+Base.\+h\char`\"{}}\newline
+\doxysubsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_bushi}{Bushi}}
+\end{DoxyCompactItemize}
+\doxysubsection*{名前空間}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_b_info}{BInfo}}
+\end{DoxyCompactItemize}
+\doxysubsection*{変数}
+\begin{DoxyCompactItemize}
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a89b2c810f07fd5774a82e67f10b1aea4}{BInfo\+::\+GRAPHPOINT\+\_\+X}} = 0
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a333cefb2f8f2a2241952a885f97933ba}{BInfo\+::\+GRAPHPOINT\+\_\+Y}} = -\/315
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ac5549fe879332e02c1c265a8d18c6961}{BInfo\+::\+POSITION\+\_\+\+HITX}} = -\/45
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a085e84e28c52b97eeff86f558ad770c1}{BInfo\+::\+POSITION\+\_\+\+HITY}} = -\/135
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ab79b2c0795c65ce559685a09ae254808}{BInfo\+::\+COLLISION\+\_\+\+WIDTH}} = 90
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a91ac5c6cb5be699013c8e4cd12bbbc72}{BInfo\+::\+COLLISION\+\_\+\+HEIGHT}} = 450
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a18ba58d3a13ab4bcb87fb5c045591c9e}{BInfo\+::\+PATROL\+\_\+\+WIDTH}} = 500
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a5bfe098df0c8f3d3fc1c83f34a49fc95}{BInfo\+::\+PATROL\+\_\+\+BACKWIDTH}} = 250
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a0e83dc7764d883131d9e20a0a04393ed}{BInfo\+::\+PATROL\+\_\+\+HEIGHT}} = 100
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_aea45f01ddec8bd01369e38e4d015fbab}{BInfo\+::\+COMING\+\_\+\+WIDTH}} = 200
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_aed3cc966debb35a967bce580327d266f}{BInfo\+::\+COMING\+\_\+\+HEIGHT}} = 100
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a4d86d9fe5d25e1b5dc8825067175bf2f}{BInfo\+::\+ATTACK\+\_\+\+WIDTH}} = 200
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_aab6f03ddd2a09ca1b400d1291f62f72d}{BInfo\+::\+ATTACK\+\_\+\+HEIGHT}} = 150
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a36c61af175f3828d913ae89ff2a5560e}{BInfo\+::\+COMINGCANCEL\+\_\+\+WIDTH}} = 1000
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a316034ed947036221705752da5e3c99c}{BInfo\+::\+COMINGCANCEL\+\_\+\+HEIGHT}} = 100
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_aa76307412f216340736b011f88358c87}{BInfo\+::\+ATTACKCANCEL\+\_\+\+WIDTH}} = 200
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a74bab08ba5d4c8d9e7263a55ef48a93f}{BInfo\+::\+ATTACKCANCEL\+\_\+\+HEIGHT}} = 100
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a3be8b7b85d29063afad4030f1ac0abc9}{BInfo\+::\+LIFE\+\_\+\+MAX}} = 3
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a8b693ec8de576fe4288e41dd6c947499}{BInfo\+::\+SPEED}} = 2
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ab73da6e04314303f884fdd6856af83aa}{BInfo\+::\+PLAYER\+\_\+\+IAI\+\_\+\+MAX}} = 5
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a2b698a80129c84d5bb88510704fababc}{BInfo\+::\+GRAPH\+\_\+\+WIDTH}} = 810
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a61c8665899ca212ad974f9ecdea0a79a}{BInfo\+::\+GRAPH\+\_\+\+HEIGHT}} = 630
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_abaed325edd201703c6a107c2359701a4}{BInfo\+::\+APPEAR\+\_\+\+GRAPHNAME}} = \char`\"{}res/\mbox{\hyperlink{class_bushi}{Bushi}}/B\+\_\+\+Stand.\+png\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a68c29b291bdac756f8cdb40d1993fb97}{BInfo\+::\+APPEAR\+\_\+\+ANIMEMAX}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a09759b35adb05ff5ac98966e34635fff}{BInfo\+::\+APPEAR\+\_\+\+WIDTHCOUNT}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a34f20cbda9ef74898a9550984c366cc5}{BInfo\+::\+APPEAR\+\_\+\+HEIGHTCOUNT}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a07319ee62eafeaa2185fed88067b0f11}{BInfo\+::\+ANIMESPEED\+\_\+\+APPEAR}} = 60
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ad18b2635e678add0b101ef3706c4b59d}{BInfo\+::\+FADEIN\+\_\+\+SPEED}} = 4
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a2b930705e818d0c437f8b53facf5c3fd}{BInfo\+::\+APPEAR\+\_\+\+ALLFRAME}} = 60
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_adbd260b9992b8cb63a67a1e710437ce2}{BInfo\+::\+PATROL\+\_\+\+GRAPHNAME}} = \char`\"{}res/\mbox{\hyperlink{class_bushi}{Bushi}}/B\+\_\+\+Stand.\+png\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ac9dedf9adb5cdea1c51649c9a8287810}{BInfo\+::\+PATROL\+\_\+\+ANIMEMAX}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a6aeaac8a73ffe344e3f7f7012ffc7386}{BInfo\+::\+PATROL\+\_\+\+WIDTHCOUNT}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ae443c35b935ce65f31276e5a55ed2319}{BInfo\+::\+PATROL\+\_\+\+HEIGHTCOUNT}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a6af1bc43d0bd66e5ee6f7b0181d26d18}{BInfo\+::\+ANIMESPEED\+\_\+\+PATROL}} = 180
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_aa27e30c939837f5162e58e947f02bbce}{BInfo\+::\+PATROL\+\_\+\+TURNFRAME}} = 180
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_aed103ccc0685ada89afd7704d2421db2}{BInfo\+::\+COMING\+\_\+\+GRAPHNAME}} = \char`\"{}res/\mbox{\hyperlink{class_bushi}{Bushi}}/B\+\_\+\+Walk.\+png\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ae7022ad85e48ef2d2fb41123846d3ae2}{BInfo\+::\+COMING\+\_\+\+ANIMEMAX}} = 4
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a152336cae5642ec38e703bdaf96fda93}{BInfo\+::\+COMING\+\_\+\+WIDTHCOUNT}} = 4
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a478006559cb5345b42ae23d4a7cf2a71}{BInfo\+::\+COMING\+\_\+\+HEIGHTCOUNT}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_acce5bd1b6eb33cd0287f9bd55caf83dd}{BInfo\+::\+ANIMESPEED\+\_\+\+COMING}} = 30
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a335b96f176931b4bce47a4ca5bd695f7}{BInfo\+::\+ATTACK\+\_\+\+GRAPHNAME}} = \char`\"{}res/\mbox{\hyperlink{class_bushi}{Bushi}}/B\+\_\+\+Attack.\+png\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a139e8e98f55e72065123ed4aa0ba03d1}{BInfo\+::\+ATTACK\+\_\+\+ANIMEMAX}} = 4
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a914553d68645b6c173917dcda75a2c5e}{BInfo\+::\+ATTACK\+\_\+\+WIDTHCOUNT}} = 4
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a0907ca65ce75dea771dc0a584d159324}{BInfo\+::\+ATTACK\+\_\+\+HEIGHTCOUNT}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a6d7632c1ac37a4a36b3e70365b93b6ac}{BInfo\+::\+ANIMESPEED\+\_\+\+ATTACK}} = 15
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a71f2a227b9677f89d1675c2c8ad33096}{BInfo\+::\+ATTACK\+\_\+\+ANIMEFRAME}} = ATTACK\+\_\+\+ANIMEMAX $\ast$ ANIMESPEED\+\_\+\+ATTACK
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_af952d7e8559c1496d12ccb73b24027ee}{BInfo\+::\+ATTACK\+\_\+\+ALLFRAME}} = 80
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a62eb6ef5802491c767deaf71f93eb7fa}{BInfo\+::\+ATTACK\+\_\+\+STEP}} = 60
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a172dfe97abdbdeb2a0c3ef77040a2720}{BInfo\+::\+STEP\+\_\+\+BEGINFRAME}} = 15
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ad815a06bd69cfc24762988da11f2e1fe}{BInfo\+::\+ATTACK\+\_\+\+BEGINFRAME}} = 15
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a7242b0bf35d9dd63a1160ff0419c006b}{BInfo\+::\+ATTACK\+\_\+\+ENDFRAME}} = 15
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_aa194490ea32b9a03b46de019d6fc1e23}{BInfo\+::\+DAMAGE\+\_\+\+GRAPHNAME}} = \char`\"{}res/\mbox{\hyperlink{class_bushi}{Bushi}}/B\+\_\+\+Damage.\+png\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a08e2c68a975e16452f2f090ac77bceb1}{BInfo\+::\+DAMAGE\+\_\+\+ANIMEMAX}} = 3
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a381f9ea92e24114f9df9868d9df0d2a9}{BInfo\+::\+DAMAGE\+\_\+\+WIDTHCOUNT}} = 3
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_ae7ba759eae353f87a4b60c2ab0d4eb3b}{BInfo\+::\+DAMAGE\+\_\+\+HEIGHTCOUNT}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a39d8e7adf03089dffd0d7b1a1b8439ef}{BInfo\+::\+ANIMESPEED\+\_\+\+DAMAGE}} = 15
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a5544a85ac32535e37d3f328f295cef14}{BInfo\+::\+DAMAGE\+\_\+\+ANIMEFRAME}} = DAMAGE\+\_\+\+ANIMEMAX $\ast$ ANIMESPEED\+\_\+\+DAMAGE
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a266d971e3b47e90f7ab5802d34d61935}{BInfo\+::\+DAMAGE\+\_\+\+ALLFRAME}} = 45
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a62bb88c7e94b3493ac0410c87560f9e1}{BInfo\+::\+DEAD\+\_\+\+GRAPHNAME}} = \char`\"{}res/\mbox{\hyperlink{class_bushi}{Bushi}}/B\+\_\+\+Dead.\+png\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a49bdca1043ffb055c26bcc4307e52b4f}{BInfo\+::\+DEAD\+\_\+\+ANIMEMAX}} = 3
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a075a981f48fd3ad874063408cd96802b}{BInfo\+::\+DEAD\+\_\+\+WIDTHCOUNT}} = 3
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_aab339eb6fc032c9aac2582176d5c06c5}{BInfo\+::\+DEAD\+\_\+\+HEIGHTCOUNT}} = 1
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a2166094981a0405157d3904242e8a797}{BInfo\+::\+ANIMESPEED\+\_\+\+DEAD}} = 20
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_af3bf9d7c83e13efde33b002751711b9d}{BInfo\+::\+DEAD\+\_\+\+ANIMEFRAME}} = DEAD\+\_\+\+ANIMEMAX $\ast$ ANIMESPEED\+\_\+\+DEAD
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a115d420573e9a3b2d9fb81df80a53d2c}{BInfo\+::\+DEAD\+\_\+\+ALLFRAME}} = 120
+\item 
+constexpr auto \mbox{\hyperlink{namespace_b_info_a3f52ba16c62d0e56026bea0def417d7b}{BInfo\+::\+FADEOUT\+\_\+\+SPEED}} = 4
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+武士クラス（エネミーベースクラスのサブクラス） 
+
+\begin{DoxyAuthor}{著者}
+Sato Naofumi 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日付}
+October 2021 
+\end{DoxyDate}

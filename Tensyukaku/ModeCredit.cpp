@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * \file   ModeCredit.cpp
- * \brief  クレジットクラス（モードベースのサブクラス）、左スティックガイドボタンクラス（モードベースのサブクラス）、赤ボタンガイドクラス（モードベースのサブクラス）
+ * \brief  クレジットクラス（モードベースのサブクラス）
  * 
  * \author Sato Naofumi
  * \date   October 2021
@@ -12,6 +12,8 @@
 #include "ModeTitle.h"
 #include "ResourceServer.h"
 #include "OverlayBlack.h"
+#include "CreditLeftGuide.h"
+#include "CreditRedReturn.h"
 
 using namespace CrInfo;
 /*-----初期化------*/
@@ -55,9 +57,9 @@ bool ModeCredit::Process(Game& g) {
       _pal += FADE_SPEED;
    }
    if (frame == FADE_FRAME && _start_flag == true) {
-      auto gu = new Guide();         //左スティックガイドの生成
+      auto gu = new CreditLeftGuide();         //左スティックガイドの生成
       g.GetMS()->Add(gu, 3, "Guide");
-      auto rr = new RedReturn();      //赤ボタンガイドの生成
+      auto rr = new CreditRedReturn();      //赤ボタンガイドの生成
       g.GetMS()->Add(rr, 3, "RedReturn");
       _start_flag = false;
    }
@@ -112,60 +114,6 @@ bool ModeCredit::Draw(Game& g) {
    auto posy = _y - 540;
    SetDrawBlendMode(DX_BLENDMODE_ALPHA, _pal);
    DrawRotaGraph(posx, posy, 1.0, 0.0, _grhandle, _trans_flag, false);
-   SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-   return true;
-}
-/*-----------左スティックガイドボタンクラス-------------*/
-/*-----初期化------*/
-bool Guide::Initialize(Game& g) {
-   _x = 1800;          //Ｘ座標の初期化
-   _y = 100;           //Ｙ座標の初期化
-   _pal = 255;         //透明度の初期化
-   _trans_flag = true; //背景透過フラグを真で初期化
-   _grhandle = ResourceServer::LoadGraph("res/Mode/MoveGuide.png");   //画像読み込み
-   return true;
-}
-/*-----終了------*/
-bool Guide::Terminate(Game& g) {
-   base::Terminate(g);
-   return true;
-}
-/*-----更新------*/
-bool Guide::Process(Game& g) {
-   base::Process(g);
-   return true;
-}
-/*-----描画------*/
-bool Guide::Draw(Game& g) {
-   SetDrawBlendMode(DX_BLENDMODE_ALPHA, _pal);
-   DrawRotaGraph(_x, _y, 1.0, 0.0, _grhandle, _trans_flag, false);
-   SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-   return true;
-}
-/*-----------赤ボタンガイドクラス-------------*/
-/*-----初期化------*/
-bool RedReturn::Initialize(Game& g) {
-   _x = 1750;          //Ｘ座標の初期化
-   _y = 980;           //Ｙ座標の初期化
-   _pal = 255;         //透明度の初期化
-   _trans_flag = true; //背景透過フラグを真で初期化
-   _grhandle = ResourceServer::LoadGraph("res/Mode/RedReturn.png");   //画像読み込み
-   return true;
-}
-/*-----終了------*/
-bool RedReturn::Terminate(Game& g) {
-   base::Terminate(g);
-   return true;
-}
-/*-----更新------*/
-bool RedReturn::Process(Game& g) {
-   base::Process(g);
-   return true;
-}
-/*-----描画------*/
-bool RedReturn::Draw(Game& g) {
-   SetDrawBlendMode(DX_BLENDMODE_ALPHA, _pal);
-   DrawRotaGraph(_x, _y, 1.0, 0.0, _grhandle, _trans_flag, false);
    SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
    return true;
 }

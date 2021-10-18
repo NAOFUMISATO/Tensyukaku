@@ -1,0 +1,42 @@
+\hypertarget{_flame_perform_particle_8h_source}{}\doxysection{Flame\+Perform\+Particle.\+h}
+\label{_flame_perform_particle_8h_source}\index{Tensyukaku/FlamePerformParticle.h@{Tensyukaku/FlamePerformParticle.h}}
+\mbox{\hyperlink{_flame_perform_particle_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_base_8h}{ParticleBase.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_flame_perform}{FlamePerform}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_particle_base}{ParticleBase}} \{}
+\DoxyCodeLine{5 \textcolor{keyword}{public}:}
+\DoxyCodeLine{6    \mbox{\hyperlink{class_flame_perform_aa6e59ff0fe4fa2f52903faeb1f17bbd4}{FlamePerform}}(std::pair<double, double> xy, std::pair<double, double> vxy, \textcolor{keywordtype}{bool} flip);}
+\DoxyCodeLine{7    \mbox{\hyperlink{class_flame_perform_af4cf49ec639ff7b9592a138e628c61ed}{\string~FlamePerform}}();}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3}{PARTICLETYPE}} \mbox{\hyperlink{class_flame_perform_ab144c25de72e3b4fba04dc96723ab382}{GetParType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_base_a67f08644fd0f33d07c1ee41ed6d7cfe3aa91fff3bbe5a9825558464c8bdee7476}{PARTICLETYPE::FLAMEPERFORM}}; \}}
+\DoxyCodeLine{10    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flame_perform_a68d1d1f82e44805c14655a754e21668b}{Init}}()\textcolor{keyword}{override};}
+\DoxyCodeLine{11    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flame_perform_a731acedafeb81cc2db6530c8352dc07a}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{12    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flame_perform_a5c3c523cdc8c3dde951139ec626aea6e}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g)\textcolor{keyword}{override};}
+\DoxyCodeLine{13 \};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_f_par_info}{FParInfo}} \{}
+\DoxyCodeLine{16    \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/炎演出-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{17    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_ab595f8db64e48f26702cb49c68c18b05}{FLAME\_GRAPH}} = \textcolor{stringliteral}{"{}res/Particle/Flame.png"{}};         \textcolor{comment}{//画像ファイル名}}
+\DoxyCodeLine{18    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_aaa93186fdfc26a5bbf58086707fccd8a}{FLAME\_POSITIONX}} = 0.0;                     \textcolor{comment}{//基準点(足下)から描画点へのX座標差分}}
+\DoxyCodeLine{19    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a0f2bd41d13005b483dc6f45f3195f131}{FLAME\_POSITIONY}} = 400.0;                     \textcolor{comment}{//基準点(足下)から描画点へのY座標差分}}
+\DoxyCodeLine{20    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a214dc83508030e9805c07103bb424e1c}{FLAME\_BLENDMODE}} = \mbox{\hyperlink{_dx_lib_8h_a2077bbab841d3a8736a990faaca07cc9}{DX\_BLENDMODE\_ADD}};            \textcolor{comment}{//ブレンドモード設定}}
+\DoxyCodeLine{21    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_aa753de9a0c3080a5d75222bbeeead912}{FLAME\_PAL}} = 64;                           \textcolor{comment}{//ブレンド値(0〜255)}}
+\DoxyCodeLine{22    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_acc8c6c768f1516a8744c538c65cf63fc}{FLAME\_RED}} = 240;                           \textcolor{comment}{//赤色値(0〜255)}}
+\DoxyCodeLine{23    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a4cece6c3928cbf01313cd13fd70845e3}{FLAME\_GREEN}} = 70;                        \textcolor{comment}{//緑色値(0〜255)}}
+\DoxyCodeLine{24    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a64b9034eb24dc82a512b28d501f1f33f}{FLAME\_BLUE}} = 5;                           \textcolor{comment}{//青色値(0〜255)}}
+\DoxyCodeLine{25    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a9649d2344d4e961a084e245fb052cff8}{FLAME\_SCALE}} = 1.0;                        \textcolor{comment}{//拡縮値(1.0がデフォルト)}}
+\DoxyCodeLine{26    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a50e9514be439ed8a474b35f369e4d790}{FLAME\_ANGLE}} = 0.0;                        \textcolor{comment}{//描画角度(3.14=180°)}}
+\DoxyCodeLine{27    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a0aa6258567587c9ea616349105806773}{FLAME\_CNT}} = 130;                           \textcolor{comment}{//パーティクル1個あたりの生存時間}}
+\DoxyCodeLine{28    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a86c76df710c33da275ac706c89ee7bc9}{FLAME\_QTY}} = 1;                           \textcolor{comment}{//1フレーム当たりのパーティクル数}}
+\DoxyCodeLine{29    \textcolor{comment}{//パーティクル1個当たりの移動方向のランダム値調整}}
+\DoxyCodeLine{30    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_af6daaf18f891d433a9b22684fbc6233b}{FLAME\_RANDOMX1}} = 30;                        \textcolor{comment}{//パーティクルのXランダム値}}
+\DoxyCodeLine{31    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_a6456530c3fcad9651dd988072c058b8e}{FLAME\_RANDOMX2}} = 10.5;                     \textcolor{comment}{//      〃}}
+\DoxyCodeLine{32    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_af9e4e301a3c7f7584428225508dfae1f}{FLAME\_RANDOMX3}} = 10.5;                     \textcolor{comment}{//      〃}}
+\DoxyCodeLine{33    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_ad28f5ced26b8aee64bc20f56d01e8cda}{FLAME\_RANDOMY1}} = 17;                        \textcolor{comment}{//パーティクルのYランダム値}}
+\DoxyCodeLine{34    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_af11f8b966fc3f8dada866683615bc6e5}{FLAME\_RANDOMY2}} = 19.5;                     \textcolor{comment}{//      〃}}
+\DoxyCodeLine{35    \textcolor{keyword}{constexpr} \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_f_par_info_ad6ae26090910f797fb69f30bf14606ff}{FLAME\_RANDOMY3}} = 8.5;                     \textcolor{comment}{//      〃}}
+\DoxyCodeLine{36 \}}
+
+\end{DoxyCode}

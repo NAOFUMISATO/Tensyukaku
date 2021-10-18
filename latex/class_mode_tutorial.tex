@@ -1,0 +1,174 @@
+\hypertarget{class_mode_tutorial}{}\doxysection{Mode\+Tutorial クラス}
+\label{class_mode_tutorial}\index{ModeTutorial@{ModeTutorial}}
+
+
+{\ttfamily \#include $<$Mode\+Tutorial.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}}を継承しています。
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_mode_tutorial_a93fe2e8732263cff01b8d79f097a3677}{Initialize}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_tutorial_aae05eeeda485a6b353b6ca9498676585}{Terminate}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 終了関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_tutorial_aec25df8acffbcc931585e95b63d0ab29}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 更新関数 \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_mode_tutorial_a5c0a4fcf0011e8eea7b1988f0a4b1d2e}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em 描画関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mode_tutorial_ab9b4df66fffffe133de2481caf6592ad}{Set\+Type}} (std\+::string tutorialtype)
+\begin{DoxyCompactList}\small\item\em チュートリアルの種別を設定する関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_mode_tutorial_ae545bd80b1f9b2cbbbea2a636a10d2a9}{base}}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_mode_tutorial_ac8907f655cfcb285c0ea702bd6ba4831}{Load\+Picture}} ()
+\begin{DoxyCompactList}\small\item\em 画像読み込み関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_mode_tutorial_a67bc0f5b7b1219472a7799a71c605ec9}{\+\_\+tutorial\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em チュートリアルの種別変数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{詳解}
+チュートリアル 
+
+\doxysubsection{型定義メンバ詳解}
+\mbox{\Hypertarget{class_mode_tutorial_ae545bd80b1f9b2cbbbea2a636a10d2a9}\label{class_mode_tutorial_ae545bd80b1f9b2cbbbea2a636a10d2a9}} 
+\index{ModeTutorial@{ModeTutorial}!base@{base}}
+\index{base@{base}!ModeTutorial@{ModeTutorial}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_mode_base}{Mode\+Base}} \mbox{\hyperlink{class_mode_tutorial_ae545bd80b1f9b2cbbbea2a636a10d2a9}{Mode\+Tutorial\+::base}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_mode_tutorial_a5c0a4fcf0011e8eea7b1988f0a4b1d2e}\label{class_mode_tutorial_a5c0a4fcf0011e8eea7b1988f0a4b1d2e}} 
+\index{ModeTutorial@{ModeTutorial}!Draw@{Draw}}
+\index{Draw@{Draw}!ModeTutorial@{ModeTutorial}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily bool Mode\+Tutorial\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+描画関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a50776d758456fe540e3aef2f47234a0d}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_tutorial_a93fe2e8732263cff01b8d79f097a3677}\label{class_mode_tutorial_a93fe2e8732263cff01b8d79f097a3677}} 
+\index{ModeTutorial@{ModeTutorial}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!ModeTutorial@{ModeTutorial}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Mode\+Tutorial\+::\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a4cb0982318dfa7d2906dcf30c3824ab1}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_tutorial_ac8907f655cfcb285c0ea702bd6ba4831}\label{class_mode_tutorial_ac8907f655cfcb285c0ea702bd6ba4831}} 
+\index{ModeTutorial@{ModeTutorial}!LoadPicture@{LoadPicture}}
+\index{LoadPicture@{LoadPicture}!ModeTutorial@{ModeTutorial}}
+\doxysubsubsection{\texorpdfstring{LoadPicture()}{LoadPicture()}}
+{\footnotesize\ttfamily void Mode\+Tutorial\+::\+Load\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+画像読み込み関数 
+
+\mbox{\Hypertarget{class_mode_tutorial_aec25df8acffbcc931585e95b63d0ab29}\label{class_mode_tutorial_aec25df8acffbcc931585e95b63d0ab29}} 
+\index{ModeTutorial@{ModeTutorial}!Process@{Process}}
+\index{Process@{Process}!ModeTutorial@{ModeTutorial}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily bool Mode\+Tutorial\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+更新関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a8b78d63abe0000394a892723b92c7694}{Mode\+Base}}を再実装しています。
+
+\mbox{\Hypertarget{class_mode_tutorial_ab9b4df66fffffe133de2481caf6592ad}\label{class_mode_tutorial_ab9b4df66fffffe133de2481caf6592ad}} 
+\index{ModeTutorial@{ModeTutorial}!SetType@{SetType}}
+\index{SetType@{SetType}!ModeTutorial@{ModeTutorial}}
+\doxysubsubsection{\texorpdfstring{SetType()}{SetType()}}
+{\footnotesize\ttfamily void Mode\+Tutorial\+::\+Set\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{tutorialtype }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+チュートリアルの種別を設定する関数 
+
+
+\begin{DoxyParams}{引数}
+{\em tutorialtype} & チュートリアルの種別 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mode_tutorial_aae05eeeda485a6b353b6ca9498676585}\label{class_mode_tutorial_aae05eeeda485a6b353b6ca9498676585}} 
+\index{ModeTutorial@{ModeTutorial}!Terminate@{Terminate}}
+\index{Terminate@{Terminate}!ModeTutorial@{ModeTutorial}}
+\doxysubsubsection{\texorpdfstring{Terminate()}{Terminate()}}
+{\footnotesize\ttfamily bool Mode\+Tutorial\+::\+Terminate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+終了関数 
+
+
+\begin{DoxyParams}{引数}
+{\em g} & ゲームクラスの参照 \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{class_mode_base_a780d90b676aa9093fef190c6fe6821e2}{Mode\+Base}}を再実装しています。
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_mode_tutorial_a67bc0f5b7b1219472a7799a71c605ec9}\label{class_mode_tutorial_a67bc0f5b7b1219472a7799a71c605ec9}} 
+\index{ModeTutorial@{ModeTutorial}!\_tutorial\_type@{\_tutorial\_type}}
+\index{\_tutorial\_type@{\_tutorial\_type}!ModeTutorial@{ModeTutorial}}
+\doxysubsubsection{\texorpdfstring{\_tutorial\_type}{\_tutorial\_type}}
+{\footnotesize\ttfamily std\+::string Mode\+Tutorial\+::\+\_\+tutorial\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+チュートリアルの種別変数 
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_mode_tutorial_8h}{Mode\+Tutorial.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_mode_tutorial_8cpp}{Mode\+Tutorial.\+cpp}}\end{DoxyCompactItemize}

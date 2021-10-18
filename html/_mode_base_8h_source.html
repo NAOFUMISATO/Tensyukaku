@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/ModeBase.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ModeBase.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_mode_base_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include   &lt;string&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include   &lt;tuple&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include   &lt;utility&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include   &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">//二重インクルード防止</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">class </span><a class="code hl_class" href="class_mode_server.html">ModeServer</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">class </span><a class="code hl_class" href="class_game.html">Game</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_mode_base.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="class_mode_base.html">ModeBase</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>   <a class="code hl_function" href="class_mode_base.html#aa667c68b8fbdd84f121ed874fa02d1b6">ModeBase</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>   <span class="keyword">virtual</span> <a class="code hl_function" href="class_mode_base.html#a5d11d50fa0dd9bd40b5d5b50848d6870">~ModeBase</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_base.html#a4cb0982318dfa7d2906dcf30c3824ab1">Initialize</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_base.html#a780d90b676aa9093fef190c6fe6821e2">Terminate</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_base.html#a8b78d63abe0000394a892723b92c7694">Process</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mode_base.html#a50776d758456fe540e3aef2f47234a0d">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_mode_base.html#a879503103a60592562496f668d10437a">   50</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#a879503103a60592562496f668d10437a">_grhandle</a>;    </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_mode_base.html#a4e8bee769bf43846aa3b5751a1837bdd">   51</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#a4e8bee769bf43846aa3b5751a1837bdd">_x</a>;           </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_mode_base.html#a7d49823f7a461ee32285fd68941918b7">   52</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#a7d49823f7a461ee32285fd68941918b7">_y</a>;           </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_mode_base.html#ab416c637ab6957146b10bc4d9a66ae5b">   53</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#ab416c637ab6957146b10bc4d9a66ae5b">_cnt</a>;         </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_mode_base.html#a4dec23f01a197039d40caf09835a6034">   54</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#a4dec23f01a197039d40caf09835a6034">_mode_cnt</a>;    </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_mode_base.html#a570b3ef0f10573597b49cdd0b6f311c5">   55</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#a570b3ef0f10573597b49cdd0b6f311c5">_pal</a>;         </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="class_mode_base.html#a925f503f9c3ae0aa0a032898f6513ae4">   56</a></span>   <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_mode_base.html#a925f503f9c3ae0aa0a032898f6513ae4">_trans_flag</a>; </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_mode_base.html#a29676bc170a78c6442d401b5f082a4bb">   57</a></span>   std::pair&lt;double, double&gt; <a class="code hl_variable" href="class_mode_base.html#a29676bc170a78c6442d401b5f082a4bb">_drg</a>;  </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_mode_base.html#abe10f6fe4cec1051951fe316193c1de1">   58</a></span>   std::tuple&lt;int, int, int&gt; <a class="code hl_variable" href="class_mode_base.html#abe10f6fe4cec1051951fe316193c1de1">_rgb</a>;  </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_mode_base.html#a01c4d2bc05b734e896b3ddaa7465e1e5">   59</a></span>   std::unordered_map&lt;std::string, std::vector&lt;int&gt;&gt; <a class="code hl_variable" href="class_mode_base.html#a01c4d2bc05b734e896b3ddaa7465e1e5">_grall</a>; </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_mode_base.html#aca06b581fd290a5ce7a73899309da52f">   60</a></span>   std::unordered_map&lt;std::string, int&gt; <a class="code hl_variable" href="class_mode_base.html#aca06b581fd290a5ce7a73899309da52f">_anime</a>;              </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_mode_base.html#abc3f500e74c2001d1669a91bea2608fe">   61</a></span>   std::unordered_map&lt;std::string, int&gt; <a class="code hl_variable" href="class_mode_base.html#abc3f500e74c2001d1669a91bea2608fe">_se</a>;                 </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_mode_base.html#ab98649f0cf059ca04bbe19e196c582d1">   62</a></span>   std::unordered_map&lt;std::string, int&gt; <a class="code hl_variable" href="class_mode_base.html#ab98649f0cf059ca04bbe19e196c582d1">_vpal</a>;               </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_mode_base.html#a344765e0beeecc58306d0b904217e380">   65</a></span>   <span class="keyword">friend</span> <a class="code hl_variable" href="class_mode_base.html#a344765e0beeecc58306d0b904217e380">ModeServer</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_mode_base.html#a20d88b426051bf3bccd5931995a5a15f">StepTime</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> tmNow);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_mode_base.html#ab09ab795cc9d68682486213f6b9f0be4">StepCount</a>();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="class_mode_base.html#a6f967137ea6cecda016880d53067faa9">   75</a></span>   std::string <a class="code hl_variable" href="class_mode_base.html#a6f967137ea6cecda016880d53067faa9">_sz_name</a>;          </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_mode_base.html#aebfac4ad03331b9c0ffe3d7c98d9c99f">   76</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#aebfac4ad03331b9c0ffe3d7c98d9c99f">_uid</a>;                      </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="class_mode_base.html#a4ece94da673a5135f022d0315ab82c2c">   77</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#a4ece94da673a5135f022d0315ab82c2c">_layer</a>;                    </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_mode_base.html#a93a369060525712c6ac5b147bde84bde">   78</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_mode_base.html#a93a369060525712c6ac5b147bde84bde">_cnt_mode</a>;                 </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="class_mode_base.html#a29966939c4653226988437dd7b35498c">   79</a></span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="class_mode_base.html#a29966939c4653226988437dd7b35498c">_tm_mode</a>;        </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_mode_base.html#a426bd8aed45d5e06d38b03e571c7b6a0">   80</a></span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="class_mode_base.html#a426bd8aed45d5e06d38b03e571c7b6a0">_tm_step</a>;        </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="class_mode_base.html#aca4443d463bb71a73a973636db5dd8f4">   81</a></span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="class_mode_base.html#aca4443d463bb71a73a973636db5dd8f4">_tm_mode_base</a>;   </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="class_mode_base.html#abf9c3952538b52fa378d436db358f71e">   82</a></span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="class_mode_base.html#abf9c3952538b52fa378d436db358f71e">_tm_pause_base</a>;  </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_mode_base.html#acb015607474588977732c8cb3a2b1161">   83</a></span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="class_mode_base.html#acb015607474588977732c8cb3a2b1161">_tm_pause_step</a>;  </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="class_mode_base.html#a0bd25c78aedadc29c21e9a4a34f1ab4a">   84</a></span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_variable" href="class_mode_base.html#a0bd25c78aedadc29c21e9a4a34f1ab4a">_tm_old_frame</a>;   </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_mode_base_html"><div class="ttname"><a href="class_mode_base.html">ModeBase</a></div><div class="ttdef"><b>Definition:</b> ModeBase.h:18</div></div>
+<div class="ttc" id="aclass_mode_base_html_a01c4d2bc05b734e896b3ddaa7465e1e5"><div class="ttname"><a href="class_mode_base.html#a01c4d2bc05b734e896b3ddaa7465e1e5">ModeBase::_grall</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::vector&lt; int &gt; &gt; _grall</div><div class="ttdoc">全ての画像ハンドルマップ</div><div class="ttdef"><b>Definition:</b> ModeBase.h:59</div></div>
+<div class="ttc" id="aclass_mode_base_html_a0bd25c78aedadc29c21e9a4a34f1ab4a"><div class="ttname"><a href="class_mode_base.html#a0bd25c78aedadc29c21e9a4a34f1ab4a">ModeBase::_tm_old_frame</a></div><div class="ttdeci">unsigned long _tm_old_frame</div><div class="ttdoc">前フレームの時間。ms</div><div class="ttdef"><b>Definition:</b> ModeBase.h:84</div></div>
+<div class="ttc" id="aclass_mode_base_html_a20d88b426051bf3bccd5931995a5a15f"><div class="ttname"><a href="class_mode_base.html#a20d88b426051bf3bccd5931995a5a15f">ModeBase::StepTime</a></div><div class="ttdeci">void StepTime(unsigned long tmNow)</div><div class="ttdoc">モードサーバー用</div><div class="ttdef"><b>Definition:</b> ModeBase.cpp:72</div></div>
+<div class="ttc" id="aclass_mode_base_html_a29676bc170a78c6442d401b5f082a4bb"><div class="ttname"><a href="class_mode_base.html#a29676bc170a78c6442d401b5f082a4bb">ModeBase::_drg</a></div><div class="ttdeci">std::pair&lt; double, double &gt; _drg</div><div class="ttdoc">DrawRotaGraph用ペア変数（first拡縮率、second角度）</div><div class="ttdef"><b>Definition:</b> ModeBase.h:57</div></div>
+<div class="ttc" id="aclass_mode_base_html_a29966939c4653226988437dd7b35498c"><div class="ttname"><a href="class_mode_base.html#a29966939c4653226988437dd7b35498c">ModeBase::_tm_mode</a></div><div class="ttdeci">unsigned long _tm_mode</div><div class="ttdoc">本モードに入ってからの時間。ms</div><div class="ttdef"><b>Definition:</b> ModeBase.h:79</div></div>
+<div class="ttc" id="aclass_mode_base_html_a344765e0beeecc58306d0b904217e380"><div class="ttname"><a href="class_mode_base.html#a344765e0beeecc58306d0b904217e380">ModeBase::ModeServer</a></div><div class="ttdeci">friend ModeServer</div><div class="ttdef"><b>Definition:</b> ModeBase.h:65</div></div>
+<div class="ttc" id="aclass_mode_base_html_a426bd8aed45d5e06d38b03e571c7b6a0"><div class="ttname"><a href="class_mode_base.html#a426bd8aed45d5e06d38b03e571c7b6a0">ModeBase::_tm_step</a></div><div class="ttdeci">unsigned long _tm_step</div><div class="ttdoc">前フレームからの経過時間。ms</div><div class="ttdef"><b>Definition:</b> ModeBase.h:80</div></div>
+<div class="ttc" id="aclass_mode_base_html_a4cb0982318dfa7d2906dcf30c3824ab1"><div class="ttname"><a href="class_mode_base.html#a4cb0982318dfa7d2906dcf30c3824ab1">ModeBase::Initialize</a></div><div class="ttdeci">virtual bool Initialize(Game &amp;g)</div><div class="ttdoc">初期化関数</div><div class="ttdef"><b>Definition:</b> ModeBase.cpp:36</div></div>
+<div class="ttc" id="aclass_mode_base_html_a4dec23f01a197039d40caf09835a6034"><div class="ttname"><a href="class_mode_base.html#a4dec23f01a197039d40caf09835a6034">ModeBase::_mode_cnt</a></div><div class="ttdeci">int _mode_cnt</div><div class="ttdoc">経過時間記録変数</div><div class="ttdef"><b>Definition:</b> ModeBase.h:54</div></div>
+<div class="ttc" id="aclass_mode_base_html_a4e8bee769bf43846aa3b5751a1837bdd"><div class="ttname"><a href="class_mode_base.html#a4e8bee769bf43846aa3b5751a1837bdd">ModeBase::_x</a></div><div class="ttdeci">int _x</div><div class="ttdoc">描画点X座標</div><div class="ttdef"><b>Definition:</b> ModeBase.h:51</div></div>
+<div class="ttc" id="aclass_mode_base_html_a4ece94da673a5135f022d0315ab82c2c"><div class="ttname"><a href="class_mode_base.html#a4ece94da673a5135f022d0315ab82c2c">ModeBase::_layer</a></div><div class="ttdeci">int _layer</div><div class="ttdoc">モードサーバー用</div><div class="ttdef"><b>Definition:</b> ModeBase.h:77</div></div>
+<div class="ttc" id="aclass_mode_base_html_a50776d758456fe540e3aef2f47234a0d"><div class="ttname"><a href="class_mode_base.html#a50776d758456fe540e3aef2f47234a0d">ModeBase::Draw</a></div><div class="ttdeci">virtual bool Draw(Game &amp;g)</div><div class="ttdoc">描画関数</div><div class="ttdef"><b>Definition:</b> ModeBase.cpp:55</div></div>
+<div class="ttc" id="aclass_mode_base_html_a570b3ef0f10573597b49cdd0b6f311c5"><div class="ttname"><a href="class_mode_base.html#a570b3ef0f10573597b49cdd0b6f311c5">ModeBase::_pal</a></div><div class="ttdeci">int _pal</div><div class="ttdoc">BlendMode用変数</div><div class="ttdef"><b>Definition:</b> ModeBase.h:55</div></div>
+<div class="ttc" id="aclass_mode_base_html_a5d11d50fa0dd9bd40b5d5b50848d6870"><div class="ttname"><a href="class_mode_base.html#a5d11d50fa0dd9bd40b5d5b50848d6870">ModeBase::~ModeBase</a></div><div class="ttdeci">virtual ~ModeBase()</div><div class="ttdoc">デストラクタ</div><div class="ttdef"><b>Definition:</b> ModeBase.cpp:32</div></div>
+<div class="ttc" id="aclass_mode_base_html_a6f967137ea6cecda016880d53067faa9"><div class="ttname"><a href="class_mode_base.html#a6f967137ea6cecda016880d53067faa9">ModeBase::_sz_name</a></div><div class="ttdeci">std::string _sz_name</div><div class="ttdoc">モードサーバー用</div><div class="ttdef"><b>Definition:</b> ModeBase.h:75</div></div>
+<div class="ttc" id="aclass_mode_base_html_a780d90b676aa9093fef190c6fe6821e2"><div class="ttname"><a href="class_mode_base.html#a780d90b676aa9093fef190c6fe6821e2">ModeBase::Terminate</a></div><div class="ttdeci">virtual bool Terminate(Game &amp;g)</div><div class="ttdoc">終了関数</div><div class="ttdef"><b>Definition:</b> ModeBase.cpp:46</div></div>
+<div class="ttc" id="aclass_mode_base_html_a7d49823f7a461ee32285fd68941918b7"><div class="ttname"><a href="class_mode_base.html#a7d49823f7a461ee32285fd68941918b7">ModeBase::_y</a></div><div class="ttdeci">int _y</div><div class="ttdoc">描画点Y座標</div><div class="ttdef"><b>Definition:</b> ModeBase.h:52</div></div>
+<div class="ttc" id="aclass_mode_base_html_a879503103a60592562496f668d10437a"><div class="ttname"><a href="class_mode_base.html#a879503103a60592562496f668d10437a">ModeBase::_grhandle</a></div><div class="ttdeci">int _grhandle</div><div class="ttdoc">画像ハンドル</div><div class="ttdef"><b>Definition:</b> ModeBase.h:50</div></div>
+<div class="ttc" id="aclass_mode_base_html_a8b78d63abe0000394a892723b92c7694"><div class="ttname"><a href="class_mode_base.html#a8b78d63abe0000394a892723b92c7694">ModeBase::Process</a></div><div class="ttdeci">virtual bool Process(Game &amp;g)</div><div class="ttdoc">更新関数</div><div class="ttdef"><b>Definition:</b> ModeBase.cpp:50</div></div>
+<div class="ttc" id="aclass_mode_base_html_a925f503f9c3ae0aa0a032898f6513ae4"><div class="ttname"><a href="class_mode_base.html#a925f503f9c3ae0aa0a032898f6513ae4">ModeBase::_trans_flag</a></div><div class="ttdeci">bool _trans_flag</div><div class="ttdoc">DrawRotaGraphの透明度フラグ</div><div class="ttdef"><b>Definition:</b> ModeBase.h:56</div></div>
+<div class="ttc" id="aclass_mode_base_html_a93a369060525712c6ac5b147bde84bde"><div class="ttname"><a href="class_mode_base.html#a93a369060525712c6ac5b147bde84bde">ModeBase::_cnt_mode</a></div><div class="ttdeci">int _cnt_mode</div><div class="ttdoc">本モードに入ってからのカウンタ, 0スタート</div><div class="ttdef"><b>Definition:</b> ModeBase.h:78</div></div>
+<div class="ttc" id="aclass_mode_base_html_aa667c68b8fbdd84f121ed874fa02d1b6"><div class="ttname"><a href="class_mode_base.html#aa667c68b8fbdd84f121ed874fa02d1b6">ModeBase::ModeBase</a></div><div class="ttdeci">ModeBase()</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> ModeBase.cpp:17</div></div>
+<div class="ttc" id="aclass_mode_base_html_ab09ab795cc9d68682486213f6b9f0be4"><div class="ttname"><a href="class_mode_base.html#ab09ab795cc9d68682486213f6b9f0be4">ModeBase::StepCount</a></div><div class="ttdeci">void StepCount()</div><div class="ttdoc">モードサーバー用</div><div class="ttdef"><b>Definition:</b> ModeBase.cpp:89</div></div>
+<div class="ttc" id="aclass_mode_base_html_ab416c637ab6957146b10bc4d9a66ae5b"><div class="ttname"><a href="class_mode_base.html#ab416c637ab6957146b10bc4d9a66ae5b">ModeBase::_cnt</a></div><div class="ttdeci">int _cnt</div><div class="ttdoc">動作カウンタ</div><div class="ttdef"><b>Definition:</b> ModeBase.h:53</div></div>
+<div class="ttc" id="aclass_mode_base_html_ab98649f0cf059ca04bbe19e196c582d1"><div class="ttname"><a href="class_mode_base.html#ab98649f0cf059ca04bbe19e196c582d1">ModeBase::_vpal</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; _vpal</div><div class="ttdoc">ボリュームマップ</div><div class="ttdef"><b>Definition:</b> ModeBase.h:62</div></div>
+<div class="ttc" id="aclass_mode_base_html_abc3f500e74c2001d1669a91bea2608fe"><div class="ttname"><a href="class_mode_base.html#abc3f500e74c2001d1669a91bea2608fe">ModeBase::_se</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; _se</div><div class="ttdoc">SEマップ</div><div class="ttdef"><b>Definition:</b> ModeBase.h:61</div></div>
+<div class="ttc" id="aclass_mode_base_html_abe10f6fe4cec1051951fe316193c1de1"><div class="ttname"><a href="class_mode_base.html#abe10f6fe4cec1051951fe316193c1de1">ModeBase::_rgb</a></div><div class="ttdeci">std::tuple&lt; int, int, int &gt; _rgb</div><div class="ttdoc">Color用タプル型変数</div><div class="ttdef"><b>Definition:</b> ModeBase.h:58</div></div>
+<div class="ttc" id="aclass_mode_base_html_abf9c3952538b52fa378d436db358f71e"><div class="ttname"><a href="class_mode_base.html#abf9c3952538b52fa378d436db358f71e">ModeBase::_tm_pause_base</a></div><div class="ttdeci">unsigned long _tm_pause_base</div><div class="ttdoc">ポーズ中のベース時間。ms</div><div class="ttdef"><b>Definition:</b> ModeBase.h:82</div></div>
+<div class="ttc" id="aclass_mode_base_html_aca06b581fd290a5ce7a73899309da52f"><div class="ttname"><a href="class_mode_base.html#aca06b581fd290a5ce7a73899309da52f">ModeBase::_anime</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; _anime</div><div class="ttdoc">アニメーションマップ</div><div class="ttdef"><b>Definition:</b> ModeBase.h:60</div></div>
+<div class="ttc" id="aclass_mode_base_html_aca4443d463bb71a73a973636db5dd8f4"><div class="ttname"><a href="class_mode_base.html#aca4443d463bb71a73a973636db5dd8f4">ModeBase::_tm_mode_base</a></div><div class="ttdeci">unsigned long _tm_mode_base</div><div class="ttdoc">このモードが始まった時間。ms</div><div class="ttdef"><b>Definition:</b> ModeBase.h:81</div></div>
+<div class="ttc" id="aclass_mode_base_html_acb015607474588977732c8cb3a2b1161"><div class="ttname"><a href="class_mode_base.html#acb015607474588977732c8cb3a2b1161">ModeBase::_tm_pause_step</a></div><div class="ttdeci">unsigned long _tm_pause_step</div><div class="ttdoc">ポーズ中の積算時間。ms 動作中、この値を _tmMode に用いる</div><div class="ttdef"><b>Definition:</b> ModeBase.h:83</div></div>
+<div class="ttc" id="aclass_mode_base_html_aebfac4ad03331b9c0ffe3d7c98d9c99f"><div class="ttname"><a href="class_mode_base.html#aebfac4ad03331b9c0ffe3d7c98d9c99f">ModeBase::_uid</a></div><div class="ttdeci">int _uid</div><div class="ttdoc">モードサーバー用</div><div class="ttdef"><b>Definition:</b> ModeBase.h:76</div></div>
+<div class="ttc" id="aclass_mode_server_html"><div class="ttname"><a href="class_mode_server.html">ModeServer</a></div><div class="ttdef"><b>Definition:</b> ModeServer.h:9</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

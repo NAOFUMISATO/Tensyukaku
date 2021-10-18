@@ -7,16 +7,28 @@
  *********************************************************************/
 #pragma once
 #include "ModeBase.h"
-
+/** ゲームオーバーロゴ */
 class Overlogo :public ModeBase {
    typedef ModeBase base;
 public:
-   //初期化
+   /**
+    * \brief   初期化関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Initialize(Game& g);
-   //終了
+   /**
+    * \brief   終了関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Terminate(Game& g);
-   //更新
+   /**
+    * \brief   更新関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Process(Game& g);
-   //描画
+   /**
+    * \brief   描画関数
+    * \param g ゲームクラスの参照
+    */
    virtual bool Draw(Game& g);
 };

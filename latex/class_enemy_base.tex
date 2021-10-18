@@ -1,0 +1,264 @@
+\hypertarget{class_enemy_base}{}\doxysection{Enemy\+Base クラス}
+\label{class_enemy_base}\index{EnemyBase@{EnemyBase}}
+
+
+{\ttfamily \#include $<$Enemy\+Base.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_object_base}{Object\+Base}}を継承しています。
+
+
+
+\mbox{\hyperlink{class_bushi}{Bushi}}, \mbox{\hyperlink{class_busyo}{Busyo}}, \mbox{\hyperlink{class_lancer}{Lancer}}, \mbox{\hyperlink{class_ninja}{Ninja}}, \mbox{\hyperlink{class_shielder}{Shielder}}, \mbox{\hyperlink{class_zyounin}{Zyounin}}に継承されています。
+
+\doxysubsection*{公開型}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} \{ \newline
+\mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427a29097139e792a1b951582d6383eae0cf}{BUSHI}}
+, \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427aff5fea54ae72d3d06248c6284c05802e}{BUSYO}}
+, \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427ae5581feafd037b1ee151b0f2ba3f3e64}{NINJA}}
+, \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427af6416bd77a2a2a5a2900fd8cc6bee32d}{ZYOUNIN}}
+, \newline
+\mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427a782e9a583180a767d5108850d0c9635f}{LANCER}}
+, \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427ae97df666071862ba576690ebe1e6790c}{SHIELDER}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_base_af0e688056ae50b763bb8d8139e7e53c3}{Enemy\+Base}} ()
+\item 
+\mbox{\hyperlink{class_enemy_base_a73d1ffb3230a2e8b2c0b7cd86cbd7a6c}{$\sim$\+Enemy\+Base}} ()
+\item 
+virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_enemy_base_a17723c2198eb28b17f5abf5d42f476d3}{Get\+Obj\+Type}} ()
+\item 
+virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} \mbox{\hyperlink{class_enemy_base_a0d57f8ec2db46337cc6c01daf37f779b}{Get\+Ene\+Type}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_enemy_base_af5c90d8abe7e5677336295d1398578b9}{Init}} ()
+\item 
+virtual void \mbox{\hyperlink{class_enemy_base_add67699620ad91db7ed390a426e75fbf}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+virtual void \mbox{\hyperlink{class_enemy_base_a3c82fb040b7faf93571d2afa31dd07a5}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+virtual void \mbox{\hyperlink{class_enemy_base_afa0d1e9f4705a530990e1c0bb32adf49}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\end{DoxyCompactItemize}
+\doxysubsection*{限定公開型}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178}{ENEMYSTATE}} \{ \newline
+\mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a303e9f5a662d8da25ff7e53f22caaa2a}{APPEAR}}
+, \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a5383e862b017e18e1087d61e9f2684d9}{PATROL}}
+, \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a36c99616234a163b702dd50573edb0bd}{COMING}}
+, \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178ac6ddd0f72ff2fd344693b9ca8d483871}{ATTACK}}
+, \newline
+\mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a6b8fa9a7f26356348c1989956410279d}{GUARDATTACK}}
+, \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a655474de4674aba7a436a73cd8d9a906}{THROW}}
+, \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178aadf60df5077c06f7c7bef82e31ab2a74}{GUARDBREAK}}
+, \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a806bb06d54f268f1d2ce74bde5b48f34}{DAMAGE}}
+, \newline
+\mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178abb4784231ff45108ee20bad16e4a2e8c}{DEAD}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} \mbox{\hyperlink{class_enemy_base_a6dec1f49467ad7c7e718da07efbf23c6}{\+\_\+type}}
+\item 
+\mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178}{ENEMYSTATE}} \mbox{\hyperlink{class_enemy_base_a7ee5940130d10465fbc004360d406003}{\+\_\+state}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{列挙型メンバ詳解}
+\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178}} 
+\index{EnemyBase@{EnemyBase}!ENEMYSTATE@{ENEMYSTATE}}
+\index{ENEMYSTATE@{ENEMYSTATE}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{ENEMYSTATE}{ENEMYSTATE}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178}{Enemy\+Base\+::\+ENEMYSTATE}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APPEAR@{APPEAR}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!APPEAR@{APPEAR}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a303e9f5a662d8da25ff7e53f22caaa2a}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a303e9f5a662d8da25ff7e53f22caaa2a}} 
+APPEAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PATROL@{PATROL}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!PATROL@{PATROL}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a5383e862b017e18e1087d61e9f2684d9}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a5383e862b017e18e1087d61e9f2684d9}} 
+PATROL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMING@{COMING}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!COMING@{COMING}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a36c99616234a163b702dd50573edb0bd}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a36c99616234a163b702dd50573edb0bd}} 
+COMING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTACK@{ATTACK}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!ATTACK@{ATTACK}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178ac6ddd0f72ff2fd344693b9ca8d483871}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178ac6ddd0f72ff2fd344693b9ca8d483871}} 
+ATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUARDATTACK@{GUARDATTACK}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!GUARDATTACK@{GUARDATTACK}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a6b8fa9a7f26356348c1989956410279d}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a6b8fa9a7f26356348c1989956410279d}} 
+GUARDATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THROW@{THROW}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!THROW@{THROW}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a655474de4674aba7a436a73cd8d9a906}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a655474de4674aba7a436a73cd8d9a906}} 
+THROW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUARDBREAK@{GUARDBREAK}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!GUARDBREAK@{GUARDBREAK}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178aadf60df5077c06f7c7bef82e31ab2a74}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178aadf60df5077c06f7c7bef82e31ab2a74}} 
+GUARDBREAK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DAMAGE@{DAMAGE}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!DAMAGE@{DAMAGE}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a806bb06d54f268f1d2ce74bde5b48f34}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178a806bb06d54f268f1d2ce74bde5b48f34}} 
+DAMAGE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEAD@{DEAD}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!DEAD@{DEAD}}}\mbox{\Hypertarget{class_enemy_base_a00b70d696b350856fa0b76c021ff6178abb4784231ff45108ee20bad16e4a2e8c}\label{class_enemy_base_a00b70d696b350856fa0b76c021ff6178abb4784231ff45108ee20bad16e4a2e8c}} 
+DEAD&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}\label{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}} 
+\index{EnemyBase@{EnemyBase}!ENEMYTYPE@{ENEMYTYPE}}
+\index{ENEMYTYPE@{ENEMYTYPE}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{ENEMYTYPE}{ENEMYTYPE}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{Enemy\+Base\+::\+ENEMYTYPE}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUSHI@{BUSHI}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!BUSHI@{BUSHI}}}\mbox{\Hypertarget{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427a29097139e792a1b951582d6383eae0cf}\label{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427a29097139e792a1b951582d6383eae0cf}} 
+BUSHI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUSYO@{BUSYO}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!BUSYO@{BUSYO}}}\mbox{\Hypertarget{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427aff5fea54ae72d3d06248c6284c05802e}\label{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427aff5fea54ae72d3d06248c6284c05802e}} 
+BUSYO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NINJA@{NINJA}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!NINJA@{NINJA}}}\mbox{\Hypertarget{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427ae5581feafd037b1ee151b0f2ba3f3e64}\label{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427ae5581feafd037b1ee151b0f2ba3f3e64}} 
+NINJA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ZYOUNIN@{ZYOUNIN}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!ZYOUNIN@{ZYOUNIN}}}\mbox{\Hypertarget{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427af6416bd77a2a2a5a2900fd8cc6bee32d}\label{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427af6416bd77a2a2a5a2900fd8cc6bee32d}} 
+ZYOUNIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LANCER@{LANCER}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!LANCER@{LANCER}}}\mbox{\Hypertarget{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427a782e9a583180a767d5108850d0c9635f}\label{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427a782e9a583180a767d5108850d0c9635f}} 
+LANCER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHIELDER@{SHIELDER}!EnemyBase@{EnemyBase}}\index{EnemyBase@{EnemyBase}!SHIELDER@{SHIELDER}}}\mbox{\Hypertarget{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427ae97df666071862ba576690ebe1e6790c}\label{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427ae97df666071862ba576690ebe1e6790c}} 
+SHIELDER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_enemy_base_af0e688056ae50b763bb8d8139e7e53c3}\label{class_enemy_base_af0e688056ae50b763bb8d8139e7e53c3}} 
+\index{EnemyBase@{EnemyBase}!EnemyBase@{EnemyBase}}
+\index{EnemyBase@{EnemyBase}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{EnemyBase()}{EnemyBase()}}
+{\footnotesize\ttfamily Enemy\+Base\+::\+Enemy\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_enemy_base_a73d1ffb3230a2e8b2c0b7cd86cbd7a6c}\label{class_enemy_base_a73d1ffb3230a2e8b2c0b7cd86cbd7a6c}} 
+\index{EnemyBase@{EnemyBase}!````~EnemyBase@{$\sim$EnemyBase}}
+\index{````~EnemyBase@{$\sim$EnemyBase}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{$\sim$EnemyBase()}{~EnemyBase()}}
+{\footnotesize\ttfamily Enemy\+Base\+::$\sim$\+Enemy\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_enemy_base_afa0d1e9f4705a530990e1c0bb32adf49}\label{class_enemy_base_afa0d1e9f4705a530990e1c0bb32adf49}} 
+\index{EnemyBase@{EnemyBase}!Delete@{Delete}}
+\index{Delete@{Delete}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily virtual void Enemy\+Base\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a63d403d783b600faf05648968a3a569e}{Object\+Base}}を再実装しています。
+
+
+
+\mbox{\hyperlink{class_bushi_a03c976793fdaa07319ceb9708aef59f6}{Bushi}}, \mbox{\hyperlink{class_busyo_a0e1747e6e18623274ba03f1cf502394b}{Busyo}}, \mbox{\hyperlink{class_lancer_af26de61ef9e683cdbe351ccea74d8d05}{Lancer}}, \mbox{\hyperlink{class_ninja_a02a4e8f561e703c8b7423d9f3ebfd61b}{Ninja}}, \mbox{\hyperlink{class_shielder_a40dcabced7c6df4100fcef038431d277}{Shielder}}, \mbox{\hyperlink{class_zyounin_a1dc726867d7a788825ba61187159e82c}{Zyounin}}で再実装されています。
+
+\mbox{\Hypertarget{class_enemy_base_a3c82fb040b7faf93571d2afa31dd07a5}\label{class_enemy_base_a3c82fb040b7faf93571d2afa31dd07a5}} 
+\index{EnemyBase@{EnemyBase}!Draw@{Draw}}
+\index{Draw@{Draw}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Enemy\+Base\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ae10010b1cf932746225bf6121a00d80c}{Object\+Base}}を再実装しています。
+
+
+
+\mbox{\hyperlink{class_bushi_accbf5766b0fe9abb2e862c4890db5ec7}{Bushi}}, \mbox{\hyperlink{class_busyo_abe5a4a3faa2465de473617b43c9aaecc}{Busyo}}, \mbox{\hyperlink{class_lancer_a98a85537fecc64cc8e80c0f8c53c6a67}{Lancer}}, \mbox{\hyperlink{class_ninja_abad62c392375345ed3f98f05c875ed92}{Ninja}}, \mbox{\hyperlink{class_shielder_a4d80922c283b0059dd5fa2dfdcf00d30}{Shielder}}, \mbox{\hyperlink{class_zyounin_af0b7bea988a123ab33309e840a330a73}{Zyounin}}で再実装されています。
+
+\mbox{\Hypertarget{class_enemy_base_a0d57f8ec2db46337cc6c01daf37f779b}\label{class_enemy_base_a0d57f8ec2db46337cc6c01daf37f779b}} 
+\index{EnemyBase@{EnemyBase}!GetEneType@{GetEneType}}
+\index{GetEneType@{GetEneType}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{GetEneType()}{GetEneType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} Enemy\+Base\+::\+Get\+Ene\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\mbox{\hyperlink{class_bushi_ae3e2265a9cbd1351c954de7e5fa888a0}{Bushi}}, \mbox{\hyperlink{class_busyo_ad09565ea20180859ef39f1366ab7ccb2}{Busyo}}, \mbox{\hyperlink{class_lancer_a61d1a6505d04293462822e258fca2512}{Lancer}}, \mbox{\hyperlink{class_ninja_a8c1fa2e5c3f4eed6ec6317cb0dd1277d}{Ninja}}, \mbox{\hyperlink{class_shielder_a1307206db75de059c35174a18b12c978}{Shielder}}, \mbox{\hyperlink{class_zyounin_ac7cb8d4900e08bbf45d2b41648d22a38}{Zyounin}}で実装されています。
+
+\mbox{\Hypertarget{class_enemy_base_a17723c2198eb28b17f5abf5d42f476d3}\label{class_enemy_base_a17723c2198eb28b17f5abf5d42f476d3}} 
+\index{EnemyBase@{EnemyBase}!GetObjType@{GetObjType}}
+\index{GetObjType@{GetObjType}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{GetObjType()}{GetObjType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} Enemy\+Base\+::\+Get\+Obj\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}{Object\+Base}}を実装しています。
+
+\mbox{\Hypertarget{class_enemy_base_af5c90d8abe7e5677336295d1398578b9}\label{class_enemy_base_af5c90d8abe7e5677336295d1398578b9}} 
+\index{EnemyBase@{EnemyBase}!Init@{Init}}
+\index{Init@{Init}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Enemy\+Base\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}{Object\+Base}}を再実装しています。
+
+
+
+\mbox{\hyperlink{class_bushi_ae47819552a3322bcd0775a14c8b4cdf9}{Bushi}}, \mbox{\hyperlink{class_busyo_ac61c053d0a10a2dcbe22f68876b3d2f7}{Busyo}}, \mbox{\hyperlink{class_lancer_a3c9ab6dad5bc7f7964f60697bc39e473}{Lancer}}, \mbox{\hyperlink{class_ninja_a8026d77ce840c97a9c5ccb5edad92058}{Ninja}}, \mbox{\hyperlink{class_shielder_afa46385e61b3dbc879b36d51c934973c}{Shielder}}, \mbox{\hyperlink{class_zyounin_a31006b3b86efc585fbbab14b7cc24d92}{Zyounin}}で再実装されています。
+
+\mbox{\Hypertarget{class_enemy_base_add67699620ad91db7ed390a426e75fbf}\label{class_enemy_base_add67699620ad91db7ed390a426e75fbf}} 
+\index{EnemyBase@{EnemyBase}!Process@{Process}}
+\index{Process@{Process}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Enemy\+Base\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}{Object\+Base}}を再実装しています。
+
+
+
+\mbox{\hyperlink{class_bushi_a364e5e81cba5b9bf12efad4d6565ebaa}{Bushi}}, \mbox{\hyperlink{class_busyo_a1f5946d50196decdd1399b56f8a078a2}{Busyo}}, \mbox{\hyperlink{class_lancer_ac4f7fa42897ea8c037810dc3b238c222}{Lancer}}, \mbox{\hyperlink{class_ninja_a35a59e058aa39384eec2e3ac36151c66}{Ninja}}, \mbox{\hyperlink{class_shielder_ac18bce46f196200f1eedce62380b6a03}{Shielder}}, \mbox{\hyperlink{class_zyounin_a07241ebb7adc3b4efed1e182a10645e7}{Zyounin}}で再実装されています。
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_enemy_base_a7ee5940130d10465fbc004360d406003}\label{class_enemy_base_a7ee5940130d10465fbc004360d406003}} 
+\index{EnemyBase@{EnemyBase}!\_state@{\_state}}
+\index{\_state@{\_state}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{\_state}{\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_enemy_base_a00b70d696b350856fa0b76c021ff6178}{ENEMYSTATE}} Enemy\+Base\+::\+\_\+state\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_enemy_base_a6dec1f49467ad7c7e718da07efbf23c6}\label{class_enemy_base_a6dec1f49467ad7c7e718da07efbf23c6}} 
+\index{EnemyBase@{EnemyBase}!\_type@{\_type}}
+\index{\_type@{\_type}!EnemyBase@{EnemyBase}}
+\doxysubsubsection{\texorpdfstring{\_type}{\_type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_enemy_base_a5ae6e889eddbfad13ce675608eb05427}{ENEMYTYPE}} Enemy\+Base\+::\+\_\+type\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_enemy_base_8h}{Enemy\+Base.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_enemy_base_8cpp}{Enemy\+Base.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,768 @@
+\hypertarget{class_object_base}{}\doxysection{Object\+Base クラス}
+\label{class_object_base}\index{ObjectBase@{ObjectBase}}
+
+
+{\ttfamily \#include $<$Object\+Base.\+h$>$}
+
+
+
+\mbox{\hyperlink{class_andon}{Andon}}, \mbox{\hyperlink{class_boss}{Boss}}, \mbox{\hyperlink{class_boss_event_a}{Boss\+EventA}}, \mbox{\hyperlink{class_boss_event_b}{Boss\+EventB}}, \mbox{\hyperlink{class_boss_stair}{Boss\+Stair}}, \mbox{\hyperlink{class_bushi_attack_collision}{Bushi\+Attack\+Collision}}, \mbox{\hyperlink{class_busyo_attack_collision}{Busyo\+Attack\+Collision}}, \mbox{\hyperlink{class_c_point_block}{CPoint\+Block}}, \mbox{\hyperlink{class_credit}{Credit}}, \mbox{\hyperlink{class_cursor}{Cursor}}, \mbox{\hyperlink{class_efect_base}{Efect\+Base}}, \mbox{\hyperlink{class_enemy_base}{Enemy\+Base}}, \mbox{\hyperlink{class_explain}{Explain}}, \mbox{\hyperlink{class_flame}{Flame}}, \mbox{\hyperlink{class_flame_block}{Flame\+Block}}, \mbox{\hyperlink{class_game_end}{Game\+End}}, \mbox{\hyperlink{class_game_start}{Game\+Start}}, \mbox{\hyperlink{class_iai_collision}{Iai\+Collision}}, \mbox{\hyperlink{class_iai_gauge}{Iai\+Gauge}}, \mbox{\hyperlink{class_ingame_text_block}{Ingame\+Text\+Block}}, \mbox{\hyperlink{class_kick_collision}{Kick\+Collision}}, \mbox{\hyperlink{class_kunai}{Kunai}}, \mbox{\hyperlink{class_lancer_attack_collision}{Lancer\+Attack\+Collision}}, \mbox{\hyperlink{class_low_attack_collision}{Low\+Attack\+Collision}}, \mbox{\hyperlink{class_middle_attack_collision}{Middle\+Attack\+Collision}}, \mbox{\hyperlink{class_mugen_andon}{Mugen\+Andon}}, \mbox{\hyperlink{class_mugen_flame}{Mugen\+Flame}}, \mbox{\hyperlink{class_ninja_attack_collision}{Ninja\+Attack\+Collision}}, \mbox{\hyperlink{class_particle_base}{Particle\+Base}}, \mbox{\hyperlink{class_player}{Player}}, \mbox{\hyperlink{class_player_hp}{Player\+Hp}}, \mbox{\hyperlink{class_poison_fall}{Poison\+Fall}}, \mbox{\hyperlink{class_poison_ninja}{Poison\+Ninja}}, \mbox{\hyperlink{class_poison_reserve}{Poison\+Reserve}}, \mbox{\hyperlink{class_private_collision}{Private\+Collision}}, \mbox{\hyperlink{class_recovery_block}{Recovery\+Block}}, \mbox{\hyperlink{class_rest_point}{Rest\+Point}}, \mbox{\hyperlink{class_shield}{Shield}}, \mbox{\hyperlink{class_shielder_attack_collision}{Shielder\+Attack\+Collision}}, \mbox{\hyperlink{class_spawn}{Spawn}}, \mbox{\hyperlink{class_spawn_block_base}{Spawn\+Block\+Base}}, \mbox{\hyperlink{class_special_collision}{Special\+Collision}}, \mbox{\hyperlink{class_stair}{Stair}}, \mbox{\hyperlink{class_title_cursor}{Title\+Cursor}}, \mbox{\hyperlink{class_title_logo}{Title\+Logo}}, \mbox{\hyperlink{class_tutorial_board}{Tutorial\+Board}}, \mbox{\hyperlink{class_zyounin_attack_collision}{Zyounin\+Attack\+Collision}} (計47項目)に継承されています。
+
+\doxysubsection*{公開型}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \{ \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da106725b1f0c1489cbef9cf915400e000}{TITLELOGO}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da16295b8054776427707513af20a92810}{GAMESTART}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daff149905e61532412a2e7d33eb75a9c0}{EXPLAIN}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5e55f05f0d128aa2249d00a90a4059f4}{GAMEEND}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dae3968aae02e78599276f2759bc8f268b}{CREDIT}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab463a0d9beb14bdcecd3a50d70655963}{CURSOR}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da07c80e2a355d91402a00d82b1fa13855}{PLAYER}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da92b09d1635332c90ae8508618a174244}{ENEMY}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daf0523bf35faf77235783d0f3e43762d2}{BOSS}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da71ff71526d15db86eb50fcac245d183b}{UI}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5818992261344f3f6c810ea0dfc13c24}{PARTICLE}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da75687d401632ba45468a3a29a7b48f26}{EFECT}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dadea93f966ea987f9762d62bb4d070f97}{MIDDLEATTACK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5bec0c6ed43567e382172c9063a093e8}{LOWATTACK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da959a795d5524bd9054026703a33afb87}{KICK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da23ef4c71604cee85bc7f21d465940a58}{IAI}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daa72e4a34f10af98a9814d865e717399f}{SPECIAL}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da8ae1346d253d1ed456cd0cca8c303419}{PRIVATECOLLISION}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafc6727859eff7b4b65345ff50fd9f4f6}{BUSHIATTACK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daccf537447ef84e1dc23f11bf9ba6e0ad}{NINJAATTACK}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daa3103ea3bd89e0d3c122757f66be4349}{KUNAI}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab340de5bed383efd7d17c4c221163a3c}{SHIELDERATTACK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafa210a33410373b3274f91cd1f289fb1}{SHIELD}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dae74832172021de8bbeb512801b2f218b}{LANCERATTACK}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da8bf389d4be40eb4b20d8b830e13653a9}{BUSYOATTACK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da73c6af65e581a519a8a583b483ca0a0c}{ZYOUNINATTACK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da481762d6f81434b1fff1e8b4d50f2bb5}{STAIR}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dabc4e6c8bceddba26cff15e6ce17f4a40}{BOSSSTAIR}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daeee4ab84d9de5643f5c85abb53b89574}{RESTPOINT}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daea922a34ac218b8169fc8b99caea75cd}{POISONNINJA}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2a542f30a3c393aff9183c7b72f2b034}{POISON}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab6e4c516d92cf0471c9b57cfff228d4a}{ANDON}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab3b607e7312f1ab56e1882fc97b609ed}{FLAME}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da6e9f4319de3ebfeeba69db6afede067c}{MUGENANDON}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2f18df05c44f005158ae791c8dbfc634}{MUGENFLAME}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafecd03058c090502f290b4f57aefc875}{TUTORIALBOARD}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dad6570f2d248f76547140f52141ed38b2}{RECOVERYBLOCK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dac6719a6de45631bfdda6d67c1f636f45}{CPOINTBLOCK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dabdfefd44060b3defd7ed6f4317b1ba8a}{BOSSEVENTBLOCK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da580cbd1f32b3329626ed8f1dea8e1be0}{FLAMEBLOCK}}
+, \newline
+\mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2696506c1b5127621a5f66e289a25517}{SPAWNBLOCK}}
+, \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daef44fa8c69ac3b077ec246160a9c9253}{EVENTBLOCK}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_object_base_af2c3a18da2d1cd1c0dd5fae168207f0c}{Object\+Base}} ()
+\item 
+\mbox{\hyperlink{class_object_base_aeb93ee6e41fec02fd76e4cdc484c0bf5}{$\sim$\+Object\+Base}} ()
+\item 
+virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}{Get\+Obj\+Type}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}{Init}} ()
+\item 
+virtual void \mbox{\hyperlink{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}{Process}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+virtual void \mbox{\hyperlink{class_object_base_ae10010b1cf932746225bf6121a00d80c}{Draw}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+virtual bool \mbox{\hyperlink{class_object_base_a118be2b7cbcbe0beeaaa0e289a794ae6}{Is\+Hit}} (\mbox{\hyperlink{class_object_base}{Object\+Base}} \&o)
+\item 
+virtual void \mbox{\hyperlink{class_object_base_a63d403d783b600faf05648968a3a569e}{Delete}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\item 
+int \mbox{\hyperlink{class_object_base_a5e033f27fac51762ce88af44e3c4b875}{GetX}} ()
+\item 
+int \mbox{\hyperlink{class_object_base_a6ed789625dce39346b19b9f2fa8ec2c5}{GetY}} ()
+\item 
+int \mbox{\hyperlink{class_object_base_a99bd3409af75937ec2386cd7cce0ae3f}{Get\+Hp}} ()
+\item 
+int \mbox{\hyperlink{class_object_base_a770fb2463b75ef2211a46aaf75c06ed4}{Get\+Gauge}} ()
+\item 
+int \mbox{\hyperlink{class_object_base_acea0e6cbfceff6471643ac4bfc6fb409}{Get\+Spd}} ()
+\item 
+int \mbox{\hyperlink{class_object_base_a7a2d0cd5d89dc6cfdf80313c0f6d0f85}{Get\+Sort}} ()
+\item 
+bool \mbox{\hyperlink{class_object_base_a652fb2320d4ab8d374305e1048113596}{Get\+Flip}} ()
+\item 
+\mbox{\hyperlink{struct_hit_box}{Hit\+Box}} \mbox{\hyperlink{class_object_base_a433f2c0fa815bd68c689f69b530004bf}{Get\+HB}} ()
+\item 
+\mbox{\hyperlink{class_vector2}{Vector2}} \mbox{\hyperlink{class_object_base_ac4ef99184ba1042c114549cf25db319d}{Get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_object_base_ace54029864cc4ecc371adc7f505b44f4}{SetX}} (int x)
+\item 
+void \mbox{\hyperlink{class_object_base_af8ead71bb262888e67a9cc8db4c90138}{SetY}} (int y)
+\item 
+void \mbox{\hyperlink{class_object_base_a3fec87e6397bcf0843918d9d9eaeacf1}{Set\+Gauge}} (int ig)
+\item 
+void \mbox{\hyperlink{class_object_base_a3f6dd901b757da5277a929fec2373b05}{Set\+Position}} (int x, int y)
+\item 
+void \mbox{\hyperlink{class_object_base_ac97c821a0a226b2c0acedde492a20e94}{Set\+Flip}} (bool isflip)
+\item 
+void \mbox{\hyperlink{class_object_base_acb82e29c05028c31f9a99df4bf194888}{Set\+BEventA}} (bool bevent\+Aflag)
+\item 
+void \mbox{\hyperlink{class_object_base_a9ef92f4841d1ca84284ba5943a49a662}{Set\+BEventB}} (bool bevent\+Bflag)
+\end{DoxyCompactItemize}
+\doxysubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_object_base_aec9048e8bd203ae836dd1cba15cf30ba}{\+\_\+grhandle}}
+\item 
+int \mbox{\hyperlink{class_object_base_ace806cf1ca773cf5dd629761ed7c525d}{\+\_\+sort}}
+\item 
+int \mbox{\hyperlink{class_object_base_a1388a5de11d4656f94bce0af19e9f215}{\+\_\+x}}
+\item 
+int \mbox{\hyperlink{class_object_base_a99856a69251ebab8d14a9e302372cc9e}{\+\_\+y}}
+\item 
+int \mbox{\hyperlink{class_object_base_a3101769b8c1881ce59778cdf0609a26a}{\+\_\+gx}}
+\item 
+int \mbox{\hyperlink{class_object_base_aecebcfeae14d982067d7949279cb0da2}{\+\_\+gy}}
+\item 
+int \mbox{\hyperlink{class_object_base_a11f49c56803fcd5a82aa7dababb75344}{\+\_\+w}}
+\item 
+int \mbox{\hyperlink{class_object_base_a4ff3b3990b777f167937eb19dee69a86}{\+\_\+h}}
+\item 
+int \mbox{\hyperlink{class_object_base_a39cdaa2a5e071dbdde04336d4e17181d}{\+\_\+life}}
+\item 
+int \mbox{\hyperlink{class_object_base_aa528ff9a8e7a3f18e6aba5b61e511817}{\+\_\+spd}}
+\item 
+int \mbox{\hyperlink{class_object_base_a3e7a5c1c591e3c72278043abe7fe6c78}{\+\_\+alpha}}
+\item 
+int \mbox{\hyperlink{class_object_base_a9b4804c1f8433988915f844d713f225c}{\+\_\+iai\+\_\+gauge}}
+\item 
+int \mbox{\hyperlink{class_object_base_a333150a33e0e5d46a18dd58f948face4}{\+\_\+hit\+\_\+x}}
+\item 
+int \mbox{\hyperlink{class_object_base_abff267ac1f27349fca0c9f5d7128d03b}{\+\_\+hit\+\_\+y}}
+\item 
+int \mbox{\hyperlink{class_object_base_ab7c98c6897aa8097e1e049ac0243ca92}{\+\_\+hit\+\_\+w}}
+\item 
+int \mbox{\hyperlink{class_object_base_a00845eae4cd69f88061092aad4d05dbd}{\+\_\+hit\+\_\+h}}
+\item 
+int \mbox{\hyperlink{class_object_base_a13f1f3e5e73266d06d1728e718f095aa}{\+\_\+dx}}
+\item 
+int \mbox{\hyperlink{class_object_base_a003aa06f993aa0068b47eee1bc6872a5}{\+\_\+dy}}
+\item 
+int \mbox{\hyperlink{class_object_base_a028b4bf4d8e6dd31760cb8e40ec20f6c}{\+\_\+debug\+\_\+alpha}}
+\item 
+int \mbox{\hyperlink{class_object_base_ad0b992a11aeb0d9f7a79187f07140f53}{\+\_\+cnt}}
+\item 
+int \mbox{\hyperlink{class_object_base_a464049906c4b3d1f6a606a6cde65a46d}{\+\_\+action\+\_\+cnt}}
+\item 
+int \mbox{\hyperlink{class_object_base_a24a231870065866261f959e35fcf7bd7}{\+\_\+before\+\_\+x}}
+\item 
+int \mbox{\hyperlink{class_object_base_a734959d9d4366ac853cfe0504b59a942}{\+\_\+before\+\_\+y}}
+\item 
+bool \mbox{\hyperlink{class_object_base_a79034de96111b84adfeab0e7022d32f9}{\+\_\+draw\+\_\+flag}}
+\item 
+bool \mbox{\hyperlink{class_object_base_a003b9dbac11bb378a12f63338e04cca7}{\+\_\+isflip}}
+\item 
+bool \mbox{\hyperlink{class_object_base_a88b99eac6e351bafffb592529a400fe0}{\+\_\+bossevent\+A\+\_\+flag}}
+\item 
+bool \mbox{\hyperlink{class_object_base_adafd6c1a534558b19281836d4c3c12e9}{\+\_\+bossevent\+B\+\_\+flag}}
+\item 
+bool \mbox{\hyperlink{class_object_base_a1804b84ab5dc9f6ce33dd4886429bb74}{\+\_\+debug\+\_\+fill}}
+\item 
+\mbox{\hyperlink{class_vector2}{Vector2}} \mbox{\hyperlink{class_object_base_af4b04784164d13170e30bd3860208c57}{\+\_\+position}}
+\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_object_base_a9da6daf13f38efab39997cb6b701d0df}{\+\_\+hit\+\_\+judge}}
+\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{class_object_base_a21845d5fcc346a00168d092326bc004e}{\+\_\+drg}}
+\item 
+std\+::tuple$<$ int, int, int $>$ \mbox{\hyperlink{class_object_base_af8582c0ba02eebb46ebe2831f40a9d78}{\+\_\+debug\+\_\+color}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{class_object_base_a937bb74e6db3da79c4de0a5edfde7d38}{\+\_\+grall}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \mbox{\hyperlink{class_object_base_a2345bec67df465bcff641c4078b28df9}{\+\_\+anime}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \mbox{\hyperlink{class_object_base_a234307acfcc65c0e8ba95ec4735b66ae}{\+\_\+se}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \mbox{\hyperlink{class_object_base_af1e32ff4be9799505c8fbce2005ed62b}{\+\_\+vpal}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{列挙型メンバ詳解}
+\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}} 
+\index{ObjectBase@{ObjectBase}!OBJECTTYPE@{OBJECTTYPE}}
+\index{OBJECTTYPE@{OBJECTTYPE}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{OBJECTTYPE}{OBJECTTYPE}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{Object\+Base\+::\+OBJECTTYPE}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TITLELOGO@{TITLELOGO}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!TITLELOGO@{TITLELOGO}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da106725b1f0c1489cbef9cf915400e000}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da106725b1f0c1489cbef9cf915400e000}} 
+TITLELOGO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMESTART@{GAMESTART}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!GAMESTART@{GAMESTART}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da16295b8054776427707513af20a92810}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da16295b8054776427707513af20a92810}} 
+GAMESTART&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPLAIN@{EXPLAIN}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!EXPLAIN@{EXPLAIN}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daff149905e61532412a2e7d33eb75a9c0}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daff149905e61532412a2e7d33eb75a9c0}} 
+EXPLAIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEEND@{GAMEEND}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!GAMEEND@{GAMEEND}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5e55f05f0d128aa2249d00a90a4059f4}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5e55f05f0d128aa2249d00a90a4059f4}} 
+GAMEEND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CREDIT@{CREDIT}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!CREDIT@{CREDIT}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dae3968aae02e78599276f2759bc8f268b}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dae3968aae02e78599276f2759bc8f268b}} 
+CREDIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CURSOR@{CURSOR}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!CURSOR@{CURSOR}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab463a0d9beb14bdcecd3a50d70655963}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab463a0d9beb14bdcecd3a50d70655963}} 
+CURSOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYER@{PLAYER}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!PLAYER@{PLAYER}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da07c80e2a355d91402a00d82b1fa13855}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da07c80e2a355d91402a00d82b1fa13855}} 
+PLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENEMY@{ENEMY}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!ENEMY@{ENEMY}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da92b09d1635332c90ae8508618a174244}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da92b09d1635332c90ae8508618a174244}} 
+ENEMY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOSS@{BOSS}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!BOSS@{BOSS}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daf0523bf35faf77235783d0f3e43762d2}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daf0523bf35faf77235783d0f3e43762d2}} 
+BOSS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UI@{UI}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!UI@{UI}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da71ff71526d15db86eb50fcac245d183b}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da71ff71526d15db86eb50fcac245d183b}} 
+UI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PARTICLE@{PARTICLE}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!PARTICLE@{PARTICLE}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5818992261344f3f6c810ea0dfc13c24}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5818992261344f3f6c810ea0dfc13c24}} 
+PARTICLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EFECT@{EFECT}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!EFECT@{EFECT}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da75687d401632ba45468a3a29a7b48f26}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da75687d401632ba45468a3a29a7b48f26}} 
+EFECT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIDDLEATTACK@{MIDDLEATTACK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!MIDDLEATTACK@{MIDDLEATTACK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dadea93f966ea987f9762d62bb4d070f97}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dadea93f966ea987f9762d62bb4d070f97}} 
+MIDDLEATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOWATTACK@{LOWATTACK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!LOWATTACK@{LOWATTACK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5bec0c6ed43567e382172c9063a093e8}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da5bec0c6ed43567e382172c9063a093e8}} 
+LOWATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KICK@{KICK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!KICK@{KICK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da959a795d5524bd9054026703a33afb87}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da959a795d5524bd9054026703a33afb87}} 
+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IAI@{IAI}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!IAI@{IAI}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da23ef4c71604cee85bc7f21d465940a58}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da23ef4c71604cee85bc7f21d465940a58}} 
+IAI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPECIAL@{SPECIAL}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!SPECIAL@{SPECIAL}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daa72e4a34f10af98a9814d865e717399f}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daa72e4a34f10af98a9814d865e717399f}} 
+SPECIAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRIVATECOLLISION@{PRIVATECOLLISION}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!PRIVATECOLLISION@{PRIVATECOLLISION}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da8ae1346d253d1ed456cd0cca8c303419}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da8ae1346d253d1ed456cd0cca8c303419}} 
+PRIVATECOLLISION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUSHIATTACK@{BUSHIATTACK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!BUSHIATTACK@{BUSHIATTACK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafc6727859eff7b4b65345ff50fd9f4f6}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafc6727859eff7b4b65345ff50fd9f4f6}} 
+BUSHIATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NINJAATTACK@{NINJAATTACK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!NINJAATTACK@{NINJAATTACK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daccf537447ef84e1dc23f11bf9ba6e0ad}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daccf537447ef84e1dc23f11bf9ba6e0ad}} 
+NINJAATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KUNAI@{KUNAI}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!KUNAI@{KUNAI}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daa3103ea3bd89e0d3c122757f66be4349}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daa3103ea3bd89e0d3c122757f66be4349}} 
+KUNAI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHIELDERATTACK@{SHIELDERATTACK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!SHIELDERATTACK@{SHIELDERATTACK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab340de5bed383efd7d17c4c221163a3c}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab340de5bed383efd7d17c4c221163a3c}} 
+SHIELDERATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHIELD@{SHIELD}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!SHIELD@{SHIELD}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafa210a33410373b3274f91cd1f289fb1}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafa210a33410373b3274f91cd1f289fb1}} 
+SHIELD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LANCERATTACK@{LANCERATTACK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!LANCERATTACK@{LANCERATTACK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dae74832172021de8bbeb512801b2f218b}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dae74832172021de8bbeb512801b2f218b}} 
+LANCERATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUSYOATTACK@{BUSYOATTACK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!BUSYOATTACK@{BUSYOATTACK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da8bf389d4be40eb4b20d8b830e13653a9}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da8bf389d4be40eb4b20d8b830e13653a9}} 
+BUSYOATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ZYOUNINATTACK@{ZYOUNINATTACK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!ZYOUNINATTACK@{ZYOUNINATTACK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da73c6af65e581a519a8a583b483ca0a0c}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da73c6af65e581a519a8a583b483ca0a0c}} 
+ZYOUNINATTACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STAIR@{STAIR}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!STAIR@{STAIR}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da481762d6f81434b1fff1e8b4d50f2bb5}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da481762d6f81434b1fff1e8b4d50f2bb5}} 
+STAIR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOSSSTAIR@{BOSSSTAIR}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!BOSSSTAIR@{BOSSSTAIR}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dabc4e6c8bceddba26cff15e6ce17f4a40}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dabc4e6c8bceddba26cff15e6ce17f4a40}} 
+BOSSSTAIR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RESTPOINT@{RESTPOINT}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!RESTPOINT@{RESTPOINT}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daeee4ab84d9de5643f5c85abb53b89574}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daeee4ab84d9de5643f5c85abb53b89574}} 
+RESTPOINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POISONNINJA@{POISONNINJA}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!POISONNINJA@{POISONNINJA}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daea922a34ac218b8169fc8b99caea75cd}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daea922a34ac218b8169fc8b99caea75cd}} 
+POISONNINJA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POISON@{POISON}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!POISON@{POISON}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2a542f30a3c393aff9183c7b72f2b034}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2a542f30a3c393aff9183c7b72f2b034}} 
+POISON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANDON@{ANDON}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!ANDON@{ANDON}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab6e4c516d92cf0471c9b57cfff228d4a}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab6e4c516d92cf0471c9b57cfff228d4a}} 
+ANDON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAME@{FLAME}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!FLAME@{FLAME}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab3b607e7312f1ab56e1882fc97b609ed}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dab3b607e7312f1ab56e1882fc97b609ed}} 
+FLAME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MUGENANDON@{MUGENANDON}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!MUGENANDON@{MUGENANDON}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da6e9f4319de3ebfeeba69db6afede067c}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da6e9f4319de3ebfeeba69db6afede067c}} 
+MUGENANDON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MUGENFLAME@{MUGENFLAME}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!MUGENFLAME@{MUGENFLAME}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2f18df05c44f005158ae791c8dbfc634}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2f18df05c44f005158ae791c8dbfc634}} 
+MUGENFLAME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TUTORIALBOARD@{TUTORIALBOARD}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!TUTORIALBOARD@{TUTORIALBOARD}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafecd03058c090502f290b4f57aefc875}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dafecd03058c090502f290b4f57aefc875}} 
+TUTORIALBOARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECOVERYBLOCK@{RECOVERYBLOCK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!RECOVERYBLOCK@{RECOVERYBLOCK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dad6570f2d248f76547140f52141ed38b2}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dad6570f2d248f76547140f52141ed38b2}} 
+RECOVERYBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CPOINTBLOCK@{CPOINTBLOCK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!CPOINTBLOCK@{CPOINTBLOCK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dac6719a6de45631bfdda6d67c1f636f45}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dac6719a6de45631bfdda6d67c1f636f45}} 
+CPOINTBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOSSEVENTBLOCK@{BOSSEVENTBLOCK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!BOSSEVENTBLOCK@{BOSSEVENTBLOCK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dabdfefd44060b3defd7ed6f4317b1ba8a}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1dabdfefd44060b3defd7ed6f4317b1ba8a}} 
+BOSSEVENTBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLAMEBLOCK@{FLAMEBLOCK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!FLAMEBLOCK@{FLAMEBLOCK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da580cbd1f32b3329626ed8f1dea8e1be0}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da580cbd1f32b3329626ed8f1dea8e1be0}} 
+FLAMEBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPAWNBLOCK@{SPAWNBLOCK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!SPAWNBLOCK@{SPAWNBLOCK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2696506c1b5127621a5f66e289a25517}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da2696506c1b5127621a5f66e289a25517}} 
+SPAWNBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EVENTBLOCK@{EVENTBLOCK}!ObjectBase@{ObjectBase}}\index{ObjectBase@{ObjectBase}!EVENTBLOCK@{EVENTBLOCK}}}\mbox{\Hypertarget{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daef44fa8c69ac3b077ec246160a9c9253}\label{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1daef44fa8c69ac3b077ec246160a9c9253}} 
+EVENTBLOCK&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_object_base_af2c3a18da2d1cd1c0dd5fae168207f0c}\label{class_object_base_af2c3a18da2d1cd1c0dd5fae168207f0c}} 
+\index{ObjectBase@{ObjectBase}!ObjectBase@{ObjectBase}}
+\index{ObjectBase@{ObjectBase}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{ObjectBase()}{ObjectBase()}}
+{\footnotesize\ttfamily Object\+Base\+::\+Object\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_object_base_aeb93ee6e41fec02fd76e4cdc484c0bf5}\label{class_object_base_aeb93ee6e41fec02fd76e4cdc484c0bf5}} 
+\index{ObjectBase@{ObjectBase}!````~ObjectBase@{$\sim$ObjectBase}}
+\index{````~ObjectBase@{$\sim$ObjectBase}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{$\sim$ObjectBase()}{~ObjectBase()}}
+{\footnotesize\ttfamily Object\+Base\+::$\sim$\+Object\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_object_base_a63d403d783b600faf05648968a3a569e}\label{class_object_base_a63d403d783b600faf05648968a3a569e}} 
+\index{ObjectBase@{ObjectBase}!Delete@{Delete}}
+\index{Delete@{Delete}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily virtual void Object\+Base\+::\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_efect_base_a39031495becdd32927fe774597af1a5a}{Efect\+Base}}, \mbox{\hyperlink{class_enemy_base_afa0d1e9f4705a530990e1c0bb32adf49}{Enemy\+Base}}, \mbox{\hyperlink{class_andon_ac26da1aca73e3f1013f38fba8bff9b6b}{Andon}}, \mbox{\hyperlink{class_boss_blood_ab8184cd1cb5c1d3ee558016f1b49b099}{Boss\+Blood}}, \mbox{\hyperlink{class_boss_event_a_a6fcb1055a49f0eedb451f07d47778fb8}{Boss\+EventA}}, \mbox{\hyperlink{class_boss_event_b_a7e68c0ee92506dfcb17f28dafac6794c}{Boss\+EventB}}, \mbox{\hyperlink{class_bushi_a03c976793fdaa07319ceb9708aef59f6}{Bushi}}, \mbox{\hyperlink{class_bushi_attack_collision_a1e0d2b9d4c385b4a40b67c6ad6447c85}{Bushi\+Attack\+Collision}}, \mbox{\hyperlink{class_busyo_a0e1747e6e18623274ba03f1cf502394b}{Busyo}}, \mbox{\hyperlink{class_busyo_attack_collision_a03ba842b34667f2a0c0ddd652b579c12}{Busyo\+Attack\+Collision}}, \mbox{\hyperlink{class_c_point_block_a9b93a05f7d2b5af32926429bb63d51d4}{CPoint\+Block}}, \mbox{\hyperlink{class_flame_a3d81e0de514581a169a3ce74ce7d51e8}{Flame}}, \mbox{\hyperlink{class_flame_block_af896de96384e788bf147abcc87c3e715}{Flame\+Block}}, \mbox{\hyperlink{class_ingame_text_block_aed1fa7e7de17f95322181b6277567f6f}{Ingame\+Text\+Block}}, \mbox{\hyperlink{class_kunai_a72e55d3adb0800590b223ea83227de7e}{Kunai}}, \mbox{\hyperlink{class_lancer_af26de61ef9e683cdbe351ccea74d8d05}{Lancer}}, \mbox{\hyperlink{class_lancer_attack_collision_a4d4958019e4c22d129f77f377271ceb6}{Lancer\+Attack\+Collision}}, \mbox{\hyperlink{class_low_blood_a0d56e41c05a4c96da21e9dfa238bb6cc}{Low\+Blood}}, \mbox{\hyperlink{class_middle_blood_a3c2666337f0b174f5bd2120881fcaa38}{Middle\+Blood}}, \mbox{\hyperlink{class_mugen_andon_a2165dadc538633dfc8462d18eae51f71}{Mugen\+Andon}}, \mbox{\hyperlink{class_mugen_flame_aea7171644022076b47b5c177ba808830}{Mugen\+Flame}}, \mbox{\hyperlink{class_ninja_a02a4e8f561e703c8b7423d9f3ebfd61b}{Ninja}}, \mbox{\hyperlink{class_ninja_attack_collision_a49373bc8beb21a9cb39f238e4be4d1d7}{Ninja\+Attack\+Collision}}, \mbox{\hyperlink{class_player_hp_a34a610363300c55ad32b2ad32951295c}{Player\+Hp}}, \mbox{\hyperlink{class_middle_attack_collision_ac194602eadb9032432c7df3db12d186f}{Middle\+Attack\+Collision}}, \mbox{\hyperlink{class_low_attack_collision_aa4c5124d61f2d2c91dde78edbced85e9}{Low\+Attack\+Collision}}, \mbox{\hyperlink{class_kick_collision_a617df8d64307596d85c5c0c7d41d345f}{Kick\+Collision}}, \mbox{\hyperlink{class_iai_collision_a3e74abc39ce26c5e93bd6decd90ccbf2}{Iai\+Collision}}, \mbox{\hyperlink{class_special_collision_aecd546612235afab19ee27b006259ee7}{Special\+Collision}}, \mbox{\hyperlink{class_poison_reserve_a1a60995943a6201d07c514e498e29458}{Poison\+Reserve}}, \mbox{\hyperlink{class_poison_fall_acdd2529b9eb32942cd0975ab4c89232c}{Poison\+Fall}}, \mbox{\hyperlink{class_poison_ninja_a30822c1d59a436c6c52e30c747ead07d}{Poison\+Ninja}}, \mbox{\hyperlink{class_recovery_block_abd6930642d61580480fd3ccd8c129b21}{Recovery\+Block}}, \mbox{\hyperlink{class_shielder_a40dcabced7c6df4100fcef038431d277}{Shielder}}, \mbox{\hyperlink{class_shielder_attack_collision_a83d92b8b117c92881747daaf51995689}{Shielder\+Attack\+Collision}}, \mbox{\hyperlink{class_spawn_a570bb32190113a8faad02328d144c8a0}{Spawn}}, \mbox{\hyperlink{class_spawn_block_base_a1c1341776c238dc50715db747bfaad6e}{Spawn\+Block\+Base}}, \mbox{\hyperlink{class_tutorial_board_a82a4c7e056cf4789f3f684bc8ca8cdbc}{Tutorial\+Board}}, \mbox{\hyperlink{class_zyounin_a1dc726867d7a788825ba61187159e82c}{Zyounin}}, \mbox{\hyperlink{class_zyounin_attack_collision_a4f7bfd8351f479c7aaafec503552b455}{Zyounin\+Attack\+Collision}} (計40項目)で再実装されています。
+
+\mbox{\Hypertarget{class_object_base_ae10010b1cf932746225bf6121a00d80c}\label{class_object_base_ae10010b1cf932746225bf6121a00d80c}} 
+\index{ObjectBase@{ObjectBase}!Draw@{Draw}}
+\index{Draw@{Draw}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_efect_base_ae2cb3b7e665b7298ac663366f74dbb44}{Efect\+Base}}, \mbox{\hyperlink{class_enemy_base_a3c82fb040b7faf93571d2afa31dd07a5}{Enemy\+Base}}, \mbox{\hyperlink{class_particle_base_a6b90ad360fb83299596c08897f871eb8}{Particle\+Base}}, \mbox{\hyperlink{class_andon_a48116d27c1a57dd27ead4911812a671c}{Andon}}, \mbox{\hyperlink{class_boss_a0a9759522848c29c7c67f1ee67beb666}{Boss}}, \mbox{\hyperlink{class_boss_blood_aa2fda462c6868f684aebff9796062b7c}{Boss\+Blood}}, \mbox{\hyperlink{class_boss_event_a_a2476fad01b3276dc08ce9c62a3a395eb}{Boss\+EventA}}, \mbox{\hyperlink{class_boss_event_b_a1b3a363f10e05cc9a5ce4a5454326fe5}{Boss\+EventB}}, \mbox{\hyperlink{class_boss_stair_aab4f1b5751a67d12d8984d1f292ef569}{Boss\+Stair}}, \mbox{\hyperlink{class_bushi_accbf5766b0fe9abb2e862c4890db5ec7}{Bushi}}, \mbox{\hyperlink{class_bushi_attack_collision_a4e6f4b91932c24c6774cecbc0150b267}{Bushi\+Attack\+Collision}}, \mbox{\hyperlink{class_busyo_abe5a4a3faa2465de473617b43c9aaecc}{Busyo}}, \mbox{\hyperlink{class_busyo_attack_collision_a0015884a8fbdbaa86510a35f29706cc7}{Busyo\+Attack\+Collision}}, \mbox{\hyperlink{class_c_point_block_a238b72a10bccb735051632e5cd91962e}{CPoint\+Block}}, \mbox{\hyperlink{class_cursor_ac2bfc7e25d5f00a12556c45c6955daac}{Cursor}}, \mbox{\hyperlink{class_kunai_reserve_light_ad23750e46f6df15955679c9f9a65b7ef}{Kunai\+Reserve\+Light}}, \mbox{\hyperlink{class_lance_reserve_light_a50279cd6d34dbbeb1b9761e4be71c118}{Lance\+Reserve\+Light}}, \mbox{\hyperlink{class_flame_a01fe44a2ae935c0c42dd25f9f914f615}{Flame}}, \mbox{\hyperlink{class_flame_block_a7471deb450ec369010704c1e317278c7}{Flame\+Block}}, \mbox{\hyperlink{class_flame_perform_a5c3c523cdc8c3dde951139ec626aea6e}{Flame\+Perform}}, \mbox{\hyperlink{class_iai_gauge_a51ceab6afabc0a83ef5ce638cf482644}{Iai\+Gauge}}, \mbox{\hyperlink{class_ingame_text_block_abe07100b5f67f4e09d8272742640a4b5}{Ingame\+Text\+Block}}, \mbox{\hyperlink{class_kunai_a6048a5e3b0154cc79d55a503cb5a6bae}{Kunai}}, \mbox{\hyperlink{class_lancer_a98a85537fecc64cc8e80c0f8c53c6a67}{Lancer}}, \mbox{\hyperlink{class_lancer_attack_collision_a211d71facf58a12717f2f014fc8ea49a}{Lancer\+Attack\+Collision}}, \mbox{\hyperlink{class_low_blood_a7341701a14ad02f284f23b86f9697fe7}{Low\+Blood}}, \mbox{\hyperlink{class_middle_blood_a695ca23087293d6077242f6c72005e2c}{Middle\+Blood}}, \mbox{\hyperlink{class_mugen_andon_a5ed3a79bd08dc34358f06868883bafaa}{Mugen\+Andon}}, \mbox{\hyperlink{class_mugen_flame_ac944222dbf2e3eb15974d2a4630056dd}{Mugen\+Flame}}, \mbox{\hyperlink{class_ninja_abad62c392375345ed3f98f05c875ed92}{Ninja}}, \mbox{\hyperlink{class_ninja_attack_collision_afe27e9d8cce54e9ff156d66937f9cb07}{Ninja\+Attack\+Collision}}, \mbox{\hyperlink{class_cursor_particle1_a51214c7937d18b6a3ad9171aa00704b3}{Cursor\+Particle1}}, \mbox{\hyperlink{class_player_a2a8f359ec9301cc5f4323203731be38d}{Player}}, \mbox{\hyperlink{class_player_hp_a56121eaaf68748179cb3948b3aaa5f41}{Player\+Hp}}, \mbox{\hyperlink{class_middle_attack_collision_aab36487d979505434aa55b5bdf907cf6}{Middle\+Attack\+Collision}}, \mbox{\hyperlink{class_low_attack_collision_a9ddda1fe57cea9c26d07a81ea258a6b5}{Low\+Attack\+Collision}}, \mbox{\hyperlink{class_kick_collision_a24e6f4b3589bacba4744b942504a3b21}{Kick\+Collision}}, \mbox{\hyperlink{class_iai_collision_a4f5cc3024403d7ac0a86f776fb8858f1}{Iai\+Collision}}, \mbox{\hyperlink{class_special_collision_a1e35ceebf2881211c376b8a1f400dad7}{Special\+Collision}}, \mbox{\hyperlink{class_middle_attack_particle1_af28250954c86ba635b922ce631d937b5}{Middle\+Attack\+Particle1}}, \mbox{\hyperlink{class_middle_attack_particle2_a2947b8dbca95e1a0eaed6fdae72f3d7b}{Middle\+Attack\+Particle2}}, \mbox{\hyperlink{class_low_attack_particle1_ac9c708e21e0f7cd3c3e8ee627af81cbd}{Low\+Attack\+Particle1}}, \mbox{\hyperlink{class_low_attack_particle2_a7fd323187eb6a96483491f4a2673d9bf}{Low\+Attack\+Particle2}}, \mbox{\hyperlink{class_iai_particle1_a8e8c9a752b5be351a64dc93e4a53f532}{Iai\+Particle1}}, \mbox{\hyperlink{class_iai_particle2_a10de94a4aab59f7ee4417436b706fbba}{Iai\+Particle2}}, \mbox{\hyperlink{class_iai_particle3_a69bdf116e4b2f676b4e57bc6dc94472e}{Iai\+Particle3}}, \mbox{\hyperlink{class_iai_gauge_particle_a240d9305daa6ac6cbb7609d037d90613}{Iai\+Gauge\+Particle}}, \mbox{\hyperlink{class_sway_particle_a08259163992d84e06c52cf4394280d49}{Sway\+Particle}}, \mbox{\hyperlink{class_gage_max_afe2e45e474be9afad362278b5aff9c6d}{Gage\+Max}}, \mbox{\hyperlink{class_recovery_particle_a2783a1755674a8929cd70b9600c2698d}{Recovery\+Particle}}, \mbox{\hyperlink{class_poison_reserve_a01f4447029c7d0c0a6c3abaa7e9ddc7f}{Poison\+Reserve}}, \mbox{\hyperlink{class_poison_fall_ad83a6a9590d5d2b99764e551dd04eae0}{Poison\+Fall}}, \mbox{\hyperlink{class_poison_ninja_ade77f45948c5d075968de7d70ad186c7}{Poison\+Ninja}}, \mbox{\hyperlink{class_recovery_block_a58f2fc2657b38d2866e6d62cacb344b1}{Recovery\+Block}}, \mbox{\hyperlink{class_rest_point_a57ed1663bfc25f31c440c50092de161c}{Rest\+Point}}, \mbox{\hyperlink{class_shield_a16621ba462c124238a6eb581171fb19d}{Shield}}, \mbox{\hyperlink{class_shielder_a4d80922c283b0059dd5fa2dfdcf00d30}{Shielder}}, \mbox{\hyperlink{class_shielder_attack_collision_a9496507ea12c6837616ab0dee8e5f592}{Shielder\+Attack\+Collision}}, \mbox{\hyperlink{class_spawn_a1b987f00183652c03ddc01bab5817428}{Spawn}}, \mbox{\hyperlink{class_spawn_block_base_a299f63f6c8942eae7019cfbd6a5f2987}{Spawn\+Block\+Base}}, \mbox{\hyperlink{class_stair_a7b6de118150aa2472c75c26bd7c07506}{Stair}}, \mbox{\hyperlink{class_title_cursor_abac0092a14122ff89691600a20a52fee}{Title\+Cursor}}, \mbox{\hyperlink{class_title_logo_a3ff3e811a6480f858b4034bf3c502118}{Title\+Logo}}, \mbox{\hyperlink{class_game_start_a5c51584dc1f05672e4266b1af7b6bcd6}{Game\+Start}}, \mbox{\hyperlink{class_explain_a5647da88c2e6b5328cceac88c29860b8}{Explain}}, \mbox{\hyperlink{class_game_end_a14566fb276589f03f310cdf228fc96bc}{Game\+End}}, \mbox{\hyperlink{class_credit_a2d57133e4fd4779e9e95c34eb3e8b115}{Credit}}, \mbox{\hyperlink{class_tutorial_board_acb2fe8c28dcab857d2382aacadeae7d8}{Tutorial\+Board}}, \mbox{\hyperlink{class_zyounin_af0b7bea988a123ab33309e840a330a73}{Zyounin}}, \mbox{\hyperlink{class_zyounin_attack_collision_ac2746d5925ac90aaf63e40fbfc85571f}{Zyounin\+Attack\+Collision}} (計70項目)で再実装されています。
+
+\mbox{\Hypertarget{class_object_base_a652fb2320d4ab8d374305e1048113596}\label{class_object_base_a652fb2320d4ab8d374305e1048113596}} 
+\index{ObjectBase@{ObjectBase}!GetFlip@{GetFlip}}
+\index{GetFlip@{GetFlip}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetFlip()}{GetFlip()}}
+{\footnotesize\ttfamily bool Object\+Base\+::\+Get\+Flip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a770fb2463b75ef2211a46aaf75c06ed4}\label{class_object_base_a770fb2463b75ef2211a46aaf75c06ed4}} 
+\index{ObjectBase@{ObjectBase}!GetGauge@{GetGauge}}
+\index{GetGauge@{GetGauge}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetGauge()}{GetGauge()}}
+{\footnotesize\ttfamily int Object\+Base\+::\+Get\+Gauge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a433f2c0fa815bd68c689f69b530004bf}\label{class_object_base_a433f2c0fa815bd68c689f69b530004bf}} 
+\index{ObjectBase@{ObjectBase}!GetHB@{GetHB}}
+\index{GetHB@{GetHB}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetHB()}{GetHB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_hit_box}{Hit\+Box}} Object\+Base\+::\+Get\+HB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a99bd3409af75937ec2386cd7cce0ae3f}\label{class_object_base_a99bd3409af75937ec2386cd7cce0ae3f}} 
+\index{ObjectBase@{ObjectBase}!GetHp@{GetHp}}
+\index{GetHp@{GetHp}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetHp()}{GetHp()}}
+{\footnotesize\ttfamily int Object\+Base\+::\+Get\+Hp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}\label{class_object_base_ad0394197f1d03a7c630ef83b40ab0ed2}} 
+\index{ObjectBase@{ObjectBase}!GetObjType@{GetObjType}}
+\index{GetObjType@{GetObjType}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetObjType()}{GetObjType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} Object\+Base\+::\+Get\+Obj\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\mbox{\hyperlink{class_andon_a9874bf02d76f5cd606ab5c769556c56b}{Andon}}, \mbox{\hyperlink{class_boss_a17559223dbb00ee40c7c3c500eed044f}{Boss}}, \mbox{\hyperlink{class_boss_event_a_ae02dd19098aa17b8d3d0f145fbdbc5b7}{Boss\+EventA}}, \mbox{\hyperlink{class_boss_event_b_a7b2678b149087823590816d770f88782}{Boss\+EventB}}, \mbox{\hyperlink{class_boss_stair_a85645b63e6bb202e2cd019c0d781c017}{Boss\+Stair}}, \mbox{\hyperlink{class_bushi_attack_collision_a149ba995daf7faf47b55dda8ee8fd373}{Bushi\+Attack\+Collision}}, \mbox{\hyperlink{class_busyo_attack_collision_a610da12e5f7c230b7a1570baeb0ce0c1}{Busyo\+Attack\+Collision}}, \mbox{\hyperlink{class_c_point_block_a1b29ca8ad6b083de75e3e025db1ba90b}{CPoint\+Block}}, \mbox{\hyperlink{class_cursor_ac224bdc5b8678a525ecbc90dbdef4fb8}{Cursor}}, \mbox{\hyperlink{class_efect_base_ab05f8fd9cd3c211c6b21f9abf86220c3}{Efect\+Base}}, \mbox{\hyperlink{class_enemy_base_a17723c2198eb28b17f5abf5d42f476d3}{Enemy\+Base}}, \mbox{\hyperlink{class_flame_a7d4aa1cf6c24c5098b69f91afb056ad0}{Flame}}, \mbox{\hyperlink{class_flame_block_afc158df93d873e303941d9fc7c02b92e}{Flame\+Block}}, \mbox{\hyperlink{class_iai_gauge_a2322170f0dc828d41b825864418a0862}{Iai\+Gauge}}, \mbox{\hyperlink{class_ingame_text_block_a23a5fbf6fa06e9a0654b305cbe7fd918}{Ingame\+Text\+Block}}, \mbox{\hyperlink{class_kunai_a94f4125281fafefd5c3e5e77edc44586}{Kunai}}, \mbox{\hyperlink{class_lancer_attack_collision_ac351cda12b5ec675889ea940dbb46e71}{Lancer\+Attack\+Collision}}, \mbox{\hyperlink{class_mugen_andon_aa818d578212b6a28a80459dbdd3c22ac}{Mugen\+Andon}}, \mbox{\hyperlink{class_mugen_flame_aadbae8fd2299d235582f39d856cad691}{Mugen\+Flame}}, \mbox{\hyperlink{class_ninja_attack_collision_ad704fac79ae7e9e5ed2239d4d2944c10}{Ninja\+Attack\+Collision}}, \mbox{\hyperlink{class_particle_base_a56b7ce0bab65bf610779f31aba926327}{Particle\+Base}}, \mbox{\hyperlink{class_player_a29078d141cbffd0c35555ed299baf88b}{Player}}, \mbox{\hyperlink{class_player_hp_a9c7192d26aabf2fd0c10b31be370f626}{Player\+Hp}}, \mbox{\hyperlink{class_middle_attack_collision_a8c34bbde6cc643f68b32becf15c9f8fb}{Middle\+Attack\+Collision}}, \mbox{\hyperlink{class_low_attack_collision_a227e57a7593db2945bd99a0df4ad7cdb}{Low\+Attack\+Collision}}, \mbox{\hyperlink{class_kick_collision_a7fe13e1990d6e0ab4cf2e62f44488239}{Kick\+Collision}}, \mbox{\hyperlink{class_iai_collision_a4c500ae253d0c9951acf4f22e690969c}{Iai\+Collision}}, \mbox{\hyperlink{class_special_collision_a55458e6a19858aadd867e075a959c683}{Special\+Collision}}, \mbox{\hyperlink{class_poison_reserve_afe2208a6689f7ecdc6601d4b7c4751c4}{Poison\+Reserve}}, \mbox{\hyperlink{class_poison_fall_a51b1a44c42730bffc96012350210d6d7}{Poison\+Fall}}, \mbox{\hyperlink{class_poison_ninja_a89f137295d5e423d85b47e2715761415}{Poison\+Ninja}}, \mbox{\hyperlink{class_private_collision_a7d4343f428c57f7d61802b2b438a9275}{Private\+Collision}}, \mbox{\hyperlink{class_recovery_block_a3b9bba28bdcdfd832154b87114b605b8}{Recovery\+Block}}, \mbox{\hyperlink{class_rest_point_aa62977454932c7593ada65b3f830caa3}{Rest\+Point}}, \mbox{\hyperlink{class_shield_abad2331e3bc08c3102deffcf72b357f7}{Shield}}, \mbox{\hyperlink{class_shielder_attack_collision_aaf5fa3534d5b0b36a2b725005c9ae2d7}{Shielder\+Attack\+Collision}}, \mbox{\hyperlink{class_spawn_aef94804b7872f41f10ddab11de08d5d6}{Spawn}}, \mbox{\hyperlink{class_spawn_block_base_a9709e8865a4bfda5d6af135d4467c4be}{Spawn\+Block\+Base}}, \mbox{\hyperlink{class_stair_a0dedb4aee5993afa0c5ca9b7298388a8}{Stair}}, \mbox{\hyperlink{class_title_cursor_af69e529d1f1ea29090c49053e43d4f13}{Title\+Cursor}}, \mbox{\hyperlink{class_title_logo_a6bb929471422f069816c6e3597d0fb6b}{Title\+Logo}}, \mbox{\hyperlink{class_game_start_a65b678ac7577c482ffa37bef673f97e3}{Game\+Start}}, \mbox{\hyperlink{class_explain_a3f6c502f2fe92e1987cb7d658df9d19b}{Explain}}, \mbox{\hyperlink{class_game_end_a8ed1ceccfb7b9cc221bba68ff5c86c7b}{Game\+End}}, \mbox{\hyperlink{class_credit_af6bdde8301d4299a6160f3a75c21d9dc}{Credit}}, \mbox{\hyperlink{class_tutorial_board_aca2edc042f58be19d91a500cfce641c4}{Tutorial\+Board}}, \mbox{\hyperlink{class_zyounin_attack_collision_a41d226763df8891e01c87733d45f6e45}{Zyounin\+Attack\+Collision}} (計47項目)で実装されています。
+
+\mbox{\Hypertarget{class_object_base_ac4ef99184ba1042c114549cf25db319d}\label{class_object_base_ac4ef99184ba1042c114549cf25db319d}} 
+\index{ObjectBase@{ObjectBase}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2}{Vector2}} Object\+Base\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a7a2d0cd5d89dc6cfdf80313c0f6d0f85}\label{class_object_base_a7a2d0cd5d89dc6cfdf80313c0f6d0f85}} 
+\index{ObjectBase@{ObjectBase}!GetSort@{GetSort}}
+\index{GetSort@{GetSort}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetSort()}{GetSort()}}
+{\footnotesize\ttfamily int Object\+Base\+::\+Get\+Sort (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_acea0e6cbfceff6471643ac4bfc6fb409}\label{class_object_base_acea0e6cbfceff6471643ac4bfc6fb409}} 
+\index{ObjectBase@{ObjectBase}!GetSpd@{GetSpd}}
+\index{GetSpd@{GetSpd}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetSpd()}{GetSpd()}}
+{\footnotesize\ttfamily int Object\+Base\+::\+Get\+Spd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a5e033f27fac51762ce88af44e3c4b875}\label{class_object_base_a5e033f27fac51762ce88af44e3c4b875}} 
+\index{ObjectBase@{ObjectBase}!GetX@{GetX}}
+\index{GetX@{GetX}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily int Object\+Base\+::\+GetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a6ed789625dce39346b19b9f2fa8ec2c5}\label{class_object_base_a6ed789625dce39346b19b9f2fa8ec2c5}} 
+\index{ObjectBase@{ObjectBase}!GetY@{GetY}}
+\index{GetY@{GetY}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily int Object\+Base\+::\+GetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}\label{class_object_base_a340d29ae7f6d5cebaa712cfc75367b1e}} 
+\index{ObjectBase@{ObjectBase}!Init@{Init}}
+\index{Init@{Init}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_efect_base_a08246d7d6c4a1c4f189f122b87c0910e}{Efect\+Base}}, \mbox{\hyperlink{class_enemy_base_af5c90d8abe7e5677336295d1398578b9}{Enemy\+Base}}, \mbox{\hyperlink{class_particle_base_af67b652ae2f7cb56ed9548117cc7133f}{Particle\+Base}}, \mbox{\hyperlink{class_poison_ninja_a0653c9b3f3c1630c626ecd46b49ff766}{Poison\+Ninja}}, \mbox{\hyperlink{class_andon_a5b1ae71c8aa77beefcbc0bab814d8884}{Andon}}, \mbox{\hyperlink{class_boss_a65ed60afa32be71ddc57690128fd5346}{Boss}}, \mbox{\hyperlink{class_boss_blood_a2142d164ed3456abc42722124ae02bfc}{Boss\+Blood}}, \mbox{\hyperlink{class_boss_event_a_a8cb215e29a16177f19d96e006f224ca9}{Boss\+EventA}}, \mbox{\hyperlink{class_boss_event_b_a9f32b5d49ebb430841d35addb926b4b5}{Boss\+EventB}}, \mbox{\hyperlink{class_boss_stair_a8a352a320b6046b94cc6678f3d57d825}{Boss\+Stair}}, \mbox{\hyperlink{class_bushi_ae47819552a3322bcd0775a14c8b4cdf9}{Bushi}}, \mbox{\hyperlink{class_bushi_attack_collision_a1d3f15bb32ec72ddf6211a5b478d3f76}{Bushi\+Attack\+Collision}}, \mbox{\hyperlink{class_busyo_ac61c053d0a10a2dcbe22f68876b3d2f7}{Busyo}}, \mbox{\hyperlink{class_busyo_attack_collision_a9e0f3c711fe6eda19f6cf6cbfef072d4}{Busyo\+Attack\+Collision}}, \mbox{\hyperlink{class_c_point_block_a30344e006aba5bb0eedf41ea279942fb}{CPoint\+Block}}, \mbox{\hyperlink{class_cursor_a13321c5d0dcf35dfce6edbc04dfb9836}{Cursor}}, \mbox{\hyperlink{class_kunai_reserve_light_aec6c27771f3494f85978ecca6afa0fa7}{Kunai\+Reserve\+Light}}, \mbox{\hyperlink{class_lance_reserve_light_ab930fe6a837c61ee4a2874eaa30d9d74}{Lance\+Reserve\+Light}}, \mbox{\hyperlink{class_flame_a4e2dc09ee131831bc76709bbcdd217ef}{Flame}}, \mbox{\hyperlink{class_flame_block_a6936fd9764683d68b73375fb69a821ec}{Flame\+Block}}, \mbox{\hyperlink{class_flame_perform_a68d1d1f82e44805c14655a754e21668b}{Flame\+Perform}}, \mbox{\hyperlink{class_iai_gauge_aed4dfb6c0d35d3bfce479de0ab7533ac}{Iai\+Gauge}}, \mbox{\hyperlink{class_ingame_text_block_a5c5eadbed600ebc112a42a2c780b73ee}{Ingame\+Text\+Block}}, \mbox{\hyperlink{class_kunai_a3ae0fb43f95040e16c930433f4b833a9}{Kunai}}, \mbox{\hyperlink{class_lancer_a3c9ab6dad5bc7f7964f60697bc39e473}{Lancer}}, \mbox{\hyperlink{class_lancer_attack_collision_ac5e69d9fab85f77934bd2b22f83de1be}{Lancer\+Attack\+Collision}}, \mbox{\hyperlink{class_low_blood_a8b4a9a34f9e7ad0fe7570dbb56972a6b}{Low\+Blood}}, \mbox{\hyperlink{class_middle_blood_a962b7f7865388e4aa3ea645618c9226d}{Middle\+Blood}}, \mbox{\hyperlink{class_mugen_andon_a84ce7278b74ea6158b19fdd3e88b95b4}{Mugen\+Andon}}, \mbox{\hyperlink{class_mugen_flame_a1c7b85946a172a47cde2390390004e21}{Mugen\+Flame}}, \mbox{\hyperlink{class_ninja_a8026d77ce840c97a9c5ccb5edad92058}{Ninja}}, \mbox{\hyperlink{class_ninja_attack_collision_a48962894bdd691c1dcbb48b854e945f1}{Ninja\+Attack\+Collision}}, \mbox{\hyperlink{class_cursor_particle1_af6931dc73218f259bca9c692808e348d}{Cursor\+Particle1}}, \mbox{\hyperlink{class_player_a4eaaeb9d0967fef59baac319b9cc8d60}{Player}}, \mbox{\hyperlink{class_player_hp_a70de95299f4f8b6579f1f5a2acc3543a}{Player\+Hp}}, \mbox{\hyperlink{class_middle_attack_collision_a830c6e63252a20e3e181105ae678c9da}{Middle\+Attack\+Collision}}, \mbox{\hyperlink{class_low_attack_collision_a5d12ba5c29aee0e5a00e61738133e30b}{Low\+Attack\+Collision}}, \mbox{\hyperlink{class_kick_collision_a2ac4f6312bd1fdab2707fb29721a4cbd}{Kick\+Collision}}, \mbox{\hyperlink{class_iai_collision_a9b6fb7f863eeacfdb1b805d1704f4191}{Iai\+Collision}}, \mbox{\hyperlink{class_special_collision_ae18a86bbf4082816c31e86ecd4643b46}{Special\+Collision}}, \mbox{\hyperlink{class_middle_attack_particle1_a99f44a367c9d1e333fcc52868baa4d8e}{Middle\+Attack\+Particle1}}, \mbox{\hyperlink{class_middle_attack_particle2_a9210e81109050ab07f01e496ad3827e1}{Middle\+Attack\+Particle2}}, \mbox{\hyperlink{class_low_attack_particle1_a725beb549a08151602eb71826cd2c88d}{Low\+Attack\+Particle1}}, \mbox{\hyperlink{class_low_attack_particle2_a84026568049e93990fe9beeea4e11dae}{Low\+Attack\+Particle2}}, \mbox{\hyperlink{class_iai_particle1_a33508005493ed1e68ef8b09df7d63faa}{Iai\+Particle1}}, \mbox{\hyperlink{class_iai_particle2_aaaa796ce3d3dbf9917fa77b46d84fe3a}{Iai\+Particle2}}, \mbox{\hyperlink{class_iai_particle3_aae309d2c19664ee42d49b54a8c48b275}{Iai\+Particle3}}, \mbox{\hyperlink{class_iai_gauge_particle_a5863d981e67eb131ef71d15a1b2adf0d}{Iai\+Gauge\+Particle}}, \mbox{\hyperlink{class_sway_particle_a90cc978cae878deae4f1338299bfa620}{Sway\+Particle}}, \mbox{\hyperlink{class_gage_max_af140e6f5f994c64b18e8607d14917e8b}{Gage\+Max}}, \mbox{\hyperlink{class_recovery_particle_abe4974e96b356681723f7f9122ca4d9c}{Recovery\+Particle}}, \mbox{\hyperlink{class_poison_reserve_a08f0ed4b8cb19348223e1e4578303598}{Poison\+Reserve}}, \mbox{\hyperlink{class_poison_fall_a4ed3e6b1123d98cfc40cf7d8f3a644b3}{Poison\+Fall}}, \mbox{\hyperlink{class_private_collision_af63d1129bc1542986ba17e3796c61c59}{Private\+Collision}}, \mbox{\hyperlink{class_recovery_block_a8a869e1ca57cee6369c14c50ad6204ab}{Recovery\+Block}}, \mbox{\hyperlink{class_rest_point_a30f58599d8ddbc1cadc3e35eb1bffd4f}{Rest\+Point}}, \mbox{\hyperlink{class_shield_afa35c8bc0b34eecfd68c3cba1a2a2872}{Shield}}, \mbox{\hyperlink{class_shielder_afa46385e61b3dbc879b36d51c934973c}{Shielder}}, \mbox{\hyperlink{class_shielder_attack_collision_a8833b0b9d22d0e29d53a07600a3aa382}{Shielder\+Attack\+Collision}}, \mbox{\hyperlink{class_spawn_af5f264bd7a2b1166df68f5fb90dbf7b9}{Spawn}}, \mbox{\hyperlink{class_spawn_block_base_aeea4be10502e7bc7187ba55213e36931}{Spawn\+Block\+Base}}, \mbox{\hyperlink{class_stair_aedd6f35f1a2c6932b1f0c78203fc021c}{Stair}}, \mbox{\hyperlink{class_title_cursor_a9e64f6c951195016952a9add7f54eab9}{Title\+Cursor}}, \mbox{\hyperlink{class_title_logo_a723add441b8e03d5a5e2d98a00c0ae31}{Title\+Logo}}, \mbox{\hyperlink{class_game_start_a3e8d3bb475cce0e88c96a09f59874d08}{Game\+Start}}, \mbox{\hyperlink{class_explain_a325379f421dc303a0f0509657fb8c0ca}{Explain}}, \mbox{\hyperlink{class_game_end_a003bf66698d2faf4e76a5fef43fa6183}{Game\+End}}, \mbox{\hyperlink{class_credit_ab6c3ff04e0409dd7930ce3f9f8d210f9}{Credit}}, \mbox{\hyperlink{class_tutorial_board_ab67663efc5cbba482f012b23b803c5e0}{Tutorial\+Board}}, \mbox{\hyperlink{class_zyounin_a31006b3b86efc585fbbab14b7cc24d92}{Zyounin}}, \mbox{\hyperlink{class_zyounin_attack_collision_ac2b69ca4fe5290ac132ccc3b6048ca41}{Zyounin\+Attack\+Collision}} (計71項目)で再実装されています。
+
+\mbox{\Hypertarget{class_object_base_a118be2b7cbcbe0beeaaa0e289a794ae6}\label{class_object_base_a118be2b7cbcbe0beeaaa0e289a794ae6}} 
+\index{ObjectBase@{ObjectBase}!IsHit@{IsHit}}
+\index{IsHit@{IsHit}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{IsHit()}{IsHit()}}
+{\footnotesize\ttfamily bool Object\+Base\+::\+Is\+Hit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object_base}{Object\+Base}} \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}\label{class_object_base_a43864d7b432f8c8aae78821c5f49cd62}} 
+\index{ObjectBase@{ObjectBase}!Process@{Process}}
+\index{Process@{Process}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_efect_base_a030804518aad06654c31663cf69c8cb9}{Efect\+Base}}, \mbox{\hyperlink{class_enemy_base_add67699620ad91db7ed390a426e75fbf}{Enemy\+Base}}, \mbox{\hyperlink{class_particle_base_a5a20d94085603c14bff003f810179c21}{Particle\+Base}}, \mbox{\hyperlink{class_andon_ae4c250896ddf19db63d30165aa138b86}{Andon}}, \mbox{\hyperlink{class_boss_a6b7144fcf9beb116199bd40090e2c4dd}{Boss}}, \mbox{\hyperlink{class_boss_blood_a334dd387020314e722e7f01dc0df75f9}{Boss\+Blood}}, \mbox{\hyperlink{class_boss_event_a_a7afb03e27ea5eda942e543c91ddc06ff}{Boss\+EventA}}, \mbox{\hyperlink{class_boss_event_b_a1b3778e4d37cfb3df9ff610de178fdb1}{Boss\+EventB}}, \mbox{\hyperlink{class_boss_stair_af759d35eb00a125be1e2719b1eb0b0e3}{Boss\+Stair}}, \mbox{\hyperlink{class_bushi_a364e5e81cba5b9bf12efad4d6565ebaa}{Bushi}}, \mbox{\hyperlink{class_bushi_attack_collision_a00c454bec701fe5bc1a67b6d16f928fb}{Bushi\+Attack\+Collision}}, \mbox{\hyperlink{class_busyo_a1f5946d50196decdd1399b56f8a078a2}{Busyo}}, \mbox{\hyperlink{class_busyo_attack_collision_ab854a8819dbef221fb822f87fe2780d7}{Busyo\+Attack\+Collision}}, \mbox{\hyperlink{class_c_point_block_a6d7ed6082b4e7f091821092ffda8b5b7}{CPoint\+Block}}, \mbox{\hyperlink{class_cursor_a693aebafff15adaa9116d4cc1e9fd448}{Cursor}}, \mbox{\hyperlink{class_kunai_reserve_light_a89a9fc022424e770098c35715d10cf2e}{Kunai\+Reserve\+Light}}, \mbox{\hyperlink{class_lance_reserve_light_a57d30dea7ef87aeca3ddb34744eddccf}{Lance\+Reserve\+Light}}, \mbox{\hyperlink{class_flame_ad1d879d0e353c8414243a239a1e07289}{Flame}}, \mbox{\hyperlink{class_flame_perform_a731acedafeb81cc2db6530c8352dc07a}{Flame\+Perform}}, \mbox{\hyperlink{class_iai_gauge_a55eaf7372b9788bd7118039193eb09a5}{Iai\+Gauge}}, \mbox{\hyperlink{class_ingame_text_block_ae006ddaf6f2002232a705676a9cb3acc}{Ingame\+Text\+Block}}, \mbox{\hyperlink{class_kunai_a01e46a3264a1ea0125123237d3596201}{Kunai}}, \mbox{\hyperlink{class_lancer_ac4f7fa42897ea8c037810dc3b238c222}{Lancer}}, \mbox{\hyperlink{class_lancer_attack_collision_a02e00b7c0a02c45404b7f0c2c706cd28}{Lancer\+Attack\+Collision}}, \mbox{\hyperlink{class_low_blood_a4636ca3ae61dd213c2873164409ca6aa}{Low\+Blood}}, \mbox{\hyperlink{class_middle_blood_ac62bdb15a369a3118b92bbd37b223a06}{Middle\+Blood}}, \mbox{\hyperlink{class_mugen_andon_abb52685932b5d43a9d43f07460403c69}{Mugen\+Andon}}, \mbox{\hyperlink{class_mugen_flame_ae0062b2f9fec459883951fe2b093cb30}{Mugen\+Flame}}, \mbox{\hyperlink{class_ninja_a35a59e058aa39384eec2e3ac36151c66}{Ninja}}, \mbox{\hyperlink{class_ninja_attack_collision_a03c924f59eb38d279fe82c1e5b18aa8c}{Ninja\+Attack\+Collision}}, \mbox{\hyperlink{class_cursor_particle1_a9d830755087ab37a6cfb8d5159a24f41}{Cursor\+Particle1}}, \mbox{\hyperlink{class_player_aaebb681ef72f04cecf503ee3bd90b98f}{Player}}, \mbox{\hyperlink{class_player_hp_a41737105283b9d5a58b3548e08302f7e}{Player\+Hp}}, \mbox{\hyperlink{class_middle_attack_collision_a4de1d028b6f8378e3996e0abba0d0668}{Middle\+Attack\+Collision}}, \mbox{\hyperlink{class_low_attack_collision_ab2eabdb1113e99fbc55eb0592114deb1}{Low\+Attack\+Collision}}, \mbox{\hyperlink{class_kick_collision_a17fb6eafef76c54a9944fd669c45618a}{Kick\+Collision}}, \mbox{\hyperlink{class_iai_collision_ae48df24f9891e72b7ee9c441826dda98}{Iai\+Collision}}, \mbox{\hyperlink{class_special_collision_a42491875ea1b04942102c36bf3572a01}{Special\+Collision}}, \mbox{\hyperlink{class_middle_attack_particle1_a6375e02c1ad1d9a1197d558c352ba1c2}{Middle\+Attack\+Particle1}}, \mbox{\hyperlink{class_middle_attack_particle2_af2c4981549b571b7cb5896d53819e29f}{Middle\+Attack\+Particle2}}, \mbox{\hyperlink{class_low_attack_particle1_aced5ca33d7708d59a55d64879fc6f01a}{Low\+Attack\+Particle1}}, \mbox{\hyperlink{class_low_attack_particle2_aba6a6cf83efa01c70aeca02559b1e3c8}{Low\+Attack\+Particle2}}, \mbox{\hyperlink{class_iai_particle1_ac54f0a7c73a0888b32a843cbfdef94af}{Iai\+Particle1}}, \mbox{\hyperlink{class_iai_particle2_a576224260680b991d1d2ce20c2e8a3d7}{Iai\+Particle2}}, \mbox{\hyperlink{class_iai_particle3_aebae66ad0069f3b5aaa44ee88dce4648}{Iai\+Particle3}}, \mbox{\hyperlink{class_iai_gauge_particle_a1429c8146070ed6c99f987e1f823fb7c}{Iai\+Gauge\+Particle}}, \mbox{\hyperlink{class_sway_particle_a518d309b280dac179ed4825b38585de8}{Sway\+Particle}}, \mbox{\hyperlink{class_gage_max_a7b6ecfa8363e53ea589db8c0eabca901}{Gage\+Max}}, \mbox{\hyperlink{class_recovery_particle_a5f2787a11b2bdfb3cb4fc786280a60c5}{Recovery\+Particle}}, \mbox{\hyperlink{class_poison_reserve_a88ed23efed86ad66d4709faa0cf4b36f}{Poison\+Reserve}}, \mbox{\hyperlink{class_poison_fall_a8903c4a84ca15b62a301ccfcf826bfca}{Poison\+Fall}}, \mbox{\hyperlink{class_poison_ninja_ab76bd7130dc24f13e2f1cfb0cc696121}{Poison\+Ninja}}, \mbox{\hyperlink{class_rest_point_a440979d1eabf0f79ee3122ccbdfb5b73}{Rest\+Point}}, \mbox{\hyperlink{class_shield_ad755d9f1923c779694a3b25d111fb428}{Shield}}, \mbox{\hyperlink{class_shielder_ac18bce46f196200f1eedce62380b6a03}{Shielder}}, \mbox{\hyperlink{class_shielder_attack_collision_aeb9c73db6f74f40244c90c2838e7d590}{Shielder\+Attack\+Collision}}, \mbox{\hyperlink{class_spawn_a2de4d03811df9ba9e5423d902506e603}{Spawn}}, \mbox{\hyperlink{class_stair_a7c3da18d5199d9b4ebe727e0f8c4038f}{Stair}}, \mbox{\hyperlink{class_title_cursor_a60cc9a6fc567e72e5293fd65345e421f}{Title\+Cursor}}, \mbox{\hyperlink{class_title_logo_a4cf46bf344c19d98a801e185a9227299}{Title\+Logo}}, \mbox{\hyperlink{class_game_start_a0d15c041d2c6a6cb82df71107b4d9363}{Game\+Start}}, \mbox{\hyperlink{class_explain_a60101eeade2a9366f899127e009cba06}{Explain}}, \mbox{\hyperlink{class_game_end_ae01f3cb026fb9db8a597f2b7b835f43a}{Game\+End}}, \mbox{\hyperlink{class_credit_acd8d00d42d3bbab9315b918adc5c4bdc}{Credit}}, \mbox{\hyperlink{class_tutorial_board_a4d032908193938c47c5a447895f21c50}{Tutorial\+Board}}, \mbox{\hyperlink{class_zyounin_a07241ebb7adc3b4efed1e182a10645e7}{Zyounin}}, \mbox{\hyperlink{class_zyounin_attack_collision_a506edd56068ce792c00d60e96bf6a483}{Zyounin\+Attack\+Collision}} (計67項目)で再実装されています。
+
+\mbox{\Hypertarget{class_object_base_acb82e29c05028c31f9a99df4bf194888}\label{class_object_base_acb82e29c05028c31f9a99df4bf194888}} 
+\index{ObjectBase@{ObjectBase}!SetBEventA@{SetBEventA}}
+\index{SetBEventA@{SetBEventA}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{SetBEventA()}{SetBEventA()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+Set\+BEventA (\begin{DoxyParamCaption}\item[{bool}]{bevent\+Aflag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a9ef92f4841d1ca84284ba5943a49a662}\label{class_object_base_a9ef92f4841d1ca84284ba5943a49a662}} 
+\index{ObjectBase@{ObjectBase}!SetBEventB@{SetBEventB}}
+\index{SetBEventB@{SetBEventB}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{SetBEventB()}{SetBEventB()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+Set\+BEventB (\begin{DoxyParamCaption}\item[{bool}]{bevent\+Bflag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_ac97c821a0a226b2c0acedde492a20e94}\label{class_object_base_ac97c821a0a226b2c0acedde492a20e94}} 
+\index{ObjectBase@{ObjectBase}!SetFlip@{SetFlip}}
+\index{SetFlip@{SetFlip}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{SetFlip()}{SetFlip()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+Set\+Flip (\begin{DoxyParamCaption}\item[{bool}]{isflip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a3fec87e6397bcf0843918d9d9eaeacf1}\label{class_object_base_a3fec87e6397bcf0843918d9d9eaeacf1}} 
+\index{ObjectBase@{ObjectBase}!SetGauge@{SetGauge}}
+\index{SetGauge@{SetGauge}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{SetGauge()}{SetGauge()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+Set\+Gauge (\begin{DoxyParamCaption}\item[{int}]{ig }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_a3f6dd901b757da5277a929fec2373b05}\label{class_object_base_a3f6dd901b757da5277a929fec2373b05}} 
+\index{ObjectBase@{ObjectBase}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_ace54029864cc4ecc371adc7f505b44f4}\label{class_object_base_ace54029864cc4ecc371adc7f505b44f4}} 
+\index{ObjectBase@{ObjectBase}!SetX@{SetX}}
+\index{SetX@{SetX}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{SetX()}{SetX()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+SetX (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_object_base_af8ead71bb262888e67a9cc8db4c90138}\label{class_object_base_af8ead71bb262888e67a9cc8db4c90138}} 
+\index{ObjectBase@{ObjectBase}!SetY@{SetY}}
+\index{SetY@{SetY}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{SetY()}{SetY()}}
+{\footnotesize\ttfamily void Object\+Base\+::\+SetY (\begin{DoxyParamCaption}\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_object_base_a464049906c4b3d1f6a606a6cde65a46d}\label{class_object_base_a464049906c4b3d1f6a606a6cde65a46d}} 
+\index{ObjectBase@{ObjectBase}!\_action\_cnt@{\_action\_cnt}}
+\index{\_action\_cnt@{\_action\_cnt}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_action\_cnt}{\_action\_cnt}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+action\+\_\+cnt\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a3e7a5c1c591e3c72278043abe7fe6c78}\label{class_object_base_a3e7a5c1c591e3c72278043abe7fe6c78}} 
+\index{ObjectBase@{ObjectBase}!\_alpha@{\_alpha}}
+\index{\_alpha@{\_alpha}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_alpha}{\_alpha}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+alpha\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a2345bec67df465bcff641c4078b28df9}\label{class_object_base_a2345bec67df465bcff641c4078b28df9}} 
+\index{ObjectBase@{ObjectBase}!\_anime@{\_anime}}
+\index{\_anime@{\_anime}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_anime}{\_anime}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, int$>$ Object\+Base\+::\+\_\+anime\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a24a231870065866261f959e35fcf7bd7}\label{class_object_base_a24a231870065866261f959e35fcf7bd7}} 
+\index{ObjectBase@{ObjectBase}!\_before\_x@{\_before\_x}}
+\index{\_before\_x@{\_before\_x}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_before\_x}{\_before\_x}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+before\+\_\+x\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a734959d9d4366ac853cfe0504b59a942}\label{class_object_base_a734959d9d4366ac853cfe0504b59a942}} 
+\index{ObjectBase@{ObjectBase}!\_before\_y@{\_before\_y}}
+\index{\_before\_y@{\_before\_y}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_before\_y}{\_before\_y}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+before\+\_\+y\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a88b99eac6e351bafffb592529a400fe0}\label{class_object_base_a88b99eac6e351bafffb592529a400fe0}} 
+\index{ObjectBase@{ObjectBase}!\_bosseventA\_flag@{\_bosseventA\_flag}}
+\index{\_bosseventA\_flag@{\_bosseventA\_flag}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_bosseventA\_flag}{\_bosseventA\_flag}}
+{\footnotesize\ttfamily bool Object\+Base\+::\+\_\+bossevent\+A\+\_\+flag\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_adafd6c1a534558b19281836d4c3c12e9}\label{class_object_base_adafd6c1a534558b19281836d4c3c12e9}} 
+\index{ObjectBase@{ObjectBase}!\_bosseventB\_flag@{\_bosseventB\_flag}}
+\index{\_bosseventB\_flag@{\_bosseventB\_flag}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_bosseventB\_flag}{\_bosseventB\_flag}}
+{\footnotesize\ttfamily bool Object\+Base\+::\+\_\+bossevent\+B\+\_\+flag\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_ad0b992a11aeb0d9f7a79187f07140f53}\label{class_object_base_ad0b992a11aeb0d9f7a79187f07140f53}} 
+\index{ObjectBase@{ObjectBase}!\_cnt@{\_cnt}}
+\index{\_cnt@{\_cnt}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_cnt}{\_cnt}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+cnt\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a028b4bf4d8e6dd31760cb8e40ec20f6c}\label{class_object_base_a028b4bf4d8e6dd31760cb8e40ec20f6c}} 
+\index{ObjectBase@{ObjectBase}!\_debug\_alpha@{\_debug\_alpha}}
+\index{\_debug\_alpha@{\_debug\_alpha}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_debug\_alpha}{\_debug\_alpha}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+debug\+\_\+alpha\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_af8582c0ba02eebb46ebe2831f40a9d78}\label{class_object_base_af8582c0ba02eebb46ebe2831f40a9d78}} 
+\index{ObjectBase@{ObjectBase}!\_debug\_color@{\_debug\_color}}
+\index{\_debug\_color@{\_debug\_color}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_debug\_color}{\_debug\_color}}
+{\footnotesize\ttfamily std\+::tuple$<$int, int, int$>$ Object\+Base\+::\+\_\+debug\+\_\+color\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a1804b84ab5dc9f6ce33dd4886429bb74}\label{class_object_base_a1804b84ab5dc9f6ce33dd4886429bb74}} 
+\index{ObjectBase@{ObjectBase}!\_debug\_fill@{\_debug\_fill}}
+\index{\_debug\_fill@{\_debug\_fill}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_debug\_fill}{\_debug\_fill}}
+{\footnotesize\ttfamily bool Object\+Base\+::\+\_\+debug\+\_\+fill\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a79034de96111b84adfeab0e7022d32f9}\label{class_object_base_a79034de96111b84adfeab0e7022d32f9}} 
+\index{ObjectBase@{ObjectBase}!\_draw\_flag@{\_draw\_flag}}
+\index{\_draw\_flag@{\_draw\_flag}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_draw\_flag}{\_draw\_flag}}
+{\footnotesize\ttfamily bool Object\+Base\+::\+\_\+draw\+\_\+flag\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a21845d5fcc346a00168d092326bc004e}\label{class_object_base_a21845d5fcc346a00168d092326bc004e}} 
+\index{ObjectBase@{ObjectBase}!\_drg@{\_drg}}
+\index{\_drg@{\_drg}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_drg}{\_drg}}
+{\footnotesize\ttfamily std\+::pair$<$double, double$>$ Object\+Base\+::\+\_\+drg\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a13f1f3e5e73266d06d1728e718f095aa}\label{class_object_base_a13f1f3e5e73266d06d1728e718f095aa}} 
+\index{ObjectBase@{ObjectBase}!\_dx@{\_dx}}
+\index{\_dx@{\_dx}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_dx}{\_dx}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+dx\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a003aa06f993aa0068b47eee1bc6872a5}\label{class_object_base_a003aa06f993aa0068b47eee1bc6872a5}} 
+\index{ObjectBase@{ObjectBase}!\_dy@{\_dy}}
+\index{\_dy@{\_dy}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_dy}{\_dy}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+dy\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a937bb74e6db3da79c4de0a5edfde7d38}\label{class_object_base_a937bb74e6db3da79c4de0a5edfde7d38}} 
+\index{ObjectBase@{ObjectBase}!\_grall@{\_grall}}
+\index{\_grall@{\_grall}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_grall}{\_grall}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$int$>$ $>$ Object\+Base\+::\+\_\+grall\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_aec9048e8bd203ae836dd1cba15cf30ba}\label{class_object_base_aec9048e8bd203ae836dd1cba15cf30ba}} 
+\index{ObjectBase@{ObjectBase}!\_grhandle@{\_grhandle}}
+\index{\_grhandle@{\_grhandle}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_grhandle}{\_grhandle}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+grhandle\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a3101769b8c1881ce59778cdf0609a26a}\label{class_object_base_a3101769b8c1881ce59778cdf0609a26a}} 
+\index{ObjectBase@{ObjectBase}!\_gx@{\_gx}}
+\index{\_gx@{\_gx}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_gx}{\_gx}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+gx\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_aecebcfeae14d982067d7949279cb0da2}\label{class_object_base_aecebcfeae14d982067d7949279cb0da2}} 
+\index{ObjectBase@{ObjectBase}!\_gy@{\_gy}}
+\index{\_gy@{\_gy}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_gy}{\_gy}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+gy\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a4ff3b3990b777f167937eb19dee69a86}\label{class_object_base_a4ff3b3990b777f167937eb19dee69a86}} 
+\index{ObjectBase@{ObjectBase}!\_h@{\_h}}
+\index{\_h@{\_h}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_h}{\_h}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+h\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a00845eae4cd69f88061092aad4d05dbd}\label{class_object_base_a00845eae4cd69f88061092aad4d05dbd}} 
+\index{ObjectBase@{ObjectBase}!\_hit\_h@{\_hit\_h}}
+\index{\_hit\_h@{\_hit\_h}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_hit\_h}{\_hit\_h}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+hit\+\_\+h\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a9da6daf13f38efab39997cb6b701d0df}\label{class_object_base_a9da6daf13f38efab39997cb6b701d0df}} 
+\index{ObjectBase@{ObjectBase}!\_hit\_judge@{\_hit\_judge}}
+\index{\_hit\_judge@{\_hit\_judge}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_hit\_judge}{\_hit\_judge}}
+{\footnotesize\ttfamily std\+::pair$<$int, int$>$ Object\+Base\+::\+\_\+hit\+\_\+judge\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_ab7c98c6897aa8097e1e049ac0243ca92}\label{class_object_base_ab7c98c6897aa8097e1e049ac0243ca92}} 
+\index{ObjectBase@{ObjectBase}!\_hit\_w@{\_hit\_w}}
+\index{\_hit\_w@{\_hit\_w}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_hit\_w}{\_hit\_w}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+hit\+\_\+w\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a333150a33e0e5d46a18dd58f948face4}\label{class_object_base_a333150a33e0e5d46a18dd58f948face4}} 
+\index{ObjectBase@{ObjectBase}!\_hit\_x@{\_hit\_x}}
+\index{\_hit\_x@{\_hit\_x}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_hit\_x}{\_hit\_x}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+hit\+\_\+x\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_abff267ac1f27349fca0c9f5d7128d03b}\label{class_object_base_abff267ac1f27349fca0c9f5d7128d03b}} 
+\index{ObjectBase@{ObjectBase}!\_hit\_y@{\_hit\_y}}
+\index{\_hit\_y@{\_hit\_y}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_hit\_y}{\_hit\_y}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+hit\+\_\+y\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a9b4804c1f8433988915f844d713f225c}\label{class_object_base_a9b4804c1f8433988915f844d713f225c}} 
+\index{ObjectBase@{ObjectBase}!\_iai\_gauge@{\_iai\_gauge}}
+\index{\_iai\_gauge@{\_iai\_gauge}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_iai\_gauge}{\_iai\_gauge}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+iai\+\_\+gauge\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a003b9dbac11bb378a12f63338e04cca7}\label{class_object_base_a003b9dbac11bb378a12f63338e04cca7}} 
+\index{ObjectBase@{ObjectBase}!\_isflip@{\_isflip}}
+\index{\_isflip@{\_isflip}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_isflip}{\_isflip}}
+{\footnotesize\ttfamily bool Object\+Base\+::\+\_\+isflip\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a39cdaa2a5e071dbdde04336d4e17181d}\label{class_object_base_a39cdaa2a5e071dbdde04336d4e17181d}} 
+\index{ObjectBase@{ObjectBase}!\_life@{\_life}}
+\index{\_life@{\_life}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_life}{\_life}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+life\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_af4b04784164d13170e30bd3860208c57}\label{class_object_base_af4b04784164d13170e30bd3860208c57}} 
+\index{ObjectBase@{ObjectBase}!\_position@{\_position}}
+\index{\_position@{\_position}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_position}{\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector2}{Vector2}} Object\+Base\+::\+\_\+position\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a234307acfcc65c0e8ba95ec4735b66ae}\label{class_object_base_a234307acfcc65c0e8ba95ec4735b66ae}} 
+\index{ObjectBase@{ObjectBase}!\_se@{\_se}}
+\index{\_se@{\_se}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_se}{\_se}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, int$>$ Object\+Base\+::\+\_\+se\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_ace806cf1ca773cf5dd629761ed7c525d}\label{class_object_base_ace806cf1ca773cf5dd629761ed7c525d}} 
+\index{ObjectBase@{ObjectBase}!\_sort@{\_sort}}
+\index{\_sort@{\_sort}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_sort}{\_sort}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+sort\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_aa528ff9a8e7a3f18e6aba5b61e511817}\label{class_object_base_aa528ff9a8e7a3f18e6aba5b61e511817}} 
+\index{ObjectBase@{ObjectBase}!\_spd@{\_spd}}
+\index{\_spd@{\_spd}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_spd}{\_spd}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+spd\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_af1e32ff4be9799505c8fbce2005ed62b}\label{class_object_base_af1e32ff4be9799505c8fbce2005ed62b}} 
+\index{ObjectBase@{ObjectBase}!\_vpal@{\_vpal}}
+\index{\_vpal@{\_vpal}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_vpal}{\_vpal}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, int$>$ Object\+Base\+::\+\_\+vpal\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a11f49c56803fcd5a82aa7dababb75344}\label{class_object_base_a11f49c56803fcd5a82aa7dababb75344}} 
+\index{ObjectBase@{ObjectBase}!\_w@{\_w}}
+\index{\_w@{\_w}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_w}{\_w}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+w\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a1388a5de11d4656f94bce0af19e9f215}\label{class_object_base_a1388a5de11d4656f94bce0af19e9f215}} 
+\index{ObjectBase@{ObjectBase}!\_x@{\_x}}
+\index{\_x@{\_x}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_x}{\_x}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+x\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_object_base_a99856a69251ebab8d14a9e302372cc9e}\label{class_object_base_a99856a69251ebab8d14a9e302372cc9e}} 
+\index{ObjectBase@{ObjectBase}!\_y@{\_y}}
+\index{\_y@{\_y}!ObjectBase@{ObjectBase}}
+\doxysubsubsection{\texorpdfstring{\_y}{\_y}}
+{\footnotesize\ttfamily int Object\+Base\+::\+\_\+y\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_object_base_8h}{Object\+Base.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_object_base_8cpp}{Object\+Base.\+cpp}}\end{DoxyCompactItemize}

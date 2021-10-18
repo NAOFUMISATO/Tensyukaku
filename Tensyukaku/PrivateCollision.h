@@ -8,17 +8,33 @@
 #pragma once
 #include "ObjectBase.h"
 #include <tuple>
-
+/** 受け側で判定を取らない当たり判定 */
 class PrivateCollision : public ObjectBase {
 public:
-   //コンストラクタ : 引数（X座標,Y座標,当たり判定横幅,当たり判定縦幅）
+   /**
+    * \bruef   コンストラクタ
+    * \param x X座標
+    * \param y Y座標
+    * \param hit_w 当たり判定横幅
+    * \param hit_h 当たり判定縦幅
+    */
    PrivateCollision(int x, int y, int hit_w, int hit_h);
-   //デストラクタ
+   /**
+    * \brief デストラクタ
+    */
    ~PrivateCollision();
-   //純粋仮想関数のオーバーライド
+   /**
+   * \brief                                純粋仮想関数のオーバーライド
+   * \return OBJECTTYPE::PRIVATECOLLISION  オブジェクトの種別（受け側で判定を取らない当たり判定）を返す
+   */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::PRIVATECOLLISION; }
-   //初期化
-   void   Init()override;
-   //デバッグ用当たり判定色指定関数
-   void   SetColor(std::tuple<int, int, int> color) { _debug_color = color; }
+   /**
+    * \brief 初期化関数
+    */
+   void Init()override;
+   /**
+    * \brief       デバッグ用当たり判定色指定関数
+    * \param color デバック用矩形カラー
+    */
+   void SetColor(std::tuple<int, int, int> color) { _debug_color = color; }
 };

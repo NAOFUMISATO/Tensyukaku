@@ -1,0 +1,33 @@
+\hypertarget{_efect_base_8h_source}{}\doxysection{Efect\+Base.\+h}
+\label{_efect_base_8h_source}\index{Tensyukaku/EfectBase.h@{Tensyukaku/EfectBase.h}}
+\mbox{\hyperlink{_efect_base_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_object_base_8h}{ObjectBase.h}}"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_efect_base}{EfectBase}} :\textcolor{keyword}{public} \mbox{\hyperlink{class_object_base}{ObjectBase}} \{}
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13    \textcolor{comment}{//コンストラクタ}}
+\DoxyCodeLine{14    \mbox{\hyperlink{class_efect_base_a9319f51f4aea29a61312c2c82c733ad9}{EfectBase}}();}
+\DoxyCodeLine{15    \textcolor{comment}{//デストラクタ}}
+\DoxyCodeLine{16    \mbox{\hyperlink{class_efect_base_a48d82b6dcffaf280919565199c561765}{\string~EfectBase}}();}
+\DoxyCodeLine{17    \textcolor{comment}{//純粋仮想関数のオーバーライド}}
+\DoxyCodeLine{18    \textcolor{keyword}{virtual} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1d}{OBJECTTYPE}} \mbox{\hyperlink{class_efect_base_ab05f8fd9cd3c211c6b21f9abf86220c3}{GetObjType}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_base_aff4dbed73870b569fcf9d0fb8ab07e1da75687d401632ba45468a3a29a7b48f26}{OBJECTTYPE::EFECT}}; \}}
+\DoxyCodeLine{19    \textcolor{comment}{//エフェクトの種別列挙}}
+\DoxyCodeLine{20    \textcolor{keyword}{enum class} \mbox{\hyperlink{class_efect_base_a81fd3e6cbf825094d0b2a459b4f7699e}{EFECTTYPE}} \{}
+\DoxyCodeLine{21    \mbox{\hyperlink{class_efect_base_a81fd3e6cbf825094d0b2a459b4f7699eadca51c3d22bac3b39425c49b689d8a64}{MIDDLEBLOOD}},\mbox{\hyperlink{class_efect_base_a81fd3e6cbf825094d0b2a459b4f7699ead074663ad01e00383ca60915acdbf496}{LOWBLOOD}},\mbox{\hyperlink{class_efect_base_a81fd3e6cbf825094d0b2a459b4f7699eaac2f47b3300eea7688dd035927d87b3c}{BOSSBLOOD}}}
+\DoxyCodeLine{22    \};}
+\DoxyCodeLine{23    \textcolor{comment}{//純粋仮想関数化}}
+\DoxyCodeLine{24    \textcolor{keyword}{virtual}  \mbox{\hyperlink{class_efect_base_a81fd3e6cbf825094d0b2a459b4f7699e}{EFECTTYPE}} \mbox{\hyperlink{class_efect_base_ad61e349e94bb0916ca21599cbdc72244}{GetEfeType}}() = 0;}
+\DoxyCodeLine{25    \textcolor{comment}{//初期化}}
+\DoxyCodeLine{26    \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_efect_base_a08246d7d6c4a1c4f189f122b87c0910e}{Init}}();}
+\DoxyCodeLine{27    \textcolor{comment}{//更新}}
+\DoxyCodeLine{28    \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_efect_base_a030804518aad06654c31663cf69c8cb9}{Process}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{29    \textcolor{comment}{//描画}}
+\DoxyCodeLine{30    \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_efect_base_ae2cb3b7e665b7298ac663366f74dbb44}{Draw}}(\mbox{\hyperlink{class_game}{Game}}\& g);}
+\DoxyCodeLine{31    \textcolor{comment}{//オブジェクトの消去関数}}
+\DoxyCodeLine{32    \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_efect_base_a39031495becdd32927fe774597af1a5a}{Delete}}(\mbox{\hyperlink{class_game}{Game}}\& g) \{\};}
+\DoxyCodeLine{33 \};}
+
+\end{DoxyCode}

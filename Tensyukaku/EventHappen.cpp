@@ -1,16 +1,21 @@
 #include "EventHappen.h"
 #include "RecoveryBlock.h"
 #include "GimikPlacement.h"
-#include "BossEvent.h"
+#include "BossEventBlock.h"
 #include "CPointBlock.h"
-#include "IngameTextBlock.h"
+#include "FloorTextBlock.h"
 #include "FlameBlock.h"
 #include "TutorialBoard.h"
 #include "Game.h"
 
-using namespace EHInfo;
 using namespace CPInfo;
 using namespace GInfo;
+namespace {
+   constexpr auto BOSSA_NUM = 1;   //!< ボスイベントブロックA種別番号
+   constexpr auto BOSSB_NUM = 2;   //!< ボスイベントブロックB種別番号
+   constexpr auto FLAME_X = 500;   //!< 炎演出ブロックX座標
+   constexpr auto FLAME_Y = 1760;  //!< 炎演出ブロックY座標
+}
 EventHappen::EventHappen(Game& g) {
    Init(g);
 }
@@ -62,22 +67,22 @@ void EventHappen::CPointAppear(Game& g) {
 //ボスイベントブロック生成関数
 void EventHappen::BossEventAppear(Game& g) {
    if (g.GetCPointFlag()["11A"] == false) {
-      auto bsa = new BossEventA(BOSSA_X, BOSSA_Y);
+      auto bsa = new BossEventBlock(BOSSA_NUM);
       g.GetOS()->Add(bsa);
    }
-   auto bsb = new BossEventB(BOSSB_X, BOSSB_Y);
+   auto bsb = new BossEventBlock(BOSSB_NUM);
    g.GetOS()->Add(bsb);
 }
 //インゲームテキスト生成関数
 void EventHappen::IngameTextAppear(Game& g) {
-   auto ittop = new IngameTextBlock("TOP");
-   g.GetOS()->Add(ittop);
-   auto itupper = new IngameTextBlock("UPPER");
-   g.GetOS()->Add(itupper);
-   auto itmiddle = new IngameTextBlock("MIDDLE");
-   g.GetOS()->Add(itmiddle);
-   auto itunder = new IngameTextBlock("UNDER");
-   g.GetOS()->Add(itunder);
+   auto fttop = new FloorTextBlock("TOP");
+   g.GetOS()->Add(fttop);
+   auto ftupper = new FloorTextBlock("UPPER");
+   g.GetOS()->Add(ftupper);
+   auto ftmiddle = new FloorTextBlock("MIDDLE");
+   g.GetOS()->Add(ftmiddle);
+   auto ftunder = new FloorTextBlock("UNDER");
+   g.GetOS()->Add(ftunder);
 }
 //回復ブロック生成関数
 void EventHappen::RecoveryAppear(Game& g) {

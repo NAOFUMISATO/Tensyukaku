@@ -1,0 +1,349 @@
+\hypertarget{class_mode_server}{}\doxysection{Mode\+Server クラス}
+\label{class_mode_server}\index{ModeServer@{ModeServer}}
+
+
+{\ttfamily \#include $<$Mode\+Server.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mode_server_a97c62d99e2de09e4c79e12d3eff3e64c}{Mode\+Server}} (\mbox{\hyperlink{class_game}{Game}} \&g)
+\begin{DoxyCompactList}\small\item\em コンストラクタ \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_mode_server_a8d32802b0f3e0ca22fe85f79e5bcc9f1}{$\sim$\+Mode\+Server}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_a47d551064f1a4421cf1277d5993d7390}{Add}} (\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$mode, int layer, const char $\ast$name)
+\item 
+int \mbox{\hyperlink{class_mode_server_a9be43c92bf409c90daa1aafa7ce9dd77}{Del}} (\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$mode)
+\item 
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ \mbox{\hyperlink{class_mode_server_a61854d8a23d9a893b76be4fd069df9a1}{Get}} (int uid)
+\item 
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ \mbox{\hyperlink{class_mode_server_a9d0d97a21f725ceffadc22dfe04a9e8d}{Get}} (const char $\ast$name)
+\item 
+int \mbox{\hyperlink{class_mode_server_aecf61d61304e7060cb88ee4c9b311c90}{Get\+Id}} (\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$mode)
+\item 
+int \mbox{\hyperlink{class_mode_server_a8be42a3564d953b58978ac51a6d3b17f}{Get\+Id}} (const char $\ast$name)
+\item 
+const char $\ast$ \mbox{\hyperlink{class_mode_server_a949e03b6ccad200637fb963e28a796e4}{Get\+Name}} (\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$mode)
+\item 
+const char $\ast$ \mbox{\hyperlink{class_mode_server_a192f269d84726af9a5596ab7b8cf1e61}{Get\+Name}} (int uid)
+\item 
+void \mbox{\hyperlink{class_mode_server_afb3fbd1aa22713a1e528411c66489cce}{Clear}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_aa53a4415728e119f85e8ac416f7e1eaa}{Layer\+Top}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_a668e16527ce327622279153ade9f0b13}{Process\+Init}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_a76fe3dfa8156956d99081aef72d87dbb}{Process}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_a04696f311df6a8b5713d12e2517063b0}{Process\+Finish}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_ac2bfe5741458a48a0450a07ea7cf0750}{Draw\+Init}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_a05b90b28adcd4b571ea9c05a2cbfa108}{Draw}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_adc1b25041c2576d7aa82c1c9ee4e05d0}{Draw\+Finish}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_a0f1bcd7728f06f96b2c20d1edb254b1a}{Skip\+Process\+Under\+Layer}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_a5b5815fe02396fdbd747a3c34e5e2cf9}{Skip\+Draw\+Under\+Layer}} ()
+\item 
+int \mbox{\hyperlink{class_mode_server_a88a39a70af17fc2d0f2353a25715ea83}{Pause\+Process\+Under\+Layer}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{静的公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_mode_server}{Mode\+Server}} $\ast$ \mbox{\hyperlink{class_mode_server_a1df8ab8c96038013a1bb1f1c39169d7d}{Get\+Instance}} ()
+\item 
+static bool \mbox{\hyperlink{class_mode_server_a45bc63ba9a49e074518ab789c61e516a}{mode\+Sort}} (const \mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$x, const \mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$y)
+\end{DoxyCompactItemize}
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game}{Game}} \& \mbox{\hyperlink{class_mode_server_a975f2cf44001ca42300eb5e477c77e37}{\+\_\+game}}
+\end{DoxyCompactItemize}
+\doxysubsection*{静的公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_mode_server}{Mode\+Server}} $\ast$ \mbox{\hyperlink{class_mode_server_a52854c94c54f24c2fdc90d728b7f5e2e}{\+\_\+lp\+Instance}} = NULL
+\begin{DoxyCompactList}\small\item\em インスタンス \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開型}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::list$<$ \mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ $>$ \mbox{\hyperlink{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}{lst\+Mode\+Base}}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_mode_server_a904d9fc603f1c018ca99e441e7480600}{Release}} (\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$mode)
+\item 
+bool \mbox{\hyperlink{class_mode_server_ae99f2d964939942b95efaf7e67ac369b}{Is\+Del\+Regist}} (\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$mode)
+\item 
+bool \mbox{\hyperlink{class_mode_server_a391ce0dd36edcb99db6b23753484d66a}{Is\+Add}} (\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$mode)
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}{lst\+Mode\+Base}} \mbox{\hyperlink{class_mode_server_a0ef789410a6d3cd21e161bff96dff56b}{\+\_\+v\+Mode}}
+\item 
+int \mbox{\hyperlink{class_mode_server_afcdad3c9b164bb96daf3527dd8b48af2}{\+\_\+uid\+\_\+count}}
+\item 
+\mbox{\hyperlink{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}{lst\+Mode\+Base}} \mbox{\hyperlink{class_mode_server_ae81fe9c58c9581954fb13c0451c1d121}{\+\_\+v\+Mode\+Add}}
+\item 
+\mbox{\hyperlink{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}{lst\+Mode\+Base}} \mbox{\hyperlink{class_mode_server_a9642b83807af7f63aafcb3dec719d1ce}{\+\_\+v\+Mode\+Del}}
+\item 
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ \mbox{\hyperlink{class_mode_server_aee54ab73bb82ed064ed6024761f5b385}{\+\_\+now\+Mode}}
+\item 
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ \mbox{\hyperlink{class_mode_server_a7662000f380de61530fe4acc820a4749}{\+\_\+skip\+Process\+Mode}}
+\item 
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ \mbox{\hyperlink{class_mode_server_a49ceac8c57cde1d89cb240eb63d4f880}{\+\_\+skip\+Draw\+Mode}}
+\item 
+\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ \mbox{\hyperlink{class_mode_server_afbac9750e3b21ef06f6b43a23bd1ac00}{\+\_\+pause\+Process\+Mode}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{型定義メンバ詳解}
+\mbox{\Hypertarget{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}\label{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}} 
+\index{ModeServer@{ModeServer}!lstModeBase@{lstModeBase}}
+\index{lstModeBase@{lstModeBase}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{lstModeBase}{lstModeBase}}
+{\footnotesize\ttfamily typedef std\+::list$<$\mbox{\hyperlink{class_mode_base}{Mode\+Base}}$\ast$$>$ \mbox{\hyperlink{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}{Mode\+Server\+::lst\+Mode\+Base}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_mode_server_a97c62d99e2de09e4c79e12d3eff3e64c}\label{class_mode_server_a97c62d99e2de09e4c79e12d3eff3e64c}} 
+\index{ModeServer@{ModeServer}!ModeServer@{ModeServer}}
+\index{ModeServer@{ModeServer}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{ModeServer()}{ModeServer()}}
+{\footnotesize\ttfamily Mode\+Server\+::\+Mode\+Server (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{g }\end{DoxyParamCaption})}
+
+
+
+コンストラクタ 
+
+\mbox{\Hypertarget{class_mode_server_a8d32802b0f3e0ca22fe85f79e5bcc9f1}\label{class_mode_server_a8d32802b0f3e0ca22fe85f79e5bcc9f1}} 
+\index{ModeServer@{ModeServer}!````~ModeServer@{$\sim$ModeServer}}
+\index{````~ModeServer@{$\sim$ModeServer}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{$\sim$ModeServer()}{~ModeServer()}}
+{\footnotesize\ttfamily Mode\+Server\+::$\sim$\+Mode\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_mode_server_a47d551064f1a4421cf1277d5993d7390}\label{class_mode_server_a47d551064f1a4421cf1277d5993d7390}} 
+\index{ModeServer@{ModeServer}!Add@{Add}}
+\index{Add@{Add}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{mode,  }\item[{int}]{layer,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_afb3fbd1aa22713a1e528411c66489cce}\label{class_mode_server_afb3fbd1aa22713a1e528411c66489cce}} 
+\index{ModeServer@{ModeServer}!Clear@{Clear}}
+\index{Clear@{Clear}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily void Mode\+Server\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a9be43c92bf409c90daa1aafa7ce9dd77}\label{class_mode_server_a9be43c92bf409c90daa1aafa7ce9dd77}} 
+\index{ModeServer@{ModeServer}!Del@{Del}}
+\index{Del@{Del}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{Del()}{Del()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Del (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{mode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a05b90b28adcd4b571ea9c05a2cbfa108}\label{class_mode_server_a05b90b28adcd4b571ea9c05a2cbfa108}} 
+\index{ModeServer@{ModeServer}!Draw@{Draw}}
+\index{Draw@{Draw}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_adc1b25041c2576d7aa82c1c9ee4e05d0}\label{class_mode_server_adc1b25041c2576d7aa82c1c9ee4e05d0}} 
+\index{ModeServer@{ModeServer}!DrawFinish@{DrawFinish}}
+\index{DrawFinish@{DrawFinish}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{DrawFinish()}{DrawFinish()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Draw\+Finish (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_ac2bfe5741458a48a0450a07ea7cf0750}\label{class_mode_server_ac2bfe5741458a48a0450a07ea7cf0750}} 
+\index{ModeServer@{ModeServer}!DrawInit@{DrawInit}}
+\index{DrawInit@{DrawInit}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{DrawInit()}{DrawInit()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Draw\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a9d0d97a21f725ceffadc22dfe04a9e8d}\label{class_mode_server_a9d0d97a21f725ceffadc22dfe04a9e8d}} 
+\index{ModeServer@{ModeServer}!Get@{Get}}
+\index{Get@{Get}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ Mode\+Server\+::\+Get (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a61854d8a23d9a893b76be4fd069df9a1}\label{class_mode_server_a61854d8a23d9a893b76be4fd069df9a1}} 
+\index{ModeServer@{ModeServer}!Get@{Get}}
+\index{Get@{Get}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$ Mode\+Server\+::\+Get (\begin{DoxyParamCaption}\item[{int}]{uid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a8be42a3564d953b58978ac51a6d3b17f}\label{class_mode_server_a8be42a3564d953b58978ac51a6d3b17f}} 
+\index{ModeServer@{ModeServer}!GetId@{GetId}}
+\index{GetId@{GetId}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Get\+Id (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_aecf61d61304e7060cb88ee4c9b311c90}\label{class_mode_server_aecf61d61304e7060cb88ee4c9b311c90}} 
+\index{ModeServer@{ModeServer}!GetId@{GetId}}
+\index{GetId@{GetId}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Get\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{mode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a1df8ab8c96038013a1bb1f1c39169d7d}\label{class_mode_server_a1df8ab8c96038013a1bb1f1c39169d7d}} 
+\index{ModeServer@{ModeServer}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_mode_server}{Mode\+Server}} $\ast$ Mode\+Server\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_mode_server_a192f269d84726af9a5596ab7b8cf1e61}\label{class_mode_server_a192f269d84726af9a5596ab7b8cf1e61}} 
+\index{ModeServer@{ModeServer}!GetName@{GetName}}
+\index{GetName@{GetName}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const char $\ast$ Mode\+Server\+::\+Get\+Name (\begin{DoxyParamCaption}\item[{int}]{uid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a949e03b6ccad200637fb963e28a796e4}\label{class_mode_server_a949e03b6ccad200637fb963e28a796e4}} 
+\index{ModeServer@{ModeServer}!GetName@{GetName}}
+\index{GetName@{GetName}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const char $\ast$ Mode\+Server\+::\+Get\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{mode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a391ce0dd36edcb99db6b23753484d66a}\label{class_mode_server_a391ce0dd36edcb99db6b23753484d66a}} 
+\index{ModeServer@{ModeServer}!IsAdd@{IsAdd}}
+\index{IsAdd@{IsAdd}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{IsAdd()}{IsAdd()}}
+{\footnotesize\ttfamily bool Mode\+Server\+::\+Is\+Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_ae99f2d964939942b95efaf7e67ac369b}\label{class_mode_server_ae99f2d964939942b95efaf7e67ac369b}} 
+\index{ModeServer@{ModeServer}!IsDelRegist@{IsDelRegist}}
+\index{IsDelRegist@{IsDelRegist}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{IsDelRegist()}{IsDelRegist()}}
+{\footnotesize\ttfamily bool Mode\+Server\+::\+Is\+Del\+Regist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_aa53a4415728e119f85e8ac416f7e1eaa}\label{class_mode_server_aa53a4415728e119f85e8ac416f7e1eaa}} 
+\index{ModeServer@{ModeServer}!LayerTop@{LayerTop}}
+\index{LayerTop@{LayerTop}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{LayerTop()}{LayerTop()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Layer\+Top (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_mode_server_a45bc63ba9a49e074518ab789c61e516a}\label{class_mode_server_a45bc63ba9a49e074518ab789c61e516a}} 
+\index{ModeServer@{ModeServer}!modeSort@{modeSort}}
+\index{modeSort@{modeSort}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{modeSort()}{modeSort()}}
+{\footnotesize\ttfamily static bool Mode\+Server\+::mode\+Sort (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{x,  }\item[{const \mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_mode_server_a88a39a70af17fc2d0f2353a25715ea83}\label{class_mode_server_a88a39a70af17fc2d0f2353a25715ea83}} 
+\index{ModeServer@{ModeServer}!PauseProcessUnderLayer@{PauseProcessUnderLayer}}
+\index{PauseProcessUnderLayer@{PauseProcessUnderLayer}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{PauseProcessUnderLayer()}{PauseProcessUnderLayer()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Pause\+Process\+Under\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a76fe3dfa8156956d99081aef72d87dbb}\label{class_mode_server_a76fe3dfa8156956d99081aef72d87dbb}} 
+\index{ModeServer@{ModeServer}!Process@{Process}}
+\index{Process@{Process}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a04696f311df6a8b5713d12e2517063b0}\label{class_mode_server_a04696f311df6a8b5713d12e2517063b0}} 
+\index{ModeServer@{ModeServer}!ProcessFinish@{ProcessFinish}}
+\index{ProcessFinish@{ProcessFinish}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{ProcessFinish()}{ProcessFinish()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Process\+Finish (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a668e16527ce327622279153ade9f0b13}\label{class_mode_server_a668e16527ce327622279153ade9f0b13}} 
+\index{ModeServer@{ModeServer}!ProcessInit@{ProcessInit}}
+\index{ProcessInit@{ProcessInit}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{ProcessInit()}{ProcessInit()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Process\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a904d9fc603f1c018ca99e441e7480600}\label{class_mode_server_a904d9fc603f1c018ca99e441e7480600}} 
+\index{ModeServer@{ModeServer}!Release@{Release}}
+\index{Release@{Release}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{Release()}{Release()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Release (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mode_base}{Mode\+Base}} $\ast$}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_a5b5815fe02396fdbd747a3c34e5e2cf9}\label{class_mode_server_a5b5815fe02396fdbd747a3c34e5e2cf9}} 
+\index{ModeServer@{ModeServer}!SkipDrawUnderLayer@{SkipDrawUnderLayer}}
+\index{SkipDrawUnderLayer@{SkipDrawUnderLayer}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{SkipDrawUnderLayer()}{SkipDrawUnderLayer()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Skip\+Draw\+Under\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_mode_server_a0f1bcd7728f06f96b2c20d1edb254b1a}\label{class_mode_server_a0f1bcd7728f06f96b2c20d1edb254b1a}} 
+\index{ModeServer@{ModeServer}!SkipProcessUnderLayer@{SkipProcessUnderLayer}}
+\index{SkipProcessUnderLayer@{SkipProcessUnderLayer}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{SkipProcessUnderLayer()}{SkipProcessUnderLayer()}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+Skip\+Process\+Under\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{class_mode_server_a975f2cf44001ca42300eb5e477c77e37}\label{class_mode_server_a975f2cf44001ca42300eb5e477c77e37}} 
+\index{ModeServer@{ModeServer}!\_game@{\_game}}
+\index{\_game@{\_game}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_game}{\_game}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game}{Game}}\& Mode\+Server\+::\+\_\+game}
+
+\mbox{\Hypertarget{class_mode_server_a52854c94c54f24c2fdc90d728b7f5e2e}\label{class_mode_server_a52854c94c54f24c2fdc90d728b7f5e2e}} 
+\index{ModeServer@{ModeServer}!\_lpInstance@{\_lpInstance}}
+\index{\_lpInstance@{\_lpInstance}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_lpInstance}{\_lpInstance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_server}{Mode\+Server}} $\ast$ Mode\+Server\+::\+\_\+lp\+Instance = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+インスタンス 
+
+\mbox{\Hypertarget{class_mode_server_aee54ab73bb82ed064ed6024761f5b385}\label{class_mode_server_aee54ab73bb82ed064ed6024761f5b385}} 
+\index{ModeServer@{ModeServer}!\_nowMode@{\_nowMode}}
+\index{\_nowMode@{\_nowMode}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_nowMode}{\_nowMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_base}{Mode\+Base}}$\ast$ Mode\+Server\+::\+\_\+now\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_afbac9750e3b21ef06f6b43a23bd1ac00}\label{class_mode_server_afbac9750e3b21ef06f6b43a23bd1ac00}} 
+\index{ModeServer@{ModeServer}!\_pauseProcessMode@{\_pauseProcessMode}}
+\index{\_pauseProcessMode@{\_pauseProcessMode}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_pauseProcessMode}{\_pauseProcessMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_base}{Mode\+Base}}$\ast$ Mode\+Server\+::\+\_\+pause\+Process\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_a49ceac8c57cde1d89cb240eb63d4f880}\label{class_mode_server_a49ceac8c57cde1d89cb240eb63d4f880}} 
+\index{ModeServer@{ModeServer}!\_skipDrawMode@{\_skipDrawMode}}
+\index{\_skipDrawMode@{\_skipDrawMode}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_skipDrawMode}{\_skipDrawMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_base}{Mode\+Base}}$\ast$ Mode\+Server\+::\+\_\+skip\+Draw\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_a7662000f380de61530fe4acc820a4749}\label{class_mode_server_a7662000f380de61530fe4acc820a4749}} 
+\index{ModeServer@{ModeServer}!\_skipProcessMode@{\_skipProcessMode}}
+\index{\_skipProcessMode@{\_skipProcessMode}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_skipProcessMode}{\_skipProcessMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_base}{Mode\+Base}}$\ast$ Mode\+Server\+::\+\_\+skip\+Process\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_afcdad3c9b164bb96daf3527dd8b48af2}\label{class_mode_server_afcdad3c9b164bb96daf3527dd8b48af2}} 
+\index{ModeServer@{ModeServer}!\_uid\_count@{\_uid\_count}}
+\index{\_uid\_count@{\_uid\_count}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_uid\_count}{\_uid\_count}}
+{\footnotesize\ttfamily int Mode\+Server\+::\+\_\+uid\+\_\+count\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_a0ef789410a6d3cd21e161bff96dff56b}\label{class_mode_server_a0ef789410a6d3cd21e161bff96dff56b}} 
+\index{ModeServer@{ModeServer}!\_vMode@{\_vMode}}
+\index{\_vMode@{\_vMode}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_vMode}{\_vMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}{lst\+Mode\+Base}} Mode\+Server\+::\+\_\+v\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_ae81fe9c58c9581954fb13c0451c1d121}\label{class_mode_server_ae81fe9c58c9581954fb13c0451c1d121}} 
+\index{ModeServer@{ModeServer}!\_vModeAdd@{\_vModeAdd}}
+\index{\_vModeAdd@{\_vModeAdd}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_vModeAdd}{\_vModeAdd}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}{lst\+Mode\+Base}} Mode\+Server\+::\+\_\+v\+Mode\+Add\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_mode_server_a9642b83807af7f63aafcb3dec719d1ce}\label{class_mode_server_a9642b83807af7f63aafcb3dec719d1ce}} 
+\index{ModeServer@{ModeServer}!\_vModeDel@{\_vModeDel}}
+\index{\_vModeDel@{\_vModeDel}!ModeServer@{ModeServer}}
+\doxysubsubsection{\texorpdfstring{\_vModeDel}{\_vModeDel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mode_server_a63c751ef65fa4cb05e5bfb86e2e982c2}{lst\+Mode\+Base}} Mode\+Server\+::\+\_\+v\+Mode\+Del\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Tensyukaku/\mbox{\hyperlink{_mode_server_8h}{Mode\+Server.\+h}}\item 
+Tensyukaku/\mbox{\hyperlink{_mode_server_8cpp}{Mode\+Server.\+cpp}}\end{DoxyCompactItemize}

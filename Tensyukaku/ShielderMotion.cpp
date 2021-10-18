@@ -1,12 +1,11 @@
 #include <DxLib.h>
-#include "EnemyBase.h"
 #include "Shielder.h"
 #include "Shield.h"
 #include "Game.h"
-#include "ShielderMotionCollision.h"
-#include "ObjectBase.h"
+#include "ShielderAttackCollision.h"
 #include "PrivateCollision.h"
 #include "EnemyParticle.h"
+
 using namespace EPInfo;
 using namespace SInfo;
 /*----------èoåª----------*/

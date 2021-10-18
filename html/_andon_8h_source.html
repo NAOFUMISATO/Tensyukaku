@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tensyukaku: Tensyukaku/Andon.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Tensyukaku
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2bae5c1ec607fc65c434688abc26752d.html">Tensyukaku</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Andon.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_andon_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_object_base_8h.html">ObjectBase.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_andon.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="class_andon.html">Andon</a> :<span class="keyword">public</span> <a class="code hl_class" href="class_object_base.html">ObjectBase</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>   <a class="code hl_function" href="class_andon.html#a6bb2da65b58dbd10ac8840452bada714">Andon</a>( <span class="keywordtype">int</span> x,<span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>   <a class="code hl_function" href="class_andon.html#a9bd2feb42c9f42515867e245a3aa60da">~Andon</a>();</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_andon.html#a9874bf02d76f5cd606ab5c769556c56b">    8</a></span>   <span class="keyword">virtual</span> <a class="code hl_enumeration" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">OBJECTTYPE</a>   <a class="code hl_function" href="class_andon.html#a9874bf02d76f5cd606ab5c769556c56b">GetObjType</a>() { <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dab6e4c516d92cf0471c9b57cfff228d4a">OBJECTTYPE::ANDON</a>; }</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_andon.html#a5b1ae71c8aa77beefcbc0bab814d8884">Init</a>()<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_andon.html#ae4c250896ddf19db63d30165aa138b86">Process</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_andon.html#a48116d27c1a57dd27ead4911812a671c">Draw</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>   <span class="keywordtype">void</span> <a class="code hl_function" href="class_andon.html#ac26da1aca73e3f1013f38fba8bff9b6b">Delete</a>(<a class="code hl_class" href="class_game.html">Game</a>&amp; g)<span class="keyword">override</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_andon.html#a480478cb208c72be9f39524015da6f60">   14</a></span>   <span class="keywordtype">int</span> <a class="code hl_variable" href="class_andon.html#a480478cb208c72be9f39524015da6f60">_Flame_y</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_andon.html#a990f679344041edeeff40a0ffdfc7ade">   15</a></span>   <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_andon.html#a990f679344041edeeff40a0ffdfc7ade">_AndonDrop_Flag</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_andon.html#ac78b34ea620c64393fb57c643a10c08d">   16</a></span>   <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_andon.html#ac78b34ea620c64393fb57c643a10c08d">_PlayerFlip_Flag</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespace_a_info.html">   19</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_a_info.html">AInfo</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>   <span class="comment">/*----------行燈の各座標関係----------*/</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespace_a_info.html#aa5c4fc4b08019657f79919818b35ec2a">   21</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#aa5c4fc4b08019657f79919818b35ec2a">GRAPHPOINT_X</a> = 0;         <span class="comment">//X位置から描画点までの差分</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a8cc8d1edf646941e071df76685be9d19">   22</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a8cc8d1edf646941e071df76685be9d19">GRAPHPOINT_Y</a> = -112;         <span class="comment">//Y位置から描画点までの差分</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a2ebb66a53fac80d56b5f416871572490">   23</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a2ebb66a53fac80d56b5f416871572490">POSITION_HITX</a> = -45;         <span class="comment">//描画点から当たり判定左上座標までの差分</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a9a43e0756d358fb2d4c52ee44760e2c4">   24</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a9a43e0756d358fb2d4c52ee44760e2c4">POSITION_HITY</a> = -113;      <span class="comment">//描画点から当たり判定左上座標までの差分</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a064ec9b6baa7654d0b9b0846a136d7b1">   25</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a064ec9b6baa7654d0b9b0846a136d7b1">COLLISION_WIDTH</a> = 90;      <span class="comment">//プレイヤーの当たり判定横幅</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a6b292a2df022fbd6f13d02af571c16fd">   26</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a6b292a2df022fbd6f13d02af571c16fd">COLLISION_HEIGHT</a> = 225;      <span class="comment">//プレイヤーの当たり判定縦幅</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>   <span class="comment">/*----------画像読み込み&amp;アニメーション&amp;判定フレーム関係----------*/</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>   <span class="comment">//共通</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespace_a_info.html#afd45f11d62b0c7e9f882dfc0804c3a0e">   30</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#afd45f11d62b0c7e9f882dfc0804c3a0e">GRAPH_WIDTH</a> = 90;         <span class="comment">//1枚当たりの画像サイズ（横）</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a4d0fd7ba26fee43ba63b1d3a94e9b914">   31</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a4d0fd7ba26fee43ba63b1d3a94e9b914">GRAPH_HEIGHT</a> = 225;         <span class="comment">//1枚当たりの画像サイズ（縦）</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>   </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespace_a_info.html#afe444cd16aa070b06c641784fe5dcf3b">   33</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#afe444cd16aa070b06c641784fe5dcf3b">ANDON_GRAPHNAME</a> = <span class="stringliteral">&quot;res/Gimik/Andon.png&quot;</span>;   <span class="comment">//画像ファイル名</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a97bb45f269cf1ae3a89c65fc4fe776bb">   34</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a97bb45f269cf1ae3a89c65fc4fe776bb">ANDON_ANIMEMAX</a> = 1;         <span class="comment">//全ての画像枚数</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a1495412ca91ddcbebb1d112f6380c0f9">   35</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a1495412ca91ddcbebb1d112f6380c0f9">ANDON_WIDTHCOUNT</a> = 1;      <span class="comment">//横の画像枚数</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a2aa145d6172e401f08480ee33771508e">   36</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a2aa145d6172e401f08480ee33771508e">ANDON_HEIGHTCOUNT</a> = 1;      <span class="comment">//縦の画像枚数</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a100aa946c59390420ff24e0a4cdc8dbb">   37</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a100aa946c59390420ff24e0a4cdc8dbb">ANDON_ALLFRAME</a> = 90;         <span class="comment">//行燈が倒れた際の消滅までのフレーム</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespace_a_info.html#adbf84a03bc2429df14ac3008e0de7628">   38</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#adbf84a03bc2429df14ac3008e0de7628">ANDON_DROPFRAME</a> = 30;      <span class="comment">//行燈が倒れきるまでのフレーム</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a4c0fedeb3e76ba5c881df738cb10a4fb">   39</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a4c0fedeb3e76ba5c881df738cb10a4fb">ANDON_DROPANGLE</a> = 0.07;      <span class="comment">//1フレーム当たりの行燈が倒れる角度</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a04520038d1a94baa5c10c2080d73c4f1">   40</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a04520038d1a94baa5c10c2080d73c4f1">ANDON_DROPANGLEMAX</a> = 1.5;   <span class="comment">//行燈の倒れる角度の最大値</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="namespace_a_info.html#aee979795cc77ea69f36aa79cc52a5e13">   41</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#aee979795cc77ea69f36aa79cc52a5e13">ANDON_DROPMOVEX</a> = 4;      <span class="comment">//行燈が倒れた際のXの移動量</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespace_a_info.html#af1c6c09e564b4cbc1529509df7f36fa5">   42</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#af1c6c09e564b4cbc1529509df7f36fa5">ANDON_DROPMOVEY</a> = 2;      <span class="comment">//行燈が倒れた際のYの移動量</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespace_a_info.html#adff97d63027f642f2305c7b97cf9268f">   43</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#adff97d63027f642f2305c7b97cf9268f">ANDON_FIREWIDTH</a> = 100;      <span class="comment">//生成される炎ごとの距離(中心点)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a717ba2d4701d7a40bb57b9a428a50788">   44</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a717ba2d4701d7a40bb57b9a428a50788">ANDON_FIREFRAME1</a> = 40;      <span class="comment">//炎が生成されるフレーム1</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespace_a_info.html#acbc4b494e7e4d17be0390cf0a59efb93">   45</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#acbc4b494e7e4d17be0390cf0a59efb93">ANDON_FIREFRAME2</a> = 60;      <span class="comment">//炎が生成されるフレーム2</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a22ff77fd584e63ec736a1cff3b99117b">   46</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a22ff77fd584e63ec736a1cff3b99117b">ANDON_FIREFRAME3</a> = 80;      <span class="comment">//炎が生成されるフレーム3</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespace_a_info.html#a325ffdbcbc0abe6454f39cf7bbfe37bc">   47</a></span>   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespace_a_info.html#a325ffdbcbc0abe6454f39cf7bbfe37bc">ANDON_FADEOUTSPEED</a> = 4;      <span class="comment">//フェードアウトスピード</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>   </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="ttc" id="a_object_base_8h_html"><div class="ttname"><a href="_object_base_8h.html">ObjectBase.h</a></div></div>
+<div class="ttc" id="aclass_andon_html"><div class="ttname"><a href="class_andon.html">Andon</a></div><div class="ttdef"><b>Definition:</b> Andon.h:4</div></div>
+<div class="ttc" id="aclass_andon_html_a480478cb208c72be9f39524015da6f60"><div class="ttname"><a href="class_andon.html#a480478cb208c72be9f39524015da6f60">Andon::_Flame_y</a></div><div class="ttdeci">int _Flame_y</div><div class="ttdef"><b>Definition:</b> Andon.h:14</div></div>
+<div class="ttc" id="aclass_andon_html_a48116d27c1a57dd27ead4911812a671c"><div class="ttname"><a href="class_andon.html#a48116d27c1a57dd27ead4911812a671c">Andon::Draw</a></div><div class="ttdeci">void Draw(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> Andon.cpp:115</div></div>
+<div class="ttc" id="aclass_andon_html_a5b1ae71c8aa77beefcbc0bab814d8884"><div class="ttname"><a href="class_andon.html#a5b1ae71c8aa77beefcbc0bab814d8884">Andon::Init</a></div><div class="ttdeci">void Init() override</div><div class="ttdef"><b>Definition:</b> Andon.cpp:23</div></div>
+<div class="ttc" id="aclass_andon_html_a6bb2da65b58dbd10ac8840452bada714"><div class="ttname"><a href="class_andon.html#a6bb2da65b58dbd10ac8840452bada714">Andon::Andon</a></div><div class="ttdeci">Andon(int x, int y)</div><div class="ttdef"><b>Definition:</b> Andon.cpp:10</div></div>
+<div class="ttc" id="aclass_andon_html_a9874bf02d76f5cd606ab5c769556c56b"><div class="ttname"><a href="class_andon.html#a9874bf02d76f5cd606ab5c769556c56b">Andon::GetObjType</a></div><div class="ttdeci">virtual OBJECTTYPE GetObjType()</div><div class="ttdef"><b>Definition:</b> Andon.h:8</div></div>
+<div class="ttc" id="aclass_andon_html_a990f679344041edeeff40a0ffdfc7ade"><div class="ttname"><a href="class_andon.html#a990f679344041edeeff40a0ffdfc7ade">Andon::_AndonDrop_Flag</a></div><div class="ttdeci">bool _AndonDrop_Flag</div><div class="ttdef"><b>Definition:</b> Andon.h:15</div></div>
+<div class="ttc" id="aclass_andon_html_a9bd2feb42c9f42515867e245a3aa60da"><div class="ttname"><a href="class_andon.html#a9bd2feb42c9f42515867e245a3aa60da">Andon::~Andon</a></div><div class="ttdeci">~Andon()</div><div class="ttdef"><b>Definition:</b> Andon.cpp:20</div></div>
+<div class="ttc" id="aclass_andon_html_ac26da1aca73e3f1013f38fba8bff9b6b"><div class="ttname"><a href="class_andon.html#ac26da1aca73e3f1013f38fba8bff9b6b">Andon::Delete</a></div><div class="ttdeci">void Delete(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> Andon.cpp:120</div></div>
+<div class="ttc" id="aclass_andon_html_ac78b34ea620c64393fb57c643a10c08d"><div class="ttname"><a href="class_andon.html#ac78b34ea620c64393fb57c643a10c08d">Andon::_PlayerFlip_Flag</a></div><div class="ttdeci">bool _PlayerFlip_Flag</div><div class="ttdef"><b>Definition:</b> Andon.h:16</div></div>
+<div class="ttc" id="aclass_andon_html_ae4c250896ddf19db63d30165aa138b86"><div class="ttname"><a href="class_andon.html#ae4c250896ddf19db63d30165aa138b86">Andon::Process</a></div><div class="ttdeci">void Process(Game &amp;g) override</div><div class="ttdef"><b>Definition:</b> Andon.cpp:36</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html"><div class="ttname"><a href="class_object_base.html">ObjectBase</a></div><div class="ttdef"><b>Definition:</b> ObjectBase.h:12</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1d"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1d">ObjectBase::OBJECTTYPE</a></div><div class="ttdeci">OBJECTTYPE</div><div class="ttdef"><b>Definition:</b> ObjectBase.h:17</div></div>
+<div class="ttc" id="aclass_object_base_html_aff4dbed73870b569fcf9d0fb8ab07e1dab6e4c516d92cf0471c9b57cfff228d4a"><div class="ttname"><a href="class_object_base.html#aff4dbed73870b569fcf9d0fb8ab07e1dab6e4c516d92cf0471c9b57cfff228d4a">ObjectBase::OBJECTTYPE::ANDON</a></div><div class="ttdeci">@ ANDON</div></div>
+<div class="ttc" id="anamespace_a_info_html"><div class="ttname"><a href="namespace_a_info.html">AInfo</a></div><div class="ttdef"><b>Definition:</b> Andon.h:19</div></div>
+<div class="ttc" id="anamespace_a_info_html_a04520038d1a94baa5c10c2080d73c4f1"><div class="ttname"><a href="namespace_a_info.html#a04520038d1a94baa5c10c2080d73c4f1">AInfo::ANDON_DROPANGLEMAX</a></div><div class="ttdeci">constexpr auto ANDON_DROPANGLEMAX</div><div class="ttdef"><b>Definition:</b> Andon.h:40</div></div>
+<div class="ttc" id="anamespace_a_info_html_a064ec9b6baa7654d0b9b0846a136d7b1"><div class="ttname"><a href="namespace_a_info.html#a064ec9b6baa7654d0b9b0846a136d7b1">AInfo::COLLISION_WIDTH</a></div><div class="ttdeci">constexpr auto COLLISION_WIDTH</div><div class="ttdef"><b>Definition:</b> Andon.h:25</div></div>
+<div class="ttc" id="anamespace_a_info_html_a100aa946c59390420ff24e0a4cdc8dbb"><div class="ttname"><a href="namespace_a_info.html#a100aa946c59390420ff24e0a4cdc8dbb">AInfo::ANDON_ALLFRAME</a></div><div class="ttdeci">constexpr auto ANDON_ALLFRAME</div><div class="ttdef"><b>Definition:</b> Andon.h:37</div></div>
+<div class="ttc" id="anamespace_a_info_html_a1495412ca91ddcbebb1d112f6380c0f9"><div class="ttname"><a href="namespace_a_info.html#a1495412ca91ddcbebb1d112f6380c0f9">AInfo::ANDON_WIDTHCOUNT</a></div><div class="ttdeci">constexpr auto ANDON_WIDTHCOUNT</div><div class="ttdef"><b>Definition:</b> Andon.h:35</div></div>
+<div class="ttc" id="anamespace_a_info_html_a22ff77fd584e63ec736a1cff3b99117b"><div class="ttname"><a href="namespace_a_info.html#a22ff77fd584e63ec736a1cff3b99117b">AInfo::ANDON_FIREFRAME3</a></div><div class="ttdeci">constexpr auto ANDON_FIREFRAME3</div><div class="ttdef"><b>Definition:</b> Andon.h:46</div></div>
+<div class="ttc" id="anamespace_a_info_html_a2aa145d6172e401f08480ee33771508e"><div class="ttname"><a href="namespace_a_info.html#a2aa145d6172e401f08480ee33771508e">AInfo::ANDON_HEIGHTCOUNT</a></div><div class="ttdeci">constexpr auto ANDON_HEIGHTCOUNT</div><div class="ttdef"><b>Definition:</b> Andon.h:36</div></div>
+<div class="ttc" id="anamespace_a_info_html_a2ebb66a53fac80d56b5f416871572490"><div class="ttname"><a href="namespace_a_info.html#a2ebb66a53fac80d56b5f416871572490">AInfo::POSITION_HITX</a></div><div class="ttdeci">constexpr auto POSITION_HITX</div><div class="ttdef"><b>Definition:</b> Andon.h:23</div></div>
+<div class="ttc" id="anamespace_a_info_html_a325ffdbcbc0abe6454f39cf7bbfe37bc"><div class="ttname"><a href="namespace_a_info.html#a325ffdbcbc0abe6454f39cf7bbfe37bc">AInfo::ANDON_FADEOUTSPEED</a></div><div class="ttdeci">constexpr auto ANDON_FADEOUTSPEED</div><div class="ttdef"><b>Definition:</b> Andon.h:47</div></div>
+<div class="ttc" id="anamespace_a_info_html_a4c0fedeb3e76ba5c881df738cb10a4fb"><div class="ttname"><a href="namespace_a_info.html#a4c0fedeb3e76ba5c881df738cb10a4fb">AInfo::ANDON_DROPANGLE</a></div><div class="ttdeci">constexpr auto ANDON_DROPANGLE</div><div class="ttdef"><b>Definition:</b> Andon.h:39</div></div>
+<div class="ttc" id="anamespace_a_info_html_a4d0fd7ba26fee43ba63b1d3a94e9b914"><div class="ttname"><a href="namespace_a_info.html#a4d0fd7ba26fee43ba63b1d3a94e9b914">AInfo::GRAPH_HEIGHT</a></div><div class="ttdeci">constexpr auto GRAPH_HEIGHT</div><div class="ttdef"><b>Definition:</b> Andon.h:31</div></div>
+<div class="ttc" id="anamespace_a_info_html_a6b292a2df022fbd6f13d02af571c16fd"><div class="ttname"><a href="namespace_a_info.html#a6b292a2df022fbd6f13d02af571c16fd">AInfo::COLLISION_HEIGHT</a></div><div class="ttdeci">constexpr auto COLLISION_HEIGHT</div><div class="ttdef"><b>Definition:</b> Andon.h:26</div></div>
+<div class="ttc" id="anamespace_a_info_html_a717ba2d4701d7a40bb57b9a428a50788"><div class="ttname"><a href="namespace_a_info.html#a717ba2d4701d7a40bb57b9a428a50788">AInfo::ANDON_FIREFRAME1</a></div><div class="ttdeci">constexpr auto ANDON_FIREFRAME1</div><div class="ttdef"><b>Definition:</b> Andon.h:44</div></div>
+<div class="ttc" id="anamespace_a_info_html_a8cc8d1edf646941e071df76685be9d19"><div class="ttname"><a href="namespace_a_info.html#a8cc8d1edf646941e071df76685be9d19">AInfo::GRAPHPOINT_Y</a></div><div class="ttdeci">constexpr auto GRAPHPOINT_Y</div><div class="ttdef"><b>Definition:</b> Andon.h:22</div></div>
+<div class="ttc" id="anamespace_a_info_html_a97bb45f269cf1ae3a89c65fc4fe776bb"><div class="ttname"><a href="namespace_a_info.html#a97bb45f269cf1ae3a89c65fc4fe776bb">AInfo::ANDON_ANIMEMAX</a></div><div class="ttdeci">constexpr auto ANDON_ANIMEMAX</div><div class="ttdef"><b>Definition:</b> Andon.h:34</div></div>
+<div class="ttc" id="anamespace_a_info_html_a9a43e0756d358fb2d4c52ee44760e2c4"><div class="ttname"><a href="namespace_a_info.html#a9a43e0756d358fb2d4c52ee44760e2c4">AInfo::POSITION_HITY</a></div><div class="ttdeci">constexpr auto POSITION_HITY</div><div class="ttdef"><b>Definition:</b> Andon.h:24</div></div>
+<div class="ttc" id="anamespace_a_info_html_aa5c4fc4b08019657f79919818b35ec2a"><div class="ttname"><a href="namespace_a_info.html#aa5c4fc4b08019657f79919818b35ec2a">AInfo::GRAPHPOINT_X</a></div><div class="ttdeci">constexpr auto GRAPHPOINT_X</div><div class="ttdef"><b>Definition:</b> Andon.h:21</div></div>
+<div class="ttc" id="anamespace_a_info_html_acbc4b494e7e4d17be0390cf0a59efb93"><div class="ttname"><a href="namespace_a_info.html#acbc4b494e7e4d17be0390cf0a59efb93">AInfo::ANDON_FIREFRAME2</a></div><div class="ttdeci">constexpr auto ANDON_FIREFRAME2</div><div class="ttdef"><b>Definition:</b> Andon.h:45</div></div>
+<div class="ttc" id="anamespace_a_info_html_adbf84a03bc2429df14ac3008e0de7628"><div class="ttname"><a href="namespace_a_info.html#adbf84a03bc2429df14ac3008e0de7628">AInfo::ANDON_DROPFRAME</a></div><div class="ttdeci">constexpr auto ANDON_DROPFRAME</div><div class="ttdef"><b>Definition:</b> Andon.h:38</div></div>
+<div class="ttc" id="anamespace_a_info_html_adff97d63027f642f2305c7b97cf9268f"><div class="ttname"><a href="namespace_a_info.html#adff97d63027f642f2305c7b97cf9268f">AInfo::ANDON_FIREWIDTH</a></div><div class="ttdeci">constexpr auto ANDON_FIREWIDTH</div><div class="ttdef"><b>Definition:</b> Andon.h:43</div></div>
+<div class="ttc" id="anamespace_a_info_html_aee979795cc77ea69f36aa79cc52a5e13"><div class="ttname"><a href="namespace_a_info.html#aee979795cc77ea69f36aa79cc52a5e13">AInfo::ANDON_DROPMOVEX</a></div><div class="ttdeci">constexpr auto ANDON_DROPMOVEX</div><div class="ttdef"><b>Definition:</b> Andon.h:41</div></div>
+<div class="ttc" id="anamespace_a_info_html_af1c6c09e564b4cbc1529509df7f36fa5"><div class="ttname"><a href="namespace_a_info.html#af1c6c09e564b4cbc1529509df7f36fa5">AInfo::ANDON_DROPMOVEY</a></div><div class="ttdeci">constexpr auto ANDON_DROPMOVEY</div><div class="ttdef"><b>Definition:</b> Andon.h:42</div></div>
+<div class="ttc" id="anamespace_a_info_html_afd45f11d62b0c7e9f882dfc0804c3a0e"><div class="ttname"><a href="namespace_a_info.html#afd45f11d62b0c7e9f882dfc0804c3a0e">AInfo::GRAPH_WIDTH</a></div><div class="ttdeci">constexpr auto GRAPH_WIDTH</div><div class="ttdef"><b>Definition:</b> Andon.h:30</div></div>
+<div class="ttc" id="anamespace_a_info_html_afe444cd16aa070b06c641784fe5dcf3b"><div class="ttname"><a href="namespace_a_info.html#afe444cd16aa070b06c641784fe5dcf3b">AInfo::ANDON_GRAPHNAME</a></div><div class="ttdeci">constexpr auto ANDON_GRAPHNAME</div><div class="ttdef"><b>Definition:</b> Andon.h:33</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
