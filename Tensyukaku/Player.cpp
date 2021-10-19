@@ -249,15 +249,15 @@ void   Player::VolumeChange() {
 
 void   Player::HitJudge(Game& g) {
    //ボスステージのイベント処理状態遷移用処理
-   if (_bosseventA_flag == true) {
+   if (_bossevent_a_flag == true) {
       _action_cnt = _cnt;
       _state = PLAYERSTATE::EVENTA;
-      _bosseventA_flag = false;
+      _bossevent_a_flag = false;
    }
-   if (_bosseventB_flag == true) {
+   if (_bossevent_b_flag == true) {
       _action_cnt = _cnt;
       _state = PLAYERSTATE::EVENTB;
-      _bosseventB_flag = false;
+      _bossevent_b_flag = false;
    }
    //待機と移動時のみ階段判定を受け付ける処理
    if (_state == PLAYERSTATE::IDLE || _state == PLAYERSTATE::MOVE) {
@@ -284,6 +284,7 @@ void   Player::HitJudge(Game& g) {
             (*ite)->Delete(g);
             _life--;
             _action_cnt = _cnt;
+            _nohit_flag = true;
             _state = PLAYERSTATE::DAMAGE;
             //SE
             PlaySoundMem(_se["Damage"], DX_PLAYTYPE_BACK, true);
@@ -434,6 +435,7 @@ void Player::Star(Game& g) {
       }
       if (_cnt - _star_cnt == STAR_ALLFRAME) {
          _alpha = FIRST_ALPHA;
+         _nohit_flag = false;
          _star_flag = false;
       }
    }

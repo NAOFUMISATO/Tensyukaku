@@ -183,13 +183,11 @@ void Player::Move(Game& g) {
    {
       _y -= _spd+20;
       _isflip = true;
-
    }
    else if (g.GetKey() & PAD_INPUT_DOWN && g.GetKey() & PAD_INPUT_7)
    {
       _y += _spd + 20;
       _isflip = true;
-
    }
 #endif
    //入力がないなら待機状態へ移行
@@ -508,8 +506,6 @@ void Player::Damage(Game& g) {
    //特定のモーション中に当たり判定を行わないフラグをTRUEにする
    _nohit_flag = true; 
    if (frame == DAMAGE_ALLFRAME) {
-      //特定のモーション中に当たり判定を行わないフラグをFALSEにする
-      _nohit_flag = false;
       if (_life > 0) {
          //体力がゼロでないなら無敵状態へ移行&待機状態へ移行
          _star_cnt = _cnt;
@@ -538,15 +534,15 @@ void Player::Dead(Game& g) {
    }
    //死亡全フレーム終了した際の処理
    if (frame == DEAD_ALLFRAME) {
-      g.SetRestartFlag(true);                             //ゲームのリスタートフラグをTRUEにする
+      g.SetRestartFlag(true);                     //ゲームのリスタートフラグをTRUEにする
       auto mg = (ModeGame*)g.GetMS()->Get("Game");
-      mg->SetStopObjProcess(true);                        //ゲームの処理を止める
-      g.GetMS()->Del(g.GetMS()->Get("Flame"));            //炎演出モードが発生していたなら削除する
-      StopSoundMem(g.GetBgm()["Main"]);                   //メインステージのBGMが鳴っていたなら止める
-      StopSoundMem(g.GetBgm()["Boss"]);                   //ボスステージのBGMが鳴っていたなら止める
-      StopSoundMem(g.GetBgm()["Flame"]);                  //炎演出モードのBGMが鳴っていたなら止める
+      mg->SetStopObjProcess(true);                //ゲームの処理を止める
+      g.GetMS()->Del(g.GetMS()->Get("Flame"));    //炎演出モードが発生していたなら削除する
+      StopSoundMem(g.GetBgm()["Main"]);           //メインステージのBGMが鳴っていたなら止める
+      StopSoundMem(g.GetBgm()["Boss"]);           //ボスステージのBGMが鳴っていたなら止める
+      StopSoundMem(g.GetBgm()["Flame"]);          //炎演出モードのBGMが鳴っていたなら止める
       auto mgo = new ModeGameover();
-      g.GetMS()->Add(mgo,1, "Gameover");                  //ゲームオーバーモード生成
+      g.GetMS()->Add(mgo,1, "Gameover");          //ゲームオーバーモード生成
       
    }
 }
@@ -709,7 +705,7 @@ void Player::BossStairUp(Game& g) {
       _state = PLAYERSTATE::IDLE;
    }
 }
-/*-----イベントAの処理-----*/
+/*-----ボスイベントA-----*/
 
 void Player::BossEventA(Game& g) {
    auto frame = _cnt - _action_cnt;
@@ -731,7 +727,7 @@ void Player::BossEventA(Game& g) {
       _state = PLAYERSTATE::IDLE;
    }
 }
-/*-----イベントBの処理-----*/
+/*-----ボスイベントB-----*/
 
 void Player::BossEventB(Game& g) {
    auto frame = _cnt - _action_cnt;
@@ -768,7 +764,7 @@ void Player::BossEventB(Game& g) {
       }
    }
 }
-/*-----特殊攻撃の処理-----*/
+/*-----特殊攻撃-----*/
 
 void Player::SpecialAttack(Game& g) {
    auto frame = _cnt - _action_cnt;

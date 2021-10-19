@@ -25,13 +25,13 @@ public:
    virtual OBJECTTYPE GetObjType() { return OBJECTTYPE::EFECT; }
    /** 各エフェクトの種別列挙 */
    enum class EFECTTYPE {
-   MIDDLEBLOOD,     //!< 武士型の血しぶき
-   LOWBLOOD,        //!< 忍者型の血しぶき
-   BOSSBLOOD        //!< ボスの血しぶき
+   MIDDLEBLOOD,  //!< 武士型の血しぶき
+   LOWBLOOD,     //!< 忍者型の血しぶき
+   BOSSBLOOD     //!< ボスの血しぶき
    };
    /**
-    * \brief 純粋仮想関数化
-    * \return 0
+    * \brief    純粋仮想関数化純粋仮想関数化
+    * \return 0 派生先で定義
     */
    virtual  EFECTTYPE GetEfeType() = 0;
    /**

@@ -5,7 +5,7 @@
  * \author Sato Naofumi
  * \date   October 2021
  *********************************************************************/
-#define   _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <DxLib.h>
 #include <string>
 #include "MapChip.h"

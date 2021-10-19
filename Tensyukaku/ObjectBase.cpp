@@ -33,8 +33,8 @@ void ObjectBase::Init()
    _debug_color = std::make_tuple(255,0,255);
    _debug_alpha = 128;
    _debug_fill = false;
-   _bosseventA_flag=false;
-   _bosseventB_flag=false;
+   _bossevent_a_flag=false;
+   _bossevent_b_flag=false;
    _draw_flag = false;
    _dx = 0;
    _dy = 0;

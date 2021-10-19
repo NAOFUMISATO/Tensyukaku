@@ -37,6 +37,7 @@ void TutorialBoard::Init() {
    _hit_y = POSITION_HITY;
    _hit_w = COLLISION_WIDTH;
    _hit_h = COLLISION_HEIGHT;
+   _iaigaugeup_flag = true;
 #ifdef _DEBUG
    _debug_color = std::make_tuple(255, 100, 5);
    _debug_alpha = 128;
@@ -84,6 +85,17 @@ void  TutorialBoard::Process(Game& g) {
                auto mb6= new ModeTutorial();
                mb6->SetType("4A");
                g.GetMS()->Add(mb6, 3, "4A");
+               if (_iaigaugeup_flag == true) {
+                  for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
+                  {
+                     // iteはプレイヤーか？
+                     if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER)
+                     {
+                        (*ite)->SetGauge(5);
+                        _iaigaugeup_flag = false;
+                     }
+                  }
+               }
             }
             else if (_tutorial_type == "5A") {
                auto mb7 = new ModeTutorial();

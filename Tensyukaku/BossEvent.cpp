@@ -44,13 +44,13 @@ void BossEventBlock::Process(Game& g) {
             if (IsHit(*(*ite)) == true)
             {
                Delete(g);
-               (*ite)->SetBEventA(true);
+               (*ite)->SetBossEventA(true);
                for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
                {
                   // iteはプレイヤーか？
                   if ((*ite)->GetObjType() == OBJECTTYPE::BOSS)
                   {
-                     (*ite)->SetBEventA(true);
+                     (*ite)->SetBossEventA(true);
                   }
                }
             }
@@ -68,13 +68,13 @@ void BossEventBlock::Process(Game& g) {
             if (IsHit(*(*ite)) == true)
             {
                Delete(g);
-               (*ite)->SetBEventB(true);
+               (*ite)->SetBossEventB(true);
                for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
                {
                   // iteはプレイヤーか？
                   if ((*ite)->GetObjType() == OBJECTTYPE::BOSS)
                   {
-                     (*ite)->SetBEventB(true);
+                     (*ite)->SetBossEventB(true);
                      g.GetMS()->Del(g.GetMS()->Get("Flame"));
                   }
                }

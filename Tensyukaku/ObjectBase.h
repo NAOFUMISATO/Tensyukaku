@@ -175,25 +175,30 @@ public:
     * \brief             ボスイベントA判定を設定する関数
     * \param beventAflag ボスイベントA判定
     */
-   void SetBEventA(bool beventAflag) { _bosseventA_flag =beventAflag; }
+   void SetBossEventA(bool beventaflag) { _bossevent_a_flag =beventaflag; }
    /**
     * \brief             ボスイベントB判定を設定する関数
     * \param beventBflag ボスイベントB判定
     */
-   void SetBEventB(bool beventBflag) { _bosseventB_flag =beventBflag; }
+   void SetBossEventB(bool beventbflag) { _bossevent_b_flag =beventbflag; }
 
 protected:
    int _grhandle;         //!< 画像ハンドル
    int _sort;             //!< キャラ描画ソート用変数
-   int _x, _y;            //!< 座標（基準位置）
-   int _gx, _gy;          //!< 基準位置から描画時の差分
-   int _w, _h;            //!< 大きさ
+   int _x;                //!< X座標（基準位置）
+   int _y;                //!< Y座標（基準位置）
+   int _gx;               //!< X座標基準位置から描画時の差分
+   int _gy;               //!< Y座標基準位置から描画時の差分
+   int _w;                //!< 横幅
+   int _h;                //!< 縦幅
    int _life;             //!< 体力
    int _spd;              //!< 移動速度
    int _alpha;            //!< 透明度
    int _iai_gauge;        //!< 居合ゲージ
-   int _hit_x, _hit_y;    //!< 描画点から左上座標までの差分
-   int _hit_w, _hit_h;    //!< 当たり判定の幅
+   int _hit_x;            //!< 描画点から左上座標までのX座標差分
+   int _hit_y;            //!< 描画点から左上座標までのY座標差分
+   int _hit_w;            //!< 当たり判定の横幅
+   int _hit_h;            //!< 当たり判定の縦幅
    int _dx;               //!< 描画判定用X座標
    int _dy;               //!< 描画判定用Y座標
    int _debug_alpha;      //!< デバック用矩形透明度
@@ -203,8 +208,8 @@ protected:
    int _before_y;         //!< 前回のY座標保存変数
    bool _draw_flag;       //!< XY座標が画面+一定値以内ならば描画するフラグ
    bool _isflip;          //!< 反転判定
-   bool _bosseventA_flag; //!< ボスイベントAフラグ
-   bool _bosseventB_flag; //!< ボスイベントBフラグ
+   bool _bossevent_a_flag;//!< ボスイベントAフラグ
+   bool _bossevent_b_flag;//!< ボスイベントBフラグ
    bool _debug_fill;      //!< デバッグ用矩形塗りつぶしフラグ
    Vector2 _position;     //!< 位置ベクトル
    std::pair <int, int>_hit_judge;        //!< 当たり判定用変数

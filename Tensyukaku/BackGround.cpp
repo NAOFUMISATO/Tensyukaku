@@ -12,7 +12,7 @@
 
 BackGround::BackGround()
 {
-   _GrHandle = ResourceServer::LoadGraph("res/Map/Back.png");   
+   _grhandle = ResourceServer::LoadGraph("res/Map/Back.png");   
 }
 
 BackGround::~BackGround()
@@ -36,7 +36,7 @@ void   BackGround::Draw(Game& g)
                 // 画面内に画像範囲が入っているか確認（高速化用）
                 if (0 <= pos_x || pos_x < SCREEN_W)
                 {
-                    DrawGraph(pos_x, pos_y, _GrHandle, TRUE);
+                    DrawGraph(pos_x, pos_y, _grhandle, TRUE);
                 }
             }
         }

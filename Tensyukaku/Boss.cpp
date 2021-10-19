@@ -188,15 +188,15 @@ void Boss::Dead(Game& g) {
 }
 
 void Boss::EventChange(Game& g) {
-   if (_bosseventA_flag == true) {
+   if (_bossevent_a_flag == true) {
       _state = BOSSSTATE::EVENTA;
       _action_cnt = _cnt;
-      _bosseventA_flag = false;
+      _bossevent_a_flag = false;
    }
-   if (_bosseventB_flag == true) {
+   if (_bossevent_b_flag == true) {
       _state = BOSSSTATE::EVENTB;
       _action_cnt = _cnt;
-      _bosseventB_flag = false;
+      _bossevent_b_flag = false;
    }
 }
 

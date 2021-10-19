@@ -1,8 +1,13 @@
+/*****************************************************************//**
+ * \file   MapChip.h
+ * \brief  マップチップクラス
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #pragma once
-
 #include <string>
-
-// マップチップクラス
+//二重インクルード防止
 class Game;
 class ObjectBase;
 class MapChip {
@@ -28,36 +33,18 @@ public:
    void SetscrY(int scrY) { _scr_y = scrY; }
 
 private:
-
-   // マップのサイズ（チップ数）
-   int _mapsize_w;   // width
-   int _mapsize_h;   // height
-
-   // チップの個数
-   int _chipcount;      // tilecount
-   int _chipcount_w;    // columns
-   int _chipcount_h;    // 計算で出す
-
-   // チップのサイズ（pixel数）
+   int _mapsize_w;
+   int _mapsize_h;
+   int _chipcount;
+   int _chipcount_w;
+   int _chipcount_h;
    int _chipsize_w;
    int _chipsize_h;
-
-   // レイヤー数
-   int _mapsize_layer;   // 「<layer 」 の数を数える
-
-   // チップデータのファイル名
-   std::string      _strchip_file;
-
-   // スクロール
-   int      _scr_x, _scr_y;
-
-
-
+   int _mapsize_layer;
+   std::string _strchip_file;
+   int _scr_x, _scr_y;
    std::string StringFileLoad(std::string strFileName);
    int TiledJsonLoad(std::string filePath, std::string strFileName);
-
-   int* _cg_chip;    // マップチップ画像
-
-   // マップデータ
+   int* _cg_chip;
    int* _map_data;
 };

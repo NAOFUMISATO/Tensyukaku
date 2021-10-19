@@ -39,16 +39,16 @@ public:
    virtual OBJECTTYPE GetObjType() { return OBJECTTYPE::ENEMY; }
    /** “G‚ÌŽí•Ê—ñ‹“ */
    enum class ENEMYTYPE {
-      BUSHI,    //•Žm
-      BUSYO,    //•«
-      NINJA,    //”EŽÒ
-      ZYOUNIN,  //ã”E
-      LANCER,   //‘„•º
-      SHIELDER  //‚•º
+      BUSHI,    //!< •Žm
+      BUSYO,    //!< •«
+      NINJA,    //!< ”EŽÒ
+      ZYOUNIN,  //!< ã”E
+      LANCER,   //!< ‘„•º
+      SHIELDER  //!< ‚•º
    };
    /**
-    * \brief ƒˆ‰¼‘zŠÖ”‰»
-    * \return 0
+    * \brief    ƒˆ‰¼‘zŠÖ”‰»
+    * \return 0 ”h¶æ‚Å’è‹`
     */
    virtual ENEMYTYPE GetEneType() = 0;
    /**

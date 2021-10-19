@@ -49,9 +49,9 @@ void SpawnBlock::Process(Game& g) {
          if (IsHit(*(*ite)) == true) {
             Delete(g);
             if (_spawn_type == "1A") {
-               auto bu2 = new Bushi(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
+               auto bu2 = new Bushi(SPAWN1A_BUSHI1_X, SPAWN1A_BUSHI1_Y, SPAWN1A_BUSHI1_FLIP);
                g.GetOS()->Add(bu2);
-               auto bu3 = new Bushi(SPAWN1A_BUSHI3_X, SPAWN1A_BUSHI3_Y, SPAWN1A_BUSHI3_FLIP);
+               auto bu3 = new Bushi(SPAWN1A_BUSHI2_X, SPAWN1A_BUSHI2_Y, SPAWN1A_BUSHI2_FLIP);
                g.GetOS()->Add(bu3);
             }
             else if (_spawn_type == "1B") {

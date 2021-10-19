@@ -52,6 +52,7 @@ private:
 
    std::string  _tutorial_type;   //!< チュートリアルの種別を指定する文字列
    bool _tutorialhit_flag;        //!< チュートリアルに当たっているかのフラグ
+   bool _iaigaugeup_flag;         //!< 居合ゲージ上昇フラグ
 };
 /** チュートリアルボードクラス用定数 */
 namespace TBInfo{
