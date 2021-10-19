@@ -1,15 +1,19 @@
-/*
-**    各オブジェクトの基底
-*/
-
+/*****************************************************************//**
+ * \file   ObjectBase.cpp
+ * \brief  各オブジェクトのベースクラス
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "DxLib.h"
 #include "ObjectBase.h"
 #include "Game.h"
+
 namespace {
-   constexpr auto RED = 0;
-   constexpr auto GREEN = 1;
-   constexpr auto BLUE = 2;
-   constexpr auto DRAW_LIMIT = 400;
+   constexpr auto RED = 0;          //!< Tuple型可読性向上
+   constexpr auto GREEN = 1;        //!< Tuple型可読性向上
+   constexpr auto BLUE = 2;         //!< Tuple型可読性向上
+   constexpr auto DRAW_LIMIT = 400; //!< 描画限界距離
 }
 ObjectBase::ObjectBase(){
    Init();

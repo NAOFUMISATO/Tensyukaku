@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   SpawnBlock.cpp
+ * \brief  スポーンブロック毎の敵のインスタンス生成クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "SpawnBlock.h"
 #include "Game.h"
 #include "Bushi.h"
@@ -10,16 +17,14 @@
 #include "Boss.h"
 
 using namespace SpaInfo;
-/*
-   スポーンブロック
-*/
-Spawn::Spawn(std::string spawntype) {
+
+SpawnBlock::SpawnBlock(std::string spawntype) {
    _spawn_type = spawntype;
    Init();
 }
-Spawn::~Spawn() {
+SpawnBlock::~SpawnBlock() {
 }
-void Spawn::Init() {
+void SpawnBlock::Init() {
    _gx = 0;
    _gy = -50;
    _hit_x = -50;
@@ -31,9 +36,9 @@ void Spawn::Init() {
    _debug_alpha = 128;
    _debug_fill = true;
 #endif
-   SpawnPositon();
+   PositonSetting();
 }
-void Spawn::Process(Game& g) {
+void SpawnBlock::Process(Game& g) {
    ObjectBase::Process(g);
    //プレイヤーとの当たり判定
    for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -307,14 +312,14 @@ void Spawn::Process(Game& g) {
       }
    }
 }
-void Spawn::Draw(Game& g) {
+void SpawnBlock::Draw(Game& g) {
    ObjectBase::Draw(g);
 }
-void Spawn::Delete(Game& g) {
+void SpawnBlock::Delete(Game& g) {
    g.GetOS()->Del(this);
 }
 
-void Spawn::SpawnPositon() {
+void SpawnBlock::PositonSetting() {
    if (_spawn_type == "1A") {
       _x = SPAWN1A_XPOSITION;
       _y = SPAWN1A_YPOSITION;

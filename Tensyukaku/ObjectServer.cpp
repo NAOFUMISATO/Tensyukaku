@@ -1,7 +1,10 @@
-/*
-** オブジェクトサーバ
-*/
-
+/*****************************************************************//**
+ * \file   ObjectServer.cpp
+ * \brief  オブジェクトサーバークラス
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "DxLib.h"
 #include "ObjectServer.h"
 #include "Game.h"
@@ -44,7 +47,6 @@ void   ObjectServer::Del(ObjectBase* obj)
 // Addリストのオブジェクトを追加する
 void   ObjectServer::AddListObjects()
 {
-
    for (auto iteAdd = _vAdd.begin(); iteAdd != _vAdd.end(); iteAdd++)
    {
       auto sort = (*iteAdd)->GetSort();

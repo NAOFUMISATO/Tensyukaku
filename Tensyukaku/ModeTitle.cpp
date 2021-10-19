@@ -18,7 +18,7 @@
 #include "ExplainSelect.h"
 
 using namespace MTInfo;
-/*-----初期化-----*/
+
  bool ModeTitle::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;                 //X座標の初期化
@@ -50,13 +50,13 @@ using namespace MTInfo;
    g.VolumeInit();
    return true;
 }
- /*-----終了------*/
+
 bool ModeTitle::Terminate(Game& g) {
    base::Terminate(g);
    g.GetOS()->Clear();
    return true;
 }
-/*-----更新-----*/
+
 bool ModeTitle::Process(Game& g) {
    base::Process(g);
    auto frame = _cnt - _mode_cnt;
@@ -144,7 +144,7 @@ bool ModeTitle::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool ModeTitle::Draw(Game& g) {
    base::Draw(g);
    g.GetOS()->Draw(g);

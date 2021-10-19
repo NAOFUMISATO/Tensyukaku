@@ -1,6 +1,10 @@
-/*
-      敵の基底
-*/
+/*****************************************************************//**
+ * \file   EnemyBase.cpp
+ * \brief  各敵のベースクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "Game.h"
 #include <DxLib.h>
 #include "ResourceServer.h"
@@ -13,15 +17,15 @@ EnemyBase::EnemyBase()
 EnemyBase::~EnemyBase()
 {
 }
-/*----------初期化----------*/
+
 void EnemyBase::Init()
 {
 }
-/*----------更新----------*/
+
 void EnemyBase::Process(Game& g) {
    ObjectBase::Process(g);
 }
-/*----------描画----------*/
+
 void EnemyBase::Draw(Game& g) {
    ObjectBase::Draw(g);
 }

@@ -19,7 +19,7 @@ namespace {
    constexpr auto FIRST_POSITION_X = 200;    //横軸初期座標（足下が基準）
    constexpr auto FIRST_POSITION_Y = 9360;   //縦軸初期座標（足下が基準）
 }
-/*-------初期化--------*/
+
 bool ModeGame::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _enemyspawn = new EnemySpawn(g);          //敵スポーンブロッククラス生成
@@ -77,7 +77,7 @@ bool ModeGame::Initialize(Game& g) {
    _stop_obj_process = false;
    return true;
 }
-/*-----終了------*/
+
 bool ModeGame::Terminate(Game& g) {
    base::Terminate(g);
    delete _enemyspawn;
@@ -86,7 +86,7 @@ bool ModeGame::Terminate(Game& g) {
    g.GetOS()->Clear();
    return true;
 }
-/*-------更新--------*/
+
 bool ModeGame::Process(Game& g) {
    base::Process(g);
    //オブジェクト処理を止めるフラグが偽ならマップチップ及びオブジェクトの処理を更新する
@@ -97,7 +97,7 @@ bool ModeGame::Process(Game& g) {
    }
    return true;
 }
-/*-------描画--------*/
+
 bool ModeGame::Draw(Game& g) {
    base::Draw(g);
    _bg.Draw(g);          //背景画像描画

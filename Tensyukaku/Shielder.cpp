@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   Shielder.cpp
+ * \brief  盾兵クラス（エネミーベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Shielder.h"
 #include "Shield.h"
@@ -6,9 +13,6 @@
 #include "ResourceServer.h"
 #include "PrivateCollision.h"
 
-/*
-   盾兵
-*/
 using namespace SInfo;
 Shielder::Shielder(int x, int y, bool flip) :
    _ShieldAlive_Flag(true),
@@ -85,7 +89,6 @@ void Shielder::Delete(Game& g) {
    g.GetOS()->Del(this);
 }
 
-//被ダメ判定&押し出しの処理
 void Shielder::HitJudge(Game& g) {
    //敵とプレイヤーアクションオブジェクトの当たり判定
    for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -165,7 +168,7 @@ void Shielder::HitJudge(Game& g) {
       }
    }
 }
-//盾の描画関数
+
 void Shielder::ShieldDraw(Game& g) {
    if (_ShieldDraw_Flag == true) {
       Shield Sh;
@@ -236,7 +239,6 @@ void Shielder::ShieldDraw(Game& g) {
    }
 }
 
-//画像読み込み関数
 void Shielder::LoadPicture() {
    _grall["Appear"].resize(APPEAR_ANIMEMAX);
    ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
@@ -254,7 +256,6 @@ void Shielder::LoadPicture() {
    ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
 
-//効果音読み込み関数
 void Shielder::LoadSE() {
    _se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/ShieldAttack.wav");
    _se["Block"] = ResourceServer::LoadSoundMem("se/Enemy/ShieldBlock.wav");
@@ -262,7 +263,6 @@ void Shielder::LoadSE() {
    _se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead06.wav");
 }
 
-//効果音ボリューム初期値設定関数
 void   Shielder::VolumeInit() {
    _vpal["Attack"] = 255;
    _vpal["Block"] = 255;
@@ -270,7 +270,6 @@ void   Shielder::VolumeInit() {
    _vpal["DeadV"] = 180;
 }
 
-//ボリューム変更関数
 void   Shielder::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
    ChangeVolumeSoundMem(_vpal["Block"], _se["Block"]);
@@ -278,7 +277,6 @@ void   Shielder::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
 
-//デバッグ用関数
 void Shielder::DebugDraw(Game& g) {
    switch (_state) {
    case ENEMYSTATE::PATROL:

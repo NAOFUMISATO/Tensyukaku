@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   Andon.cpp
+ * \brief  行燈クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Andon.h"
 #include "ResourceServer.h"

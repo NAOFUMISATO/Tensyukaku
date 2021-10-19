@@ -21,8 +21,8 @@ public:
     */
    ~BossStair();
    /**
-    * \brief                          //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::BOSSSTAIR   //オブジェクトの種別（ボス階段）を返す
+    * \brief                        純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::BOSSSTAIR オブジェクトの種別（ボス階段）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::BOSSSTAIR; }
    /**

@@ -13,7 +13,7 @@
 #include "Bushi.h"
 
 using namespace BInfo;
-//UŒ‚“–‚½‚è”»’èÀ‘Ì
+
 BushiAttackCollision::BushiAttackCollision(int x, int y) {
    _x = x;
    _y = y;

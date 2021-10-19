@@ -14,7 +14,7 @@
 
 
 using namespace SInfo;
-//UŒ‚“–‚½‚è”»’èÀ‘Ì
+
 ShielderAttackCollision::ShielderAttackCollision(int x, int y) {
    _x = x;
    _y = y;

@@ -21,8 +21,8 @@ public:
     */
    ~RecoveryBlock();
    /**
-    * \brief                              //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::RECOVERYBLOCK  //オブジェクトの種別（回復ブロック）を返す
+    * \brief                            純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::RECOVERYBLOCK オブジェクトの種別（回復ブロック）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::RECOVERYBLOCK; }
    /**

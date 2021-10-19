@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   RestPoint.cpp
+ * \brief  回復ポイント掛け軸クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "RestPoint.h"
 #include "ResourceServer.h"

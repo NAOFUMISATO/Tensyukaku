@@ -13,7 +13,7 @@
 #include "ResourceServer.h"
 
 using namespace EpiInfo;
-/*------初期化-------*/
+
 bool ModeEpilogue::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;           //X座標の初期化
@@ -24,12 +24,12 @@ bool ModeEpilogue::Initialize(Game& g) {
    PlaySoundMem(g.GetBgm()["Epilogue"], DX_PLAYTYPE_LOOP, true);   //BGM再生
    return true;
 }
-/*-----終了------*/
+
 bool ModeEpilogue::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*------更新-------*/
+
 bool ModeEpilogue::Process(Game& g) {
    base::Process(g);
    auto frame = _cnt - _mode_cnt;
@@ -56,7 +56,7 @@ bool ModeEpilogue::Process(Game& g) {
    }
    return true;
 }
-/*------描画-------*/
+
 bool ModeEpilogue::Draw(Game& g) {
    base::Draw(g);
    return true;

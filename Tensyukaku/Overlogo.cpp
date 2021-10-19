@@ -13,7 +13,7 @@ namespace {
    constexpr auto FADEIN_FRAME = 60; //フェードインフレーム
    constexpr auto FADE_SPEED = 4;    //フェードスピード
 }
-/*-----初期化-----*/
+
 bool Overlogo::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;             //X座標の初期化
@@ -24,12 +24,12 @@ bool Overlogo::Initialize(Game& g) {
    _grhandle = ResourceServer::LoadGraph("res/Mode/OverLogo.png");   //画像読み込み
    return true;
 }
-/*-----終了------*/
+
 bool Overlogo::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新-----*/
+
 bool Overlogo::Process(Game& g) {
    base::Process(g);
    auto frame = _cnt - _mode_cnt;
@@ -42,7 +42,7 @@ bool Overlogo::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool Overlogo::Draw(Game& g) {
    base::Draw(g);
    return true;

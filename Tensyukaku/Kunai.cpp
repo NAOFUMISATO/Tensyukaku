@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   Kunai.cpp
+ * \brief  クナイクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Ninja.h"
@@ -6,6 +13,7 @@
 #include "ObjectBase.h"
 
 using namespace NInfo;
+
 Kunai::Kunai(int x,int y, bool flip,int spd):_repel_flag(false) {
    _x = x;
    _y = y;

@@ -13,7 +13,7 @@
 #include "OverlayBlack.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
-/*----初期化----- */
+
 bool PauseSelect::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;                       //X座標の初期化
@@ -33,12 +33,12 @@ bool PauseSelect::Initialize(Game& g) {
    _vpal["Push"] =200;
    return true;
 }
-/*-----終了------*/
+
 bool PauseSelect::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*----更新----- */
+
 bool PauseSelect::Process(Game& g) {
    base::Process(g);
    //SE音量変更
@@ -131,12 +131,12 @@ bool PauseSelect::Process(Game& g) {
    }
    return true;
 }
-/*----描画----- */
+
 bool PauseSelect::Draw(Game& g) {
    base::Draw(g);
    return true;
 }
-//モードチュートリアル削除関数
+
 void PauseSelect::TutorialDel(Game& g) {
     g.GetMS()->Del(g.GetMS()->Get("1A"));
     g.GetMS()->Del(g.GetMS()->Get("1B"));

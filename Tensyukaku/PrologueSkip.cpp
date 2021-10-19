@@ -14,8 +14,7 @@
 #include "ResourceServer.h"
 
 using namespace ProInfo;
- /*----スキップテキストクラス-----*/
- /*-----初期化-----*/
+
 bool PrologueASkip::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 1700;          //X座標の初期化
@@ -25,12 +24,12 @@ bool PrologueASkip::Initialize(Game& g) {
    _grhandle = ResourceServer::LoadGraph("res/Mode/PrologueSkip.png");   //画像読み込み
    return true;
 }
-/*-----終了------*/
+
 bool PrologueASkip::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新-----*/
+
 bool PrologueASkip::Process(Game& g) {
    base::Process(g);
    auto frame = _cnt - _mode_cnt;
@@ -43,7 +42,7 @@ bool PrologueASkip::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool PrologueASkip::Draw(Game& g) {
    base::Draw(g);
    return true;

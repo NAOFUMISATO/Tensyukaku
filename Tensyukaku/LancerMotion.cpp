@@ -1,13 +1,21 @@
+/*****************************************************************//**
+ * \file   LancerMotion.cpp
+ * \brief  ëÑï∫ÇÃèÛë‘ä÷êî
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Lancer.h"
 #include "Game.h"
 #include "LancerAttackCollision.h"
-#include "EnemyParticle.h"
+#include "LanceParticle.h"
 #include "PrivateCollision.h"
 
-using namespace EPInfo;
+using namespace LPInfo;
 using namespace LInfo;
 /*----------èoåª----------*/
+
 void Lancer::Appear(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Appear"][_anime["Appear"]];
@@ -23,6 +31,7 @@ void Lancer::Appear(Game& g) {
    }
 }
 /*----------èÑâÒ----------*/
+
 void Lancer::Patrol(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Patrol"][_anime["Patrol"]];
@@ -98,6 +107,7 @@ void Lancer::Patrol(Game& g) {
    }
 }
 /*----------í«ê’----------*/
+
 void Lancer::Coming(Game& g) {
    _grhandle = _grall["Coming"][_anime["Coming"]];
    _anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
@@ -163,6 +173,7 @@ void Lancer::Coming(Game& g) {
    }
 }
 /*----------çUåÇ----------*/
+
 void Lancer::Attack(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Attack"][_anime["Attack"]];
@@ -177,7 +188,7 @@ void Lancer::Attack(Game& g) {
          {
             std::pair<int, int> xy = std::make_pair(_x, _y);
             std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
-            auto rl = new LanceReserveLight(xy, dxy, true);
+            auto rl = new LanceParticle(xy, dxy, true);
             g.GetOS()->Add(rl);
          }
       }
@@ -207,7 +218,7 @@ void Lancer::Attack(Game& g) {
          {
             std::pair<int, int> xy = std::make_pair(_x, _y);
             std::pair<double, double> dxy = std::make_pair(((rand() % LRESERVELIGHT_PARTICLE_RANDOMX1) - LRESERVELIGHT_PARTICLE_RANDOMX2) / LRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -LRESERVELIGHT_PARTICLE_RANDOMY1) - LRESERVELIGHT_PARTICLE_RANDOMY2) / LRESERVELIGHT_PARTICLE_RANDOMY3);
-            auto rl = new LanceReserveLight(xy, dxy, false);
+            auto rl = new LanceParticle(xy, dxy, false);
             g.GetOS()->Add(rl);
          }
       }
@@ -251,6 +262,7 @@ void Lancer::Attack(Game& g) {
    }
 }
 /*----------éÄñS----------*/
+
 void Lancer::Dead(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Dead"][_anime["Dead"]];

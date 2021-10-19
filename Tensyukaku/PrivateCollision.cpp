@@ -11,10 +11,6 @@
 #include "ObjectBase.h"
 #include "ResourceServer.h"
 
-
-/*
-ó‚¯‘¤‚Å”»’è‚ğæ‚ç‚È‚¢Û‚Ì“–‚½‚è”»’èÀ‘Ì
-*/
 PrivateCollision::PrivateCollision(int x, int y,int hit_w,int hit_h) {
    _x = x;
    _y = y;

@@ -11,7 +11,7 @@
 #include "game.h"
 #include "ResourceServer.h"
 
-//エントリーポイント
+/** エントリーポイント */
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpCmdLine, int nCmdShow)
 {
    //ログの出力をしない

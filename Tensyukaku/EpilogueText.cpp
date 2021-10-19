@@ -13,7 +13,7 @@
 #include "ResourceServer.h"
 
 using namespace EpiInfo;
-/*-----初期化------*/
+
 bool EpilogueText::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = TEXT_FIRST_XPOSITION;   //X座標初期化
@@ -30,12 +30,12 @@ bool EpilogueText::Initialize(Game& g) {
    PlaySoundMem(_se["Text1"], DX_PLAYTYPE_BACK, true);     //テキスト1ボイス再生
    return true;
 }
-/*-----終了------*/
+
 bool EpilogueText::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新------*/
+
 bool EpilogueText::Process(Game& g) {
    base::Process(g);
    VolumeChange();            //効果音音量変更
@@ -124,13 +124,12 @@ bool EpilogueText::Process(Game& g) {
    }
    return true;
 }
-/*-----描画------*/
+
 bool EpilogueText::Draw(Game& g) {
    base::Draw(g);
    return true;
 }
 
-//SE読み込み関数
 void EpilogueText::LoadSE() {
    _se["Text1"] = ResourceServer::LoadSoundMem("se/Voice/Epilogue01.wav");
    _se["Text2"] = ResourceServer::LoadSoundMem("se/Voice/Epilogue02.wav");
@@ -138,14 +137,13 @@ void EpilogueText::LoadSE() {
    _se["Text4"] = ResourceServer::LoadSoundMem("se/Voice/Epilogue04.wav");
 }
 
-//ボリューム初期値設定関数
 void EpilogueText::VolumeInit() {
    _vpal["Text1"] = 255;
    _vpal["Text2"] = 255;
    _vpal["Text3"] = 255;
    _vpal["Text4"] = 255;
 }
-//ボリューム変更関数
+
 void EpilogueText::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["Text1"], _se["Text1"]);
    ChangeVolumeSoundMem(_vpal["Text2"], _se["Text2"]);

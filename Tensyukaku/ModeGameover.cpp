@@ -20,7 +20,7 @@ namespace {
    constexpr auto OVERLAY_PAL = 200;      //ぼかし処理の透明度
    constexpr auto OVERSELECT_FRAME = 120; //セレクト画面の表示フレーム
 }
-/*-----初期化-----*/
+
 bool ModeGameover::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;          //X座標初期化
@@ -34,12 +34,12 @@ bool ModeGameover::Initialize(Game& g) {
    PlaySoundMem(_se["GameOver"], DX_PLAYTYPE_BACK, true);      //SE再生
    return true;
 }
-/*-----終了------*/
+
 bool ModeGameover::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新-----*/
+
 bool ModeGameover::Process(Game& g) {
    base::Process(g);
    auto frame = _cnt - _mode_cnt;
@@ -58,7 +58,7 @@ bool ModeGameover::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool ModeGameover::Draw(Game& g) {
    base::Draw(g);
    return true;

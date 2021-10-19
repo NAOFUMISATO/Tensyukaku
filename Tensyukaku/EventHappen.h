@@ -58,12 +58,3 @@ private:
     */
    void FlameAppear(Game& g);
 };
-/** イベントブロックのインスタンス生成クラス用定数 */
-namespace EHInfo {
-   /*----------各イベントブロック座標等----------*/
-   constexpr auto BOSSA_NUM = 1;
-   constexpr auto BOSSB_NUM = 2;
-   //炎演出ブロック
-   constexpr auto FLAME_X = 500;
-   constexpr auto FLAME_Y = 1760;
-}

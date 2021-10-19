@@ -1,6 +1,10 @@
-/*
-      プレイヤーのモーション関数
-*/
+/*****************************************************************//**
+ * \file   PlayerMotion.cpp
+ * \brief  プレイヤーの状態関数
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Player.h"
 #include "Game.h"
@@ -9,16 +13,32 @@
 #include "KickCollision.h"
 #include "IaiCollision.h"
 #include "SpecialCollision.h"
-#include "PlayerParticle.h"
 #include "OverlayBlack.h"
 #include "ModeGameover.h"
 #include "ModeGame.h"
 #include "ModeBossBefore.h"
 #include "Stair.h"
+#include "MiddleAttackParticle1.h"
+#include "MiddleAttackParticle2.h"
+#include "LowAttackParticle1.h"
+#include "LowAttackParticle2.h"
+#include "IaiParticle1.h"
+#include "IaiParticle2.h"
+#include "IaiParticle3.h"
+#include "SwayParticle.h"
+
 using namespace PInfo;
-using namespace PParInfo;
+using namespace MP1Info;
+using namespace MP2Info;
+using namespace LP1Info;
+using namespace LP2Info;
+using namespace IP1Info;
+using namespace IP2Info;
+using namespace IP3Info;
+using namespace SPInfo;
 using namespace StInfo;
 /*----------出現----------*/
+
 void Player::Appear(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Appear"][_anime["Appear"]];
@@ -33,6 +53,7 @@ void Player::Appear(Game& g) {
 }
 
 /*----------抜刀----------*/
+
 void Player::Swordout(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Swordout"][_anime["Swordout"]];
@@ -60,6 +81,7 @@ void Player::Swordout(Game& g) {
    }
 }
 /*----------待機----------*/
+
 void Player::Idle(Game& g) {
    _grhandle = _grall["Idle"][_anime["Idle"]];
    _anime["Idle"] = (_cnt / ANIMESPEED_IDLE) % IDLE_ANIMEMAX;
@@ -107,6 +129,7 @@ void Player::Idle(Game& g) {
 #endif
 }
 /*----------移動----------*/
+
 void Player::Move(Game& g) {
    _grhandle = _grall["Move"][_anime["Move"]];
    _anime["Move"] = (_cnt / _move_animespeed) % MOVE_ANIMEMAX;
@@ -175,6 +198,7 @@ void Player::Move(Game& g) {
    }
 }
 /*----------中段攻撃----------*/
+
 void Player::MidAttack(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["MiddleAttack"][_anime["MiddleAttack"]];
@@ -245,6 +269,7 @@ void Player::MidAttack(Game& g) {
    
 }
 /*----------下段攻撃----------*/
+
 void Player::LowAttack(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["LowAttack"][_anime["LowAttack"]];
@@ -304,6 +329,7 @@ void Player::LowAttack(Game& g) {
 }
 
 /*----------蹴り----------*/
+
 void Player::Kick(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Kick"][_anime["Kick"]];
@@ -331,6 +357,7 @@ void Player::Kick(Game& g) {
 }
 
 /*----------居合----------*/
+
 void Player::Iai(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Iai"][_anime["Iai"]];
@@ -431,7 +458,8 @@ void Player::Iai(Game& g) {
       _state = PLAYERSTATE::IDLE;
    }
 }
-///*----------スウェイ----------*/
+/*----------スウェイ----------*/
+
 void Player::Sway(Game& g){
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Sway"][_anime["Sway"]];
@@ -470,6 +498,7 @@ void Player::Sway(Game& g){
 }
 
 /*----------被ダメ----------*/
+
 void Player::Damage(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Damage"][_anime["Damage"]];
@@ -497,6 +526,7 @@ void Player::Damage(Game& g) {
 }
 
 /*----------死亡----------*/
+
 void Player::Dead(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Dead"][_anime["Dead"]];
@@ -508,20 +538,21 @@ void Player::Dead(Game& g) {
    }
    //死亡全フレーム終了した際の処理
    if (frame == DEAD_ALLFRAME) {
-      g.SetRestartFlag(true);                                       //ゲームのリスタートフラグをTRUEにする
+      g.SetRestartFlag(true);                             //ゲームのリスタートフラグをTRUEにする
       auto mg = (ModeGame*)g.GetMS()->Get("Game");
-      mg->SetStopObjProcess(true);                              //ゲームの処理を止める
-      g.GetMS()->Del(g.GetMS()->Get("Flame"));               //炎演出モードが発生していたなら削除する
-      StopSoundMem(g.GetBgm()["Main"]);                     //メインステージのBGMが鳴っていたなら止める
-      StopSoundMem(g.GetBgm()["Boss"]);                     //ボスステージのBGMが鳴っていたなら止める
+      mg->SetStopObjProcess(true);                        //ゲームの処理を止める
+      g.GetMS()->Del(g.GetMS()->Get("Flame"));            //炎演出モードが発生していたなら削除する
+      StopSoundMem(g.GetBgm()["Main"]);                   //メインステージのBGMが鳴っていたなら止める
+      StopSoundMem(g.GetBgm()["Boss"]);                   //ボスステージのBGMが鳴っていたなら止める
       StopSoundMem(g.GetBgm()["Flame"]);                  //炎演出モードのBGMが鳴っていたなら止める
       auto mgo = new ModeGameover();
-      g.GetMS()->Add(mgo,1, "Gameover");                     //ゲームオーバーモード生成
+      g.GetMS()->Add(mgo,1, "Gameover");                  //ゲームオーバーモード生成
       
    }
 }
 
 /*---------階段位置調整---------*/
+
 void Player::StairMove(Game& g) {
    _grhandle = _grall["Move"][_anime["Move"]];
    _anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
@@ -560,6 +591,7 @@ void Player::StairMove(Game& g) {
 }
 
 /*---------階段上昇------------*/
+
 void Player::StairUp(Game& g) {
    _grhandle = _grall["Move"][_anime["Move"]];
    _anime["Move"] = (_cnt / ANIMESPEED_WALK) % MOVE_ANIMEMAX;
@@ -590,6 +622,7 @@ void Player::StairUp(Game& g) {
 }
 
 /*---------ボス階段位置調整---------*/
+
 void Player::BossStairMove(Game& g) {
    _grhandle = _grall["Move"][_anime["Move"]];
    _anime["Move"] = (_cnt / ANIMESPEED_RUN) % MOVE_ANIMEMAX;
@@ -637,6 +670,7 @@ void Player::BossStairMove(Game& g) {
 }
 
 /*---------ボス階段上昇------------*/
+
 void Player::BossStairUp(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Move"][_anime["Move"]];
@@ -676,6 +710,7 @@ void Player::BossStairUp(Game& g) {
    }
 }
 /*-----イベントAの処理-----*/
+
 void Player::BossEventA(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Idle"][_anime["Idle"]];
@@ -697,6 +732,7 @@ void Player::BossEventA(Game& g) {
    }
 }
 /*-----イベントBの処理-----*/
+
 void Player::BossEventB(Game& g) {
    auto frame = _cnt - _action_cnt;
    _spd = 4;
@@ -733,6 +769,7 @@ void Player::BossEventB(Game& g) {
    }
 }
 /*-----特殊攻撃の処理-----*/
+
 void Player::SpecialAttack(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Special"][_anime["Special"]];

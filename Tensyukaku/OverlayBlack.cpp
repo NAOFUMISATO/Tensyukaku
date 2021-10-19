@@ -10,7 +10,6 @@
 #include "Game.h"
 #include "ResourceServer.h"
 
-/*-----初期化-----*/
 bool OverlayBlack::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;           //X座標の初期化
@@ -20,19 +19,19 @@ bool OverlayBlack::Initialize(Game& g) {
    _grhandle=ResourceServer::LoadGraph("res/Mode/Black.png"); //画像読み込み
    return true;
 }
-/*-----終了------*/
+
 bool OverlayBlack::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-//フェード時間を設定する関数
+
 void OverlayBlack::SetFade(int fadeoutframe,int fadeinbeginframe,int fadeinendframe, int fadespeed) {
    _fadeout_frame= fadeoutframe;
    _fadein_beginframe = fadeinbeginframe;
    _fadein_endframe = fadeinendframe;
    _fade_speed = fadespeed;
 }
-/*-----更新-----*/
+
 bool OverlayBlack::Process(Game& g) {
    base::Process(g);
    auto frame = _cnt - _mode_cnt;
@@ -52,7 +51,7 @@ bool OverlayBlack::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool OverlayBlack::Draw(Game& g) {
    base::Draw(g);
    return true;

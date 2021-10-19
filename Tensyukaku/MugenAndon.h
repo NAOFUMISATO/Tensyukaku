@@ -21,8 +21,8 @@ public:
     */
    ~MugenAndon();
    /**
-    * \brief                           //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::MUGENANDON   //オブジェクトの種別（無限行燈）を返す
+    * \brief                         純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::MUGENANDON オブジェクトの種別（無限行燈）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::MUGENANDON; }
    /**

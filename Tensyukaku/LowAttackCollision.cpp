@@ -11,7 +11,7 @@
 #include "Player.h"
 
 using namespace PInfo;
-//‰º’iUŒ‚“–‚½‚è”»’èÀ‘Ì
+
 LowAttackCollision::LowAttackCollision(int x, int y) {
    _x = x;
    _y = y;

@@ -1,6 +1,10 @@
-/*
-      武将のモーション関数
-*/
+/*****************************************************************//**
+ * \file   BusyoMotion.cpp
+ * \brief  武将の状態関数
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Busyo.h"
 #include "Game.h"
@@ -9,6 +13,7 @@
 
 using namespace BsInfo;
 /*----------出現----------*/
+
 void Busyo::Appear(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Appear"][_anime["Appear"]];
@@ -25,6 +30,7 @@ void Busyo::Appear(Game& g) {
 }
 
 /*----------巡回----------*/
+
 void Busyo::Patrol(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Patrol"][_anime["Patrol"]];
@@ -100,6 +106,7 @@ void Busyo::Patrol(Game& g) {
    }
 }
 /*----------追跡----------*/
+
 void Busyo::Coming(Game& g) {
    _grhandle = _grall["Coming"][_anime["Coming"]];
    _anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
@@ -170,6 +177,7 @@ void Busyo::Coming(Game& g) {
    }
 }
 /*----------攻撃----------*/
+
 void Busyo::Attack(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Attack"][_anime["Attack"]];
@@ -236,6 +244,7 @@ void Busyo::Attack(Game& g) {
 }
 
 /*----------被ダメ----------*/
+
 void Busyo::Damage(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Damage"][_anime["Damage"]];
@@ -261,6 +270,7 @@ void Busyo::Damage(Game& g) {
    }
 }
 /*----------死亡----------*/
+
 void Busyo::Dead(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Dead"][_anime["Dead"]];

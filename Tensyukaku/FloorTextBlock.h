@@ -20,8 +20,8 @@ public:
     */
    ~FloorTextBlock();
    /**
-    * \brief                              //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::FLOORTEXTBLOCK  //オブジェクトの種別（階層表示ブロック）を返す
+    * \brief                             純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::FLOORTEXTBLOCK オブジェクトの種別（階層表示ブロック）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::FLOORTEXTBLOCK; }
    /**

@@ -16,7 +16,7 @@
 #include "CreditRedReturn.h"
 
 using namespace CrInfo;
-/*-----初期化------*/
+
 bool ModeCredit::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 2880;               //X座標初期化
@@ -36,12 +36,12 @@ bool ModeCredit::Initialize(Game& g) {
    _vpal["CreditMove"] = 200;
    return true;
 }
-/*-----終了------*/
+
 bool ModeCredit::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新------*/
+
 bool ModeCredit::Process(Game& g) {
    base::Process(g);
    //SEの音量変更
@@ -108,7 +108,7 @@ bool ModeCredit::Process(Game& g) {
    }
    return true;
 }
-/*-----描画------*/
+
 bool ModeCredit::Draw(Game& g) {
    auto posx = _x - 960;
    auto posy = _y - 540;

@@ -14,7 +14,7 @@
 #include "Game.h"
 
 using namespace PoInfo;
-//“Å‰t€”õ
+
 PoisonReserve::PoisonReserve(int x, int y) {
    _x = x;
    _y = y;

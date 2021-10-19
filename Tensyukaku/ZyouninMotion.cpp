@@ -1,12 +1,22 @@
+/*****************************************************************//**
+ * \file   ZyouninMotion.cpp
+ * \brief  è„îEÇÃèÛë‘ä÷êî
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Zyounin.h"
 #include "Game.h"
 #include "ZyouninAttackCollision.h"
 #include "PrivateCollision.h"
+#include "KunaiParticle.h"
 #include "Kunai.h"
 
 using namespace ZInfo;
+using namespace KPInfo;
 /*----------èoåª----------*/
+
 void Zyounin::Appear(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Appear"][_anime["Appear"]];
@@ -22,6 +32,7 @@ void Zyounin::Appear(Game& g) {
    }
 }
 /*----------èÑâÒ---------*/
+
 void Zyounin::Patrol(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Patrol"][_anime["Patrol"]];
@@ -119,6 +130,7 @@ void Zyounin::Patrol(Game& g) {
    }
 }
 /*----------í«ê’----------*/
+
 void Zyounin::Coming(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Coming"][_anime["Coming"]];
@@ -213,6 +225,7 @@ void Zyounin::Coming(Game& g) {
    }
 }
 /*--------------çUåÇ---------------*/
+
 void Zyounin::Attack(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Attack"][_anime["Attack"]];
@@ -279,6 +292,7 @@ void Zyounin::Attack(Game& g) {
    }
 }
 /*---------ÉNÉiÉCìäÇ∞--------*/
+
 void Zyounin::Throw(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Throw"][_anime["Throw"]];
@@ -287,6 +301,15 @@ void Zyounin::Throw(Game& g) {
    }
    if (_isflip == false) {
       PrivateCollision acc(_x + _hit_x - THROWCANCEL_WIDTH, _y - _hit_h, THROWCANCEL_WIDTH, THROWCANCEL_HEIGHT);
+      if (frame == 1) {
+         for (int i = 0; i < KRESERVELIGHT_PARTICLE_QTY; i++)
+         {
+            std::pair<int, int> xy = std::make_pair(_x, _y);
+            std::pair<double, double> dxy = std::make_pair(((rand() % KRESERVELIGHT_PARTICLE_RANDOMX1) - KRESERVELIGHT_PARTICLE_RANDOMX2) / KRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -KRESERVELIGHT_PARTICLE_RANDOMY1) - KRESERVELIGHT_PARTICLE_RANDOMY2) / KRESERVELIGHT_PARTICLE_RANDOMY3);
+            auto kp = new KunaiParticle(xy, dxy, true);
+            g.GetOS()->Add(kp);
+         }
+      }
       if (frame == THROW_ANIMEFRAME|| frame == THROW_ALLFRAME) {
          if (_kunai_stock <= 0) {
             _action_cnt = _cnt;
@@ -312,6 +335,15 @@ void Zyounin::Throw(Game& g) {
    }
    if (_isflip == true) {
       PrivateCollision acc(_x - _hit_x, _y - _hit_h, THROWCANCEL_WIDTH, THROWCANCEL_HEIGHT);
+      if (frame == 1) {
+         for (int i = 0; i < KRESERVELIGHT_PARTICLE_QTY; i++)
+         {
+            std::pair<int, int> xy = std::make_pair(_x, _y);
+            std::pair<double, double> dxy = std::make_pair(((rand() % KRESERVELIGHT_PARTICLE_RANDOMX1) - KRESERVELIGHT_PARTICLE_RANDOMX2) / KRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -KRESERVELIGHT_PARTICLE_RANDOMY1) - KRESERVELIGHT_PARTICLE_RANDOMY2) / KRESERVELIGHT_PARTICLE_RANDOMY3);
+            auto kp = new KunaiParticle(xy, dxy, false);
+            g.GetOS()->Add(kp);
+         }
+      }
       if (frame == THROW_ANIMEFRAME || frame == THROW_ALLFRAME) {
          if (_kunai_stock <= 0) {
             _anime["Throw"] = 0;
@@ -376,6 +408,7 @@ void Zyounin::Throw(Game& g) {
 
 }
 /*---------éÄñS----------*/
+
 void Zyounin::Dead(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Dead"][_anime["Dead"]];

@@ -1,21 +1,58 @@
+/*****************************************************************//**
+ * \file   SpawnBlock.h
+ * \brief  スポーンブロック毎の敵のインスタンス生成クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #pragma once
 #include "ObjectBase.h"
-
-class Spawn :public ObjectBase {
+/** スポーンブロック毎の敵のインスタンス生成 */
+class SpawnBlock :public ObjectBase {
 public:
-   Spawn(std::string spawntype);
-   ~Spawn();
-   virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::SPAWNBLOCK; }
+   /**
+    * \brief           コンストラクタ
+    * \param spawntype スポーンブロックの種別を指定する文字列
+    */
+   SpawnBlock(std::string spawntype);
+   /**
+    * \brief デストラクタ
+    */
+   ~SpawnBlock();
+   /**
+    * \brief                         純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::SPAWNBLOCK オブジェクトの種別（スポーンブロック）を返す
+    */
+   virtual OBJECTTYPE GetObjType() { return OBJECTTYPE::SPAWNBLOCK; }
+   /**
+    * \brief 初期化関数
+    */
    void Init()override;
+   /**
+    * \brief   更新関数
+    * \param g ゲームの参照
+    */
    void Process(Game& g)override;
+   /**
+    * \brief   描画関数
+    * \param g ゲームの参照
+    */
    void Draw(Game& g)override;
+   /**
+    * \brief   オブジェクトの消去関数
+    * \param g ゲームの参照
+    */
    void Delete(Game& g)override;
+
 private:
-   void SpawnPositon();
+   /**
+    * \brief スポーンブロックの座標設定関数
+    */
+   void PositonSetting();
 
-   std::string  _spawn_type;
+   std::string  _spawn_type;   //!< スポーンブロックの種別を指定する文字列
 };
-
+/** スポーンブロック毎の敵のインスタンス生成クラス用定数 */
 namespace SpaInfo {
    /*----------スポーンブロックの位置&スポーンする敵の位置&忍者のクナイ本数----------*/
       //スポーンブロック1A(プレイヤーの初期位置)

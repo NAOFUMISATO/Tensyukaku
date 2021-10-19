@@ -19,8 +19,8 @@ public:
     */
    ~GameEndSelect();
    /**
-    * \brief                        //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::GAMEEND   //オブジェクトの種別（ゲーム終了セレクト）を返す
+    * \brief                      純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::GAMEEND オブジェクトの種別（ゲーム終了セレクト）を返す
     */
    virtual OBJECTTYPE GetObjType() { return OBJECTTYPE::GAMEEND; }
    /**

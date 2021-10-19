@@ -1,18 +1,25 @@
+/*****************************************************************//**
+ * \file   TutorialBoard.cpp
+ * \brief  チュートリアルボードクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
-#include  "TutorialBoard.h"
+#include "TutorialBoard.h"
 #include "ModeTutorial.h"
 #include "ModeGame.h"
-#include  "Game.h"
+#include "Game.h"
 
 using namespace TBInfo;
 namespace {
-   constexpr auto GRAPHPOINT_X = 0;      //X位置から描画点までの差分
-   constexpr auto GRAPHPOINT_Y = -180;      //Y位置から描画点までの差分
-   constexpr auto POSITION_HITX = -100;      //描画点から当たり判定左上座標までの差分
-   constexpr auto POSITION_HITY = -180;      //描画点から当たり判定左上座標までの差分
-   constexpr auto COLLISION_WIDTH = 200;   //当たり判定横幅
-   constexpr auto COLLISION_HEIGHT = 360;   //当たり判定縦幅
+   constexpr auto GRAPHPOINT_X = 0;      //!< X位置から描画点までの差分
+   constexpr auto GRAPHPOINT_Y = -180;   //!< Y位置から描画点までの差分
+   constexpr auto POSITION_HITX = -100;  //!< 描画点から当たり判定左上座標までの差分
+   constexpr auto POSITION_HITY = -180;  //!< 描画点から当たり判定左上座標までの差分
+   constexpr auto COLLISION_WIDTH = 200; //!< 当たり判定横幅
+   constexpr auto COLLISION_HEIGHT = 360;//!< 当たり判定縦幅
 }
 TutorialBoard::TutorialBoard(std::string tutorialtype):_tutorialhit_flag(false) {
    _tutorial_type = tutorialtype;

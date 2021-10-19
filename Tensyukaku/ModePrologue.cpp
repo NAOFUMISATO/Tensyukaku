@@ -14,7 +14,7 @@
 #include "ResourceServer.h"
 
 using namespace ProInfo;
-/*-----‰Šú‰»-----*/
+
 bool ModePrologue::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 1920;          //XÀ•W‰Šú‰»

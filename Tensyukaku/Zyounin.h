@@ -26,86 +26,86 @@ public:
     * \brief                     純粋仮想関数のオーバーライド
     * \return ENEMYTYPE::ZYOUNIN オブジェクトの種別（上忍）を返す
     */
-   virtual ENEMYTYPE   GetEneType() { return ENEMYTYPE::ZYOUNIN; }
+   virtual ENEMYTYPE GetEneType() { return ENEMYTYPE::ZYOUNIN; }
    /**
     * \brief 初期化関数
     */
-   void   Init()override;
+   void Init()override;
    /**
     * \brief   更新関数
     * \param g ゲームの参照
     */
-   void   Process(Game& g)override;
+   void Process(Game& g)override;
    /**
     * \brief   描画関数
     * \param g ゲームの参照
     */
-   void   Draw(Game& g)override;
+   void Draw(Game& g)override;
    /**
     * \brief   オブジェクトの消去関数
     * \param g ゲームの参照
     */
-   void   Delete(Game& g)override;
+   void Delete(Game& g)override;
 
 private:
    /**
     * \brief   出現状態関数
     * \param g ゲームの参照
     */
-   void   Appear(Game& g);
+   void Appear(Game& g);
    /**
     * \brief   巡回状態関数
     * \param g ゲームの参照
     */
-   void   Patrol(Game& g);
+   void Patrol(Game& g);
    /**
     * \brief   追跡状態関数
     * \param g ゲームの参照
     */
-   void   Coming(Game& g);
+   void Coming(Game& g);
    /**
     * \brief   攻撃状態関数
     * \param g ゲームの参照
     */
-   void   Attack(Game& g);
+   void Attack(Game& g);
    /**
     * \brief   クナイ投げ状態関数
     * \param g ゲームの参照
     */
-   void   Throw(Game& g);
+   void Throw(Game& g);
    /**
     * \brief   死亡状態関数
     * \param g ゲームの参照
     */
-   void   Dead(Game& g);
+   void  Dead(Game& g);
    /**
     * \brief   各当たり判定関数
     * \param g ゲームの参照
     */
-   void   HitJudge(Game& g);
+   void HitJudge(Game& g);
    /**
     * \brief 画像読み込み関数
     */
-   void   LoadPicture();
+   void LoadPicture();
    /**
     * \brief SE読み込み関数
     */
-   void   LoadSE();
+   void LoadSE();
    /**
     * \brief 効果音ボリューム初期値設定関数
     */
-   void   VolumeInit();
+   void VolumeInit();
    /**
     * \brief ボリューム変更関数
     */
-   void   VolumeChange();
+   void VolumeChange();
    /**
     * \brief   デバッグ描画関数
     * \param g ゲームの参照
     */
-   void   DebugDraw(Game& g);
+   void DebugDraw(Game& g);
 
-   int      _kunai_stock;   //!< クナイ本数
+   int _kunai_stock;   //!< クナイ本数
 };
 /** 上忍クラス用定数 */
 namespace ZInfo {

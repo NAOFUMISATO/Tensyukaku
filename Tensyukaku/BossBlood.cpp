@@ -1,4 +1,11 @@
-#include  <DxLib.h>
+/*****************************************************************//**
+ * \file   BossBlood.cpp
+ * \brief  ボスの血しぶきクラス（エフェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
+#include <DxLib.h>
 #include "Game.h"
 #include "ResourceServer.h"
 #include "BossBlood.h"

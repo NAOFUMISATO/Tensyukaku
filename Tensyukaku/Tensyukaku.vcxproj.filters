@@ -204,9 +204,6 @@
     <ClCompile Include="SpawnBlock.cpp">
       <Filter>ソース ファイル\Object\Spawn</Filter>
     </ClCompile>
-    <ClCompile Include="SpawnBlockBase.cpp">
-      <Filter>ソース ファイル\Object\Spawn</Filter>
-    </ClCompile>
     <ClCompile Include="Stair.cpp">
       <Filter>ソース ファイル\Object\Gimik</Filter>
     </ClCompile>
@@ -237,7 +234,7 @@
     <ClCompile Include="Cursor.cpp">
       <Filter>ソース ファイル\Object\Outgame</Filter>
     </ClCompile>
-    <ClCompile Include="OutGameParticle.cpp">
+    <ClCompile Include="CusorParticle.cpp">
       <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
     <ClCompile Include="IaiGauge.cpp">
@@ -296,9 +293,6 @@
     </ClCompile>
     <ClCompile Include="ModeExPlain.cpp">
       <Filter>ソース ファイル\Mode</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerParticle.cpp">
-      <Filter>ソース ファイル\Object\Particle</Filter>
     </ClCompile>
     <ClCompile Include="Overlogo.cpp">
       <Filter>ソース ファイル\Mode</Filter>
@@ -363,9 +357,6 @@
     <ClCompile Include="BossBlood.cpp">
       <Filter>ソース ファイル\Object\Efect</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyParticle.cpp">
-      <Filter>ソース ファイル\Object\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="ModeCredit.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
@@ -405,7 +396,7 @@
     <ClCompile Include="FloorTextBlock.cpp">
       <Filter>ソース ファイル\Object\Event</Filter>
     </ClCompile>
-    <ClCompile Include="ModeIFloorext.cpp">
+    <ClCompile Include="ModeFloorText.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
     <ClCompile Include="CreditSelect.cpp">
@@ -422,6 +413,48 @@
     </ClCompile>
     <ClCompile Include="TitleLogo.cpp">
       <Filter>ソース ファイル\Object\Outgame</Filter>
+    </ClCompile>
+    <ClCompile Include="LanceParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="KunaiParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="MiddleAttackParticle1.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="MiddleAttackParticle2.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="LowAttackParticle1.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="LowAttackParticle2.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="GaugeMaxParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="IaiGaugeParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="IaiParticle1.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="IaiParticle2.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="IaiParticle3.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="RecoveryParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="SwayParticle.cpp">
+      <Filter>ソース ファイル\Object\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplainController.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -491,9 +524,6 @@
     <ClInclude Include="SpawnBlock.h">
       <Filter>ヘッダー ファイル\Object\Spawn</Filter>
     </ClInclude>
-    <ClInclude Include="SpawnBlockBase.h">
-      <Filter>ヘッダー ファイル\Object\Spawn</Filter>
-    </ClInclude>
     <ClInclude Include="GimikPlacement.h">
       <Filter>ヘッダー ファイル\Object\Gimik</Filter>
     </ClInclude>
@@ -518,10 +548,7 @@
     <ClInclude Include="Cursor.h">
       <Filter>ヘッダー ファイル\Object\OutGame</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerParticle.h">
-      <Filter>ヘッダー ファイル\Object\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="OutGameParticle.h">
+    <ClInclude Include="CusorParticle.h">
       <Filter>ヘッダー ファイル\Object\Particle</Filter>
     </ClInclude>
     <ClInclude Include="IaiGauge.h">
@@ -641,9 +668,6 @@
     <ClInclude Include="BossBlood.h">
       <Filter>ヘッダー ファイル\Object\Efect</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyParticle.h">
-      <Filter>ヘッダー ファイル\Object\Particle</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectBase.h">
       <Filter>ヘッダー ファイル\Object</Filter>
     </ClInclude>
@@ -703,6 +727,48 @@
     </ClInclude>
     <ClInclude Include="ExplainSelect.h">
       <Filter>ヘッダー ファイル\Object\OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="KunaiParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="LanceParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="MiddleAttackParticle1.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="MiddleAttackParticle2.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="IaiParticle1.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="IaiParticle2.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="IaiParticle3.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="LowAttackParticle1.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="LowAttackParticle2.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="IaiGaugeParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="GaugeMaxParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="SwayParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="RecoveryParticle.h">
+      <Filter>ヘッダー ファイル\Object\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplainController.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

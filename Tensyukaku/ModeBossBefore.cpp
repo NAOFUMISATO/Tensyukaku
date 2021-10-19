@@ -13,7 +13,7 @@
 #include "ResourceServer.h"
 
 using namespace BBInfo;
-/*-----初期化------*/
+
 bool ModeBossBefore::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;              //X座標の初期化
@@ -28,12 +28,12 @@ bool ModeBossBefore::Initialize(Game& g) {
    _vpal["BossFoot"] = 255;
    return true;
 }
-/*-----終了------*/
+
 bool ModeBossBefore::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新------*/
+
 bool ModeBossBefore::Process(Game& g) {
    base::Process(g);
    //SEの音量変更
@@ -66,7 +66,7 @@ bool ModeBossBefore::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool ModeBossBefore::Draw(Game& g) {
    base::Draw(g);
    return true;

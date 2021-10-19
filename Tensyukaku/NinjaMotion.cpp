@@ -1,17 +1,22 @@
-/*
-      îEé“ÇÃÉÇÅ[ÉVÉáÉìä÷êî
-*/
+/*****************************************************************//**
+ * \file   NinjaMotion.cpp
+ * \brief  îEé“ÇÃèÛë‘ä÷êî
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Ninja.h"
 #include "Game.h"
 #include "NinjaAttackCollision.h"
-#include "EnemyParticle.h"
+#include "KunaiParticle.h"
 #include "PrivateCollision.h"
 #include "Kunai.h"
 
 using namespace NInfo;
-using namespace EPInfo;
+using namespace KPInfo;
 /*----------èoåª----------*/
+
 void Ninja::Appear(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Appear"][_anime["Appear"]];
@@ -27,6 +32,7 @@ void Ninja::Appear(Game& g) {
    }
 }
 /*----------èÑâÒ---------*/
+
 void Ninja::Patrol(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Patrol"][_anime["Patrol"]];
@@ -127,6 +133,7 @@ void Ninja::Patrol(Game& g) {
    }
 }
 /*----------í«ê’----------*/
+
 void Ninja::Coming(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Coming"][_anime["Coming"]];
@@ -209,6 +216,7 @@ void Ninja::Coming(Game& g) {
    }
 }
 /*--------------çUåÇ---------------*/
+
 void Ninja::Attack(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Attack"][_anime["Attack"]];
@@ -269,6 +277,7 @@ void Ninja::Attack(Game& g) {
    }
 }
 /*---------ÉNÉiÉCìäÇ∞--------*/
+
 void Ninja::Throw(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Throw"][_anime["Throw"]];
@@ -283,7 +292,7 @@ void Ninja::Throw(Game& g) {
          {
             std::pair<int, int> xy = std::make_pair(_x, _y);
             std::pair<double, double> dxy = std::make_pair(((rand() % KRESERVELIGHT_PARTICLE_RANDOMX1) - KRESERVELIGHT_PARTICLE_RANDOMX2) / KRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -KRESERVELIGHT_PARTICLE_RANDOMY1) - KRESERVELIGHT_PARTICLE_RANDOMY2) / KRESERVELIGHT_PARTICLE_RANDOMY3);
-            auto rl = new KunaiReserveLight(xy, dxy, true);
+            auto rl = new KunaiParticle(xy, dxy, true);
             g.GetOS()->Add(rl);
          }
       }
@@ -316,7 +325,7 @@ void Ninja::Throw(Game& g) {
          {
             std::pair<int, int> xy = std::make_pair(_x, _y);
             std::pair<double, double> dxy = std::make_pair(((rand() % KRESERVELIGHT_PARTICLE_RANDOMX1) - KRESERVELIGHT_PARTICLE_RANDOMX2) / KRESERVELIGHT_PARTICLE_RANDOMX3, ((rand() % -KRESERVELIGHT_PARTICLE_RANDOMY1) - KRESERVELIGHT_PARTICLE_RANDOMY2) / KRESERVELIGHT_PARTICLE_RANDOMY3);
-            auto rl = new KunaiReserveLight(xy, dxy, false);
+            auto rl = new KunaiParticle(xy, dxy, false);
             g.GetOS()->Add(rl);
          }
       }
@@ -369,6 +378,7 @@ void Ninja::Throw(Game& g) {
 
 }
 /*---------éÄñS----------*/
+
 void Ninja::Dead(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Dead"][_anime["Dead"]];

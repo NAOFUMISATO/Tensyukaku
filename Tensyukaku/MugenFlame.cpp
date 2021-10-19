@@ -1,8 +1,16 @@
+/*****************************************************************//**
+ * \file   MugenFlame.cpp
+ * \brief  無限炎クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "MugenFlame.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "Game.h"
+
 using namespace MFInfo;
 MugenFlame::MugenFlame(int x, int y) {
    _x = x;

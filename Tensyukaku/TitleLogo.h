@@ -19,8 +19,8 @@ public:
     */
    ~TitleLogo();
    /**
-    * \brief                         //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::TITLELOGO  //オブジェクトの種別（タイトルロゴ）を返す
+    * \brief                        純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::TITLELOGO オブジェクトの種別（タイトルロゴ）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::TITLELOGO; }
    /**

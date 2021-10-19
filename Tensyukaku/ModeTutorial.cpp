@@ -12,7 +12,7 @@
 #include "ModeGame.h"
 
 using namespace TuInfo;
-/*-----初期化-----*/
+
 bool ModeTutorial::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;            //X座標の初期化
@@ -23,12 +23,12 @@ bool ModeTutorial::Initialize(Game& g) {
    LoadPicture();       //画像読み込み
    return true;
 }
-/*-----終了------*/
+
 bool ModeTutorial::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新-----*/
+
 bool ModeTutorial::Process(Game& g) {
    base::Process(g);
    //チュートリアルの種類により、描画する画像の変更
@@ -55,12 +55,12 @@ bool ModeTutorial::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool ModeTutorial::Draw(Game& g) {
    base::Draw(g);
    return true;
 }
-//画像読み込み関数
+
 void  ModeTutorial::LoadPicture() {
    _grall["1A"].resize(1);
    ResourceServer::LoadDivGraph("res/Mode/Tutorial1.png", 1, 1, 1, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["1A"].data());

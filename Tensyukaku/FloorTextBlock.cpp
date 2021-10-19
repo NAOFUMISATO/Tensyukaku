@@ -1,9 +1,17 @@
+/*****************************************************************//**
+ * \file   FloorTextBlock.cpp
+ * \brief  階層表示ブロッククラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "FloorTextBlock.h"
 #include "ModeFloorText.h"
 #include "Game.h"
 #include "ResourceServer.h"
 
 using namespace FTInfo;
+
 FloorTextBlock::FloorTextBlock(std::string texttype) {
    _text_type = texttype;
    _se["FloorSign"] = ResourceServer::LoadSoundMem("se/Gimik/FloorSign.wav");

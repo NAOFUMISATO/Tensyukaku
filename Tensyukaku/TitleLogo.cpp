@@ -1,13 +1,20 @@
+/*****************************************************************//**
+ * \file   TitleLogo.cpp
+ * \brief  タイトルロゴクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Game.h"
 #include "TitleLogo.h"
+
 namespace {
-   constexpr auto RED = 0;
-   constexpr auto GREEN = 1;
-   constexpr auto BLUE = 2;
+   constexpr auto RED = 0;    //!< tuple型可読性向上
+   constexpr auto GREEN = 1;  //!< tuple型可読性向上
+   constexpr auto BLUE = 2;   //!< tuple型可読性向上
 }
-//タイトルロゴ
 TitleLogo::TitleLogo() {
    Init();
    _grall["TitleLogo"].resize(30);

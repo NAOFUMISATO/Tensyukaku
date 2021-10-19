@@ -1,6 +1,14 @@
+/*****************************************************************//**
+ * \file   EfectBase.cpp
+ * \brief  エフェクトベースクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "EfectBase.h"
 #include "Game.h"
+
 EfectBase::EfectBase() {
    Init();
 }

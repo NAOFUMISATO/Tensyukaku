@@ -1,9 +1,18 @@
+/*****************************************************************//**
+ * \file   Flame.cpp
+ * \brief  行燈の炎クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Flame.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "Game.h"
+
 using namespace FInfo;
+
 Flame::Flame(int x, int y) {
    _x = x;
    _y = y;

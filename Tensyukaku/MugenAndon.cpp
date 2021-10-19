@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   MugenAndon.cpp
+ * \brief  無限行燈クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "MugenAndon.h"
 #include "ResourceServer.h"

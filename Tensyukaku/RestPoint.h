@@ -21,8 +21,8 @@ public:
     */
    ~RestPoint();
    /**
-    * \brief                          //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::RESTPOINT   //オブジェクトの種別（回復ポイント掛け軸）を返す
+    * \brief                        純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::RESTPOINT オブジェクトの種別（回復ポイント掛け軸）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::RESTPOINT; }
    /**

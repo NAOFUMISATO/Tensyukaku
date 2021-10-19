@@ -19,8 +19,8 @@ public:
     */
    ~Cursor();
    /**
-    * \brief                       //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::CURSOR   //オブジェクトの種別（タイトルカーソル）を返す
+    * \brief                     純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::CURSOR オブジェクトの種別（タイトルカーソル）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::CURSOR; }
    /**

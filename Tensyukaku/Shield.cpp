@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   Shield.cpp
+ * \brief  盾クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Shielder.h"

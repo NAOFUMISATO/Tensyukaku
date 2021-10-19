@@ -22,8 +22,8 @@ public:
     */
    ~Stair();
    /**
-    * \brief                      //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::STAIR   //オブジェクトの種別（階段）を返す
+    * \brief                    純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::STAIR オブジェクトの種別（階段）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::STAIR; }
    /**

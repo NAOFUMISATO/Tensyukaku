@@ -19,8 +19,8 @@ public:
     */
    ~GameStartSelect();
    /**
-    * \brief                         //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::GAMSTART   //オブジェクトの種別（ゲーム開始セレクト）を返す
+    * \brief                       純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::GAMSTART オブジェクトの種別（ゲーム開始セレクト）を返す
     */
    virtual OBJECTTYPE GetObjType() { return OBJECTTYPE::GAMESTART; }
    /**

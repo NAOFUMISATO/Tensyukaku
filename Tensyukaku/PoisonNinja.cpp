@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   PoisonNinja.cpp
+ * \brief  毒液忍者クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "PoisonNinja.h"
 #include "PoisonReserve.h"
@@ -7,6 +14,7 @@
 #include "PrivateCollision.h"
 
 using namespace PNInfo;
+
 PoisonNinja::PoisonNinja(int x, int y, bool flip)
 {
    _x = x;
@@ -71,7 +79,6 @@ void PoisonNinja::Delete(Game& g) {
    g.GetOS()->Del(this);
 }
 
-//出現状態時の処理
 void PoisonNinja::Appear(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Appear"][_anime["Appear"]];
@@ -86,7 +93,6 @@ void PoisonNinja::Appear(Game& g) {
    }
 }
 
-//巡回状態時の処理
 void PoisonNinja::Patrol(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Patrol"][_anime["Patrol"]];
@@ -142,7 +148,6 @@ void PoisonNinja::Patrol(Game& g) {
    }
 }
 
-//毒液垂らし状態の処理
 void PoisonNinja::Poising(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Poising"][_anime["Poising"]];

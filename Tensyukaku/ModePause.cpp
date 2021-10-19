@@ -13,8 +13,6 @@
 #include "Game.h"
 #include "ResourceServer.h"
 
-/*----------インゲームでのポーズ画面クラス-------------*/
-/*------初期化-----*/
 bool ModePause::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;           //X座標の初期化
@@ -32,17 +30,17 @@ bool ModePause::Initialize(Game& g) {
    g.GetMS()->Add(pc, 25, "PController");
    return true;
 }
-/*-----終了------*/
+
 bool ModePause::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*------更新-----*/
+
 bool ModePause::Process(Game& g) {
    base::Process(g);
    return true;
 }
-/*------描画-----*/
+
 bool ModePause::Draw(Game& g) {
    base::Draw(g);
    return true;

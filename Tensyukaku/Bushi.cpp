@@ -1,19 +1,20 @@
-/*
-   武士
-*/
+/*****************************************************************//**
+ * \file   Bushi.cpp
+ * \brief  武士クラス（エネミーベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
-#include <vector>
 #include <sstream>
-#include "EnemyBase.h"
 #include "Bushi.h"
 #include "Game.h"
 #include "ResourceServer.h"
-#include "ObjectBase.h"
 #include "MiddleBlood.h"
 #include "PrivateCollision.h"
 
 using namespace BInfo;
-//武士のコンストラクタ : 引数（X座標,Y座標,反転判定）
+
 Bushi::Bushi(int x,int y,bool flip)
 {
    _x = x;
@@ -28,7 +29,7 @@ Bushi::Bushi(int x,int y,bool flip)
 Bushi::~Bushi() {
    
 };
-/*----------初期化----------*/
+
 void Bushi::Init() {
    _sort = 6;
    _w = GRAPH_WIDTH;
@@ -44,7 +45,7 @@ void Bushi::Init() {
    _spd = SPEED;
    _alpha = 0;
 }
-/*----------更新-----------*/
+
 void Bushi::Process(Game& g) {
    EnemyBase::Process(g);
    //効果音ボリューム変更
@@ -79,8 +80,8 @@ void Bushi::Process(Game& g) {
    //当たり判定の処理
    HitJudge(g);
 }
-/*----------描画----------*/
-void Bushi::Draw(Game& g) {   
+
+void Bushi::Draw(Game& g) {
 #ifdef _DEBUG
    DebugDraw(g);
 #endif
@@ -92,7 +93,6 @@ void Bushi::Delete(Game& g) {
       g.GetOS()->Del(this);
 }
 
-//被ダメ判定&押し出しの処理
 void Bushi::HitJudge(Game& g) {
    //敵とプレイヤーのアクションの当たり判定
    for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -185,7 +185,6 @@ void Bushi::HitJudge(Game& g) {
    }
 }
 
-//武士の画像読み込み関数
 void Bushi::LoadPicture() {
    _grall["Appear"].resize(APPEAR_ANIMEMAX);
    ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
@@ -201,27 +200,24 @@ void Bushi::LoadPicture() {
    ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
 
-//SE読み込み関数
 void Bushi::LoadSE() {
    _se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/BushiAttack.wav");
    _se["DamageV"] = ResourceServer::LoadSoundMem("se/Voice/Dead01.wav");
    _se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead04.wav");
 }
 
-//効果音ボリューム初期値設定関数
 void   Bushi::VolumeInit() {
    _vpal["Attack"] = 255;
    _vpal["DamageV"] = 255;
    _vpal["DeadV"] = 180;
 }
 
-//ボリューム変更関数
 void   Bushi::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
    ChangeVolumeSoundMem(_vpal["DamageV"], _se["DamageV"]);
    ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
-//デバッグ用関数
+
 void Bushi::DebugDraw(Game& g) {
    switch (_state) {
    case ENEMYSTATE::PATROL:

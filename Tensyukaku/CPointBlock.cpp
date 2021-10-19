@@ -1,15 +1,22 @@
+/*****************************************************************//**
+ * \file   CPointBlock.cpp
+ * \brief  チェックポイントブロッククラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "CPointBlock.h"
 #include "Game.h"
 using namespace CPInfo;
 namespace {
-   constexpr auto GRAPHPOINT_X = 0;      //X位置から描画点までの差分
-   constexpr auto GRAPHPOINT_Y = -50;      //Y位置から描画点までの差分
-   constexpr auto POSITION_HITX = -50;      //描画点から当たり判定左上座標までの差分
-   constexpr auto POSITION_HITY = -50;      //描画点から当たり判定左上座標までの差分
-   constexpr auto COLLISION_WIDTH = 100;   //階段の当たり判定横幅
-   constexpr auto COLLISION_HEIGHT = 100;   //階段の当たり判定縦幅
+   constexpr auto GRAPHPOINT_X = 0;      //!< X位置から描画点までの差分
+   constexpr auto GRAPHPOINT_Y = -50;    //!< Y位置から描画点までの差分
+   constexpr auto POSITION_HITX = -50;   //!< 描画点から当たり判定左上座標までの差分
+   constexpr auto POSITION_HITY = -50;   //!< 描画点から当たり判定左上座標までの差分
+   constexpr auto COLLISION_WIDTH = 100; //!< 階段の当たり判定横幅
+   constexpr auto COLLISION_HEIGHT = 100;//!< 階段の当たり判定縦幅
 }
-CPointBlock::CPointBlock(std::string  cpointtype) {   
+CPointBlock::CPointBlock(std::string  cpointtype) {
    _cpoint_type = cpointtype;
    Init();
 }

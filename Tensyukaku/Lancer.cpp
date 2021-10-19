@@ -1,6 +1,10 @@
-/*
-   槍兵
-*/
+/*****************************************************************//**
+ * \file   Lancer.cpp
+ * \brief  槍兵クラス（エネミーベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include <vector>
 #include <sstream>
@@ -13,7 +17,7 @@
 #include "PrivateCollision.h"
 
 using namespace LInfo;
-//槍兵のコンストラクタ    :   引数（X座標,Y座標,反転判定）
+
 Lancer::Lancer(int x, int y, bool flip)
 {
    _x = x;
@@ -28,7 +32,7 @@ Lancer::Lancer(int x, int y, bool flip)
 Lancer::~Lancer() {
 
 };
-/*----------初期化----------*/
+
 void Lancer::Init() {
    _sort = 6;
    _w = GRAPH_WIDTH;
@@ -44,7 +48,7 @@ void Lancer::Init() {
    _spd = SPEED;
    _alpha = 0;
 }
-/*----------更新-----------*/
+
 void Lancer::Process(Game& g) {
    EnemyBase::Process(g);
    //効果音ボリューム変更
@@ -75,7 +79,7 @@ void Lancer::Process(Game& g) {
    //当たり判定の処理
    HitJudge(g);
 }
-/*----------描画----------*/
+
 void Lancer::Draw(Game& g) {
 #ifdef _DEBUG
    DebugDraw(g);
@@ -144,7 +148,6 @@ void Lancer::HitJudge(Game& g) {
    }
 }
 
-//盾兵の画像読み込み関数
 void Lancer::LoadPicture() {
    _grall["Appear"].resize(APPEAR_ANIMEMAX);
    ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
@@ -158,26 +161,21 @@ void Lancer::LoadPicture() {
    ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
 
-//効果音読み込み関数
 void Lancer::LoadSE() {
    _se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/LancerAttack.wav");
    _se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead06.wav");
 }
 
-//効果音ボリューム初期値設定関数
-void   Lancer::VolumeInit() {
+void Lancer::VolumeInit() {
    _vpal["Attack"] = 255;
    _vpal["DeadV"] = 180;
 }
 
-//ボリューム変更関数
-void   Lancer::VolumeChange() {
+void Lancer::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
    ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
 
-
-//デバッグ用関数
 void Lancer::DebugDraw(Game& g) {
    switch (_state) {
    case ENEMYSTATE::PATROL:

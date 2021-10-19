@@ -21,8 +21,8 @@ public:
     */
    ~Andon();
    /**
-    * \brief                      //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::ANDON   //オブジェクトの種別（行燈）を返す
+    * \brief                    純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::ANDON オブジェクトの種別（行燈）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::ANDON; }
    /**

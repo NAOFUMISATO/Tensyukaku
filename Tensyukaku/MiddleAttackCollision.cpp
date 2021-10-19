@@ -11,7 +11,7 @@
 #include "Player.h"
 
 using namespace PInfo;
-//’†’iUŒ‚“–‚½‚è”»’èÀ‘Ì
+
 MiddleAttackCollision::MiddleAttackCollision(int x, int y) {
    _x = x;
    _y = y;

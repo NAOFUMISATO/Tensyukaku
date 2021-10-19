@@ -6,22 +6,22 @@
  * \date   October 2021
  *********************************************************************/
 #include <DxLib.h>
+#include <sstream>
 #include "ResourceServer.h"
 #include "Player.h"
 #include "Game.h"
-#include "ObjectBase.h"
 #include "ModeGame.h"
 #include "ModePause.h"
 #include "OverlayFlame.h"
 #include "PlayerHp.h"
 #include "IaiGauge.h"
-#include "PlayerParticle.h"
-#include <vector>
-#include <sstream>
+#include "GaugeMaxParticle.h"
+#include "RecoveryParticle.h"
 
-using namespace PParInfo;
 using namespace PInfo;
-//プレイヤーのコンストラクタ : 引数（X座標,Y座標,反転判定）
+using namespace RPInfo;
+using namespace GMPInfo;
+
 Player::Player(int x,int y,bool flip) :
    _move_animespeed(0),
    _star_flag(false),
@@ -42,9 +42,9 @@ Player::Player(int x,int y,bool flip) :
    VolumeInit();
 }
 
-Player::~Player(){   
+Player::~Player(){
 }
-/*----------初期化----------*/
+
 void Player::Init()
 {
    _sort = 13;
@@ -67,7 +67,6 @@ void Player::Init()
    _camera_x = 500;
 }
 
-/*----------更新----------*/
 void Player::Process(Game& g){
    ObjectBase::Process(g);
    //効果音ボリューム変更
@@ -164,7 +163,7 @@ void Player::Process(Game& g){
    //プレイヤー位置からのカメラ位置設定
    CameraSetting(g);
 }
-/*----------描画----------*/
+
 void Player::Draw(Game& g) {
 #ifdef _DEBUG
    DebugDraw(g);
@@ -173,7 +172,6 @@ void Player::Draw(Game& g) {
    ObjectBase::Draw(g);
 }
 
-//画像読み込み関数
 void Player::LoadPicture() {
    _grall["Appear"].resize(APPEAR_ANIMEMAX);
    ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
@@ -201,7 +199,6 @@ void Player::LoadPicture() {
    ResourceServer::LoadDivGraph(SPECIALATTACK_GRAPHNAME, SPECIALATTACK_ANIMEMAX, SPECIALATTACK_WIDTHCOUNT, SPECIALATTACK_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Special"].data());
 }
 
-//効果音読み込み関数
 void Player::LoadSE() {
    _se["BStartGame"] = ResourceServer::LoadSoundMem("se/Player/BStartGame.wav");
    _se["Walk"] = ResourceServer::LoadSoundMem("se/Player/Footstep.wav");
@@ -218,7 +215,6 @@ void Player::LoadSE() {
    _se["Recovery"] = ResourceServer::LoadSoundMem("se/Player/Recovery.wav");
 }
 
-//効果音ボリューム初期値設定関数
 void   Player::VolumeInit() {
    _vpal["BStartGame"] = 200;
    _vpal["Walk"] = 255;
@@ -235,7 +231,6 @@ void   Player::VolumeInit() {
    _vpal["Recovery"] = 255;
 }
 
-//ボリューム変更関数
 void   Player::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["BStartGame"],_se["BStartGame"]);
    ChangeVolumeSoundMem(_vpal["Walk"], _se["Walk"]);
@@ -251,7 +246,7 @@ void   Player::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["Special"], _se["Special"]);
    ChangeVolumeSoundMem(_vpal["Recovery"], _se["Recovery"]);
 }
-//プレイヤーの被ダメ&押し出し&各イベントブロック判定の処理
+
 void   Player::HitJudge(Game& g) {
    //ボスステージのイベント処理状態遷移用処理
    if (_bosseventA_flag == true) {
@@ -371,7 +366,7 @@ void   Player::HitJudge(Game& g) {
       }
    }
 }
-//デバック用関数
+
 void Player::DebugDraw(Game& g) {
    std::stringstream ss;
    ss << "Xスクロール値=" << g.GetChip()->GetscrX() << "\n";
@@ -387,7 +382,6 @@ void Player::DebugDraw(Game& g) {
    DrawString(10, 10, ss.str().c_str(), GetColor(255, 0, 0));
 }
 
-//UIインスタンス生成関数
 void Player::UIAppear(Game& g){
    if (_ui_flag == false) {
       auto hp1 = new PlayerHp(0);
@@ -401,7 +395,7 @@ void Player::UIAppear(Game& g){
       _ui_flag = true;
    }
 }
-//プレイヤー位置からのカメラ位置設定
+
 void Player::CameraSetting(Game& g) {
    g.SetcvX(_x - (SCREEN_W * _camera_x / 1000));            // 背景の横中央にキャラを置く
    g.SetcvY(_y - (SCREEN_H * BACK_CAMERA_Y / 100));      // 背景の縦93%にキャラを置く
@@ -419,7 +413,6 @@ void Player::CameraSetting(Game& g) {
    if (GC->GetscrY() > GC->GetMSH() * GC->GetCSH() - SCREEN_H) { GC->SetscrY(GC->GetMSH() * GC->GetCSH() - SCREEN_H); }
 }
 
-//再起からの開始かどうか確認する関数
 void Player::RestartCheck(Game& g) {
    if (_restartcheck_flag == false) {
       //再起からの開始ならば抜刀状態から開始
@@ -432,7 +425,7 @@ void Player::RestartCheck(Game& g) {
       _restartcheck_flag = true;
    }
 }
-//無敵状態時の処理
+
 void Player::Star(Game& g) {
    if (_star_flag == true) {
       _alpha = FIRST_ALPHA;
@@ -445,7 +438,7 @@ void Player::Star(Game& g) {
       }
    }
 }
-//左スティックの入力量によるステータス設定
+
 void Player::BufSetting(Game& g) {
    auto xbuf = g.GetXBuf();
    if (xbuf < MAX_BUF - RUN_XBUF && -(MAX_BUF - RUN_XBUF) < xbuf) {
@@ -458,7 +451,7 @@ void Player::BufSetting(Game& g) {
       _move_animespeed = ANIMESPEED_RUN;
    }
 }
-//ポーズの入力管理関数
+
 void Player::PauseInput(Game& g) {
    //プレイヤーが待機状態または移動状態時のみ入力受付
    if (_state == PLAYERSTATE::IDLE || _state == PLAYERSTATE::MOVE) {
@@ -474,7 +467,6 @@ void Player::PauseInput(Game& g) {
    }
 }
 
-//ゲージMAX時の自機発光&SE発生
 void Player::GaugeMax(Game& g) {
    if (_iai_gauge == 5&& _gaugemax_flag ==false) {
       //自機発光パーティクル
@@ -482,7 +474,7 @@ void Player::GaugeMax(Game& g) {
       {
          std::pair<int, int> xy = std::make_pair(_x, _y);
          std::pair<double, double> dxy = std::make_pair(((rand() % GAGEMAX_PARTICLE_RANDOMX1) - GAGEMAX_PARTICLE_RANDOMX2) / GAGEMAX_PARTICLE_RANDOMX3, ((rand() % GAGEMAX_PARTICLE_RANDOMY1) - GAGEMAX_PARTICLE_RANDOMY2) / GAGEMAX_PARTICLE_RANDOMY3);
-         auto gm = new GageMax(xy, dxy);
+         auto gm = new GaugeMaxParticle(xy, dxy);
          g.GetOS()->Add(gm);
       }
       //SE

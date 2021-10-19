@@ -13,7 +13,7 @@
 #include "Busyo.h"
 
 using namespace BsInfo;
-//UŒ‚“–‚½‚è”»’èÀ‘Ì
+
 BusyoAttackCollision::BusyoAttackCollision(int x, int y) {
    _x = x;
    _y = y;

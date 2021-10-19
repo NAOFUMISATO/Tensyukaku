@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   GimikPlacement.cpp
+ * \brief  ギミック関係のインスタンス生成クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "GimikPlacement.h"
 #include "Game.h"

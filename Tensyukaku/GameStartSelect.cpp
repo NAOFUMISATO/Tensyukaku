@@ -1,13 +1,20 @@
+/*****************************************************************//**
+ * \file   GameStartSelect.cpp
+ * \brief  ゲーム開始セレクトクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Game.h"
 #include "GameStartSelect.h"
+
 namespace {
-   constexpr auto RED = 0;
-   constexpr auto GREEN = 1;
-   constexpr auto BLUE = 2;
+   constexpr auto RED = 0;    //!< tuple型可読性向上
+   constexpr auto GREEN = 1;  //!< tuple型可読性向上
+   constexpr auto BLUE = 2;   //!< tuple型可読性向上
 }
-//ゲームスタート
 GameStartSelect::GameStartSelect() {
    Init();
    _grhandle = ResourceServer::LoadGraph("res/Mode/GameStart.png");

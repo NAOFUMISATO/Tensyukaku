@@ -21,8 +21,8 @@ public:
     */
    ~Flame();
    /**
-    * \brief                      //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::FLAME   //オブジェクトの種別（行燈の炎）を返す
+    * \brief                    純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::FLAME オブジェクトの種別（行燈の炎）を返す
     */
    virtual OBJECTTYPE GetObjType() { return OBJECTTYPE::FLAME; }
    /**

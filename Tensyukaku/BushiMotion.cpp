@@ -1,6 +1,10 @@
-/*
-      武士のモーション関数
-*/
+/*****************************************************************//**
+ * \file   BushiMotion.cpp
+ * \brief  武士の状態関数
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Bushi.h"
 #include "Game.h"
@@ -9,6 +13,7 @@
 
 using namespace BInfo;
 /*----------出現----------*/
+
 void Bushi::Appear(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Appear"][_anime["Appear"]];
@@ -25,6 +30,7 @@ void Bushi::Appear(Game& g) {
 }
 
 /*----------巡回----------*/
+
 void Bushi::Patrol(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Patrol"][_anime["Patrol"]];
@@ -99,6 +105,7 @@ void Bushi::Patrol(Game& g) {
    }
 }
 /*----------追跡----------*/
+
 void Bushi::Coming(Game& g) {
    _grhandle = _grall["Coming"][_anime["Coming"]];
    _anime["Coming"] = (_cnt / ANIMESPEED_COMING) % COMING_ANIMEMAX;
@@ -168,6 +175,7 @@ void Bushi::Coming(Game& g) {
    }
 }
 /*----------攻撃----------*/
+
 void Bushi::Attack(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Attack"][_anime["Attack"]];
@@ -232,6 +240,7 @@ void Bushi::Attack(Game& g) {
    }
 }
 /*----------被ダメ----------*/
+
 void Bushi::Damage(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Damage"][_anime["Damage"]];
@@ -245,9 +254,10 @@ void Bushi::Damage(Game& g) {
    }
 }
 /*----------死亡----------*/
+
 void Bushi::Dead(Game& g) {
    auto frame = _cnt - _action_cnt;
-   _grhandle = _grall["Dead"][_anime["Dead"]];   
+   _grhandle = _grall["Dead"][_anime["Dead"]];
    //当たり判定を削除する
    _hit_x = 10000;
    //アニメフレーム以下ならアニメーションする
@@ -259,7 +269,7 @@ void Bushi::Dead(Game& g) {
       _alpha -= FADEOUT_SPEED;
    }
    //全フレーム経ったならこのオブジェクトを削除する
-   if (frame == DEAD_ALLFRAME) {   
+   if (frame == DEAD_ALLFRAME) {
       Delete(g);
    }
 }

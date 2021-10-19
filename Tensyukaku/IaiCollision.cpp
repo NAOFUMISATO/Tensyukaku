@@ -11,7 +11,7 @@
 #include "Player.h"
 
 using namespace PInfo;
-//‹‡“–‚½‚è”»’èÀ‘Ì
+
 IaiCollision::IaiCollision(int x, int y) {
    _x = x;
    _y = y;

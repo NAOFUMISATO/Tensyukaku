@@ -1,15 +1,21 @@
+/*****************************************************************//**
+ * \file   Cursor.cpp
+ * \brief  タイトルカーソルクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "Cursor.h"
-#include "OutGameParticle.h"
+#include "CusorParticle.h"
 #include "Game.h"
-#include "ObjectBase.h"
 #include "ModePrologue.h"
 #include "ModeTitle.h"
 #include "ModeCredit.h"
-#include "Math.h"
 #include "ModeExPlain.h"
 #include "OverlayBlack.h"
+
 using namespace CParInfo;
 using namespace CuInfo;
 Cursor::Cursor():_state(CURSOLSTATE::NOHIT){
@@ -127,7 +133,7 @@ void Cursor::Process(Game& g) {
    {
       std::pair<int, int> xy = std::make_pair(_x, _y);
       std::pair<double, double> dxy = std::make_pair(((rand() % CURSOR_PARTICLE1_RANDOMX1) - CURSOR_PARTICLE1_RANDOMX2) / CURSOR_PARTICLE1_RANDOMX3, ((rand() % CURSOR_PARTICLE1_RANDOMY1) - CURSOR_PARTICLE1_RANDOMY2) / CURSOR_PARTICLE1_RANDOMY3);
-      auto c1 = new CursorParticle1(xy, dxy, _hit_type);
+      auto c1 = new CursorParticle(xy, dxy, _hit_type);
       g.GetOS()->Add(c1);
    }
    auto xbuf = g.GetXBuf();
@@ -185,21 +191,19 @@ void Cursor::Process(Game& g) {
 void Cursor::Draw(Game& g) {
    ObjectBase::Draw(g);
 }
-//効果音読み込み関数
+
 void Cursor::LoadSE() {
    _se["GameStart"] = ResourceServer::LoadSoundMem("se/OutGame/GameStartPush.wav");
    _se["OtherSelect"] = ResourceServer::LoadSoundMem("se/OutGame/OtherSelectPush.wav");
    _se["SelectHit"] = ResourceServer::LoadSoundMem("se/OutGame/SelectHit.wav");
 }
 
-//効果音ボリューム初期値設定関数
 void   Cursor::VolumeInit() {
    _vpal["GameStart"] = 255;
    _vpal["OtherSelect"] = 255;
    _vpal["SelectHit"] = 150;
 }
 
-//ボリューム変更関数
 void   Cursor::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["GameStart"], _se["GameStart"]);
    ChangeVolumeSoundMem(_vpal["OtherSelect"], _se["OtherSelect"]);

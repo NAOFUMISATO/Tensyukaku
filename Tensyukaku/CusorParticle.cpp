@@ -1,40 +1,45 @@
+/*****************************************************************//**
+ * \file   CusorParticle.cpp
+ * \brief  タイトルカーソルパーティクルクラス（パーティクルベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
-#include <tuple>
-#include <utility>
 #include "Game.h"
 #include "ResourceServer.h"
-#include "OutGameParticle.h"
+#include "CusorParticle.h"
 #include "ParticleBase.h"
+
 namespace {
-   /*----------Tuple型可読性向上---------*/
-   constexpr auto RED = 0;
-   constexpr auto GREEN = 1;
-   constexpr auto BLUE = 2;
+   constexpr auto RED = 0;    //!< tuple型可読性向上
+   constexpr auto GREEN = 1;  //!< tuple型可読性向上
+   constexpr auto BLUE = 2;   //!< tuple型可読性向上
 }
 using namespace CParInfo;
-CursorParticle1::CursorParticle1(std::pair<double, double> xy, std::pair<double, double> dxy,std::string hittype){
+CursorParticle::CursorParticle(std::pair<double, double> xy, std::pair<double, double> dxy,std::string hittype){
    _xy = xy;
    _dxy = dxy;
    _hit_type = hittype;
    Init();
    _grhandle = ResourceServer::LoadGraph(CURSOR_PARTICLE1_GRAPH);
 }
-CursorParticle1::~CursorParticle1() {
+CursorParticle::~CursorParticle() {
 }
 
-void CursorParticle1::Init() {
-   SetState();
+void CursorParticle::Init() {
+   SetType();
    _mxy = std::make_pair(CURSOR_PARTICLE1_POSITIONX, CURSOR_PARTICLE1_POSITIONY);
    _bm = CURSOR_PARTICLE1_BLENDMODE;
    _pal =50;
    _drg = std::make_pair(CURSOR_PARTICLE1_SCALE, CURSOR_PARTICLE1_ANGLE);
 }
-void CursorParticle1::Process(Game& g) {
+void CursorParticle::Process(Game& g) {
    ParticleBase::Process(g);
 
 }
 
-void CursorParticle1::Draw(Game& g) {
+void CursorParticle::Draw(Game& g) {
    int a = _pal;
    int& re = std::get<RED>(_rgb);
    int& gr = std::get<GREEN>(_rgb);
@@ -53,7 +58,7 @@ void CursorParticle1::Draw(Game& g) {
    SetDrawBright(255, 255, 255);
 }
 
-void CursorParticle1::SetState() {
+void CursorParticle::SetType() {
    if (_hit_type == "NOHIT") {
       _rgb = std::make_tuple(240,70, 5);
       _cnt =30;
@@ -67,13 +72,11 @@ void CursorParticle1::SetState() {
       _cnt = 50;
    }
    else if (_hit_type == "ENDHIT") {
-      /*_rgb = std::make_tuple(240, 70, 5);*/
-      _rgb = std::make_tuple(5, 70, 240);
+      _rgb = std::make_tuple(240, 70, 5);
       _cnt = 50;
    }
    else if (_hit_type == "CREDITHIT") {
-      /*_rgb = std::make_tuple(240, 70, 5);*/
-      _rgb = std::make_tuple(5, 70, 240);
+      _rgb = std::make_tuple(240, 70, 5);
       _cnt = 50;
    }
 };

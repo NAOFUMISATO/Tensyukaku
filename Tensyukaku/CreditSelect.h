@@ -19,8 +19,8 @@ public:
     */
    ~CreditSelect();
    /**
-    * \brief                       //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::CREDIT   //オブジェクトの種別（クレジットセレクト）を返す
+    * \brief                     純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::CREDIT オブジェクトの種別（クレジットセレクト）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::CREDIT; }
    /**

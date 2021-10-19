@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   LowBlood.cpp
+ * \brief  忍者型の血しぶきクラス（エフェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include  <DxLib.h>
 #include "Game.h"
 #include "ResourceServer.h"

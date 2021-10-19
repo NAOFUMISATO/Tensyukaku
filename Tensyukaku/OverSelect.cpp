@@ -17,7 +17,7 @@ namespace {
    constexpr auto FADEIN_FRAME = 60;
    constexpr auto FADE_SPEED = 4;
 }
-/*-----初期化-----*/
+
 bool OverSelect::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;                       //X座標の初期化
@@ -37,12 +37,12 @@ bool OverSelect::Initialize(Game& g) {
    _vpal["Push"] = 200;
    return true;
 }
-/*-----終了------*/
+
 bool OverSelect::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新-----*/
+
 bool OverSelect::Process(Game& g) {
    base::Process(g);
    //SE音量変更
@@ -140,7 +140,7 @@ bool OverSelect::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool OverSelect::Draw(Game& g) {
    base::Draw(g);
    return true;

@@ -13,7 +13,7 @@
 #include "Zyounin.h"
 
 using namespace ZInfo;
-//UŒ‚“–‚½‚è”»’èÀ‘Ì
+
 ZyouninAttackCollision::ZyouninAttackCollision(int x, int y) {
    _x = x;
    _y = y;

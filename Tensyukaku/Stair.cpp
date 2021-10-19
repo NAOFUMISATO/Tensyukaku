@@ -1,8 +1,16 @@
+/*****************************************************************//**
+ * \file   Stair.cpp
+ * \brief  階段クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "Stair.h"
 #include "ResourceServer.h"
 #include "ObjectBase.h"
 #include "Game.h"
+
 using namespace StInfo;
 Stair::Stair(int x,int y,bool flip) {
    _x = x;

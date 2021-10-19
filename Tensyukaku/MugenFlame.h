@@ -21,8 +21,8 @@ public:
     */
    ~MugenFlame();
    /**
-    * \brief                           //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::MUGENFLAME   //オブジェクトの種別（無限炎）を返す
+    * \brief                         純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::MUGENFLAME オブジェクトの種別（無限炎）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::MUGENFLAME; }
    /**

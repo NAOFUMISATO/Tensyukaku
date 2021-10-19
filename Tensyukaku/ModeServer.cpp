@@ -1,15 +1,16 @@
-
+/*****************************************************************//**
+ * \file   ModeServer.cpp
+ * \brief  モードサーバークラス
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <cstddef>
 #include <DxLib.h>
 #include "ModeServer.h"
 
-
-/// インスタンス 
 ModeServer* ModeServer::_lpInstance = NULL;
 
-// --------------------------------------------------------------------------
-/// @brief コンストラクタ 
-// --------------------------------------------------------------------------
 ModeServer::ModeServer(Game& g) : _game(g)
 {
    _lpInstance = this;
@@ -20,16 +21,11 @@ ModeServer::ModeServer(Game& g) : _game(g)
    _pauseProcessMode = NULL;
 }
 
-// --------------------------------------------------------------------------
-/// @brief 
-// --------------------------------------------------------------------------
 ModeServer::~ModeServer()
 {
    Clear();
    _lpInstance = NULL;
 }
-
-
 // 登録はするが、一度メインを回さないといけない
 int ModeServer::Add(ModeBase* mode, int layer, const char* name) {
    _vModeAdd.push_back(mode);      // 登録予約
@@ -39,13 +35,11 @@ int ModeServer::Add(ModeBase* mode, int layer, const char* name) {
    mode->_sz_name = name;
    return mode->_uid;
 }
-
 // 削除予約
 int ModeServer::Del(ModeBase* mode) {
    _vModeDel.push_back(mode);
    return 0;
 }
-
 // 削除＆delete
 int ModeServer::Release(ModeBase* mode) {
    lstModeBase::iterator ite = _vMode.begin();
@@ -61,7 +55,6 @@ int ModeServer::Release(ModeBase* mode) {
    }
    return 1;
 }
-
 // 全部削除
 void ModeServer::Clear() {
    lstModeBase::reverse_iterator ite = _vMode.rbegin();
@@ -78,9 +71,6 @@ void ModeServer::Clear() {
    _vModeAdd.clear();
    _vModeDel.clear();
 }
-
-
-
 // 削除予約されているか？
 bool ModeServer::IsDelRegist(ModeBase* mode) {
    if (_vModeDel.size() > 0) {
@@ -91,7 +81,6 @@ bool ModeServer::IsDelRegist(ModeBase* mode) {
    }
    return false;
 }
-
 // モードリストにあるか？
 bool ModeServer::IsAdd(ModeBase* mode) {
    // 登録中のもの、登録予約中のものから検索する
@@ -106,7 +95,6 @@ bool ModeServer::IsAdd(ModeBase* mode) {
    }
    return false;
 }
-
 // 登録IDから検索
 ModeBase* ModeServer::Get(int uid) {
    // 登録中のもの、登録予約中のものから検索する
@@ -121,7 +109,6 @@ ModeBase* ModeServer::Get(int uid) {
    }
    return NULL;
 }
-
 // 名前から検索
 ModeBase* ModeServer::Get(const char* name) {
    // 登録中のもの、登録予約中のものから検索する
@@ -136,7 +123,6 @@ ModeBase* ModeServer::Get(const char* name) {
    }
    return NULL;
 }
-
 // ID取得
 int ModeServer::GetId(ModeBase* mode) {
    if (IsAdd(mode)) {
@@ -147,7 +133,6 @@ int ModeServer::GetId(ModeBase* mode) {
 int ModeServer::GetId(const char* name) {
    return GetId(Get(name));
 }
-
 // 名前取得
 const char* ModeServer::GetName(ModeBase* mode) {
    if (IsAdd(mode)) {
@@ -158,10 +143,6 @@ const char* ModeServer::GetName(ModeBase* mode) {
 const char* ModeServer::GetName(int uid) {
    return GetName(Get(uid));
 }
-
-
-
-
 // プロセスを回すための初期化
 int ModeServer::ProcessInit() {
    // 削除予約されていたものを削除
@@ -229,18 +210,15 @@ int ModeServer::Process() {
 
    return 0;
 }
-
 // プロセスを回した後の後始末
 int ModeServer::ProcessFinish() {
    return 0;
 }
-
 // 描画を回すための初期化
 int ModeServer::DrawInit() {
    ClearDrawScreen();      // 画面を初期化する
    return 0;
 }
-
 int ModeServer::Draw() {
    // レイヤーの下の方から処理
    lstModeBase::iterator ite = _vMode.begin();
@@ -256,28 +234,21 @@ int ModeServer::Draw() {
    _nowMode = NULL;
    return 0;
 }
-
 // 描画を回した後の後始末
 int ModeServer::DrawFinish() {
    ScreenFlip();         // 裏画面の内容を表画面に反映させる
    return 0;
 }
-
-
-
 // 今処理しているレイヤーより下のレイヤーは、処理を呼ばない
 int ModeServer::SkipProcessUnderLayer() {
    _skipProcessMode = _nowMode;
    return 0;
 }
-
 // 今処理しているレイヤーより下のレイヤーは、描画を呼ばない
 int ModeServer::SkipDrawUnderLayer() {
    _skipDrawMode = _nowMode;
    return 0;
 }
-
-
 // 今処理しているレイヤーより下のレイヤーは、時間経過を止める
 int ModeServer::PauseProcessUnderLayer() {
    _pauseProcessMode = _nowMode;

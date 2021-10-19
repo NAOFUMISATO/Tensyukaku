@@ -13,7 +13,7 @@
 #include "Game.h"
 
 using namespace PoInfo;
-//“Å‰t—Ž‰º
+
 PoisonFall::PoisonFall(int x, int y) {
    _x = x;
    _y = y;

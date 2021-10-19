@@ -20,8 +20,8 @@ public:
     */
    ~TutorialBoard();
    /**
-    * \brief                              //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::TUTORIALBOARD   //オブジェクトの種別（チュートリアルボード）を返す
+    * \brief                            純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::TUTORIALBOARD オブジェクトの種別（チュートリアルボード）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::TUTORIALBOARD; }
    /**

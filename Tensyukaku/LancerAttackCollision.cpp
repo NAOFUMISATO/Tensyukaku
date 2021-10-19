@@ -14,7 +14,7 @@
 
 
 using namespace LInfo;
-//UŒ‚“–‚½‚è”»’èÀ‘Ì
+
 LancerAttackCollision::LancerAttackCollision(int x, int y) {
    _x = x;
    _y = y;

@@ -1,8 +1,14 @@
+/*****************************************************************//**
+ * \file   PlayerHp.cpp
+ * \brief  プレイヤーの体力UIクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "PlayerHp.h"
 #include "Game.h"
-
 
 PlayerHp::PlayerHp(int hp){
    _life = hp;
@@ -25,7 +31,7 @@ void PlayerHp::Process(Game& g) {
    {
       // iteはプレイヤーか？
       if ((*ite)->GetObjType() == OBJECTTYPE::PLAYER) {
-         auto hp=(*ite)->GetHp();
+         auto hp=(*ite)->GetLife();
          if (hp <= _life) {
             _anime["HP"] = 30;
          }

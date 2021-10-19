@@ -11,7 +11,7 @@
 #include "Player.h"
 
 using namespace PInfo;
-//“ÁêUŒ‚“–‚½‚è”»’èÀ‘Ì
+
 SpecialCollision::SpecialCollision(int x, int y) {
    _x = x;
    _y = y;

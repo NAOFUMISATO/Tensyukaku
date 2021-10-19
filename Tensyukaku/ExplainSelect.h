@@ -19,8 +19,8 @@ public:
     */
    ~ExplainSelect();
    /**
-    * \brief                        //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::EXPLAIN   //オブジェクトの種別（説明画面セレクト）を返す
+    * \brief                      純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::EXPLAIN オブジェクトの種別（説明画面セレクト）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::EXPLAIN; }
    /**

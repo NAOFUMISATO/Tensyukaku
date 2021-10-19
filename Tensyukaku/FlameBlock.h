@@ -21,8 +21,8 @@ public:
     */
    ~FlameBlock();
    /**
-    * \brief                         //純粋仮想関数のオーバーライド
-    * \return OBJECTTYPE::FLAMEBLOCK //オブジェクトの種別（炎演出ブロック）を返す
+    * \brief                         純粋仮想関数のオーバーライド
+    * \return OBJECTTYPE::FLAMEBLOCK オブジェクトの種別（炎演出ブロック）を返す
     */
    virtual OBJECTTYPE   GetObjType() { return OBJECTTYPE::FLAMEBLOCK; }
    /**

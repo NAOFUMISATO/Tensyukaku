@@ -1,9 +1,17 @@
+/*****************************************************************//**
+ * \file   IaiGauge.cpp
+ * \brief  居合ゲージUIクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "IaiGauge.h"
 #include "Game.h"
-#include "PlayerParticle.h"
-using namespace PParInfo;
+#include "IaiGaugeParticle.h"
+
+using namespace IGPInfo;
 IaiGauge::IaiGauge(){
    Init();
    _grall["IaiGauge"].resize(6);

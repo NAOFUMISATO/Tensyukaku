@@ -15,8 +15,7 @@
 #include "ResourceServer.h"
 
 using namespace ProInfo;
-/*----プロローグテキストクラス-----*/
-/*---初期化---*/
+
 bool PrologueText::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 1600;          //X座標の初期化
@@ -34,12 +33,12 @@ bool PrologueText::Initialize(Game& g) {
    PlaySoundMem(_se["Text1"], DX_PLAYTYPE_BACK, true);   //テキスト1再生
    return true;
 }
-/*-----終了------*/
+
 bool PrologueText::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*---更新---*/
+
 bool PrologueText::Process(Game& g) {
    base::Process(g);
    VolumeChange();         //SE音量変更
@@ -179,13 +178,12 @@ bool PrologueText::Process(Game& g) {
    }
    return true;
 }
-/*---描画---*/
+
 bool PrologueText::Draw(Game& g) {
    base::Draw(g);
    return true;
 }
 
-//SE読み込み関数
 void PrologueText::LoadSE() {
    _se["Text1"] = ResourceServer::LoadSoundMem("se/Voice/Prologue01.wav");
    _se["Text2"] = ResourceServer::LoadSoundMem("se/Voice/Prologue02.wav");
@@ -194,7 +192,6 @@ void PrologueText::LoadSE() {
    _se["Text5"] = ResourceServer::LoadSoundMem("se/Voice/Prologue05.wav");
 }
 
-//ボリューム初期値設定関数
 void PrologueText::VolumeInit() {
    _vpal["Text1"]=255;
    _vpal["Text2"]=255;
@@ -202,7 +199,7 @@ void PrologueText::VolumeInit() {
    _vpal["Text4"]=255;
    _vpal["Text5"]=255;
 }
-//ボリューム変更関数
+
 void PrologueText::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["Text1"],_se["Text1"]);
    ChangeVolumeSoundMem(_vpal["Text2"], _se["Text2"]);

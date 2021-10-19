@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   MiddleBlood.cpp
+ * \brief  武士型の血しぶきクラス（エフェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include  <DxLib.h>
 #include "Game.h"
 #include "ResourceServer.h"

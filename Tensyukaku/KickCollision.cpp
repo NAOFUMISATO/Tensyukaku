@@ -11,7 +11,7 @@
 #include "Player.h"
 
 using namespace PInfo;
-//R‚è“–‚½‚è”»’èÀ‘Ì
+
 KickCollision::KickCollision(int x, int y) {
    _x = x;
    _y = y;

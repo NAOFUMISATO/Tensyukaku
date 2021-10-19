@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   BossStair.cpp
+ * \brief  ボス階段クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "BossStair.h"
 #include "ResourceServer.h"

@@ -12,7 +12,7 @@
 #include "ModeGame.h"
 
 using namespace MFTInfo;
-/*-----初期化------*/
+
 bool ModeFloorText::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;                       //X座標初期化
@@ -26,12 +26,12 @@ bool ModeFloorText::Initialize(Game& g) {
    LoadPicture();                  //画像読み込み
    return true;
 }
-/*-----終了------*/
+
 bool ModeFloorText::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新------*/
+
 bool ModeFloorText::Process(Game& g) {
    base::Process(g);
    auto frame = _cnt - _mode_cnt;
@@ -66,12 +66,12 @@ bool ModeFloorText::Process(Game& g) {
    }
    return true;
 }
-/*-----描画------*/
+
 bool ModeFloorText::Draw(Game& g) {
    base::Draw(g);
    return true;
 }
-//画像読み込み関数
+
 void  ModeFloorText::LoadPicture() {
    _grall["TOP"].resize(1);
    ResourceServer::LoadDivGraph("res/Mode/IngameText04.png", 1, 1, 1,GRAPH_WIDTH,GRAPH_HEIGHT,_grall["TOP"].data());

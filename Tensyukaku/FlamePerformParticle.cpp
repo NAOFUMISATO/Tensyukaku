@@ -1,11 +1,17 @@
+/*****************************************************************//**
+ * \file   FlamePerformParticle.cpp
+ * \brief  炎上演出パーティクルクラス（パーティクルベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
-#include <tuple>
-#include <utility>
 #include "Game.h"
 #include "ResourceServer.h"
 #include "FlamePerformParticle.h"
+
 using namespace FParInfo;
-//炎演出
+
 FlamePerform::FlamePerform(std::pair<double, double> xy, std::pair<double, double> dxy, bool flip) {
    _xy = xy;
    _dxy = dxy;

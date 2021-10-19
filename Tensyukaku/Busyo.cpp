@@ -1,19 +1,20 @@
-/*
-   武将
-*/
+/*****************************************************************//**
+ * \file   Busyo.cpp
+ * \brief  武将クラス（エネミーベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
-#include <vector>
 #include <sstream>
-#include "EnemyBase.h"
 #include "Busyo.h"
 #include "Game.h"
 #include "MiddleBlood.h"
 #include "ResourceServer.h"
-#include "ObjectBase.h"
 #include "PrivateCollision.h"
 
 using namespace BsInfo;
-//武将のコンストラクタ    :   引数（X座標,Y座標,反転判定）
+
 Busyo::Busyo(int x, int y, bool flip)
 {
    _x = x;
@@ -28,7 +29,7 @@ Busyo::Busyo(int x, int y, bool flip)
 Busyo::~Busyo() {
 
 };
-/*----------初期化----------*/
+
 void Busyo::Init() {
    _sort = 6;
    _w = GRAPH_WIDTH;
@@ -44,7 +45,7 @@ void Busyo::Init() {
    _spd = SPEED;
    _alpha = 0;
 }
-/*----------更新----------*/
+
 void Busyo::Process(Game& g) {
    EnemyBase::Process(g);
    //効果音ボリューム変更
@@ -79,7 +80,7 @@ void Busyo::Process(Game& g) {
    //当たり判定の処理
    HitJudge(g);
 }
-/*----------描画----------*/
+
 void Busyo::Draw(Game& g) {
 #ifdef _DEBUG
    DebugDraw(g);
@@ -92,7 +93,6 @@ void Busyo::Delete(Game& g) {
    g.GetOS()->Del(this);
 }
 
-//被ダメ判定&押し出しの処理
 void Busyo::HitJudge(Game& g) {
    //敵とプレイヤーのアクションの当たり判定
    for (auto ite = g.GetOS()->List()->begin(); ite != g.GetOS()->List()->end(); ite++)
@@ -197,7 +197,6 @@ void Busyo::HitJudge(Game& g) {
    }
 }
 
-//画像読み込み関数
 void Busyo::LoadPicture() {
    _grall["Appear"].resize(APPEAR_ANIMEMAX);
    ResourceServer::LoadDivGraph(APPEAR_GRAPHNAME, APPEAR_ANIMEMAX, APPEAR_WIDTHCOUNT, APPEAR_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Appear"].data());
@@ -213,26 +212,24 @@ void Busyo::LoadPicture() {
    ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
 
-//SE読み込み関数
 void Busyo::LoadSE() {
    _se["Attack"] = ResourceServer::LoadSoundMem("se/Enemy/BushiAttack.wav");
    _se["DamageV"] = ResourceServer::LoadSoundMem("se/Voice/Dead01.wav");
    _se["DeadV"] = ResourceServer::LoadSoundMem("se/Voice/Dead04.wav");
 }
-//効果音ボリューム初期値設定関数
+
 void   Busyo::VolumeInit() {
    _vpal["Attack"] = 255;
    _vpal["DamageV"] = 255;
    _vpal["DeadV"] = 255;
 }
 
-//ボリューム変更関数
 void   Busyo::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["Attack"], _se["Attack"]);
    ChangeVolumeSoundMem(_vpal["DamageV"], _se["DamageV"]);
    ChangeVolumeSoundMem(_vpal["DeadV"], _se["DeadV"]);
 }
-//デバッグ用関数
+
 void Busyo::DebugDraw(Game& g) {
    switch (_state) {
    case ENEMYSTATE::PATROL:

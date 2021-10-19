@@ -13,7 +13,7 @@
 #include "Ninja.h"
 
 using namespace NInfo;
-//UŒ‚“–‚½‚è”»’èÀ‘Ì
+
 NinjaAttackCollision::NinjaAttackCollision(int x, int y) {
    _x = x;
    _y = y;

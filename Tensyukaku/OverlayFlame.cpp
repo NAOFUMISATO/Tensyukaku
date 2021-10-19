@@ -18,7 +18,7 @@ namespace {
    constexpr auto FADE_SPEED = 2;
    constexpr auto FADEOUT_FRAME = 120;
 }
-/*----初期化-----*/
+
 bool OverlayFlame::Initialize(Game& g) {
    if (!base::Initialize(g)) { return false; }
    _x = 960;          //X座標の初期化
@@ -29,12 +29,12 @@ bool OverlayFlame::Initialize(Game& g) {
    _grhandle = ResourceServer::LoadGraph("res/Mode/OverFlame.png");   //画像読み込み
    return true;
 }
-/*-----終了------*/
+
 bool OverlayFlame::Terminate(Game& g) {
    base::Terminate(g);
    return true;
 }
-/*-----更新-----*/
+
 bool OverlayFlame::Process(Game& g) {
    base::Process(g);
    auto frame = _cnt - _mode_cnt;
@@ -56,7 +56,7 @@ bool OverlayFlame::Process(Game& g) {
    }
    return true;
 }
-/*-----描画-----*/
+
 bool OverlayFlame::Draw(Game& g) {
    base::Draw(g);
    return true;

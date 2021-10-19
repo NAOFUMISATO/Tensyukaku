@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   Boss.cpp
+ * \brief  ボスクラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include <DxLib.h>
 #include "ResourceServer.h"
 #include "ModeEpilogue.h"
@@ -5,7 +12,9 @@
 #include "Boss.h"
 #include "BossBlood.h"
 #include "Game.h"
+
 using namespace BossInifo;
+
 Boss::Boss(int x,int y,bool flip) {
    _x = x;
    _y = y;
@@ -61,11 +70,14 @@ void Boss::Draw(Game& g) {
    ObjectBase::Draw(g);
 }
 
-/*---------状態毎の処理----------*/
+/*---------待機----------*/
+
 void Boss::Idle(Game& g) {
    _grhandle = _grall["Idle"][_anime["Idle"]];
    _anime["Idle"] = 0;
 }
+/*---------ボスイベントA----------*/
+
 void Boss::BossEventA(Game& g) {
    auto frame = _cnt - _action_cnt;
    if (frame >= 0 && 120 >= frame) {
@@ -87,6 +99,8 @@ void Boss::BossEventA(Game& g) {
       g.GetOS()->Del(this);
    }
 }
+/*---------ボスイベントB----------*/
+
 void Boss::BossEventB(Game& g) {
    auto frame = _cnt - _action_cnt;
    _spd = 3;
@@ -130,6 +144,8 @@ void Boss::BossEventB(Game& g) {
       }
    }
 }
+/*--------被ダメ----------*/
+
 void Boss::Damage(Game& g) {
    auto frame = _cnt - _action_cnt;
    _grhandle = _grall["Damage"][_anime["Damage"]];
@@ -148,6 +164,7 @@ void Boss::Damage(Game& g) {
       g.GetOS()->Add(bb);
    }
 }
+/*----------死亡--------*/
 
 void Boss::Dead(Game& g) {
    auto frame = _cnt - _action_cnt;
@@ -169,7 +186,7 @@ void Boss::Dead(Game& g) {
       g.GetMS()->Add(me, 0, "Epilogue");
    }
 }
-//ボスのイベント状態遷移関数
+
 void Boss::EventChange(Game& g) {
    if (_bosseventA_flag == true) {
       _state = BOSSSTATE::EVENTA;
@@ -182,7 +199,7 @@ void Boss::EventChange(Game& g) {
       _bosseventB_flag = false;
    }
 }
-//ボスの画像読み込み関数
+
 void Boss::LoadPicture() {
    _grall["Idle"].resize(IDLE_ANIMEMAX);
    ResourceServer::LoadDivGraph(IDLE_GRAPHNAME, IDLE_ANIMEMAX, IDLE_WIDTHCOUNT, IDLE_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Idle"].data());
@@ -195,23 +212,20 @@ void Boss::LoadPicture() {
    _grall["Dead"].resize(DEAD_ANIMEMAX);
    ResourceServer::LoadDivGraph(DEAD_GRAPHNAME, DEAD_ANIMEMAX, DEAD_WIDTHCOUNT, DEAD_HEIGHTCOUNT, GRAPH_WIDTH, GRAPH_HEIGHT, _grall["Dead"].data());
 }
-//ボスの効果音読み込み関数
+
 void Boss::LoadSE() {
    _se["Dead01V"] = ResourceServer::LoadSoundMem("se/Voice/BossDead01.wav");
    _se["Dead02V"] = ResourceServer::LoadSoundMem("se/Voice/BossDead02.wav");
    _se["Dead03V"] = ResourceServer::LoadSoundMem("se/Voice/Dead03.wav");
-   
 }
-//効果音ボリューム初期値設定関数
-void   Boss::VolumeInit() {
+
+void Boss::VolumeInit() {
    _vpal["Dead01V"] = 255;
    _vpal["Dead02V"] = 255;
    _vpal["Dead03V"] = 255;
-
 }
 
-//ボリューム変更関数
-void   Boss::VolumeChange() {
+void Boss::VolumeChange() {
    ChangeVolumeSoundMem(_vpal["Dead01V"], _se["Dead01V"]);
    ChangeVolumeSoundMem(_vpal["Dead02V"], _se["Dead02V"]);
    ChangeVolumeSoundMem(_vpal["Dead03V"], _se["Dead03V"]);

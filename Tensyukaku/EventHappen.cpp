@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   EventHappen.cpp
+ * \brief  イベントブロックのインスタンス生成クラス（オブジェクトベースクラスのサブクラス）
+ * 
+ * \author Sato Naofumi
+ * \date   October 2021
+ *********************************************************************/
 #include "EventHappen.h"
 #include "RecoveryBlock.h"
 #include "GimikPlacement.h"
@@ -16,6 +23,7 @@ namespace {
    constexpr auto FLAME_X = 500;   //!< 炎演出ブロックX座標
    constexpr auto FLAME_Y = 1760;  //!< 炎演出ブロックY座標
 }
+
 EventHappen::EventHappen(Game& g) {
    Init(g);
 }
@@ -30,7 +38,7 @@ void EventHappen::Init(Game& g) {
    FlameAppear(g); 
    RecoveryAppear(g);
 }
-//チュートリアルブロック生成関数
+
 void EventHappen::TutorialAppear(Game& g) {
    auto tb1a = new TutorialBoard("1A");
       g.GetOS()->Add(tb1a);
@@ -47,7 +55,7 @@ void EventHappen::TutorialAppear(Game& g) {
       auto tb5a = new TutorialBoard("5A");
       g.GetOS()->Add(tb5a);
 }
-//チェックポイントブロック生成関数
+
 void EventHappen::CPointAppear(Game& g) {
    auto cp2 = new CPointBlock("2A");
    g.GetOS()->Add(cp2);
@@ -64,7 +72,7 @@ void EventHappen::CPointAppear(Game& g) {
    auto cp11 = new CPointBlock("11A");
    g.GetOS()->Add(cp11);
 }
-//ボスイベントブロック生成関数
+
 void EventHappen::BossEventAppear(Game& g) {
    if (g.GetCPointFlag()["11A"] == false) {
       auto bsa = new BossEventBlock(BOSSA_NUM);
@@ -73,7 +81,7 @@ void EventHappen::BossEventAppear(Game& g) {
    auto bsb = new BossEventBlock(BOSSB_NUM);
    g.GetOS()->Add(bsb);
 }
-//インゲームテキスト生成関数
+
 void EventHappen::IngameTextAppear(Game& g) {
    auto fttop = new FloorTextBlock("TOP");
    g.GetOS()->Add(fttop);
