@@ -50,7 +50,7 @@ private:
     */
    void PositonSetting();
 
-   std::string  _spawn_type;   //!< スポーンブロックの種別を指定する文字列
+   std::string _spawn_type;   //!< スポーンブロックの種別を指定する文字列
 };
 /** スポーンブロック毎の敵のインスタンス生成クラス用定数 */
 namespace SpaInfo {
