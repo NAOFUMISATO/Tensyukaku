@@ -37,6 +37,7 @@ using namespace IP2Info;
 using namespace IP3Info;
 using namespace SPInfo;
 using namespace StInfo;
+
 /*----------èoåª----------*/
 
 void Player::Appear(Game& g) {
