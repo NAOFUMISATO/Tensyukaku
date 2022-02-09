@@ -12,7 +12,7 @@
 #include "ResourceServer.h"
 #include "Game.h"
 #include "ObjectBase.h"
-#include "picojson/picojson.h"
+#include "picojson.h"
 
 MapChip::MapChip(std::string filePath, std::string tiledFileName)
 {
